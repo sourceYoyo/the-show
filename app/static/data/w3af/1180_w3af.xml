@@ -1,0 +1,3217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480498789" start-long="Wed Nov 30 04:39:49 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.iplaw.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.133"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1180_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[38]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache&quot;.</description>
+        <http-transactions>
+            <http-transaction id="38">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:19 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+
+&lt;head&gt;
+
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EmulateIE7&quot; /&gt;
+
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+
+
+
+&lt;title&gt;清华大学 | 微软创新与知识产权联合研究中心&lt;/title&gt;
+
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/sites/css/style.css&quot; /&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.SuperSlide.2.1.1.js&quot;&gt;&lt;/script&gt;
+
+&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-CN&quot; /&gt;
+
+&lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+
+.ppqtrans_flag span{display:none}
+
+.ppqtrans_flag{height:12px;width:18px;display:block}
+
+.ppqtrans_flag_and_text{padding-left:20px}
+
+.ppqtrans_flag_and_text{padding-left:20px}
+
+    .ppqtrans_flag_zh { background:url(/sites/images/cn.png) no-repeat }
+
+    .ppqtrans_flag_en { background:url(/sites/images/gb.png) no-repeat }
+
+&lt;/style&gt;
+
+
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;huabu&quot;&gt;
+
+	&lt;div class=&quot;wai&quot;&gt;
+
+&lt;!--上--&gt;
+
+		&lt;div class=&quot;shang&quot;&gt;
+
+			&lt;div class=&quot;tupian&quot;&gt;&lt;a href=&quot;/column/INDEX&quot; title=&quot;清华大学&quot;&gt;&lt;img src=&quot;/sites/images/logo1.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+
+			&lt;div class=&quot;weixin&quot;&gt;
+
+				&lt;div class=&quot;zuobian&quot;&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/xinglang.png&quot; /&gt;&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;/column/hdbm&quot;&gt;在线报名&lt;/a&gt;&lt;/div&gt;
+
+				&lt;div class=&quot;youbian&quot;&gt;
+
+					&lt;ul class=&quot;ppqtrans_language_chooser&quot; id=&quot;qtranslate-chooser&quot;&gt;
+
+						&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;/column/INDEX&quot; class=&quot;ppqtrans_flag_zh ppqtrans_flag_and_text&quot; title=&quot;简体&quot;&gt;&lt;span&gt;简体&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a href=&quot;/column/index_en&quot; class=&quot;ppqtrans_flag_en ppqtrans_flag_and_text&quot; title=&quot;English&quot;&gt;&lt;span&gt;English&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+					&lt;/ul&gt;
+
+					&lt;div class=&quot;ppqtrans_widget_end&quot;&gt;&lt;/div&gt;
+
+				&lt;/div&gt;
+
+			&lt;/div&gt;
+
+		&lt;/div&gt;
+
+&lt;!--上--&gt;
+
+&lt;!--导航--&gt;
+
+&lt;div class=&quot;dao&quot;&gt;
+
+	&lt;div class=&quot;topmenu&quot;&gt;
+
+		 &lt;script type=&quot;text/javascript&quot;&gt;
+
+			jQuery(function(){
+
+			   
+
+				jQuery('#meetlist1 li [class^=item]').removeClass(&quot;current-menu-item&quot;);
+
+				jQuery('#meetlist1 li.item1').addClass(&quot;current-menu-item&quot;);
+
+			});
+
+			&lt;/script&gt;
+
+		&lt;ul class=&quot;dropdown clearfix&quot;id=&quot;meetlist1&quot;&gt;
+
+			&lt;li class=&quot;item1&quot;&gt;&lt;a href=&quot;/column/INDEX&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item98&quot;&gt;&lt;a href=&quot;/column/zxjs&quot;&gt;中心介绍&lt;/a&gt;
+				&lt;ul class=&quot;sub-menu&quot;&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/glwyh&quot;&gt;管理委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xswyh&quot;&gt;学术委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/gwwyh&quot;&gt;顾问委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/zr_zxzr&quot;&gt;主任/执行主任&lt;/a&gt;&lt;/li&gt;
+
+				&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;!-- &lt;li class=&quot;item99&quot;&gt;&lt;a href=&quot;/column/gljg&quot;&gt;管理机构&lt;/a&gt; --&gt;
+
+				
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item100&quot;&gt;&lt;a href=&quot;/column/yjry&quot;&gt;研究人员&lt;/a&gt;&lt;/li&gt;
+			&lt;li class=&quot;item136&quot;&gt;&lt;a href=&quot;/column/IIP&quot;&gt;教学项目&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item101&quot;&gt;&lt;a href=&quot;/column/xshd&quot;&gt;学术活动&lt;/a&gt;
+
+				&lt;ul class=&quot;sub-menu&quot;&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xshy&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xsjz&quot;&gt;学术讲座&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/hdbm&quot;&gt;活动报名&lt;/a&gt;&lt;/li&gt;
+
+				&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item102&quot;&gt;&lt;a href=&quot;/column/kyxm&quot;&gt;科研项目&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item103&quot;&gt;&lt;a href=&quot;/column/cbw&quot;&gt;出版物&lt;/a&gt;
+
+			&lt;ul class=&quot;sub-menu&quot;&gt;
+
+				&lt;li&gt;&lt;a href=&quot;/column/zscqpl&quot;&gt;清华知识产权评论&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/Blog&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+
+			&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item104&quot;&gt;&lt;a href=&quot;/column/lxwm&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+
+		&lt;/ul&gt;			
+
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!--导航--&gt;
+
+&lt;script&gt;
+
+jQuery(document).ready(function($) {
+
+    $(&quot;.dropdown ul&quot;).parent(&quot;li&quot;).addClass(&quot;parent&quot;);
+
+    $(&quot;.dropdown li:first-child&quot;).addClass(&quot;first&quot;);
+
+    $(&quot;.dropdown li:last-child&quot;).addClass(&quot;last&quot;);
+
+    $(&quot;.dropdown li:only-child&quot;).removeClass(&quot;last&quot;).addClass(&quot;only&quot;);	
+
+    $(&quot;.dropdown .current-menu-item, .dropdown .current-menu-ancestor&quot;).prev().addClass(&quot;current-prev&quot;);
+
+});
+
+&lt;/script&gt;
+
+&lt;style&gt;
+
+.qtrans_flag_zh{ background:none;}
+
+.qtrans_flag_en{ background:none;}
+
+.qtrans_flag_and_text{ padding-left:0;}
+
+&lt;/style&gt;
+
+
+&lt;!--中间--&gt;
+
+&lt;div class=&quot;zhong&quot;&gt;
+
+	&lt;!--slide start--&gt;
+
+	&lt;div class=&quot;focusBox&quot;&gt;
+
+		&lt;ul class=&quot;pic&quot;&gt;
+
+			
+			
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1201&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1195&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1464697429463_12.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1100&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1449147431401_0A.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1101&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1449147175689_08.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+		&lt;/ul&gt;
+
+		&lt;div class=&quot;txt-bg&quot;&gt;&lt;/div&gt;
+
+		&lt;div class=&quot;txt&quot;&gt;
+
+			&lt;ul&gt;
+
+				
+				
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1201&quot; title=&quot;Robert P. Merges教授清华系列研讨会&quot;&gt;Robert P. Merges教授清华系列研讨会&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1195&quot; title=&quot;中国知识产权典型案例·清华论坛2016（专利法专场）召开&quot;&gt;中国知识产权典型案例·清华论坛2016（专利法专场）召开&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1100&quot; title=&quot;“标准必要专利相关法律制度完善”国际研讨会成功召开&quot;&gt;“标准必要专利相关法律制度完善”国际研讨会成功召开&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1101&quot; title=&quot;“网络版权作品过滤措施引发的法律与政策问题”圆桌会议&quot;&gt;“网络版权作品过滤措施引发的法律与政策问题”圆桌会议&lt;/a&gt;&lt;/li&gt;
+
+				
+			&lt;/ul&gt;
+
+		&lt;/div&gt;
+
+
+
+		&lt;ul class=&quot;num&quot;&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+		&lt;/ul&gt;
+
+	&lt;/div&gt;
+
+	&lt;!--slide over---&gt;
+
+	&lt;script&gt;
+
+		jQuery(&quot;.focusBox&quot;).slide({ titCell:&quot;.num li&quot;, mainCell:&quot;.pic&quot;,effect:&quot;fold&quot;, autoPlay:true,trigger:&quot;click&quot;,
+
+			startFun:function(i){
+
+				 jQuery(&quot;.focusBox .txt li&quot;).eq(i).animate({&quot;bottom&quot;:0}).siblings().animate({&quot;bottom&quot;:-36});
+
+			}
+
+		});
+
+	&lt;/script&gt;
+
+	&lt;div class=&quot;you&quot;&gt;
+
+		&lt;div class=&quot;xinwen&quot;&gt;
+
+			&lt;div class=&quot;xin&quot;&gt;最新动态&lt;/div&gt;
+
+			&lt;div class=&quot;wen&quot;&gt;&lt;a href=&quot;/column/xwdt&quot;&gt;更多 &amp;raquo;&lt;/a&gt;&lt;/div&gt;
+
+		&lt;/div&gt;
+
+		&lt;ul class=&quot;ah&quot;&gt;
+
+			
+		
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1213&quot; title=&quot;王迁：信息网络传播权的解释&quot;&gt;王迁：信息网络传播权的解释&lt;/a&gt; &amp;nbsp;(10-26)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1212&quot; title=&quot;君合专利团队三位合伙人做客清华大学法学院&quot;&gt;君合专利团队三位合伙人做客清华大学法学院&lt;/a&gt; &amp;nbsp;(10-15)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1217&quot; title=&quot;华为知识产权战略副总裁樊志勇先生来院进行讲座&quot;&gt;华为知识产权战略副总裁樊志勇先生来院进行讲座&lt;/a&gt; &amp;nbsp;(09-29)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1200&quot; title=&quot;Robert P. Merges教授清华系列研讨会&quot;&gt;Robert P. Merges教授清华系列研讨会&lt;/a&gt; &amp;nbsp;(06-28)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1196&quot; title=&quot;中国知识产权典型案例·清华论坛2016（专利法专场）召开&quot;&gt;中国知识产权典型案例·清华论坛2016（专利法专场）召开&lt;/a&gt; &amp;nbsp;(05-31)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1192&quot; title=&quot;中国知识产权典型案例·清华论坛2016 （专利法专场） 会议通知&quot;&gt;中国知识产权典型案例·清华论坛2016 （专利法专场） 会议通知&lt;/a&gt; &amp;nbsp;(05-26)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1178&quot; title=&quot;清华IP茶点沙龙（一）&quot;&gt;清华IP茶点沙龙（一）&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1179&quot; title=&quot;版权传统的现代内涵：英国知识产权局版权及知识产权执法司司长罗斯·林奇博士来院进行学术讲座&quot;&gt;版权传统的现代内涵：英国知识产权局版权及知识产权执法司司长罗斯·林奇博士来院进行学术讲座&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1180&quot; title=&quot;讲座：跨国电子环境下的驰名商标保护&quot;&gt;讲座：跨国电子环境下的驰名商标保护&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1181&quot; title=&quot;讲座：竞争政策与网络平台&quot;&gt;讲座：竞争政策与网络平台&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+		&lt;/ul&gt;
+
+	&lt;/div&gt;
+
+	&lt;div class=&quot;ping&quot;&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!--中间--&gt;
+
+&lt;!--底面--&gt;
+
+	&lt;div class=&quot;sha&quot;&gt;
+
+			&lt;p&gt;&lt;img src=&quot;/sites/images/di.png&quot; /&gt;&lt;/p&gt;
+
+			&lt;p&gt;版权所有：清华大学-微软创新与知识产权联合研究中心&lt;/p&gt;
+
+			&lt;p&gt;地址：北京市海淀区清华大学法学院明理楼，100084&lt;/p&gt;	
+
+		&lt;/div&gt;
+&lt;!--底面--&gt;
+
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[186]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://iplaw.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://iplaw.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://www.iplaw.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2799" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 23 Apr 2015 05:55:24 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;454d24-aef-5145decfbeb00&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 09:40:29 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;!-- saved from url=(0120)http://oars.tsinghua.edu.cn/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument --&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;֪ͨ&lt;/TITLE&gt;
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;STYLE type=text/css&gt;TD {
+        FONT-SIZE: 9pt; FONT-FAMILY: &quot;\xcb\xce\xcc\xe5&quot;, &quot;Verdana&quot;, &quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;
+}
+.p {
+        FONT-SIZE: 12px; LINE-HEIGHT: 150%
+}
+.p0 {
+        FONT-SIZE: 14px; LINE-HEIGHT: 150%
+}
+.p3 {
+        FONT-SIZE: 14px; TEXT-INDENT: 28px; LINE-HEIGHT: 150%
+}
+.p1 {
+        FONT-SIZE: 14px; FONT-FAMILY: &quot;Verdana&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;
+}
+.p2 {
+        FONT-SIZE: 9pt; LINE-HEIGHT: 18pt
+}
+.p4 {
+        FONT-WEIGHT: bold; FONT-SIZE: 16px
+}
+A:link {
+        FONT-SIZE: 9pt; COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+        FONT-SIZE: 9pt; COLOR: #cc3300; TEXT-DECORATION: underline
+}
+A:visited {
+        FONT-SIZE: 9pt; COLOR: #006666; TEXT-DECORATION: none
+}
+&lt;/STYLE&gt;
+
+&lt;SCRIPT language=JavaScript&gt;
+&lt;!--
+document._domino_target = &quot;_self&quot;;
+function _doClick(v, o, t) {
+  var url=&quot;/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument&amp;Click=&quot; + v;
+  if (o.href != null)
+    o.href = url;
+  else {
+    if (t == null)
+      t = document._domino_target;
+    window.open(url, t);
+  }
+
+}
+// --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;META content=&quot;MSHTML 6.00.2900.5848&quot; name=GENERATOR&gt;&lt;/HEAD&gt;
+&lt;BODY text=#000000 bgColor=#ffffff leftMargin=0 topMargin=0 marginheight=&quot;0&quot;
+marginwidth=&quot;0&quot;&gt;
+&lt;FORM&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD vAlign=top align=middle width=94 background=apperr.files/left2.gif
+    height=342&gt;&lt;BR&gt;&lt;BR&gt;
+     &lt;/TD&gt;
+    &lt;TD vAlign=top width=682 background=apperr.files/pattern.jpg&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD width=6&gt;&lt;IMG height=16 src=&quot;&quot; width=4&gt;&lt;/TD&gt;
+          &lt;TD class=p1&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD class=p3&gt;
+            &lt;P&gt;&lt;BR&gt;Sorry!&lt;TT&gt;
+            &amp;nbsp; &amp;nbsp;&lt;/TT&gt;&lt;BR&gt;&lt;TT&gt;&amp;nbsp;&lt;/TT&gt;
+           &lt;/TT&gt;
+
+
+        &lt;TR&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+        &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+      &lt;TABLE height=18 cellSpacing=0 cellPadding=7 width=&quot;90%&quot;  bgColor=#ccd3e8 border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD align=middle&gt; \xc7廪\xb4\xf3ѧ\xbc\xc6\xcb\xe3\xbb\xfa\xd3\xeb\xd0\xc5Ϣ\xb9\xdc\xc0\xed\xd6\xd0\xd0\xc4
+     &lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/FORM&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[183]" method="GET" name="Favicon identification" plugin="favicon_identification" severity="Information" url="http://www.iplaw.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>Favicon.ico file was identified as &quot;Zero byte favicon&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[182]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://www.iplaw.tsinghua.edu.cn/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;extra.www.iplaw.tsinghua.edu.cn&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;extra.www.iplaw.tsinghua.edu.cn&quot; to the IP address of &quot;www.iplaw.tsinghua.edu.cn&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[207]" method="GET" name="JBoss JMX Console found" plugin="find_jboss" severity="Low" url="http://www.iplaw.tsinghua.edu.cn/jmx-console/" var="None">
+        <description>JMX Console found without Auth Enabled</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[208]" method="GET" name="JBoss Status Servlet found" plugin="find_jboss" severity="Information" url="http://www.iplaw.tsinghua.edu.cn/status" var="None">
+        <description>JBoss Status Servlet gives valuable information</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[209]" method="GET" name="JBoss Admin Console enabled" plugin="find_jboss" severity="Information" url="http://www.iplaw.tsinghua.edu.cn/admin-console/" var="None">
+        <description>Jboss Admin Console was found!</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[210]" method="GET" name="WebConsole Invoker found" plugin="find_jboss" severity="Low" url="http://www.iplaw.tsinghua.edu.cn/WebConsole/Invoker" var="None">
+        <description>JBoss WebConsole Invoker enables attackers to send any JMX command to JBoss AS</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[211]" method="GET" name="WebConsole ServerInfo.jsp found" plugin="find_jboss" severity="Information" url="http://www.iplaw.tsinghua.edu.cn/web-console/ServerInfo.jsp" var="None">
+        <description>WebConsole ServerInfo.jsp gives valuable information</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[228, 229]" method="GET" name="Operating system" plugin="fingerprint_os" severity="Information" url="http://www.iplaw.tsinghua.edu.cn/WebConsole\Invoker" var="None">
+        <description>Fingerprinted this host as a Microsoft Windows system.</description>
+        <http-transactions>
+            <http-transaction id="228">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/WebConsole%5CInvoker HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=488" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="229">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=487" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[291, 260, 304, 305, 163, 309, 292]" method="GET" name="Strange HTTP Reason message" plugin="strange_reason" severity="Information" url="http://www.iplaw.tsinghua.edu.cn/jsKOK" var="None">
+        <description>The remote web server sent 7 HTTP responses with the uncommon status message &quot;Method not implemented&quot;, manual inspection is recommended. The first ten URLs which sent the uncommon message are:
+ - http://www.iplaw.tsinghua.edu.cn/admin-console/RJYQm
+ - http://www.iplaw.tsinghua.edu.cn/jsKOK
+ - http://www.iplaw.tsinghua.edu.cn/jmx-console/RuofC
+ - http://www.iplaw.tsinghua.edu.cn/WebConsole/
+ - http://www.iplaw.tsinghua.edu.cn/web-console/dYyQK
+ - http://www.iplaw.tsinghua.edu.cn/WebConsole/frcYn
+ - http://www.iplaw.tsinghua.edu.cn/web-console/
+</description>
+        <http-transactions>
+            <http-transaction id="291">
+                <http-request>
+                    <status>PUT http://www.iplaw.tsinghua.edu.cn/WebConsole/frcYn HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">QQafHv</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="260">
+                <http-request>
+                    <status>PUT http://www.iplaw.tsinghua.edu.cn/jmx-console/RuofC HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">3NDYfj</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:52 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="304">
+                <http-request>
+                    <status>PROPFIND http://www.iplaw.tsinghua.edu.cn/web-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="107" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="1" field="Depth"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="application/xml; charset=&quot;utf-8&quot;" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PD94bWwgdmVyc2lvbj0nMS4wJz8+DQo8YTpwcm9wZmluZCB4bWxuczphPSdEQVY6Jz4NCjxhOnBy
+b3A+DQo8YTpkaXNwbGF5bmFtZTovPg0KPC9hOnByb3A+DQo8L2E6cHJvcGZpbmQ+DQo=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:55 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="305">
+                <http-request>
+                    <status>PUT http://www.iplaw.tsinghua.edu.cn/web-console/dYyQK HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">x1NQb4</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:55 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="163">
+                <http-request>
+                    <status>PUT http://www.iplaw.tsinghua.edu.cn/jsKOK HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">UxDm9a</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:26 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="309">
+                <http-request>
+                    <status>PUT http://www.iplaw.tsinghua.edu.cn/admin-console/RJYQm HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">tF91eb</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:55 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="292">
+                <http-request>
+                    <status>SEARCH http://www.iplaw.tsinghua.edu.cn/WebConsole/ HTTP/1.1</status>
+                    <headers>
+                        <header content="135" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="application/xml; charset=&quot;utf-8&quot;" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PD94bWwgdmVyc2lvbj0nMS4wJz8+DQo8ZzpzZWFyY2hyZXF1ZXN0IHhtbG5zOmc9J0RBVjonPg0K
+PGc6c3FsPg0KU2VsZWN0ICdEQVY6ZGlzcGxheW5hbWUnIGZyb20gc2NvcGUoKQ0KPC9nOnNxbD4N
+CjwvZzpzZWFyY2hyZXF1ZXN0Pg0K
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[35, 196, 214, 239, 265, 273, 293, 325, 327]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://www.iplaw.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://www.iplaw.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: CONNECT, DEBUG, GET, HEAD, PIN, POST, REPORT, UNLINK</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="35">
+                <http-request>
+                    <status>OPTIONS http://www.iplaw.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 OPTIONS not supported</status>
+                    <headers>
+                        <header content="198" field="content-length"/>
+                        <header content="timeout=10, max=497" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:25 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 OPTIONS not supported&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;405 OPTIONS not supported&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="196">
+                <http-request>
+                    <status>HEAD http://www.iplaw.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:32 GMT" field="date"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                        <header content="timeout=10, max=498" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="273">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+
+&lt;head&gt;
+
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EmulateIE7&quot; /&gt;
+
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+
+
+
+&lt;title&gt;清华大学 | 微软创新与知识产权联合研究中心&lt;/title&gt;
+
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/sites/css/style.css&quot; /&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.SuperSlide.2.1.1.js&quot;&gt;&lt;/script&gt;
+
+&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-CN&quot; /&gt;
+
+&lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+
+.ppqtrans_flag span{display:none}
+
+.ppqtrans_flag{height:12px;width:18px;display:block}
+
+.ppqtrans_flag_and_text{padding-left:20px}
+
+.ppqtrans_flag_and_text{padding-left:20px}
+
+    .ppqtrans_flag_zh { background:url(/sites/images/cn.png) no-repeat }
+
+    .ppqtrans_flag_en { background:url(/sites/images/gb.png) no-repeat }
+
+&lt;/style&gt;
+
+
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;huabu&quot;&gt;
+
+	&lt;div class=&quot;wai&quot;&gt;
+
+&lt;!--上--&gt;
+
+		&lt;div class=&quot;shang&quot;&gt;
+
+			&lt;div class=&quot;tupian&quot;&gt;&lt;a href=&quot;/column/INDEX&quot; title=&quot;清华大学&quot;&gt;&lt;img src=&quot;/sites/images/logo1.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+
+			&lt;div class=&quot;weixin&quot;&gt;
+
+				&lt;div class=&quot;zuobian&quot;&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/xinglang.png&quot; /&gt;&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;/column/hdbm&quot;&gt;在线报名&lt;/a&gt;&lt;/div&gt;
+
+				&lt;div class=&quot;youbian&quot;&gt;
+
+					&lt;ul class=&quot;ppqtrans_language_chooser&quot; id=&quot;qtranslate-chooser&quot;&gt;
+
+						&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;/column/INDEX&quot; class=&quot;ppqtrans_flag_zh ppqtrans_flag_and_text&quot; title=&quot;简体&quot;&gt;&lt;span&gt;简体&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a href=&quot;/column/index_en&quot; class=&quot;ppqtrans_flag_en ppqtrans_flag_and_text&quot; title=&quot;English&quot;&gt;&lt;span&gt;English&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+					&lt;/ul&gt;
+
+					&lt;div class=&quot;ppqtrans_widget_end&quot;&gt;&lt;/div&gt;
+
+				&lt;/div&gt;
+
+			&lt;/div&gt;
+
+		&lt;/div&gt;
+
+&lt;!--上--&gt;
+
+&lt;!--导航--&gt;
+
+&lt;div class=&quot;dao&quot;&gt;
+
+	&lt;div class=&quot;topmenu&quot;&gt;
+
+		 &lt;script type=&quot;text/javascript&quot;&gt;
+
+			jQuery(function(){
+
+			   
+
+				jQuery('#meetlist1 li [class^=item]').removeClass(&quot;current-menu-item&quot;);
+
+				jQuery('#meetlist1 li.item1').addClass(&quot;current-menu-item&quot;);
+
+			});
+
+			&lt;/script&gt;
+
+		&lt;ul class=&quot;dropdown clearfix&quot;id=&quot;meetlist1&quot;&gt;
+
+			&lt;li class=&quot;item1&quot;&gt;&lt;a href=&quot;/column/INDEX&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item98&quot;&gt;&lt;a href=&quot;/column/zxjs&quot;&gt;中心介绍&lt;/a&gt;
+				&lt;ul class=&quot;sub-menu&quot;&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/glwyh&quot;&gt;管理委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xswyh&quot;&gt;学术委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/gwwyh&quot;&gt;顾问委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/zr_zxzr&quot;&gt;主任/执行主任&lt;/a&gt;&lt;/li&gt;
+
+				&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;!-- &lt;li class=&quot;item99&quot;&gt;&lt;a href=&quot;/column/gljg&quot;&gt;管理机构&lt;/a&gt; --&gt;
+
+				
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item100&quot;&gt;&lt;a href=&quot;/column/yjry&quot;&gt;研究人员&lt;/a&gt;&lt;/li&gt;
+			&lt;li class=&quot;item136&quot;&gt;&lt;a href=&quot;/column/IIP&quot;&gt;教学项目&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item101&quot;&gt;&lt;a href=&quot;/column/xshd&quot;&gt;学术活动&lt;/a&gt;
+
+				&lt;ul class=&quot;sub-menu&quot;&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xshy&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xsjz&quot;&gt;学术讲座&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/hdbm&quot;&gt;活动报名&lt;/a&gt;&lt;/li&gt;
+
+				&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item102&quot;&gt;&lt;a href=&quot;/column/kyxm&quot;&gt;科研项目&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item103&quot;&gt;&lt;a href=&quot;/column/cbw&quot;&gt;出版物&lt;/a&gt;
+
+			&lt;ul class=&quot;sub-menu&quot;&gt;
+
+				&lt;li&gt;&lt;a href=&quot;/column/zscqpl&quot;&gt;清华知识产权评论&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/Blog&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+
+			&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item104&quot;&gt;&lt;a href=&quot;/column/lxwm&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+
+		&lt;/ul&gt;			
+
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!--导航--&gt;
+
+&lt;script&gt;
+
+jQuery(document).ready(function($) {
+
+    $(&quot;.dropdown ul&quot;).parent(&quot;li&quot;).addClass(&quot;parent&quot;);
+
+    $(&quot;.dropdown li:first-child&quot;).addClass(&quot;first&quot;);
+
+    $(&quot;.dropdown li:last-child&quot;).addClass(&quot;last&quot;);
+
+    $(&quot;.dropdown li:only-child&quot;).removeClass(&quot;last&quot;).addClass(&quot;only&quot;);	
+
+    $(&quot;.dropdown .current-menu-item, .dropdown .current-menu-ancestor&quot;).prev().addClass(&quot;current-prev&quot;);
+
+});
+
+&lt;/script&gt;
+
+&lt;style&gt;
+
+.qtrans_flag_zh{ background:none;}
+
+.qtrans_flag_en{ background:none;}
+
+.qtrans_flag_and_text{ padding-left:0;}
+
+&lt;/style&gt;
+
+
+&lt;!--中间--&gt;
+
+&lt;div class=&quot;zhong&quot;&gt;
+
+	&lt;!--slide start--&gt;
+
+	&lt;div class=&quot;focusBox&quot;&gt;
+
+		&lt;ul class=&quot;pic&quot;&gt;
+
+			
+			
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1201&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1195&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1464697429463_12.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1100&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1449147431401_0A.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1101&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1449147175689_08.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+		&lt;/ul&gt;
+
+		&lt;div class=&quot;txt-bg&quot;&gt;&lt;/div&gt;
+
+		&lt;div class=&quot;txt&quot;&gt;
+
+			&lt;ul&gt;
+
+				
+				
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1201&quot; title=&quot;Robert P. Merges教授清华系列研讨会&quot;&gt;Robert P. Merges教授清华系列研讨会&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1195&quot; title=&quot;中国知识产权典型案例·清华论坛2016（专利法专场）召开&quot;&gt;中国知识产权典型案例·清华论坛2016（专利法专场）召开&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1100&quot; title=&quot;“标准必要专利相关法律制度完善”国际研讨会成功召开&quot;&gt;“标准必要专利相关法律制度完善”国际研讨会成功召开&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1101&quot; title=&quot;“网络版权作品过滤措施引发的法律与政策问题”圆桌会议&quot;&gt;“网络版权作品过滤措施引发的法律与政策问题”圆桌会议&lt;/a&gt;&lt;/li&gt;
+
+				
+			&lt;/ul&gt;
+
+		&lt;/div&gt;
+
+
+
+		&lt;ul class=&quot;num&quot;&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+		&lt;/ul&gt;
+
+	&lt;/div&gt;
+
+	&lt;!--slide over---&gt;
+
+	&lt;script&gt;
+
+		jQuery(&quot;.focusBox&quot;).slide({ titCell:&quot;.num li&quot;, mainCell:&quot;.pic&quot;,effect:&quot;fold&quot;, autoPlay:true,trigger:&quot;click&quot;,
+
+			startFun:function(i){
+
+				 jQuery(&quot;.focusBox .txt li&quot;).eq(i).animate({&quot;bottom&quot;:0}).siblings().animate({&quot;bottom&quot;:-36});
+
+			}
+
+		});
+
+	&lt;/script&gt;
+
+	&lt;div class=&quot;you&quot;&gt;
+
+		&lt;div class=&quot;xinwen&quot;&gt;
+
+			&lt;div class=&quot;xin&quot;&gt;最新动态&lt;/div&gt;
+
+			&lt;div class=&quot;wen&quot;&gt;&lt;a href=&quot;/column/xwdt&quot;&gt;更多 &amp;raquo;&lt;/a&gt;&lt;/div&gt;
+
+		&lt;/div&gt;
+
+		&lt;ul class=&quot;ah&quot;&gt;
+
+			
+		
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1213&quot; title=&quot;王迁：信息网络传播权的解释&quot;&gt;王迁：信息网络传播权的解释&lt;/a&gt; &amp;nbsp;(10-26)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1212&quot; title=&quot;君合专利团队三位合伙人做客清华大学法学院&quot;&gt;君合专利团队三位合伙人做客清华大学法学院&lt;/a&gt; &amp;nbsp;(10-15)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1217&quot; title=&quot;华为知识产权战略副总裁樊志勇先生来院进行讲座&quot;&gt;华为知识产权战略副总裁樊志勇先生来院进行讲座&lt;/a&gt; &amp;nbsp;(09-29)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1200&quot; title=&quot;Robert P. Merges教授清华系列研讨会&quot;&gt;Robert P. Merges教授清华系列研讨会&lt;/a&gt; &amp;nbsp;(06-28)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1196&quot; title=&quot;中国知识产权典型案例·清华论坛2016（专利法专场）召开&quot;&gt;中国知识产权典型案例·清华论坛2016（专利法专场）召开&lt;/a&gt; &amp;nbsp;(05-31)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1192&quot; title=&quot;中国知识产权典型案例·清华论坛2016 （专利法专场） 会议通知&quot;&gt;中国知识产权典型案例·清华论坛2016 （专利法专场） 会议通知&lt;/a&gt; &amp;nbsp;(05-26)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1178&quot; title=&quot;清华IP茶点沙龙（一）&quot;&gt;清华IP茶点沙龙（一）&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1179&quot; title=&quot;版权传统的现代内涵：英国知识产权局版权及知识产权执法司司长罗斯·林奇博士来院进行学术讲座&quot;&gt;版权传统的现代内涵：英国知识产权局版权及知识产权执法司司长罗斯·林奇博士来院进行学术讲座&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1180&quot; title=&quot;讲座：跨国电子环境下的驰名商标保护&quot;&gt;讲座：跨国电子环境下的驰名商标保护&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1181&quot; title=&quot;讲座：竞争政策与网络平台&quot;&gt;讲座：竞争政策与网络平台&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+		&lt;/ul&gt;
+
+	&lt;/div&gt;
+
+	&lt;div class=&quot;ping&quot;&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!--中间--&gt;
+
+&lt;!--底面--&gt;
+
+	&lt;div class=&quot;sha&quot;&gt;
+
+			&lt;p&gt;&lt;img src=&quot;/sites/images/di.png&quot; /&gt;&lt;/p&gt;
+
+			&lt;p&gt;版权所有：清华大学-微软创新与知识产权联合研究中心&lt;/p&gt;
+
+			&lt;p&gt;地址：北京市海淀区清华大学法学院明理楼，100084&lt;/p&gt;	
+
+		&lt;/div&gt;
+&lt;!--底面--&gt;
+
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="293">
+                <http-request>
+                    <status>CONNECT http://www.iplaw.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="226" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;400 Bad Request&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Bad Request&lt;/h1&gt;
+&lt;p&gt;Your browser sent a request that this server could not understand.&lt;br /&gt;
+&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="327">
+                <http-request>
+                    <status>POST http://www.iplaw.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:41:03 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+
+&lt;head&gt;
+
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EmulateIE7&quot; /&gt;
+
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+
+
+
+&lt;title&gt;清华大学 | 微软创新与知识产权联合研究中心&lt;/title&gt;
+
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/sites/css/style.css&quot; /&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.SuperSlide.2.1.1.js&quot;&gt;&lt;/script&gt;
+
+&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-CN&quot; /&gt;
+
+&lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+
+.ppqtrans_flag span{display:none}
+
+.ppqtrans_flag{height:12px;width:18px;display:block}
+
+.ppqtrans_flag_and_text{padding-left:20px}
+
+.ppqtrans_flag_and_text{padding-left:20px}
+
+    .ppqtrans_flag_zh { background:url(/sites/images/cn.png) no-repeat }
+
+    .ppqtrans_flag_en { background:url(/sites/images/gb.png) no-repeat }
+
+&lt;/style&gt;
+
+
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;huabu&quot;&gt;
+
+	&lt;div class=&quot;wai&quot;&gt;
+
+&lt;!--上--&gt;
+
+		&lt;div class=&quot;shang&quot;&gt;
+
+			&lt;div class=&quot;tupian&quot;&gt;&lt;a href=&quot;/column/INDEX&quot; title=&quot;清华大学&quot;&gt;&lt;img src=&quot;/sites/images/logo1.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+
+			&lt;div class=&quot;weixin&quot;&gt;
+
+				&lt;div class=&quot;zuobian&quot;&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/xinglang.png&quot; /&gt;&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;/column/hdbm&quot;&gt;在线报名&lt;/a&gt;&lt;/div&gt;
+
+				&lt;div class=&quot;youbian&quot;&gt;
+
+					&lt;ul class=&quot;ppqtrans_language_chooser&quot; id=&quot;qtranslate-chooser&quot;&gt;
+
+						&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;/column/INDEX&quot; class=&quot;ppqtrans_flag_zh ppqtrans_flag_and_text&quot; title=&quot;简体&quot;&gt;&lt;span&gt;简体&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a href=&quot;/column/index_en&quot; class=&quot;ppqtrans_flag_en ppqtrans_flag_and_text&quot; title=&quot;English&quot;&gt;&lt;span&gt;English&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+					&lt;/ul&gt;
+
+					&lt;div class=&quot;ppqtrans_widget_end&quot;&gt;&lt;/div&gt;
+
+				&lt;/div&gt;
+
+			&lt;/div&gt;
+
+		&lt;/div&gt;
+
+&lt;!--上--&gt;
+
+&lt;!--导航--&gt;
+
+&lt;div class=&quot;dao&quot;&gt;
+
+	&lt;div class=&quot;topmenu&quot;&gt;
+
+		 &lt;script type=&quot;text/javascript&quot;&gt;
+
+			jQuery(function(){
+
+			   
+
+				jQuery('#meetlist1 li [class^=item]').removeClass(&quot;current-menu-item&quot;);
+
+				jQuery('#meetlist1 li.item1').addClass(&quot;current-menu-item&quot;);
+
+			});
+
+			&lt;/script&gt;
+
+		&lt;ul class=&quot;dropdown clearfix&quot;id=&quot;meetlist1&quot;&gt;
+
+			&lt;li class=&quot;item1&quot;&gt;&lt;a href=&quot;/column/INDEX&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item98&quot;&gt;&lt;a href=&quot;/column/zxjs&quot;&gt;中心介绍&lt;/a&gt;
+				&lt;ul class=&quot;sub-menu&quot;&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/glwyh&quot;&gt;管理委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xswyh&quot;&gt;学术委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/gwwyh&quot;&gt;顾问委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/zr_zxzr&quot;&gt;主任/执行主任&lt;/a&gt;&lt;/li&gt;
+
+				&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;!-- &lt;li class=&quot;item99&quot;&gt;&lt;a href=&quot;/column/gljg&quot;&gt;管理机构&lt;/a&gt; --&gt;
+
+				
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item100&quot;&gt;&lt;a href=&quot;/column/yjry&quot;&gt;研究人员&lt;/a&gt;&lt;/li&gt;
+			&lt;li class=&quot;item136&quot;&gt;&lt;a href=&quot;/column/IIP&quot;&gt;教学项目&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item101&quot;&gt;&lt;a href=&quot;/column/xshd&quot;&gt;学术活动&lt;/a&gt;
+
+				&lt;ul class=&quot;sub-menu&quot;&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xshy&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xsjz&quot;&gt;学术讲座&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/hdbm&quot;&gt;活动报名&lt;/a&gt;&lt;/li&gt;
+
+				&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item102&quot;&gt;&lt;a href=&quot;/column/kyxm&quot;&gt;科研项目&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item103&quot;&gt;&lt;a href=&quot;/column/cbw&quot;&gt;出版物&lt;/a&gt;
+
+			&lt;ul class=&quot;sub-menu&quot;&gt;
+
+				&lt;li&gt;&lt;a href=&quot;/column/zscqpl&quot;&gt;清华知识产权评论&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/Blog&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+
+			&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item104&quot;&gt;&lt;a href=&quot;/column/lxwm&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+
+		&lt;/ul&gt;			
+
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!--导航--&gt;
+
+&lt;script&gt;
+
+jQuery(document).ready(function($) {
+
+    $(&quot;.dropdown ul&quot;).parent(&quot;li&quot;).addClass(&quot;parent&quot;);
+
+    $(&quot;.dropdown li:first-child&quot;).addClass(&quot;first&quot;);
+
+    $(&quot;.dropdown li:last-child&quot;).addClass(&quot;last&quot;);
+
+    $(&quot;.dropdown li:only-child&quot;).removeClass(&quot;last&quot;).addClass(&quot;only&quot;);	
+
+    $(&quot;.dropdown .current-menu-item, .dropdown .current-menu-ancestor&quot;).prev().addClass(&quot;current-prev&quot;);
+
+});
+
+&lt;/script&gt;
+
+&lt;style&gt;
+
+.qtrans_flag_zh{ background:none;}
+
+.qtrans_flag_en{ background:none;}
+
+.qtrans_flag_and_text{ padding-left:0;}
+
+&lt;/style&gt;
+
+
+&lt;!--中间--&gt;
+
+&lt;div class=&quot;zhong&quot;&gt;
+
+	&lt;!--slide start--&gt;
+
+	&lt;div class=&quot;focusBox&quot;&gt;
+
+		&lt;ul class=&quot;pic&quot;&gt;
+
+			
+			
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1201&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1195&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1464697429463_12.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1100&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1449147431401_0A.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1101&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1449147175689_08.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+		&lt;/ul&gt;
+
+		&lt;div class=&quot;txt-bg&quot;&gt;&lt;/div&gt;
+
+		&lt;div class=&quot;txt&quot;&gt;
+
+			&lt;ul&gt;
+
+				
+				
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1201&quot; title=&quot;Robert P. Merges教授清华系列研讨会&quot;&gt;Robert P. Merges教授清华系列研讨会&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1195&quot; title=&quot;中国知识产权典型案例·清华论坛2016（专利法专场）召开&quot;&gt;中国知识产权典型案例·清华论坛2016（专利法专场）召开&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1100&quot; title=&quot;“标准必要专利相关法律制度完善”国际研讨会成功召开&quot;&gt;“标准必要专利相关法律制度完善”国际研讨会成功召开&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1101&quot; title=&quot;“网络版权作品过滤措施引发的法律与政策问题”圆桌会议&quot;&gt;“网络版权作品过滤措施引发的法律与政策问题”圆桌会议&lt;/a&gt;&lt;/li&gt;
+
+				
+			&lt;/ul&gt;
+
+		&lt;/div&gt;
+
+
+
+		&lt;ul class=&quot;num&quot;&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+		&lt;/ul&gt;
+
+	&lt;/div&gt;
+
+	&lt;!--slide over---&gt;
+
+	&lt;script&gt;
+
+		jQuery(&quot;.focusBox&quot;).slide({ titCell:&quot;.num li&quot;, mainCell:&quot;.pic&quot;,effect:&quot;fold&quot;, autoPlay:true,trigger:&quot;click&quot;,
+
+			startFun:function(i){
+
+				 jQuery(&quot;.focusBox .txt li&quot;).eq(i).animate({&quot;bottom&quot;:0}).siblings().animate({&quot;bottom&quot;:-36});
+
+			}
+
+		});
+
+	&lt;/script&gt;
+
+	&lt;div class=&quot;you&quot;&gt;
+
+		&lt;div class=&quot;xinwen&quot;&gt;
+
+			&lt;div class=&quot;xin&quot;&gt;最新动态&lt;/div&gt;
+
+			&lt;div class=&quot;wen&quot;&gt;&lt;a href=&quot;/column/xwdt&quot;&gt;更多 &amp;raquo;&lt;/a&gt;&lt;/div&gt;
+
+		&lt;/div&gt;
+
+		&lt;ul class=&quot;ah&quot;&gt;
+
+			
+		
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1213&quot; title=&quot;王迁：信息网络传播权的解释&quot;&gt;王迁：信息网络传播权的解释&lt;/a&gt; &amp;nbsp;(10-26)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1212&quot; title=&quot;君合专利团队三位合伙人做客清华大学法学院&quot;&gt;君合专利团队三位合伙人做客清华大学法学院&lt;/a&gt; &amp;nbsp;(10-15)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1217&quot; title=&quot;华为知识产权战略副总裁樊志勇先生来院进行讲座&quot;&gt;华为知识产权战略副总裁樊志勇先生来院进行讲座&lt;/a&gt; &amp;nbsp;(09-29)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1200&quot; title=&quot;Robert P. Merges教授清华系列研讨会&quot;&gt;Robert P. Merges教授清华系列研讨会&lt;/a&gt; &amp;nbsp;(06-28)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1196&quot; title=&quot;中国知识产权典型案例·清华论坛2016（专利法专场）召开&quot;&gt;中国知识产权典型案例·清华论坛2016（专利法专场）召开&lt;/a&gt; &amp;nbsp;(05-31)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1192&quot; title=&quot;中国知识产权典型案例·清华论坛2016 （专利法专场） 会议通知&quot;&gt;中国知识产权典型案例·清华论坛2016 （专利法专场） 会议通知&lt;/a&gt; &amp;nbsp;(05-26)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1178&quot; title=&quot;清华IP茶点沙龙（一）&quot;&gt;清华IP茶点沙龙（一）&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1179&quot; title=&quot;版权传统的现代内涵：英国知识产权局版权及知识产权执法司司长罗斯·林奇博士来院进行学术讲座&quot;&gt;版权传统的现代内涵：英国知识产权局版权及知识产权执法司司长罗斯·林奇博士来院进行学术讲座&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1180&quot; title=&quot;讲座：跨国电子环境下的驰名商标保护&quot;&gt;讲座：跨国电子环境下的驰名商标保护&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1181&quot; title=&quot;讲座：竞争政策与网络平台&quot;&gt;讲座：竞争政策与网络平台&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+		&lt;/ul&gt;
+
+	&lt;/div&gt;
+
+	&lt;div class=&quot;ping&quot;&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!--中间--&gt;
+
+&lt;!--底面--&gt;
+
+	&lt;div class=&quot;sha&quot;&gt;
+
+			&lt;p&gt;&lt;img src=&quot;/sites/images/di.png&quot; /&gt;&lt;/p&gt;
+
+			&lt;p&gt;版权所有：清华大学-微软创新与知识产权联合研究中心&lt;/p&gt;
+
+			&lt;p&gt;地址：北京市海淀区清华大学法学院明理楼，100084&lt;/p&gt;	
+
+		&lt;/div&gt;
+&lt;!--底面--&gt;
+
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 72, 163, 187, 194, 205, 217, 219, 224, 228, 231, 237, 260, 271, 276, 278, 287, 290, 291, 292, 299, 301, 304, 305, 307, 309]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:19 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+
+&lt;head&gt;
+
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EmulateIE7&quot; /&gt;
+
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+
+
+
+&lt;title&gt;清华大学 | 微软创新与知识产权联合研究中心&lt;/title&gt;
+
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/sites/css/style.css&quot; /&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.SuperSlide.2.1.1.js&quot;&gt;&lt;/script&gt;
+
+&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-CN&quot; /&gt;
+
+&lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+
+.ppqtrans_flag span{display:none}
+
+.ppqtrans_flag{height:12px;width:18px;display:block}
+
+.ppqtrans_flag_and_text{padding-left:20px}
+
+.ppqtrans_flag_and_text{padding-left:20px}
+
+    .ppqtrans_flag_zh { background:url(/sites/images/cn.png) no-repeat }
+
+    .ppqtrans_flag_en { background:url(/sites/images/gb.png) no-repeat }
+
+&lt;/style&gt;
+
+
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;huabu&quot;&gt;
+
+	&lt;div class=&quot;wai&quot;&gt;
+
+&lt;!--上--&gt;
+
+		&lt;div class=&quot;shang&quot;&gt;
+
+			&lt;div class=&quot;tupian&quot;&gt;&lt;a href=&quot;/column/INDEX&quot; title=&quot;清华大学&quot;&gt;&lt;img src=&quot;/sites/images/logo1.png&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+
+			&lt;div class=&quot;weixin&quot;&gt;
+
+				&lt;div class=&quot;zuobian&quot;&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/xinglang.png&quot; /&gt;&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;/column/hdbm&quot;&gt;在线报名&lt;/a&gt;&lt;/div&gt;
+
+				&lt;div class=&quot;youbian&quot;&gt;
+
+					&lt;ul class=&quot;ppqtrans_language_chooser&quot; id=&quot;qtranslate-chooser&quot;&gt;
+
+						&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;/column/INDEX&quot; class=&quot;ppqtrans_flag_zh ppqtrans_flag_and_text&quot; title=&quot;简体&quot;&gt;&lt;span&gt;简体&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+						&lt;li&gt;&lt;a href=&quot;/column/index_en&quot; class=&quot;ppqtrans_flag_en ppqtrans_flag_and_text&quot; title=&quot;English&quot;&gt;&lt;span&gt;English&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+
+					&lt;/ul&gt;
+
+					&lt;div class=&quot;ppqtrans_widget_end&quot;&gt;&lt;/div&gt;
+
+				&lt;/div&gt;
+
+			&lt;/div&gt;
+
+		&lt;/div&gt;
+
+&lt;!--上--&gt;
+
+&lt;!--导航--&gt;
+
+&lt;div class=&quot;dao&quot;&gt;
+
+	&lt;div class=&quot;topmenu&quot;&gt;
+
+		 &lt;script type=&quot;text/javascript&quot;&gt;
+
+			jQuery(function(){
+
+			   
+
+				jQuery('#meetlist1 li [class^=item]').removeClass(&quot;current-menu-item&quot;);
+
+				jQuery('#meetlist1 li.item1').addClass(&quot;current-menu-item&quot;);
+
+			});
+
+			&lt;/script&gt;
+
+		&lt;ul class=&quot;dropdown clearfix&quot;id=&quot;meetlist1&quot;&gt;
+
+			&lt;li class=&quot;item1&quot;&gt;&lt;a href=&quot;/column/INDEX&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item98&quot;&gt;&lt;a href=&quot;/column/zxjs&quot;&gt;中心介绍&lt;/a&gt;
+				&lt;ul class=&quot;sub-menu&quot;&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/glwyh&quot;&gt;管理委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xswyh&quot;&gt;学术委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/gwwyh&quot;&gt;顾问委员会&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/zr_zxzr&quot;&gt;主任/执行主任&lt;/a&gt;&lt;/li&gt;
+
+				&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;!-- &lt;li class=&quot;item99&quot;&gt;&lt;a href=&quot;/column/gljg&quot;&gt;管理机构&lt;/a&gt; --&gt;
+
+				
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item100&quot;&gt;&lt;a href=&quot;/column/yjry&quot;&gt;研究人员&lt;/a&gt;&lt;/li&gt;
+			&lt;li class=&quot;item136&quot;&gt;&lt;a href=&quot;/column/IIP&quot;&gt;教学项目&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item101&quot;&gt;&lt;a href=&quot;/column/xshd&quot;&gt;学术活动&lt;/a&gt;
+
+				&lt;ul class=&quot;sub-menu&quot;&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xshy&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/xsjz&quot;&gt;学术讲座&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li&gt;&lt;a href=&quot;/column/hdbm&quot;&gt;活动报名&lt;/a&gt;&lt;/li&gt;
+
+				&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item102&quot;&gt;&lt;a href=&quot;/column/kyxm&quot;&gt;科研项目&lt;/a&gt;&lt;/li&gt;
+
+			&lt;li class=&quot;item103&quot;&gt;&lt;a href=&quot;/column/cbw&quot;&gt;出版物&lt;/a&gt;
+
+			&lt;ul class=&quot;sub-menu&quot;&gt;
+
+				&lt;li&gt;&lt;a href=&quot;/column/zscqpl&quot;&gt;清华知识产权评论&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/Blog&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+
+			&lt;/ul&gt;
+
+			&lt;/li&gt;
+
+			&lt;li class=&quot;item104&quot;&gt;&lt;a href=&quot;/column/lxwm&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+
+		&lt;/ul&gt;			
+
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!--导航--&gt;
+
+&lt;script&gt;
+
+jQuery(document).ready(function($) {
+
+    $(&quot;.dropdown ul&quot;).parent(&quot;li&quot;).addClass(&quot;parent&quot;);
+
+    $(&quot;.dropdown li:first-child&quot;).addClass(&quot;first&quot;);
+
+    $(&quot;.dropdown li:last-child&quot;).addClass(&quot;last&quot;);
+
+    $(&quot;.dropdown li:only-child&quot;).removeClass(&quot;last&quot;).addClass(&quot;only&quot;);	
+
+    $(&quot;.dropdown .current-menu-item, .dropdown .current-menu-ancestor&quot;).prev().addClass(&quot;current-prev&quot;);
+
+});
+
+&lt;/script&gt;
+
+&lt;style&gt;
+
+.qtrans_flag_zh{ background:none;}
+
+.qtrans_flag_en{ background:none;}
+
+.qtrans_flag_and_text{ padding-left:0;}
+
+&lt;/style&gt;
+
+
+&lt;!--中间--&gt;
+
+&lt;div class=&quot;zhong&quot;&gt;
+
+	&lt;!--slide start--&gt;
+
+	&lt;div class=&quot;focusBox&quot;&gt;
+
+		&lt;ul class=&quot;pic&quot;&gt;
+
+			
+			
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1201&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1195&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1464697429463_12.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1100&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1449147431401_0A.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+			&lt;li&gt;&lt;a href=&quot;/info/tpxw/1101&quot;&gt;&lt;img width=&quot;533&quot; height=&quot;351&quot; src=&quot;/upload_files/image/1449147175689_08.jpg&quot; class=&quot;attachment-full&quot;/&gt;&lt;/a&gt;&lt;/li&gt;
+
+			
+		&lt;/ul&gt;
+
+		&lt;div class=&quot;txt-bg&quot;&gt;&lt;/div&gt;
+
+		&lt;div class=&quot;txt&quot;&gt;
+
+			&lt;ul&gt;
+
+				
+				
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1201&quot; title=&quot;Robert P. Merges教授清华系列研讨会&quot;&gt;Robert P. Merges教授清华系列研讨会&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1195&quot; title=&quot;中国知识产权典型案例·清华论坛2016（专利法专场）召开&quot;&gt;中国知识产权典型案例·清华论坛2016（专利法专场）召开&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1100&quot; title=&quot;“标准必要专利相关法律制度完善”国际研讨会成功召开&quot;&gt;“标准必要专利相关法律制度完善”国际研讨会成功召开&lt;/a&gt;&lt;/li&gt;
+
+				
+				&lt;li&gt;&lt;a href=&quot;/info/tpxw/1101&quot; title=&quot;“网络版权作品过滤措施引发的法律与政策问题”圆桌会议&quot;&gt;“网络版权作品过滤措施引发的法律与政策问题”圆桌会议&lt;/a&gt;&lt;/li&gt;
+
+				
+			&lt;/ul&gt;
+
+		&lt;/div&gt;
+
+
+
+		&lt;ul class=&quot;num&quot;&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+			&lt;li&gt;&lt;a&gt;&amp;nbsp;&lt;/a&gt;&lt;span&gt;&lt;/span&gt;&lt;/li&gt;
+
+		&lt;/ul&gt;
+
+	&lt;/div&gt;
+
+	&lt;!--slide over---&gt;
+
+	&lt;script&gt;
+
+		jQuery(&quot;.focusBox&quot;).slide({ titCell:&quot;.num li&quot;, mainCell:&quot;.pic&quot;,effect:&quot;fold&quot;, autoPlay:true,trigger:&quot;click&quot;,
+
+			startFun:function(i){
+
+				 jQuery(&quot;.focusBox .txt li&quot;).eq(i).animate({&quot;bottom&quot;:0}).siblings().animate({&quot;bottom&quot;:-36});
+
+			}
+
+		});
+
+	&lt;/script&gt;
+
+	&lt;div class=&quot;you&quot;&gt;
+
+		&lt;div class=&quot;xinwen&quot;&gt;
+
+			&lt;div class=&quot;xin&quot;&gt;最新动态&lt;/div&gt;
+
+			&lt;div class=&quot;wen&quot;&gt;&lt;a href=&quot;/column/xwdt&quot;&gt;更多 &amp;raquo;&lt;/a&gt;&lt;/div&gt;
+
+		&lt;/div&gt;
+
+		&lt;ul class=&quot;ah&quot;&gt;
+
+			
+		
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1213&quot; title=&quot;王迁：信息网络传播权的解释&quot;&gt;王迁：信息网络传播权的解释&lt;/a&gt; &amp;nbsp;(10-26)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1212&quot; title=&quot;君合专利团队三位合伙人做客清华大学法学院&quot;&gt;君合专利团队三位合伙人做客清华大学法学院&lt;/a&gt; &amp;nbsp;(10-15)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1217&quot; title=&quot;华为知识产权战略副总裁樊志勇先生来院进行讲座&quot;&gt;华为知识产权战略副总裁樊志勇先生来院进行讲座&lt;/a&gt; &amp;nbsp;(09-29)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1200&quot; title=&quot;Robert P. Merges教授清华系列研讨会&quot;&gt;Robert P. Merges教授清华系列研讨会&lt;/a&gt; &amp;nbsp;(06-28)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1196&quot; title=&quot;中国知识产权典型案例·清华论坛2016（专利法专场）召开&quot;&gt;中国知识产权典型案例·清华论坛2016（专利法专场）召开&lt;/a&gt; &amp;nbsp;(05-31)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1192&quot; title=&quot;中国知识产权典型案例·清华论坛2016 （专利法专场） 会议通知&quot;&gt;中国知识产权典型案例·清华论坛2016 （专利法专场） 会议通知&lt;/a&gt; &amp;nbsp;(05-26)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1178&quot; title=&quot;清华IP茶点沙龙（一）&quot;&gt;清华IP茶点沙龙（一）&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1179&quot; title=&quot;版权传统的现代内涵：英国知识产权局版权及知识产权执法司司长罗斯·林奇博士来院进行学术讲座&quot;&gt;版权传统的现代内涵：英国知识产权局版权及知识产权执法司司长罗斯·林奇博士来院进行学术讲座&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1180&quot; title=&quot;讲座：跨国电子环境下的驰名商标保护&quot;&gt;讲座：跨国电子环境下的驰名商标保护&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+			&lt;li&gt;&lt;a href=&quot;/info/xwdt/1181&quot; title=&quot;讲座：竞争政策与网络平台&quot;&gt;讲座：竞争政策与网络平台&lt;/a&gt; &amp;nbsp;(05-06)&lt;/li&gt;
+
+		
+		&lt;/ul&gt;
+
+	&lt;/div&gt;
+
+	&lt;div class=&quot;ping&quot;&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!--中间--&gt;
+
+&lt;!--底面--&gt;
+
+	&lt;div class=&quot;sha&quot;&gt;
+
+			&lt;p&gt;&lt;img src=&quot;/sites/images/di.png&quot; /&gt;&lt;/p&gt;
+
+			&lt;p&gt;版权所有：清华大学-微软创新与知识产权联合研究中心&lt;/p&gt;
+
+			&lt;p&gt;地址：北京市海淀区清华大学法学院明理楼，100084&lt;/p&gt;	
+
+		&lt;/div&gt;
+&lt;!--底面--&gt;
+
+	&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="72">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=494" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:25 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="163">
+                <http-request>
+                    <status>PUT http://www.iplaw.tsinghua.edu.cn/jsKOK HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">UxDm9a</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:26 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="187">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/rWuhV.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:29 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="194">
+                <http-request>
+                    <status>POST http://www.iplaw.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3JXdWhWLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguVmh1V3I=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:32 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="205">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="217">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=495" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="219">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=493" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="224">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=490" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="228">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/WebConsole%5CInvoker HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=488" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="231">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=485" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="237">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=482" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:44 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="260">
+                <http-request>
+                    <status>PUT http://www.iplaw.tsinghua.edu.cn/jmx-console/RuofC HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">3NDYfj</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:52 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="271">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/jmx-console/rYHdF.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=496" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="276">
+                <http-request>
+                    <status>POST http://www.iplaw.tsinghua.edu.cn/jmx-console/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="170" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2pteC1jb25zb2xlL3JZSGRGLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0
+aW9uPW92ZXJ3cml0ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguRmRIWXI=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=495" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="278">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/admin-console/sWVnC.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="287">
+                <http-request>
+                    <status>POST http://www.iplaw.tsinghua.edu.cn/admin-console/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="172" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2FkbWluLWNvbnNvbGUvc1dWbkMuaHRtbDttZXRhX2luZm89W11dJnB1dF9v
+cHRpb249b3ZlcndyaXRlJmNvbW1lbnQ9JmtlZXBfY2hlY2tlZF9vdXQ9ZmFsc2UKbG10aC5DblZX
+cw==
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=493" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="290">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/WebConsole/ubsVO.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=497" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="291">
+                <http-request>
+                    <status>PUT http://www.iplaw.tsinghua.edu.cn/WebConsole/frcYn HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">QQafHv</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="292">
+                <http-request>
+                    <status>SEARCH http://www.iplaw.tsinghua.edu.cn/WebConsole/ HTTP/1.1</status>
+                    <headers>
+                        <header content="135" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="application/xml; charset=&quot;utf-8&quot;" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PD94bWwgdmVyc2lvbj0nMS4wJz8+DQo8ZzpzZWFyY2hyZXF1ZXN0IHhtbG5zOmc9J0RBVjonPg0K
+PGc6c3FsPg0KU2VsZWN0ICdEQVY6ZGlzcGxheW5hbWUnIGZyb20gc2NvcGUoKQ0KPC9nOnNxbD4N
+CjwvZzpzZWFyY2hyZXF1ZXN0Pg0K
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="299">
+                <http-request>
+                    <status>POST http://www.iplaw.tsinghua.edu.cn/WebConsole/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="169" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L1dlYkNvbnNvbGUvdWJzVk8uaHRtbDttZXRhX2luZm89W11dJnB1dF9vcHRp
+b249b3ZlcndyaXRlJmNvbW1lbnQ9JmtlZXBfY2hlY2tlZF9vdXQ9ZmFsc2UKbG10aC5PVnNidQ==
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=496" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:54 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="301">
+                <http-request>
+                    <status>GET http://www.iplaw.tsinghua.edu.cn/web-console/jPXcj.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=495" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:55 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="304">
+                <http-request>
+                    <status>PROPFIND http://www.iplaw.tsinghua.edu.cn/web-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="107" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="1" field="Depth"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="application/xml; charset=&quot;utf-8&quot;" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PD94bWwgdmVyc2lvbj0nMS4wJz8+DQo8YTpwcm9wZmluZCB4bWxuczphPSdEQVY6Jz4NCjxhOnBy
+b3A+DQo8YTpkaXNwbGF5bmFtZTovPg0KPC9hOnByb3A+DQo8L2E6cHJvcGZpbmQ+DQo=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:55 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="305">
+                <http-request>
+                    <status>PUT http://www.iplaw.tsinghua.edu.cn/web-console/dYyQK HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">x1NQb4</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:55 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="307">
+                <http-request>
+                    <status>POST http://www.iplaw.tsinghua.edu.cn/web-console/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="170" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3dlYi1jb25zb2xlL2pQWGNqLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0
+aW9uPW92ZXJ3cml0ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguamNYUGo=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=494" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 09:40:55 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="309">
+                <http-request>
+                    <status>PUT http://www.iplaw.tsinghua.edu.cn/admin-console/RJYQm HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iplaw.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacOC2r5XAEzVgT-YM0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">tF91eb</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:40:55 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The favicon_identification plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/favicon.ico&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The server_status plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/server-status&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/jmx-console/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/status&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/admin-console/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/WebConsole/Invoker&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/web-console/ServerInfo.jsp&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The port '80' is not open on target www.iplaw.tsinghua.edu.cn</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The web_spider plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/jmx-console/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve www.iplaw.tsinghua.edu.cn</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/web-console/ServerInfo.jsp?=PHPE9568F34-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/web-console/ServerInfo.jsp?=PHPE9568F36-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/web-console/ServerInfo.jsp?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The frontpage plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/jmx-console/dKjWf.html&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The file_upload plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/status&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to www.iplaw.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.iplaw.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+</w3af-run>

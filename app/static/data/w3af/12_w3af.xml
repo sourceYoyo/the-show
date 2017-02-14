@@ -1,0 +1,1206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480666428" start-long="Fri Dec 02 03:13:48 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://tnet1.theti.org/eol/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/12_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[35, 38, 39, 40, 44, 46, 18, 51, 55, 57, 58, 60, 62]" method="GET" name="Strange HTTP Reason message" plugin="strange_reason" severity="Information" url="http://tnet1.theti.org/eol/" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon status message &quot;Moved Temporarily&quot;, manual inspection is recommended. The first ten URLs which sent the uncommon message are:
+ - http://tnet1.theti.org/eol/
+</description>
+        <http-transactions>
+            <http-transaction id="35">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=4f4yPsX HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:45 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="38">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=id&amp;uname%20-a= HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:45 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="39">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=..%2F..%2F..%2F..%2Fetc%2Fpasswd HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=78" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:45 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="40">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=.%2F..%2F..%2F..%2Fetc%2Fmotd%00html HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=97" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:45 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="44">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=%3C%3F%20passthru%28%22id%22%29&amp;%3F%3E= HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=77" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:45 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="46">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=..%2F..%2FWINNT%2Fsystem32%2Fcmd.exe%3Fdir%20c%3A%5C HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=97" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:43 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="51">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=type%20c%3A%5Cwinnt%5Crepair%5Csam._ HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="55">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=ps%20-aux HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=96" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="57">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=SELECT%20TOP%201%20name%20FROM%20sysusers HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="58">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=..%2F..%2F..%2F..%2Fbin%2Fchgrp%20nobody%20%2Fetc%2Fshadow%7C HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=95" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="60">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=exec%20master..xp_cmdshell%20dir HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="62">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/?VZKetyF=exec%20xp_cmdshell%20dir HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=96" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[42, 52]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://tnet1.theti.org/eol/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="42">
+                <http-request>
+                    <status>ARGENTINA http://tnet1.theti.org/eol/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="52">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=76" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[81]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache/2.4.12 (Unix) mod_jk/1.2.40&quot;.</description>
+        <http-transactions>
+            <http-transaction id="81">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:43 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[172]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://tnet1.theti.org/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://theti.org/eol/&quot; are equal to the ones of &quot;http://tnet1.theti.org/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="172">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="45" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=5, max=58" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Mon, 11 Jun 2007 18:53:14 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;2d-432a5e4a73a80&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:12:47 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;body&gt;&lt;h1&gt;It works!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[93]" method="GET" name="Favicon identification failed" plugin="favicon_identification" severity="Information" url="http://tnet1.theti.org/eol/favicon.ico" var="None">
+        <description>Favicon identification failed. If the remote site is using framework that is being exposed by its favicon, please send an email to w3af-develop@lists.sourceforge.net including this md5 hash &quot;1ab43b88d5231baf27403e2634ddc3dc&quot; and the name of the server or Web application it represents. New fingerprints make this plugin more powerful and  accurate.</description>
+        <http-transactions>
+            <http-transaction id="93">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3262" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=5, max=95" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Fri, 08 May 2009 03:25:20 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;cbe-4695e2d9dc800&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="image/x-icon" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">AAABAAEAICAAAAEAGACoDAAAFgAAACgAAAAgAAAAQAAAAAEAGAAAAAAAgAwAAAAAAAAAAAAAAAAA
+AAAAAABmZmajo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Ojo6Oj
+o6Ojo6Ojo6Ojo6Ojo6OioqKem56Zkpmgn6Cjo6Ojo6Ojo6Ojo6Ojo6NdXV2hoaH/////////////
+///////////////////////////////////////////////////////////////69/rv5O7n1ubl
+0+To2Of+/v7///////////////////+Tk5OhoaH/////////////////////////////////////
+///////////////////////////////38fbm1uXex93fyd7gzN/izuHs4Oz/////////////////
+//////+Tk5OhoaH////////////////////////////////////////////////////////////6
+9vnj0ePYvtfawNjbwtrcxdvex93fyd7z6/L///////////////////////+Tk5OhoaH/////////
+///////////////////////////////////////////+/v7r3uvVuNPUttLVudTXu9XYvtfawNjb
+wtrcxdv7+Pv///////////////////////+Tk5OhoaH/////////////////////////////////
+///////////////7+fvcxNvOrc3Qr87Rss/StNHUttLVudTXu9XYvtfcxdv49Pj+/v7/////////
+//////////+Tk5OhoaH////////////////////////////////////////////28fbRsc/KpsjM
+qMrNq8vOrc3Qr87Rss/StNHUttLVudTXu9XYvtfizuHx6fH9/f3///////////+Tk5OhoaH/////
+///////////////////////////////////z6/PKpcjGn8THocbJo8fKpsjMqMrNqsvOrc3Qr87R
+ss/StNHUttLVudTXu9XYvtfcxdvq3er59vn///+Tk5OhoaH////////////////////////w5u/+
+/v7////z6/LFncPCl7/DmsHEnMLGn8THocXJo8fKpsjMqMrNq8vOrc3Qr87Rss/StNHUttLVudTX
+vNbdxtzk0ePy6fGSkpKhoaH////////////////////////gzODNrMzx6PDDmcG9kLu/k73Alb7B
+mL/DmsHFnMPGn8THocXJo8fKpsjLqMrNq8vSs9Dfyd7r3er17vT8+/z///////////+Tk5OhoaH/
+///////////////////////28Pa3hbW4h7a5ibe7i7i8jrq9kLu/k73Alb7Cl7/DmsHEnMLGn8TK
+psjeyN3x6PH+/f7///////////////////////////+Tk5OhoaH////////////////////////+
+/v7DmsG1grO3hLS4h7a5ibe7jLi8jrq9kbu/k73Alb7EnMLhzeD7+Pv/////////////////////
+//////////////////+Tk5OhoaH////////////////////9/P3o2OfawNiyfbC0gLG1grO3hLS4
+h7a5ibe7jLi8jrrLp8n28fb///////////////////////////////////////////////+Tk5Oh
+oaH////////////////////Prs27jbnx6fGvea2xe66yfbC0gLG1grO2hLS4h7XAlL769/r/////
+//////////////////////////////////////////////+Tk5OhoaH////////////////n1+ap
+baaqcKfz6/O6ireudquvea2xe66yfbC0gLG1grO3hLTGn8Xw5/D/////////////////////////
+//////////////////////+Tk5OhoaH////////////9/f2zgLGmaKOnaqTYvdfStNCrcaiweq68
+jbnHocXSs9Dcxdvm1ubw5vD69vn///////////////////////////////////////////////+T
+k5OhoaH////////////fyt6iYZ6jY6CkZqG7jbn59vn28Pb38fbu4+748/j/////////////////
+//////////////////////////////////////////////////+Tk5OhoaH///////////+3hbWf
+XJugX52iYZ6kZaGwea2obaWnaqTNrMz+/f7/////////////////////////////////////////
+//////////////////////////+Tk5OhoaH////////17/WcV5icV5idWpqfXJugXp2hYZ6jY6DG
+n8T+/v7////////////////////9/P3iz+Hm1uXLqMq+kbvCmMDgyt7+/v7/////////////////
+//+Tk5OhoaH////////YvteYUJSZU5aaVZecV5idWpqfXJuveK37+fv////////////////+/v7N
+qsvBlr6SR46yfa/Gn8TFnsOrcaiNPom1grL+/f7///////////////+Tk5OhoaH///////+/k72V
+S5GWTpOYUJSZUpaaVZecV5jj0OL////////////////9/P25ibaPQovZv9fizuHx5/D////////+
+/v7Blr/OrczZwNj///////////////+Tk5OgoKD+/v7///+qcKeSR46TSZCVS5GWTpOYUJSqb6f+
+/v7////////////s4Oy9kLrIosb28PX////////////////////////7+Pu2hLPy6fH/////////
+//////+Tk5Odmp3FncOcV5iRRI2PQoyRRI2SR46USZCVS5GmaKPKpsjv5O7////////cxNq5irf9
+/P3////////////////////////////17vSobKXbw9r///////////////+Tk5OhoaH////iz+Gb
+VpeMPYiOQIqPQoyRRI2SR46USZDFncP9/P3////////+/v7/////////////////////////////
+///////o2eixe67///////////////////+Tk5OhoaH////////59fm7jLiMPIiMPYiOP4qTSZDW
+u9X8+/z////////////////////////////////////////////////m1eWYUpXgy9//////////
+//////////+Tk5OhoaH////////+/v7fyt7eyN2ZUpWYUZXk0eO1g7PBl7/+/v7/////////////
+///////////////////9/f3y6vKxfK6NP4m0gLH+/v7///////////////////+Tk5OhoaH/////
+///////gy9+maaPk0+Ts3+umaaOLO4eMPYi4h7X17vX////////8+vz////////////+/v7fyd6q
+cKfWu9WgX5349Pj///////////////////////+Tk5OhoaH////////////////Prs2OQIqYUJSL
+OoeLOoeLOoeLO4eRRY22hLTIo8eyfa/r3erhzODMqcqrcqmYUJSxfK/OrMzz7PP/////////////
+//////////////+Tk5OhoaH////////////////////dx9yZUpWLOoeLOoeLOoeLOoeLOoeLO4eM
+PYibVpjDmsGRRI2USZC4h7WqcKj17/X7+fv///////////////////////////////+Tk5OhoaH/
+///////////////////////7+fvWutWzfrCcWJmRRI2MPIiYUZXMqsvVudS6irfPr87y6vL+/v7u
+4u3///////////////////////////////////////+Tk5OhoaH/////////////////////////
+///////////////28Pbfyt78+vz/////////////////////////////////////////////////
+//////////////////+Tk5NAQEBlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVl
+ZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWU8PDwA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAA==
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[68]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://tnet1.theti.org/eol/pCqbh" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://tnet1.theti.org/eol/pCqbh
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="68">
+                <http-request>
+                    <status>PUT http://tnet1.theti.org/eol/pCqbh HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">rMvpEb</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="230" field="content-length"/>
+                        <header content="timeout=5, max=74" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /eol/pCqbh.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[182]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://tnet1.theti.org/web-console/ServerInfo.jsp" var="None">
+        <description>The URL: &quot;http://tnet1.theti.org/web-console/ServerInfo.jsp&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="182">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:12:47 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[182]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://tnet1.theti.org/web-console/ServerInfo.jsp" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 400 using &quot;Bad Request&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://tnet1.theti.org/web-console/ServerInfo.jsp
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="182">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:12:47 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 36, 68, 90, 99, 107, 180, 181, 183, 184, 185, 186, 200]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Moved Temporarily</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://tnet1.theti.org/eol/index.jsp?_style=style_2_03" field="location"/>
+                        <header content="Fri, 02 Dec 2016 08:12:43 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="36">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="45" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Mon, 11 Jun 2007 18:53:14 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;2d-432a5e4a73a80&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:12:45 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;body&gt;&lt;h1&gt;It works!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="68">
+                <http-request>
+                    <status>PUT http://tnet1.theti.org/eol/pCqbh HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">rMvpEb</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="230" field="content-length"/>
+                        <header content="timeout=5, max=74" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /eol/pCqbh.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="90">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="215" field="content-length"/>
+                        <header content="timeout=5, max=97" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /eol/_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="99">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/eol/sgpoX.html HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="212" field="content-length"/>
+                        <header content="timeout=5, max=97" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /eol/sgpoX.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="107">
+                <http-request>
+                    <status>POST http://tnet1.theti.org/eol/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="162" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="JSESSIONID=59AFE62246EEA9B509C20600F55B4398" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2VvbC9zZ3BvWC5odG1sO21ldGFfaW5mbz1bXV0mcHV0X29wdGlvbj1vdmVy
+d3JpdGUmY29tbWVudD0ma2VlcF9jaGVja2VkX291dD1mYWxzZQpsbXRoLlhvcGdz
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="230" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:12:46 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /eol/_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="180">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="211" field="content-length"/>
+                        <header content="timeout=5, max=53" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:12:47 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /server-status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="181">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/status HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="204" field="content-length"/>
+                        <header content="timeout=5, max=82" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:12:47 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="183">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="223" field="content-length"/>
+                        <header content="timeout=5, max=81" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:12:47 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/JMXInvokerServlet was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="184">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="216" field="content-length"/>
+                        <header content="timeout=5, max=85" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:12:47 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/Invoker was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="185">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="210" field="content-length"/>
+                        <header content="timeout=5, max=52" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:12:47 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /jmx-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="212" field="content-length"/>
+                        <header content="timeout=5, max=86" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:12:47 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /admin-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="200">
+                <http-request>
+                    <status>GET http://tnet1.theti.org/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="tnet1.theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="211" field="content-length"/>
+                        <header content="timeout=5, max=80" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) mod_jk/1.2.40" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:12:50 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to tnet1.theti.org:80&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve tnet1.theti.org</error>
+    <error caller="threading">The xss plugin got an error while requesting &quot;http://tnet1.theti.org/eol/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The ssi plugin got an error while requesting &quot;http://tnet1.theti.org/eol/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+</w3af-run>

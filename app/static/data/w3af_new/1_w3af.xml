@@ -1,0 +1,1421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481214955" start-long="Thu Dec 08 11:35:55 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://tdxls-iot.xicp.net/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[87]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;nginx/1.4.6 (Ubuntu)&quot;.</description>
+        <http-transactions>
+            <http-transaction id="87">
+                <http-request>
+                    <status>GET http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:36:52 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[219]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://tdxls-iot.xicp.net/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://xicp.net/&quot; are equal to the ones of &quot;http://tdxls-iot.xicp.net/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="219">
+                <http-request>
+                    <status>GET http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[212]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://tdxls-iot.xicp.net/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;extranet.xicp&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;extranet.xicp&quot; to the IP address of &quot;tdxls-iot.xicp.net&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[213]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://tdxls-iot.xicp.net/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;extra&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;extra&quot; to the IP address of &quot;tdxls-iot.xicp.net&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[214]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://tdxls-iot.xicp.net/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;adm.tdxls-iot.xicp.net&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;adm.tdxls-iot.xicp.net&quot; to the IP address of &quot;tdxls-iot.xicp.net&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[215]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://tdxls-iot.xicp.net/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;services&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;services&quot; to the IP address of &quot;tdxls-iot.xicp.net&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[39, 73, 88, 99, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 217, 220, 223, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 242, 243, 244, 245, 246, 247, 248]" method="GET" name="DAV methods enabled" plugin="allowed_methods" severity="Information" url="http://tdxls-iot.xicp.net/" var="None">
+        <description>The URL &quot;http://tdxls-iot.xicp.net/&quot; has the following allowed methods. These include DAV methods and should be disabled: *, ACL, BASELINE_CONTROL, CHECKIN, CHECKOUT, CONNECT, COPY, DEBUG, GET, HEAD, INDEX, INVALID, INVOKE, LABEL, LINK, LOCK, MERGE, MKACTIVITY, MKCOL, MKDIR, MKWORKSPACE, MOVE, NOTIFY, OPTIONS, PATCH, PIN, POLL, POST, PROPFIND, PROPPATCH, REPLY, REPORT, RMDIR, SEARCH, SHOWMETHOD, SPACEJUMP, SUBSCRIBE, SUBSCRIPTIONS, TEXTSEARCH, TRACK, UNCHECKOUT, UNLINK, UNLOCK, UNSUBSCRIBE, VERSION_CONTROL</description>
+        <http-transactions>
+            <http-transaction id="39">
+                <http-request>
+                    <status>OPTIONS http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:36:57 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="73">
+                <http-request>
+                    <status>INDEX http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:36:57 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="88">
+                <http-request>
+                    <status>INVOKE http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:36:57 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="99">
+                <http-request>
+                    <status>MKCOL http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:36:57 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="194">
+                <http-request>
+                    <status>MOVE http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:36:59 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="195">
+                <http-request>
+                    <status>HEAD http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:36:59 GMT" field="date"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="196">
+                <http-request>
+                    <status>ACL http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:36:59 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="197">
+                <http-request>
+                    <status>LINK http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:36:59 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="198">
+                <http-request>
+                    <status>RMDIR http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="199">
+                <http-request>
+                    <status>REPLY http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="200">
+                <http-request>
+                    <status>REPORT http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="201">
+                <http-request>
+                    <status>UNLINK http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="202">
+                <http-request>
+                    <status>NOTIFY http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="203">
+                <http-request>
+                    <status>OPTIONS http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="204">
+                <http-request>
+                    <status>BASELINE_CONTROL http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="205">
+                <http-request>
+                    <status>SEARCH http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="206">
+                <http-request>
+                    <status>POLL http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="207">
+                <http-request>
+                    <status>PIN http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="208">
+                <http-request>
+                    <status>GET http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="209">
+                <http-request>
+                    <status>CHECKIN http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:00 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="217">
+                <http-request>
+                    <status>* http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200</status>
+                    <headers/>
+                    <body content-encoding="base64">PGh0bWw+DQo8aGVhZD48dGl0bGU+NDAwIEJhZCBSZXF1ZXN0PC90aXRsZT48L2hlYWQ+DQo8Ym9k
+eSBiZ2NvbG9yPSJ3aGl0ZSI+DQo8Y2VudGVyPjxoMT40MDAgQmFkIFJlcXVlc3Q8L2gxPjwvY2Vu
+dGVyPg0KPGhyPjxjZW50ZXI+bmdpbngvMS40LjYgKFVidW50dSk8L2NlbnRlcj4NCjwvYm9keT4N
+CjwvaHRtbD4NCg==
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="220">
+                <http-request>
+                    <status>CONNECT http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="223">
+                <http-request>
+                    <status>CHECKOUT http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="225">
+                <http-request>
+                    <status>LABEL http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="226">
+                <http-request>
+                    <status>PROPFIND http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="227">
+                <http-request>
+                    <status>SPACEJUMP http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="228">
+                <http-request>
+                    <status>SUBSCRIBE http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="229">
+                <http-request>
+                    <status>LOCK http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="230">
+                <http-request>
+                    <status>MKDIR http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="231">
+                <http-request>
+                    <status>INVALID http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="232">
+                <http-request>
+                    <status>UNCHECKOUT http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="233">
+                <http-request>
+                    <status>MKWORKSPACE http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="234">
+                <http-request>
+                    <status>MERGE http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="235">
+                <http-request>
+                    <status>UNLOCK http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="236">
+                <http-request>
+                    <status>PROPPATCH http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="237">
+                <http-request>
+                    <status>DEBUG http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="238">
+                <http-request>
+                    <status>VERSION_CONTROL http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="239">
+                <http-request>
+                    <status>POST http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="240">
+                <http-request>
+                    <status>COPY http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="242">
+                <http-request>
+                    <status>SUBSCRIPTIONS http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="243">
+                <http-request>
+                    <status>PATCH http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="244">
+                <http-request>
+                    <status>SHOWMETHOD http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="245">
+                <http-request>
+                    <status>TRACK http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="246">
+                <http-request>
+                    <status>UNSUBSCRIBE http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="247">
+                <http-request>
+                    <status>TEXTSEARCH http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 502 Bad Gateway</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="181" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.4.6 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="248">
+                <http-request>
+                    <status>MKACTIVITY http://tdxls-iot.xicp.net/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tdxls-iot.xicp.net" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:37:03 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">SGVsbG8gV29ybGQ=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://tdxls-iot.xicp.net/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://tdxls-iot.xicp.net/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://tdxls-iot.xicp.net/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://tdxls-iot.xicp.net/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve tdxls-iot.xicp.net</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to tdxls-iot.xicp.net:80&quot;</error>
+</w3af-run>

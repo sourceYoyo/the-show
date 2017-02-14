@@ -1,0 +1,1188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481165508" start-long="Wed Dec 07 21:51:48 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://learning.sem.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.133"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1375_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Auto-completable form" plugin="form_autocomplete" severity="Information" url="http://learning.sem.tsinghua.edu.cn/" var="None">
+        <description>The URL: &quot;http://learning.sem.tsinghua.edu.cn/&quot; has a &quot;&lt;form&gt;&quot; element with auto-complete enabled.</description>
+        <long-description>In typical form-based web applications, it is common practice for developers to allow `autocomplete` within the HTML form to improve the usability of the page. With `autocomplete` enabled (default), the browser is allowed to cache previously entered form values.
+
+For legitimate purposes, this allows the user to quickly re-enter the same data when completing the form multiple times.
+
+When `autocomplete` is enabled on either/both the username and password fields, this could allow a cyber-criminal with access to the victim's computer the ability to have the victim's credentials automatically entered as the cyber-criminal visits the affected page.
+
+The tool has discovered that the affected page contains a form containing a password field that has not disabled `autocomplete`.</long-description>
+        <fix-guidance>The `autocomplete` value can be configured in two different locations. The first and most secure location is to disable the `autocomplete` attribute on the `&lt;form&gt;` HTML tag. This will disable `autocomplete` for all inputs within that form. An example of disabling `autocomplete` within the form tag is `&lt;form autocomplete=off&gt;`.
+
+The second slightly less desirable option is to disable the `autocomplete` attribute for a specific `&lt;input&gt;` HTML tag. While this may be the less desired solution from a security perspective, it may be preferred method for usability reasons, depending on size of the form. An example of disabling the `autocomplete` attribute within a password input tag is `&lt;input type=password autocomplete=off&gt;`.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://learning.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="learning.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=486895526.20480.0000; session_id=2B396C54E66EF2706558DF3F3E01BFCD; JSESSIONID=B9D125154A6CFBCCACE90243D3D12E11.root" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7140" field="content-length"/>
+                        <header content="learning.sem.tsinghua.edu.cn" field="x-blackboard-appserver"/>
+                        <header content="session_id=2B396C54E66EF2706558DF3F3E01BFCD; Path=/; HttpOnly" field="set-cookie"/>
+                        <header content="Tue, 08 Dec 2015 02:52:05 GMT" field="expires"/>
+                        <header content="Blackboard Learn &amp;#8482; 9.1.82223.0" field="x-blackboard-product"/>
+                        <header content="Sun, 08 Dec 1996 02:52:05 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:52:05 GMT" field="date"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;清华大学经济管理学院 - Blackboard&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/ui/styles/css_ceshi/globle.css&quot; /&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/base64.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/md5.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/md5-legacy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+ function login_openForgotPassword( url )
+ {
+   var passwordWin = window.open( url, 'forgotPasswordWindow', 'menubar=1,resizable=1,scrollbars=1,status=1,width=850,height=480' );
+   passwordWin.focus();
+ }
+ var _useChallenge = true;
+    function validate_form(form)
+    {
+    //alert(&quot;here!!!!!&quot;+_useChallenge);	
+      if ( form.user_id.value == &quot;&quot; || form.password.value == &quot;&quot; )
+      {        
+        return false;
+      }
+			 if ( !_useChallenge )
+			  {
+			  //alert(&quot;here!!!!!--&gt;&quot;+_useChallenge);	
+			    form.encoded_pw.value = base64encode( form.password.value );
+			    form.encoded_pw_unicode.value = b64_unicode( form.password.value );
+			    form.password.value =  &quot;&quot;;
+			    return true;
+			  }
+			  
+			//alert(&quot;begin&quot;);
+      var passwd_enc = hex_md5(form.password.value);
+      var encoded_pw_unicode = calcMD5(form.password.value);
+      var final_to_encode = passwd_enc + form.one_time_token.value;
+      form.encoded_pw.value = hex_md5(final_to_encode);
+      
+      final_to_encode = encoded_pw_unicode + form.one_time_token.value;
+      form.encoded_pw_unicode.value = calcMD5(final_to_encode);
+      form.password.value = &quot;&quot;;
+      
+      //alert(&quot;end&quot;);
+      return true;
+    }
+ 
+
+    function thisSubmit(){
+    	  var warnloginname = &quot;用户名不能为空&quot;;
+    	  var warnloginpass = &quot;密码不能为空&quot;;
+    			var form=document.login;
+    	      if ( form.user_id.value == &quot;&quot; )
+    	      {        
+    	        alert(warnloginname);
+    			form.user_id.focus();
+    			return;
+    	      }
+    		  
+    		  if(form.password.value == &quot;&quot; ){
+    		  alert(warnloginpass);
+    		  form.password.focus();
+    		  return;
+    		  }
+    document.login.submit();
+    }
+
+	function loadLocale(code) {
+		document.locale_picker.locale.value=code;
+		document.locale_picker.submit();
+	}
+	
+	function goAnnUrl(url){
+	var beginUrl = &quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/ann_message.jsp?ann_id=&quot;;
+	//alert(&quot;beginUrl&quot;+beginUrl);
+	window.open(beginUrl+url, 'newwindow', 'height=400px,width=780px,toolbar=no,menubar=no,scrollbars=auto, resizable=no, location=no, status=no');
+	//alert(&quot;sfdsdfds&quot;);
+	}
+ 
+&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;form action=&quot;/webapps/portal/execute/changeLocale&quot; method=&quot;post&quot; name=&quot;locale_picker&quot;&gt;
+  &lt;div class=&quot;ltop&quot;&gt;
+    &lt;span class=&quot;language fr&quot;&gt;&lt;a href=&quot;javascript:loadLocale('zh_CN')&quot;&gt;中文&lt;/a&gt; - &lt;a href=&quot;javascript:loadLocale('en_US')&quot;&gt;English&lt;/a&gt;&lt;/span&gt;
+    &lt;span class=&quot;name&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/name.gif&quot; alt=&quot;清华大学经济管理学院 - Blackboard&quot; /&gt;&lt;/span&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;locale&quot;&gt;
+  &lt;input TYPE=&quot;hidden&quot; NAME=&quot;target&quot; value=&quot;/webapps/login?action=login&quot;&gt;
+  &lt;/div&gt;
+   
+&lt;/form&gt;
+&lt;form onsubmit=&quot;return validate_form(this,false,true)&quot; method=&quot;POST&quot; action=&quot;/webapps/login/&quot; name=&quot;login&quot; id=&quot;login&quot; &gt;
+  &lt;!--login start--&gt;
+  &lt;div class=&quot;login clear&quot;&gt;
+  
+    &lt;!--LoginForm--&gt;
+    &lt;div class=&quot;communalForm fl&quot;&gt;
+      &lt;div class=&quot;tips&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/tit.gif&quot; alt=&quot;登录&quot; /&gt;&lt;/div&gt;
+      
+      &lt;dl&gt;
+        &lt;dt&gt;账号：&lt;/dt&gt;
+        &lt;dd class=&quot;ditxt&quot;&gt;&lt;input type=&quot;text&quot;  name=&quot;user_id&quot; id=&quot;user_id&quot; class=&quot;itxt_1&quot; size=&quot;20&quot; /&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+         &lt;dl&gt;
+        &lt;dt&gt;密码：&lt;/dt&gt;
+        &lt;dd class=&quot;ditxt&quot;&gt;&lt;input type=&quot;password&quot;  name=&quot;password&quot; id=&quot;password&quot; class=&quot;itxt_1&quot;  size=&quot;20&quot; /&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+        &lt;dl class=&quot;btn&quot;&gt;
+        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;image&quot; src=&quot;/images/ceshi_ziyuan/images/btn_login.gif&quot; alt=&quot;登录&quot;  style=&quot;float:left;&quot; /&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+	  
+	   &lt;dl class=&quot;btn&quot;&gt;
+        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;
+        &lt;dd&gt; &lt;div&gt; &lt;/div&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;links&quot;&gt;
+      &lt;ul&gt;
+        &lt;li class=&quot;clear&quot;&gt;
+          &lt;div class=&quot;licon&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_help.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt mt5&quot;&gt;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_faq.html&quot; target=&quot;_BLANK&quot;&gt;常见问题&lt;/a&gt;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_teacher_1.html&quot; target=&quot;_BLANK&quot;&gt;教师帮助&lt;/a&gt;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_student_1.html&quot; target=&quot;_BLANK&quot;&gt;学生帮助&lt;/a&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;clear&quot;&gt;
+          &lt;div class=&quot;licon mt5&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_tel.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt&quot;&gt;咨询电话:&lt;br /&gt;010-62788160 / 92985 / 72092 / 82190&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;clear nobor&quot;&gt;
+          &lt;div class=&quot;licon&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_email.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt&quot;&gt;&lt;a href=&quot;mailto:it_support@sem.tsinghua.edu.cn&quot;&gt;电子信箱:it_support@sem.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+  &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+  &lt;!--login end--&gt;
+  
+  &lt;!--tz start--&gt;
+  &lt;div class=&quot;xttz&quot;&gt;
+    &lt;div class=&quot;tit&quot;&gt;系统通知&lt;/div&gt;
+    &lt;div class=&quot;con&quot;&gt;
+      &lt;ul class=&quot;txtli&quot;&gt;
+      &lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2015-09-22&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('1261');&gt;经管学院课程讨论区登陆须知&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-09-05&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('9461');&gt;Blackboard讨论区开放给选修经管课程的所有本校学生&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-04-14&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('1628');&gt;SafeAssignment（反抄袭）开放试用啦！&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-03-10&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('7067');&gt;浏览器Internet Explorer（IE）11不支持Blackboard【 Internet Explorer 11 is not supported by Blackboard 】&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;bot&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!--tz end--&gt;
+  
+  &lt;!--footer--&gt;
+  &lt;div class=&quot;footer lh21&quot; style=&quot;border-top:0;&quot;&gt;&lt;img style=&quot;margin-right:15px;&quot; src=&quot;/images/ceshi_ziyuan/images/ts.gif&quot; align=&quot;absmiddle&quot; /&gt;版权所有 &amp;copy;2012&amp;nbsp;清华大学经济管理学院&lt;/div&gt;
+
+  &lt;input type=&quot;hidden&quot; name=&quot;action&quot; value=&quot;login&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;remote-user&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;auth_type&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;new_loc&quot; value=&quot;&quot;/&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;one_time_token&quot; value=&quot;E5E6D2473F1E5E1B905F7DFD19DD4BD1&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;encoded_pw&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;encoded_pw_unicode&quot; value=&quot;&quot; /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Strange header" plugin="strange_headers" severity="Information" url="http://learning.sem.tsinghua.edu.cn/" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response header &quot;x-blackboard-appserver&quot;, one of the received header values is &quot;learning.sem.tsinghua.edu.cn&quot;. The first ten URLs which sent the uncommon header are:
+ - http://learning.sem.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://learning.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="learning.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=486895526.20480.0000; session_id=2B396C54E66EF2706558DF3F3E01BFCD; JSESSIONID=B9D125154A6CFBCCACE90243D3D12E11.root" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7140" field="content-length"/>
+                        <header content="learning.sem.tsinghua.edu.cn" field="x-blackboard-appserver"/>
+                        <header content="session_id=2B396C54E66EF2706558DF3F3E01BFCD; Path=/; HttpOnly" field="set-cookie"/>
+                        <header content="Tue, 08 Dec 2015 02:52:05 GMT" field="expires"/>
+                        <header content="Blackboard Learn &amp;#8482; 9.1.82223.0" field="x-blackboard-product"/>
+                        <header content="Sun, 08 Dec 1996 02:52:05 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:52:05 GMT" field="date"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;清华大学经济管理学院 - Blackboard&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/ui/styles/css_ceshi/globle.css&quot; /&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/base64.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/md5.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/md5-legacy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+ function login_openForgotPassword( url )
+ {
+   var passwordWin = window.open( url, 'forgotPasswordWindow', 'menubar=1,resizable=1,scrollbars=1,status=1,width=850,height=480' );
+   passwordWin.focus();
+ }
+ var _useChallenge = true;
+    function validate_form(form)
+    {
+    //alert(&quot;here!!!!!&quot;+_useChallenge);	
+      if ( form.user_id.value == &quot;&quot; || form.password.value == &quot;&quot; )
+      {        
+        return false;
+      }
+			 if ( !_useChallenge )
+			  {
+			  //alert(&quot;here!!!!!--&gt;&quot;+_useChallenge);	
+			    form.encoded_pw.value = base64encode( form.password.value );
+			    form.encoded_pw_unicode.value = b64_unicode( form.password.value );
+			    form.password.value =  &quot;&quot;;
+			    return true;
+			  }
+			  
+			//alert(&quot;begin&quot;);
+      var passwd_enc = hex_md5(form.password.value);
+      var encoded_pw_unicode = calcMD5(form.password.value);
+      var final_to_encode = passwd_enc + form.one_time_token.value;
+      form.encoded_pw.value = hex_md5(final_to_encode);
+      
+      final_to_encode = encoded_pw_unicode + form.one_time_token.value;
+      form.encoded_pw_unicode.value = calcMD5(final_to_encode);
+      form.password.value = &quot;&quot;;
+      
+      //alert(&quot;end&quot;);
+      return true;
+    }
+ 
+
+    function thisSubmit(){
+    	  var warnloginname = &quot;用户名不能为空&quot;;
+    	  var warnloginpass = &quot;密码不能为空&quot;;
+    			var form=document.login;
+    	      if ( form.user_id.value == &quot;&quot; )
+    	      {        
+    	        alert(warnloginname);
+    			form.user_id.focus();
+    			return;
+    	      }
+    		  
+    		  if(form.password.value == &quot;&quot; ){
+    		  alert(warnloginpass);
+    		  form.password.focus();
+    		  return;
+    		  }
+    document.login.submit();
+    }
+
+	function loadLocale(code) {
+		document.locale_picker.locale.value=code;
+		document.locale_picker.submit();
+	}
+	
+	function goAnnUrl(url){
+	var beginUrl = &quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/ann_message.jsp?ann_id=&quot;;
+	//alert(&quot;beginUrl&quot;+beginUrl);
+	window.open(beginUrl+url, 'newwindow', 'height=400px,width=780px,toolbar=no,menubar=no,scrollbars=auto, resizable=no, location=no, status=no');
+	//alert(&quot;sfdsdfds&quot;);
+	}
+ 
+&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;form action=&quot;/webapps/portal/execute/changeLocale&quot; method=&quot;post&quot; name=&quot;locale_picker&quot;&gt;
+  &lt;div class=&quot;ltop&quot;&gt;
+    &lt;span class=&quot;language fr&quot;&gt;&lt;a href=&quot;javascript:loadLocale('zh_CN')&quot;&gt;中文&lt;/a&gt; - &lt;a href=&quot;javascript:loadLocale('en_US')&quot;&gt;English&lt;/a&gt;&lt;/span&gt;
+    &lt;span class=&quot;name&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/name.gif&quot; alt=&quot;清华大学经济管理学院 - Blackboard&quot; /&gt;&lt;/span&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;locale&quot;&gt;
+  &lt;input TYPE=&quot;hidden&quot; NAME=&quot;target&quot; value=&quot;/webapps/login?action=login&quot;&gt;
+  &lt;/div&gt;
+   
+&lt;/form&gt;
+&lt;form onsubmit=&quot;return validate_form(this,false,true)&quot; method=&quot;POST&quot; action=&quot;/webapps/login/&quot; name=&quot;login&quot; id=&quot;login&quot; &gt;
+  &lt;!--login start--&gt;
+  &lt;div class=&quot;login clear&quot;&gt;
+  
+    &lt;!--LoginForm--&gt;
+    &lt;div class=&quot;communalForm fl&quot;&gt;
+      &lt;div class=&quot;tips&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/tit.gif&quot; alt=&quot;登录&quot; /&gt;&lt;/div&gt;
+      
+      &lt;dl&gt;
+        &lt;dt&gt;账号：&lt;/dt&gt;
+        &lt;dd class=&quot;ditxt&quot;&gt;&lt;input type=&quot;text&quot;  name=&quot;user_id&quot; id=&quot;user_id&quot; class=&quot;itxt_1&quot; size=&quot;20&quot; /&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+         &lt;dl&gt;
+        &lt;dt&gt;密码：&lt;/dt&gt;
+        &lt;dd class=&quot;ditxt&quot;&gt;&lt;input type=&quot;password&quot;  name=&quot;password&quot; id=&quot;password&quot; class=&quot;itxt_1&quot;  size=&quot;20&quot; /&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+        &lt;dl class=&quot;btn&quot;&gt;
+        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;image&quot; src=&quot;/images/ceshi_ziyuan/images/btn_login.gif&quot; alt=&quot;登录&quot;  style=&quot;float:left;&quot; /&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+	  
+	   &lt;dl class=&quot;btn&quot;&gt;
+        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;
+        &lt;dd&gt; &lt;div&gt; &lt;/div&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;links&quot;&gt;
+      &lt;ul&gt;
+        &lt;li class=&quot;clear&quot;&gt;
+          &lt;div class=&quot;licon&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_help.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt mt5&quot;&gt;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_faq.html&quot; target=&quot;_BLANK&quot;&gt;常见问题&lt;/a&gt;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_teacher_1.html&quot; target=&quot;_BLANK&quot;&gt;教师帮助&lt;/a&gt;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_student_1.html&quot; target=&quot;_BLANK&quot;&gt;学生帮助&lt;/a&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;clear&quot;&gt;
+          &lt;div class=&quot;licon mt5&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_tel.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt&quot;&gt;咨询电话:&lt;br /&gt;010-62788160 / 92985 / 72092 / 82190&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;clear nobor&quot;&gt;
+          &lt;div class=&quot;licon&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_email.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt&quot;&gt;&lt;a href=&quot;mailto:it_support@sem.tsinghua.edu.cn&quot;&gt;电子信箱:it_support@sem.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+  &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+  &lt;!--login end--&gt;
+  
+  &lt;!--tz start--&gt;
+  &lt;div class=&quot;xttz&quot;&gt;
+    &lt;div class=&quot;tit&quot;&gt;系统通知&lt;/div&gt;
+    &lt;div class=&quot;con&quot;&gt;
+      &lt;ul class=&quot;txtli&quot;&gt;
+      &lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2015-09-22&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('1261');&gt;经管学院课程讨论区登陆须知&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-09-05&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('9461');&gt;Blackboard讨论区开放给选修经管课程的所有本校学生&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-04-14&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('1628');&gt;SafeAssignment（反抄袭）开放试用啦！&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-03-10&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('7067');&gt;浏览器Internet Explorer（IE）11不支持Blackboard【 Internet Explorer 11 is not supported by Blackboard 】&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;bot&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!--tz end--&gt;
+  
+  &lt;!--footer--&gt;
+  &lt;div class=&quot;footer lh21&quot; style=&quot;border-top:0;&quot;&gt;&lt;img style=&quot;margin-right:15px;&quot; src=&quot;/images/ceshi_ziyuan/images/ts.gif&quot; align=&quot;absmiddle&quot; /&gt;版权所有 &amp;copy;2012&amp;nbsp;清华大学经济管理学院&lt;/div&gt;
+
+  &lt;input type=&quot;hidden&quot; name=&quot;action&quot; value=&quot;login&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;remote-user&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;auth_type&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;new_loc&quot; value=&quot;&quot;/&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;one_time_token&quot; value=&quot;E5E6D2473F1E5E1B905F7DFD19DD4BD1&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;encoded_pw&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;encoded_pw_unicode&quot; value=&quot;&quot; /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Strange header" plugin="strange_headers" severity="Information" url="http://learning.sem.tsinghua.edu.cn/" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response header &quot;x-blackboard-product&quot;, one of the received header values is &quot;Blackboard Learn &amp;#8482; 9.1.82223.0&quot;. The first ten URLs which sent the uncommon header are:
+ - http://learning.sem.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://learning.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="learning.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=486895526.20480.0000; session_id=2B396C54E66EF2706558DF3F3E01BFCD; JSESSIONID=B9D125154A6CFBCCACE90243D3D12E11.root" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7140" field="content-length"/>
+                        <header content="learning.sem.tsinghua.edu.cn" field="x-blackboard-appserver"/>
+                        <header content="session_id=2B396C54E66EF2706558DF3F3E01BFCD; Path=/; HttpOnly" field="set-cookie"/>
+                        <header content="Tue, 08 Dec 2015 02:52:05 GMT" field="expires"/>
+                        <header content="Blackboard Learn &amp;#8482; 9.1.82223.0" field="x-blackboard-product"/>
+                        <header content="Sun, 08 Dec 1996 02:52:05 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:52:05 GMT" field="date"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;清华大学经济管理学院 - Blackboard&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/ui/styles/css_ceshi/globle.css&quot; /&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/base64.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/md5.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/md5-legacy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+ function login_openForgotPassword( url )
+ {
+   var passwordWin = window.open( url, 'forgotPasswordWindow', 'menubar=1,resizable=1,scrollbars=1,status=1,width=850,height=480' );
+   passwordWin.focus();
+ }
+ var _useChallenge = true;
+    function validate_form(form)
+    {
+    //alert(&quot;here!!!!!&quot;+_useChallenge);	
+      if ( form.user_id.value == &quot;&quot; || form.password.value == &quot;&quot; )
+      {        
+        return false;
+      }
+			 if ( !_useChallenge )
+			  {
+			  //alert(&quot;here!!!!!--&gt;&quot;+_useChallenge);	
+			    form.encoded_pw.value = base64encode( form.password.value );
+			    form.encoded_pw_unicode.value = b64_unicode( form.password.value );
+			    form.password.value =  &quot;&quot;;
+			    return true;
+			  }
+			  
+			//alert(&quot;begin&quot;);
+      var passwd_enc = hex_md5(form.password.value);
+      var encoded_pw_unicode = calcMD5(form.password.value);
+      var final_to_encode = passwd_enc + form.one_time_token.value;
+      form.encoded_pw.value = hex_md5(final_to_encode);
+      
+      final_to_encode = encoded_pw_unicode + form.one_time_token.value;
+      form.encoded_pw_unicode.value = calcMD5(final_to_encode);
+      form.password.value = &quot;&quot;;
+      
+      //alert(&quot;end&quot;);
+      return true;
+    }
+ 
+
+    function thisSubmit(){
+    	  var warnloginname = &quot;用户名不能为空&quot;;
+    	  var warnloginpass = &quot;密码不能为空&quot;;
+    			var form=document.login;
+    	      if ( form.user_id.value == &quot;&quot; )
+    	      {        
+    	        alert(warnloginname);
+    			form.user_id.focus();
+    			return;
+    	      }
+    		  
+    		  if(form.password.value == &quot;&quot; ){
+    		  alert(warnloginpass);
+    		  form.password.focus();
+    		  return;
+    		  }
+    document.login.submit();
+    }
+
+	function loadLocale(code) {
+		document.locale_picker.locale.value=code;
+		document.locale_picker.submit();
+	}
+	
+	function goAnnUrl(url){
+	var beginUrl = &quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/ann_message.jsp?ann_id=&quot;;
+	//alert(&quot;beginUrl&quot;+beginUrl);
+	window.open(beginUrl+url, 'newwindow', 'height=400px,width=780px,toolbar=no,menubar=no,scrollbars=auto, resizable=no, location=no, status=no');
+	//alert(&quot;sfdsdfds&quot;);
+	}
+ 
+&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;form action=&quot;/webapps/portal/execute/changeLocale&quot; method=&quot;post&quot; name=&quot;locale_picker&quot;&gt;
+  &lt;div class=&quot;ltop&quot;&gt;
+    &lt;span class=&quot;language fr&quot;&gt;&lt;a href=&quot;javascript:loadLocale('zh_CN')&quot;&gt;中文&lt;/a&gt; - &lt;a href=&quot;javascript:loadLocale('en_US')&quot;&gt;English&lt;/a&gt;&lt;/span&gt;
+    &lt;span class=&quot;name&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/name.gif&quot; alt=&quot;清华大学经济管理学院 - Blackboard&quot; /&gt;&lt;/span&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;locale&quot;&gt;
+  &lt;input TYPE=&quot;hidden&quot; NAME=&quot;target&quot; value=&quot;/webapps/login?action=login&quot;&gt;
+  &lt;/div&gt;
+   
+&lt;/form&gt;
+&lt;form onsubmit=&quot;return validate_form(this,false,true)&quot; method=&quot;POST&quot; action=&quot;/webapps/login/&quot; name=&quot;login&quot; id=&quot;login&quot; &gt;
+  &lt;!--login start--&gt;
+  &lt;div class=&quot;login clear&quot;&gt;
+  
+    &lt;!--LoginForm--&gt;
+    &lt;div class=&quot;communalForm fl&quot;&gt;
+      &lt;div class=&quot;tips&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/tit.gif&quot; alt=&quot;登录&quot; /&gt;&lt;/div&gt;
+      
+      &lt;dl&gt;
+        &lt;dt&gt;账号：&lt;/dt&gt;
+        &lt;dd class=&quot;ditxt&quot;&gt;&lt;input type=&quot;text&quot;  name=&quot;user_id&quot; id=&quot;user_id&quot; class=&quot;itxt_1&quot; size=&quot;20&quot; /&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+         &lt;dl&gt;
+        &lt;dt&gt;密码：&lt;/dt&gt;
+        &lt;dd class=&quot;ditxt&quot;&gt;&lt;input type=&quot;password&quot;  name=&quot;password&quot; id=&quot;password&quot; class=&quot;itxt_1&quot;  size=&quot;20&quot; /&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+        &lt;dl class=&quot;btn&quot;&gt;
+        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;image&quot; src=&quot;/images/ceshi_ziyuan/images/btn_login.gif&quot; alt=&quot;登录&quot;  style=&quot;float:left;&quot; /&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+	  
+	   &lt;dl class=&quot;btn&quot;&gt;
+        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;
+        &lt;dd&gt; &lt;div&gt; &lt;/div&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;links&quot;&gt;
+      &lt;ul&gt;
+        &lt;li class=&quot;clear&quot;&gt;
+          &lt;div class=&quot;licon&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_help.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt mt5&quot;&gt;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_faq.html&quot; target=&quot;_BLANK&quot;&gt;常见问题&lt;/a&gt;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_teacher_1.html&quot; target=&quot;_BLANK&quot;&gt;教师帮助&lt;/a&gt;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_student_1.html&quot; target=&quot;_BLANK&quot;&gt;学生帮助&lt;/a&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;clear&quot;&gt;
+          &lt;div class=&quot;licon mt5&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_tel.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt&quot;&gt;咨询电话:&lt;br /&gt;010-62788160 / 92985 / 72092 / 82190&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;clear nobor&quot;&gt;
+          &lt;div class=&quot;licon&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_email.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt&quot;&gt;&lt;a href=&quot;mailto:it_support@sem.tsinghua.edu.cn&quot;&gt;电子信箱:it_support@sem.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+  &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+  &lt;!--login end--&gt;
+  
+  &lt;!--tz start--&gt;
+  &lt;div class=&quot;xttz&quot;&gt;
+    &lt;div class=&quot;tit&quot;&gt;系统通知&lt;/div&gt;
+    &lt;div class=&quot;con&quot;&gt;
+      &lt;ul class=&quot;txtli&quot;&gt;
+      &lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2015-09-22&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('1261');&gt;经管学院课程讨论区登陆须知&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-09-05&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('9461');&gt;Blackboard讨论区开放给选修经管课程的所有本校学生&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-04-14&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('1628');&gt;SafeAssignment（反抄袭）开放试用啦！&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-03-10&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('7067');&gt;浏览器Internet Explorer（IE）11不支持Blackboard【 Internet Explorer 11 is not supported by Blackboard 】&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;bot&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!--tz end--&gt;
+  
+  &lt;!--footer--&gt;
+  &lt;div class=&quot;footer lh21&quot; style=&quot;border-top:0;&quot;&gt;&lt;img style=&quot;margin-right:15px;&quot; src=&quot;/images/ceshi_ziyuan/images/ts.gif&quot; align=&quot;absmiddle&quot; /&gt;版权所有 &amp;copy;2012&amp;nbsp;清华大学经济管理学院&lt;/div&gt;
+
+  &lt;input type=&quot;hidden&quot; name=&quot;action&quot; value=&quot;login&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;remote-user&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;auth_type&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;new_loc&quot; value=&quot;&quot;/&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;one_time_token&quot; value=&quot;E5E6D2473F1E5E1B905F7DFD19DD4BD1&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;encoded_pw&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;encoded_pw_unicode&quot; value=&quot;&quot; /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Cookie" plugin="analyze_cookies" severity="Information" url="http://learning.sem.tsinghua.edu.cn/" var="None">
+        <description>The application sent the &quot;session_id&quot; cookie in 1 different URLs. The first ten URLs are:
+ - http://learning.sem.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://learning.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="learning.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=486895526.20480.0000; session_id=2B396C54E66EF2706558DF3F3E01BFCD; JSESSIONID=B9D125154A6CFBCCACE90243D3D12E11.root" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7140" field="content-length"/>
+                        <header content="learning.sem.tsinghua.edu.cn" field="x-blackboard-appserver"/>
+                        <header content="session_id=2B396C54E66EF2706558DF3F3E01BFCD; Path=/; HttpOnly" field="set-cookie"/>
+                        <header content="Tue, 08 Dec 2015 02:52:05 GMT" field="expires"/>
+                        <header content="Blackboard Learn &amp;#8482; 9.1.82223.0" field="x-blackboard-product"/>
+                        <header content="Sun, 08 Dec 1996 02:52:05 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:52:05 GMT" field="date"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;清华大学经济管理学院 - Blackboard&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/ui/styles/css_ceshi/globle.css&quot; /&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/base64.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/md5.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/md5-legacy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+ function login_openForgotPassword( url )
+ {
+   var passwordWin = window.open( url, 'forgotPasswordWindow', 'menubar=1,resizable=1,scrollbars=1,status=1,width=850,height=480' );
+   passwordWin.focus();
+ }
+ var _useChallenge = true;
+    function validate_form(form)
+    {
+    //alert(&quot;here!!!!!&quot;+_useChallenge);	
+      if ( form.user_id.value == &quot;&quot; || form.password.value == &quot;&quot; )
+      {        
+        return false;
+      }
+			 if ( !_useChallenge )
+			  {
+			  //alert(&quot;here!!!!!--&gt;&quot;+_useChallenge);	
+			    form.encoded_pw.value = base64encode( form.password.value );
+			    form.encoded_pw_unicode.value = b64_unicode( form.password.value );
+			    form.password.value =  &quot;&quot;;
+			    return true;
+			  }
+			  
+			//alert(&quot;begin&quot;);
+      var passwd_enc = hex_md5(form.password.value);
+      var encoded_pw_unicode = calcMD5(form.password.value);
+      var final_to_encode = passwd_enc + form.one_time_token.value;
+      form.encoded_pw.value = hex_md5(final_to_encode);
+      
+      final_to_encode = encoded_pw_unicode + form.one_time_token.value;
+      form.encoded_pw_unicode.value = calcMD5(final_to_encode);
+      form.password.value = &quot;&quot;;
+      
+      //alert(&quot;end&quot;);
+      return true;
+    }
+ 
+
+    function thisSubmit(){
+    	  var warnloginname = &quot;用户名不能为空&quot;;
+    	  var warnloginpass = &quot;密码不能为空&quot;;
+    			var form=document.login;
+    	      if ( form.user_id.value == &quot;&quot; )
+    	      {        
+    	        alert(warnloginname);
+    			form.user_id.focus();
+    			return;
+    	      }
+    		  
+    		  if(form.password.value == &quot;&quot; ){
+    		  alert(warnloginpass);
+    		  form.password.focus();
+    		  return;
+    		  }
+    document.login.submit();
+    }
+
+	function loadLocale(code) {
+		document.locale_picker.locale.value=code;
+		document.locale_picker.submit();
+	}
+	
+	function goAnnUrl(url){
+	var beginUrl = &quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/ann_message.jsp?ann_id=&quot;;
+	//alert(&quot;beginUrl&quot;+beginUrl);
+	window.open(beginUrl+url, 'newwindow', 'height=400px,width=780px,toolbar=no,menubar=no,scrollbars=auto, resizable=no, location=no, status=no');
+	//alert(&quot;sfdsdfds&quot;);
+	}
+ 
+&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;form action=&quot;/webapps/portal/execute/changeLocale&quot; method=&quot;post&quot; name=&quot;locale_picker&quot;&gt;
+  &lt;div class=&quot;ltop&quot;&gt;
+    &lt;span class=&quot;language fr&quot;&gt;&lt;a href=&quot;javascript:loadLocale('zh_CN')&quot;&gt;中文&lt;/a&gt; - &lt;a href=&quot;javascript:loadLocale('en_US')&quot;&gt;English&lt;/a&gt;&lt;/span&gt;
+    &lt;span class=&quot;name&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/name.gif&quot; alt=&quot;清华大学经济管理学院 - Blackboard&quot; /&gt;&lt;/span&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;locale&quot;&gt;
+  &lt;input TYPE=&quot;hidden&quot; NAME=&quot;target&quot; value=&quot;/webapps/login?action=login&quot;&gt;
+  &lt;/div&gt;
+   
+&lt;/form&gt;
+&lt;form onsubmit=&quot;return validate_form(this,false,true)&quot; method=&quot;POST&quot; action=&quot;/webapps/login/&quot; name=&quot;login&quot; id=&quot;login&quot; &gt;
+  &lt;!--login start--&gt;
+  &lt;div class=&quot;login clear&quot;&gt;
+  
+    &lt;!--LoginForm--&gt;
+    &lt;div class=&quot;communalForm fl&quot;&gt;
+      &lt;div class=&quot;tips&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/tit.gif&quot; alt=&quot;登录&quot; /&gt;&lt;/div&gt;
+      
+      &lt;dl&gt;
+        &lt;dt&gt;账号：&lt;/dt&gt;
+        &lt;dd class=&quot;ditxt&quot;&gt;&lt;input type=&quot;text&quot;  name=&quot;user_id&quot; id=&quot;user_id&quot; class=&quot;itxt_1&quot; size=&quot;20&quot; /&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+         &lt;dl&gt;
+        &lt;dt&gt;密码：&lt;/dt&gt;
+        &lt;dd class=&quot;ditxt&quot;&gt;&lt;input type=&quot;password&quot;  name=&quot;password&quot; id=&quot;password&quot; class=&quot;itxt_1&quot;  size=&quot;20&quot; /&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+        &lt;dl class=&quot;btn&quot;&gt;
+        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;image&quot; src=&quot;/images/ceshi_ziyuan/images/btn_login.gif&quot; alt=&quot;登录&quot;  style=&quot;float:left;&quot; /&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+	  
+	   &lt;dl class=&quot;btn&quot;&gt;
+        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;
+        &lt;dd&gt; &lt;div&gt; &lt;/div&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;links&quot;&gt;
+      &lt;ul&gt;
+        &lt;li class=&quot;clear&quot;&gt;
+          &lt;div class=&quot;licon&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_help.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt mt5&quot;&gt;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_faq.html&quot; target=&quot;_BLANK&quot;&gt;常见问题&lt;/a&gt;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_teacher_1.html&quot; target=&quot;_BLANK&quot;&gt;教师帮助&lt;/a&gt;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_student_1.html&quot; target=&quot;_BLANK&quot;&gt;学生帮助&lt;/a&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;clear&quot;&gt;
+          &lt;div class=&quot;licon mt5&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_tel.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt&quot;&gt;咨询电话:&lt;br /&gt;010-62788160 / 92985 / 72092 / 82190&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;clear nobor&quot;&gt;
+          &lt;div class=&quot;licon&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_email.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt&quot;&gt;&lt;a href=&quot;mailto:it_support@sem.tsinghua.edu.cn&quot;&gt;电子信箱:it_support@sem.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+  &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+  &lt;!--login end--&gt;
+  
+  &lt;!--tz start--&gt;
+  &lt;div class=&quot;xttz&quot;&gt;
+    &lt;div class=&quot;tit&quot;&gt;系统通知&lt;/div&gt;
+    &lt;div class=&quot;con&quot;&gt;
+      &lt;ul class=&quot;txtli&quot;&gt;
+      &lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2015-09-22&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('1261');&gt;经管学院课程讨论区登陆须知&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-09-05&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('9461');&gt;Blackboard讨论区开放给选修经管课程的所有本校学生&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-04-14&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('1628');&gt;SafeAssignment（反抄袭）开放试用啦！&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-03-10&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('7067');&gt;浏览器Internet Explorer（IE）11不支持Blackboard【 Internet Explorer 11 is not supported by Blackboard 】&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;bot&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!--tz end--&gt;
+  
+  &lt;!--footer--&gt;
+  &lt;div class=&quot;footer lh21&quot; style=&quot;border-top:0;&quot;&gt;&lt;img style=&quot;margin-right:15px;&quot; src=&quot;/images/ceshi_ziyuan/images/ts.gif&quot; align=&quot;absmiddle&quot; /&gt;版权所有 &amp;copy;2012&amp;nbsp;清华大学经济管理学院&lt;/div&gt;
+
+  &lt;input type=&quot;hidden&quot; name=&quot;action&quot; value=&quot;login&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;remote-user&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;auth_type&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;new_loc&quot; value=&quot;&quot;/&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;one_time_token&quot; value=&quot;E5E6D2473F1E5E1B905F7DFD19DD4BD1&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;encoded_pw&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;encoded_pw_unicode&quot; value=&quot;&quot; /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://learning.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="learning.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=486895526.20480.0000; session_id=2B396C54E66EF2706558DF3F3E01BFCD; JSESSIONID=B9D125154A6CFBCCACE90243D3D12E11.root" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7140" field="content-length"/>
+                        <header content="learning.sem.tsinghua.edu.cn" field="x-blackboard-appserver"/>
+                        <header content="session_id=2B396C54E66EF2706558DF3F3E01BFCD; Path=/; HttpOnly" field="set-cookie"/>
+                        <header content="Tue, 08 Dec 2015 02:52:05 GMT" field="expires"/>
+                        <header content="Blackboard Learn &amp;#8482; 9.1.82223.0" field="x-blackboard-product"/>
+                        <header content="Sun, 08 Dec 1996 02:52:05 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:52:05 GMT" field="date"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;清华大学经济管理学院 - Blackboard&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/ui/styles/css_ceshi/globle.css&quot; /&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/base64.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/md5.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/javascript/md5-legacy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+ function login_openForgotPassword( url )
+ {
+   var passwordWin = window.open( url, 'forgotPasswordWindow', 'menubar=1,resizable=1,scrollbars=1,status=1,width=850,height=480' );
+   passwordWin.focus();
+ }
+ var _useChallenge = true;
+    function validate_form(form)
+    {
+    //alert(&quot;here!!!!!&quot;+_useChallenge);	
+      if ( form.user_id.value == &quot;&quot; || form.password.value == &quot;&quot; )
+      {        
+        return false;
+      }
+			 if ( !_useChallenge )
+			  {
+			  //alert(&quot;here!!!!!--&gt;&quot;+_useChallenge);	
+			    form.encoded_pw.value = base64encode( form.password.value );
+			    form.encoded_pw_unicode.value = b64_unicode( form.password.value );
+			    form.password.value =  &quot;&quot;;
+			    return true;
+			  }
+			  
+			//alert(&quot;begin&quot;);
+      var passwd_enc = hex_md5(form.password.value);
+      var encoded_pw_unicode = calcMD5(form.password.value);
+      var final_to_encode = passwd_enc + form.one_time_token.value;
+      form.encoded_pw.value = hex_md5(final_to_encode);
+      
+      final_to_encode = encoded_pw_unicode + form.one_time_token.value;
+      form.encoded_pw_unicode.value = calcMD5(final_to_encode);
+      form.password.value = &quot;&quot;;
+      
+      //alert(&quot;end&quot;);
+      return true;
+    }
+ 
+
+    function thisSubmit(){
+    	  var warnloginname = &quot;用户名不能为空&quot;;
+    	  var warnloginpass = &quot;密码不能为空&quot;;
+    			var form=document.login;
+    	      if ( form.user_id.value == &quot;&quot; )
+    	      {        
+    	        alert(warnloginname);
+    			form.user_id.focus();
+    			return;
+    	      }
+    		  
+    		  if(form.password.value == &quot;&quot; ){
+    		  alert(warnloginpass);
+    		  form.password.focus();
+    		  return;
+    		  }
+    document.login.submit();
+    }
+
+	function loadLocale(code) {
+		document.locale_picker.locale.value=code;
+		document.locale_picker.submit();
+	}
+	
+	function goAnnUrl(url){
+	var beginUrl = &quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/ann_message.jsp?ann_id=&quot;;
+	//alert(&quot;beginUrl&quot;+beginUrl);
+	window.open(beginUrl+url, 'newwindow', 'height=400px,width=780px,toolbar=no,menubar=no,scrollbars=auto, resizable=no, location=no, status=no');
+	//alert(&quot;sfdsdfds&quot;);
+	}
+ 
+&lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;form action=&quot;/webapps/portal/execute/changeLocale&quot; method=&quot;post&quot; name=&quot;locale_picker&quot;&gt;
+  &lt;div class=&quot;ltop&quot;&gt;
+    &lt;span class=&quot;language fr&quot;&gt;&lt;a href=&quot;javascript:loadLocale('zh_CN')&quot;&gt;中文&lt;/a&gt; - &lt;a href=&quot;javascript:loadLocale('en_US')&quot;&gt;English&lt;/a&gt;&lt;/span&gt;
+    &lt;span class=&quot;name&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/name.gif&quot; alt=&quot;清华大学经济管理学院 - Blackboard&quot; /&gt;&lt;/span&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;locale&quot;&gt;
+  &lt;input TYPE=&quot;hidden&quot; NAME=&quot;target&quot; value=&quot;/webapps/login?action=login&quot;&gt;
+  &lt;/div&gt;
+   
+&lt;/form&gt;
+&lt;form onsubmit=&quot;return validate_form(this,false,true)&quot; method=&quot;POST&quot; action=&quot;/webapps/login/&quot; name=&quot;login&quot; id=&quot;login&quot; &gt;
+  &lt;!--login start--&gt;
+  &lt;div class=&quot;login clear&quot;&gt;
+  
+    &lt;!--LoginForm--&gt;
+    &lt;div class=&quot;communalForm fl&quot;&gt;
+      &lt;div class=&quot;tips&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/tit.gif&quot; alt=&quot;登录&quot; /&gt;&lt;/div&gt;
+      
+      &lt;dl&gt;
+        &lt;dt&gt;账号：&lt;/dt&gt;
+        &lt;dd class=&quot;ditxt&quot;&gt;&lt;input type=&quot;text&quot;  name=&quot;user_id&quot; id=&quot;user_id&quot; class=&quot;itxt_1&quot; size=&quot;20&quot; /&gt;&lt;/dd&gt;
+        &lt;/dl&gt;
+         &lt;dl&gt;
+        &lt;dt&gt;密码：&lt;/dt&gt;
+        &lt;dd class=&quot;ditxt&quot;&gt;&lt;input type=&quot;password&quot;  name=&quot;password&quot; id=&quot;password&quot; class=&quot;itxt_1&quot;  size=&quot;20&quot; /&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+        &lt;dl class=&quot;btn&quot;&gt;
+        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;image&quot; src=&quot;/images/ceshi_ziyuan/images/btn_login.gif&quot; alt=&quot;登录&quot;  style=&quot;float:left;&quot; /&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+	  
+	   &lt;dl class=&quot;btn&quot;&gt;
+        &lt;dt&gt;&amp;nbsp;&lt;/dt&gt;
+        &lt;dd&gt; &lt;div&gt; &lt;/div&gt;&lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;links&quot;&gt;
+      &lt;ul&gt;
+        &lt;li class=&quot;clear&quot;&gt;
+          &lt;div class=&quot;licon&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_help.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt mt5&quot;&gt;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_faq.html&quot; target=&quot;_BLANK&quot;&gt;常见问题&lt;/a&gt;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_teacher_1.html&quot; target=&quot;_BLANK&quot;&gt;教师帮助&lt;/a&gt;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp;&lt;a href=&quot;http://learning.sem.tsinghua.edu.cn/webapps/bb-helpjsp-BBLEARN/help_student_1.html&quot; target=&quot;_BLANK&quot;&gt;学生帮助&lt;/a&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;clear&quot;&gt;
+          &lt;div class=&quot;licon mt5&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_tel.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt&quot;&gt;咨询电话:&lt;br /&gt;010-62788160 / 92985 / 72092 / 82190&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;clear nobor&quot;&gt;
+          &lt;div class=&quot;licon&quot;&gt;&lt;img src=&quot;/images/ceshi_ziyuan/images/i_email.gif&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;ltxt&quot;&gt;&lt;a href=&quot;mailto:it_support@sem.tsinghua.edu.cn&quot;&gt;电子信箱:it_support@sem.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+  &lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+  &lt;!--login end--&gt;
+  
+  &lt;!--tz start--&gt;
+  &lt;div class=&quot;xttz&quot;&gt;
+    &lt;div class=&quot;tit&quot;&gt;系统通知&lt;/div&gt;
+    &lt;div class=&quot;con&quot;&gt;
+      &lt;ul class=&quot;txtli&quot;&gt;
+      &lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2015-09-22&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('1261');&gt;经管学院课程讨论区登陆须知&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-09-05&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('9461');&gt;Blackboard讨论区开放给选修经管课程的所有本校学生&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-04-14&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('1628');&gt;SafeAssignment（反抄袭）开放试用啦！&lt;/a&gt;&lt;/li&gt;&lt;li class='nobor'&gt;&lt;em class='time fr'&gt;2014-03-10&lt;/em&gt;&lt;a  href=javascript:goAnnUrl('7067');&gt;浏览器Internet Explorer（IE）11不支持Blackboard【 Internet Explorer 11 is not supported by Blackboard 】&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;bot&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!--tz end--&gt;
+  
+  &lt;!--footer--&gt;
+  &lt;div class=&quot;footer lh21&quot; style=&quot;border-top:0;&quot;&gt;&lt;img style=&quot;margin-right:15px;&quot; src=&quot;/images/ceshi_ziyuan/images/ts.gif&quot; align=&quot;absmiddle&quot; /&gt;版权所有 &amp;copy;2012&amp;nbsp;清华大学经济管理学院&lt;/div&gt;
+
+  &lt;input type=&quot;hidden&quot; name=&quot;action&quot; value=&quot;login&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;remote-user&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;auth_type&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;new_loc&quot; value=&quot;&quot;/&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;one_time_token&quot; value=&quot;E5E6D2473F1E5E1B905F7DFD19DD4BD1&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;encoded_pw&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;encoded_pw_unicode&quot; value=&quot;&quot; /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The following error was detected and could not be resolved:
+Failed to initialize the 404 detection, original exception was: &quot;w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).&quot;.
+</error>
+</w3af-run>

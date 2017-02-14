@@ -1,0 +1,1070 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481248535" start-long="Thu Dec 08 20:55:35 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://career.net9.org/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/300_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[39]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;nginx&quot;.</description>
+        <http-transactions>
+            <http-transaction id="39">
+                <http-request>
+                    <status>GET http://career.net9.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:11 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[40, 44]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://career.net9.org/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="40">
+                <http-request>
+                    <status>ARGENTINA http://career.net9.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:22 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="44">
+                <http-request>
+                    <status>GET http://career.net9.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:22 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[193]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://career.net9.org/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;intra.career.net9.org&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;intra.career.net9.org&quot; to the IP address of &quot;career.net9.org&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[195]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://career.net9.org/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;intra.net9.org&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;intra.net9.org&quot; to the IP address of &quot;career.net9.org&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[201]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://net9.org/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://net9.org/&quot; differ from the contents of &quot;http://career.net9.org/&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[202]" method="GET" name="WebConsole Invoker found" plugin="find_jboss" severity="Low" url="http://career.net9.org/WebConsole/Invoker" var="None">
+        <description>JBoss WebConsole Invoker enables attackers to send any JMX command to JBoss AS</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[203]" method="GET" name="WebConsole ServerInfo.jsp found" plugin="find_jboss" severity="Information" url="http://career.net9.org/web-console/ServerInfo.jsp" var="None">
+        <description>WebConsole ServerInfo.jsp gives valuable information</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[219, 221]" method="GET" name="Operating system" plugin="fingerprint_os" severity="Information" url="http://career.net9.org/WebConsole\Invoker" var="None">
+        <description>Fingerprinted this host as a Microsoft Windows system.</description>
+        <http-transactions>
+            <http-transaction id="219">
+                <http-request>
+                    <status>GET http://career.net9.org/WebConsole%5CInvoker HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/WebConsole%5CInvoker" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:33 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="221">
+                <http-request>
+                    <status>GET http://career.net9.org/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/WebConsole/Invoker" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:33 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 72, 135, 142, 164, 179, 180, 181, 186, 192, 194, 208, 214, 215, 218, 219, 224, 232, 233, 239, 244, 245]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://career.net9.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:11 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="72">
+                <http-request>
+                    <status>GET http://career.net9.org/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/favicon.ico" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:22 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="135">
+                <http-request>
+                    <status>GET http://career.net9.org/bRGww.html HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/bRGww.html" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:23 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="142">
+                <http-request>
+                    <status>POST http://career.net9.org/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2JSR3d3Lmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGgud3dHUmI=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/_vti_bin/_vti_aut/author.dll" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:23 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="164">
+                <http-request>
+                    <status>PUT http://career.net9.org/TznIc HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">RvDP8M</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/TznIc" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:23 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="179">
+                <http-request>
+                    <status>GET http://career.net9.org/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/server-status" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:24 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="180">
+                <http-request>
+                    <status>GET http://career.net9.org/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/admin-console/" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:24 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="181">
+                <http-request>
+                    <status>GET http://career.net9.org/status HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/status" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:24 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://career.net9.org/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/_vti_inf.html" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:24 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="192">
+                <http-request>
+                    <status>GET http://career.net9.org/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/jmx-console/" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:26 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="194">
+                <http-request>
+                    <status>GET http://career.net9.org/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/invoker/JMXInvokerServlet" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:26 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="208">
+                <http-request>
+                    <status>GET http://career.net9.org/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/WebConsole/Invoker" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:33 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="214">
+                <http-request>
+                    <status>PROPFIND http://career.net9.org/WebConsole/ HTTP/1.1</status>
+                    <headers>
+                        <header content="107" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="1" field="Depth"/>
+                        <header content="application/xml; charset=&quot;utf-8&quot;" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PD94bWwgdmVyc2lvbj0nMS4wJz8+DQo8YTpwcm9wZmluZCB4bWxuczphPSdEQVY6Jz4NCjxhOnBy
+b3A+DQo8YTpkaXNwbGF5bmFtZTovPg0KPC9hOnByb3A+DQo8L2E6cHJvcGZpbmQ+DQo=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/WebConsole/" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:33 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="215">
+                <http-request>
+                    <status>GET http://career.net9.org/WebConsole/PngIl.html HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/WebConsole/PngIl.html" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:33 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="218">
+                <http-request>
+                    <status>POST http://career.net9.org/WebConsole/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="169" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L1dlYkNvbnNvbGUvUG5nSWwuaHRtbDttZXRhX2luZm89W11dJnB1dF9vcHRp
+b249b3ZlcndyaXRlJmNvbW1lbnQ9JmtlZXBfY2hlY2tlZF9vdXQ9ZmFsc2UKbG10aC5sSWduUA==
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/WebConsole/_vti_bin/_vti_aut/author.dll" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:33 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="219">
+                <http-request>
+                    <status>GET http://career.net9.org/WebConsole%5CInvoker HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/WebConsole%5CInvoker" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:33 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="224">
+                <http-request>
+                    <status>GET http://career.net9.org/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/web-console/ServerInfo.jsp" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:33 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="232">
+                <http-request>
+                    <status>GET http://career.net9.org/web-console/oDwUn.html HTTP/1.1</status>
+                    <headers>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/web-console/oDwUn.html" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:34 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="233">
+                <http-request>
+                    <status>POST http://career.net9.org/web-console/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="170" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3dlYi1jb25zb2xlL29Ed1VuLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0
+aW9uPW92ZXJ3cml0ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGgublV3RG8=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/web-console/_vti_bin/_vti_aut/author.dll" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:34 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="239">
+                <http-request>
+                    <status>PUT http://career.net9.org/WebConsole/ykkzm HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">M2a2Q6</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/WebConsole/ykkzm" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="244">
+                <http-request>
+                    <status>SEARCH http://career.net9.org/web-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="135" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="application/xml; charset=&quot;utf-8&quot;" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PD94bWwgdmVyc2lvbj0nMS4wJz8+DQo8ZzpzZWFyY2hyZXF1ZXN0IHhtbG5zOmc9J0RBVjonPg0K
+PGc6c3FsPg0KU2VsZWN0ICdEQVY6ZGlzcGxheW5hbWUnIGZyb20gc2NvcGUoKQ0KPC9nOnNxbD4N
+CjwvZzpzZWFyY2hyZXF1ZXN0Pg0K
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/web-console/" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:36 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="245">
+                <http-request>
+                    <status>PUT http://career.net9.org/web-console/aWqpT HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="career.net9.org" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">Ehaqhn</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="178" field="content-length"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="https://career.net9.org/web-console/aWqpT" field="location"/>
+                        <header content="Fri, 09 Dec 2016 01:56:36 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://career.net9.org/&quot;. Reason: &quot;[Errno 101] Network is unreachable&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://career.net9.org/&quot;. Reason: &quot;[Errno 101] Network is unreachable&quot;</error>
+    <error caller="threading">The dns_wildcard plugin got an error while requesting &quot;http://career.net9.org/&quot;. Reason: &quot;[Errno 101] Network is unreachable&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://career.net9.org/WebConsole/Invoker&quot;. Reason: &quot;[Errno 101] Network is unreachable&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://career.net9.org/web-console/ServerInfo.jsp&quot;. Reason: &quot;[Errno 101] Network is unreachable&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to career.net9.org:80&quot;</error>
+    <error caller="threading">An error occurred while running local web server for the remote file inclusion (rfi) plugin: &quot;[Errno 98] Address already in use&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve career.net9.org</error>
+</w3af-run>

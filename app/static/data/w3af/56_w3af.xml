@@ -1,0 +1,1010 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480671900" start-long="Fri Dec 02 04:45:00 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://zlsh.arch.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/56_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[36, 56]" method="GET" name="Secure content over insecure channel" plugin="un_ssl" severity="Medium" url="http://zlsh.arch.tsinghua.edu.cn/" var="None">
+        <description>Secure content can be accessed using the insecure HTTP protocol. The vulnerable URLs used to verify this vulnerability are:
+ - https://zlsh.arch.tsinghua.edu.cn/
+ - http://zlsh.arch.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="36">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Found</status>
+                    <headers>
+                        <header content="79" field="content-length"/>
+                        <header content="timeout=10, max=482" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://zlsh.arch.tsinghua.edu.cn/login.do" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:45:05 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">The URL has moved &lt;a href=&quot;http://zlsh.arch.tsinghua.edu.cn/login.do&quot;&gt;here&lt;/a&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="56">
+                <http-request>
+                    <status>GET https://zlsh.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Found</status>
+                    <headers>
+                        <header content="79" field="content-length"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://zlsh.arch.tsinghua.edu.cn/login.do" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:45:05 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">The URL has moved &lt;a href=&quot;http://zlsh.arch.tsinghua.edu.cn/login.do&quot;&gt;here&lt;/a&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[53, 66]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://zlsh.arch.tsinghua.edu.cn/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="53">
+                <http-request>
+                    <status>ARGENTINA http://zlsh.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Found</status>
+                    <headers>
+                        <header content="79" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://zlsh.arch.tsinghua.edu.cn/login.do" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:45:05 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">The URL has moved &lt;a href=&quot;http://zlsh.arch.tsinghua.edu.cn/login.do&quot;&gt;here&lt;/a&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="66">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Found</status>
+                    <headers>
+                        <header content="79" field="content-length"/>
+                        <header content="timeout=10, max=476" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://zlsh.arch.tsinghua.edu.cn/login.do" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:45:06 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">The URL has moved &lt;a href=&quot;http://zlsh.arch.tsinghua.edu.cn/login.do&quot;&gt;here&lt;/a&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[110]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache&quot;.</description>
+        <http-transactions>
+            <http-transaction id="110">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Found</status>
+                    <headers>
+                        <header content="79" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://zlsh.arch.tsinghua.edu.cn/login.do" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:45:05 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">The URL has moved &lt;a href=&quot;http://zlsh.arch.tsinghua.edu.cn/login.do&quot;&gt;here&lt;/a&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[185]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://arch.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://arch.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://zlsh.arch.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="185">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Found</status>
+                    <headers>
+                        <header content="220" field="content-length"/>
+                        <header content="timeout=10, max=489" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.arch.tsinghua.edu.cn/chs/" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:45:07 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;302 Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Found&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;http://www.arch.tsinghua.edu.cn/chs/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[173]" method="GET" name="Strange HTTP Reason message" plugin="strange_reason" severity="Information" url="http://zlsh.arch.tsinghua.edu.cn/ZLkbL" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon status message &quot;Method not implemented&quot;, manual inspection is recommended. The first ten URLs which sent the uncommon message are:
+ - http://zlsh.arch.tsinghua.edu.cn/ZLkbL
+</description>
+        <http-transactions>
+            <http-transaction id="173">
+                <http-request>
+                    <status>PUT http://zlsh.arch.tsinghua.edu.cn/ZLkbL HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">bb5bxe</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:45:07 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[204]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.7.160/" var="None">
+        <description>The contents of http://166.111.7.160/ and http://zlsh.arch.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="204">
+                <http-request>
+                    <status>GET http://166.111.7.160/ HTTP/1.1</status>
+                    <headers>
+                        <header content="166.111.7.160" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2799" field="content-length"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; path=/" field="set-cookie"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Tue, 17 Mar 2015 08:41:15 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;4643d5-aef-51177edfb40c0&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 09:45:17 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;!-- saved from url=(0120)http://oars.tsinghua.edu.cn/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument --&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;֪ͨ&lt;/TITLE&gt;
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;STYLE type=text/css&gt;TD {
+        FONT-SIZE: 9pt; FONT-FAMILY: &quot;\xcb\xce\xcc\xe5&quot;, &quot;Verdana&quot;, &quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;
+}
+.p {
+        FONT-SIZE: 12px; LINE-HEIGHT: 150%
+}
+.p0 {
+        FONT-SIZE: 14px; LINE-HEIGHT: 150%
+}
+.p3 {
+        FONT-SIZE: 14px; TEXT-INDENT: 28px; LINE-HEIGHT: 150%
+}
+.p1 {
+        FONT-SIZE: 14px; FONT-FAMILY: &quot;Verdana&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;
+}
+.p2 {
+        FONT-SIZE: 9pt; LINE-HEIGHT: 18pt
+}
+.p4 {
+        FONT-WEIGHT: bold; FONT-SIZE: 16px
+}
+A:link {
+        FONT-SIZE: 9pt; COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+        FONT-SIZE: 9pt; COLOR: #cc3300; TEXT-DECORATION: underline
+}
+A:visited {
+        FONT-SIZE: 9pt; COLOR: #006666; TEXT-DECORATION: none
+}
+&lt;/STYLE&gt;
+
+&lt;SCRIPT language=JavaScript&gt;
+&lt;!--
+document._domino_target = &quot;_self&quot;;
+function _doClick(v, o, t) {
+  var url=&quot;/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument&amp;Click=&quot; + v;
+  if (o.href != null)
+    o.href = url;
+  else {
+    if (t == null)
+      t = document._domino_target;
+    window.open(url, t);
+  }
+
+}
+// --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;META content=&quot;MSHTML 6.00.2900.5848&quot; name=GENERATOR&gt;&lt;/HEAD&gt;
+&lt;BODY text=#000000 bgColor=#ffffff leftMargin=0 topMargin=0 marginheight=&quot;0&quot;
+marginwidth=&quot;0&quot;&gt;
+&lt;FORM&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD vAlign=top align=middle width=94 background=apperr.files/left2.gif
+    height=342&gt;&lt;BR&gt;&lt;BR&gt;
+     &lt;/TD&gt;
+    &lt;TD vAlign=top width=682 background=apperr.files/pattern.jpg&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD width=6&gt;&lt;IMG height=16 src=&quot;&quot; width=4&gt;&lt;/TD&gt;
+          &lt;TD class=p1&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD class=p3&gt;
+            &lt;P&gt;&lt;BR&gt;Sorry!&lt;TT&gt;
+            &amp;nbsp; &amp;nbsp;&lt;/TT&gt;&lt;BR&gt;&lt;TT&gt;&amp;nbsp;&lt;/TT&gt;
+           &lt;/TT&gt;
+
+
+        &lt;TR&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+        &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+      &lt;TABLE height=18 cellSpacing=0 cellPadding=7 width=&quot;90%&quot;  bgColor=#ccd3e8 border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD align=middle&gt; \xc7廪\xb4\xf3ѧ\xbc\xc6\xcb\xe3\xbb\xfa\xd3\xeb\xd0\xc5Ϣ\xb9\xdc\xc0\xed\xd6\xd0\xd0\xc4
+     &lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/FORM&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.7.160</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Found</status>
+                    <headers>
+                        <header content="112" field="content-length"/>
+                        <header content="JSESSIONID=bacAALcqEM7_D8hte7_Iv; path=/, thuwebcookie=2634510090.20480.0000; path=/" field="set-cookie"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://zlsh.arch.tsinghua.edu.cn/login.do;jsessionid=bacAALcqEM7_D8hte7_Iv" field="location"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 09:45:04 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">The URL has moved &lt;a href=&quot;http://zlsh.arch.tsinghua.edu.cn/login.do;jsessionid=bacAALcqEM7_D8hte7_Iv&quot;&gt;here&lt;/a&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 131, 133, 136, 157, 173, 182, 186, 187, 188, 189, 190, 191]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 302 Found</status>
+                    <headers>
+                        <header content="79" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://zlsh.arch.tsinghua.edu.cn/login.do" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:45:05 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">The URL has moved &lt;a href=&quot;http://zlsh.arch.tsinghua.edu.cn/login.do&quot;&gt;here&lt;/a&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="131">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="217" field="content-length"/>
+                        <header content="timeout=10, max=492" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:45:06 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/favicon.ico was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="133">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="219" field="content-length"/>
+                        <header content="timeout=10, max=493" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:45:06 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/_vti_inf.html was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="136">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/CGIAs.html HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="216" field="content-length"/>
+                        <header content="timeout=10, max=492" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:45:06 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/CGIAs.html was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="157">
+                <http-request>
+                    <status>POST http://zlsh.arch.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L0NHSUFzLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguc0FJR0M=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="234" field="content-length"/>
+                        <header content="timeout=10, max=468" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:45:06 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/_vti_bin/_vti_aut/author.dll was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="173">
+                <http-request>
+                    <status>PUT http://zlsh.arch.tsinghua.edu.cn/ZLkbL HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">bb5bxe</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:45:07 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="182">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="219" field="content-length"/>
+                        <header content="timeout=10, max=487" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:45:07 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/server-status was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="231" field="content-length"/>
+                        <header content="timeout=10, max=486" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:45:07 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/invoker/JMXInvokerServlet was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="187">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="224" field="content-length"/>
+                        <header content="timeout=10, max=485" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:45:07 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/WebConsole/Invoker was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="188">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="220" field="content-length"/>
+                        <header content="timeout=10, max=493" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:45:07 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/admin-console/ was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="189">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="232" field="content-length"/>
+                        <header content="timeout=10, max=491" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:45:07 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/web-console/ServerInfo.jsp was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="218" field="content-length"/>
+                        <header content="timeout=10, max=494" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:45:07 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/jmx-console/ was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="191">
+                <http-request>
+                    <status>GET http://zlsh.arch.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="zlsh.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacAALcqEM7_D8hte7_Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="212" field="content-length"/>
+                        <header content="timeout=10, max=488" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:45:07 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/status was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to zlsh.arch.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

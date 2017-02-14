@@ -1,0 +1,2122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480667226" start-long="Fri Dec 02 03:27:06 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.iers.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/23_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="HTML comment contains HTML code" plugin="html_comments" severity="Information" url="http://www.iers.tsinghua.edu.cn/" var="None">
+        <description>A comment with the string &quot;&lt;DIV id=img1 style=&quot;Z-INDEX: 100; LEFT: &quot; was found in: &quot;http://www.iers.tsinghua.edu.cn/&quot;. This could be interesting.</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="15200" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Mon, 03 Oct 2016 09:36:34 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;57f226a2-3b60&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:27:10 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;!-- IE8 兼容 --&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EmulateIE7&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;/public/icon/favicon.ico&quot; /&gt;
+                                &lt;title&gt;清华大学道德与宗教研究院&lt;/title&gt;
+&lt;link href=&quot;/publish/iers/css/common.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;link href=&quot;/publish/iers/css/grid.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script src=&quot;/publish/iers/js/jquery-1.4.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/publish/iers/js/grayscale.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/publish/iers/js/swfobject_modified.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+/*
+*env
+*summaryStr:String 信息简介
+*lengTh:int 截取的长度
+*/
+ function cutSummary(summaryStr,lengTh){
+   if(summaryStr.length&gt;lengTh){
+     summaryStr=summaryStr.substring(0,lengTh)+&quot;...&quot;;
+   }
+   document.write(summaryStr);
+ }
+/*
+*jQuery:所有外域链接在新窗口打开
+*/
+$(document).ready(function() {
+ $(&quot;a[href*='http://']:not([href*='&quot;+location.hostname+&quot;']),[href*='https://']:not([href*='&quot;+location.hostname+&quot;'])&quot;)
+ .addClass(&quot;external&quot;)
+ .attr(&quot;target&quot;,&quot;_blank&quot;)
+});
+&lt;/script&gt;&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/global.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/publish/iers/css/mt_dropdown.css&quot; /&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/mt_dropdownc.min.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/mt_dropdown_initialize.min.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;script language=&quot;JavaScript&quot;&gt;
+&lt;!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+$(document).ready(function(){
+  init();
+});
+//--&gt;
+&lt;/script&gt;&lt;link href=&quot;/publish/iers/css/style_index.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;!-- 导入全局模板 --&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/global_index.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;!-- 整体区域开始 --&gt;
+ &lt;div class=&quot;wrapper nomalwclassth auto&quot;&gt;
+    
+     &lt;!-- 页头区域开始 --&gt;
+&lt;!-- 页头区域开始 --&gt;
+  &lt;div class=&quot;header nomalwidth auto&quot;&gt;
+     
+       &lt;div class=&quot;logo_text&quot;&gt;
+         &lt;p class=&quot;cn&quot;&gt;&amp;nbsp;         &lt;p class=&quot;en&quot;&gt;&amp;nbsp;        &lt;/div&gt;
+                &lt;div class=&quot;hot_links&quot;&gt;&lt;a href=&quot;/publish/iersen/index.html&quot;&gt;English&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; width=&quot;960&quot; height=&quot;126&quot; src=&quot;/publish/iers/1280/20151114033055779281642/011.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;!-- 页头区域结束 --&gt;     &lt;!-- 页头区域结束 --&gt;
+        
+        &lt;!-- 导航区域开始 --&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot;&gt;
+function initMenuData(){
+if (mtDropDown.isSupported()) {
+var ms = new mtDropDownSet(mtDropDown.direction.down, 0, 0, mtDropDown.reference.bottomLeft);
+var menu1258 = ms.addMenu(document.getElementById(&quot;menu_1258&quot;));
+menu1258.addItem(&quot;政治伦理暨全球伦理研究中心&quot;,&quot;/publish/iers/1268/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;中外伦理学比较研究中心&quot;,&quot;/publish/iers/1269/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;性别与伦理研究中心&quot;,&quot;/publish/iers/1270/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;应用伦理学研究中心&quot;,&quot;/publish/iers/1271/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;儒学研究中心&quot;,&quot;/publish/iers/1272/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;佛学研究中心&quot;,&quot;/publish/iers/1273/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;古希腊罗马哲学与宗教研究中心&quot;,&quot;/publish/iers/1274/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;宗教伦理研究中心&quot;,&quot;/publish/iers/1275/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;景教与中国宗教研究中心&quot;,&quot;/publish/iers/1276/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;中法哲学与道德文化研究中心&quot;,&quot;/publish/iers/1459/index.html&quot;,&quot;&quot;);
+        var menu1257 = ms.addMenu(document.getElementById(&quot;menu_1257&quot;));
+menu1257.addItem(&quot;序言&quot;,&quot;/publish/iers/1458/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;院长致辞&quot;,&quot;/publish/iers/1265/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;机构设置&quot;,&quot;/publish/iers/1266/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;联系我们&quot;,&quot;/publish/iers/1267/index.html&quot;,&quot;&quot;);
+        
+
+mtDropDown.renderAll();
+}
+} 
+&lt;/SCRIPT&gt;
+&lt;!-- nav start --&gt;
+        &lt;div class=&quot;nav nomalwidth auto&quot;&gt;
+         &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/index.html&quot; title=&quot;清华大学道德与宗教研究院&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1257&quot;  class=&quot;first&quot;&gt;&lt;a href=&quot;/publish/iers/1265/index.html&quot; title=&quot;研究院简介&quot;&gt;研究院简介&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1258&quot;&gt;&lt;a href=&quot;/publish/iers/1258/index.html&quot; title=&quot;各中心简介&quot;&gt;各中心简介&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1259&quot;&gt;&lt;a href=&quot;/publish/iers/1259/index.html&quot; title=&quot;最新公告&quot;&gt;最新公告&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1260&quot;&gt;&lt;a href=&quot;/publish/iers/1260/index.html&quot; title=&quot;新闻动态&quot;&gt;新闻动态&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1261&quot;&gt;&lt;a href=&quot;/publish/iers/1261/index.html&quot; title=&quot;合作与交流&quot;&gt;合作与交流&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1262&quot;&gt;&lt;a href=&quot;/publish/iers/1262/index.html&quot; title=&quot;学术出版&quot;&gt;学术出版&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1263&quot;&gt;&lt;a href=&quot;/publish/iers/1263/index.html&quot; title=&quot;学术资源&quot;&gt;学术资源&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1264&quot;&gt;&lt;a href=&quot;/publish/iers/1264/index.html&quot; title=&quot;联系我们&quot; class=&quot;clear&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+        &lt;/div&gt;
+  &lt;script language=&quot;JavaScript&quot;&gt;initMenuData();&lt;/script&gt;
+        &lt;!-- nav end --&gt;        &lt;!-- 导航区域结束 --&gt;
+        
+        &lt;!-- 中部区域开始 --&gt;
+        &lt;div class=&quot;content auto&quot;&gt;
+         
+            &lt;!-- 左侧开始 --&gt;
+            &lt;div class=&quot;c_left&quot;&gt;
+             
+                &lt;!-- 快速链接区域开始 --&gt;
+                &lt;div class=&quot;menu&quot;&gt;
+                 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1268/index.html&quot; title=&quot;政治伦理暨全球伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;政治伦理暨全球伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1269/index.html&quot; title=&quot;中外伦理学比较研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;中外伦理学比较研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1270/index.html&quot; title=&quot;性别与伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;性别与伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1271/index.html&quot; title=&quot;应用伦理学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;应用伦理学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1272/index.html&quot; title=&quot;儒学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;儒学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1273/index.html&quot; title=&quot;佛学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;佛学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1274/index.html&quot; title=&quot;古希腊罗马哲学与宗教研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;古希腊罗马哲学与宗教研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1275/index.html&quot; title=&quot;宗教伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;宗教伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1276/index.html&quot; title=&quot;景教与中国宗教研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;景教与中国宗教研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1258/2016/20160526064111930145854/20160526064111930145854_.html&quot; title=&quot;中法哲学与道德文化研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;中法哲学与道德文化研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                                      &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;!-- 快速链接区域结束 --&gt;
+                &lt;!-- 搜索区域开始 --&gt;
+                &lt;form id=&quot;searchForm&quot; name=&quot;form1&quot; method=&quot;post&quot; action=&quot;#&quot; target=&quot;_blank&quot;&gt;
+&lt;input type=&quot;hidden&quot; id=&quot;searchVpath&quot; name=&quot;vpath&quot; value=&quot;&quot;/&gt;
+&lt;div class=&quot;search auto&quot;&gt;&lt;p class=&quot;left&quot;&gt;&lt;input name=&quot;Q&quot; type=&quot;text&quot; /&gt;&lt;/p&gt;&lt;p class=&quot;right&quot;&gt;&lt;a href=&quot;javascript:document.form1.submit();&quot; title=&quot;搜索&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/form&gt;                &lt;!-- 搜索区域结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 左侧结束 --&gt;
+            
+            &lt;!-- 中部开始 --&gt;
+            &lt;div class=&quot;c_middle&quot;&gt;
+             
+                &lt;!-- 图片新闻开始 --&gt;
+            &lt;div class=&quot;pic_news&quot;&gt;
+                 &lt;div class=&quot;pic_box&quot;&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/publish/iers/js/effect.image.1.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function(){
+ //参数列表(Selector , {width:value , height:value , fontsize:value , time:value})
+ new dk_slideplayer(&quot;#w22&quot;,{width:&quot;525px&quot;,height:&quot;349px&quot;,fontsize:&quot;12px&quot;,time:&quot;3000&quot;});
+});
+&lt;/script&gt;
+&lt;ul id=&quot;w22&quot;&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;斯里兰卡总理夫人访问我院性别与伦理研究中心&quot; href=&quot;/publish/iers/1277/2016/20160411160503439636739/20160411160503439636739_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20160411160503439636739/20160411161623656851441.jpg&quot; alt=&quot;斯里兰卡总理夫人访问我院性别与伦理研究中心&quot; /&gt;
+        &lt;p style=&quot;color:#000000;&quot;&gt;斯里兰卡总理夫人访问我院性别与伦理研究中心&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;万俊人院长主持揭牌仪式&quot; href=&quot;/publish/iers/1277/2015/20151213200034043166214/20151213200034043166214_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213200034043166214/20151213200047070921210.jpg&quot; alt=&quot;万俊人院长主持揭牌仪式&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;万俊人院长主持揭牌仪式&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;邱勇校长在揭牌典礼上致辞&quot; href=&quot;/publish/iers/1277/2015/20151213195908845435370/20151213195908845435370_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213195908845435370/20151213195921986501369.jpg&quot; alt=&quot;邱勇校长在揭牌典礼上致辞&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;邱勇校长在揭牌典礼上致辞&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&quot; href=&quot;/publish/iers/1277/2015/20151213195228148741172/20151213195228148741172_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213195228148741172/20151213195321219356703.jpg&quot; alt=&quot;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;研究院揭牌典礼嘉宾合影&quot; href=&quot;/publish/iers/1277/2015/20151213194620695907278/20151213194620695907278_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213194620695907278/20151213194910602924666.jpg&quot; alt=&quot;研究院揭牌典礼嘉宾合影&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;研究院揭牌典礼嘉宾合影&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+              &lt;/div&gt;
+                &lt;!-- 图片新闻结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 中部结束 --&gt;
+            
+            &lt;!-- 右侧开始 --&gt;
+            &lt;div class=&quot;c_right&quot;&gt;
+             
+                &lt;!-- 院系要闻开始 --&gt;
+                &lt;div class=&quot;info_r_01&quot;&gt;
+                 &lt;h3&gt;
+&lt;span&gt;
+新闻动态
+&lt;/span&gt;&lt;/h3&gt;
+                    &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002192057780520679/20161002192057780520679_.html&quot; title=&quot;&quot; style=&quot;color:#990000;&quot;&gt;牛津大学简隆德教授在研究院发表演讲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160621162056254860984/20160621162056254860984_.html&quot; title=&quot;&quot; style=&quot;color:#990033;&quot;&gt;追问正义:万俊人院长演讲(“人文清华”讲坛第四场)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160517171705169763640/20160517171705169763640_.html&quot; title=&quot;&quot; style=&quot;color:#000033;&quot;&gt;哈佛大学门迪斯教授在研究院发表演讲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002192953881579195/20161002192953881579195_.html&quot; title=&quot;&quot; style=&quot;color:#000000;&quot;&gt;唐文明教授做客清华文新论坛 解读康有为孔教思想&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160621171127397147868/20160621171127397147868_.html&quot; title=&quot;&quot; style=&quot;color:#000066;&quot;&gt;万俊人院长（人民日报）：拓宽历史和文化的视界&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002190833443175899/20161002190833443175899_.html&quot; title=&quot;&quot; style=&quot;color:#660000;&quot;&gt;希腊珍稀图书展：希腊语言 | 西方文明之根&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2015/20151213190048659149860/20151213190048659149860_.html&quot; title=&quot;&quot; style=&quot;color:#990000;&quot;&gt;清华大学道德与宗教研究院揭牌典礼暨全球化视域下的道...&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;!-- 院系要闻结束 --&gt;
+                                
+            &lt;/div&gt;
+            &lt;!-- 右侧结束 --&gt;
+            
+            &lt;!-- 右侧下部开始 --&gt;
+            &lt;div class=&quot;c_bottom&quot;&gt;
+                
+                &lt;!-- 院系公告开始 --&gt;
+                &lt;div class=&quot;box_01&quot;&gt;
+                    &lt;h3&gt;&lt;span&gt;
+最新公告&lt;/span&gt;&lt;/h3&gt;
+                 &lt;/div&gt;
+                &lt;!-- 院系公告结束 --&gt;
+                
+                &lt;!-- 相关链接开始 --&gt;
+                &lt;div class=&quot;box_02&quot;&gt;
+                    &lt;h3&gt;&lt;span class=&quot;left&quot;&gt;
+链接&lt;/span&gt;&lt;p class=&quot;right&quot;&gt;
+&lt;a href=&quot;/publish/iers/1278/index.html&quot;&gt;其他 &amp;raquo; &amp;raquo;&lt;/a&gt;&lt;/p&gt;&lt;/h3&gt;
+                    &lt;div&gt;
+&lt;a href=&quot;http://www.cn-e.cn/index.html&quot; title=&quot;中国伦理学会&quot;&gt;&lt;img src=&quot;/publish/iers/1278/2016/20160411025131581349350/20160411025555530284914.png&quot; width=&quot;129&quot; height=&quot;44&quot; /&gt;&lt;/a&gt;
+                  &lt;a href=&quot;http://www.chinabuddhism.com.cn/&quot; title=&quot;中国佛教协会&quot;&gt;&lt;img src=&quot;/publish/iers/1278/2016/20160411202158684765588/20160411202223925255089.gif&quot; width=&quot;129&quot; height=&quot;44&quot; /&gt;&lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- 相关链接结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 右侧下部结束 --&gt;
+                                       
+       &lt;/div&gt;
+        &lt;!-- 中部区域结束 --&gt;
+        
+        &lt;!-- 页脚区域开始 --&gt;
+        &lt;div class=&quot;footer nomalwidth auto&quot;&gt;&lt;p&gt;Copyright &amp;copy; 2010 清华大学道德与宗教研究院 All Rights Reserved. 地址：北京市海淀区清华园1号 100084&lt;/p&gt;&lt;/div&gt;
+        &lt;!-- 页脚区域结束 --&gt;
+&lt;!-- &lt;DIV id=img1 style=&quot;Z-INDEX: 100; LEFT: 2px; WIDTH: 150px; POSITION: absolute; TOP: 43px; HEIGHT: 100px;
+ visibility: visible;&quot;&gt;&lt;a href=&quot;http://zt.h2o-china.com/meeting/2014/qinghua_hjlt/ &quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/publish/iers/images/picpc.gif&quot; width=&quot;150&quot; height=&quot;100&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/DIV&gt;
+&lt;SCRIPT src=&quot;/publish/iers/js/jspc.js&quot;&gt;&lt;/SCRIPT&gt; --&gt;
+&lt;/div&gt;
+    &lt;!-- 整体区域结束 --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[99]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;nginx/1.9.0&quot;.</description>
+        <http-transactions>
+            <http-transaction id="99">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="15200" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Mon, 03 Oct 2016 09:36:34 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;57f226a2-3b60&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:27:10 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;!-- IE8 兼容 --&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EmulateIE7&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;/public/icon/favicon.ico&quot; /&gt;
+                                &lt;title&gt;清华大学道德与宗教研究院&lt;/title&gt;
+&lt;link href=&quot;/publish/iers/css/common.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;link href=&quot;/publish/iers/css/grid.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script src=&quot;/publish/iers/js/jquery-1.4.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/publish/iers/js/grayscale.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/publish/iers/js/swfobject_modified.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+/*
+*env
+*summaryStr:String 信息简介
+*lengTh:int 截取的长度
+*/
+ function cutSummary(summaryStr,lengTh){
+   if(summaryStr.length&gt;lengTh){
+     summaryStr=summaryStr.substring(0,lengTh)+&quot;...&quot;;
+   }
+   document.write(summaryStr);
+ }
+/*
+*jQuery:所有外域链接在新窗口打开
+*/
+$(document).ready(function() {
+ $(&quot;a[href*='http://']:not([href*='&quot;+location.hostname+&quot;']),[href*='https://']:not([href*='&quot;+location.hostname+&quot;'])&quot;)
+ .addClass(&quot;external&quot;)
+ .attr(&quot;target&quot;,&quot;_blank&quot;)
+});
+&lt;/script&gt;&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/global.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/publish/iers/css/mt_dropdown.css&quot; /&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/mt_dropdownc.min.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/mt_dropdown_initialize.min.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;script language=&quot;JavaScript&quot;&gt;
+&lt;!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+$(document).ready(function(){
+  init();
+});
+//--&gt;
+&lt;/script&gt;&lt;link href=&quot;/publish/iers/css/style_index.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;!-- 导入全局模板 --&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/global_index.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;!-- 整体区域开始 --&gt;
+ &lt;div class=&quot;wrapper nomalwclassth auto&quot;&gt;
+    
+     &lt;!-- 页头区域开始 --&gt;
+&lt;!-- 页头区域开始 --&gt;
+  &lt;div class=&quot;header nomalwidth auto&quot;&gt;
+     
+       &lt;div class=&quot;logo_text&quot;&gt;
+         &lt;p class=&quot;cn&quot;&gt;&amp;nbsp;         &lt;p class=&quot;en&quot;&gt;&amp;nbsp;        &lt;/div&gt;
+                &lt;div class=&quot;hot_links&quot;&gt;&lt;a href=&quot;/publish/iersen/index.html&quot;&gt;English&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; width=&quot;960&quot; height=&quot;126&quot; src=&quot;/publish/iers/1280/20151114033055779281642/011.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;!-- 页头区域结束 --&gt;     &lt;!-- 页头区域结束 --&gt;
+        
+        &lt;!-- 导航区域开始 --&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot;&gt;
+function initMenuData(){
+if (mtDropDown.isSupported()) {
+var ms = new mtDropDownSet(mtDropDown.direction.down, 0, 0, mtDropDown.reference.bottomLeft);
+var menu1258 = ms.addMenu(document.getElementById(&quot;menu_1258&quot;));
+menu1258.addItem(&quot;政治伦理暨全球伦理研究中心&quot;,&quot;/publish/iers/1268/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;中外伦理学比较研究中心&quot;,&quot;/publish/iers/1269/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;性别与伦理研究中心&quot;,&quot;/publish/iers/1270/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;应用伦理学研究中心&quot;,&quot;/publish/iers/1271/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;儒学研究中心&quot;,&quot;/publish/iers/1272/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;佛学研究中心&quot;,&quot;/publish/iers/1273/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;古希腊罗马哲学与宗教研究中心&quot;,&quot;/publish/iers/1274/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;宗教伦理研究中心&quot;,&quot;/publish/iers/1275/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;景教与中国宗教研究中心&quot;,&quot;/publish/iers/1276/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;中法哲学与道德文化研究中心&quot;,&quot;/publish/iers/1459/index.html&quot;,&quot;&quot;);
+        var menu1257 = ms.addMenu(document.getElementById(&quot;menu_1257&quot;));
+menu1257.addItem(&quot;序言&quot;,&quot;/publish/iers/1458/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;院长致辞&quot;,&quot;/publish/iers/1265/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;机构设置&quot;,&quot;/publish/iers/1266/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;联系我们&quot;,&quot;/publish/iers/1267/index.html&quot;,&quot;&quot;);
+        
+
+mtDropDown.renderAll();
+}
+} 
+&lt;/SCRIPT&gt;
+&lt;!-- nav start --&gt;
+        &lt;div class=&quot;nav nomalwidth auto&quot;&gt;
+         &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/index.html&quot; title=&quot;清华大学道德与宗教研究院&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1257&quot;  class=&quot;first&quot;&gt;&lt;a href=&quot;/publish/iers/1265/index.html&quot; title=&quot;研究院简介&quot;&gt;研究院简介&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1258&quot;&gt;&lt;a href=&quot;/publish/iers/1258/index.html&quot; title=&quot;各中心简介&quot;&gt;各中心简介&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1259&quot;&gt;&lt;a href=&quot;/publish/iers/1259/index.html&quot; title=&quot;最新公告&quot;&gt;最新公告&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1260&quot;&gt;&lt;a href=&quot;/publish/iers/1260/index.html&quot; title=&quot;新闻动态&quot;&gt;新闻动态&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1261&quot;&gt;&lt;a href=&quot;/publish/iers/1261/index.html&quot; title=&quot;合作与交流&quot;&gt;合作与交流&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1262&quot;&gt;&lt;a href=&quot;/publish/iers/1262/index.html&quot; title=&quot;学术出版&quot;&gt;学术出版&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1263&quot;&gt;&lt;a href=&quot;/publish/iers/1263/index.html&quot; title=&quot;学术资源&quot;&gt;学术资源&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1264&quot;&gt;&lt;a href=&quot;/publish/iers/1264/index.html&quot; title=&quot;联系我们&quot; class=&quot;clear&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+        &lt;/div&gt;
+  &lt;script language=&quot;JavaScript&quot;&gt;initMenuData();&lt;/script&gt;
+        &lt;!-- nav end --&gt;        &lt;!-- 导航区域结束 --&gt;
+        
+        &lt;!-- 中部区域开始 --&gt;
+        &lt;div class=&quot;content auto&quot;&gt;
+         
+            &lt;!-- 左侧开始 --&gt;
+            &lt;div class=&quot;c_left&quot;&gt;
+             
+                &lt;!-- 快速链接区域开始 --&gt;
+                &lt;div class=&quot;menu&quot;&gt;
+                 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1268/index.html&quot; title=&quot;政治伦理暨全球伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;政治伦理暨全球伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1269/index.html&quot; title=&quot;中外伦理学比较研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;中外伦理学比较研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1270/index.html&quot; title=&quot;性别与伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;性别与伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1271/index.html&quot; title=&quot;应用伦理学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;应用伦理学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1272/index.html&quot; title=&quot;儒学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;儒学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1273/index.html&quot; title=&quot;佛学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;佛学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1274/index.html&quot; title=&quot;古希腊罗马哲学与宗教研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;古希腊罗马哲学与宗教研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1275/index.html&quot; title=&quot;宗教伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;宗教伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1276/index.html&quot; title=&quot;景教与中国宗教研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;景教与中国宗教研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1258/2016/20160526064111930145854/20160526064111930145854_.html&quot; title=&quot;中法哲学与道德文化研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;中法哲学与道德文化研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                                      &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;!-- 快速链接区域结束 --&gt;
+                &lt;!-- 搜索区域开始 --&gt;
+                &lt;form id=&quot;searchForm&quot; name=&quot;form1&quot; method=&quot;post&quot; action=&quot;#&quot; target=&quot;_blank&quot;&gt;
+&lt;input type=&quot;hidden&quot; id=&quot;searchVpath&quot; name=&quot;vpath&quot; value=&quot;&quot;/&gt;
+&lt;div class=&quot;search auto&quot;&gt;&lt;p class=&quot;left&quot;&gt;&lt;input name=&quot;Q&quot; type=&quot;text&quot; /&gt;&lt;/p&gt;&lt;p class=&quot;right&quot;&gt;&lt;a href=&quot;javascript:document.form1.submit();&quot; title=&quot;搜索&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/form&gt;                &lt;!-- 搜索区域结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 左侧结束 --&gt;
+            
+            &lt;!-- 中部开始 --&gt;
+            &lt;div class=&quot;c_middle&quot;&gt;
+             
+                &lt;!-- 图片新闻开始 --&gt;
+            &lt;div class=&quot;pic_news&quot;&gt;
+                 &lt;div class=&quot;pic_box&quot;&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/publish/iers/js/effect.image.1.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function(){
+ //参数列表(Selector , {width:value , height:value , fontsize:value , time:value})
+ new dk_slideplayer(&quot;#w22&quot;,{width:&quot;525px&quot;,height:&quot;349px&quot;,fontsize:&quot;12px&quot;,time:&quot;3000&quot;});
+});
+&lt;/script&gt;
+&lt;ul id=&quot;w22&quot;&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;斯里兰卡总理夫人访问我院性别与伦理研究中心&quot; href=&quot;/publish/iers/1277/2016/20160411160503439636739/20160411160503439636739_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20160411160503439636739/20160411161623656851441.jpg&quot; alt=&quot;斯里兰卡总理夫人访问我院性别与伦理研究中心&quot; /&gt;
+        &lt;p style=&quot;color:#000000;&quot;&gt;斯里兰卡总理夫人访问我院性别与伦理研究中心&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;万俊人院长主持揭牌仪式&quot; href=&quot;/publish/iers/1277/2015/20151213200034043166214/20151213200034043166214_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213200034043166214/20151213200047070921210.jpg&quot; alt=&quot;万俊人院长主持揭牌仪式&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;万俊人院长主持揭牌仪式&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;邱勇校长在揭牌典礼上致辞&quot; href=&quot;/publish/iers/1277/2015/20151213195908845435370/20151213195908845435370_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213195908845435370/20151213195921986501369.jpg&quot; alt=&quot;邱勇校长在揭牌典礼上致辞&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;邱勇校长在揭牌典礼上致辞&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&quot; href=&quot;/publish/iers/1277/2015/20151213195228148741172/20151213195228148741172_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213195228148741172/20151213195321219356703.jpg&quot; alt=&quot;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;研究院揭牌典礼嘉宾合影&quot; href=&quot;/publish/iers/1277/2015/20151213194620695907278/20151213194620695907278_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213194620695907278/20151213194910602924666.jpg&quot; alt=&quot;研究院揭牌典礼嘉宾合影&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;研究院揭牌典礼嘉宾合影&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+              &lt;/div&gt;
+                &lt;!-- 图片新闻结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 中部结束 --&gt;
+            
+            &lt;!-- 右侧开始 --&gt;
+            &lt;div class=&quot;c_right&quot;&gt;
+             
+                &lt;!-- 院系要闻开始 --&gt;
+                &lt;div class=&quot;info_r_01&quot;&gt;
+                 &lt;h3&gt;
+&lt;span&gt;
+新闻动态
+&lt;/span&gt;&lt;/h3&gt;
+                    &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002192057780520679/20161002192057780520679_.html&quot; title=&quot;&quot; style=&quot;color:#990000;&quot;&gt;牛津大学简隆德教授在研究院发表演讲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160621162056254860984/20160621162056254860984_.html&quot; title=&quot;&quot; style=&quot;color:#990033;&quot;&gt;追问正义:万俊人院长演讲(“人文清华”讲坛第四场)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160517171705169763640/20160517171705169763640_.html&quot; title=&quot;&quot; style=&quot;color:#000033;&quot;&gt;哈佛大学门迪斯教授在研究院发表演讲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002192953881579195/20161002192953881579195_.html&quot; title=&quot;&quot; style=&quot;color:#000000;&quot;&gt;唐文明教授做客清华文新论坛 解读康有为孔教思想&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160621171127397147868/20160621171127397147868_.html&quot; title=&quot;&quot; style=&quot;color:#000066;&quot;&gt;万俊人院长（人民日报）：拓宽历史和文化的视界&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002190833443175899/20161002190833443175899_.html&quot; title=&quot;&quot; style=&quot;color:#660000;&quot;&gt;希腊珍稀图书展：希腊语言 | 西方文明之根&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2015/20151213190048659149860/20151213190048659149860_.html&quot; title=&quot;&quot; style=&quot;color:#990000;&quot;&gt;清华大学道德与宗教研究院揭牌典礼暨全球化视域下的道...&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;!-- 院系要闻结束 --&gt;
+                                
+            &lt;/div&gt;
+            &lt;!-- 右侧结束 --&gt;
+            
+            &lt;!-- 右侧下部开始 --&gt;
+            &lt;div class=&quot;c_bottom&quot;&gt;
+                
+                &lt;!-- 院系公告开始 --&gt;
+                &lt;div class=&quot;box_01&quot;&gt;
+                    &lt;h3&gt;&lt;span&gt;
+最新公告&lt;/span&gt;&lt;/h3&gt;
+                 &lt;/div&gt;
+                &lt;!-- 院系公告结束 --&gt;
+                
+                &lt;!-- 相关链接开始 --&gt;
+                &lt;div class=&quot;box_02&quot;&gt;
+                    &lt;h3&gt;&lt;span class=&quot;left&quot;&gt;
+链接&lt;/span&gt;&lt;p class=&quot;right&quot;&gt;
+&lt;a href=&quot;/publish/iers/1278/index.html&quot;&gt;其他 &amp;raquo; &amp;raquo;&lt;/a&gt;&lt;/p&gt;&lt;/h3&gt;
+                    &lt;div&gt;
+&lt;a href=&quot;http://www.cn-e.cn/index.html&quot; title=&quot;中国伦理学会&quot;&gt;&lt;img src=&quot;/publish/iers/1278/2016/20160411025131581349350/20160411025555530284914.png&quot; width=&quot;129&quot; height=&quot;44&quot; /&gt;&lt;/a&gt;
+                  &lt;a href=&quot;http://www.chinabuddhism.com.cn/&quot; title=&quot;中国佛教协会&quot;&gt;&lt;img src=&quot;/publish/iers/1278/2016/20160411202158684765588/20160411202223925255089.gif&quot; width=&quot;129&quot; height=&quot;44&quot; /&gt;&lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- 相关链接结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 右侧下部结束 --&gt;
+                                       
+       &lt;/div&gt;
+        &lt;!-- 中部区域结束 --&gt;
+        
+        &lt;!-- 页脚区域开始 --&gt;
+        &lt;div class=&quot;footer nomalwidth auto&quot;&gt;&lt;p&gt;Copyright &amp;copy; 2010 清华大学道德与宗教研究院 All Rights Reserved. 地址：北京市海淀区清华园1号 100084&lt;/p&gt;&lt;/div&gt;
+        &lt;!-- 页脚区域结束 --&gt;
+&lt;!-- &lt;DIV id=img1 style=&quot;Z-INDEX: 100; LEFT: 2px; WIDTH: 150px; POSITION: absolute; TOP: 43px; HEIGHT: 100px;
+ visibility: visible;&quot;&gt;&lt;a href=&quot;http://zt.h2o-china.com/meeting/2014/qinghua_hjlt/ &quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/publish/iers/images/picpc.gif&quot; width=&quot;150&quot; height=&quot;100&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/DIV&gt;
+&lt;SCRIPT src=&quot;/publish/iers/js/jspc.js&quot;&gt;&lt;/SCRIPT&gt; --&gt;
+&lt;/div&gt;
+    &lt;!-- 整体区域结束 --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[194]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://iers.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://iers.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://www.iers.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="194">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="47" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Thu, 03 Nov 2011 04:48:31 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;4eb21d1f-2f&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:27:14 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;header&gt;&lt;/header&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[36, 119, 186, 192]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://www.iers.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://www.iers.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: *, GET, HEAD</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="36">
+                <http-request>
+                    <status>OPTIONS http://www.iers.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Not Allowed</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:12 GMT" field="date"/>
+                        <header content="172" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="119">
+                <http-request>
+                    <status>HEAD http://www.iers.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="15200" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Mon, 03 Oct 2016 09:36:34 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;57f226a2-3b60&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:27:13 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="15200" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Mon, 03 Oct 2016 09:36:34 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;57f226a2-3b60&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:27:13 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;!-- IE8 兼容 --&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EmulateIE7&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;/public/icon/favicon.ico&quot; /&gt;
+                                &lt;title&gt;清华大学道德与宗教研究院&lt;/title&gt;
+&lt;link href=&quot;/publish/iers/css/common.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;link href=&quot;/publish/iers/css/grid.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script src=&quot;/publish/iers/js/jquery-1.4.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/publish/iers/js/grayscale.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/publish/iers/js/swfobject_modified.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+/*
+*env
+*summaryStr:String 信息简介
+*lengTh:int 截取的长度
+*/
+ function cutSummary(summaryStr,lengTh){
+   if(summaryStr.length&gt;lengTh){
+     summaryStr=summaryStr.substring(0,lengTh)+&quot;...&quot;;
+   }
+   document.write(summaryStr);
+ }
+/*
+*jQuery:所有外域链接在新窗口打开
+*/
+$(document).ready(function() {
+ $(&quot;a[href*='http://']:not([href*='&quot;+location.hostname+&quot;']),[href*='https://']:not([href*='&quot;+location.hostname+&quot;'])&quot;)
+ .addClass(&quot;external&quot;)
+ .attr(&quot;target&quot;,&quot;_blank&quot;)
+});
+&lt;/script&gt;&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/global.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/publish/iers/css/mt_dropdown.css&quot; /&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/mt_dropdownc.min.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/mt_dropdown_initialize.min.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;script language=&quot;JavaScript&quot;&gt;
+&lt;!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+$(document).ready(function(){
+  init();
+});
+//--&gt;
+&lt;/script&gt;&lt;link href=&quot;/publish/iers/css/style_index.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;!-- 导入全局模板 --&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/global_index.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;!-- 整体区域开始 --&gt;
+ &lt;div class=&quot;wrapper nomalwclassth auto&quot;&gt;
+    
+     &lt;!-- 页头区域开始 --&gt;
+&lt;!-- 页头区域开始 --&gt;
+  &lt;div class=&quot;header nomalwidth auto&quot;&gt;
+     
+       &lt;div class=&quot;logo_text&quot;&gt;
+         &lt;p class=&quot;cn&quot;&gt;&amp;nbsp;         &lt;p class=&quot;en&quot;&gt;&amp;nbsp;        &lt;/div&gt;
+                &lt;div class=&quot;hot_links&quot;&gt;&lt;a href=&quot;/publish/iersen/index.html&quot;&gt;English&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; width=&quot;960&quot; height=&quot;126&quot; src=&quot;/publish/iers/1280/20151114033055779281642/011.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;!-- 页头区域结束 --&gt;     &lt;!-- 页头区域结束 --&gt;
+        
+        &lt;!-- 导航区域开始 --&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot;&gt;
+function initMenuData(){
+if (mtDropDown.isSupported()) {
+var ms = new mtDropDownSet(mtDropDown.direction.down, 0, 0, mtDropDown.reference.bottomLeft);
+var menu1258 = ms.addMenu(document.getElementById(&quot;menu_1258&quot;));
+menu1258.addItem(&quot;政治伦理暨全球伦理研究中心&quot;,&quot;/publish/iers/1268/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;中外伦理学比较研究中心&quot;,&quot;/publish/iers/1269/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;性别与伦理研究中心&quot;,&quot;/publish/iers/1270/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;应用伦理学研究中心&quot;,&quot;/publish/iers/1271/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;儒学研究中心&quot;,&quot;/publish/iers/1272/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;佛学研究中心&quot;,&quot;/publish/iers/1273/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;古希腊罗马哲学与宗教研究中心&quot;,&quot;/publish/iers/1274/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;宗教伦理研究中心&quot;,&quot;/publish/iers/1275/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;景教与中国宗教研究中心&quot;,&quot;/publish/iers/1276/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;中法哲学与道德文化研究中心&quot;,&quot;/publish/iers/1459/index.html&quot;,&quot;&quot;);
+        var menu1257 = ms.addMenu(document.getElementById(&quot;menu_1257&quot;));
+menu1257.addItem(&quot;序言&quot;,&quot;/publish/iers/1458/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;院长致辞&quot;,&quot;/publish/iers/1265/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;机构设置&quot;,&quot;/publish/iers/1266/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;联系我们&quot;,&quot;/publish/iers/1267/index.html&quot;,&quot;&quot;);
+        
+
+mtDropDown.renderAll();
+}
+} 
+&lt;/SCRIPT&gt;
+&lt;!-- nav start --&gt;
+        &lt;div class=&quot;nav nomalwidth auto&quot;&gt;
+         &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/index.html&quot; title=&quot;清华大学道德与宗教研究院&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1257&quot;  class=&quot;first&quot;&gt;&lt;a href=&quot;/publish/iers/1265/index.html&quot; title=&quot;研究院简介&quot;&gt;研究院简介&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1258&quot;&gt;&lt;a href=&quot;/publish/iers/1258/index.html&quot; title=&quot;各中心简介&quot;&gt;各中心简介&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1259&quot;&gt;&lt;a href=&quot;/publish/iers/1259/index.html&quot; title=&quot;最新公告&quot;&gt;最新公告&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1260&quot;&gt;&lt;a href=&quot;/publish/iers/1260/index.html&quot; title=&quot;新闻动态&quot;&gt;新闻动态&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1261&quot;&gt;&lt;a href=&quot;/publish/iers/1261/index.html&quot; title=&quot;合作与交流&quot;&gt;合作与交流&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1262&quot;&gt;&lt;a href=&quot;/publish/iers/1262/index.html&quot; title=&quot;学术出版&quot;&gt;学术出版&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1263&quot;&gt;&lt;a href=&quot;/publish/iers/1263/index.html&quot; title=&quot;学术资源&quot;&gt;学术资源&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1264&quot;&gt;&lt;a href=&quot;/publish/iers/1264/index.html&quot; title=&quot;联系我们&quot; class=&quot;clear&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+        &lt;/div&gt;
+  &lt;script language=&quot;JavaScript&quot;&gt;initMenuData();&lt;/script&gt;
+        &lt;!-- nav end --&gt;        &lt;!-- 导航区域结束 --&gt;
+        
+        &lt;!-- 中部区域开始 --&gt;
+        &lt;div class=&quot;content auto&quot;&gt;
+         
+            &lt;!-- 左侧开始 --&gt;
+            &lt;div class=&quot;c_left&quot;&gt;
+             
+                &lt;!-- 快速链接区域开始 --&gt;
+                &lt;div class=&quot;menu&quot;&gt;
+                 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1268/index.html&quot; title=&quot;政治伦理暨全球伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;政治伦理暨全球伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1269/index.html&quot; title=&quot;中外伦理学比较研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;中外伦理学比较研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1270/index.html&quot; title=&quot;性别与伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;性别与伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1271/index.html&quot; title=&quot;应用伦理学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;应用伦理学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1272/index.html&quot; title=&quot;儒学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;儒学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1273/index.html&quot; title=&quot;佛学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;佛学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1274/index.html&quot; title=&quot;古希腊罗马哲学与宗教研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;古希腊罗马哲学与宗教研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1275/index.html&quot; title=&quot;宗教伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;宗教伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1276/index.html&quot; title=&quot;景教与中国宗教研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;景教与中国宗教研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1258/2016/20160526064111930145854/20160526064111930145854_.html&quot; title=&quot;中法哲学与道德文化研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;中法哲学与道德文化研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                                      &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;!-- 快速链接区域结束 --&gt;
+                &lt;!-- 搜索区域开始 --&gt;
+                &lt;form id=&quot;searchForm&quot; name=&quot;form1&quot; method=&quot;post&quot; action=&quot;#&quot; target=&quot;_blank&quot;&gt;
+&lt;input type=&quot;hidden&quot; id=&quot;searchVpath&quot; name=&quot;vpath&quot; value=&quot;&quot;/&gt;
+&lt;div class=&quot;search auto&quot;&gt;&lt;p class=&quot;left&quot;&gt;&lt;input name=&quot;Q&quot; type=&quot;text&quot; /&gt;&lt;/p&gt;&lt;p class=&quot;right&quot;&gt;&lt;a href=&quot;javascript:document.form1.submit();&quot; title=&quot;搜索&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/form&gt;                &lt;!-- 搜索区域结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 左侧结束 --&gt;
+            
+            &lt;!-- 中部开始 --&gt;
+            &lt;div class=&quot;c_middle&quot;&gt;
+             
+                &lt;!-- 图片新闻开始 --&gt;
+            &lt;div class=&quot;pic_news&quot;&gt;
+                 &lt;div class=&quot;pic_box&quot;&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/publish/iers/js/effect.image.1.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function(){
+ //参数列表(Selector , {width:value , height:value , fontsize:value , time:value})
+ new dk_slideplayer(&quot;#w22&quot;,{width:&quot;525px&quot;,height:&quot;349px&quot;,fontsize:&quot;12px&quot;,time:&quot;3000&quot;});
+});
+&lt;/script&gt;
+&lt;ul id=&quot;w22&quot;&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;斯里兰卡总理夫人访问我院性别与伦理研究中心&quot; href=&quot;/publish/iers/1277/2016/20160411160503439636739/20160411160503439636739_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20160411160503439636739/20160411161623656851441.jpg&quot; alt=&quot;斯里兰卡总理夫人访问我院性别与伦理研究中心&quot; /&gt;
+        &lt;p style=&quot;color:#000000;&quot;&gt;斯里兰卡总理夫人访问我院性别与伦理研究中心&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;万俊人院长主持揭牌仪式&quot; href=&quot;/publish/iers/1277/2015/20151213200034043166214/20151213200034043166214_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213200034043166214/20151213200047070921210.jpg&quot; alt=&quot;万俊人院长主持揭牌仪式&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;万俊人院长主持揭牌仪式&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;邱勇校长在揭牌典礼上致辞&quot; href=&quot;/publish/iers/1277/2015/20151213195908845435370/20151213195908845435370_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213195908845435370/20151213195921986501369.jpg&quot; alt=&quot;邱勇校长在揭牌典礼上致辞&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;邱勇校长在揭牌典礼上致辞&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&quot; href=&quot;/publish/iers/1277/2015/20151213195228148741172/20151213195228148741172_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213195228148741172/20151213195321219356703.jpg&quot; alt=&quot;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;研究院揭牌典礼嘉宾合影&quot; href=&quot;/publish/iers/1277/2015/20151213194620695907278/20151213194620695907278_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213194620695907278/20151213194910602924666.jpg&quot; alt=&quot;研究院揭牌典礼嘉宾合影&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;研究院揭牌典礼嘉宾合影&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+              &lt;/div&gt;
+                &lt;!-- 图片新闻结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 中部结束 --&gt;
+            
+            &lt;!-- 右侧开始 --&gt;
+            &lt;div class=&quot;c_right&quot;&gt;
+             
+                &lt;!-- 院系要闻开始 --&gt;
+                &lt;div class=&quot;info_r_01&quot;&gt;
+                 &lt;h3&gt;
+&lt;span&gt;
+新闻动态
+&lt;/span&gt;&lt;/h3&gt;
+                    &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002192057780520679/20161002192057780520679_.html&quot; title=&quot;&quot; style=&quot;color:#990000;&quot;&gt;牛津大学简隆德教授在研究院发表演讲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160621162056254860984/20160621162056254860984_.html&quot; title=&quot;&quot; style=&quot;color:#990033;&quot;&gt;追问正义:万俊人院长演讲(“人文清华”讲坛第四场)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160517171705169763640/20160517171705169763640_.html&quot; title=&quot;&quot; style=&quot;color:#000033;&quot;&gt;哈佛大学门迪斯教授在研究院发表演讲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002192953881579195/20161002192953881579195_.html&quot; title=&quot;&quot; style=&quot;color:#000000;&quot;&gt;唐文明教授做客清华文新论坛 解读康有为孔教思想&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160621171127397147868/20160621171127397147868_.html&quot; title=&quot;&quot; style=&quot;color:#000066;&quot;&gt;万俊人院长（人民日报）：拓宽历史和文化的视界&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002190833443175899/20161002190833443175899_.html&quot; title=&quot;&quot; style=&quot;color:#660000;&quot;&gt;希腊珍稀图书展：希腊语言 | 西方文明之根&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2015/20151213190048659149860/20151213190048659149860_.html&quot; title=&quot;&quot; style=&quot;color:#990000;&quot;&gt;清华大学道德与宗教研究院揭牌典礼暨全球化视域下的道...&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;!-- 院系要闻结束 --&gt;
+                                
+            &lt;/div&gt;
+            &lt;!-- 右侧结束 --&gt;
+            
+            &lt;!-- 右侧下部开始 --&gt;
+            &lt;div class=&quot;c_bottom&quot;&gt;
+                
+                &lt;!-- 院系公告开始 --&gt;
+                &lt;div class=&quot;box_01&quot;&gt;
+                    &lt;h3&gt;&lt;span&gt;
+最新公告&lt;/span&gt;&lt;/h3&gt;
+                 &lt;/div&gt;
+                &lt;!-- 院系公告结束 --&gt;
+                
+                &lt;!-- 相关链接开始 --&gt;
+                &lt;div class=&quot;box_02&quot;&gt;
+                    &lt;h3&gt;&lt;span class=&quot;left&quot;&gt;
+链接&lt;/span&gt;&lt;p class=&quot;right&quot;&gt;
+&lt;a href=&quot;/publish/iers/1278/index.html&quot;&gt;其他 &amp;raquo; &amp;raquo;&lt;/a&gt;&lt;/p&gt;&lt;/h3&gt;
+                    &lt;div&gt;
+&lt;a href=&quot;http://www.cn-e.cn/index.html&quot; title=&quot;中国伦理学会&quot;&gt;&lt;img src=&quot;/publish/iers/1278/2016/20160411025131581349350/20160411025555530284914.png&quot; width=&quot;129&quot; height=&quot;44&quot; /&gt;&lt;/a&gt;
+                  &lt;a href=&quot;http://www.chinabuddhism.com.cn/&quot; title=&quot;中国佛教协会&quot;&gt;&lt;img src=&quot;/publish/iers/1278/2016/20160411202158684765588/20160411202223925255089.gif&quot; width=&quot;129&quot; height=&quot;44&quot; /&gt;&lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- 相关链接结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 右侧下部结束 --&gt;
+                                       
+       &lt;/div&gt;
+        &lt;!-- 中部区域结束 --&gt;
+        
+        &lt;!-- 页脚区域开始 --&gt;
+        &lt;div class=&quot;footer nomalwidth auto&quot;&gt;&lt;p&gt;Copyright &amp;copy; 2010 清华大学道德与宗教研究院 All Rights Reserved. 地址：北京市海淀区清华园1号 100084&lt;/p&gt;&lt;/div&gt;
+        &lt;!-- 页脚区域结束 --&gt;
+&lt;!-- &lt;DIV id=img1 style=&quot;Z-INDEX: 100; LEFT: 2px; WIDTH: 150px; POSITION: absolute; TOP: 43px; HEIGHT: 100px;
+ visibility: visible;&quot;&gt;&lt;a href=&quot;http://zt.h2o-china.com/meeting/2014/qinghua_hjlt/ &quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/publish/iers/images/picpc.gif&quot; width=&quot;150&quot; height=&quot;100&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/DIV&gt;
+&lt;SCRIPT src=&quot;/publish/iers/js/jspc.js&quot;&gt;&lt;/SCRIPT&gt; --&gt;
+&lt;/div&gt;
+    &lt;!-- 整体区域结束 --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="192">
+                <http-request>
+                    <status>* http://www.iers.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:14 GMT" field="date"/>
+                        <header content="172" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;400 Bad Request&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;400 Bad Request&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[172]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://www.iers.tsinghua.edu.cn/MvWhj" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://www.iers.tsinghua.edu.cn/MvWhj
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="172">
+                <http-request>
+                    <status>PUT http://www.iers.tsinghua.edu.cn/MvWhj HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">lSpMMv</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Not Allowed</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:13 GMT" field="date"/>
+                        <header content="172" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.4.39</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="15200" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Mon, 03 Oct 2016 09:36:34 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;57f226a2-3b60&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:27:10 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;!-- IE8 兼容 --&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EmulateIE7&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;/public/icon/favicon.ico&quot; /&gt;
+                                &lt;title&gt;清华大学道德与宗教研究院&lt;/title&gt;
+&lt;link href=&quot;/publish/iers/css/common.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;link href=&quot;/publish/iers/css/grid.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script src=&quot;/publish/iers/js/jquery-1.4.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/publish/iers/js/grayscale.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/publish/iers/js/swfobject_modified.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+/*
+*env
+*summaryStr:String 信息简介
+*lengTh:int 截取的长度
+*/
+ function cutSummary(summaryStr,lengTh){
+   if(summaryStr.length&gt;lengTh){
+     summaryStr=summaryStr.substring(0,lengTh)+&quot;...&quot;;
+   }
+   document.write(summaryStr);
+ }
+/*
+*jQuery:所有外域链接在新窗口打开
+*/
+$(document).ready(function() {
+ $(&quot;a[href*='http://']:not([href*='&quot;+location.hostname+&quot;']),[href*='https://']:not([href*='&quot;+location.hostname+&quot;'])&quot;)
+ .addClass(&quot;external&quot;)
+ .attr(&quot;target&quot;,&quot;_blank&quot;)
+});
+&lt;/script&gt;&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/global.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/publish/iers/css/mt_dropdown.css&quot; /&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/mt_dropdownc.min.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/mt_dropdown_initialize.min.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;script language=&quot;JavaScript&quot;&gt;
+&lt;!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+$(document).ready(function(){
+  init();
+});
+//--&gt;
+&lt;/script&gt;&lt;link href=&quot;/publish/iers/css/style_index.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;!-- 导入全局模板 --&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/global_index.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;!-- 整体区域开始 --&gt;
+ &lt;div class=&quot;wrapper nomalwclassth auto&quot;&gt;
+    
+     &lt;!-- 页头区域开始 --&gt;
+&lt;!-- 页头区域开始 --&gt;
+  &lt;div class=&quot;header nomalwidth auto&quot;&gt;
+     
+       &lt;div class=&quot;logo_text&quot;&gt;
+         &lt;p class=&quot;cn&quot;&gt;&amp;nbsp;         &lt;p class=&quot;en&quot;&gt;&amp;nbsp;        &lt;/div&gt;
+                &lt;div class=&quot;hot_links&quot;&gt;&lt;a href=&quot;/publish/iersen/index.html&quot;&gt;English&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; width=&quot;960&quot; height=&quot;126&quot; src=&quot;/publish/iers/1280/20151114033055779281642/011.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;!-- 页头区域结束 --&gt;     &lt;!-- 页头区域结束 --&gt;
+        
+        &lt;!-- 导航区域开始 --&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot;&gt;
+function initMenuData(){
+if (mtDropDown.isSupported()) {
+var ms = new mtDropDownSet(mtDropDown.direction.down, 0, 0, mtDropDown.reference.bottomLeft);
+var menu1258 = ms.addMenu(document.getElementById(&quot;menu_1258&quot;));
+menu1258.addItem(&quot;政治伦理暨全球伦理研究中心&quot;,&quot;/publish/iers/1268/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;中外伦理学比较研究中心&quot;,&quot;/publish/iers/1269/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;性别与伦理研究中心&quot;,&quot;/publish/iers/1270/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;应用伦理学研究中心&quot;,&quot;/publish/iers/1271/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;儒学研究中心&quot;,&quot;/publish/iers/1272/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;佛学研究中心&quot;,&quot;/publish/iers/1273/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;古希腊罗马哲学与宗教研究中心&quot;,&quot;/publish/iers/1274/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;宗教伦理研究中心&quot;,&quot;/publish/iers/1275/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;景教与中国宗教研究中心&quot;,&quot;/publish/iers/1276/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;中法哲学与道德文化研究中心&quot;,&quot;/publish/iers/1459/index.html&quot;,&quot;&quot;);
+        var menu1257 = ms.addMenu(document.getElementById(&quot;menu_1257&quot;));
+menu1257.addItem(&quot;序言&quot;,&quot;/publish/iers/1458/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;院长致辞&quot;,&quot;/publish/iers/1265/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;机构设置&quot;,&quot;/publish/iers/1266/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;联系我们&quot;,&quot;/publish/iers/1267/index.html&quot;,&quot;&quot;);
+        
+
+mtDropDown.renderAll();
+}
+} 
+&lt;/SCRIPT&gt;
+&lt;!-- nav start --&gt;
+        &lt;div class=&quot;nav nomalwidth auto&quot;&gt;
+         &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/index.html&quot; title=&quot;清华大学道德与宗教研究院&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1257&quot;  class=&quot;first&quot;&gt;&lt;a href=&quot;/publish/iers/1265/index.html&quot; title=&quot;研究院简介&quot;&gt;研究院简介&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1258&quot;&gt;&lt;a href=&quot;/publish/iers/1258/index.html&quot; title=&quot;各中心简介&quot;&gt;各中心简介&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1259&quot;&gt;&lt;a href=&quot;/publish/iers/1259/index.html&quot; title=&quot;最新公告&quot;&gt;最新公告&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1260&quot;&gt;&lt;a href=&quot;/publish/iers/1260/index.html&quot; title=&quot;新闻动态&quot;&gt;新闻动态&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1261&quot;&gt;&lt;a href=&quot;/publish/iers/1261/index.html&quot; title=&quot;合作与交流&quot;&gt;合作与交流&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1262&quot;&gt;&lt;a href=&quot;/publish/iers/1262/index.html&quot; title=&quot;学术出版&quot;&gt;学术出版&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1263&quot;&gt;&lt;a href=&quot;/publish/iers/1263/index.html&quot; title=&quot;学术资源&quot;&gt;学术资源&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1264&quot;&gt;&lt;a href=&quot;/publish/iers/1264/index.html&quot; title=&quot;联系我们&quot; class=&quot;clear&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+        &lt;/div&gt;
+  &lt;script language=&quot;JavaScript&quot;&gt;initMenuData();&lt;/script&gt;
+        &lt;!-- nav end --&gt;        &lt;!-- 导航区域结束 --&gt;
+        
+        &lt;!-- 中部区域开始 --&gt;
+        &lt;div class=&quot;content auto&quot;&gt;
+         
+            &lt;!-- 左侧开始 --&gt;
+            &lt;div class=&quot;c_left&quot;&gt;
+             
+                &lt;!-- 快速链接区域开始 --&gt;
+                &lt;div class=&quot;menu&quot;&gt;
+                 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1268/index.html&quot; title=&quot;政治伦理暨全球伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;政治伦理暨全球伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1269/index.html&quot; title=&quot;中外伦理学比较研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;中外伦理学比较研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1270/index.html&quot; title=&quot;性别与伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;性别与伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1271/index.html&quot; title=&quot;应用伦理学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;应用伦理学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1272/index.html&quot; title=&quot;儒学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;儒学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1273/index.html&quot; title=&quot;佛学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;佛学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1274/index.html&quot; title=&quot;古希腊罗马哲学与宗教研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;古希腊罗马哲学与宗教研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1275/index.html&quot; title=&quot;宗教伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;宗教伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1276/index.html&quot; title=&quot;景教与中国宗教研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;景教与中国宗教研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1258/2016/20160526064111930145854/20160526064111930145854_.html&quot; title=&quot;中法哲学与道德文化研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;中法哲学与道德文化研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                                      &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;!-- 快速链接区域结束 --&gt;
+                &lt;!-- 搜索区域开始 --&gt;
+                &lt;form id=&quot;searchForm&quot; name=&quot;form1&quot; method=&quot;post&quot; action=&quot;#&quot; target=&quot;_blank&quot;&gt;
+&lt;input type=&quot;hidden&quot; id=&quot;searchVpath&quot; name=&quot;vpath&quot; value=&quot;&quot;/&gt;
+&lt;div class=&quot;search auto&quot;&gt;&lt;p class=&quot;left&quot;&gt;&lt;input name=&quot;Q&quot; type=&quot;text&quot; /&gt;&lt;/p&gt;&lt;p class=&quot;right&quot;&gt;&lt;a href=&quot;javascript:document.form1.submit();&quot; title=&quot;搜索&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/form&gt;                &lt;!-- 搜索区域结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 左侧结束 --&gt;
+            
+            &lt;!-- 中部开始 --&gt;
+            &lt;div class=&quot;c_middle&quot;&gt;
+             
+                &lt;!-- 图片新闻开始 --&gt;
+            &lt;div class=&quot;pic_news&quot;&gt;
+                 &lt;div class=&quot;pic_box&quot;&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/publish/iers/js/effect.image.1.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function(){
+ //参数列表(Selector , {width:value , height:value , fontsize:value , time:value})
+ new dk_slideplayer(&quot;#w22&quot;,{width:&quot;525px&quot;,height:&quot;349px&quot;,fontsize:&quot;12px&quot;,time:&quot;3000&quot;});
+});
+&lt;/script&gt;
+&lt;ul id=&quot;w22&quot;&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;斯里兰卡总理夫人访问我院性别与伦理研究中心&quot; href=&quot;/publish/iers/1277/2016/20160411160503439636739/20160411160503439636739_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20160411160503439636739/20160411161623656851441.jpg&quot; alt=&quot;斯里兰卡总理夫人访问我院性别与伦理研究中心&quot; /&gt;
+        &lt;p style=&quot;color:#000000;&quot;&gt;斯里兰卡总理夫人访问我院性别与伦理研究中心&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;万俊人院长主持揭牌仪式&quot; href=&quot;/publish/iers/1277/2015/20151213200034043166214/20151213200034043166214_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213200034043166214/20151213200047070921210.jpg&quot; alt=&quot;万俊人院长主持揭牌仪式&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;万俊人院长主持揭牌仪式&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;邱勇校长在揭牌典礼上致辞&quot; href=&quot;/publish/iers/1277/2015/20151213195908845435370/20151213195908845435370_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213195908845435370/20151213195921986501369.jpg&quot; alt=&quot;邱勇校长在揭牌典礼上致辞&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;邱勇校长在揭牌典礼上致辞&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&quot; href=&quot;/publish/iers/1277/2015/20151213195228148741172/20151213195228148741172_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213195228148741172/20151213195321219356703.jpg&quot; alt=&quot;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;研究院揭牌典礼嘉宾合影&quot; href=&quot;/publish/iers/1277/2015/20151213194620695907278/20151213194620695907278_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213194620695907278/20151213194910602924666.jpg&quot; alt=&quot;研究院揭牌典礼嘉宾合影&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;研究院揭牌典礼嘉宾合影&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+              &lt;/div&gt;
+                &lt;!-- 图片新闻结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 中部结束 --&gt;
+            
+            &lt;!-- 右侧开始 --&gt;
+            &lt;div class=&quot;c_right&quot;&gt;
+             
+                &lt;!-- 院系要闻开始 --&gt;
+                &lt;div class=&quot;info_r_01&quot;&gt;
+                 &lt;h3&gt;
+&lt;span&gt;
+新闻动态
+&lt;/span&gt;&lt;/h3&gt;
+                    &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002192057780520679/20161002192057780520679_.html&quot; title=&quot;&quot; style=&quot;color:#990000;&quot;&gt;牛津大学简隆德教授在研究院发表演讲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160621162056254860984/20160621162056254860984_.html&quot; title=&quot;&quot; style=&quot;color:#990033;&quot;&gt;追问正义:万俊人院长演讲(“人文清华”讲坛第四场)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160517171705169763640/20160517171705169763640_.html&quot; title=&quot;&quot; style=&quot;color:#000033;&quot;&gt;哈佛大学门迪斯教授在研究院发表演讲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002192953881579195/20161002192953881579195_.html&quot; title=&quot;&quot; style=&quot;color:#000000;&quot;&gt;唐文明教授做客清华文新论坛 解读康有为孔教思想&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160621171127397147868/20160621171127397147868_.html&quot; title=&quot;&quot; style=&quot;color:#000066;&quot;&gt;万俊人院长（人民日报）：拓宽历史和文化的视界&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002190833443175899/20161002190833443175899_.html&quot; title=&quot;&quot; style=&quot;color:#660000;&quot;&gt;希腊珍稀图书展：希腊语言 | 西方文明之根&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2015/20151213190048659149860/20151213190048659149860_.html&quot; title=&quot;&quot; style=&quot;color:#990000;&quot;&gt;清华大学道德与宗教研究院揭牌典礼暨全球化视域下的道...&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;!-- 院系要闻结束 --&gt;
+                                
+            &lt;/div&gt;
+            &lt;!-- 右侧结束 --&gt;
+            
+            &lt;!-- 右侧下部开始 --&gt;
+            &lt;div class=&quot;c_bottom&quot;&gt;
+                
+                &lt;!-- 院系公告开始 --&gt;
+                &lt;div class=&quot;box_01&quot;&gt;
+                    &lt;h3&gt;&lt;span&gt;
+最新公告&lt;/span&gt;&lt;/h3&gt;
+                 &lt;/div&gt;
+                &lt;!-- 院系公告结束 --&gt;
+                
+                &lt;!-- 相关链接开始 --&gt;
+                &lt;div class=&quot;box_02&quot;&gt;
+                    &lt;h3&gt;&lt;span class=&quot;left&quot;&gt;
+链接&lt;/span&gt;&lt;p class=&quot;right&quot;&gt;
+&lt;a href=&quot;/publish/iers/1278/index.html&quot;&gt;其他 &amp;raquo; &amp;raquo;&lt;/a&gt;&lt;/p&gt;&lt;/h3&gt;
+                    &lt;div&gt;
+&lt;a href=&quot;http://www.cn-e.cn/index.html&quot; title=&quot;中国伦理学会&quot;&gt;&lt;img src=&quot;/publish/iers/1278/2016/20160411025131581349350/20160411025555530284914.png&quot; width=&quot;129&quot; height=&quot;44&quot; /&gt;&lt;/a&gt;
+                  &lt;a href=&quot;http://www.chinabuddhism.com.cn/&quot; title=&quot;中国佛教协会&quot;&gt;&lt;img src=&quot;/publish/iers/1278/2016/20160411202158684765588/20160411202223925255089.gif&quot; width=&quot;129&quot; height=&quot;44&quot; /&gt;&lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- 相关链接结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 右侧下部结束 --&gt;
+                                       
+       &lt;/div&gt;
+        &lt;!-- 中部区域结束 --&gt;
+        
+        &lt;!-- 页脚区域开始 --&gt;
+        &lt;div class=&quot;footer nomalwidth auto&quot;&gt;&lt;p&gt;Copyright &amp;copy; 2010 清华大学道德与宗教研究院 All Rights Reserved. 地址：北京市海淀区清华园1号 100084&lt;/p&gt;&lt;/div&gt;
+        &lt;!-- 页脚区域结束 --&gt;
+&lt;!-- &lt;DIV id=img1 style=&quot;Z-INDEX: 100; LEFT: 2px; WIDTH: 150px; POSITION: absolute; TOP: 43px; HEIGHT: 100px;
+ visibility: visible;&quot;&gt;&lt;a href=&quot;http://zt.h2o-china.com/meeting/2014/qinghua_hjlt/ &quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/publish/iers/images/picpc.gif&quot; width=&quot;150&quot; height=&quot;100&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/DIV&gt;
+&lt;SCRIPT src=&quot;/publish/iers/js/jspc.js&quot;&gt;&lt;/SCRIPT&gt; --&gt;
+&lt;/div&gt;
+    &lt;!-- 整体区域结束 --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 109, 111, 129, 172, 198, 199, 200, 201, 202, 203, 204, 240]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="15200" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Mon, 03 Oct 2016 09:36:34 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;57f226a2-3b60&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:27:10 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;!-- IE8 兼容 --&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=EmulateIE7&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;/public/icon/favicon.ico&quot; /&gt;
+                                &lt;title&gt;清华大学道德与宗教研究院&lt;/title&gt;
+&lt;link href=&quot;/publish/iers/css/common.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;link href=&quot;/publish/iers/css/grid.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script src=&quot;/publish/iers/js/jquery-1.4.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/publish/iers/js/grayscale.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/publish/iers/js/swfobject_modified.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;
+/*
+*env
+*summaryStr:String 信息简介
+*lengTh:int 截取的长度
+*/
+ function cutSummary(summaryStr,lengTh){
+   if(summaryStr.length&gt;lengTh){
+     summaryStr=summaryStr.substring(0,lengTh)+&quot;...&quot;;
+   }
+   document.write(summaryStr);
+ }
+/*
+*jQuery:所有外域链接在新窗口打开
+*/
+$(document).ready(function() {
+ $(&quot;a[href*='http://']:not([href*='&quot;+location.hostname+&quot;']),[href*='https://']:not([href*='&quot;+location.hostname+&quot;'])&quot;)
+ .addClass(&quot;external&quot;)
+ .attr(&quot;target&quot;,&quot;_blank&quot;)
+});
+&lt;/script&gt;&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/global.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/publish/iers/css/mt_dropdown.css&quot; /&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/mt_dropdownc.min.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/mt_dropdown_initialize.min.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;script language=&quot;JavaScript&quot;&gt;
+&lt;!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+$(document).ready(function(){
+  init();
+});
+//--&gt;
+&lt;/script&gt;&lt;link href=&quot;/publish/iers/css/style_index.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;!-- 导入全局模板 --&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot; src=&quot;/publish/iers/js/global_index.js&quot;&gt;&lt;/SCRIPT&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;!-- 整体区域开始 --&gt;
+ &lt;div class=&quot;wrapper nomalwclassth auto&quot;&gt;
+    
+     &lt;!-- 页头区域开始 --&gt;
+&lt;!-- 页头区域开始 --&gt;
+  &lt;div class=&quot;header nomalwidth auto&quot;&gt;
+     
+       &lt;div class=&quot;logo_text&quot;&gt;
+         &lt;p class=&quot;cn&quot;&gt;&amp;nbsp;         &lt;p class=&quot;en&quot;&gt;&amp;nbsp;        &lt;/div&gt;
+                &lt;div class=&quot;hot_links&quot;&gt;&lt;a href=&quot;/publish/iersen/index.html&quot;&gt;English&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img alt=&quot;&quot; width=&quot;960&quot; height=&quot;126&quot; src=&quot;/publish/iers/1280/20151114033055779281642/011.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;!-- 页头区域结束 --&gt;     &lt;!-- 页头区域结束 --&gt;
+        
+        &lt;!-- 导航区域开始 --&gt;
+&lt;SCRIPT language=&quot;JavaScript&quot;&gt;
+function initMenuData(){
+if (mtDropDown.isSupported()) {
+var ms = new mtDropDownSet(mtDropDown.direction.down, 0, 0, mtDropDown.reference.bottomLeft);
+var menu1258 = ms.addMenu(document.getElementById(&quot;menu_1258&quot;));
+menu1258.addItem(&quot;政治伦理暨全球伦理研究中心&quot;,&quot;/publish/iers/1268/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;中外伦理学比较研究中心&quot;,&quot;/publish/iers/1269/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;性别与伦理研究中心&quot;,&quot;/publish/iers/1270/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;应用伦理学研究中心&quot;,&quot;/publish/iers/1271/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;儒学研究中心&quot;,&quot;/publish/iers/1272/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;佛学研究中心&quot;,&quot;/publish/iers/1273/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;古希腊罗马哲学与宗教研究中心&quot;,&quot;/publish/iers/1274/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;宗教伦理研究中心&quot;,&quot;/publish/iers/1275/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;景教与中国宗教研究中心&quot;,&quot;/publish/iers/1276/index.html&quot;,&quot;&quot;);
+        menu1258.addItem(&quot;中法哲学与道德文化研究中心&quot;,&quot;/publish/iers/1459/index.html&quot;,&quot;&quot;);
+        var menu1257 = ms.addMenu(document.getElementById(&quot;menu_1257&quot;));
+menu1257.addItem(&quot;序言&quot;,&quot;/publish/iers/1458/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;院长致辞&quot;,&quot;/publish/iers/1265/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;机构设置&quot;,&quot;/publish/iers/1266/index.html&quot;,&quot;&quot;);
+        menu1257.addItem(&quot;联系我们&quot;,&quot;/publish/iers/1267/index.html&quot;,&quot;&quot;);
+        
+
+mtDropDown.renderAll();
+}
+} 
+&lt;/SCRIPT&gt;
+&lt;!-- nav start --&gt;
+        &lt;div class=&quot;nav nomalwidth auto&quot;&gt;
+         &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/index.html&quot; title=&quot;清华大学道德与宗教研究院&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1257&quot;  class=&quot;first&quot;&gt;&lt;a href=&quot;/publish/iers/1265/index.html&quot; title=&quot;研究院简介&quot;&gt;研究院简介&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1258&quot;&gt;&lt;a href=&quot;/publish/iers/1258/index.html&quot; title=&quot;各中心简介&quot;&gt;各中心简介&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1259&quot;&gt;&lt;a href=&quot;/publish/iers/1259/index.html&quot; title=&quot;最新公告&quot;&gt;最新公告&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1260&quot;&gt;&lt;a href=&quot;/publish/iers/1260/index.html&quot; title=&quot;新闻动态&quot;&gt;新闻动态&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1261&quot;&gt;&lt;a href=&quot;/publish/iers/1261/index.html&quot; title=&quot;合作与交流&quot;&gt;合作与交流&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1262&quot;&gt;&lt;a href=&quot;/publish/iers/1262/index.html&quot; title=&quot;学术出版&quot;&gt;学术出版&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1263&quot;&gt;&lt;a href=&quot;/publish/iers/1263/index.html&quot; title=&quot;学术资源&quot;&gt;学术资源&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;menu_1264&quot;&gt;&lt;a href=&quot;/publish/iers/1264/index.html&quot; title=&quot;联系我们&quot; class=&quot;clear&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+        &lt;/div&gt;
+  &lt;script language=&quot;JavaScript&quot;&gt;initMenuData();&lt;/script&gt;
+        &lt;!-- nav end --&gt;        &lt;!-- 导航区域结束 --&gt;
+        
+        &lt;!-- 中部区域开始 --&gt;
+        &lt;div class=&quot;content auto&quot;&gt;
+         
+            &lt;!-- 左侧开始 --&gt;
+            &lt;div class=&quot;c_left&quot;&gt;
+             
+                &lt;!-- 快速链接区域开始 --&gt;
+                &lt;div class=&quot;menu&quot;&gt;
+                 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1268/index.html&quot; title=&quot;政治伦理暨全球伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;政治伦理暨全球伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1269/index.html&quot; title=&quot;中外伦理学比较研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;中外伦理学比较研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1270/index.html&quot; title=&quot;性别与伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;性别与伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1271/index.html&quot; title=&quot;应用伦理学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;应用伦理学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1272/index.html&quot; title=&quot;儒学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;儒学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1273/index.html&quot; title=&quot;佛学研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;佛学研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1274/index.html&quot; title=&quot;古希腊罗马哲学与宗教研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;古希腊罗马哲学与宗教研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1275/index.html&quot; title=&quot;宗教伦理研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;宗教伦理研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1276/index.html&quot; title=&quot;景教与中国宗教研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;景教与中国宗教研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a href=&quot;http://www.iers.tsinghua.edu.cn/publish/iers/1258/2016/20160526064111930145854/20160526064111930145854_.html&quot; title=&quot;中法哲学与道德文化研究中心&quot; style=&quot;font-size:12px&quot;&gt;&lt;span style=&quot;margin-left:5px&quot;&gt;中法哲学与道德文化研究中心&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                                      &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;!-- 快速链接区域结束 --&gt;
+                &lt;!-- 搜索区域开始 --&gt;
+                &lt;form id=&quot;searchForm&quot; name=&quot;form1&quot; method=&quot;post&quot; action=&quot;#&quot; target=&quot;_blank&quot;&gt;
+&lt;input type=&quot;hidden&quot; id=&quot;searchVpath&quot; name=&quot;vpath&quot; value=&quot;&quot;/&gt;
+&lt;div class=&quot;search auto&quot;&gt;&lt;p class=&quot;left&quot;&gt;&lt;input name=&quot;Q&quot; type=&quot;text&quot; /&gt;&lt;/p&gt;&lt;p class=&quot;right&quot;&gt;&lt;a href=&quot;javascript:document.form1.submit();&quot; title=&quot;搜索&quot;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+&lt;/form&gt;                &lt;!-- 搜索区域结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 左侧结束 --&gt;
+            
+            &lt;!-- 中部开始 --&gt;
+            &lt;div class=&quot;c_middle&quot;&gt;
+             
+                &lt;!-- 图片新闻开始 --&gt;
+            &lt;div class=&quot;pic_news&quot;&gt;
+                 &lt;div class=&quot;pic_box&quot;&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/publish/iers/js/effect.image.1.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function(){
+ //参数列表(Selector , {width:value , height:value , fontsize:value , time:value})
+ new dk_slideplayer(&quot;#w22&quot;,{width:&quot;525px&quot;,height:&quot;349px&quot;,fontsize:&quot;12px&quot;,time:&quot;3000&quot;});
+});
+&lt;/script&gt;
+&lt;ul id=&quot;w22&quot;&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;斯里兰卡总理夫人访问我院性别与伦理研究中心&quot; href=&quot;/publish/iers/1277/2016/20160411160503439636739/20160411160503439636739_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20160411160503439636739/20160411161623656851441.jpg&quot; alt=&quot;斯里兰卡总理夫人访问我院性别与伦理研究中心&quot; /&gt;
+        &lt;p style=&quot;color:#000000;&quot;&gt;斯里兰卡总理夫人访问我院性别与伦理研究中心&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;万俊人院长主持揭牌仪式&quot; href=&quot;/publish/iers/1277/2015/20151213200034043166214/20151213200034043166214_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213200034043166214/20151213200047070921210.jpg&quot; alt=&quot;万俊人院长主持揭牌仪式&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;万俊人院长主持揭牌仪式&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;邱勇校长在揭牌典礼上致辞&quot; href=&quot;/publish/iers/1277/2015/20151213195908845435370/20151213195908845435370_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213195908845435370/20151213195921986501369.jpg&quot; alt=&quot;邱勇校长在揭牌典礼上致辞&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;邱勇校长在揭牌典礼上致辞&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&quot; href=&quot;/publish/iers/1277/2015/20151213195228148741172/20151213195228148741172_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213195228148741172/20151213195321219356703.jpg&quot; alt=&quot;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;中央社会主义学院党组书记叶小文在揭牌典礼上致辞&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+ &lt;a target=&quot;_blank&quot; title=&quot;研究院揭牌典礼嘉宾合影&quot; href=&quot;/publish/iers/1277/2015/20151213194620695907278/20151213194620695907278_.html&quot;&gt;
+  &lt;img src=&quot;/publish/iers/1277/20151213194620695907278/20151213194910602924666.jpg&quot; alt=&quot;研究院揭牌典礼嘉宾合影&quot; /&gt;
+        &lt;p style=&quot;color:;&quot;&gt;研究院揭牌典礼嘉宾合影&lt;/p&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+              &lt;/div&gt;
+                &lt;!-- 图片新闻结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 中部结束 --&gt;
+            
+            &lt;!-- 右侧开始 --&gt;
+            &lt;div class=&quot;c_right&quot;&gt;
+             
+                &lt;!-- 院系要闻开始 --&gt;
+                &lt;div class=&quot;info_r_01&quot;&gt;
+                 &lt;h3&gt;
+&lt;span&gt;
+新闻动态
+&lt;/span&gt;&lt;/h3&gt;
+                    &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002192057780520679/20161002192057780520679_.html&quot; title=&quot;&quot; style=&quot;color:#990000;&quot;&gt;牛津大学简隆德教授在研究院发表演讲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160621162056254860984/20160621162056254860984_.html&quot; title=&quot;&quot; style=&quot;color:#990033;&quot;&gt;追问正义:万俊人院长演讲(“人文清华”讲坛第四场)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160517171705169763640/20160517171705169763640_.html&quot; title=&quot;&quot; style=&quot;color:#000033;&quot;&gt;哈佛大学门迪斯教授在研究院发表演讲&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002192953881579195/20161002192953881579195_.html&quot; title=&quot;&quot; style=&quot;color:#000000;&quot;&gt;唐文明教授做客清华文新论坛 解读康有为孔教思想&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20160621171127397147868/20160621171127397147868_.html&quot; title=&quot;&quot; style=&quot;color:#000066;&quot;&gt;万俊人院长（人民日报）：拓宽历史和文化的视界&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2016/20161002190833443175899/20161002190833443175899_.html&quot; title=&quot;&quot; style=&quot;color:#660000;&quot;&gt;希腊珍稀图书展：希腊语言 | 西方文明之根&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/publish/iers/1260/2015/20151213190048659149860/20151213190048659149860_.html&quot; title=&quot;&quot; style=&quot;color:#990000;&quot;&gt;清华大学道德与宗教研究院揭牌典礼暨全球化视域下的道...&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;!-- 院系要闻结束 --&gt;
+                                
+            &lt;/div&gt;
+            &lt;!-- 右侧结束 --&gt;
+            
+            &lt;!-- 右侧下部开始 --&gt;
+            &lt;div class=&quot;c_bottom&quot;&gt;
+                
+                &lt;!-- 院系公告开始 --&gt;
+                &lt;div class=&quot;box_01&quot;&gt;
+                    &lt;h3&gt;&lt;span&gt;
+最新公告&lt;/span&gt;&lt;/h3&gt;
+                 &lt;/div&gt;
+                &lt;!-- 院系公告结束 --&gt;
+                
+                &lt;!-- 相关链接开始 --&gt;
+                &lt;div class=&quot;box_02&quot;&gt;
+                    &lt;h3&gt;&lt;span class=&quot;left&quot;&gt;
+链接&lt;/span&gt;&lt;p class=&quot;right&quot;&gt;
+&lt;a href=&quot;/publish/iers/1278/index.html&quot;&gt;其他 &amp;raquo; &amp;raquo;&lt;/a&gt;&lt;/p&gt;&lt;/h3&gt;
+                    &lt;div&gt;
+&lt;a href=&quot;http://www.cn-e.cn/index.html&quot; title=&quot;中国伦理学会&quot;&gt;&lt;img src=&quot;/publish/iers/1278/2016/20160411025131581349350/20160411025555530284914.png&quot; width=&quot;129&quot; height=&quot;44&quot; /&gt;&lt;/a&gt;
+                  &lt;a href=&quot;http://www.chinabuddhism.com.cn/&quot; title=&quot;中国佛教协会&quot;&gt;&lt;img src=&quot;/publish/iers/1278/2016/20160411202158684765588/20160411202223925255089.gif&quot; width=&quot;129&quot; height=&quot;44&quot; /&gt;&lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- 相关链接结束 --&gt;
+                
+            &lt;/div&gt;
+            &lt;!-- 右侧下部结束 --&gt;
+                                       
+       &lt;/div&gt;
+        &lt;!-- 中部区域结束 --&gt;
+        
+        &lt;!-- 页脚区域开始 --&gt;
+        &lt;div class=&quot;footer nomalwidth auto&quot;&gt;&lt;p&gt;Copyright &amp;copy; 2010 清华大学道德与宗教研究院 All Rights Reserved. 地址：北京市海淀区清华园1号 100084&lt;/p&gt;&lt;/div&gt;
+        &lt;!-- 页脚区域结束 --&gt;
+&lt;!-- &lt;DIV id=img1 style=&quot;Z-INDEX: 100; LEFT: 2px; WIDTH: 150px; POSITION: absolute; TOP: 43px; HEIGHT: 100px;
+ visibility: visible;&quot;&gt;&lt;a href=&quot;http://zt.h2o-china.com/meeting/2014/qinghua_hjlt/ &quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/publish/iers/images/picpc.gif&quot; width=&quot;150&quot; height=&quot;100&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/DIV&gt;
+&lt;SCRIPT src=&quot;/publish/iers/js/jspc.js&quot;&gt;&lt;/SCRIPT&gt; --&gt;
+&lt;/div&gt;
+    &lt;!-- 整体区域结束 --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="109">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:13 GMT" field="date"/>
+                        <header content="168" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="111">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:13 GMT" field="date"/>
+                        <header content="168" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="129">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/wdQGD.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:13 GMT" field="date"/>
+                        <header content="168" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="172">
+                <http-request>
+                    <status>PUT http://www.iers.tsinghua.edu.cn/MvWhj HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">lSpMMv</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Not Allowed</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:13 GMT" field="date"/>
+                        <header content="172" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="198">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:14 GMT" field="date"/>
+                        <header content="168" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="199">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:14 GMT" field="date"/>
+                        <header content="168" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="200">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:14 GMT" field="date"/>
+                        <header content="168" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="201">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:14 GMT" field="date"/>
+                        <header content="168" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="202">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:14 GMT" field="date"/>
+                        <header content="168" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="203">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:14 GMT" field="date"/>
+                        <header content="168" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="204">
+                <http-request>
+                    <status>GET http://www.iers.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:14 GMT" field="date"/>
+                        <header content="168" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="240">
+                <http-request>
+                    <status>POST http://www.iers.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.iers.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3dkUUdELmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguREdRZHc=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:27:16 GMT" field="date"/>
+                        <header content="168" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.9.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">Halberd error: unable to resolve www.iers.tsinghua.edu.cn</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to www.iers.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

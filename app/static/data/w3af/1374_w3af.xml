@@ -1,0 +1,1541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481165283" start-long="Wed Dec 07 21:48:03 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://portal.sem.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.133"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1374_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Auto-completable form" plugin="form_autocomplete" severity="Information" url="http://portal.sem.tsinghua.edu.cn/" var="None">
+        <description>The URL: &quot;http://portal.sem.tsinghua.edu.cn/&quot; has a &quot;&lt;form&gt;&quot; element with auto-complete enabled.</description>
+        <long-description>In typical form-based web applications, it is common practice for developers to allow `autocomplete` within the HTML form to improve the usability of the page. With `autocomplete` enabled (default), the browser is allowed to cache previously entered form values.
+
+For legitimate purposes, this allows the user to quickly re-enter the same data when completing the form multiple times.
+
+When `autocomplete` is enabled on either/both the username and password fields, this could allow a cyber-criminal with access to the victim's computer the ability to have the victim's credentials automatically entered as the cyber-criminal visits the affected page.
+
+The tool has discovered that the affected page contains a form containing a password field that has not disabled `autocomplete`.</long-description>
+        <fix-guidance>The `autocomplete` value can be configured in two different locations. The first and most secure location is to disable the `autocomplete` attribute on the `&lt;form&gt;` HTML tag. This will disable `autocomplete` for all inputs within that form. An example of disabling `autocomplete` within the form tag is `&lt;form autocomplete=off&gt;`.
+
+The second slightly less desirable option is to disable the `autocomplete` attribute for a specific `&lt;input&gt;` HTML tag. While this may be the less desired solution from a security perspective, it may be preferred method for usability reasons, depending on size of the form. An example of disabling the `autocomplete` attribute within a password input tag is `&lt;input type=password autocomplete=off&gt;`.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1830" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:45:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+.style1 {
+	font-size: 12px;
+	color: #2368B5;
+}
+--&gt;
+&lt;/style&gt;
+&lt;table border = 0 align=&quot;center&quot; cellpadding = 0 cellspacing = 0&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_1.jpg' width=389 height=163&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_1.jpg' width=411 height=163&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_2.jpg' width=389 height=177&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_2.jpg' width=411 height=177&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_3.jpg' width=389 height=273&gt;
+&lt;form action=&quot;validate.asp&quot; method=&quot;post&quot; name=&quot;form1&quot; id=&quot;form1&quot;&gt;
+&lt;table width=&quot;80%&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;41%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+    &lt;td width=&quot;59%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&lt;span class=&quot;style1&quot;&gt;\xe7\x94\xe3\x84\xa6\\x88\xb7\xe5\x90\x8d\xef\xbc\x88User Name\xe9\x94\x9b\\x89&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;username&quot; type=&quot;text&quot; class=&quot;style1&quot; id=&quot;username&quot; size=&quot;23&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot; class=&quot;style1&quot;&gt;\xe5\x8f锝\x84\xe6\x8a\xa4\xe9\x94\x9b\\x88Password\xe9\x94\x9b\\x89&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;style1&quot; id=&quot;password&quot; size=&quot;25&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;
+      &lt;div align=&quot;center&quot;&gt;
+        &lt;input type=&quot;submit&quot; name=&quot;ButtonName&quot; value=&quot;    \xe7\x99璇\xb2\\xbd\x95\xe9\x94\x9b\\x88Login\xe9\x94\x9b\\x89   &quot; /&gt;
+        &lt;/div&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;/td&gt;&lt;td background='sso_pic_2_3.jpg' width=411 height=273&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/TABLE&gt;
+&lt;/head&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[60]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Microsoft-IIS/6.0&quot;.</description>
+        <http-transactions>
+            <http-transaction id="60">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1830" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:45:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+.style1 {
+	font-size: 12px;
+	color: #2368B5;
+}
+--&gt;
+&lt;/style&gt;
+&lt;table border = 0 align=&quot;center&quot; cellpadding = 0 cellspacing = 0&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_1.jpg' width=389 height=163&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_1.jpg' width=411 height=163&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_2.jpg' width=389 height=177&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_2.jpg' width=411 height=177&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_3.jpg' width=389 height=273&gt;
+&lt;form action=&quot;validate.asp&quot; method=&quot;post&quot; name=&quot;form1&quot; id=&quot;form1&quot;&gt;
+&lt;table width=&quot;80%&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;41%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+    &lt;td width=&quot;59%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&lt;span class=&quot;style1&quot;&gt;\xe7\x94\xe3\x84\xa6\\x88\xb7\xe5\x90\x8d\xef\xbc\x88User Name\xe9\x94\x9b\\x89&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;username&quot; type=&quot;text&quot; class=&quot;style1&quot; id=&quot;username&quot; size=&quot;23&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot; class=&quot;style1&quot;&gt;\xe5\x8f锝\x84\xe6\x8a\xa4\xe9\x94\x9b\\x88Password\xe9\x94\x9b\\x89&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;style1&quot; id=&quot;password&quot; size=&quot;25&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;
+      &lt;div align=&quot;center&quot;&gt;
+        &lt;input type=&quot;submit&quot; name=&quot;ButtonName&quot; value=&quot;    \xe7\x99璇\xb2\\xbd\x95\xe9\x94\x9b\\x88Login\xe9\x94\x9b\\x89   &quot; /&gt;
+        &lt;/div&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;/td&gt;&lt;td background='sso_pic_2_3.jpg' width=411 height=273&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/TABLE&gt;
+&lt;/head&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[97]" method="GET" name="Powered-by header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The x-powered-by header for the target HTTP server is &quot;ASP.NET&quot;.</description>
+        <http-transactions>
+            <http-transaction id="97">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1830" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:45:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+.style1 {
+	font-size: 12px;
+	color: #2368B5;
+}
+--&gt;
+&lt;/style&gt;
+&lt;table border = 0 align=&quot;center&quot; cellpadding = 0 cellspacing = 0&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_1.jpg' width=389 height=163&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_1.jpg' width=411 height=163&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_2.jpg' width=389 height=177&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_2.jpg' width=411 height=177&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_3.jpg' width=389 height=273&gt;
+&lt;form action=&quot;validate.asp&quot; method=&quot;post&quot; name=&quot;form1&quot; id=&quot;form1&quot;&gt;
+&lt;table width=&quot;80%&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;41%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+    &lt;td width=&quot;59%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&lt;span class=&quot;style1&quot;&gt;\xe7\x94\xe3\x84\xa6\\x88\xb7\xe5\x90\x8d\xef\xbc\x88User Name\xe9\x94\x9b\\x89&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;username&quot; type=&quot;text&quot; class=&quot;style1&quot; id=&quot;username&quot; size=&quot;23&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot; class=&quot;style1&quot;&gt;\xe5\x8f锝\x84\xe6\x8a\xa4\xe9\x94\x9b\\x88Password\xe9\x94\x9b\\x89&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;style1&quot; id=&quot;password&quot; size=&quot;25&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;
+      &lt;div align=&quot;center&quot;&gt;
+        &lt;input type=&quot;submit&quot; name=&quot;ButtonName&quot; value=&quot;    \xe7\x99璇\xb2\\xbd\x95\xe9\x94\x9b\\x88Login\xe9\x94\x9b\\x89   &quot; /&gt;
+        &lt;/div&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;/td&gt;&lt;td background='sso_pic_2_3.jpg' width=411 height=273&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/TABLE&gt;
+&lt;/head&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[182]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://portal.sem.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://sem.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://portal.sem.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="182">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1830" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:45:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+.style1 {
+	font-size: 12px;
+	color: #2368B5;
+}
+--&gt;
+&lt;/style&gt;
+&lt;table border = 0 align=&quot;center&quot; cellpadding = 0 cellspacing = 0&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_1.jpg' width=389 height=163&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_1.jpg' width=411 height=163&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_2.jpg' width=389 height=177&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_2.jpg' width=411 height=177&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_3.jpg' width=389 height=273&gt;
+&lt;form action=&quot;validate.asp&quot; method=&quot;post&quot; name=&quot;form1&quot; id=&quot;form1&quot;&gt;
+&lt;table width=&quot;80%&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;41%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+    &lt;td width=&quot;59%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&lt;span class=&quot;style1&quot;&gt;\xe7\x94ㄦ\x88\xb7\xe5\x90\x8d\xef\xbc\x88User Name锛\x89&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;username&quot; type=&quot;text&quot; class=&quot;style1&quot; id=&quot;username&quot; size=&quot;23&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot; class=&quot;style1&quot;&gt;\xe5\x8fｄ护锛\x88Password锛\x89&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;style1&quot; id=&quot;password&quot; size=&quot;25&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;
+      &lt;div align=&quot;center&quot;&gt;
+        &lt;input type=&quot;submit&quot; name=&quot;ButtonName&quot; value=&quot;    \xe7\x99诲\xbd\x95锛\x88Login锛\x89   &quot; /&gt;
+        &lt;/div&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;/td&gt;&lt;td background='sso_pic_2_3.jpg' width=411 height=273&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/TABLE&gt;
+&lt;/head&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[36, 181, 213, 218, 237]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://portal.sem.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://portal.sem.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: GET, HEAD, OPTIONS, POST, TRACE</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="36">
+                <http-request>
+                    <status>OPTIONS http://portal.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="OPTIONS, TRACE, GET, HEAD" field="allow"/>
+                        <header content="Thu, 08 Dec 2016 02:45:39 GMT" field="date"/>
+                        <header content="OPTIONS, TRACE, GET, HEAD, POST" field="public"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="181">
+                <http-request>
+                    <status>HEAD http://portal.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1830" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:45:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="213">
+                <http-request>
+                    <status>OPTIONS http://portal.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="OPTIONS, TRACE, GET, HEAD" field="allow"/>
+                        <header content="Thu, 08 Dec 2016 02:45:44 GMT" field="date"/>
+                        <header content="OPTIONS, TRACE, GET, HEAD, POST" field="public"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="218">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1830" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:45:44 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+.style1 {
+	font-size: 12px;
+	color: #2368B5;
+}
+--&gt;
+&lt;/style&gt;
+&lt;table border = 0 align=&quot;center&quot; cellpadding = 0 cellspacing = 0&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_1.jpg' width=389 height=163&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_1.jpg' width=411 height=163&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_2.jpg' width=389 height=177&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_2.jpg' width=411 height=177&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_3.jpg' width=389 height=273&gt;
+&lt;form action=&quot;validate.asp&quot; method=&quot;post&quot; name=&quot;form1&quot; id=&quot;form1&quot;&gt;
+&lt;table width=&quot;80%&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;41%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+    &lt;td width=&quot;59%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&lt;span class=&quot;style1&quot;&gt;\xe7\x94ㄦ\x88\xb7\xe5\x90\x8d\xef\xbc\x88User Name锛\x89&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;username&quot; type=&quot;text&quot; class=&quot;style1&quot; id=&quot;username&quot; size=&quot;23&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot; class=&quot;style1&quot;&gt;\xe5\x8fｄ护锛\x88Password锛\x89&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;style1&quot; id=&quot;password&quot; size=&quot;25&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;
+      &lt;div align=&quot;center&quot;&gt;
+        &lt;input type=&quot;submit&quot; name=&quot;ButtonName&quot; value=&quot;    \xe7\x99诲\xbd\x95锛\x88Login锛\x89   &quot; /&gt;
+        &lt;/div&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;/td&gt;&lt;td background='sso_pic_2_3.jpg' width=411 height=273&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/TABLE&gt;
+&lt;/head&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="237">
+                <http-request>
+                    <status>POST http://portal.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1830" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:45:44 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+.style1 {
+	font-size: 12px;
+	color: #2368B5;
+}
+--&gt;
+&lt;/style&gt;
+&lt;table border = 0 align=&quot;center&quot; cellpadding = 0 cellspacing = 0&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_1.jpg' width=389 height=163&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_1.jpg' width=411 height=163&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_2.jpg' width=389 height=177&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_2.jpg' width=411 height=177&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_3.jpg' width=389 height=273&gt;
+&lt;form action=&quot;validate.asp&quot; method=&quot;post&quot; name=&quot;form1&quot; id=&quot;form1&quot;&gt;
+&lt;table width=&quot;80%&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;41%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+    &lt;td width=&quot;59%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&lt;span class=&quot;style1&quot;&gt;\xe7\x94ㄦ\x88\xb7\xe5\x90\x8d\xef\xbc\x88User Name锛\x89&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;username&quot; type=&quot;text&quot; class=&quot;style1&quot; id=&quot;username&quot; size=&quot;23&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot; class=&quot;style1&quot;&gt;\xe5\x8fｄ护锛\x88Password锛\x89&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;style1&quot; id=&quot;password&quot; size=&quot;25&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;
+      &lt;div align=&quot;center&quot;&gt;
+        &lt;input type=&quot;submit&quot; name=&quot;ButtonName&quot; value=&quot;    \xe7\x99诲\xbd\x95锛\x88Login锛\x89   &quot; /&gt;
+        &lt;/div&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;/td&gt;&lt;td background='sso_pic_2_3.jpg' width=411 height=273&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/TABLE&gt;
+&lt;/head&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[249]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.96.17/" var="None">
+        <description>The contents of http://166.111.96.17/ and http://portal.sem.tsinghua.edu.cn/ differ.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[77]" method="GET" name="Unhandled error in web application" plugin="error_500" severity="Medium" url="http://portal.sem.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll" var="None">
+        <description>An unidentified web application error (HTTP response code 500) was found at: &quot;http://portal.sem.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll&quot;. Enable all plugins and try again, if the vulnerability still is not identified, please verify manually and report it to the w3af developers.</description>
+        <long-description>Information Leakage is an application weakness where an application reveals sensitive data, such as technical details of the web application, environment, or user-specific data. Sensitive data may be used by an attacker to exploit the target web application, its hosting network, or its users. 
+
+ In its most common form, information leakage is the result of one or more of the following conditions:
+ * A failure to scrub out HTML/Script comments containing sensitive information
+ * Improper application or server configurations
+ * Improper application error handling
+</long-description>
+        <fix-guidance> * Ensure that the application source handles exceptions and errors in a such a way that no sensitive information is disclosed to the users
+ * Configure the application server to handle and log any exceptions that the application might yield
+</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="WASC threat classification" url="http://projects.webappsec.org/w/page/13246936/Information%20Leakage"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="77">
+                <http-request>
+                    <status>POST http://portal.sem.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2JNSEd5Lmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGgueUdITWI=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 500 Internal Server Error</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:39 GMT" field="date"/>
+                        <header content="83" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Error&lt;/title&gt;&lt;/head&gt;&lt;body&gt;ϵͳ\xd5Ҳ\xbb\xb5\xbdָ\xb6\xa8\xb5\xc4·\xbe\xb6\xa1\xa3
+&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 37, 77, 173, 189, 204, 205, 206, 207, 208, 247, 248]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1830" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:45:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+.style1 {
+	font-size: 12px;
+	color: #2368B5;
+}
+--&gt;
+&lt;/style&gt;
+&lt;table border = 0 align=&quot;center&quot; cellpadding = 0 cellspacing = 0&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_1.jpg' width=389 height=163&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_1.jpg' width=411 height=163&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_2.jpg' width=389 height=177&gt;&lt;/td&gt;
+&lt;td background='sso_pic_2_2.jpg' width=411 height=177&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td background='sso_pic_1_3.jpg' width=389 height=273&gt;
+&lt;form action=&quot;validate.asp&quot; method=&quot;post&quot; name=&quot;form1&quot; id=&quot;form1&quot;&gt;
+&lt;table width=&quot;80%&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;41%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+    &lt;td width=&quot;59%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&lt;span class=&quot;style1&quot;&gt;\xe7\x94\xe3\x84\xa6\\x88\xb7\xe5\x90\x8d\xef\xbc\x88User Name\xe9\x94\x9b\\x89&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;username&quot; type=&quot;text&quot; class=&quot;style1&quot; id=&quot;username&quot; size=&quot;23&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;div align=&quot;right&quot; class=&quot;style1&quot;&gt;\xe5\x8f锝\x84\xe6\x8a\xa4\xe9\x94\x9b\\x88Password\xe9\x94\x9b\\x89&lt;/div&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;div align=&quot;left&quot;&gt;&lt;span class=&quot;TitleColor&quot;&gt;
+      &lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;style1&quot; id=&quot;password&quot; size=&quot;25&quot; /&gt;
+    &lt;/span&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;
+      &lt;div align=&quot;center&quot;&gt;
+        &lt;input type=&quot;submit&quot; name=&quot;ButtonName&quot; value=&quot;    \xe7\x99璇\xb2\\xbd\x95\xe9\x94\x9b\\x88Login\xe9\x94\x9b\\x89   &quot; /&gt;
+        &lt;/div&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;/td&gt;&lt;td background='sso_pic_2_3.jpg' width=411 height=273&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/TABLE&gt;
+&lt;/head&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="37">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/bMHGy.html HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:39 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="77">
+                <http-request>
+                    <status>POST http://portal.sem.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2JNSEd5Lmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGgueUdITWI=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 500 Internal Server Error</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:39 GMT" field="date"/>
+                        <header content="83" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Error&lt;/title&gt;&lt;/head&gt;&lt;body&gt;ϵͳ\xd5Ҳ\xbb\xb5\xbdָ\xb6\xa8\xb5\xc4·\xbe\xb6\xa1\xa3
+&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="173">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:42 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="189">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:42 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="204">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:44 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="205">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:44 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="206">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:44 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="207">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:44 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="208">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:44 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="247">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:45 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="248">
+                <http-request>
+                    <status>GET http://portal.sem.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="portal.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="ASPSESSIONIDACCSQAQD=NIEPBPFAFGBMALGBFMMGGHHJ" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:45:46 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A &quot;UnicodeEncodeError&quot; exception was found while running infrastructure.favicon_identification on &quot;Method: GET | http://domain/&quot;. The exception was: &quot;'ascii' codec can't encode character u'\u07b7' in position 115: ordinal not in range(128)&quot; at favicon_identification.py:discover():70. The scan will continue but some vulnerabilities might not be identified.</error>
+    <error caller="threading">The dns_wildcard plugin got an error while requesting &quot;http://166.111.96.17/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve portal.sem.tsinghua.edu.cn</error>
+    <error caller="threading">The port '443' is not open on target portal.sem.tsinghua.edu.cn</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to portal.sem.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

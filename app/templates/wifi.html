@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+
+      
+<div class="jumbotron" id="common">
+		<form class="form-signin" enctype="multipart/form-data" id="uploadrForm" method="post" action="/wifi/save" onsubmit="return uploadWifi();" style="display:none">
+		<input type="file" name="file">
+		<br>
+		<button class="btn btn-large btn-primary" type="submit">上传文件</button>		
+		<button class="btn btn-large btn-primary" onclick="return removeUpload();">取消</button>
+		</form>
+     <div class="row" id="lines">
+        <div class="col-sm-1 col-md-2 col-md-offset-1 sidebar">
+        <ul class="nav nav-sidebar">
+        <li><a>Wifi名</a></li>
+        <input type="text" class="form-control" id ='wifi-name' value="{{wifi_wifiname|safe}}">
+        <li><a>认证模式</a></li>
+        <input type="text" class="form-control" id ='ssid' value="{{wifi_ssid}}">
+        <li><a>Mac地址</a></li>
+        <input type="text" class="form-control" id ='mac' value="{{wifi_mac}}">     
+		<input type="text" class="form-control" style="display:none" id ="filter" value=1 >     
+		<input type="text" class="form-control" id = 'twice' style="display:none"  value=1 >     
+		<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="isTsinghua" data-toggle="dropdown">
+			全部WIfi
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+			<li role="presentation"><a role="menuitem" tabindex="-1" onclick=setSchool()>校内WIFI</a></li>
+			<li role="presentation"><a role="menuitem" tabindex="-1" onclick=setNotSchool()>自建WIFI</a></li>
+			<li role="presentation"><a role="menuitem" tabindex="-1" onclick=setAll()>全部</a></li>			
+		</ul>
+		</div>     
+        <span class="input-group-btn">
+        <a>筛选Wifi</a><button class="btn btn-default btn-primary" onclick="searchLocation()"><span class="glyphicon glyphicon-search"></button>        
+        </ul>
+		<br>		
+        {%  if isAdmin %}
+		<button class="btn btn-large btn-primary" onclick="showUpload()">上传WIFI信息</button>
+		
+		{%endif%}
+        </div>
+        <div id="allmap"></div>
+    </div>
+       
+</div>
+
+<script type="text/javascript">
+	function setSchool(){
+		document.getElementById("isTsinghua").innerHTML="校内wifi<span class='caret'></span>";
+		document.getElementById("filter").value=0;
+	}
+	function setNotSchool(){
+		document.getElementById("isTsinghua").innerHTML="自建wifi<span class='caret'></span>";
+		document.getElementById("filter").value=1;
+	}
+	function setAll(){
+		document.getElementById("isTsinghua").innerHTML="全部wifi<span class='caret'></span>";
+		document.getElementById("filter").value=2;
+	}
+	function showUpload(){
+		document.getElementById("lines").style.opacity= .5;
+		document.getElementById("uploadrForm").style.display = "block";
+	}
+	function removeUpload(){
+		document.getElementById("lines").style.opacity= 1;
+		document.getElementById("uploadrForm").style.display = "none";
+		return false
+	}
+	function uploadWifi(){
+		return true
+	}
+	// 百度地图API功能	
+	map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point({{center_point[0]}},{{center_point[1]}}), 15);
+	 var data_info = {{map_points|safe}}
+	var opts = {
+				width : 250,     // 信息窗口宽度
+				height: 120,     // 信息窗口高度
+				title : "" , // 信息窗口标题
+				enableMessage:true//设置允许信息窗发送短息
+			   };
+	var myIcon = new BMap.Icon("http://api.map.baidu.com/img/markers.png", new BMap.Size(23, 25), {  
+			offset: new BMap.Size(10, 25), // 指定定位位置  
+			imageOffset: new BMap.Size(0, 0 - 10 * 25) // 设置图片偏移  
+		});
+	var dangerousIcon = new BMap.Icon("http://api.map.baidu.com/img/markers.png", new BMap.Size(23, 25), {  
+			offset: new BMap.Size(10, 25), // 指定定位位置  
+			imageOffset: new BMap.Size(0, 0 - 12 * 25) // 设置图片偏移  
+		});  
+	for(var i=0;i<data_info.length;i++){
+		var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+		if(data_info[i][5]>0) marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]),{icon:myIcon});  
+		if(data_info[i][5]<0) marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]),{icon:dangerousIcon});  
+		var content = data_info[i][2]+'<br>'+data_info[i][3]+'<br>'+data_info[i][4];
+		map.addOverlay(marker);               // 将标注添加到地图中
+		addClickHandler(content,marker);
+	}
+	function addClickHandler(content,marker){
+		marker.addEventListener("click",function(e){
+			openInfo(content,e)}
+		);
+	}
+	function openInfo(content,e){
+		var p = e.target;
+		var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+		var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+		map.openInfoWindow(infoWindow,point); //开启信息窗口
+	}
+</script>
+{% endblock %}
+
+
+

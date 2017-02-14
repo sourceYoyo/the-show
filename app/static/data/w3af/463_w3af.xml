@@ -1,0 +1,1412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480511268" start-long="Wed Nov 30 08:07:48 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://edu.lib.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/463_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[58]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache&quot;.</description>
+        <http-transactions>
+            <http-transaction id="58">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="8190" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 29 Apr 2015 01:42:04 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;7ba67-1ffe-514d3160a9300&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:08:27 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-cn&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;meta name=&quot;GENERATOR&quot; content=&quot;Microsoft FrontPage 6.0&quot;&gt;
+&lt;meta name=&quot;ProgId&quot; content=&quot;FrontPage.Editor.Document&quot;&gt;
+&lt;title&gt;閸栨ぞ鍚\xab\xe9崷鏉垮隘妤傛ɑ鐗庢穱鈩冧紖閻\xa2\xe3劍鍩涢弫娆掑仜娑撳海鐖虹粚璺烘疮閸\xa6\\xb0&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+  &lt;center&gt;
+
+&lt;table border=&quot;0&quot; width=&quot;88%&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;21%&quot; valign=&quot;middle&quot; align=&quot;right&quot; bordercolor=&quot;#FFFFFF&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/libteach.jpg&quot; width=&quot;153&quot; height=&quot;60&quot;&gt;&amp;nbsp;&amp;nbsp; 
+    &lt;/td&gt;
+    &lt;td width=&quot;79%&quot; valign=&quot;middle&quot;&gt;&amp;nbsp; &lt;b&gt;&lt;font face=&quot;閸楀孩鏋冨Δ铚傜秼&quot; size=&quot;4&quot; color=&quot;#800080&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/xiaoxingxing.gif&quot; width=&quot;28&quot; height=&quot;15&quot;&gt;&lt;/font&gt;&lt;span style=&quot;left: 0px; visibility: visible; position: relative; top: 0px&quot;&gt;&lt;span id=&quot;fpAnimwaveWordsRFP&quot; startL=&quot;320&quot; initLeft=&quot;0&quot; initTop=&quot;0&quot; endLeft=&quot;0&quot; endTop=&quot;0&quot;&gt;&lt;font color=&quot;#800080&quot; size=&quot;5&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;閸栨ぞ鍚\xab\xe9崷鏉垮隘妤傛ɑ鐗\x8e&lt;/font&gt;&lt;/span&gt;&lt;span id=&quot;fpAnimwaveWordsRFP&quot; style=&quot;LEFT: 0px; VISIBILITY: visible; POSITION: relative; TOP: 0px; r: -191&quot; startL=&quot;337&quot; initLeft=&quot;0&quot; initTop=&quot;0&quot; endLeft=&quot;0&quot; endTop=&quot;0&quot;&gt;&lt;font color=&quot;#800080&quot; size=&quot;5&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;娣団剝浼呯槐鐘哄窛閺佹瑨鍋涢崶\xad\xe5婀\xb4&lt;/font&gt;&lt;font color=&quot;#800080&quot; size=&quot;5&quot; face=&quot;閸楀孩鏋冨Δ铚傜秼&quot;&gt;&lt;br&gt;                                              
+      &lt;/font&gt;                                              
+      &lt;/span&gt;&lt;/span&gt;&lt;/b&gt;     
+      &lt;hr color=&quot;#800080&quot;&gt;     
+    &lt;/td&gt;     
+  &lt;/tr&gt;     
+&lt;/table&gt;     
+  &lt;/center&gt;     
+&lt;/div&gt;     
+&lt;div align=&quot;center&quot;&gt;     
+  &lt;center&gt;     
+&lt;table border=&quot;0&quot; width=&quot;88%&quot; height=&quot;419&quot;&gt;     
+  &lt;tr&gt;     
+    &lt;td width=&quot;58%&quot; height=&quot;151&quot; valign=&quot;top&quot;&gt;     
+      &lt;div align=&quot;left&quot;&gt;     
+        &lt;table border=&quot;0&quot; width=&quot;89%&quot;&gt;     
+          &lt;tr&gt;     
+            &lt;td width=&quot;34%&quot; valign=&quot;middle&quot; align=&quot;center&quot;&gt;     
+              &lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;br&gt;     
+              &lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/Book.gif&quot; width=&quot;135&quot; height=&quot;120&quot;&gt;&lt;/td&gt;     
+            &lt;td width=&quot;57%&quot;&gt;     
+              &lt;p align=&quot;left&quot;&gt;     
+              &lt;b&gt;&lt;font face=&quot;Times New Roman&quot; size=&quot;4&quot;&gt;&lt;i&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+				&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;br&gt;     
+              &lt;b&gt;&lt;a href=&quot;Introduction/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;閺圽xac\xe7鐝\xaf\xe6禒瀣\xac\xe7矝&lt;/font&gt;&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;a href=&quot;LibEducation/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;閸ョ偓鍎忛弫娆掑仜&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;
+				&lt;a href=&quot;InformationLiteracy/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;
+				娣団剝浼呯槐鐘哄窛&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;a href=&quot;ElectronicJournal/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;閻㈤潧鐡欓張鐔峰灁&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;a href=&quot;ToolBox/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;閸ョ偓鍎忓\xae\xb8銉ュ徔缁燶xb1&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;
+				&lt;a href=&quot;Association/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;
+				閸栨ぞ鍚\xab\xe6\xa5\x82妯绘殌鐎涳缚绱伴崶鍙ュ姛妫ｅ棗浼愭担婊呯埡缁屾湹绱版穱鈩冧紖缁辩姾宸濋弫娆掑仜娑撴挷绗熸慨鏂挎喅娴糪x9a&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;
+				&lt;p&gt;     
+              &lt;b&gt;&lt;font face=&quot;Times New Roman&quot; size=&quot;4&quot;&gt;&lt;i&gt;
+				&lt;a href=&quot;English%20Version/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;English Version&lt;/font&gt;&lt;/a&gt;&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt; &lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;b&gt;&lt;font size=&quot;4&quot;&gt;
+				&lt;a target=&quot;_blank&quot; href=&quot;Math-Phy/introduction.htm&quot;&gt;
+				&lt;font color=&quot;#000000&quot;&gt;閺佹澘\xad\xa6閻椻晝鎮婄\x80\x9b锔綷xa7\x91娣団剝浼呯槐鐘哄窛閺佹瑨鍋涘\xaf\xb0\xae\xe8\xa7\x86妫癨x91&lt;/font&gt;&lt;/a&gt;&amp;nbsp;
+				&lt;img border=&quot;0&quot; src=&quot;pictures/new.gif&quot; width=&quot;29&quot; height=&quot;13&quot;&gt;&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;     
+          &lt;/tr&gt;     
+        &lt;/table&gt;     
+      &lt;/div&gt;     
+    &lt;/td&gt;     
+    &lt;td width=&quot;41%&quot; height=&quot;269&quot; valign=&quot;top&quot;&gt;     
+      &lt;div align=&quot;left&quot;&gt;     
+        &lt;table border=&quot;1&quot; cellpadding=&quot;0&quot;&gt;     
+          &lt;tr&gt;     
+            &lt;td width=&quot;60%&quot; height=&quot;21&quot; bgcolor=&quot;#800080&quot;&gt;     
+              &lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot; color=&quot;#FFFFFF&quot;&gt;&lt;b&gt;
+				閺圽x80\xe6鏌婂☉鍫熶紖&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;     
+          &lt;/tr&gt;     
+  &lt;/center&gt;     
+          &lt;tr&gt;     
+            &lt;td height=&quot;217&quot; valign=&quot;top&quot;&gt;     
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;
+				.&lt;a target=&quot;_blank&quot; href=&quot;News/2015-04-29-yiyuedusuyang.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閸栨ぞ鍚\xab\xe6\xa5\x82妯绘殌娣団剝浼呯槐鐘哄窛閺佹瑨鍋涙稉鎾茬瑹婵\xae\xe6柨鎲虫导姘\xad\xe5灇閸旂喍瀵岄崝鐐‐x80\x9c閺刓x93.闂冨懓\xaf\xbb.缁辩姴鍚囬垾婵哱xad\xa6閺圽xaf\xe7鐖虹拋銊ょ窗&lt;/font&gt;&lt;/a&gt; 
+				&lt;img border=&quot;0&quot; src=&quot;pictures/new.gif&quot; width=&quot;29&quot; height=&quot;13&quot;&gt;&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a href=&quot;News/2015-04-02-gongkaike.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閸栨ぞ鍚\xab\xe6\xa5\x82妯绘殌娣団剝浼呯槐鐘哄窛閺佹瑨鍋涙稉鎾茬瑹婵\xae\xe6柨鎲虫导姘\xac\xe6躬閸栨ぞ鍚\xab\xe5\xaf\xa4铏圭摎婢堆僜xad\xa6閹存劕濮涙稉鎯у\xa7\x99閵嗗﹣淇婇幁\xaf\xe6\xa3\x80缁盶xa2\xe3\x80\x8b閸廫xac\xe5绱戠拠\xbe&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a target=&quot;_blank&quot; href=&quot;Academic%20News/2014-12-1-big%20data.doc&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;婢堆勬殶閹筡xae\xe6妞傛禒锝勪繆閹璡xaf\xe7绀岄崗缁樻殌閼茶弓绗岄崚娑欐煀娴滅儤澧犻崺鐟板悋鐠佸搫娼ч幋鎰\xac\xe5\xa7\x9b娑撴儳濮\x99&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;
+				.&lt;a target=&quot;_blank&quot; href=&quot;News/2014-12-12-xueshuyantaohui.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;婢堆勬殶閹筡xae\xe6妞傛禒锝囨畱娣団剝浼呯槐鐘插悋閺佹瑨鍋涙稉搴″灡閺傞\xa2\x81姹夐幍宥呯吙閸忚\xaf\xb2\xad\xa6閺圽xaf\xe7鐖虹拋銊ょ窗&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a target=&quot;_blank&quot; href=&quot;Association/ZiLiao/2011MingDan.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閸栨ぞ鍚\xab\xe6\xa5\x82妯绘殌鐎涳缚绱伴崶鍙ュ姛妫ｅ棗浼愭担婊呯埡缁屾湹绱版穱鈩冧紖缁辩姾宸濋弫娆掑仜娑撴挷绗熸慨鏂挎喅娴兼艾鎮曢崡\x95&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font color=&quot;#800080&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;
+				.缂冩垹鐝\xaf\xe9懟杈ㄦ瀮閻楀牊\xad\xa3閸︺劌缂撶拋鍙ヨ厬&lt;br&gt;
+				&lt;/font&gt;&lt;font face=&quot;Times New Roman&quot; color=&quot;#800080&quot;&gt;
+				English Version is under construction&lt;/font&gt;&lt;/p&gt;
+              &lt;p align=&quot;left&quot;&gt;&lt;font size=&quot;2&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;
+				&amp;gt;&amp;gt;&lt;/font&gt;&lt;b&gt;&lt;a href=&quot;News/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閺囨潙\xa4\x9a&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;div align=&quot;left&quot;&gt;     
+        &lt;table border=&quot;1&quot; cellpadding=&quot;0&quot; id=&quot;table1&quot;&gt;     
+          &lt;tr&gt;     
+            &lt;td width=&quot;60%&quot; height=&quot;21&quot; bgcolor=&quot;#800080&quot;&gt;     
+              &lt;p align=&quot;center&quot;&gt;&lt;b&gt;
+				&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot; color=&quot;#FFFFFF&quot;&gt;鐎涳附婀抽崝銊\xa6\\x80\x81&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;     
+          &lt;/tr&gt;     
+  &lt;/center&gt;     
+          &lt;tr&gt;     
+            &lt;td valign=&quot;top&quot;&gt;     
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;/font&gt;&lt;a target=&quot;_blank&quot; href=&quot;../Academic%20News/2015-xinxisuyangyantaohuizhengwen.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;2015楠炴潙鍙忛崶浠嬬彯閺嶁\x80\xb2淇婇幁\xaf\xe7绀岄崗缁樻殌閼茶尙鐖虹拋銊ょ窗閺嗐劌鍙忛崶钘夊\xaf\xb2瀹搞儵娅岄弽鈥蹭繆閹璡xaf\xe7鐝\xaf\xe7粭\xac19鐏炲﹤鍕炬导姘\xac\xe7窙閺傚洭\x80\x9a閻璡xa5 
+				&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#800080&quot;&gt;&amp;nbsp;&lt;img border=&quot;0&quot; src=&quot;pictures/new.gif&quot; width=&quot;29&quot; height=&quot;13&quot;&gt;&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a target=&quot;_blank&quot; href=&quot;Academic%20News/2014-01-10-huabeituxiezhengwen.doc&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閸楀骸瀵抽崷鏉垮隘妤傛ɑ鐗庨崶鎯у礂缁梊xac\xe4绨╅崡浣稿彄鐏炲﹤\xad\xa6閺圽xaf\xe5鍕炬导姘\xac\xe7窙閺傚洭\x80\x9a閻璡xa5&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;b&gt;
+				&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot; size=&quot;2&quot;&gt;&amp;gt;&amp;gt;&lt;a target=&quot;_blank&quot; href=&quot;Academic%20News/index.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閺囨潙\xa4\x9a&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;100%&quot; height=&quot;51&quot; valign=&quot;top&quot; colspan=&quot;2&quot;&gt;     
+      &lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/compass.gif&quot; width=&quot;40&quot; height=&quot;41&quot;&gt;&lt;/font&gt;&lt;a href=&quot;SiteMap/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;缂冩垹鐝\xaf\xe9崷鏉挎禈&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;
+    &lt;/td&gt;     
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;hr color=&quot;#800080&quot; width=&quot;88%&quot;&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;b&gt;&lt;font size=&quot;2&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;娣団剝浼呴張\x80\xe5鎮楁稉\x80\xe6\xac\xa1閺囧瓨鏌婇敍\x9a&lt;/font&gt;&lt;font size=&quot;2&quot; face=&quot;Times New Roman&quot;&gt;2015&lt;/font&gt;&lt;font size=&quot;2&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;楠瀄xb44閺圽x8829閺僜xa5&lt;br&gt;
+娑撳孩鍨滄禒\xac\xe8浠堢紒\x9c&lt;/font&gt;&lt;font size=&quot;2&quot; face=&quot;Times New Roman&quot;&gt;&lt;a href=&quot;mailto:zengxm@lib.tsinghua.edu.cn&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;E-mail&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[104]" method="GET" name="Cross site tracing vulnerability" plugin="xst" severity="Low" url="http://edu.lib.tsinghua.edu.cn/" var="None">
+        <description>The web server at &quot;http://edu.lib.tsinghua.edu.cn/&quot; is vulnerable to Cross Site Tracing.</description>
+        <long-description>The `TRACE` HTTP method allows a client so send a request to the server, and have the same request then send back in the server's response. This allows the client to determine if the server is receiving the request as expected or if specific parts of the request are not arriving as expected. For example incorrect encoding or a load balancer has filtered or changed a value. On many default installations the `TRACE` method is still enabled.
+
+While not vulnerable by itself, it does provide a method for cyber-criminals to bypass the `HTTPOnly` cookie flag, and therefore could allow a XSS attack to successfully access a session token.
+
+The tool has discovered that the affected page permits the HTTP `TRACE` method.</long-description>
+        <fix-guidance>The HTTP `TRACE` method is normally not required within production sites and should therefore be disabled.
+
+Depending on the function being performed by the web application, the risk level can start low and increase as more functionality is implemented.
+
+The remediation is typically a very simple configuration change and in most cases will not have any negative impact on the server or application.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="CAPEC" url="http://capec.mitre.org/data/definitions/107.html"/>
+            <reference title="OWASP" url="http://www.owasp.org/index.php/Cross_Site_Tracing"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="104">
+                <http-request>
+                    <status>TRACE http://edu.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                        <header content="XST" field="Fakeheader"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:42 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="close" field="connection"/>
+                        <header content="message/http" field="content-type"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">VFJBQ0UgLyBIVFRQLzEuMQ0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KQ29udGVudC1sZW5ndGg6
+IDANCkFjY2VwdC1lbmNvZGluZzogZ3ppcCwgZGVmbGF0ZQ0KQWNjZXB0OiAqLyoNClVzZXItYWdl
+bnQ6IG5pc2wNCkhvc3Q6IGVkdS5saWIudHNpbmdodWEuZWR1LmNuDQpDb250ZW50LXR5cGU6IGFw
+cGxpY2F0aW9uL3gtd3d3LWZvcm0tdXJsZW5jb2RlZA0KRmFrZWhlYWRlcjogWFNUDQoNCg==
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[106]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://lib.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://lib.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://edu.lib.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="106">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:43 GMT" field="date"/>
+                        <header content="271" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access /
+on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[109]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.120.160/" var="None">
+        <description>The contents of http://166.111.120.160/ and http://edu.lib.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="109">
+                <http-request>
+                    <status>GET http://166.111.120.160/ HTTP/1.1</status>
+                    <headers>
+                        <header content="166.111.120.160" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:43 GMT" field="date"/>
+                        <header content="267" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access /
+on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at 166.111.120.160 Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[133]" method="GET" name="Favicon identification" plugin="favicon_identification" severity="Information" url="http://edu.lib.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>Favicon.ico file was identified as &quot;Zero byte favicon&quot;.</description>
+        <http-transactions>
+            <http-transaction id="133">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 11 Aug 2008 02:34:14 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;7b608-0-45425fdb71580&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:08:43 GMT" field="date"/>
+                        <header content="text/plain; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[133]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://edu.lib.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>The URL: &quot;http://edu.lib.tsinghua.edu.cn/favicon.ico&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="133">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 11 Aug 2008 02:34:14 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;7b608-0-45425fdb71580&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:08:43 GMT" field="date"/>
+                        <header content="text/plain; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[194]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://edu.lib.tsinghua.edu.cn/CQnyv" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://edu.lib.tsinghua.edu.cn/CQnyv
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="194">
+                <http-request>
+                    <status>PUT http://edu.lib.tsinghua.edu.cn/CQnyv HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">bAdzxJ</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="299" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:08:47 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /CQnyv.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[158, 208, 216, 221, 224, 240, 242]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://edu.lib.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://edu.lib.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: CONNECT, GET, HEAD, OPTIONS, POST, TRACE</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="158">
+                <http-request>
+                    <status>OPTIONS http://edu.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:08:45 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="208">
+                <http-request>
+                    <status>HEAD http://edu.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="8190" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 29 Apr 2015 01:42:04 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;7ba67-1ffe-514d3160a9300&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:08:51 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="216">
+                <http-request>
+                    <status>OPTIONS http://edu.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:08:52 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="224">
+                <http-request>
+                    <status>CONNECT http://edu.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:09:02 GMT" field="date"/>
+                        <header content="299" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;400 Bad Request&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Bad Request&lt;/h1&gt;
+&lt;p&gt;Your browser sent a request that this server could not understand.&lt;br /&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at any.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="240">
+                <http-request>
+                    <status>POST http://edu.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="8190" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 29 Apr 2015 01:42:04 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;7ba67-1ffe-514d3160a9300&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:09:04 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-cn&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;meta name=&quot;GENERATOR&quot; content=&quot;Microsoft FrontPage 6.0&quot;&gt;
+&lt;meta name=&quot;ProgId&quot; content=&quot;FrontPage.Editor.Document&quot;&gt;
+&lt;title&gt;鍖椾含鍦板尯楂樻牎淇℃伅鐢ㄦ埛鏁欒偛涓庣爺绌跺洯鍦\xb0&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+  &lt;center&gt;
+
+&lt;table border=&quot;0&quot; width=&quot;88%&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;21%&quot; valign=&quot;middle&quot; align=&quot;right&quot; bordercolor=&quot;#FFFFFF&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/libteach.jpg&quot; width=&quot;153&quot; height=&quot;60&quot;&gt;&amp;nbsp;&amp;nbsp; 
+    &lt;/td&gt;
+    &lt;td width=&quot;79%&quot; valign=&quot;middle&quot;&gt;&amp;nbsp; &lt;b&gt;&lt;font face=&quot;鍗庢枃妤蜂綋&quot; size=&quot;4&quot; color=&quot;#800080&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/xiaoxingxing.gif&quot; width=&quot;28&quot; height=&quot;15&quot;&gt;&lt;/font&gt;&lt;span style=&quot;left: 0px; visibility: visible; position: relative; top: 0px&quot;&gt;&lt;span id=&quot;fpAnimwaveWordsRFP&quot; startL=&quot;320&quot; initLeft=&quot;0&quot; initTop=&quot;0&quot; endLeft=&quot;0&quot; endTop=&quot;0&quot;&gt;&lt;font color=&quot;#800080&quot; size=&quot;5&quot; face=&quot;妤蜂綋_GB2312&quot;&gt;鍖椾含鍦板尯楂樻牎&lt;/font&gt;&lt;/span&gt;&lt;span id=&quot;fpAnimwaveWordsRFP&quot; style=&quot;LEFT: 0px; VISIBILITY: visible; POSITION: relative; TOP: 0px; r: -191&quot; startL=&quot;337&quot; initLeft=&quot;0&quot; initTop=&quot;0&quot; endLeft=&quot;0&quot; endTop=&quot;0&quot;&gt;&lt;font color=&quot;#800080&quot; size=&quot;5&quot; face=&quot;妤蜂綋_GB2312&quot;&gt;淇℃伅绱犺川鏁欒偛鍥\xad\xe5湴&lt;/font&gt;&lt;font color=&quot;#800080&quot; size=&quot;5&quot; face=&quot;鍗庢枃妤蜂綋&quot;&gt;&lt;br&gt;                                              
+      &lt;/font&gt;                                              
+      &lt;/span&gt;&lt;/span&gt;&lt;/b&gt;     
+      &lt;hr color=&quot;#800080&quot;&gt;     
+    &lt;/td&gt;     
+  &lt;/tr&gt;     
+&lt;/table&gt;     
+  &lt;/center&gt;     
+&lt;/div&gt;     
+&lt;div align=&quot;center&quot;&gt;     
+  &lt;center&gt;     
+&lt;table border=&quot;0&quot; width=&quot;88%&quot; height=&quot;419&quot;&gt;     
+  &lt;tr&gt;     
+    &lt;td width=&quot;58%&quot; height=&quot;151&quot; valign=&quot;top&quot;&gt;     
+      &lt;div align=&quot;left&quot;&gt;     
+        &lt;table border=&quot;0&quot; width=&quot;89%&quot;&gt;     
+          &lt;tr&gt;     
+            &lt;td width=&quot;34%&quot; valign=&quot;middle&quot; align=&quot;center&quot;&gt;     
+              &lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; size=&quot;4&quot;&gt;&lt;br&gt;     
+              &lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/Book.gif&quot; width=&quot;135&quot; height=&quot;120&quot;&gt;&lt;/td&gt;     
+            &lt;td width=&quot;57%&quot;&gt;     
+              &lt;p align=&quot;left&quot;&gt;     
+              &lt;b&gt;&lt;font face=&quot;Times New Roman&quot; size=&quot;4&quot;&gt;&lt;i&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+				&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; size=&quot;4&quot;&gt;&lt;br&gt;     
+              &lt;b&gt;&lt;a href=&quot;Introduction/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;鏈\xac\xe7珯浠嬬粛&lt;/font&gt;&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;a href=&quot;LibEducation/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;鍥炬儏鏁欒偛&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;
+				&lt;a href=&quot;InformationLiteracy/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;
+				淇℃伅绱犺川&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;a href=&quot;ElectronicJournal/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;鐢靛瓙鏈熷垔&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;a href=&quot;ToolBox/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;鍥炬儏宸ュ叿绠\xb1&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;
+				&lt;a href=&quot;Association/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;
+				鍖椾含楂樻暀瀛︿細鍥句功棣嗗伐浣滅爺绌朵細淇℃伅绱犺川鏁欒偛涓撲笟濮斿憳浼\x9a&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;
+				&lt;p&gt;     
+              &lt;b&gt;&lt;font face=&quot;Times New Roman&quot; size=&quot;4&quot;&gt;&lt;i&gt;
+				&lt;a href=&quot;English%20Version/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;English Version&lt;/font&gt;&lt;/a&gt;&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt; &lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;b&gt;&lt;font size=&quot;4&quot;&gt;
+				&lt;a target=&quot;_blank&quot; href=&quot;Math-Phy/introduction.htm&quot;&gt;
+				&lt;font color=&quot;#000000&quot;&gt;鏁板\xad\xa6鐗╃悊瀛︾\xa7\x91淇℃伅绱犺川鏁欒偛寰\xae\xe8\xa7\x86棰\x91&lt;/font&gt;&lt;/a&gt;&amp;nbsp;
+				&lt;img border=&quot;0&quot; src=&quot;pictures/new.gif&quot; width=&quot;29&quot; height=&quot;13&quot;&gt;&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;     
+          &lt;/tr&gt;     
+        &lt;/table&gt;     
+      &lt;/div&gt;     
+    &lt;/td&gt;     
+    &lt;td width=&quot;41%&quot; height=&quot;269&quot; valign=&quot;top&quot;&gt;     
+      &lt;div align=&quot;left&quot;&gt;     
+        &lt;table border=&quot;1&quot; cellpadding=&quot;0&quot;&gt;     
+          &lt;tr&gt;     
+            &lt;td width=&quot;60%&quot; height=&quot;21&quot; bgcolor=&quot;#800080&quot;&gt;     
+              &lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; size=&quot;4&quot; color=&quot;#FFFFFF&quot;&gt;&lt;b&gt;
+				鏈\x80\xe6柊娑堟伅&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;     
+          &lt;/tr&gt;     
+  &lt;/center&gt;     
+          &lt;tr&gt;     
+            &lt;td height=&quot;217&quot; valign=&quot;top&quot;&gt;     
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; color=&quot;#800080&quot;&gt;
+				.&lt;a target=&quot;_blank&quot; href=&quot;News/2015-04-29-yiyuedusuyang.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;鍖椾含楂樻暀淇℃伅绱犺川鏁欒偛涓撲笟濮斿憳浼氭垚鍔熶富鍔炩\x80\x9c鏄\x93.闃呰\xaf\xbb.绱犲吇鈥濆\xad\xa6鏈\xaf\xe7爺璁ㄤ細&lt;/font&gt;&lt;/a&gt; 
+				&lt;img border=&quot;0&quot; src=&quot;pictures/new.gif&quot; width=&quot;29&quot; height=&quot;13&quot;&gt;&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a href=&quot;News/2015-04-02-gongkaike.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;鍖椾含楂樻暀淇℃伅绱犺川鏁欒偛涓撲笟濮斿憳浼氬湪鍖椾含寤虹瓚澶у\xad\xa6鎴愬姛涓惧姙銆婁俊鎭\xaf\xe6\xa3\x80绱\xa2\xe3\x80\x8b鍏\xac\xe5紑璇\xbe&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a target=&quot;_blank&quot; href=&quot;Academic%20News/2014-12-1-big%20data.doc&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;澶ф暟鎹\xae\xe6椂浠ｄ俊鎭\xaf\xe7礌鍏绘暀鑲蹭笌鍒涙柊浜烘墠鍩瑰吇璁哄潧鎴愬姛涓惧姙&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; color=&quot;#800080&quot;&gt;
+				.&lt;a target=&quot;_blank&quot; href=&quot;News/2014-12-12-xueshuyantaohui.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;澶ф暟鎹\xae\xe6椂浠ｇ殑淇℃伅绱犲吇鏁欒偛涓庡垱鏂颁汉鎵嶅煿鍏诲\xad\xa6鏈\xaf\xe7爺璁ㄤ細&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a target=&quot;_blank&quot; href=&quot;Association/ZiLiao/2011MingDan.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;鍖椾含楂樻暀瀛︿細鍥句功棣嗗伐浣滅爺绌朵細淇℃伅绱犺川鏁欒偛涓撲笟濮斿憳浼氬悕鍗\x95&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font color=&quot;#800080&quot; face=&quot;妤蜂綋_GB2312&quot;&gt;
+				.缃戠珯鑻辨枃鐗堟\xad\xa3鍦ㄥ缓璁句腑&lt;br&gt;
+				&lt;/font&gt;&lt;font face=&quot;Times New Roman&quot; color=&quot;#800080&quot;&gt;
+				English Version is under construction&lt;/font&gt;&lt;/p&gt;
+              &lt;p align=&quot;left&quot;&gt;&lt;font size=&quot;2&quot; face=&quot;妤蜂綋_GB2312&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;
+				&amp;gt;&amp;gt;&lt;/font&gt;&lt;b&gt;&lt;a href=&quot;News/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;鏇村\xa4\x9a&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;div align=&quot;left&quot;&gt;     
+        &lt;table border=&quot;1&quot; cellpadding=&quot;0&quot; id=&quot;table1&quot;&gt;     
+          &lt;tr&gt;     
+            &lt;td width=&quot;60%&quot; height=&quot;21&quot; bgcolor=&quot;#800080&quot;&gt;     
+              &lt;p align=&quot;center&quot;&gt;&lt;b&gt;
+				&lt;font face=&quot;妤蜂綋_GB2312&quot; size=&quot;4&quot; color=&quot;#FFFFFF&quot;&gt;瀛︽湳鍔ㄦ\x80\x81&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;     
+          &lt;/tr&gt;     
+  &lt;/center&gt;     
+          &lt;tr&gt;     
+            &lt;td valign=&quot;top&quot;&gt;     
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;/font&gt;&lt;a target=&quot;_blank&quot; href=&quot;../Academic%20News/2015-xinxisuyangyantaohuizhengwen.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;2015骞村叏鍥介珮鏍′俊鎭\xaf\xe7礌鍏绘暀鑲茬爺璁ㄤ細鏆ㄥ叏鍥藉寲宸ラ櫌鏍′俊鎭\xaf\xe7珯绗\xac19灞婂勾浼氬緛鏂囬\x80\x9a鐭\xa5 
+				&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#800080&quot;&gt;&amp;nbsp;&lt;img border=&quot;0&quot; src=&quot;pictures/new.gif&quot; width=&quot;29&quot; height=&quot;13&quot;&gt;&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a target=&quot;_blank&quot; href=&quot;Academic%20News/2014-01-10-huabeituxiezhengwen.doc&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;鍗庡寳鍦板尯楂樻牎鍥惧崗绗\xac\xe4簩鍗佸叓灞婂\xad\xa6鏈\xaf\xe5勾浼氬緛鏂囬\x80\x9a鐭\xa5&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;b&gt;
+				&lt;font face=&quot;妤蜂綋_GB2312&quot; color=&quot;#800080&quot; size=&quot;2&quot;&gt;&amp;gt;&amp;gt;&lt;a target=&quot;_blank&quot; href=&quot;Academic%20News/index.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;鏇村\xa4\x9a&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;100%&quot; height=&quot;51&quot; valign=&quot;top&quot; colspan=&quot;2&quot;&gt;     
+      &lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;妤蜂綋_GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/compass.gif&quot; width=&quot;40&quot; height=&quot;41&quot;&gt;&lt;/font&gt;&lt;a href=&quot;SiteMap/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;缃戠珯鍦板浘&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;
+    &lt;/td&gt;     
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;hr color=&quot;#800080&quot; width=&quot;88%&quot;&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;b&gt;&lt;font size=&quot;2&quot; face=&quot;妤蜂綋_GB2312&quot;&gt;淇℃伅鏈\x80\xe5悗涓\x80\xe6\xac\xa1鏇存柊锛\x9a&lt;/font&gt;&lt;font size=&quot;2&quot; face=&quot;Times New Roman&quot;&gt;2015&lt;/font&gt;&lt;font size=&quot;2&quot; face=&quot;妤蜂綋_GB2312&quot;&gt;骞\xb44鏈\x8829鏃\xa5&lt;br&gt;
+涓庢垜浠\xac\xe8仈缁\x9c&lt;/font&gt;&lt;font size=&quot;2&quot; face=&quot;Times New Roman&quot;&gt;&lt;a href=&quot;mailto:zengxm@lib.tsinghua.edu.cn&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;E-mail&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="242">
+                <http-request>
+                    <status>TRACE http://edu.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:09:04 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="close" field="connection"/>
+                        <header content="message/http" field="content-type"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">VFJBQ0UgLyBIVFRQLzEuMQ0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KSG9zdDogZWR1LmxpYi50
+c2luZ2h1YS5lZHUuY24NCkFjY2VwdC1lbmNvZGluZzogZ3ppcCwgZGVmbGF0ZQ0KQWNjZXB0OiAq
+LyoNClVzZXItYWdlbnQ6IG5pc2wNCg0K
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 64, 123, 133, 159, 171, 173, 174, 176, 177, 189, 194, 201]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="8190" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 29 Apr 2015 01:42:04 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;7ba67-1ffe-514d3160a9300&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:08:27 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-cn&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;meta name=&quot;GENERATOR&quot; content=&quot;Microsoft FrontPage 6.0&quot;&gt;
+&lt;meta name=&quot;ProgId&quot; content=&quot;FrontPage.Editor.Document&quot;&gt;
+&lt;title&gt;閸栨ぞ鍚\xab\xe9崷鏉垮隘妤傛ɑ鐗庢穱鈩冧紖閻\xa2\xe3劍鍩涢弫娆掑仜娑撳海鐖虹粚璺烘疮閸\xa6\\xb0&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+  &lt;center&gt;
+
+&lt;table border=&quot;0&quot; width=&quot;88%&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;21%&quot; valign=&quot;middle&quot; align=&quot;right&quot; bordercolor=&quot;#FFFFFF&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/libteach.jpg&quot; width=&quot;153&quot; height=&quot;60&quot;&gt;&amp;nbsp;&amp;nbsp; 
+    &lt;/td&gt;
+    &lt;td width=&quot;79%&quot; valign=&quot;middle&quot;&gt;&amp;nbsp; &lt;b&gt;&lt;font face=&quot;閸楀孩鏋冨Δ铚傜秼&quot; size=&quot;4&quot; color=&quot;#800080&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/xiaoxingxing.gif&quot; width=&quot;28&quot; height=&quot;15&quot;&gt;&lt;/font&gt;&lt;span style=&quot;left: 0px; visibility: visible; position: relative; top: 0px&quot;&gt;&lt;span id=&quot;fpAnimwaveWordsRFP&quot; startL=&quot;320&quot; initLeft=&quot;0&quot; initTop=&quot;0&quot; endLeft=&quot;0&quot; endTop=&quot;0&quot;&gt;&lt;font color=&quot;#800080&quot; size=&quot;5&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;閸栨ぞ鍚\xab\xe9崷鏉垮隘妤傛ɑ鐗\x8e&lt;/font&gt;&lt;/span&gt;&lt;span id=&quot;fpAnimwaveWordsRFP&quot; style=&quot;LEFT: 0px; VISIBILITY: visible; POSITION: relative; TOP: 0px; r: -191&quot; startL=&quot;337&quot; initLeft=&quot;0&quot; initTop=&quot;0&quot; endLeft=&quot;0&quot; endTop=&quot;0&quot;&gt;&lt;font color=&quot;#800080&quot; size=&quot;5&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;娣団剝浼呯槐鐘哄窛閺佹瑨鍋涢崶\xad\xe5婀\xb4&lt;/font&gt;&lt;font color=&quot;#800080&quot; size=&quot;5&quot; face=&quot;閸楀孩鏋冨Δ铚傜秼&quot;&gt;&lt;br&gt;                                              
+      &lt;/font&gt;                                              
+      &lt;/span&gt;&lt;/span&gt;&lt;/b&gt;     
+      &lt;hr color=&quot;#800080&quot;&gt;     
+    &lt;/td&gt;     
+  &lt;/tr&gt;     
+&lt;/table&gt;     
+  &lt;/center&gt;     
+&lt;/div&gt;     
+&lt;div align=&quot;center&quot;&gt;     
+  &lt;center&gt;     
+&lt;table border=&quot;0&quot; width=&quot;88%&quot; height=&quot;419&quot;&gt;     
+  &lt;tr&gt;     
+    &lt;td width=&quot;58%&quot; height=&quot;151&quot; valign=&quot;top&quot;&gt;     
+      &lt;div align=&quot;left&quot;&gt;     
+        &lt;table border=&quot;0&quot; width=&quot;89%&quot;&gt;     
+          &lt;tr&gt;     
+            &lt;td width=&quot;34%&quot; valign=&quot;middle&quot; align=&quot;center&quot;&gt;     
+              &lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;br&gt;     
+              &lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/Book.gif&quot; width=&quot;135&quot; height=&quot;120&quot;&gt;&lt;/td&gt;     
+            &lt;td width=&quot;57%&quot;&gt;     
+              &lt;p align=&quot;left&quot;&gt;     
+              &lt;b&gt;&lt;font face=&quot;Times New Roman&quot; size=&quot;4&quot;&gt;&lt;i&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+				&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;br&gt;     
+              &lt;b&gt;&lt;a href=&quot;Introduction/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;閺圽xac\xe7鐝\xaf\xe6禒瀣\xac\xe7矝&lt;/font&gt;&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;a href=&quot;LibEducation/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;閸ョ偓鍎忛弫娆掑仜&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;
+				&lt;a href=&quot;InformationLiteracy/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;
+				娣団剝浼呯槐鐘哄窛&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;a href=&quot;ElectronicJournal/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;閻㈤潧鐡欓張鐔峰灁&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;a href=&quot;ToolBox/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;閸ョ偓鍎忓\xae\xb8銉ュ徔缁燶xb1&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;
+				&lt;a href=&quot;Association/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;
+				閸栨ぞ鍚\xab\xe6\xa5\x82妯绘殌鐎涳缚绱伴崶鍙ュ姛妫ｅ棗浼愭担婊呯埡缁屾湹绱版穱鈩冧紖缁辩姾宸濋弫娆掑仜娑撴挷绗熸慨鏂挎喅娴糪x9a&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;
+				&lt;p&gt;     
+              &lt;b&gt;&lt;font face=&quot;Times New Roman&quot; size=&quot;4&quot;&gt;&lt;i&gt;
+				&lt;a href=&quot;English%20Version/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;English Version&lt;/font&gt;&lt;/a&gt;&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt; &lt;/b&gt;&lt;/font&gt;&lt;/p&gt;     
+              &lt;p&gt;&lt;b&gt;&lt;font size=&quot;4&quot;&gt;
+				&lt;a target=&quot;_blank&quot; href=&quot;Math-Phy/introduction.htm&quot;&gt;
+				&lt;font color=&quot;#000000&quot;&gt;閺佹澘\xad\xa6閻椻晝鎮婄\x80\x9b锔綷xa7\x91娣団剝浼呯槐鐘哄窛閺佹瑨鍋涘\xaf\xb0\xae\xe8\xa7\x86妫癨x91&lt;/font&gt;&lt;/a&gt;&amp;nbsp;
+				&lt;img border=&quot;0&quot; src=&quot;pictures/new.gif&quot; width=&quot;29&quot; height=&quot;13&quot;&gt;&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;     
+          &lt;/tr&gt;     
+        &lt;/table&gt;     
+      &lt;/div&gt;     
+    &lt;/td&gt;     
+    &lt;td width=&quot;41%&quot; height=&quot;269&quot; valign=&quot;top&quot;&gt;     
+      &lt;div align=&quot;left&quot;&gt;     
+        &lt;table border=&quot;1&quot; cellpadding=&quot;0&quot;&gt;     
+          &lt;tr&gt;     
+            &lt;td width=&quot;60%&quot; height=&quot;21&quot; bgcolor=&quot;#800080&quot;&gt;     
+              &lt;p align=&quot;center&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot; color=&quot;#FFFFFF&quot;&gt;&lt;b&gt;
+				閺圽x80\xe6鏌婂☉鍫熶紖&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;     
+          &lt;/tr&gt;     
+  &lt;/center&gt;     
+          &lt;tr&gt;     
+            &lt;td height=&quot;217&quot; valign=&quot;top&quot;&gt;     
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;
+				.&lt;a target=&quot;_blank&quot; href=&quot;News/2015-04-29-yiyuedusuyang.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閸栨ぞ鍚\xab\xe6\xa5\x82妯绘殌娣団剝浼呯槐鐘哄窛閺佹瑨鍋涙稉鎾茬瑹婵\xae\xe6柨鎲虫导姘\xad\xe5灇閸旂喍瀵岄崝鐐‐x80\x9c閺刓x93.闂冨懓\xaf\xbb.缁辩姴鍚囬垾婵哱xad\xa6閺圽xaf\xe7鐖虹拋銊ょ窗&lt;/font&gt;&lt;/a&gt; 
+				&lt;img border=&quot;0&quot; src=&quot;pictures/new.gif&quot; width=&quot;29&quot; height=&quot;13&quot;&gt;&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a href=&quot;News/2015-04-02-gongkaike.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閸栨ぞ鍚\xab\xe6\xa5\x82妯绘殌娣団剝浼呯槐鐘哄窛閺佹瑨鍋涙稉鎾茬瑹婵\xae\xe6柨鎲虫导姘\xac\xe6躬閸栨ぞ鍚\xab\xe5\xaf\xa4铏圭摎婢堆僜xad\xa6閹存劕濮涙稉鎯у\xa7\x99閵嗗﹣淇婇幁\xaf\xe6\xa3\x80缁盶xa2\xe3\x80\x8b閸廫xac\xe5绱戠拠\xbe&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a target=&quot;_blank&quot; href=&quot;Academic%20News/2014-12-1-big%20data.doc&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;婢堆勬殶閹筡xae\xe6妞傛禒锝勪繆閹璡xaf\xe7绀岄崗缁樻殌閼茶弓绗岄崚娑欐煀娴滅儤澧犻崺鐟板悋鐠佸搫娼ч幋鎰\xac\xe5\xa7\x9b娑撴儳濮\x99&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;
+				.&lt;a target=&quot;_blank&quot; href=&quot;News/2014-12-12-xueshuyantaohui.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;婢堆勬殶閹筡xae\xe6妞傛禒锝囨畱娣団剝浼呯槐鐘插悋閺佹瑨鍋涙稉搴″灡閺傞\xa2\x81姹夐幍宥呯吙閸忚\xaf\xb2\xad\xa6閺圽xaf\xe7鐖虹拋銊ょ窗&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a target=&quot;_blank&quot; href=&quot;Association/ZiLiao/2011MingDan.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閸栨ぞ鍚\xab\xe6\xa5\x82妯绘殌鐎涳缚绱伴崶鍙ュ姛妫ｅ棗浼愭担婊呯埡缁屾湹绱版穱鈩冧紖缁辩姾宸濋弫娆掑仜娑撴挷绗熸慨鏂挎喅娴兼艾鎮曢崡\x95&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font color=&quot;#800080&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;
+				.缂冩垹鐝\xaf\xe9懟杈ㄦ瀮閻楀牊\xad\xa3閸︺劌缂撶拋鍙ヨ厬&lt;br&gt;
+				&lt;/font&gt;&lt;font face=&quot;Times New Roman&quot; color=&quot;#800080&quot;&gt;
+				English Version is under construction&lt;/font&gt;&lt;/p&gt;
+              &lt;p align=&quot;left&quot;&gt;&lt;font size=&quot;2&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;
+				&amp;gt;&amp;gt;&lt;/font&gt;&lt;b&gt;&lt;a href=&quot;News/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閺囨潙\xa4\x9a&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;div align=&quot;left&quot;&gt;     
+        &lt;table border=&quot;1&quot; cellpadding=&quot;0&quot; id=&quot;table1&quot;&gt;     
+          &lt;tr&gt;     
+            &lt;td width=&quot;60%&quot; height=&quot;21&quot; bgcolor=&quot;#800080&quot;&gt;     
+              &lt;p align=&quot;center&quot;&gt;&lt;b&gt;
+				&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot; color=&quot;#FFFFFF&quot;&gt;鐎涳附婀抽崝銊\xa6\\x80\x81&lt;/font&gt;&lt;/b&gt;&lt;/td&gt;     
+          &lt;/tr&gt;     
+  &lt;/center&gt;     
+          &lt;tr&gt;     
+            &lt;td valign=&quot;top&quot;&gt;     
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;/font&gt;&lt;a target=&quot;_blank&quot; href=&quot;../Academic%20News/2015-xinxisuyangyantaohuizhengwen.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;2015楠炴潙鍙忛崶浠嬬彯閺嶁\x80\xb2淇婇幁\xaf\xe7绀岄崗缁樻殌閼茶尙鐖虹拋銊ょ窗閺嗐劌鍙忛崶钘夊\xaf\xb2瀹搞儵娅岄弽鈥蹭繆閹璡xaf\xe7鐝\xaf\xe7粭\xac19鐏炲﹤鍕炬导姘\xac\xe7窙閺傚洭\x80\x9a閻璡xa5 
+				&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#800080&quot;&gt;&amp;nbsp;&lt;img border=&quot;0&quot; src=&quot;pictures/new.gif&quot; width=&quot;29&quot; height=&quot;13&quot;&gt;&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot;&gt;.&lt;a target=&quot;_blank&quot; href=&quot;Academic%20News/2014-01-10-huabeituxiezhengwen.doc&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閸楀骸瀵抽崷鏉垮隘妤傛ɑ鐗庨崶鎯у礂缁梊xac\xe4绨╅崡浣稿彄鐏炲﹤\xad\xa6閺圽xaf\xe5鍕炬导姘\xac\xe7窙閺傚洭\x80\x9a閻璡xa5&lt;/font&gt;&lt;/a&gt;
+				&lt;/font&gt;&lt;/p&gt;
+				&lt;p align=&quot;left&quot;&gt;&lt;b&gt;
+				&lt;font face=&quot;濡よ渹缍媉GB2312&quot; color=&quot;#800080&quot; size=&quot;2&quot;&gt;&amp;gt;&amp;gt;&lt;a target=&quot;_blank&quot; href=&quot;Academic%20News/index.htm&quot;&gt;&lt;font color=&quot;#800080&quot;&gt;閺囨潙\xa4\x9a&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;100%&quot; height=&quot;51&quot; valign=&quot;top&quot; colspan=&quot;2&quot;&gt;     
+      &lt;p align=&quot;left&quot;&gt;&lt;font face=&quot;濡よ渹缍媉GB2312&quot; size=&quot;4&quot;&gt;&lt;b&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;pictures/compass.gif&quot; width=&quot;40&quot; height=&quot;41&quot;&gt;&lt;/font&gt;&lt;a href=&quot;SiteMap/index.htm&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;缂冩垹鐝\xaf\xe9崷鏉挎禈&lt;/font&gt;&lt;/a&gt;&lt;/b&gt;&lt;/font&gt;
+    &lt;/td&gt;     
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;hr color=&quot;#800080&quot; width=&quot;88%&quot;&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;b&gt;&lt;font size=&quot;2&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;娣団剝浼呴張\x80\xe5鎮楁稉\x80\xe6\xac\xa1閺囧瓨鏌婇敍\x9a&lt;/font&gt;&lt;font size=&quot;2&quot; face=&quot;Times New Roman&quot;&gt;2015&lt;/font&gt;&lt;font size=&quot;2&quot; face=&quot;濡よ渹缍媉GB2312&quot;&gt;楠瀄xb44閺圽x8829閺僜xa5&lt;br&gt;
+娑撳孩鍨滄禒\xac\xe8浠堢紒\x9c&lt;/font&gt;&lt;font size=&quot;2&quot; face=&quot;Times New Roman&quot;&gt;&lt;a href=&quot;mailto:zengxm@lib.tsinghua.edu.cn&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;E-mail&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="64">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:42 GMT" field="date"/>
+                        <header content="284" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="123">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/PuDap.html HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:43 GMT" field="date"/>
+                        <header content="281" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /PuDap.html was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="133">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 11 Aug 2008 02:34:14 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;7b608-0-45425fdb71580&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:08:43 GMT" field="date"/>
+                        <header content="text/plain; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="159">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:45 GMT" field="date"/>
+                        <header content="284" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /server-status was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="171">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:45 GMT" field="date"/>
+                        <header content="283" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /jmx-console/ was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="173">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:45 GMT" field="date"/>
+                        <header content="289" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/Invoker was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="174">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:45 GMT" field="date"/>
+                        <header content="285" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /admin-console/ was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="176">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:45 GMT" field="date"/>
+                        <header content="277" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /status was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="177">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:45 GMT" field="date"/>
+                        <header content="297" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /web-console/ServerInfo.jsp was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="189">
+                <http-request>
+                    <status>POST http://edu.lib.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L1B1RGFwLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGgucGFEdVA=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:46 GMT" field="date"/>
+                        <header content="299" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="194">
+                <http-request>
+                    <status>PUT http://edu.lib.tsinghua.edu.cn/CQnyv HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">bAdzxJ</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="299" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:08:47 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /CQnyv.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="201">
+                <http-request>
+                    <status>GET http://edu.lib.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="edu.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:08:47 GMT" field="date"/>
+                        <header content="296" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/JMXInvokerServlet was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at edu.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The cors_origin plugin got an error while requesting &quot;http://edu.lib.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://edu.lib.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The port '443' is not open on target edu.lib.tsinghua.edu.cn</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to edu.lib.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

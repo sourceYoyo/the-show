@@ -1,0 +1,1952 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480511912" start-long="Wed Nov 30 08:18:32 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://yqs.pim.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.133"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1346_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[87]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;nginx&quot;.</description>
+        <http-transactions>
+            <http-transaction id="87">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="Fri, 17 Apr 2009 08:26:03 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:34 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xbb\xb6ӭ\xc0\xb4\xb5\xbd\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9&lt;/TITLE&gt;
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;&lt;LINK 
+href=&quot;erc.css&quot; rel=stylesheet &gt;
+&lt;META content=&quot;MSHTML 6.00.2900.2180&quot; name=GENERATOR&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+.style3 {color: #000000}
+--&gt;
+&lt;/style&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgColor=#ffffff&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=960 align=center bgColor=#94249C 
+border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD vAlign=top align=left width=222&gt;&lt;IMG height=12 
+      src=&quot;picture/left.gif&quot; width=13 
+      &gt;&lt;/TD&gt;
+    &lt;TD width=127&gt;\xa1\xa1&lt;/TD&gt;
+    &lt;TD vAlign=top align=right width=206&gt;\xa1\xa1&lt;/TD&gt;
+    &lt;TD vAlign=top align=right&gt;&lt;IMG height=12 
+      src=&quot;picture/right.gif&quot; width=12 
+  &gt;&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD colSpan=4&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=607 align=left border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD width=&quot;500&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;picture/logo.gif&quot; width=&quot;500&quot; height=&quot;100&quot;&gt;&lt;/TD&gt;
+          &lt;TD align=right width=&quot;102&quot;&gt;
+			&lt;img border=&quot;0&quot; src=&quot;picture/logo2.jpg&quot; width=&quot;88&quot; height=&quot;80&quot;&gt;&lt;/TD&gt;
+          &lt;TD align=right&gt;
+			\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;p align=&quot;center&quot;&gt;
+		&lt;img border=&quot;0&quot; src=&quot;picture/banner5.jpg&quot; width=&quot;287&quot; height=&quot;104&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD colSpan=4&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=928 align=center border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR align=middle&gt;
+          &lt;TD vAlign=center height=24&gt;
+            &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; align=right 
+            bgColor=#5D0D63 border=0&gt;
+              &lt;TBODY&gt;
+              &lt;TR vAlign=center align=middle&gt;
+                &lt;TD height=24&gt; &lt;font color=&quot;#FDC450&quot;&gt;  
+                  &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt;  
+                  &lt;a href=&quot;index.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xca\xd7ҳ&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;font color=&quot;#FDC450&quot;&gt; | &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt; &lt;a href=&quot;introduce.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xb8ſ\xf6\xbc\xf2\xbd\xe9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;technic.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xbf\xc6ѧ\xd1о\xbf&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;a href=&quot;organization.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xbf\xc6\xd1л\xfa\xb9\xb9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;faculty.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xd1о\xbf\xb6\xd3\xce\xe9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;a href=&quot;education.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xbd\xcc\xd3\xfd\xbd\xccѧ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;communication.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;ѧ\xca\xf5\xbd\xbb\xc1\xf7&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;wanted.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xd5\xd0Ƹ\xd0\xc5Ϣ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;navguide.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xcd\xf8վ\xb5\xbc\xba\xbd&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;index_e.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;English Version&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD background=picture/bg_top_inner.gif&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR bgColor=#F2C8F5&gt;
+          &lt;TD&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR bgColor=#F2C8F5&gt;
+          &lt;TD height=255&gt;
+            &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+              &lt;TBODY&gt;
+              &lt;TR&gt;
+                &lt;TD vAlign=top&gt;
+                  &lt;TABLE cellSpacing=0 cellPadding=4 width=&quot;100%&quot; border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD height=205&gt;
+                        &lt;P align=center&gt;&lt;IMG height=119 hspace=8 
+                        src=&quot;picture/tsinghua.jpg&quot; width=147 
+                        align=left vspace=8&gt;&lt;/P&gt;
+                        &lt;P align=center&gt;
+						  &lt;font face=&quot;\xbb\xaa\xce\xc4\xd0п\xac&quot; color=&quot;#990066&quot; size=&quot;5&quot;&gt;\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9&lt;/font&gt;&lt;/P&gt;
+                        &lt;P&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;span style=&quot;font-size:9.0pt;line-height:
+150%&quot;&gt;&lt;span class=&quot;style3&quot;&gt;\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9Χ\xc8\xc6\xcfִ\xfa\xbf\xc6ѧ\xd2\xc7\xc6\xf7\xb5\xc4\xd1о\xbf\xc1\xec\xd3\xf2\xa3\xac\xd6\xf7Ҫ\xd1о\xbf\xb7\xbd\xcf\xf2\xb0\xfc\xc0\xa8΢\xc3\xd7\xc4\xc9\xc3׼\xbc\xca\xf5\xa1\xa2\xb9\xe2\xb4洢\xbc\xbc\xca\xf5\xa1\xa2\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xbaͲ\xe2\xcaԼ\xbc\xca\xf5\xa1\xa2\xb5\xbc\xba\xbd\xd3\xeb\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xa1\xa2\xb4\xab\xb8м\xbc\xca\xf5\xd3\xeb\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7\xa1\xa2\xd6\xc7\xc4\xdc΢ϵͳ\xbc\xb0\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xba\xcd\xc9\xfa\xc3\xfc\xbf\xc6ѧ\xd2\xc7\xc6\xf7\xb5ȣ\xac\xca\xc7һ\xb8\xf6\xb6\xe0ѧ\xbfƽ\xbb\xb2\xe6\xb5\xc4\xd3\xebУ\xcd\xe2\xc6\xf3ҵ\xba\xcd\xd1о\xbf\xb5\xa5λ\xd3й㷺\xc1\xaaϵ\xb5\xc4\xd2\xd4һ\xbc\xb6ѧ\xbfƽ\xa8\xc1\xa2\xc6\xf0\xc0\xb4\xb5Ľ\xccѧ\xd1о\xbf\xb5\xa5λ\xa1\xa3&lt;/span&gt;
+						&lt;/span&gt;						&lt;span lang=&quot;EN-US&quot; style=&quot;font-size:9.0pt;line-height:
+150%&quot;&gt;&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;span class=&quot;style3&quot;&gt;1981&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;font-size:9.0pt; line-height:150%; color: #000000;&quot;&gt;\xc4꾭\xb9\xfa\xce\xf1Ժѧλ\xb0\xec\xc5\xfa׼\xbd\xa8\xc1\xa2\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xbc\xb0\xbb\xfaеѧ\xbfƲ\xa9ʿ\xb5㣬1988\xc4\xea\xc5\xfa׼Ϊ\xd6ص\xe3ѧ\xbfƣ\xac\xc9\xe8\xc1\xa2\xd2\xc7\xc6\xf7\xd2Ǳ���ʿ\xba\xf3\xc1\xf7\xb6\xafվ\xa1\xa31989\xc4\xea\xd3\xeb\xcc\xec\xbd\xf2\xb4\xf3ѧ\xbe\xab\xd2\xc7ϵ\xb9\xb2\xbd\xa8\xbe\xab\xc3ܲ\xe2\xcaԼ\xbc\xca\xf5\xd3\xeb\xd2\xc7\xc6\xf7\xb9\xfa\xbc\xd2\xd6ص\xe3ʵ\xd1\xe9\xcaҡ\xa31997\xc4\xea\xbb\xf1һ\xbc\xb6ѧ\xbfƲ\xa9ʿѧλ\xca\xda\xd3\xe8Ȩ\xa1\xa32001\xc4\xea\xb9\xfa\xbc\xd2\xd6ص\xe3ѧ\xbf\xc6\xc6\xc0\xb9\xc0\xd6\xd0\xd2\xd4\xc2\xfa\xb7\xd6\xc1е\xdaһ\xc3\xfb\xa1\xa32003\xc4\xea\xd4\xdaȫ\xb9\xfa\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5һ\xbc\xb6ѧ\xbf\xc6\xc6\xc0\xb9\xc0\xd6\xd0\xd4ٴ\xce\xd2\xd4\xc2\xfa\xb7ֻ\xf1\xb5õ\xdaһ\xc3\xfb\xa1\xa3&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9\xcaǾ\xab\xc3ܲ\xe2\xcaԼ\xbc\xca\xf5\xd3\xeb\xd2\xc7\xc6\xf7\xb9\xfa\xbc\xd2\xd6ص\xe3ʵ\xd1\xe9\xcaҵ\xc4\xd6\xd8Ҫ\xd7\xe9\xb3ɲ\xbf\xb7֣\xac\xb2\xa2\xbd\xa8\xd3й\xe2\xc5̹\xfa\xbcҹ\xa4\xb3\xcc\xd1о\xbf\xd6\xd0\xd0ġ\xa2\xc7廪\xb4\xf3ѧ\xd3\xd6\xd0\xd0ġ\xa2\xc7廪\xb4\xf3ѧ΢\xc4\xc9\xc3\xd7\xd6\xd0\xd0\xc4ʵ\xd1\xe9\xcaҡ\xa2\xc7廪\xb4\xf3ѧ\xb9\xdf\xd0\xd4\xcd\xd3\xc2ݵ\xbc\xba\xbd\xd6\xd0\xd0ļ\xb0\xc7廪\xb4\xf3ѧʵ\xd1\xe9\xbd\xccѧ\xbb\xf9\xb5ء\xb0\xcfִ\xfa\xb2\xe2\xbfؼ\xbc\xca\xf5ʵ\xd1\xe9\xbd\xccѧ\xd6\xd0\xd0ġ\xb1\xa3\xac\xbe\xdf\xd3\xd0һ\xb4\xf3\xc5\xfa\xcfִ\xfa\xbb\xaf\xb5\xc4\xd2\xc7\xc6\xf7\xba\xcdʵ\xd1\xe9\xc9豸\xa1\xa3&lt;/span&gt;&lt;/font&gt;&lt;/P&gt;&lt;/TD&gt;
+                    &lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD bgColor=#F2C8F5&gt;
+            &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+              &lt;TBODY&gt;
+              &lt;TR&gt;
+                &lt;TD vAlign=top width=&quot;50%&quot;&gt;
+                  &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD colSpan=3&gt;
+                        &lt;div align=&quot;center&quot;&gt;
+                        &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; 
+                        bgColor=#94249C border=0&gt;
+                          &lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=388 
+                            background=index2.files/bg_main_banner.jpg&gt;\xa1\xa1&lt;/TD&gt;
+                            &lt;TD vAlign=center align=middle width=87&gt;&lt;FONT 
+                              color=#ffffff&gt;\xb1\xbe վ \xbf\xec Ѷ&lt;/FONT&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=top align=right bgColor=#F2C8F5&gt;&lt;IMG height=21 
+                              src=&quot;picture/right3.gif&quot; 
+                              width=21 
+&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/div&gt;
+					  &lt;/TD&gt;&lt;/TR&gt;
+                    &lt;TR bgColor=#94249C&gt;
+                      &lt;TD colSpan=3&gt;
+                        &lt;TABLE borderColor=#94249C height=&quot;30%&quot; cellSpacing=0 
+                        cellPadding=2 width=&quot;100%&quot; align=left bgColor=#F2C8F5 
+                        border=1&gt;
+                          &lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD height=152&gt;
+                              &lt;TABLE cellSpacing=0 cellPadding=1 width=&quot;100%&quot; 
+                              border=0&gt;
+                                &lt;TBODY&gt;
+                                &lt;TR&gt;
+                                &lt;TD height=26&gt;&lt;IMG height=14 
+                                src=&quot;picture/logo_sphere.jpg&quot; width=14&gt;&lt;/TD&gt;
+                                &lt;TD width=397&gt;&lt;a href=&quot;news.htm&quot;&gt;&lt;font color=&quot;#993366&quot;&gt;
+								\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9\xd0\xc2\xd6\xf7ҳ\xd5\xfdʽ\xbf\xaaͨʹ\xd3á\xa3&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;
+                                &lt;TD vAlign=top width=39&gt;
+								&lt;p align=&quot;center&quot;&gt;&lt;IMG 
+                                src=&quot;picture/new.gif&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top height=26&gt;&lt;IMG height=14 
+                                src=&quot;picture/logo_sphere.jpg&quot; width=14&gt;&lt;/TD&gt;
+                                &lt;TD&gt;&lt;a href=&quot;news.htm&quot;&gt;&lt;font color=&quot;#993366&quot;&gt;\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9\xd5ٿ\xaa\xbd\xccѧ\xb9\xa4\xd7\xf7\xd1\xd0\xccֻ\xe1&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;
+                                &lt;TD&gt;
+								&lt;p align=&quot;center&quot;&gt;&lt;IMG 
+                                src=&quot;picture/new.gif&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top height=26&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD colSpan=2&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top width=14&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;
+                                \xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;
+                                \xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;&lt;a href=&quot;news.htm&quot;&gt;\xb8\xfc\xb6ද̬ &amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+                    &lt;TR bgColor=#94249C&gt;
+                      &lt;TD colSpan=3 height=17&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+                  &lt;TABLE cellSpacing=3 cellPadding=0 width=&quot;100%&quot; 
+                  bgColor=#94249C border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD vAlign=top width=&quot;46%&quot; bgColor=#F2C8F5 
+                        height=201&gt;\xa1\xa1&lt;IMG height=18 
+                        src=&quot;picture/daohang.gif&quot; width=107&gt;&lt;BR&gt;&lt;FONT 
+                        color=#993366&gt;\xa1\xa1\xa1\xf2 &lt;A href=&quot;introduce.htm&quot;&gt;\xb8ſ\xf6\xbc\xf2\xbd\xe9&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;technic.htm&quot;&gt;\xbf\xc6ѧ\xd1о\xbf&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;a href=&quot;http://yqs.pim.tsinghua.edu.cn/measure/ch_index.htm&quot;&gt;\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xd3\xeb\xb2\xe2\xcaԼ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;&amp;nbsp; \xa1\xf2
+                        &lt;a href=&quot;sensor2.htm&quot;&gt;\xb4\xab\xb8м\xbc\xca\xf5\xbc\xb0\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;a href=&quot;mems2/index.htm&quot;&gt;΢ϵͳ\xd3\xeb\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2                       
+                        &lt;a href=&quot;mems21.htm&quot;&gt;\xd6\xc7\xc4\xdc΢ϵͳ\xbc\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt; &amp;nbsp;
+                        \xa1\xf2 &lt;a href=&quot;navigation2.htm&quot;&gt;\xb5\xbc\xba\xbd\xd2\xc7\xc6\xf7\xbc\xb0ϵͳ\xbf\xd8\xd6\xc6\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;&amp;nbsp;
+                        \xa1\xf2 &lt;a href=&quot;disc2.htm&quot;&gt;\xb9\xe2\xb4洢\xbc\xb0\xd0\xc5Ϣ\xb4\xa6\xc0\xed\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;&amp;nbsp;
+                        \xa1\xf2 &lt;a href=&quot;faculty.htm&quot;&gt;\xd1о\xbf\xb6\xd3\xce\xe9&lt;/a&gt;&lt;BR&gt;
+                        &amp;nbsp; \xa1\xf2 &lt;a href=&quot;communication.htm&quot;&gt;ѧ\xca\xf5\xbd\xbb\xc1\xf7&lt;/a&gt;&lt;BR&gt;
+                        &amp;nbsp; 
+                        &lt;/FONT&gt;&lt;/TD&gt;
+                      &lt;TD vAlign=top width=&quot;54%&quot; bgColor=#F2C8F5&gt;\xa1\xa1&lt;IMG 
+                        height=18 src=&quot;picture/youqing.gif&quot; 
+                        width=107&gt;&lt;BR&gt;
+						&lt;FONT color=#993366&gt;&amp;nbsp; 
+                        \xa1\xf2 &lt;A href=&quot;http://www.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧ&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;http://www.pim.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧ\xbe\xab\xd2\xc7ϵ&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;http://www.lib.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧͼ\xca\xe9\xb9\xdd&lt;/A&gt;&lt;BR&gt;&amp;nbsp; \xa1\xf2
+                        &lt;A href=&quot;http://info.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧ\xd0\xc5Ϣ\xd6\xd0\xd0ģ\xa8info\xa3\xa9&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;http://www.most.gov.cn/&quot;&gt;\xb9\xfa\xbcҿƼ\xbc\xb2\xbf&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;a href=&quot;http://www.moe.gov.cn/&quot;&gt;\xb9\xfa\xbcҽ\xcc\xd3\xfd\xb2\xbf&lt;/a&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;\xa1\xa1&lt;/TD&gt;
+                &lt;TD width=&quot;2%&quot;&gt;\xa1\xa1&lt;/TD&gt;
+                &lt;TD vAlign=top width=&quot;48%&quot;&gt;
+                  &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD&gt;
+                        &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; 
+                        align=right bgColor=#94249C border=0&gt;
+                          &lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=14 bgColor=#F2C8F5&gt;&lt;IMG height=21 
+                              src=&quot;picture/left3.gif&quot; 
+                              width=21 &gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center align=middle width=98&gt;&lt;FONT 
+                              color=#ffffff&gt;\xb1\xbe վ \xc0\xb8 Ŀ&lt;/FONT&gt;
+                            &lt;/TD&gt;
+                            &lt;TD vAlign=center align=middle width=360 
+                            background=index2.files/bg_main_banner.jpg &lt;/TD&gt;
+                            &lt;TD vAlign=top align=right 
+                          width=4&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+                    &lt;TR vAlign=top align=right bgColor=#94249C&gt;
+                      &lt;TD&gt;
+                        &lt;TABLE cellSpacing=0 cellPadding=4 width=&quot;98%&quot; 
+                          border=0 height=&quot;457&quot;&gt;&lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=54&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;introduce.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/gaikuang.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt; &lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+							&lt;p align=&quot;center&quot;&gt;&lt;FONT color=#ffffff&gt; 
+                              &lt;a href=&quot;introduce.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xd1о\xbf\xcb\xf9\xbc\xf2&lt;/font&gt;&lt;/a&gt;\xbd\xe9&amp;nbsp; 
+                              | &lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;a href=&quot;setup.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;\xbb\xfa\xb9\xb9\xc9\xe8\xd6\xc3&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;
+							&lt;/font&gt;&amp;nbsp;|
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;a href=&quot;direction.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;\xd1о\xbf\xb7\xbd\xcf\xf2&lt;/font&gt;&lt;/a&gt;&amp;nbsp; 
+							| &lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp; &lt;/font&gt;&lt;a href=&quot;contactus.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;\xc1\xaaϵ\xce\xd2\xc3\xc7&amp;nbsp;&lt;/font&gt;&lt;/a&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=51&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;technic.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/kexueyanjiu.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;technic.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp; \xbf\xc6ѧ\xd1о\xbf\xb8ſ\xf6&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 
+							|&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;measure1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; \xbe\xab\xc3ܼ\xc6\xc1\xbf\xbc\xb0\xb2\xe2\xcaԼ\xbc\xca\xf5 &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;sensor1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp; \xb4\xab\xb8\xd0\xc6\xf7\xbc\xbc\xca\xf5\xd3\xeb\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7&amp;nbsp;&amp;nbsp;&amp;nbsp; |&lt;/font&gt;&lt;/a&gt;
+                            &lt;a href=&quot;mems1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;΢\xbb\xfa\xb5磨MEMS\xa3\xa9ϵͳ\xbf\xc6ѧ\xbc\xbc\xca\xf5 &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+                              &lt;a href=&quot;navigation1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp;\xb5\xbc\xba\xbd\xd2\xc7\xc6\xf7\xbc\xb0ϵͳ\xbf\xd8\xd6Ƽ\xbc\xca\xf5&amp;nbsp;&amp;nbsp; &lt;/font&gt;&lt;/a&gt;
+                              &lt;a href=&quot;disc1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb9\xe2ѧ\xd0\xc5Ϣ\xb4洢\xbc\xb0\xb4\xa6\xc0\xed\xbf\xc6ѧ\xbc\xbc\xca\xf5 &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+						    &lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=37&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;organization.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/keyanjigou.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+							
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+                            &lt;p align=&quot;center&quot;&gt;
+                            &lt;a href=&quot;http://yqs.pim.tsinghua.edu.cn/measure/ch_index.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt; 
+							\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xd3\xeb\xb2\xe2\xcaԼ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;sensor2.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb4\xab\xb8м\xbc\xca\xf5\xbc\xb0\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;mems2/index.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;
+							΢ϵͳ\xd3\xeb\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;mems21.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xd6\xc7\xc4\xdc΢ϵͳ\xbc\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;navigation2.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb5\xbc\xba\xbd\xd2\xc7\xc6\xf7\xbc\xb0ϵͳ\xbf\xd8\xd6\xc6\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;disc2.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb9\xe2\xb4洢\xbc\xb0\xd0\xc5Ϣ\xb4\xa6\xc0\xed\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=37&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;faculty.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/yanjiuduiwu.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+                            &lt;p align=&quot;center&quot;&gt;
+                            &lt;a href=&quot;faculty.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;
+							\xd1о\xbf\xcb\xf9\xbd\xcc\xd1\xd0\xc8\xcbԱ\xc3\xfb\xb5\xa5&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=40&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;education.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/jiaoyujiaoxue.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+                            &lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;education.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xbd\xccѧ\xb8ſ\xf6 |&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;education.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xbd\xccѧ\xb3ɹ\xfb&amp;nbsp; &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;undergraduate.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb1\xbe\xbf\xc6\xc9\xfa\xbd\xccѧ |&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;graduate.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xd1о\xbf\xc9\xfa\xbd\xccѧ |&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;lab.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;ʵ\xd1\xe9\xcaҽ\xe9\xc9\xdc&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot;&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;communication.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/xueshujiaoliu.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+							&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;communication.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;
+							ѧ\xca\xf5\xbd\xbb\xc1\xf7\xb8ſ\xf6\xbd\xe9\xc9\xdc&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot;&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;wanted.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/zhaopinxinxi.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=55&gt;
+							&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;wanted.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;
+							\xd2\xc7\xc6\xf7\xcb\xf9\xb8\xdaλ\xd5\xd0Ƹ\xd0\xc5Ϣ&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+                  &lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR bgColor=#94249C&gt;
+          &lt;TD height=2&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD colSpan=4&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD vAlign=bottom align=left width=12&gt;&lt;IMG height=12 
+            src=&quot;picture/left2.gif&quot; width=13 
+&gt;&lt;/TD&gt;
+          &lt;TD width=*&gt;\xa1\xa1&lt;/TD&gt;
+          &lt;TD vAlign=bottom align=right&gt;&lt;IMG height=12 
+            src=&quot;picture/right2.gif&quot; width=12 
+&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=960 align=center border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD&gt;
+      &lt;DIV align=center&gt;
+      &lt;P&gt;
+                  &lt;font color=&quot;#0033FF&quot;&gt;
+                  &lt;/font&gt;  &lt;/font&gt;  &lt;font color=&quot;#0000ff&quot;&gt;  
+                  &lt;a href=&quot;index.htm&quot; class=&quot;navi&quot;&gt;
+					&lt;font color=&quot;#0000FF&quot;&gt;\xca\xd7ҳ&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;font color=&quot;#0000FF&quot;&gt; | &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt; &lt;a href=&quot;introduce.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xb8ſ\xf6\xbc\xf2\xbd\xe9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;technic.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xbf\xc6ѧ\xd1о\xbf&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+				  | &lt;/font&gt; &lt;a href=&quot;organization.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xbf\xc6\xd1л\xfa\xb9\xb9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;faculty.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xd1о\xbf\xb6\xd3\xce\xe9&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  |  &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt; &lt;font color=&quot;#FDC450&quot;&gt; 
+					&lt;a href=&quot;education.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xbd\xcc\xd3\xfd\xbd\xccѧ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;communication.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;ѧ\xca\xf5\xbd\xbb\xc1\xf7&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;wanted.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xd5\xd0Ƹ\xd0\xc5Ϣ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;navguide.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xcd\xf8վ\xb5\xbc\xba\xbd|&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/P&gt;
+      &lt;P&gt;&lt;font color=&quot;#0000FF&quot;&gt;Copyright&amp;copy;\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9&lt;BR&gt;ͨѶ\xb5\xd8ַ\xa3\xba\xc7廪\xb4\xf3ѧ\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xd3\xeb\xbb\xfaеѧϵ 
+      100084&lt;/font&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[188]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://pim.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://pim.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://yqs.pim.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="188">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:40 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;403 Forbidden&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;403 Forbidden&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[161]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://yqs.pim.tsinghua.edu.cn/SLeyH" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://yqs.pim.tsinghua.edu.cn/SLeyH
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="161">
+                <http-request>
+                    <status>PUT http://yqs.pim.tsinghua.edu.cn/SLeyH HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">iA9wrv</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Not Allowed</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:18:39 GMT" field="date"/>
+                        <header content="166" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[238]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.52.5/" var="None">
+        <description>The contents of http://166.111.52.5/ and http://yqs.pim.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="238">
+                <http-request>
+                    <status>GET http://166.111.52.5/ HTTP/1.1</status>
+                    <headers>
+                        <header content="166.111.52.5" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:45 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;403 Forbidden&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;403 Forbidden&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[35, 94, 194, 204]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://yqs.pim.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://yqs.pim.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: *, GET, HEAD</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="35">
+                <http-request>
+                    <status>OPTIONS http://yqs.pim.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Not Allowed</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:18:38 GMT" field="date"/>
+                        <header content="166" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="94">
+                <http-request>
+                    <status>HEAD http://yqs.pim.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="Fri, 17 Apr 2009 08:26:03 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:38 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="194">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="Fri, 17 Apr 2009 08:26:03 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:40 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xbb\xb6ӭ\xc0\xb4\xb5\xbd\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9&lt;/TITLE&gt;
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;&lt;LINK 
+href=&quot;erc.css&quot; rel=stylesheet &gt;
+&lt;META content=&quot;MSHTML 6.00.2900.2180&quot; name=GENERATOR&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+.style3 {color: #000000}
+--&gt;
+&lt;/style&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgColor=#ffffff&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=960 align=center bgColor=#94249C 
+border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD vAlign=top align=left width=222&gt;&lt;IMG height=12 
+      src=&quot;picture/left.gif&quot; width=13 
+      &gt;&lt;/TD&gt;
+    &lt;TD width=127&gt;\xa1\xa1&lt;/TD&gt;
+    &lt;TD vAlign=top align=right width=206&gt;\xa1\xa1&lt;/TD&gt;
+    &lt;TD vAlign=top align=right&gt;&lt;IMG height=12 
+      src=&quot;picture/right.gif&quot; width=12 
+  &gt;&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD colSpan=4&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=607 align=left border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD width=&quot;500&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;picture/logo.gif&quot; width=&quot;500&quot; height=&quot;100&quot;&gt;&lt;/TD&gt;
+          &lt;TD align=right width=&quot;102&quot;&gt;
+			&lt;img border=&quot;0&quot; src=&quot;picture/logo2.jpg&quot; width=&quot;88&quot; height=&quot;80&quot;&gt;&lt;/TD&gt;
+          &lt;TD align=right&gt;
+			\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;p align=&quot;center&quot;&gt;
+		&lt;img border=&quot;0&quot; src=&quot;picture/banner5.jpg&quot; width=&quot;287&quot; height=&quot;104&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD colSpan=4&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=928 align=center border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR align=middle&gt;
+          &lt;TD vAlign=center height=24&gt;
+            &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; align=right 
+            bgColor=#5D0D63 border=0&gt;
+              &lt;TBODY&gt;
+              &lt;TR vAlign=center align=middle&gt;
+                &lt;TD height=24&gt; &lt;font color=&quot;#FDC450&quot;&gt;  
+                  &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt;  
+                  &lt;a href=&quot;index.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xca\xd7ҳ&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;font color=&quot;#FDC450&quot;&gt; | &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt; &lt;a href=&quot;introduce.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xb8ſ\xf6\xbc\xf2\xbd\xe9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;technic.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xbf\xc6ѧ\xd1о\xbf&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;a href=&quot;organization.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xbf\xc6\xd1л\xfa\xb9\xb9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;faculty.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xd1о\xbf\xb6\xd3\xce\xe9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;a href=&quot;education.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xbd\xcc\xd3\xfd\xbd\xccѧ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;communication.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;ѧ\xca\xf5\xbd\xbb\xc1\xf7&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;wanted.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xd5\xd0Ƹ\xd0\xc5Ϣ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;navguide.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xcd\xf8վ\xb5\xbc\xba\xbd&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;index_e.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;English Version&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD background=picture/bg_top_inner.gif&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR bgColor=#F2C8F5&gt;
+          &lt;TD&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR bgColor=#F2C8F5&gt;
+          &lt;TD height=255&gt;
+            &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+              &lt;TBODY&gt;
+              &lt;TR&gt;
+                &lt;TD vAlign=top&gt;
+                  &lt;TABLE cellSpacing=0 cellPadding=4 width=&quot;100%&quot; border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD height=205&gt;
+                        &lt;P align=center&gt;&lt;IMG height=119 hspace=8 
+                        src=&quot;picture/tsinghua.jpg&quot; width=147 
+                        align=left vspace=8&gt;&lt;/P&gt;
+                        &lt;P align=center&gt;
+						  &lt;font face=&quot;\xbb\xaa\xce\xc4\xd0п\xac&quot; color=&quot;#990066&quot; size=&quot;5&quot;&gt;\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9&lt;/font&gt;&lt;/P&gt;
+                        &lt;P&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;span style=&quot;font-size:9.0pt;line-height:
+150%&quot;&gt;&lt;span class=&quot;style3&quot;&gt;\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9Χ\xc8\xc6\xcfִ\xfa\xbf\xc6ѧ\xd2\xc7\xc6\xf7\xb5\xc4\xd1о\xbf\xc1\xec\xd3\xf2\xa3\xac\xd6\xf7Ҫ\xd1о\xbf\xb7\xbd\xcf\xf2\xb0\xfc\xc0\xa8΢\xc3\xd7\xc4\xc9\xc3׼\xbc\xca\xf5\xa1\xa2\xb9\xe2\xb4洢\xbc\xbc\xca\xf5\xa1\xa2\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xbaͲ\xe2\xcaԼ\xbc\xca\xf5\xa1\xa2\xb5\xbc\xba\xbd\xd3\xeb\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xa1\xa2\xb4\xab\xb8м\xbc\xca\xf5\xd3\xeb\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7\xa1\xa2\xd6\xc7\xc4\xdc΢ϵͳ\xbc\xb0\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xba\xcd\xc9\xfa\xc3\xfc\xbf\xc6ѧ\xd2\xc7\xc6\xf7\xb5ȣ\xac\xca\xc7һ\xb8\xf6\xb6\xe0ѧ\xbfƽ\xbb\xb2\xe6\xb5\xc4\xd3\xebУ\xcd\xe2\xc6\xf3ҵ\xba\xcd\xd1о\xbf\xb5\xa5λ\xd3й㷺\xc1\xaaϵ\xb5\xc4\xd2\xd4һ\xbc\xb6ѧ\xbfƽ\xa8\xc1\xa2\xc6\xf0\xc0\xb4\xb5Ľ\xccѧ\xd1о\xbf\xb5\xa5λ\xa1\xa3&lt;/span&gt;
+						&lt;/span&gt;						&lt;span lang=&quot;EN-US&quot; style=&quot;font-size:9.0pt;line-height:
+150%&quot;&gt;&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;span class=&quot;style3&quot;&gt;1981&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;font-size:9.0pt; line-height:150%; color: #000000;&quot;&gt;\xc4꾭\xb9\xfa\xce\xf1Ժѧλ\xb0\xec\xc5\xfa׼\xbd\xa8\xc1\xa2\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xbc\xb0\xbb\xfaеѧ\xbfƲ\xa9ʿ\xb5㣬1988\xc4\xea\xc5\xfa׼Ϊ\xd6ص\xe3ѧ\xbfƣ\xac\xc9\xe8\xc1\xa2\xd2\xc7\xc6\xf7\xd2Ǳ���ʿ\xba\xf3\xc1\xf7\xb6\xafվ\xa1\xa31989\xc4\xea\xd3\xeb\xcc\xec\xbd\xf2\xb4\xf3ѧ\xbe\xab\xd2\xc7ϵ\xb9\xb2\xbd\xa8\xbe\xab\xc3ܲ\xe2\xcaԼ\xbc\xca\xf5\xd3\xeb\xd2\xc7\xc6\xf7\xb9\xfa\xbc\xd2\xd6ص\xe3ʵ\xd1\xe9\xcaҡ\xa31997\xc4\xea\xbb\xf1һ\xbc\xb6ѧ\xbfƲ\xa9ʿѧλ\xca\xda\xd3\xe8Ȩ\xa1\xa32001\xc4\xea\xb9\xfa\xbc\xd2\xd6ص\xe3ѧ\xbf\xc6\xc6\xc0\xb9\xc0\xd6\xd0\xd2\xd4\xc2\xfa\xb7\xd6\xc1е\xdaһ\xc3\xfb\xa1\xa32003\xc4\xea\xd4\xdaȫ\xb9\xfa\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5һ\xbc\xb6ѧ\xbf\xc6\xc6\xc0\xb9\xc0\xd6\xd0\xd4ٴ\xce\xd2\xd4\xc2\xfa\xb7ֻ\xf1\xb5õ\xdaһ\xc3\xfb\xa1\xa3&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9\xcaǾ\xab\xc3ܲ\xe2\xcaԼ\xbc\xca\xf5\xd3\xeb\xd2\xc7\xc6\xf7\xb9\xfa\xbc\xd2\xd6ص\xe3ʵ\xd1\xe9\xcaҵ\xc4\xd6\xd8Ҫ\xd7\xe9\xb3ɲ\xbf\xb7֣\xac\xb2\xa2\xbd\xa8\xd3й\xe2\xc5̹\xfa\xbcҹ\xa4\xb3\xcc\xd1о\xbf\xd6\xd0\xd0ġ\xa2\xc7廪\xb4\xf3ѧ\xd3\xd6\xd0\xd0ġ\xa2\xc7廪\xb4\xf3ѧ΢\xc4\xc9\xc3\xd7\xd6\xd0\xd0\xc4ʵ\xd1\xe9\xcaҡ\xa2\xc7廪\xb4\xf3ѧ\xb9\xdf\xd0\xd4\xcd\xd3\xc2ݵ\xbc\xba\xbd\xd6\xd0\xd0ļ\xb0\xc7廪\xb4\xf3ѧʵ\xd1\xe9\xbd\xccѧ\xbb\xf9\xb5ء\xb0\xcfִ\xfa\xb2\xe2\xbfؼ\xbc\xca\xf5ʵ\xd1\xe9\xbd\xccѧ\xd6\xd0\xd0ġ\xb1\xa3\xac\xbe\xdf\xd3\xd0һ\xb4\xf3\xc5\xfa\xcfִ\xfa\xbb\xaf\xb5\xc4\xd2\xc7\xc6\xf7\xba\xcdʵ\xd1\xe9\xc9豸\xa1\xa3&lt;/span&gt;&lt;/font&gt;&lt;/P&gt;&lt;/TD&gt;
+                    &lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD bgColor=#F2C8F5&gt;
+            &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+              &lt;TBODY&gt;
+              &lt;TR&gt;
+                &lt;TD vAlign=top width=&quot;50%&quot;&gt;
+                  &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD colSpan=3&gt;
+                        &lt;div align=&quot;center&quot;&gt;
+                        &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; 
+                        bgColor=#94249C border=0&gt;
+                          &lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=388 
+                            background=index2.files/bg_main_banner.jpg&gt;\xa1\xa1&lt;/TD&gt;
+                            &lt;TD vAlign=center align=middle width=87&gt;&lt;FONT 
+                              color=#ffffff&gt;\xb1\xbe վ \xbf\xec Ѷ&lt;/FONT&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=top align=right bgColor=#F2C8F5&gt;&lt;IMG height=21 
+                              src=&quot;picture/right3.gif&quot; 
+                              width=21 
+&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/div&gt;
+					  &lt;/TD&gt;&lt;/TR&gt;
+                    &lt;TR bgColor=#94249C&gt;
+                      &lt;TD colSpan=3&gt;
+                        &lt;TABLE borderColor=#94249C height=&quot;30%&quot; cellSpacing=0 
+                        cellPadding=2 width=&quot;100%&quot; align=left bgColor=#F2C8F5 
+                        border=1&gt;
+                          &lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD height=152&gt;
+                              &lt;TABLE cellSpacing=0 cellPadding=1 width=&quot;100%&quot; 
+                              border=0&gt;
+                                &lt;TBODY&gt;
+                                &lt;TR&gt;
+                                &lt;TD height=26&gt;&lt;IMG height=14 
+                                src=&quot;picture/logo_sphere.jpg&quot; width=14&gt;&lt;/TD&gt;
+                                &lt;TD width=397&gt;&lt;a href=&quot;news.htm&quot;&gt;&lt;font color=&quot;#993366&quot;&gt;
+								\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9\xd0\xc2\xd6\xf7ҳ\xd5\xfdʽ\xbf\xaaͨʹ\xd3á\xa3&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;
+                                &lt;TD vAlign=top width=39&gt;
+								&lt;p align=&quot;center&quot;&gt;&lt;IMG 
+                                src=&quot;picture/new.gif&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top height=26&gt;&lt;IMG height=14 
+                                src=&quot;picture/logo_sphere.jpg&quot; width=14&gt;&lt;/TD&gt;
+                                &lt;TD&gt;&lt;a href=&quot;news.htm&quot;&gt;&lt;font color=&quot;#993366&quot;&gt;\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9\xd5ٿ\xaa\xbd\xccѧ\xb9\xa4\xd7\xf7\xd1\xd0\xccֻ\xe1&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;
+                                &lt;TD&gt;
+								&lt;p align=&quot;center&quot;&gt;&lt;IMG 
+                                src=&quot;picture/new.gif&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top height=26&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD colSpan=2&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top width=14&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;
+                                \xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;
+                                \xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;&lt;a href=&quot;news.htm&quot;&gt;\xb8\xfc\xb6ද̬ &amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+                    &lt;TR bgColor=#94249C&gt;
+                      &lt;TD colSpan=3 height=17&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+                  &lt;TABLE cellSpacing=3 cellPadding=0 width=&quot;100%&quot; 
+                  bgColor=#94249C border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD vAlign=top width=&quot;46%&quot; bgColor=#F2C8F5 
+                        height=201&gt;\xa1\xa1&lt;IMG height=18 
+                        src=&quot;picture/daohang.gif&quot; width=107&gt;&lt;BR&gt;&lt;FONT 
+                        color=#993366&gt;\xa1\xa1\xa1\xf2 &lt;A href=&quot;introduce.htm&quot;&gt;\xb8ſ\xf6\xbc\xf2\xbd\xe9&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;technic.htm&quot;&gt;\xbf\xc6ѧ\xd1о\xbf&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;a href=&quot;http://yqs.pim.tsinghua.edu.cn/measure/ch_index.htm&quot;&gt;\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xd3\xeb\xb2\xe2\xcaԼ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;&amp;nbsp; \xa1\xf2
+                        &lt;a href=&quot;sensor2.htm&quot;&gt;\xb4\xab\xb8м\xbc\xca\xf5\xbc\xb0\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;a href=&quot;mems2/index.htm&quot;&gt;΢ϵͳ\xd3\xeb\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2                       
+                        &lt;a href=&quot;mems21.htm&quot;&gt;\xd6\xc7\xc4\xdc΢ϵͳ\xbc\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt; &amp;nbsp;
+                        \xa1\xf2 &lt;a href=&quot;navigation2.htm&quot;&gt;\xb5\xbc\xba\xbd\xd2\xc7\xc6\xf7\xbc\xb0ϵͳ\xbf\xd8\xd6\xc6\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;&amp;nbsp;
+                        \xa1\xf2 &lt;a href=&quot;disc2.htm&quot;&gt;\xb9\xe2\xb4洢\xbc\xb0\xd0\xc5Ϣ\xb4\xa6\xc0\xed\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;&amp;nbsp;
+                        \xa1\xf2 &lt;a href=&quot;faculty.htm&quot;&gt;\xd1о\xbf\xb6\xd3\xce\xe9&lt;/a&gt;&lt;BR&gt;
+                        &amp;nbsp; \xa1\xf2 &lt;a href=&quot;communication.htm&quot;&gt;ѧ\xca\xf5\xbd\xbb\xc1\xf7&lt;/a&gt;&lt;BR&gt;
+                        &amp;nbsp; 
+                        &lt;/FONT&gt;&lt;/TD&gt;
+                      &lt;TD vAlign=top width=&quot;54%&quot; bgColor=#F2C8F5&gt;\xa1\xa1&lt;IMG 
+                        height=18 src=&quot;picture/youqing.gif&quot; 
+                        width=107&gt;&lt;BR&gt;
+						&lt;FONT color=#993366&gt;&amp;nbsp; 
+                        \xa1\xf2 &lt;A href=&quot;http://www.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧ&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;http://www.pim.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧ\xbe\xab\xd2\xc7ϵ&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;http://www.lib.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧͼ\xca\xe9\xb9\xdd&lt;/A&gt;&lt;BR&gt;&amp;nbsp; \xa1\xf2
+                        &lt;A href=&quot;http://info.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧ\xd0\xc5Ϣ\xd6\xd0\xd0ģ\xa8info\xa3\xa9&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;http://www.most.gov.cn/&quot;&gt;\xb9\xfa\xbcҿƼ\xbc\xb2\xbf&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;a href=&quot;http://www.moe.gov.cn/&quot;&gt;\xb9\xfa\xbcҽ\xcc\xd3\xfd\xb2\xbf&lt;/a&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;\xa1\xa1&lt;/TD&gt;
+                &lt;TD width=&quot;2%&quot;&gt;\xa1\xa1&lt;/TD&gt;
+                &lt;TD vAlign=top width=&quot;48%&quot;&gt;
+                  &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD&gt;
+                        &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; 
+                        align=right bgColor=#94249C border=0&gt;
+                          &lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=14 bgColor=#F2C8F5&gt;&lt;IMG height=21 
+                              src=&quot;picture/left3.gif&quot; 
+                              width=21 &gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center align=middle width=98&gt;&lt;FONT 
+                              color=#ffffff&gt;\xb1\xbe վ \xc0\xb8 Ŀ&lt;/FONT&gt;
+                            &lt;/TD&gt;
+                            &lt;TD vAlign=center align=middle width=360 
+                            background=index2.files/bg_main_banner.jpg &lt;/TD&gt;
+                            &lt;TD vAlign=top align=right 
+                          width=4&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+                    &lt;TR vAlign=top align=right bgColor=#94249C&gt;
+                      &lt;TD&gt;
+                        &lt;TABLE cellSpacing=0 cellPadding=4 width=&quot;98%&quot; 
+                          border=0 height=&quot;457&quot;&gt;&lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=54&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;introduce.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/gaikuang.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt; &lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+							&lt;p align=&quot;center&quot;&gt;&lt;FONT color=#ffffff&gt; 
+                              &lt;a href=&quot;introduce.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xd1о\xbf\xcb\xf9\xbc\xf2&lt;/font&gt;&lt;/a&gt;\xbd\xe9&amp;nbsp; 
+                              | &lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;a href=&quot;setup.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;\xbb\xfa\xb9\xb9\xc9\xe8\xd6\xc3&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;
+							&lt;/font&gt;&amp;nbsp;|
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;a href=&quot;direction.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;\xd1о\xbf\xb7\xbd\xcf\xf2&lt;/font&gt;&lt;/a&gt;&amp;nbsp; 
+							| &lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp; &lt;/font&gt;&lt;a href=&quot;contactus.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;\xc1\xaaϵ\xce\xd2\xc3\xc7&amp;nbsp;&lt;/font&gt;&lt;/a&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=51&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;technic.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/kexueyanjiu.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;technic.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp; \xbf\xc6ѧ\xd1о\xbf\xb8ſ\xf6&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 
+							|&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;measure1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; \xbe\xab\xc3ܼ\xc6\xc1\xbf\xbc\xb0\xb2\xe2\xcaԼ\xbc\xca\xf5 &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;sensor1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp; \xb4\xab\xb8\xd0\xc6\xf7\xbc\xbc\xca\xf5\xd3\xeb\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7&amp;nbsp;&amp;nbsp;&amp;nbsp; |&lt;/font&gt;&lt;/a&gt;
+                            &lt;a href=&quot;mems1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;΢\xbb\xfa\xb5磨MEMS\xa3\xa9ϵͳ\xbf\xc6ѧ\xbc\xbc\xca\xf5 &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+                              &lt;a href=&quot;navigation1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp;\xb5\xbc\xba\xbd\xd2\xc7\xc6\xf7\xbc\xb0ϵͳ\xbf\xd8\xd6Ƽ\xbc\xca\xf5&amp;nbsp;&amp;nbsp; &lt;/font&gt;&lt;/a&gt;
+                              &lt;a href=&quot;disc1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb9\xe2ѧ\xd0\xc5Ϣ\xb4洢\xbc\xb0\xb4\xa6\xc0\xed\xbf\xc6ѧ\xbc\xbc\xca\xf5 &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+						    &lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=37&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;organization.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/keyanjigou.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+							
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+                            &lt;p align=&quot;center&quot;&gt;
+                            &lt;a href=&quot;http://yqs.pim.tsinghua.edu.cn/measure/ch_index.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt; 
+							\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xd3\xeb\xb2\xe2\xcaԼ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;sensor2.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb4\xab\xb8м\xbc\xca\xf5\xbc\xb0\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;mems2/index.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;
+							΢ϵͳ\xd3\xeb\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;mems21.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xd6\xc7\xc4\xdc΢ϵͳ\xbc\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;navigation2.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb5\xbc\xba\xbd\xd2\xc7\xc6\xf7\xbc\xb0ϵͳ\xbf\xd8\xd6\xc6\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;disc2.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb9\xe2\xb4洢\xbc\xb0\xd0\xc5Ϣ\xb4\xa6\xc0\xed\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=37&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;faculty.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/yanjiuduiwu.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+                            &lt;p align=&quot;center&quot;&gt;
+                            &lt;a href=&quot;faculty.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;
+							\xd1о\xbf\xcb\xf9\xbd\xcc\xd1\xd0\xc8\xcbԱ\xc3\xfb\xb5\xa5&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=40&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;education.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/jiaoyujiaoxue.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+                            &lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;education.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xbd\xccѧ\xb8ſ\xf6 |&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;education.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xbd\xccѧ\xb3ɹ\xfb&amp;nbsp; &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;undergraduate.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb1\xbe\xbf\xc6\xc9\xfa\xbd\xccѧ |&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;graduate.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xd1о\xbf\xc9\xfa\xbd\xccѧ |&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;lab.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;ʵ\xd1\xe9\xcaҽ\xe9\xc9\xdc&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot;&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;communication.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/xueshujiaoliu.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+							&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;communication.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;
+							ѧ\xca\xf5\xbd\xbb\xc1\xf7\xb8ſ\xf6\xbd\xe9\xc9\xdc&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot;&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;wanted.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/zhaopinxinxi.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=55&gt;
+							&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;wanted.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;
+							\xd2\xc7\xc6\xf7\xcb\xf9\xb8\xdaλ\xd5\xd0Ƹ\xd0\xc5Ϣ&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+                  &lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR bgColor=#94249C&gt;
+          &lt;TD height=2&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD colSpan=4&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD vAlign=bottom align=left width=12&gt;&lt;IMG height=12 
+            src=&quot;picture/left2.gif&quot; width=13 
+&gt;&lt;/TD&gt;
+          &lt;TD width=*&gt;\xa1\xa1&lt;/TD&gt;
+          &lt;TD vAlign=bottom align=right&gt;&lt;IMG height=12 
+            src=&quot;picture/right2.gif&quot; width=12 
+&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=960 align=center border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD&gt;
+      &lt;DIV align=center&gt;
+      &lt;P&gt;
+                  &lt;font color=&quot;#0033FF&quot;&gt;
+                  &lt;/font&gt;  &lt;/font&gt;  &lt;font color=&quot;#0000ff&quot;&gt;  
+                  &lt;a href=&quot;index.htm&quot; class=&quot;navi&quot;&gt;
+					&lt;font color=&quot;#0000FF&quot;&gt;\xca\xd7ҳ&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;font color=&quot;#0000FF&quot;&gt; | &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt; &lt;a href=&quot;introduce.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xb8ſ\xf6\xbc\xf2\xbd\xe9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;technic.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xbf\xc6ѧ\xd1о\xbf&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+				  | &lt;/font&gt; &lt;a href=&quot;organization.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xbf\xc6\xd1л\xfa\xb9\xb9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;faculty.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xd1о\xbf\xb6\xd3\xce\xe9&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  |  &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt; &lt;font color=&quot;#FDC450&quot;&gt; 
+					&lt;a href=&quot;education.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xbd\xcc\xd3\xfd\xbd\xccѧ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;communication.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;ѧ\xca\xf5\xbd\xbb\xc1\xf7&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;wanted.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xd5\xd0Ƹ\xd0\xc5Ϣ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;navguide.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xcd\xf8վ\xb5\xbc\xba\xbd|&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/P&gt;
+      &lt;P&gt;&lt;font color=&quot;#0000FF&quot;&gt;Copyright&amp;copy;\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9&lt;BR&gt;ͨѶ\xb5\xd8ַ\xa3\xba\xc7廪\xb4\xf3ѧ\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xd3\xeb\xbb\xfaеѧϵ 
+      100084&lt;/font&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="204">
+                <http-request>
+                    <status>* http://yqs.pim.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200</status>
+                    <headers/>
+                    <body content-encoding="base64">PGh0bWw+DQo8aGVhZD48dGl0bGU+NDAwIEJhZCBSZXF1ZXN0PC90aXRsZT48L2hlYWQ+DQo8Ym9k
+eSBiZ2NvbG9yPSJ3aGl0ZSI+DQo8Y2VudGVyPjxoMT40MDAgQmFkIFJlcXVlc3Q8L2gxPjwvY2Vu
+dGVyPg0KPGhyPjxjZW50ZXI+bmdpbng8L2NlbnRlcj4NCjwvYm9keT4NCjwvaHRtbD4NCg==
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 108, 116, 125, 161, 198, 208, 210, 211, 212, 213, 214, 217]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="Fri, 17 Apr 2009 08:26:03 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:34 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xbb\xb6ӭ\xc0\xb4\xb5\xbd\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9&lt;/TITLE&gt;
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;&lt;LINK 
+href=&quot;erc.css&quot; rel=stylesheet &gt;
+&lt;META content=&quot;MSHTML 6.00.2900.2180&quot; name=GENERATOR&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+.style3 {color: #000000}
+--&gt;
+&lt;/style&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgColor=#ffffff&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=960 align=center bgColor=#94249C 
+border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD vAlign=top align=left width=222&gt;&lt;IMG height=12 
+      src=&quot;picture/left.gif&quot; width=13 
+      &gt;&lt;/TD&gt;
+    &lt;TD width=127&gt;\xa1\xa1&lt;/TD&gt;
+    &lt;TD vAlign=top align=right width=206&gt;\xa1\xa1&lt;/TD&gt;
+    &lt;TD vAlign=top align=right&gt;&lt;IMG height=12 
+      src=&quot;picture/right.gif&quot; width=12 
+  &gt;&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD colSpan=4&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=607 align=left border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD width=&quot;500&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;picture/logo.gif&quot; width=&quot;500&quot; height=&quot;100&quot;&gt;&lt;/TD&gt;
+          &lt;TD align=right width=&quot;102&quot;&gt;
+			&lt;img border=&quot;0&quot; src=&quot;picture/logo2.jpg&quot; width=&quot;88&quot; height=&quot;80&quot;&gt;&lt;/TD&gt;
+          &lt;TD align=right&gt;
+			\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;p align=&quot;center&quot;&gt;
+		&lt;img border=&quot;0&quot; src=&quot;picture/banner5.jpg&quot; width=&quot;287&quot; height=&quot;104&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD colSpan=4&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=928 align=center border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR align=middle&gt;
+          &lt;TD vAlign=center height=24&gt;
+            &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; align=right 
+            bgColor=#5D0D63 border=0&gt;
+              &lt;TBODY&gt;
+              &lt;TR vAlign=center align=middle&gt;
+                &lt;TD height=24&gt; &lt;font color=&quot;#FDC450&quot;&gt;  
+                  &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt;  
+                  &lt;a href=&quot;index.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xca\xd7ҳ&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;font color=&quot;#FDC450&quot;&gt; | &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt; &lt;a href=&quot;introduce.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xb8ſ\xf6\xbc\xf2\xbd\xe9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;technic.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xbf\xc6ѧ\xd1о\xbf&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;a href=&quot;organization.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xbf\xc6\xd1л\xfa\xb9\xb9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;faculty.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xd1о\xbf\xb6\xd3\xce\xe9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;a href=&quot;education.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xbd\xcc\xd3\xfd\xbd\xccѧ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;communication.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;ѧ\xca\xf5\xbd\xbb\xc1\xf7&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;wanted.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xd5\xd0Ƹ\xd0\xc5Ϣ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;navguide.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;\xcd\xf8վ\xb5\xbc\xba\xbd&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;index_e.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#FDC450&quot;&gt;English Version&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD background=picture/bg_top_inner.gif&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR bgColor=#F2C8F5&gt;
+          &lt;TD&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR bgColor=#F2C8F5&gt;
+          &lt;TD height=255&gt;
+            &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+              &lt;TBODY&gt;
+              &lt;TR&gt;
+                &lt;TD vAlign=top&gt;
+                  &lt;TABLE cellSpacing=0 cellPadding=4 width=&quot;100%&quot; border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD height=205&gt;
+                        &lt;P align=center&gt;&lt;IMG height=119 hspace=8 
+                        src=&quot;picture/tsinghua.jpg&quot; width=147 
+                        align=left vspace=8&gt;&lt;/P&gt;
+                        &lt;P align=center&gt;
+						  &lt;font face=&quot;\xbb\xaa\xce\xc4\xd0п\xac&quot; color=&quot;#990066&quot; size=&quot;5&quot;&gt;\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9&lt;/font&gt;&lt;/P&gt;
+                        &lt;P&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;span style=&quot;font-size:9.0pt;line-height:
+150%&quot;&gt;&lt;span class=&quot;style3&quot;&gt;\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9Χ\xc8\xc6\xcfִ\xfa\xbf\xc6ѧ\xd2\xc7\xc6\xf7\xb5\xc4\xd1о\xbf\xc1\xec\xd3\xf2\xa3\xac\xd6\xf7Ҫ\xd1о\xbf\xb7\xbd\xcf\xf2\xb0\xfc\xc0\xa8΢\xc3\xd7\xc4\xc9\xc3׼\xbc\xca\xf5\xa1\xa2\xb9\xe2\xb4洢\xbc\xbc\xca\xf5\xa1\xa2\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xbaͲ\xe2\xcaԼ\xbc\xca\xf5\xa1\xa2\xb5\xbc\xba\xbd\xd3\xeb\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xa1\xa2\xb4\xab\xb8м\xbc\xca\xf5\xd3\xeb\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7\xa1\xa2\xd6\xc7\xc4\xdc΢ϵͳ\xbc\xb0\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xba\xcd\xc9\xfa\xc3\xfc\xbf\xc6ѧ\xd2\xc7\xc6\xf7\xb5ȣ\xac\xca\xc7һ\xb8\xf6\xb6\xe0ѧ\xbfƽ\xbb\xb2\xe6\xb5\xc4\xd3\xebУ\xcd\xe2\xc6\xf3ҵ\xba\xcd\xd1о\xbf\xb5\xa5λ\xd3й㷺\xc1\xaaϵ\xb5\xc4\xd2\xd4һ\xbc\xb6ѧ\xbfƽ\xa8\xc1\xa2\xc6\xf0\xc0\xb4\xb5Ľ\xccѧ\xd1о\xbf\xb5\xa5λ\xa1\xa3&lt;/span&gt;
+						&lt;/span&gt;						&lt;span lang=&quot;EN-US&quot; style=&quot;font-size:9.0pt;line-height:
+150%&quot;&gt;&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;span class=&quot;style3&quot;&gt;1981&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;font-size:9.0pt; line-height:150%; color: #000000;&quot;&gt;\xc4꾭\xb9\xfa\xce\xf1Ժѧλ\xb0\xec\xc5\xfa׼\xbd\xa8\xc1\xa2\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xbc\xb0\xbb\xfaеѧ\xbfƲ\xa9ʿ\xb5㣬1988\xc4\xea\xc5\xfa׼Ϊ\xd6ص\xe3ѧ\xbfƣ\xac\xc9\xe8\xc1\xa2\xd2\xc7\xc6\xf7\xd2Ǳ���ʿ\xba\xf3\xc1\xf7\xb6\xafվ\xa1\xa31989\xc4\xea\xd3\xeb\xcc\xec\xbd\xf2\xb4\xf3ѧ\xbe\xab\xd2\xc7ϵ\xb9\xb2\xbd\xa8\xbe\xab\xc3ܲ\xe2\xcaԼ\xbc\xca\xf5\xd3\xeb\xd2\xc7\xc6\xf7\xb9\xfa\xbc\xd2\xd6ص\xe3ʵ\xd1\xe9\xcaҡ\xa31997\xc4\xea\xbb\xf1һ\xbc\xb6ѧ\xbfƲ\xa9ʿѧλ\xca\xda\xd3\xe8Ȩ\xa1\xa32001\xc4\xea\xb9\xfa\xbc\xd2\xd6ص\xe3ѧ\xbf\xc6\xc6\xc0\xb9\xc0\xd6\xd0\xd2\xd4\xc2\xfa\xb7\xd6\xc1е\xdaһ\xc3\xfb\xa1\xa32003\xc4\xea\xd4\xdaȫ\xb9\xfa\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5һ\xbc\xb6ѧ\xbf\xc6\xc6\xc0\xb9\xc0\xd6\xd0\xd4ٴ\xce\xd2\xd4\xc2\xfa\xb7ֻ\xf1\xb5õ\xdaһ\xc3\xfb\xa1\xa3&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9\xcaǾ\xab\xc3ܲ\xe2\xcaԼ\xbc\xca\xf5\xd3\xeb\xd2\xc7\xc6\xf7\xb9\xfa\xbc\xd2\xd6ص\xe3ʵ\xd1\xe9\xcaҵ\xc4\xd6\xd8Ҫ\xd7\xe9\xb3ɲ\xbf\xb7֣\xac\xb2\xa2\xbd\xa8\xd3й\xe2\xc5̹\xfa\xbcҹ\xa4\xb3\xcc\xd1о\xbf\xd6\xd0\xd0ġ\xa2\xc7廪\xb4\xf3ѧ\xd3\xd6\xd0\xd0ġ\xa2\xc7廪\xb4\xf3ѧ΢\xc4\xc9\xc3\xd7\xd6\xd0\xd0\xc4ʵ\xd1\xe9\xcaҡ\xa2\xc7廪\xb4\xf3ѧ\xb9\xdf\xd0\xd4\xcd\xd3\xc2ݵ\xbc\xba\xbd\xd6\xd0\xd0ļ\xb0\xc7廪\xb4\xf3ѧʵ\xd1\xe9\xbd\xccѧ\xbb\xf9\xb5ء\xb0\xcfִ\xfa\xb2\xe2\xbfؼ\xbc\xca\xf5ʵ\xd1\xe9\xbd\xccѧ\xd6\xd0\xd0ġ\xb1\xa3\xac\xbe\xdf\xd3\xd0һ\xb4\xf3\xc5\xfa\xcfִ\xfa\xbb\xaf\xb5\xc4\xd2\xc7\xc6\xf7\xba\xcdʵ\xd1\xe9\xc9豸\xa1\xa3&lt;/span&gt;&lt;/font&gt;&lt;/P&gt;&lt;/TD&gt;
+                    &lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR&gt;
+          &lt;TD bgColor=#F2C8F5&gt;
+            &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+              &lt;TBODY&gt;
+              &lt;TR&gt;
+                &lt;TD vAlign=top width=&quot;50%&quot;&gt;
+                  &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD colSpan=3&gt;
+                        &lt;div align=&quot;center&quot;&gt;
+                        &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; 
+                        bgColor=#94249C border=0&gt;
+                          &lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=388 
+                            background=index2.files/bg_main_banner.jpg&gt;\xa1\xa1&lt;/TD&gt;
+                            &lt;TD vAlign=center align=middle width=87&gt;&lt;FONT 
+                              color=#ffffff&gt;\xb1\xbe վ \xbf\xec Ѷ&lt;/FONT&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=top align=right bgColor=#F2C8F5&gt;&lt;IMG height=21 
+                              src=&quot;picture/right3.gif&quot; 
+                              width=21 
+&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/div&gt;
+					  &lt;/TD&gt;&lt;/TR&gt;
+                    &lt;TR bgColor=#94249C&gt;
+                      &lt;TD colSpan=3&gt;
+                        &lt;TABLE borderColor=#94249C height=&quot;30%&quot; cellSpacing=0 
+                        cellPadding=2 width=&quot;100%&quot; align=left bgColor=#F2C8F5 
+                        border=1&gt;
+                          &lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD height=152&gt;
+                              &lt;TABLE cellSpacing=0 cellPadding=1 width=&quot;100%&quot; 
+                              border=0&gt;
+                                &lt;TBODY&gt;
+                                &lt;TR&gt;
+                                &lt;TD height=26&gt;&lt;IMG height=14 
+                                src=&quot;picture/logo_sphere.jpg&quot; width=14&gt;&lt;/TD&gt;
+                                &lt;TD width=397&gt;&lt;a href=&quot;news.htm&quot;&gt;&lt;font color=&quot;#993366&quot;&gt;
+								\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9\xd0\xc2\xd6\xf7ҳ\xd5\xfdʽ\xbf\xaaͨʹ\xd3á\xa3&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;
+                                &lt;TD vAlign=top width=39&gt;
+								&lt;p align=&quot;center&quot;&gt;&lt;IMG 
+                                src=&quot;picture/new.gif&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top height=26&gt;&lt;IMG height=14 
+                                src=&quot;picture/logo_sphere.jpg&quot; width=14&gt;&lt;/TD&gt;
+                                &lt;TD&gt;&lt;a href=&quot;news.htm&quot;&gt;&lt;font color=&quot;#993366&quot;&gt;\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9\xd5ٿ\xaa\xbd\xccѧ\xb9\xa4\xd7\xf7\xd1\xd0\xccֻ\xe1&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;
+                                &lt;TD&gt;
+								&lt;p align=&quot;center&quot;&gt;&lt;IMG 
+                                src=&quot;picture/new.gif&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top height=26&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD colSpan=2&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top width=14&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;
+                                \xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD vAlign=top&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;
+                                \xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;
+                                &lt;TR&gt;
+                                &lt;TD&gt;\xa1\xa1&lt;/TD&gt;
+                                &lt;TD align=right colSpan=2&gt;&lt;a href=&quot;news.htm&quot;&gt;\xb8\xfc\xb6ද̬ &amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+                    &lt;TR bgColor=#94249C&gt;
+                      &lt;TD colSpan=3 height=17&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+                  &lt;TABLE cellSpacing=3 cellPadding=0 width=&quot;100%&quot; 
+                  bgColor=#94249C border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD vAlign=top width=&quot;46%&quot; bgColor=#F2C8F5 
+                        height=201&gt;\xa1\xa1&lt;IMG height=18 
+                        src=&quot;picture/daohang.gif&quot; width=107&gt;&lt;BR&gt;&lt;FONT 
+                        color=#993366&gt;\xa1\xa1\xa1\xf2 &lt;A href=&quot;introduce.htm&quot;&gt;\xb8ſ\xf6\xbc\xf2\xbd\xe9&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;technic.htm&quot;&gt;\xbf\xc6ѧ\xd1о\xbf&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;a href=&quot;http://yqs.pim.tsinghua.edu.cn/measure/ch_index.htm&quot;&gt;\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xd3\xeb\xb2\xe2\xcaԼ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;&amp;nbsp; \xa1\xf2
+                        &lt;a href=&quot;sensor2.htm&quot;&gt;\xb4\xab\xb8м\xbc\xca\xf5\xbc\xb0\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;a href=&quot;mems2/index.htm&quot;&gt;΢ϵͳ\xd3\xeb\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2                       
+                        &lt;a href=&quot;mems21.htm&quot;&gt;\xd6\xc7\xc4\xdc΢ϵͳ\xbc\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt; &amp;nbsp;
+                        \xa1\xf2 &lt;a href=&quot;navigation2.htm&quot;&gt;\xb5\xbc\xba\xbd\xd2\xc7\xc6\xf7\xbc\xb0ϵͳ\xbf\xd8\xd6\xc6\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;&amp;nbsp;
+                        \xa1\xf2 &lt;a href=&quot;disc2.htm&quot;&gt;\xb9\xe2\xb4洢\xbc\xb0\xd0\xc5Ϣ\xb4\xa6\xc0\xed\xd1о\xbf\xca\xd2&lt;/a&gt;&lt;BR&gt;&amp;nbsp;
+                        \xa1\xf2 &lt;a href=&quot;faculty.htm&quot;&gt;\xd1о\xbf\xb6\xd3\xce\xe9&lt;/a&gt;&lt;BR&gt;
+                        &amp;nbsp; \xa1\xf2 &lt;a href=&quot;communication.htm&quot;&gt;ѧ\xca\xf5\xbd\xbb\xc1\xf7&lt;/a&gt;&lt;BR&gt;
+                        &amp;nbsp; 
+                        &lt;/FONT&gt;&lt;/TD&gt;
+                      &lt;TD vAlign=top width=&quot;54%&quot; bgColor=#F2C8F5&gt;\xa1\xa1&lt;IMG 
+                        height=18 src=&quot;picture/youqing.gif&quot; 
+                        width=107&gt;&lt;BR&gt;
+						&lt;FONT color=#993366&gt;&amp;nbsp; 
+                        \xa1\xf2 &lt;A href=&quot;http://www.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧ&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;http://www.pim.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧ\xbe\xab\xd2\xc7ϵ&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;http://www.lib.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧͼ\xca\xe9\xb9\xdd&lt;/A&gt;&lt;BR&gt;&amp;nbsp; \xa1\xf2
+                        &lt;A href=&quot;http://info.tsinghua.edu.cn&quot;&gt;\xc7廪\xb4\xf3ѧ\xd0\xc5Ϣ\xd6\xd0\xd0ģ\xa8info\xa3\xa9&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;A href=&quot;http://www.most.gov.cn/&quot;&gt;\xb9\xfa\xbcҿƼ\xbc\xb2\xbf&lt;/A&gt;&lt;BR&gt;\xa1\xa1\xa1\xf2 
+                        &lt;a href=&quot;http://www.moe.gov.cn/&quot;&gt;\xb9\xfa\xbcҽ\xcc\xd3\xfd\xb2\xbf&lt;/a&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;\xa1\xa1&lt;/TD&gt;
+                &lt;TD width=&quot;2%&quot;&gt;\xa1\xa1&lt;/TD&gt;
+                &lt;TD vAlign=top width=&quot;48%&quot;&gt;
+                  &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+                    &lt;TBODY&gt;
+                    &lt;TR&gt;
+                      &lt;TD&gt;
+                        &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; 
+                        align=right bgColor=#94249C border=0&gt;
+                          &lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=14 bgColor=#F2C8F5&gt;&lt;IMG height=21 
+                              src=&quot;picture/left3.gif&quot; 
+                              width=21 &gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center align=middle width=98&gt;&lt;FONT 
+                              color=#ffffff&gt;\xb1\xbe վ \xc0\xb8 Ŀ&lt;/FONT&gt;
+                            &lt;/TD&gt;
+                            &lt;TD vAlign=center align=middle width=360 
+                            background=index2.files/bg_main_banner.jpg &lt;/TD&gt;
+                            &lt;TD vAlign=top align=right 
+                          width=4&gt;\xa1\xa1&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+                    &lt;TR vAlign=top align=right bgColor=#94249C&gt;
+                      &lt;TD&gt;
+                        &lt;TABLE cellSpacing=0 cellPadding=4 width=&quot;98%&quot; 
+                          border=0 height=&quot;457&quot;&gt;&lt;TBODY&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=54&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;introduce.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/gaikuang.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt; &lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+							&lt;p align=&quot;center&quot;&gt;&lt;FONT color=#ffffff&gt; 
+                              &lt;a href=&quot;introduce.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xd1о\xbf\xcb\xf9\xbc\xf2&lt;/font&gt;&lt;/a&gt;\xbd\xe9&amp;nbsp; 
+                              | &lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;a href=&quot;setup.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;\xbb\xfa\xb9\xb9\xc9\xe8\xd6\xc3&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;
+							&lt;/font&gt;&amp;nbsp;|
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&lt;/font&gt;&lt;a href=&quot;direction.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;\xd1о\xbf\xb7\xbd\xcf\xf2&lt;/font&gt;&lt;/a&gt;&amp;nbsp; 
+							| &lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp; &lt;/font&gt;&lt;a href=&quot;contactus.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;\xc1\xaaϵ\xce\xd2\xc3\xc7&amp;nbsp;&lt;/font&gt;&lt;/a&gt;&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=51&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;technic.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/kexueyanjiu.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;technic.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp; \xbf\xc6ѧ\xd1о\xbf\xb8ſ\xf6&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 
+							|&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;measure1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; \xbe\xab\xc3ܼ\xc6\xc1\xbf\xbc\xb0\xb2\xe2\xcaԼ\xbc\xca\xf5 &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;sensor1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp; \xb4\xab\xb8\xd0\xc6\xf7\xbc\xbc\xca\xf5\xd3\xeb\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7&amp;nbsp;&amp;nbsp;&amp;nbsp; |&lt;/font&gt;&lt;/a&gt;
+                            &lt;a href=&quot;mems1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;΢\xbb\xfa\xb5磨MEMS\xa3\xa9ϵͳ\xbf\xc6ѧ\xbc\xbc\xca\xf5 &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+                              &lt;a href=&quot;navigation1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;&amp;nbsp;&amp;nbsp;\xb5\xbc\xba\xbd\xd2\xc7\xc6\xf7\xbc\xb0ϵͳ\xbf\xd8\xd6Ƽ\xbc\xca\xf5&amp;nbsp;&amp;nbsp; &lt;/font&gt;&lt;/a&gt;
+                              &lt;a href=&quot;disc1.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb9\xe2ѧ\xd0\xc5Ϣ\xb4洢\xbc\xb0\xb4\xa6\xc0\xed\xbf\xc6ѧ\xbc\xbc\xca\xf5 &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+						    &lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=37&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;organization.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/keyanjigou.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+							
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+                            &lt;p align=&quot;center&quot;&gt;
+                            &lt;a href=&quot;http://yqs.pim.tsinghua.edu.cn/measure/ch_index.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt; 
+							\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xd3\xeb\xb2\xe2\xcaԼ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;sensor2.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb4\xab\xb8м\xbc\xca\xf5\xbc\xb0\xd6\xc7\xc4\xdc\xd2\xc7\xc6\xf7\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;mems2/index.htm&quot;&gt;&lt;font color=&quot;#FFFFFF&quot;&gt;
+							΢ϵͳ\xd3\xeb\xbf\xd8\xd6Ƽ\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;mems21.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xd6\xc7\xc4\xdc΢ϵͳ\xbc\xbc\xca\xf5\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;navigation2.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb5\xbc\xba\xbd\xd2\xc7\xc6\xf7\xbc\xb0ϵͳ\xbf\xd8\xd6\xc6\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;disc2.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb9\xe2\xb4洢\xbc\xb0\xd0\xc5Ϣ\xb4\xa6\xc0\xed\xd1о\xbf\xca\xd2&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=37&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;faculty.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/yanjiuduiwu.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+                            &lt;p align=&quot;center&quot;&gt;
+                            &lt;a href=&quot;faculty.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;
+							\xd1о\xbf\xcb\xf9\xbd\xcc\xd1\xd0\xc8\xcbԱ\xc3\xfb\xb5\xa5&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; height=40&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;education.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/jiaoyujiaoxue.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+                            &lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;education.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xbd\xccѧ\xb8ſ\xf6 |&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;education.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xbd\xccѧ\xb3ɹ\xfb&amp;nbsp; &lt;/font&gt;&lt;/a&gt;&lt;BR&gt;
+							&lt;a href=&quot;undergraduate.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xb1\xbe\xbf\xc6\xc9\xfa\xbd\xccѧ |&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;graduate.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;\xd1о\xbf\xc9\xfa\xbd\xccѧ |&lt;/font&gt;&lt;/a&gt;
+							&lt;a href=&quot;lab.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;ʵ\xd1\xe9\xcaҽ\xe9\xc9\xdc&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot;&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;communication.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/xueshujiaoliu.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=50&gt;
+							&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;communication.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;
+							ѧ\xca\xf5\xbd\xbb\xc1\xf7\xb8ſ\xf6\xbd\xe9\xc9\xdc&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;
+                            &lt;TD width=&quot;78%&quot; bgColor=#F2C8F5 height=1&gt;&lt;/TD&gt;&lt;/TR&gt;
+                          &lt;TR&gt;
+                            &lt;TD width=&quot;22%&quot;&gt;
+							&lt;p align=&quot;center&quot;&gt;
+							&lt;a href=&quot;wanted.htm&quot;&gt;
+							&lt;img border=&quot;0&quot; src=&quot;picture/zhaopinxinxi.gif&quot; width=&quot;67&quot; height=&quot;22&quot;&gt;&lt;/a&gt;&lt;/TD&gt;
+                            &lt;TD vAlign=center width=&quot;78%&quot; height=55&gt;
+							&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;wanted.htm&quot;&gt;
+							&lt;font color=&quot;#FFFFFF&quot;&gt;
+							\xd2\xc7\xc6\xf7\xcb\xf9\xb8\xdaλ\xd5\xd0Ƹ\xd0\xc5Ϣ&lt;/font&gt;&lt;/a&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+                  &lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;TR bgColor=#94249C&gt;
+          &lt;TD height=2&gt;&lt;/TD&gt;&lt;/TR&gt;
+        &lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD colSpan=4&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;100%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD vAlign=bottom align=left width=12&gt;&lt;IMG height=12 
+            src=&quot;picture/left2.gif&quot; width=13 
+&gt;&lt;/TD&gt;
+          &lt;TD width=*&gt;\xa1\xa1&lt;/TD&gt;
+          &lt;TD vAlign=bottom align=right&gt;&lt;IMG height=12 
+            src=&quot;picture/right2.gif&quot; width=12 
+&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=960 align=center border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD&gt;
+      &lt;DIV align=center&gt;
+      &lt;P&gt;
+                  &lt;font color=&quot;#0033FF&quot;&gt;
+                  &lt;/font&gt;  &lt;/font&gt;  &lt;font color=&quot;#0000ff&quot;&gt;  
+                  &lt;a href=&quot;index.htm&quot; class=&quot;navi&quot;&gt;
+					&lt;font color=&quot;#0000FF&quot;&gt;\xca\xd7ҳ&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;font color=&quot;#0000FF&quot;&gt; | &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt; &lt;a href=&quot;introduce.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xb8ſ\xf6\xbc\xf2\xbd\xe9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;technic.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xbf\xc6ѧ\xd1о\xbf&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+				  | &lt;/font&gt; &lt;a href=&quot;organization.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xbf\xc6\xd1л\xfa\xb9\xb9&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;faculty.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xd1о\xbf\xb6\xd3\xce\xe9&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  |  &lt;/font&gt; &lt;font color=&quot;#a4d5ee&quot;&gt; &lt;font color=&quot;#FDC450&quot;&gt; 
+					&lt;a href=&quot;education.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xbd\xcc\xd3\xfd\xbd\xccѧ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;communication.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;ѧ\xca\xf5\xbd\xbb\xc1\xf7&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  |  &lt;/font&gt;  &lt;a href=&quot;wanted.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xd5\xd0Ƹ\xd0\xc5Ϣ&lt;/font&gt;&lt;/a&gt;&lt;font color=&quot;#0000FF&quot;&gt; 
+                  | &lt;/font&gt; &lt;a href=&quot;navguide.htm&quot; class=&quot;navi&quot;&gt;
+				&lt;font color=&quot;#0000FF&quot;&gt;\xcd\xf8վ\xb5\xbc\xba\xbd|&lt;/font&gt;&lt;/a&gt;&lt;/font&gt;&lt;/P&gt;
+      &lt;P&gt;&lt;font color=&quot;#0000FF&quot;&gt;Copyright&amp;copy;\xc7廪\xb4\xf3ѧ\xd2\xc7\xc6\xf7\xbf\xc6ѧ\xd3뼼\xca\xf5\xd1о\xbf\xcb\xf9&lt;BR&gt;ͨѶ\xb5\xd8ַ\xa3\xba\xc7廪\xb4\xf3ѧ\xbe\xab\xc3\xdc\xd2\xc7\xc6\xf7\xd3\xeb\xbb\xfaеѧϵ 
+      100084&lt;/font&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="108">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:38 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="116">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/Tgmds.html HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:39 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="125">
+                <http-request>
+                    <status>POST http://yqs.pim.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L1RnbWRzLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguc2RtZ1Q=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:39 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="161">
+                <http-request>
+                    <status>PUT http://yqs.pim.tsinghua.edu.cn/SLeyH HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">iA9wrv</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Not Allowed</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:18:39 GMT" field="date"/>
+                        <header content="166" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="198">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:40 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="208">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:43 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="210">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:43 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="211">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:43 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="212">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:43 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="213">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:43 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="214">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:43 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="217">
+                <http-request>
+                    <status>GET http://yqs.pim.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="yqs.pim.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:18:43 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The port '80' is not open on target yqs.pim.tsinghua.edu.cn</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to yqs.pim.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

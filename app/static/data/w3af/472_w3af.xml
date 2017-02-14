@@ -1,0 +1,1811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480512977" start-long="Wed Nov 30 08:36:17 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://sysparty.lib.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/472_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[39]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache&quot;.</description>
+        <http-transactions>
+            <http-transaction id="39">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="13868" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Fri, 11 Sep 2015 02:20:54 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;dc277-362c-51f6f5d7f2d80&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:36:26 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html&gt;
+&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;清华大学图书馆系统数图党支部&lt;/title&gt;
+&lt;LINK href=&quot;Template/166/Image/css.css&quot; type=text/css rel=stylesheet&gt;
+
+&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot; src=&quot;Image/FullSearch.js&quot;&gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot; src=&quot;Image/NormalContentLoader.js&quot;&gt;&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;DIV class=container&gt;
+&lt;DIV class=header&gt;
+&lt;DIV class=top&gt;
+&lt;DIV class=menu&gt;&lt;A href=&quot;default.htm&quot;&gt;首页&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;hsjy/ksls1/default.htm&quot;&gt;红色记忆&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;rwfc/default.htm&quot;&gt;人物风采&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;ssxx/ztxx/default.htm&quot;&gt;时事学习&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;zbjs/zbhd/default.htm&quot;&gt;支部建设&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;stxm/default.htm&quot;&gt;数图新貌&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;Document/245/245.htm&quot;&gt;关于本站&lt;/A&gt; &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=mainbody&gt;
+&lt;DIV class=sidebar&gt;
+&lt;DIV class=search style=&quot;WIDTH: 230px; HEIGHT: 116px&quot;&gt;
+&lt;DIV class=textLeft&gt;&lt;SPAN class=p3&gt;标题：&lt;/SPAN&gt;&lt;BR&gt;&lt;INPUT style=&quot;WIDTH: 195px&quot; size=22 Name=Search1_Keyword&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;SELECT style=&quot;WIDTH: 80px&quot; Name=Search1_ChannelID&gt;&lt;option value=&quot;-1&quot;&gt;全部频道&lt;/option&gt;&lt;option value=&quot;32&quot;&gt;红色记忆&lt;/option&gt;&lt;option value=&quot;33&quot;&gt;人物风采&lt;/option&gt;&lt;option value=&quot;34&quot;&gt;时事学习&lt;/option&gt;&lt;option value=&quot;35&quot;&gt;支部建设&lt;/option&gt;&lt;option value=&quot;36&quot;&gt;数图新貌&lt;/option&gt;&lt;option value=&quot;44&quot;&gt;美好情结&lt;/option&gt;&lt;option value=&quot;45&quot;&gt;往事悠悠&lt;/option&gt;&lt;option value=&quot;48&quot;&gt;专题学习&lt;/option&gt;&lt;option value=&quot;49&quot;&gt;特色视频&lt;/option&gt;&lt;option value=&quot;50&quot;&gt;组织介绍&lt;/option&gt;&lt;option value=&quot;51&quot;&gt;支部活动&lt;/option&gt;&lt;option value=&quot;52&quot;&gt;中心工作&lt;/option&gt;&lt;option value=&quot;53&quot;&gt;服务之窗&lt;/option&gt;&lt;option value=&quot;54&quot;&gt;发展中的图书馆&lt;/option&gt;&lt;option value=&quot;76&quot;&gt;news&lt;/option&gt;&lt;option value=&quot;77&quot;&gt;图书馆风物&lt;/option&gt;&lt;option value=&quot;78&quot;&gt;口述历史&lt;/option&gt;&lt;option value=&quot;207&quot;&gt;放眼看世界&lt;/option&gt;&lt;/SELECT&gt;&lt;INPUT id=searchBtn style=&quot;WIDTH: 40px; COLOR: #ffffff; HEIGHT: 23px; BACKGROUND-COLOR: #ad0129&quot; onclick=JumpToFullSearch(&quot;Search1&quot;,&quot;wccm.lib.tsinghua.edu.cn&quot;,&quot;80&quot;,&quot;WCCM&quot;,&quot;_blank&quot;,&quot;3&quot;,&quot;False&quot;,&quot;&quot;) type=button size=22 value=搜索 name=BaseSearch&gt;&lt;/DIV&gt;&lt;!--自定义搜索组件结束--&gt;&lt;/DIV&gt;
+&lt;DIV class=zhuantixuexi&gt;
+&lt;DIV class=left_title&gt;
+&lt;DIV class=titleName&gt;&lt;IMG src=&quot;Template/166/Image/ztxx_top.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;ssxx/ztxx/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1421/1421.htm&quot; target=&quot;_blank&quot;&gt;学习园地&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1232/1232.htm&quot; target=&quot;_blank&quot;&gt;国情备忘录&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1231/1231.htm&quot; target=&quot;_blank&quot;&gt;七个“怎么看”&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1230/1230.htm&quot; target=&quot;_blank&quot;&gt;科学发展观&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1229/1229.htm&quot; target=&quot;_blank&quot;&gt;百姓.民生&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=fuwuzhichuang&gt;
+&lt;DIV class=left_title&gt;
+&lt;DIV class=titleName&gt;&lt;IMG src=&quot;Template/166/Image/fwzc_top.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;stxm/fwzc/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline2&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/450/450.htm&quot; target=&quot;_blank&quot;&gt;期刊导航实现最新文章推送&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/449/449.htm&quot; target=&quot;_blank&quot;&gt;利用短信查询馆藏目录&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/448/448.htm&quot; target=&quot;_blank&quot;&gt;THU LIB COOKIES使用说明&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/447/447.htm&quot; target=&quot;_blank&quot;&gt;利用WAP查询图书/电子资源&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/445/445.htm&quot; target=&quot;_blank&quot;&gt;关注图书馆英文主页&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/444/444.htm&quot; target=&quot;_blank&quot;&gt;图书馆改版升级资源导航&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=jingcaishipin&gt;&lt;A href=&quot;ssxx/tssp/default.htm&quot;&gt;
+&lt;DIV class=left_kong&gt;&lt;/DIV&gt;&lt;/A&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline3&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/508/508.htm&quot; target=&quot;_blank&quot;&gt;为你而歌--北京特警队长&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/172/172.htm&quot; target=&quot;_blank&quot;&gt;又快又好发展 共建共享和谐&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/243/243.htm&quot; target=&quot;_blank&quot;&gt;从大图书馆说到清华人文精神&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/174/174.htm&quot; target=&quot;_blank&quot;&gt;我是一名共产党员&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/178/178.htm&quot; target=&quot;_blank&quot;&gt;十七大电子书&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=pagebody&gt;
+&lt;DIV class=middle&gt;
+&lt;DIV class=jianjie&gt;
+&lt;DIV style=&quot;PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 20px; PADDING-TOP: 50px&quot;&gt;
+&lt;DIV style=&quot;FLOAT: left&quot;&gt;&lt;IMG class=img1 src=&quot;Template/166/Image/jianjie_tu.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;TEXT-JUSTIFY: inter-ideograph; FONT-SIZE: 1.1em; LINE-HEIGHT: 1.5em; TEXT-ALIGN: justify&quot;&gt;系统数图成立为2007年1月,成员主要来自数字图书馆研究室和系统部，包括：图书馆数字化运行中重要的骨干力量，主管数图发展的馆长。其中数字图书馆研究室负责数字图书馆相关技术及研究发展工作；系统部则负责整个图书馆业务系统的研发和运行维护的工作，是图书馆现代化发展进程中最重要的两个支撑部门。在图书馆服务方式和资源结构发生变化的今天，如何让清华精神和文化在图书馆得以传承，如何更好地发挥青年党员在图书馆建设中的积极作用一直是我们支部关注和探索的问题。 &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=tupianzhanshi&gt;
+&lt;DIV&gt;
+&lt;MARQUEE onmouseover=this.stop() onmouseout=this.start() scrollAmount=3&gt;
+&lt;TABLE cellSpacing=1 cellPadding=1 width=&quot;100%&quot; border=0&gt;
+
+&lt;TR&gt;
+&lt;TD align=middle&gt;&lt;IMG src=&quot;Template/166/Image/tupianzhanshi_left.jpg&quot; width=7 border=0&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/1331/1331.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/hxxd-last-1.jpg&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/1319/1319.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/IMG_5362a.jpg&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/451/451.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic5.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic6.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic7.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;xw/Document/524/524.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic8.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic1.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic2.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic3.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/default.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic4.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;IMG src=&quot;Template/166/Image/tupianzhanshi_right.jpg&quot; width=7 border=0&gt; &lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/MARQUEE&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=zhongdiantuijian&gt;
+&lt;DIV&gt;&lt;IMG height=69 src=&quot;Template/166/Image/zdtj_top.jpg&quot; width=474&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;http://166.111.120.57:8080/vod/ProgView.jsp?DirId=155&quot;&gt;深入学习实践科学发展观系列学习材料&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;所有材料以精彩视频形式呈现。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;zbjs/zbhd/Document/530/530.htm&quot;&gt;&amp;#8220;我看新技术发展与创新服务&amp;#8221;讨论会&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;系统数图党支部、系统部、数字化部共同组织。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot;&gt;我支部被评为清华大学先进党支部&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;系统数图党支部供稿。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;zbjs/zbhd/Document/225/225.htm&quot;&gt;&amp;#8220;清华传统与清华精神&amp;#8221;报告&lt;/A&gt;&lt;BR&gt;&lt;SPAN class=p2&gt;报告人：原清华大学党委书记贺美英老师&lt;/SPAN&gt; &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=right&gt;
+&lt;DIV class=zhibuhuodong&gt;
+&lt;DIV class=zbhd_title&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;zbjs/zbhd/default.htm&quot;&gt;一览&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline4&quot;   class=&quot;leftright&quot; &gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;zbjs/zbhd/Document/1406/1406.htm&quot; target=&quot;_blank&quot;&gt;深入学习和开展“党的群众路线教育实践活动”——系统数图党支部专题组织生活会简报&lt;/A&gt;&lt;BR&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;zbjs/zbhd/Document/1405/1405.htm&quot; target=&quot;_blank&quot;&gt;“行健新百年、共筑中国梦”——系统数图党支部开展专题组织生活会&lt;/A&gt;&lt;BR&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=zuixinxiaoxi&gt;
+&lt;DIV class=zxxx_title&gt;
+&lt;DIV class=morenew&gt;&lt;A href=&quot;xw/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline5&quot;   class=&quot;leftright&quot; &gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1340/1340.htm&quot; target=&quot;_self&quot;&gt;我支部党员参加2011年北京高校图书馆数图年会，并在“信息新技术应用案例”评比中取得好成绩。&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1341/1341.htm&quot; target=&quot;_self&quot;&gt;系统数字化代表队在“庆祝建党90周年，迎接百年馆庆现场知识竞赛”中获佳绩&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1234/1234.htm&quot; target=&quot;_self&quot;&gt;系统数图支部换届完成&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=renwufengcai style=&quot;WIDTH: 199px; HEIGHT: 154px&quot;&gt;
+&lt;DIV class=rwfc_title&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;TEXT-ALIGN: center&quot;&gt;&lt;A href=&quot;rwfc/default.htm&quot; target=_blank&gt;&lt;IMG src=&quot;Template/166/Image/ru.gif&quot; border=0&gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=lianjie&gt;
+&lt;DIV class=xglj_title&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://wzpt.cic.tsinghua.edu.cn/publish/qzlxjy/index.html&quot; target=_blank&gt;党的群众路线教育实践活动 &lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://cpc.people.com.cn/&quot; target=_blank&gt;中国共产党新闻网&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://redweb.tsinghua.edu.cn/&quot; target=_blank&gt;红色网站&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://news.tsinghua.edu.cn/new/&quot; target=_blank&gt;清华新闻网&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://www.lib.tsinghua.edu.cn/&quot; target=_blank&gt;清华图书馆&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;CLEAR: both; DISPLAY: block; FONT: 0px/0px sans-serif&quot;&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=footer&gt;
+&lt;P class=p2&gt;版权所有 清华大学图书馆&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;/DIV&gt;&lt;FONT face=&quot;Courier New&quot; size=2&gt;&lt;/FONT&gt;
+&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[72]" method="GET" name="Cross site tracing vulnerability" plugin="xst" severity="Low" url="http://sysparty.lib.tsinghua.edu.cn/" var="None">
+        <description>The web server at &quot;http://sysparty.lib.tsinghua.edu.cn/&quot; is vulnerable to Cross Site Tracing.</description>
+        <long-description>The `TRACE` HTTP method allows a client so send a request to the server, and have the same request then send back in the server's response. This allows the client to determine if the server is receiving the request as expected or if specific parts of the request are not arriving as expected. For example incorrect encoding or a load balancer has filtered or changed a value. On many default installations the `TRACE` method is still enabled.
+
+While not vulnerable by itself, it does provide a method for cyber-criminals to bypass the `HTTPOnly` cookie flag, and therefore could allow a XSS attack to successfully access a session token.
+
+The tool has discovered that the affected page permits the HTTP `TRACE` method.</long-description>
+        <fix-guidance>The HTTP `TRACE` method is normally not required within production sites and should therefore be disabled.
+
+Depending on the function being performed by the web application, the risk level can start low and increase as more functionality is implemented.
+
+The remediation is typically a very simple configuration change and in most cases will not have any negative impact on the server or application.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="CAPEC" url="http://capec.mitre.org/data/definitions/107.html"/>
+            <reference title="OWASP" url="http://www.owasp.org/index.php/Cross_Site_Tracing"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="72">
+                <http-request>
+                    <status>TRACE http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                        <header content="XST" field="Fakeheader"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:38 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="close" field="connection"/>
+                        <header content="message/http" field="content-type"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">VFJBQ0UgLyBIVFRQLzEuMQ0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KQ29udGVudC1sZW5ndGg6
+IDANCkFjY2VwdC1lbmNvZGluZzogZ3ppcCwgZGVmbGF0ZQ0KQWNjZXB0OiAqLyoNClVzZXItYWdl
+bnQ6IG5pc2wNCkhvc3Q6IHN5c3BhcnR5LmxpYi50c2luZ2h1YS5lZHUuY24NCkNvbnRlbnQtdHlw
+ZTogYXBwbGljYXRpb24veC13d3ctZm9ybS11cmxlbmNvZGVkDQpGYWtlaGVhZGVyOiBYU1QNCg0K
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[176]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://lib.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://lib.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://sysparty.lib.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="176">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:39 GMT" field="date"/>
+                        <header content="271" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access /
+on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[179]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.120.160/" var="None">
+        <description>The contents of http://166.111.120.160/ and http://sysparty.lib.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="179">
+                <http-request>
+                    <status>GET http://166.111.120.160/ HTTP/1.1</status>
+                    <headers>
+                        <header content="166.111.120.160" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:39 GMT" field="date"/>
+                        <header content="267" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access /
+on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at 166.111.120.160 Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[177]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://sysparty.lib.tsinghua.edu.cn/TOZcA" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://sysparty.lib.tsinghua.edu.cn/TOZcA
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="177">
+                <http-request>
+                    <status>PUT http://sysparty.lib.tsinghua.edu.cn/TOZcA HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">9KTOB6</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="304" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:36:39 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /TOZcA.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[36, 146, 212, 221, 224, 240, 242]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://sysparty.lib.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://sysparty.lib.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: CONNECT, GET, HEAD, OPTIONS, POST, TRACE</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="36">
+                <http-request>
+                    <status>OPTIONS http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:36:37 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="146">
+                <http-request>
+                    <status>HEAD http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="13868" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Fri, 11 Sep 2015 02:20:54 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;dc277-362c-51f6f5d7f2d80&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:36:38 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="212">
+                <http-request>
+                    <status>OPTIONS http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:36:41 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="221">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="13868" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Fri, 11 Sep 2015 02:20:54 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;dc277-362c-51f6f5d7f2d80&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:36:42 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html&gt;
+&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;清华大学图书馆系统数图党支部&lt;/title&gt;
+&lt;LINK href=&quot;Template/166/Image/css.css&quot; type=text/css rel=stylesheet&gt;
+
+&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot; src=&quot;Image/FullSearch.js&quot;&gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot; src=&quot;Image/NormalContentLoader.js&quot;&gt;&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;DIV class=container&gt;
+&lt;DIV class=header&gt;
+&lt;DIV class=top&gt;
+&lt;DIV class=menu&gt;&lt;A href=&quot;default.htm&quot;&gt;首页&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;hsjy/ksls1/default.htm&quot;&gt;红色记忆&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;rwfc/default.htm&quot;&gt;人物风采&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;ssxx/ztxx/default.htm&quot;&gt;时事学习&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;zbjs/zbhd/default.htm&quot;&gt;支部建设&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;stxm/default.htm&quot;&gt;数图新貌&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;Document/245/245.htm&quot;&gt;关于本站&lt;/A&gt; &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=mainbody&gt;
+&lt;DIV class=sidebar&gt;
+&lt;DIV class=search style=&quot;WIDTH: 230px; HEIGHT: 116px&quot;&gt;
+&lt;DIV class=textLeft&gt;&lt;SPAN class=p3&gt;标题：&lt;/SPAN&gt;&lt;BR&gt;&lt;INPUT style=&quot;WIDTH: 195px&quot; size=22 Name=Search1_Keyword&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;SELECT style=&quot;WIDTH: 80px&quot; Name=Search1_ChannelID&gt;&lt;option value=&quot;-1&quot;&gt;全部频道&lt;/option&gt;&lt;option value=&quot;32&quot;&gt;红色记忆&lt;/option&gt;&lt;option value=&quot;33&quot;&gt;人物风采&lt;/option&gt;&lt;option value=&quot;34&quot;&gt;时事学习&lt;/option&gt;&lt;option value=&quot;35&quot;&gt;支部建设&lt;/option&gt;&lt;option value=&quot;36&quot;&gt;数图新貌&lt;/option&gt;&lt;option value=&quot;44&quot;&gt;美好情结&lt;/option&gt;&lt;option value=&quot;45&quot;&gt;往事悠悠&lt;/option&gt;&lt;option value=&quot;48&quot;&gt;专题学习&lt;/option&gt;&lt;option value=&quot;49&quot;&gt;特色视频&lt;/option&gt;&lt;option value=&quot;50&quot;&gt;组织介绍&lt;/option&gt;&lt;option value=&quot;51&quot;&gt;支部活动&lt;/option&gt;&lt;option value=&quot;52&quot;&gt;中心工作&lt;/option&gt;&lt;option value=&quot;53&quot;&gt;服务之窗&lt;/option&gt;&lt;option value=&quot;54&quot;&gt;发展中的图书馆&lt;/option&gt;&lt;option value=&quot;76&quot;&gt;news&lt;/option&gt;&lt;option value=&quot;77&quot;&gt;图书馆风物&lt;/option&gt;&lt;option value=&quot;78&quot;&gt;口述历史&lt;/option&gt;&lt;option value=&quot;207&quot;&gt;放眼看世界&lt;/option&gt;&lt;/SELECT&gt;&lt;INPUT id=searchBtn style=&quot;WIDTH: 40px; COLOR: #ffffff; HEIGHT: 23px; BACKGROUND-COLOR: #ad0129&quot; onclick=JumpToFullSearch(&quot;Search1&quot;,&quot;wccm.lib.tsinghua.edu.cn&quot;,&quot;80&quot;,&quot;WCCM&quot;,&quot;_blank&quot;,&quot;3&quot;,&quot;False&quot;,&quot;&quot;) type=button size=22 value=搜索 name=BaseSearch&gt;&lt;/DIV&gt;&lt;!--自定义搜索组件结束--&gt;&lt;/DIV&gt;
+&lt;DIV class=zhuantixuexi&gt;
+&lt;DIV class=left_title&gt;
+&lt;DIV class=titleName&gt;&lt;IMG src=&quot;Template/166/Image/ztxx_top.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;ssxx/ztxx/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1421/1421.htm&quot; target=&quot;_blank&quot;&gt;学习园地&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1232/1232.htm&quot; target=&quot;_blank&quot;&gt;国情备忘录&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1231/1231.htm&quot; target=&quot;_blank&quot;&gt;七个“怎么看”&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1230/1230.htm&quot; target=&quot;_blank&quot;&gt;科学发展观&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1229/1229.htm&quot; target=&quot;_blank&quot;&gt;百姓.民生&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=fuwuzhichuang&gt;
+&lt;DIV class=left_title&gt;
+&lt;DIV class=titleName&gt;&lt;IMG src=&quot;Template/166/Image/fwzc_top.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;stxm/fwzc/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline2&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/450/450.htm&quot; target=&quot;_blank&quot;&gt;期刊导航实现最新文章推送&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/449/449.htm&quot; target=&quot;_blank&quot;&gt;利用短信查询馆藏目录&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/448/448.htm&quot; target=&quot;_blank&quot;&gt;THU LIB COOKIES使用说明&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/447/447.htm&quot; target=&quot;_blank&quot;&gt;利用WAP查询图书/电子资源&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/445/445.htm&quot; target=&quot;_blank&quot;&gt;关注图书馆英文主页&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/444/444.htm&quot; target=&quot;_blank&quot;&gt;图书馆改版升级资源导航&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=jingcaishipin&gt;&lt;A href=&quot;ssxx/tssp/default.htm&quot;&gt;
+&lt;DIV class=left_kong&gt;&lt;/DIV&gt;&lt;/A&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline3&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/508/508.htm&quot; target=&quot;_blank&quot;&gt;为你而歌--北京特警队长&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/172/172.htm&quot; target=&quot;_blank&quot;&gt;又快又好发展 共建共享和谐&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/243/243.htm&quot; target=&quot;_blank&quot;&gt;从大图书馆说到清华人文精神&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/174/174.htm&quot; target=&quot;_blank&quot;&gt;我是一名共产党员&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/178/178.htm&quot; target=&quot;_blank&quot;&gt;十七大电子书&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=pagebody&gt;
+&lt;DIV class=middle&gt;
+&lt;DIV class=jianjie&gt;
+&lt;DIV style=&quot;PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 20px; PADDING-TOP: 50px&quot;&gt;
+&lt;DIV style=&quot;FLOAT: left&quot;&gt;&lt;IMG class=img1 src=&quot;Template/166/Image/jianjie_tu.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;TEXT-JUSTIFY: inter-ideograph; FONT-SIZE: 1.1em; LINE-HEIGHT: 1.5em; TEXT-ALIGN: justify&quot;&gt;系统数图成立为2007年1月,成员主要来自数字图书馆研究室和系统部，包括：图书馆数字化运行中重要的骨干力量，主管数图发展的馆长。其中数字图书馆研究室负责数字图书馆相关技术及研究发展工作；系统部则负责整个图书馆业务系统的研发和运行维护的工作，是图书馆现代化发展进程中最重要的两个支撑部门。在图书馆服务方式和资源结构发生变化的今天，如何让清华精神和文化在图书馆得以传承，如何更好地发挥青年党员在图书馆建设中的积极作用一直是我们支部关注和探索的问题。 &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=tupianzhanshi&gt;
+&lt;DIV&gt;
+&lt;MARQUEE onmouseover=this.stop() onmouseout=this.start() scrollAmount=3&gt;
+&lt;TABLE cellSpacing=1 cellPadding=1 width=&quot;100%&quot; border=0&gt;
+
+&lt;TR&gt;
+&lt;TD align=middle&gt;&lt;IMG src=&quot;Template/166/Image/tupianzhanshi_left.jpg&quot; width=7 border=0&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/1331/1331.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/hxxd-last-1.jpg&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/1319/1319.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/IMG_5362a.jpg&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/451/451.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic5.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic6.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic7.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;xw/Document/524/524.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic8.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic1.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic2.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic3.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/default.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic4.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;IMG src=&quot;Template/166/Image/tupianzhanshi_right.jpg&quot; width=7 border=0&gt; &lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/MARQUEE&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=zhongdiantuijian&gt;
+&lt;DIV&gt;&lt;IMG height=69 src=&quot;Template/166/Image/zdtj_top.jpg&quot; width=474&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;http://166.111.120.57:8080/vod/ProgView.jsp?DirId=155&quot;&gt;深入学习实践科学发展观系列学习材料&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;所有材料以精彩视频形式呈现。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;zbjs/zbhd/Document/530/530.htm&quot;&gt;&amp;#8220;我看新技术发展与创新服务&amp;#8221;讨论会&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;系统数图党支部、系统部、数字化部共同组织。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot;&gt;我支部被评为清华大学先进党支部&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;系统数图党支部供稿。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;zbjs/zbhd/Document/225/225.htm&quot;&gt;&amp;#8220;清华传统与清华精神&amp;#8221;报告&lt;/A&gt;&lt;BR&gt;&lt;SPAN class=p2&gt;报告人：原清华大学党委书记贺美英老师&lt;/SPAN&gt; &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=right&gt;
+&lt;DIV class=zhibuhuodong&gt;
+&lt;DIV class=zbhd_title&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;zbjs/zbhd/default.htm&quot;&gt;一览&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline4&quot;   class=&quot;leftright&quot; &gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;zbjs/zbhd/Document/1406/1406.htm&quot; target=&quot;_blank&quot;&gt;深入学习和开展“党的群众路线教育实践活动”——系统数图党支部专题组织生活会简报&lt;/A&gt;&lt;BR&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;zbjs/zbhd/Document/1405/1405.htm&quot; target=&quot;_blank&quot;&gt;“行健新百年、共筑中国梦”——系统数图党支部开展专题组织生活会&lt;/A&gt;&lt;BR&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=zuixinxiaoxi&gt;
+&lt;DIV class=zxxx_title&gt;
+&lt;DIV class=morenew&gt;&lt;A href=&quot;xw/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline5&quot;   class=&quot;leftright&quot; &gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1340/1340.htm&quot; target=&quot;_self&quot;&gt;我支部党员参加2011年北京高校图书馆数图年会，并在“信息新技术应用案例”评比中取得好成绩。&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1341/1341.htm&quot; target=&quot;_self&quot;&gt;系统数字化代表队在“庆祝建党90周年，迎接百年馆庆现场知识竞赛”中获佳绩&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1234/1234.htm&quot; target=&quot;_self&quot;&gt;系统数图支部换届完成&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=renwufengcai style=&quot;WIDTH: 199px; HEIGHT: 154px&quot;&gt;
+&lt;DIV class=rwfc_title&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;TEXT-ALIGN: center&quot;&gt;&lt;A href=&quot;rwfc/default.htm&quot; target=_blank&gt;&lt;IMG src=&quot;Template/166/Image/ru.gif&quot; border=0&gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=lianjie&gt;
+&lt;DIV class=xglj_title&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://wzpt.cic.tsinghua.edu.cn/publish/qzlxjy/index.html&quot; target=_blank&gt;党的群众路线教育实践活动 &lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://cpc.people.com.cn/&quot; target=_blank&gt;中国共产党新闻网&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://redweb.tsinghua.edu.cn/&quot; target=_blank&gt;红色网站&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://news.tsinghua.edu.cn/new/&quot; target=_blank&gt;清华新闻网&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://www.lib.tsinghua.edu.cn/&quot; target=_blank&gt;清华图书馆&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;CLEAR: both; DISPLAY: block; FONT: 0px/0px sans-serif&quot;&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=footer&gt;
+&lt;P class=p2&gt;版权所有 清华大学图书馆&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;/DIV&gt;&lt;FONT face=&quot;Courier New&quot; size=2&gt;&lt;/FONT&gt;
+&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="224">
+                <http-request>
+                    <status>CONNECT http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:43 GMT" field="date"/>
+                        <header content="299" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;400 Bad Request&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Bad Request&lt;/h1&gt;
+&lt;p&gt;Your browser sent a request that this server could not understand.&lt;br /&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at any.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="240">
+                <http-request>
+                    <status>POST http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="13868" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Fri, 11 Sep 2015 02:20:54 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;dc277-362c-51f6f5d7f2d80&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:36:52 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html&gt;
+&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;清华大学图书馆系统数图党支部&lt;/title&gt;
+&lt;LINK href=&quot;Template/166/Image/css.css&quot; type=text/css rel=stylesheet&gt;
+
+&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot; src=&quot;Image/FullSearch.js&quot;&gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot; src=&quot;Image/NormalContentLoader.js&quot;&gt;&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;DIV class=container&gt;
+&lt;DIV class=header&gt;
+&lt;DIV class=top&gt;
+&lt;DIV class=menu&gt;&lt;A href=&quot;default.htm&quot;&gt;首页&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;hsjy/ksls1/default.htm&quot;&gt;红色记忆&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;rwfc/default.htm&quot;&gt;人物风采&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;ssxx/ztxx/default.htm&quot;&gt;时事学习&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;zbjs/zbhd/default.htm&quot;&gt;支部建设&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;stxm/default.htm&quot;&gt;数图新貌&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;Document/245/245.htm&quot;&gt;关于本站&lt;/A&gt; &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=mainbody&gt;
+&lt;DIV class=sidebar&gt;
+&lt;DIV class=search style=&quot;WIDTH: 230px; HEIGHT: 116px&quot;&gt;
+&lt;DIV class=textLeft&gt;&lt;SPAN class=p3&gt;标题：&lt;/SPAN&gt;&lt;BR&gt;&lt;INPUT style=&quot;WIDTH: 195px&quot; size=22 Name=Search1_Keyword&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;SELECT style=&quot;WIDTH: 80px&quot; Name=Search1_ChannelID&gt;&lt;option value=&quot;-1&quot;&gt;全部频道&lt;/option&gt;&lt;option value=&quot;32&quot;&gt;红色记忆&lt;/option&gt;&lt;option value=&quot;33&quot;&gt;人物风采&lt;/option&gt;&lt;option value=&quot;34&quot;&gt;时事学习&lt;/option&gt;&lt;option value=&quot;35&quot;&gt;支部建设&lt;/option&gt;&lt;option value=&quot;36&quot;&gt;数图新貌&lt;/option&gt;&lt;option value=&quot;44&quot;&gt;美好情结&lt;/option&gt;&lt;option value=&quot;45&quot;&gt;往事悠悠&lt;/option&gt;&lt;option value=&quot;48&quot;&gt;专题学习&lt;/option&gt;&lt;option value=&quot;49&quot;&gt;特色视频&lt;/option&gt;&lt;option value=&quot;50&quot;&gt;组织介绍&lt;/option&gt;&lt;option value=&quot;51&quot;&gt;支部活动&lt;/option&gt;&lt;option value=&quot;52&quot;&gt;中心工作&lt;/option&gt;&lt;option value=&quot;53&quot;&gt;服务之窗&lt;/option&gt;&lt;option value=&quot;54&quot;&gt;发展中的图书馆&lt;/option&gt;&lt;option value=&quot;76&quot;&gt;news&lt;/option&gt;&lt;option value=&quot;77&quot;&gt;图书馆风物&lt;/option&gt;&lt;option value=&quot;78&quot;&gt;口述历史&lt;/option&gt;&lt;option value=&quot;207&quot;&gt;放眼看世界&lt;/option&gt;&lt;/SELECT&gt;&lt;INPUT id=searchBtn style=&quot;WIDTH: 40px; COLOR: #ffffff; HEIGHT: 23px; BACKGROUND-COLOR: #ad0129&quot; onclick=JumpToFullSearch(&quot;Search1&quot;,&quot;wccm.lib.tsinghua.edu.cn&quot;,&quot;80&quot;,&quot;WCCM&quot;,&quot;_blank&quot;,&quot;3&quot;,&quot;False&quot;,&quot;&quot;) type=button size=22 value=搜索 name=BaseSearch&gt;&lt;/DIV&gt;&lt;!--自定义搜索组件结束--&gt;&lt;/DIV&gt;
+&lt;DIV class=zhuantixuexi&gt;
+&lt;DIV class=left_title&gt;
+&lt;DIV class=titleName&gt;&lt;IMG src=&quot;Template/166/Image/ztxx_top.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;ssxx/ztxx/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1421/1421.htm&quot; target=&quot;_blank&quot;&gt;学习园地&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1232/1232.htm&quot; target=&quot;_blank&quot;&gt;国情备忘录&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1231/1231.htm&quot; target=&quot;_blank&quot;&gt;七个“怎么看”&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1230/1230.htm&quot; target=&quot;_blank&quot;&gt;科学发展观&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1229/1229.htm&quot; target=&quot;_blank&quot;&gt;百姓.民生&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=fuwuzhichuang&gt;
+&lt;DIV class=left_title&gt;
+&lt;DIV class=titleName&gt;&lt;IMG src=&quot;Template/166/Image/fwzc_top.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;stxm/fwzc/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline2&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/450/450.htm&quot; target=&quot;_blank&quot;&gt;期刊导航实现最新文章推送&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/449/449.htm&quot; target=&quot;_blank&quot;&gt;利用短信查询馆藏目录&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/448/448.htm&quot; target=&quot;_blank&quot;&gt;THU LIB COOKIES使用说明&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/447/447.htm&quot; target=&quot;_blank&quot;&gt;利用WAP查询图书/电子资源&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/445/445.htm&quot; target=&quot;_blank&quot;&gt;关注图书馆英文主页&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/444/444.htm&quot; target=&quot;_blank&quot;&gt;图书馆改版升级资源导航&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=jingcaishipin&gt;&lt;A href=&quot;ssxx/tssp/default.htm&quot;&gt;
+&lt;DIV class=left_kong&gt;&lt;/DIV&gt;&lt;/A&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline3&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/508/508.htm&quot; target=&quot;_blank&quot;&gt;为你而歌--北京特警队长&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/172/172.htm&quot; target=&quot;_blank&quot;&gt;又快又好发展 共建共享和谐&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/243/243.htm&quot; target=&quot;_blank&quot;&gt;从大图书馆说到清华人文精神&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/174/174.htm&quot; target=&quot;_blank&quot;&gt;我是一名共产党员&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/178/178.htm&quot; target=&quot;_blank&quot;&gt;十七大电子书&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=pagebody&gt;
+&lt;DIV class=middle&gt;
+&lt;DIV class=jianjie&gt;
+&lt;DIV style=&quot;PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 20px; PADDING-TOP: 50px&quot;&gt;
+&lt;DIV style=&quot;FLOAT: left&quot;&gt;&lt;IMG class=img1 src=&quot;Template/166/Image/jianjie_tu.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;TEXT-JUSTIFY: inter-ideograph; FONT-SIZE: 1.1em; LINE-HEIGHT: 1.5em; TEXT-ALIGN: justify&quot;&gt;系统数图成立为2007年1月,成员主要来自数字图书馆研究室和系统部，包括：图书馆数字化运行中重要的骨干力量，主管数图发展的馆长。其中数字图书馆研究室负责数字图书馆相关技术及研究发展工作；系统部则负责整个图书馆业务系统的研发和运行维护的工作，是图书馆现代化发展进程中最重要的两个支撑部门。在图书馆服务方式和资源结构发生变化的今天，如何让清华精神和文化在图书馆得以传承，如何更好地发挥青年党员在图书馆建设中的积极作用一直是我们支部关注和探索的问题。 &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=tupianzhanshi&gt;
+&lt;DIV&gt;
+&lt;MARQUEE onmouseover=this.stop() onmouseout=this.start() scrollAmount=3&gt;
+&lt;TABLE cellSpacing=1 cellPadding=1 width=&quot;100%&quot; border=0&gt;
+
+&lt;TR&gt;
+&lt;TD align=middle&gt;&lt;IMG src=&quot;Template/166/Image/tupianzhanshi_left.jpg&quot; width=7 border=0&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/1331/1331.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/hxxd-last-1.jpg&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/1319/1319.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/IMG_5362a.jpg&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/451/451.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic5.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic6.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic7.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;xw/Document/524/524.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic8.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic1.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic2.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic3.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/default.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic4.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;IMG src=&quot;Template/166/Image/tupianzhanshi_right.jpg&quot; width=7 border=0&gt; &lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/MARQUEE&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=zhongdiantuijian&gt;
+&lt;DIV&gt;&lt;IMG height=69 src=&quot;Template/166/Image/zdtj_top.jpg&quot; width=474&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;http://166.111.120.57:8080/vod/ProgView.jsp?DirId=155&quot;&gt;深入学习实践科学发展观系列学习材料&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;所有材料以精彩视频形式呈现。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;zbjs/zbhd/Document/530/530.htm&quot;&gt;&amp;#8220;我看新技术发展与创新服务&amp;#8221;讨论会&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;系统数图党支部、系统部、数字化部共同组织。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot;&gt;我支部被评为清华大学先进党支部&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;系统数图党支部供稿。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;zbjs/zbhd/Document/225/225.htm&quot;&gt;&amp;#8220;清华传统与清华精神&amp;#8221;报告&lt;/A&gt;&lt;BR&gt;&lt;SPAN class=p2&gt;报告人：原清华大学党委书记贺美英老师&lt;/SPAN&gt; &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=right&gt;
+&lt;DIV class=zhibuhuodong&gt;
+&lt;DIV class=zbhd_title&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;zbjs/zbhd/default.htm&quot;&gt;一览&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline4&quot;   class=&quot;leftright&quot; &gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;zbjs/zbhd/Document/1406/1406.htm&quot; target=&quot;_blank&quot;&gt;深入学习和开展“党的群众路线教育实践活动”——系统数图党支部专题组织生活会简报&lt;/A&gt;&lt;BR&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;zbjs/zbhd/Document/1405/1405.htm&quot; target=&quot;_blank&quot;&gt;“行健新百年、共筑中国梦”——系统数图党支部开展专题组织生活会&lt;/A&gt;&lt;BR&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=zuixinxiaoxi&gt;
+&lt;DIV class=zxxx_title&gt;
+&lt;DIV class=morenew&gt;&lt;A href=&quot;xw/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline5&quot;   class=&quot;leftright&quot; &gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1340/1340.htm&quot; target=&quot;_self&quot;&gt;我支部党员参加2011年北京高校图书馆数图年会，并在“信息新技术应用案例”评比中取得好成绩。&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1341/1341.htm&quot; target=&quot;_self&quot;&gt;系统数字化代表队在“庆祝建党90周年，迎接百年馆庆现场知识竞赛”中获佳绩&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1234/1234.htm&quot; target=&quot;_self&quot;&gt;系统数图支部换届完成&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=renwufengcai style=&quot;WIDTH: 199px; HEIGHT: 154px&quot;&gt;
+&lt;DIV class=rwfc_title&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;TEXT-ALIGN: center&quot;&gt;&lt;A href=&quot;rwfc/default.htm&quot; target=_blank&gt;&lt;IMG src=&quot;Template/166/Image/ru.gif&quot; border=0&gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=lianjie&gt;
+&lt;DIV class=xglj_title&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://wzpt.cic.tsinghua.edu.cn/publish/qzlxjy/index.html&quot; target=_blank&gt;党的群众路线教育实践活动 &lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://cpc.people.com.cn/&quot; target=_blank&gt;中国共产党新闻网&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://redweb.tsinghua.edu.cn/&quot; target=_blank&gt;红色网站&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://news.tsinghua.edu.cn/new/&quot; target=_blank&gt;清华新闻网&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://www.lib.tsinghua.edu.cn/&quot; target=_blank&gt;清华图书馆&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;CLEAR: both; DISPLAY: block; FONT: 0px/0px sans-serif&quot;&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=footer&gt;
+&lt;P class=p2&gt;版权所有 清华大学图书馆&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;/DIV&gt;&lt;FONT face=&quot;Courier New&quot; size=2&gt;&lt;/FONT&gt;
+&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="242">
+                <http-request>
+                    <status>TRACE http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:52 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="close" field="connection"/>
+                        <header content="message/http" field="content-type"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">VFJBQ0UgLyBIVFRQLzEuMQ0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KSG9zdDogc3lzcGFydHku
+bGliLnRzaW5naHVhLmVkdS5jbg0KQWNjZXB0LWVuY29kaW5nOiBnemlwLCBkZWZsYXRlDQpBY2Nl
+cHQ6ICovKg0KVXNlci1hZ2VudDogbmlzbA0KDQo=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="Webserver fingerprint" plugin="hmap" severity="Information" url="None" var="None">
+        <description>The most accurate fingerprint for this HTTP server is: &quot;Apache/1.3.26_3 (FreeBSD 4.6.2-RELEASE)&quot;.</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="13868" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Fri, 11 Sep 2015 02:20:54 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;dc277-362c-51f6f5d7f2d80&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:36:26 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html&gt;
+&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;清华大学图书馆系统数图党支部&lt;/title&gt;
+&lt;LINK href=&quot;Template/166/Image/css.css&quot; type=text/css rel=stylesheet&gt;
+
+&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot; src=&quot;Image/FullSearch.js&quot;&gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot; src=&quot;Image/NormalContentLoader.js&quot;&gt;&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;DIV class=container&gt;
+&lt;DIV class=header&gt;
+&lt;DIV class=top&gt;
+&lt;DIV class=menu&gt;&lt;A href=&quot;default.htm&quot;&gt;首页&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;hsjy/ksls1/default.htm&quot;&gt;红色记忆&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;rwfc/default.htm&quot;&gt;人物风采&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;ssxx/ztxx/default.htm&quot;&gt;时事学习&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;zbjs/zbhd/default.htm&quot;&gt;支部建设&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;stxm/default.htm&quot;&gt;数图新貌&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;Document/245/245.htm&quot;&gt;关于本站&lt;/A&gt; &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=mainbody&gt;
+&lt;DIV class=sidebar&gt;
+&lt;DIV class=search style=&quot;WIDTH: 230px; HEIGHT: 116px&quot;&gt;
+&lt;DIV class=textLeft&gt;&lt;SPAN class=p3&gt;标题：&lt;/SPAN&gt;&lt;BR&gt;&lt;INPUT style=&quot;WIDTH: 195px&quot; size=22 Name=Search1_Keyword&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;SELECT style=&quot;WIDTH: 80px&quot; Name=Search1_ChannelID&gt;&lt;option value=&quot;-1&quot;&gt;全部频道&lt;/option&gt;&lt;option value=&quot;32&quot;&gt;红色记忆&lt;/option&gt;&lt;option value=&quot;33&quot;&gt;人物风采&lt;/option&gt;&lt;option value=&quot;34&quot;&gt;时事学习&lt;/option&gt;&lt;option value=&quot;35&quot;&gt;支部建设&lt;/option&gt;&lt;option value=&quot;36&quot;&gt;数图新貌&lt;/option&gt;&lt;option value=&quot;44&quot;&gt;美好情结&lt;/option&gt;&lt;option value=&quot;45&quot;&gt;往事悠悠&lt;/option&gt;&lt;option value=&quot;48&quot;&gt;专题学习&lt;/option&gt;&lt;option value=&quot;49&quot;&gt;特色视频&lt;/option&gt;&lt;option value=&quot;50&quot;&gt;组织介绍&lt;/option&gt;&lt;option value=&quot;51&quot;&gt;支部活动&lt;/option&gt;&lt;option value=&quot;52&quot;&gt;中心工作&lt;/option&gt;&lt;option value=&quot;53&quot;&gt;服务之窗&lt;/option&gt;&lt;option value=&quot;54&quot;&gt;发展中的图书馆&lt;/option&gt;&lt;option value=&quot;76&quot;&gt;news&lt;/option&gt;&lt;option value=&quot;77&quot;&gt;图书馆风物&lt;/option&gt;&lt;option value=&quot;78&quot;&gt;口述历史&lt;/option&gt;&lt;option value=&quot;207&quot;&gt;放眼看世界&lt;/option&gt;&lt;/SELECT&gt;&lt;INPUT id=searchBtn style=&quot;WIDTH: 40px; COLOR: #ffffff; HEIGHT: 23px; BACKGROUND-COLOR: #ad0129&quot; onclick=JumpToFullSearch(&quot;Search1&quot;,&quot;wccm.lib.tsinghua.edu.cn&quot;,&quot;80&quot;,&quot;WCCM&quot;,&quot;_blank&quot;,&quot;3&quot;,&quot;False&quot;,&quot;&quot;) type=button size=22 value=搜索 name=BaseSearch&gt;&lt;/DIV&gt;&lt;!--自定义搜索组件结束--&gt;&lt;/DIV&gt;
+&lt;DIV class=zhuantixuexi&gt;
+&lt;DIV class=left_title&gt;
+&lt;DIV class=titleName&gt;&lt;IMG src=&quot;Template/166/Image/ztxx_top.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;ssxx/ztxx/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1421/1421.htm&quot; target=&quot;_blank&quot;&gt;学习园地&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1232/1232.htm&quot; target=&quot;_blank&quot;&gt;国情备忘录&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1231/1231.htm&quot; target=&quot;_blank&quot;&gt;七个“怎么看”&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1230/1230.htm&quot; target=&quot;_blank&quot;&gt;科学发展观&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1229/1229.htm&quot; target=&quot;_blank&quot;&gt;百姓.民生&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=fuwuzhichuang&gt;
+&lt;DIV class=left_title&gt;
+&lt;DIV class=titleName&gt;&lt;IMG src=&quot;Template/166/Image/fwzc_top.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;stxm/fwzc/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline2&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/450/450.htm&quot; target=&quot;_blank&quot;&gt;期刊导航实现最新文章推送&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/449/449.htm&quot; target=&quot;_blank&quot;&gt;利用短信查询馆藏目录&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/448/448.htm&quot; target=&quot;_blank&quot;&gt;THU LIB COOKIES使用说明&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/447/447.htm&quot; target=&quot;_blank&quot;&gt;利用WAP查询图书/电子资源&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/445/445.htm&quot; target=&quot;_blank&quot;&gt;关注图书馆英文主页&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/444/444.htm&quot; target=&quot;_blank&quot;&gt;图书馆改版升级资源导航&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=jingcaishipin&gt;&lt;A href=&quot;ssxx/tssp/default.htm&quot;&gt;
+&lt;DIV class=left_kong&gt;&lt;/DIV&gt;&lt;/A&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline3&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/508/508.htm&quot; target=&quot;_blank&quot;&gt;为你而歌--北京特警队长&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/172/172.htm&quot; target=&quot;_blank&quot;&gt;又快又好发展 共建共享和谐&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/243/243.htm&quot; target=&quot;_blank&quot;&gt;从大图书馆说到清华人文精神&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/174/174.htm&quot; target=&quot;_blank&quot;&gt;我是一名共产党员&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/178/178.htm&quot; target=&quot;_blank&quot;&gt;十七大电子书&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=pagebody&gt;
+&lt;DIV class=middle&gt;
+&lt;DIV class=jianjie&gt;
+&lt;DIV style=&quot;PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 20px; PADDING-TOP: 50px&quot;&gt;
+&lt;DIV style=&quot;FLOAT: left&quot;&gt;&lt;IMG class=img1 src=&quot;Template/166/Image/jianjie_tu.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;TEXT-JUSTIFY: inter-ideograph; FONT-SIZE: 1.1em; LINE-HEIGHT: 1.5em; TEXT-ALIGN: justify&quot;&gt;系统数图成立为2007年1月,成员主要来自数字图书馆研究室和系统部，包括：图书馆数字化运行中重要的骨干力量，主管数图发展的馆长。其中数字图书馆研究室负责数字图书馆相关技术及研究发展工作；系统部则负责整个图书馆业务系统的研发和运行维护的工作，是图书馆现代化发展进程中最重要的两个支撑部门。在图书馆服务方式和资源结构发生变化的今天，如何让清华精神和文化在图书馆得以传承，如何更好地发挥青年党员在图书馆建设中的积极作用一直是我们支部关注和探索的问题。 &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=tupianzhanshi&gt;
+&lt;DIV&gt;
+&lt;MARQUEE onmouseover=this.stop() onmouseout=this.start() scrollAmount=3&gt;
+&lt;TABLE cellSpacing=1 cellPadding=1 width=&quot;100%&quot; border=0&gt;
+
+&lt;TR&gt;
+&lt;TD align=middle&gt;&lt;IMG src=&quot;Template/166/Image/tupianzhanshi_left.jpg&quot; width=7 border=0&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/1331/1331.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/hxxd-last-1.jpg&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/1319/1319.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/IMG_5362a.jpg&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/451/451.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic5.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic6.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic7.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;xw/Document/524/524.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic8.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic1.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic2.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic3.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/default.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic4.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;IMG src=&quot;Template/166/Image/tupianzhanshi_right.jpg&quot; width=7 border=0&gt; &lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/MARQUEE&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=zhongdiantuijian&gt;
+&lt;DIV&gt;&lt;IMG height=69 src=&quot;Template/166/Image/zdtj_top.jpg&quot; width=474&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;http://166.111.120.57:8080/vod/ProgView.jsp?DirId=155&quot;&gt;深入学习实践科学发展观系列学习材料&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;所有材料以精彩视频形式呈现。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;zbjs/zbhd/Document/530/530.htm&quot;&gt;&amp;#8220;我看新技术发展与创新服务&amp;#8221;讨论会&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;系统数图党支部、系统部、数字化部共同组织。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot;&gt;我支部被评为清华大学先进党支部&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;系统数图党支部供稿。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;zbjs/zbhd/Document/225/225.htm&quot;&gt;&amp;#8220;清华传统与清华精神&amp;#8221;报告&lt;/A&gt;&lt;BR&gt;&lt;SPAN class=p2&gt;报告人：原清华大学党委书记贺美英老师&lt;/SPAN&gt; &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=right&gt;
+&lt;DIV class=zhibuhuodong&gt;
+&lt;DIV class=zbhd_title&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;zbjs/zbhd/default.htm&quot;&gt;一览&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline4&quot;   class=&quot;leftright&quot; &gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;zbjs/zbhd/Document/1406/1406.htm&quot; target=&quot;_blank&quot;&gt;深入学习和开展“党的群众路线教育实践活动”——系统数图党支部专题组织生活会简报&lt;/A&gt;&lt;BR&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;zbjs/zbhd/Document/1405/1405.htm&quot; target=&quot;_blank&quot;&gt;“行健新百年、共筑中国梦”——系统数图党支部开展专题组织生活会&lt;/A&gt;&lt;BR&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=zuixinxiaoxi&gt;
+&lt;DIV class=zxxx_title&gt;
+&lt;DIV class=morenew&gt;&lt;A href=&quot;xw/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline5&quot;   class=&quot;leftright&quot; &gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1340/1340.htm&quot; target=&quot;_self&quot;&gt;我支部党员参加2011年北京高校图书馆数图年会，并在“信息新技术应用案例”评比中取得好成绩。&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1341/1341.htm&quot; target=&quot;_self&quot;&gt;系统数字化代表队在“庆祝建党90周年，迎接百年馆庆现场知识竞赛”中获佳绩&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1234/1234.htm&quot; target=&quot;_self&quot;&gt;系统数图支部换届完成&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=renwufengcai style=&quot;WIDTH: 199px; HEIGHT: 154px&quot;&gt;
+&lt;DIV class=rwfc_title&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;TEXT-ALIGN: center&quot;&gt;&lt;A href=&quot;rwfc/default.htm&quot; target=_blank&gt;&lt;IMG src=&quot;Template/166/Image/ru.gif&quot; border=0&gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=lianjie&gt;
+&lt;DIV class=xglj_title&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://wzpt.cic.tsinghua.edu.cn/publish/qzlxjy/index.html&quot; target=_blank&gt;党的群众路线教育实践活动 &lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://cpc.people.com.cn/&quot; target=_blank&gt;中国共产党新闻网&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://redweb.tsinghua.edu.cn/&quot; target=_blank&gt;红色网站&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://news.tsinghua.edu.cn/new/&quot; target=_blank&gt;清华新闻网&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://www.lib.tsinghua.edu.cn/&quot; target=_blank&gt;清华图书馆&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;CLEAR: both; DISPLAY: block; FONT: 0px/0px sans-serif&quot;&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=footer&gt;
+&lt;P class=p2&gt;版权所有 清华大学图书馆&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;/DIV&gt;&lt;FONT face=&quot;Courier New&quot; size=2&gt;&lt;/FONT&gt;
+&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 74, 102, 114, 121, 177, 188, 189, 190, 191, 197, 198, 208]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="13868" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Fri, 11 Sep 2015 02:20:54 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;dc277-362c-51f6f5d7f2d80&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:36:26 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html&gt;
+&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;清华大学图书馆系统数图党支部&lt;/title&gt;
+&lt;LINK href=&quot;Template/166/Image/css.css&quot; type=text/css rel=stylesheet&gt;
+
+&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot; src=&quot;Image/FullSearch.js&quot;&gt;&lt;/script&gt;
+&lt;script language=&quot;javascript&quot;  type=&quot;text/javascript&quot; src=&quot;Image/NormalContentLoader.js&quot;&gt;&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;DIV class=container&gt;
+&lt;DIV class=header&gt;
+&lt;DIV class=top&gt;
+&lt;DIV class=menu&gt;&lt;A href=&quot;default.htm&quot;&gt;首页&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;hsjy/ksls1/default.htm&quot;&gt;红色记忆&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;rwfc/default.htm&quot;&gt;人物风采&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;ssxx/ztxx/default.htm&quot;&gt;时事学习&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;zbjs/zbhd/default.htm&quot;&gt;支部建设&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;stxm/default.htm&quot;&gt;数图新貌&lt;/A&gt;&amp;nbsp;|&amp;nbsp;&lt;A href=&quot;Document/245/245.htm&quot;&gt;关于本站&lt;/A&gt; &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=mainbody&gt;
+&lt;DIV class=sidebar&gt;
+&lt;DIV class=search style=&quot;WIDTH: 230px; HEIGHT: 116px&quot;&gt;
+&lt;DIV class=textLeft&gt;&lt;SPAN class=p3&gt;标题：&lt;/SPAN&gt;&lt;BR&gt;&lt;INPUT style=&quot;WIDTH: 195px&quot; size=22 Name=Search1_Keyword&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;SELECT style=&quot;WIDTH: 80px&quot; Name=Search1_ChannelID&gt;&lt;option value=&quot;-1&quot;&gt;全部频道&lt;/option&gt;&lt;option value=&quot;32&quot;&gt;红色记忆&lt;/option&gt;&lt;option value=&quot;33&quot;&gt;人物风采&lt;/option&gt;&lt;option value=&quot;34&quot;&gt;时事学习&lt;/option&gt;&lt;option value=&quot;35&quot;&gt;支部建设&lt;/option&gt;&lt;option value=&quot;36&quot;&gt;数图新貌&lt;/option&gt;&lt;option value=&quot;44&quot;&gt;美好情结&lt;/option&gt;&lt;option value=&quot;45&quot;&gt;往事悠悠&lt;/option&gt;&lt;option value=&quot;48&quot;&gt;专题学习&lt;/option&gt;&lt;option value=&quot;49&quot;&gt;特色视频&lt;/option&gt;&lt;option value=&quot;50&quot;&gt;组织介绍&lt;/option&gt;&lt;option value=&quot;51&quot;&gt;支部活动&lt;/option&gt;&lt;option value=&quot;52&quot;&gt;中心工作&lt;/option&gt;&lt;option value=&quot;53&quot;&gt;服务之窗&lt;/option&gt;&lt;option value=&quot;54&quot;&gt;发展中的图书馆&lt;/option&gt;&lt;option value=&quot;76&quot;&gt;news&lt;/option&gt;&lt;option value=&quot;77&quot;&gt;图书馆风物&lt;/option&gt;&lt;option value=&quot;78&quot;&gt;口述历史&lt;/option&gt;&lt;option value=&quot;207&quot;&gt;放眼看世界&lt;/option&gt;&lt;/SELECT&gt;&lt;INPUT id=searchBtn style=&quot;WIDTH: 40px; COLOR: #ffffff; HEIGHT: 23px; BACKGROUND-COLOR: #ad0129&quot; onclick=JumpToFullSearch(&quot;Search1&quot;,&quot;wccm.lib.tsinghua.edu.cn&quot;,&quot;80&quot;,&quot;WCCM&quot;,&quot;_blank&quot;,&quot;3&quot;,&quot;False&quot;,&quot;&quot;) type=button size=22 value=搜索 name=BaseSearch&gt;&lt;/DIV&gt;&lt;!--自定义搜索组件结束--&gt;&lt;/DIV&gt;
+&lt;DIV class=zhuantixuexi&gt;
+&lt;DIV class=left_title&gt;
+&lt;DIV class=titleName&gt;&lt;IMG src=&quot;Template/166/Image/ztxx_top.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;ssxx/ztxx/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1421/1421.htm&quot; target=&quot;_blank&quot;&gt;学习园地&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1232/1232.htm&quot; target=&quot;_blank&quot;&gt;国情备忘录&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1231/1231.htm&quot; target=&quot;_blank&quot;&gt;七个“怎么看”&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1230/1230.htm&quot; target=&quot;_blank&quot;&gt;科学发展观&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/ztxx/Document/1229/1229.htm&quot; target=&quot;_blank&quot;&gt;百姓.民生&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=fuwuzhichuang&gt;
+&lt;DIV class=left_title&gt;
+&lt;DIV class=titleName&gt;&lt;IMG src=&quot;Template/166/Image/fwzc_top.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;stxm/fwzc/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline2&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/450/450.htm&quot; target=&quot;_blank&quot;&gt;期刊导航实现最新文章推送&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/449/449.htm&quot; target=&quot;_blank&quot;&gt;利用短信查询馆藏目录&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/448/448.htm&quot; target=&quot;_blank&quot;&gt;THU LIB COOKIES使用说明&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/447/447.htm&quot; target=&quot;_blank&quot;&gt;利用WAP查询图书/电子资源&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/445/445.htm&quot; target=&quot;_blank&quot;&gt;关注图书馆英文主页&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;stxm/fwzc/Document/444/444.htm&quot; target=&quot;_blank&quot;&gt;图书馆改版升级资源导航&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=jingcaishipin&gt;&lt;A href=&quot;ssxx/tssp/default.htm&quot;&gt;
+&lt;DIV class=left_kong&gt;&lt;/DIV&gt;&lt;/A&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline3&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/508/508.htm&quot; target=&quot;_blank&quot;&gt;为你而歌--北京特警队长&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/172/172.htm&quot; target=&quot;_blank&quot;&gt;又快又好发展 共建共享和谐&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/243/243.htm&quot; target=&quot;_blank&quot;&gt;从大图书馆说到清华人文精神&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/174/174.htm&quot; target=&quot;_blank&quot;&gt;我是一名共产党员&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;ssxx/tssp/Document/178/178.htm&quot; target=&quot;_blank&quot;&gt;十七大电子书&lt;/A&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=pagebody&gt;
+&lt;DIV class=middle&gt;
+&lt;DIV class=jianjie&gt;
+&lt;DIV style=&quot;PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 20px; PADDING-TOP: 50px&quot;&gt;
+&lt;DIV style=&quot;FLOAT: left&quot;&gt;&lt;IMG class=img1 src=&quot;Template/166/Image/jianjie_tu.jpg&quot;&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;TEXT-JUSTIFY: inter-ideograph; FONT-SIZE: 1.1em; LINE-HEIGHT: 1.5em; TEXT-ALIGN: justify&quot;&gt;系统数图成立为2007年1月,成员主要来自数字图书馆研究室和系统部，包括：图书馆数字化运行中重要的骨干力量，主管数图发展的馆长。其中数字图书馆研究室负责数字图书馆相关技术及研究发展工作；系统部则负责整个图书馆业务系统的研发和运行维护的工作，是图书馆现代化发展进程中最重要的两个支撑部门。在图书馆服务方式和资源结构发生变化的今天，如何让清华精神和文化在图书馆得以传承，如何更好地发挥青年党员在图书馆建设中的积极作用一直是我们支部关注和探索的问题。 &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=tupianzhanshi&gt;
+&lt;DIV&gt;
+&lt;MARQUEE onmouseover=this.stop() onmouseout=this.start() scrollAmount=3&gt;
+&lt;TABLE cellSpacing=1 cellPadding=1 width=&quot;100%&quot; border=0&gt;
+
+&lt;TR&gt;
+&lt;TD align=middle&gt;&lt;IMG src=&quot;Template/166/Image/tupianzhanshi_left.jpg&quot; width=7 border=0&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/1331/1331.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/hxxd-last-1.jpg&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/1319/1319.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/IMG_5362a.jpg&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/451/451.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic5.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic6.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic7.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;xw/Document/524/524.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic8.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic1.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic2.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/Document/191/191.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic3.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;A href=&quot;zbjs/zbhd/default.htm&quot; target=_blank&gt;&lt;IMG height=110 src=&quot;Template/166/Image/tupianzhanshi_pic4.gif&quot; width=150 border=0&gt;&lt;/A&gt;&lt;/TD&gt;
+&lt;TD align=middle&gt;&lt;IMG src=&quot;Template/166/Image/tupianzhanshi_right.jpg&quot; width=7 border=0&gt; &lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/MARQUEE&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=zhongdiantuijian&gt;
+&lt;DIV&gt;&lt;IMG height=69 src=&quot;Template/166/Image/zdtj_top.jpg&quot; width=474&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;http://166.111.120.57:8080/vod/ProgView.jsp?DirId=155&quot;&gt;深入学习实践科学发展观系列学习材料&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;所有材料以精彩视频形式呈现。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;zbjs/zbhd/Document/530/530.htm&quot;&gt;&amp;#8220;我看新技术发展与创新服务&amp;#8221;讨论会&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;系统数图党支部、系统部、数字化部共同组织。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;rwfc/Document/509/509.htm&quot;&gt;我支部被评为清华大学先进党支部&lt;/A&gt;&amp;nbsp;&amp;nbsp;&lt;BR&gt;&lt;SPAN class=p2&gt;系统数图党支部供稿。&lt;/SPAN&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=middlenew style=&quot;PADDING-RIGHT: 10px; PADDING-LEFT: 10px; BACKGROUND: url(Template/166/Image/xuxian.jpg) repeat-x; PADDING-BOTTOM: 3px; PADDING-TOP: 3px&quot;&gt;
+&lt;DIV class=middlenew1 style=&quot;FLOAT: left&quot;&gt;&lt;IMG src=&quot;Template/166/Image/zdtj_pic.gif&quot;&gt;&lt;/DIV&gt;
+&lt;DIV class=textLeft&gt;&lt;A href=&quot;zbjs/zbhd/Document/225/225.htm&quot;&gt;&amp;#8220;清华传统与清华精神&amp;#8221;报告&lt;/A&gt;&lt;BR&gt;&lt;SPAN class=p2&gt;报告人：原清华大学党委书记贺美英老师&lt;/SPAN&gt; &lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=right&gt;
+&lt;DIV class=zhibuhuodong&gt;
+&lt;DIV class=zbhd_title&gt;
+&lt;DIV class=more&gt;&lt;A href=&quot;zbjs/zbhd/default.htm&quot;&gt;一览&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline4&quot;   class=&quot;leftright&quot; &gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;zbjs/zbhd/Document/1406/1406.htm&quot; target=&quot;_blank&quot;&gt;深入学习和开展“党的群众路线教育实践活动”——系统数图党支部专题组织生活会简报&lt;/A&gt;&lt;BR&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt; &lt;A href=&quot;zbjs/zbhd/Document/1405/1405.htm&quot; target=&quot;_blank&quot;&gt;“行健新百年、共筑中国梦”——系统数图党支部开展专题组织生活会&lt;/A&gt;&lt;BR&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=zuixinxiaoxi&gt;
+&lt;DIV class=zxxx_title&gt;
+&lt;DIV class=morenew&gt;&lt;A href=&quot;xw/default.htm&quot;&gt;更多&amp;gt;&amp;gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;&lt;table id=&quot;CommonOutline5&quot;   class=&quot;leftright&quot; &gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1340/1340.htm&quot; target=&quot;_self&quot;&gt;我支部党员参加2011年北京高校图书馆数图年会，并在“信息新技术应用案例”评比中取得好成绩。&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1341/1341.htm&quot; target=&quot;_self&quot;&gt;系统数字化代表队在“庆祝建党90周年，迎接百年馆庆现场知识竞赛”中获佳绩&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;IMG height=9 src=&quot;Template/166/Image/listpoint.gif&quot; width=13 border=0&gt;&lt;A href=&quot;xw/Document/1234/1234.htm&quot; target=&quot;_self&quot;&gt;系统数图支部换届完成&lt;/A&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=renwufengcai style=&quot;WIDTH: 199px; HEIGHT: 154px&quot;&gt;
+&lt;DIV class=rwfc_title&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;TEXT-ALIGN: center&quot;&gt;&lt;A href=&quot;rwfc/default.htm&quot; target=_blank&gt;&lt;IMG src=&quot;Template/166/Image/ru.gif&quot; border=0&gt;&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=lianjie&gt;
+&lt;DIV class=xglj_title&gt;&lt;/DIV&gt;
+&lt;DIV class=list&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://wzpt.cic.tsinghua.edu.cn/publish/qzlxjy/index.html&quot; target=_blank&gt;党的群众路线教育实践活动 &lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://cpc.people.com.cn/&quot; target=_blank&gt;中国共产党新闻网&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://redweb.tsinghua.edu.cn/&quot; target=_blank&gt;红色网站&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://news.tsinghua.edu.cn/new/&quot; target=_blank&gt;清华新闻网&lt;/A&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;SPAN class=p1&gt;&amp;#183;&lt;/SPAN&gt;&lt;A href=&quot;http://www.lib.tsinghua.edu.cn/&quot; target=_blank&gt;清华图书馆&lt;/A&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV style=&quot;CLEAR: both; DISPLAY: block; FONT: 0px/0px sans-serif&quot;&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV class=footer&gt;
+&lt;P class=p2&gt;版权所有 清华大学图书馆&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;/DIV&gt;&lt;FONT face=&quot;Courier New&quot; size=2&gt;&lt;/FONT&gt;
+&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="74">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:38 GMT" field="date"/>
+                        <header content="287" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /favicon.ico was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="102">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:38 GMT" field="date"/>
+                        <header content="289" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="114">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/KuUeM.html HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:38 GMT" field="date"/>
+                        <header content="286" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /KuUeM.html was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="121">
+                <http-request>
+                    <status>POST http://sysparty.lib.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L0t1VWVNLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguTWVVdUs=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:38 GMT" field="date"/>
+                        <header content="304" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="177">
+                <http-request>
+                    <status>PUT http://sysparty.lib.tsinghua.edu.cn/TOZcA HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">9KTOB6</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="304" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:36:39 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /TOZcA.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="188">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:39 GMT" field="date"/>
+                        <header content="301" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/JMXInvokerServlet was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="189">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:39 GMT" field="date"/>
+                        <header content="282" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /status was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:39 GMT" field="date"/>
+                        <header content="302" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /web-console/ServerInfo.jsp was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="191">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:39 GMT" field="date"/>
+                        <header content="290" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /admin-console/ was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="197">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:40 GMT" field="date"/>
+                        <header content="288" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /jmx-console/ was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="198">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:40 GMT" field="date"/>
+                        <header content="294" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/Invoker was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="208">
+                <http-request>
+                    <status>GET http://sysparty.lib.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="sysparty.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:40 GMT" field="date"/>
+                        <header content="289" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /server-status was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at sysparty.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The port '443' is not open on target sysparty.lib.tsinghua.edu.cn</error>
+</w3af-run>

@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480671725" start-long="Fri Dec 02 04:42:05 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://lad.arch.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/54_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[42, 49]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://lad.arch.tsinghua.edu.cn/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="42">
+                <http-request>
+                    <status>ARGENTINA http://lad.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:12 GMT" field="date"/>
+                        <header content="95" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+window.location.href=&quot;http://116.213.72.47/&quot;;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="49">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:12 GMT" field="date"/>
+                        <header content="95" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+window.location.href=&quot;http://116.213.72.47/&quot;;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[88]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;nginx/1.9.0&quot;.</description>
+        <http-transactions>
+            <http-transaction id="88">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:10 GMT" field="date"/>
+                        <header content="95" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+window.location.href=&quot;http://116.213.72.47/&quot;;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[35, 51]" method="GET" name="Secure content over insecure channel" plugin="un_ssl" severity="Medium" url="http://lad.arch.tsinghua.edu.cn/" var="None">
+        <description>Secure content can be accessed using the insecure HTTP protocol. The vulnerable URLs used to verify this vulnerability are:
+ - https://lad.arch.tsinghua.edu.cn/
+ - http://lad.arch.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="35">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:11 GMT" field="date"/>
+                        <header content="95" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+window.location.href=&quot;http://116.213.72.47/&quot;;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="51">
+                <http-request>
+                    <status>GET https://lad.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:12 GMT" field="date"/>
+                        <header content="95" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+window.location.href=&quot;http://116.213.72.47/&quot;;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[202]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://lad.arch.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://arch.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://lad.arch.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="202">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="47" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Thu, 03 Nov 2011 04:48:31 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;4eb21d1f-2f&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 09:42:13 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;header&gt;&lt;/header&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.7.161</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="95" field="content-length"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; path=/" field="set-cookie"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:42:10 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+window.location.href=&quot;http://116.213.72.47/&quot;;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[182]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://lad.arch.tsinghua.edu.cn/lssGa" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://lad.arch.tsinghua.edu.cn/lssGa
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="182">
+                <http-request>
+                    <status>PUT http://lad.arch.tsinghua.edu.cn/lssGa HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">KKglb9</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Fri, 02 Dec 2016 09:42:13 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /lssGa.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 106, 108, 125, 148, 182, 188, 190, 191, 192, 193, 194, 197]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:10 GMT" field="date"/>
+                        <header content="95" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;body&gt;
+&lt;script&gt;
+window.location.href=&quot;http://116.213.72.47/&quot;;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="106">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:12 GMT" field="date"/>
+                        <header content="209" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /favicon.ico was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="108">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:12 GMT" field="date"/>
+                        <header content="211" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="125">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/SRquj.html HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:12 GMT" field="date"/>
+                        <header content="208" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /SRquj.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="148">
+                <http-request>
+                    <status>POST http://lad.arch.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L1NScXVqLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguanVxUlM=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:13 GMT" field="date"/>
+                        <header content="226" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="182">
+                <http-request>
+                    <status>PUT http://lad.arch.tsinghua.edu.cn/lssGa HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">KKglb9</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Fri, 02 Dec 2016 09:42:13 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /lssGa.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="188">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:13 GMT" field="date"/>
+                        <header content="204" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:13 GMT" field="date"/>
+                        <header content="212" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /admin-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="191">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:13 GMT" field="date"/>
+                        <header content="216" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/Invoker was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="192">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:13 GMT" field="date"/>
+                        <header content="224" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /web-console/ServerInfo.jsp was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="193">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:13 GMT" field="date"/>
+                        <header content="223" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/JMXInvokerServlet was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="194">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:13 GMT" field="date"/>
+                        <header content="210" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /jmx-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="197">
+                <http-request>
+                    <status>GET http://lad.arch.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="lad.arch.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 09:42:13 GMT" field="date"/>
+                        <header content="211" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /server-status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">Halberd error: unable to resolve lad.arch.tsinghua.edu.cn</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to lad.arch.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">The ssi plugin got an error while requesting &quot;http://lad.arch.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+</w3af-run>

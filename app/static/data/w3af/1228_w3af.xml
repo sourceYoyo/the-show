@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480502279" start-long="Wed Nov 30 05:37:59 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://ecase.sppm.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.133"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1228_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[40]" method="GET" name="Web Application Firewall fingerprint" plugin="fingerprint_WAF" severity="Information" url="http://ecase.sppm.tsinghua.edu.cn/" var="None">
+        <description>The remote network seems to have a &quot;SecureIIS&quot; WAF deployed to protect access to the web server.</description>
+        <http-transactions>
+            <http-transaction id="40">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="rkkDgCqNNBkowxUbSFlffJDdbpHbNIyzUBQLMGxrYoEWGGxdJHcWdRPlTKNooBTbYtVNIuflcPuvkSMRzTtYDYwjqySURrwMsGiXRXLlQomWRqevHXCCnDBXEyqFOuEOcItIdScFaFoCHMATysFiakTMOmWNtebJobeOWVmtPSfMrPTygppGlGxQKgIVlnkeshKQLzACsLvJQdlGfHHKpDsMBCsTUQQobMQCqtPyMkOiGadmezMVMwPXIsLhoCQQQQBgfwviViCzNvDhKilfSZzYtkAPOLbjSCdUwynajdqVGPPwcRCwuIzeVgxnBeBZFtpvGqfuiBajEVKjEARnIkngsPuXqmCPnYlDfoNHUnyhMASgCtThpEXUsveIGLLypJdgykCkjXClChJwZqDibvRtrdzHtnyjVIavSFiPscAftqKNiLGWqdKQVWszauDtRrLMDjRBpEBNmRYnvrquhECBmjtBzDjjatWHeMtIieruNsmnXMyLDqgEuSBlHbFOmTokFboZXIbBqJLJaiTDzpqtHzsuPqbiDumziAgaOWwvvfRitDFZqblzQBNwoMecouJEJfOJbbaDHzOuFEkSXdihDWLflZyfeuctfUOxkZWOXJsPMxswqTgbGbiyZltCJcWgXxWSiDjOjMpUQRjSoXKlKuibduTTBehvqfvKfqSNysQNNmMezaumybpZkYAdUwTICqPQvjcVCsPSWRpzEQdBLiRKebZgbSWadPfWuwUfkBDJTbcjnjCmoDREArYOAzqQBobcvicXSygWkqPFjhJqKLpFPopLbLqjGbgdicQHqUEQXYzyPRQKRqMRAyncEMwlnDkzmmPSnZPaxADvKBAEMnfFvovvghxzeftDvQIbhBPyZuqYRoEDvBBhekvJtfezCGYeZYUaHIGDdRBqYQMBgkqOSelRaJOKIfxUeZQZenSQwcneuoBwYMQAANJmrmFtESTdmJLtVsFeNakuizeVgfYOctoBKQfeKWVnYYiLxbQCVukmLYUGnCfuQTCZE" field="Transfer-encoding"/>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:11 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/ was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[37, 41]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://ecase.sppm.tsinghua.edu.cn/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="37">
+                <http-request>
+                    <status>ARGENTINA http://ecase.sppm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:11 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/ was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="41">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:11 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/ was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[108]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Resin/3.0.19&quot;.</description>
+        <http-transactions>
+            <http-transaction id="108">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:10 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/ was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[175]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://ecase.sppm.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://sppm.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://ecase.sppm.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="175">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/ was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 134, 146, 157, 162, 164, 166, 167, 168, 169, 170, 172, 180]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:10 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/ was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="134">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/favicon.ico was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="146">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/_vti_inf.html was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="157">
+                <http-request>
+                    <status>PUT http://ecase.sppm.tsinghua.edu.cn/xqsZd HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">4MSbxk</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/xqsZd was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="162">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/server-status was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="164">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/NhZAh.html HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/NhZAh.html was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="166">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/admin-console/ was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="167">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/WebConsole/Invoker was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="168">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/status was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="169">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/web-console/ServerInfo.jsp was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="170">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/jmx-console/ was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="172">
+                <http-request>
+                    <status>GET http://ecase.sppm.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/invoker/JMXInvokerServlet was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="180">
+                <http-request>
+                    <status>POST http://ecase.sppm.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ecase.sppm.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L05oWkFoLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguaEFaaE4=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 10:38:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Resin/3.0.19" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;404 Not Found&lt;/h1&gt;
+/_vti_bin/_vti_aut/author.dll was not found on this server.
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.19 (built Mon, 15 May 2006 04:50:47 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The port '443' is not open on target ecase.sppm.tsinghua.edu.cn</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to ecase.sppm.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

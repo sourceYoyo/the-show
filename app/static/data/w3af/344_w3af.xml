@@ -1,0 +1,2698 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480499459" start-long="Wed Nov 30 04:50:59 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://mail.pbcsf.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/344_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[97]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache-Coyote/1.1&quot;.</description>
+        <http-transactions>
+            <http-transaction id="97">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 09:54:05 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;五道口金融学院邮件系统&lt;/title&gt;
+    &lt;base href=&quot;http://mail.pbcsf.tsinghua.edu.cn/coremail/common/index_cmxt30.jsp&quot; /&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;link href=&quot;index_cmxt30/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+    &lt;link href=&quot;../common/assets/70572/jquery-ui/themes/base/jquery.ui.tabs.css&quot; rel=&quot;stylesheet&quot;
+          type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot;&gt;
+    
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var markme_msg = &quot;请按 Ctrl-D 收藏本页&quot;;
+        var login_page_custom = {};
+        login_page_custom.locale = &quot;zh_CN&quot;;
+    &lt;/script&gt;
+
+    
+    
+
+
+
+
+    
+    
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/coremail/common/assets/70572/jquery/jquery-1.8.2.min.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    
+
+
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/70572/js/blur.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+
+    
+    
+    
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;logo&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;
+            &lt;img style=&quot;border:0 none;&quot; src=&quot;
+
+/coremail/s?func=getLoginLogoData&quot;
+                 alt=&quot;Coremail 电子邮件系统&quot;&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;Links&quot; id=&quot;links&quot;&gt;
+        
+        
+        &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;设为首页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;bookmark&quot;&gt;&lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;收藏本页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;localeSwitch&quot;&gt;&lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location = location;&quot;&gt;English&lt;/a&gt; |&amp;nbsp;&lt;/span&gt;
+        
+        &lt;span id=&quot;helpIndex&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;帮助&lt;/a&gt; | &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;Main&quot; id=&quot;Main&quot;&gt;
+&lt;div class=&quot;MainBg&quot; id=&quot;MainBg&quot;&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        
+        
+            
+        
+    
+
+
+
+    
+    
+        
+    
+
+
+
+
+&lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp?cus=1&quot; onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+&lt;div class=&quot;MainL&quot;&gt;
+&lt;/div&gt;
+
+    
+    
+        &lt;div id=&quot;mainRCommon&quot;&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;MainR&quot; style=&quot;width: 335px;&quot;&gt;
+        &lt;div class=&quot;Header&quot;&gt;
+            
+            &lt;div class=&quot;title&quot;&gt;电子邮箱登录&lt;/div&gt;
+            &lt;div class=&quot;language&quot; id=&quot;language&quot; onclick=&quot;fadeInElement(jQ('.localePanel').get(0), this, 5, -4);&quot;&gt;
+                &lt;span&gt;Language:&lt;/span&gt;
+                &lt;span id=&quot;languageName&quot;&gt;简体中文&lt;/span&gt;
+                &lt;b class=&quot;ico icoArr&quot;&gt;&lt;/b&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; id=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;select_options localePanel&quot;&gt;
+            &lt;ul&gt;
+                
+                    
+                    
+                        
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('zh_CN', '简体中文'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;简体中文&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+                    
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('en_US', 'English'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;English&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div id=&quot;logArea&quot; class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;inpUser&quot; value=&quot;&quot;&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot; /&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot; class=&quot;inpPW&quot; autocomplete=&quot;off&quot;
+                       value=&quot;&quot;&gt;
+            &lt;/div&gt;
+            
+            
+
+            
+                
+                
+            
+            
+            &lt;div class=&quot;inplist&quot;&gt;
+                &lt;label for=&quot;saveUsername&quot; id=&quot;saveUsernameLabel&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; class=&quot;checkboxfix&quot; checked /&gt;
+                    记住用户名
+                &lt;/label&gt;
+                
+            &lt;/div&gt;
+            &lt;div class=&quot;inpB&quot;&gt;
+                &lt;div&gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot; id=&quot;login_button&quot;&gt;
+                        登录
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;inplist&quot;&gt;
+                
+
+                
+                
+                
+            &lt;/div&gt;
+            
+        &lt;/div&gt;
+
+        &lt;div class=&quot;Bottom&quot;&gt;
+            &lt;div&gt;
+                &lt;div class=&quot;TLine&quot;&gt;&lt;/div&gt;
+                
+                &lt;label id=&quot;faceSelectOption&quot;&gt;
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;displayFacePanel(this)&quot;&gt;
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+                    &lt;/a&gt;
+                &lt;/label&gt;
+
+                
+                
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        
+        
+    &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;&lt;/div&gt;
+    
+
+
+&lt;/form&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;/div&gt;
+
+&lt;div class=&quot;MainM&quot; id=&quot;newFeatures&quot;&gt;
+    &lt;div class=&quot;main&quot;&gt;
+        
+            
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/mobile_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoPhone&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;移动办公&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/coremail_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoTemplate&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;全新风格&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/multiSecurity_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoMultiSecurity&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;多重密保&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/calendar_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoCalendar&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;会议与日程&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件系统&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件服务器&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;div class=&quot;copyright&quot; id=&quot;copyright&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;Coremail. &amp;copy; Copyright 2000 - 2015 Mailtech.&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    
+    initXT3(&quot;uid&quot;);
+
+&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[71, 120]" method="PUT" name="DAV incorrect configuration" plugin="dav" severity="Information" url="http://mail.pbcsf.tsinghua.edu.cn/yeNBa" var="None">
+        <description>DAV seems to be correctly configured and allowing you to use the PUT method but the directory does not have the right permissions that would allow the web server to write to it. This error was found at: &quot;http://mail.pbcsf.tsinghua.edu.cn/yeNBa&quot;.</description>
+        <http-transactions>
+            <http-transaction id="71">
+                <http-request>
+                    <status>PUT http://mail.pbcsf.tsinghua.edu.cn/yeNBa HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">NXyTuy</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:08 GMT" field="date"/>
+                        <header content="961" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.43 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.43&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="120">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/yeNBa HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:09 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[113]" method="GET" name="Favicon identification failed" plugin="favicon_identification" severity="Information" url="http://mail.pbcsf.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>Favicon identification failed. If the remote site is using framework that is being exposed by its favicon, please send an email to w3af-develop@lists.sourceforge.net including this md5 hash &quot;cd2afce2cd7b763b23324b26201c7d55&quot; and the name of the server or Web application it represents. New fingerprints make this plugin more powerful and  accurate.</description>
+        <http-transactions>
+            <http-transaction id="113">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1286" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Tue, 31 Dec 2013 06:13:40 GMT" field="last-modified"/>
+                        <header content="W/&quot;1286-1388470420000&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 09:54:08 GMT" field="date"/>
+                        <header content="image/x-icon" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">AAABAAEAEBIAAAEAIADwBAAAFgAAACgAAAAQAAAAJAAAAAEAIAAAAAAAgAQAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABNKK4sTSivuU0pr7lMKK4sAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE0prxZMKK6XTCiu+0worv9MKK7/TCiu+0worpdN
+Ka8WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATSivBk0pr3JNKa/vTSiv/00or/9NKK//TSiv/00o
+r/9NKK//TSmv700pr3JMKa8GAAAAAAAAAABMKa8ATSmvUEwprttMKa7/TCmu/0wprv9MKa7/TCmu
+/0wprv9MKa7/TCmu/0wprv9MKa7/TCmu200pr1BNKK8ATSmvOE0prudNKa7/TSmu4U0pr4dNKa+X
+TSmu+00prv9NKa7/TSmu+00pr5NNKa+JTSmu4U0prv9NKa7nTSmvOE0prrtNKa86TCiuhU0pr4dN
+Ka5mTSmvm00pr1hMKK+5TCiut00orlhMKK6fTSmvZkwprodMKK6FTSmvOk0prrtNKK//TSiv9Uwp
+rotMKa42TCmul00prnBNKa96TCmui00or49NKa96TSmucEworpdMKa42TCiui00or/VNKa//TCmv
+/0worvNMKK5cTCmuk00pr3BMKK5ETCmvoUworl5MKK5eTCmvoUworkRNKa9wTCmuk0worlxMKK7z
+TCmv/00pr/9NKK7tTCmubE0pr5dNKa5aTSmvn00or1JNKa5gTSmuYE0pr1JNKa+fTSmvWkwpr5dM
+Ka5sTSiu7U0pr/9NKa//TSmv/00or+NNKK9qTCiugUwor4VMKK9mTSivfk0pr35MKK9mTCivhUwo
+roFNKa9qTSiv400pr/9NKa//TCiu/0worv9MKK7/TCiu/0wprslMKK9UTSmvcE0pr5NNKa+TTSmv
+cEwor1RMKa7JTCiu/0worv9MKK7/TCiu/0wpr/9MKK//TCmv/0wor/9MKa//TSmuZk0prnBMKa6T
+TCmuk00prnBNKa5mTCiv/0wpr/9MKK//TCmv/0wor/9NKa//TSmv/00pr/9NKa//TSmv/0wor2ZN
+KK9wTSmvk00pr5NNKK9wTCivZk0pr/9NKa//TSmv/00pr/9NKa//TSmu40worv9MKK7/TCiu/0wo
+rv9NKK5sTSivcE0pr5NNKa+TTSivcE0ormxMKK7/TCiu/0worv9MKK7/TSmu400prgxMKK6FTSmv
+900pr/9NKa//TSmv90wprqFMKK6VTCiulUwprqFNKa/3TSmv/00pr/9NKa/3TCiuhU0prgwAAAAA
+AAAAAE0pryBNKa+pTCmu/0wprv9MKa7/TSmvnU0pr51MKa7/TCmu/0wprv9NKa+pTSmvIAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAEwprzxNKa7LTSmu/00pr51NKa+dTSmu/00prstMKa88AAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATCivAk0prl5NKa6DTSmug00prl5MKa4CAAAA
+AAAAAAAAAAAAAAAAAAAAAAD+fwAA+B8AAPAPAADAAwAAgAEAAEpSAAAWaAAALbQAACvUAAATyAAA
+BmAAAAZgAAAGYAAABmAAAIABAADgBwAA+B8AAP5/AAA=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[206]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://mail.pbcsf.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://pbcsf.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://mail.pbcsf.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="206">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 09:54:10 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;五道口金融学院邮件系统&lt;/title&gt;
+    &lt;base href=&quot;http://pbcsf.tsinghua.edu.cn/coremail/common/index_cmxt30.jsp&quot; /&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;link href=&quot;index_cmxt30/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+    &lt;link href=&quot;../common/assets/70572/jquery-ui/themes/base/jquery.ui.tabs.css&quot; rel=&quot;stylesheet&quot;
+          type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot;&gt;
+    
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var markme_msg = &quot;请按 Ctrl-D 收藏本页&quot;;
+        var login_page_custom = {};
+        login_page_custom.locale = &quot;zh_CN&quot;;
+    &lt;/script&gt;
+
+    
+    
+
+
+
+
+    
+    
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/coremail/common/assets/70572/jquery/jquery-1.8.2.min.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    
+
+
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/70572/js/blur.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+
+    
+    
+    
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;logo&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;
+            &lt;img style=&quot;border:0 none;&quot; src=&quot;
+
+/coremail/s?func=getLoginLogoData&quot;
+                 alt=&quot;Coremail 电子邮件系统&quot;&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;Links&quot; id=&quot;links&quot;&gt;
+        
+        
+        &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;设为首页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;bookmark&quot;&gt;&lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;收藏本页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;localeSwitch&quot;&gt;&lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location = location;&quot;&gt;English&lt;/a&gt; |&amp;nbsp;&lt;/span&gt;
+        
+        &lt;span id=&quot;helpIndex&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;帮助&lt;/a&gt; | &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;Main&quot; id=&quot;Main&quot;&gt;
+&lt;div class=&quot;MainBg&quot; id=&quot;MainBg&quot;&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        
+        
+            
+        
+    
+
+
+
+    
+    
+        
+    
+
+
+
+
+&lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp?cus=1&quot; onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+&lt;div class=&quot;MainL&quot;&gt;
+&lt;/div&gt;
+
+    
+    
+        &lt;div id=&quot;mainRCommon&quot;&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;MainR&quot; style=&quot;width: 335px;&quot;&gt;
+        &lt;div class=&quot;Header&quot;&gt;
+            
+            &lt;div class=&quot;title&quot;&gt;电子邮箱登录&lt;/div&gt;
+            &lt;div class=&quot;language&quot; id=&quot;language&quot; onclick=&quot;fadeInElement(jQ('.localePanel').get(0), this, 5, -4);&quot;&gt;
+                &lt;span&gt;Language:&lt;/span&gt;
+                &lt;span id=&quot;languageName&quot;&gt;简体中文&lt;/span&gt;
+                &lt;b class=&quot;ico icoArr&quot;&gt;&lt;/b&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; id=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;select_options localePanel&quot;&gt;
+            &lt;ul&gt;
+                
+                    
+                    
+                        
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('zh_CN', '简体中文'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;简体中文&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+                    
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('en_US', 'English'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;English&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div id=&quot;logArea&quot; class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;inpUser&quot; value=&quot;&quot;&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot; /&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot; class=&quot;inpPW&quot; autocomplete=&quot;off&quot;
+                       value=&quot;&quot;&gt;
+            &lt;/div&gt;
+            
+            
+
+            
+                
+                
+            
+            
+            &lt;div class=&quot;inplist&quot;&gt;
+                &lt;label for=&quot;saveUsername&quot; id=&quot;saveUsernameLabel&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; class=&quot;checkboxfix&quot; checked /&gt;
+                    记住用户名
+                &lt;/label&gt;
+                
+            &lt;/div&gt;
+            &lt;div class=&quot;inpB&quot;&gt;
+                &lt;div&gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot; id=&quot;login_button&quot;&gt;
+                        登录
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;inplist&quot;&gt;
+                
+
+                
+                
+                
+            &lt;/div&gt;
+            
+        &lt;/div&gt;
+
+        &lt;div class=&quot;Bottom&quot;&gt;
+            &lt;div&gt;
+                &lt;div class=&quot;TLine&quot;&gt;&lt;/div&gt;
+                
+                &lt;label id=&quot;faceSelectOption&quot;&gt;
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;displayFacePanel(this)&quot;&gt;
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+                    &lt;/a&gt;
+                &lt;/label&gt;
+
+                
+                
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        
+        
+    &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;&lt;/div&gt;
+    
+
+
+&lt;/form&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;/div&gt;
+
+&lt;div class=&quot;MainM&quot; id=&quot;newFeatures&quot;&gt;
+    &lt;div class=&quot;main&quot;&gt;
+        
+            
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/mobile_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoPhone&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;移动办公&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/coremail_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoTemplate&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;全新风格&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/multiSecurity_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoMultiSecurity&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;多重密保&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/calendar_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoCalendar&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;会议与日程&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件系统&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件服务器&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;div class=&quot;copyright&quot; id=&quot;copyright&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;Coremail. &amp;copy; Copyright 2000 - 2015 Mailtech.&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    
+    initXT3(&quot;uid&quot;);
+
+&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[227]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.7.22/" var="None">
+        <description>The contents of http://166.111.7.22/ and http://mail.pbcsf.tsinghua.edu.cn/ differ.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[38, 103, 190, 196, 241]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://mail.pbcsf.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://mail.pbcsf.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: GET, HEAD, OPTIONS, POST</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="38">
+                <http-request>
+                    <status>OPTIONS http://mail.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:08 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="GET, HEAD, POST, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="103">
+                <http-request>
+                    <status>HEAD http://mail.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 09:54:08 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>OPTIONS http://mail.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:09 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="GET, HEAD, POST, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="196">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 09:54:09 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;五道口金融学院邮件系统&lt;/title&gt;
+    &lt;base href=&quot;http://mail.pbcsf.tsinghua.edu.cn/coremail/common/index_cmxt30.jsp&quot; /&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;link href=&quot;index_cmxt30/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+    &lt;link href=&quot;../common/assets/70572/jquery-ui/themes/base/jquery.ui.tabs.css&quot; rel=&quot;stylesheet&quot;
+          type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot;&gt;
+    
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var markme_msg = &quot;请按 Ctrl-D 收藏本页&quot;;
+        var login_page_custom = {};
+        login_page_custom.locale = &quot;zh_CN&quot;;
+    &lt;/script&gt;
+
+    
+    
+
+
+
+
+    
+    
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/coremail/common/assets/70572/jquery/jquery-1.8.2.min.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    
+
+
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/70572/js/blur.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+
+    
+    
+    
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;logo&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;
+            &lt;img style=&quot;border:0 none;&quot; src=&quot;
+
+/coremail/s?func=getLoginLogoData&quot;
+                 alt=&quot;Coremail 电子邮件系统&quot;&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;Links&quot; id=&quot;links&quot;&gt;
+        
+        
+        &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;设为首页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;bookmark&quot;&gt;&lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;收藏本页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;localeSwitch&quot;&gt;&lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location = location;&quot;&gt;English&lt;/a&gt; |&amp;nbsp;&lt;/span&gt;
+        
+        &lt;span id=&quot;helpIndex&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;帮助&lt;/a&gt; | &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;Main&quot; id=&quot;Main&quot;&gt;
+&lt;div class=&quot;MainBg&quot; id=&quot;MainBg&quot;&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        
+        
+            
+        
+    
+
+
+
+    
+    
+        
+    
+
+
+
+
+&lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp?cus=1&quot; onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+&lt;div class=&quot;MainL&quot;&gt;
+&lt;/div&gt;
+
+    
+    
+        &lt;div id=&quot;mainRCommon&quot;&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;MainR&quot; style=&quot;width: 335px;&quot;&gt;
+        &lt;div class=&quot;Header&quot;&gt;
+            
+            &lt;div class=&quot;title&quot;&gt;电子邮箱登录&lt;/div&gt;
+            &lt;div class=&quot;language&quot; id=&quot;language&quot; onclick=&quot;fadeInElement(jQ('.localePanel').get(0), this, 5, -4);&quot;&gt;
+                &lt;span&gt;Language:&lt;/span&gt;
+                &lt;span id=&quot;languageName&quot;&gt;简体中文&lt;/span&gt;
+                &lt;b class=&quot;ico icoArr&quot;&gt;&lt;/b&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; id=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;select_options localePanel&quot;&gt;
+            &lt;ul&gt;
+                
+                    
+                    
+                        
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('zh_CN', '简体中文'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;简体中文&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+                    
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('en_US', 'English'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;English&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div id=&quot;logArea&quot; class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;inpUser&quot; value=&quot;&quot;&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot; /&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot; class=&quot;inpPW&quot; autocomplete=&quot;off&quot;
+                       value=&quot;&quot;&gt;
+            &lt;/div&gt;
+            
+            
+
+            
+                
+                
+            
+            
+            &lt;div class=&quot;inplist&quot;&gt;
+                &lt;label for=&quot;saveUsername&quot; id=&quot;saveUsernameLabel&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; class=&quot;checkboxfix&quot; checked /&gt;
+                    记住用户名
+                &lt;/label&gt;
+                
+            &lt;/div&gt;
+            &lt;div class=&quot;inpB&quot;&gt;
+                &lt;div&gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot; id=&quot;login_button&quot;&gt;
+                        登录
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;inplist&quot;&gt;
+                
+
+                
+                
+                
+            &lt;/div&gt;
+            
+        &lt;/div&gt;
+
+        &lt;div class=&quot;Bottom&quot;&gt;
+            &lt;div&gt;
+                &lt;div class=&quot;TLine&quot;&gt;&lt;/div&gt;
+                
+                &lt;label id=&quot;faceSelectOption&quot;&gt;
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;displayFacePanel(this)&quot;&gt;
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+                    &lt;/a&gt;
+                &lt;/label&gt;
+
+                
+                
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        
+        
+    &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;&lt;/div&gt;
+    
+
+
+&lt;/form&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;/div&gt;
+
+&lt;div class=&quot;MainM&quot; id=&quot;newFeatures&quot;&gt;
+    &lt;div class=&quot;main&quot;&gt;
+        
+            
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/mobile_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoPhone&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;移动办公&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/coremail_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoTemplate&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;全新风格&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/multiSecurity_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoMultiSecurity&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;多重密保&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/calendar_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoCalendar&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;会议与日程&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件系统&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件服务器&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;div class=&quot;copyright&quot; id=&quot;copyright&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;Coremail. &amp;copy; Copyright 2000 - 2015 Mailtech.&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    
+    initXT3(&quot;uid&quot;);
+
+&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="241">
+                <http-request>
+                    <status>POST http://mail.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 09:54:19 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;五道口金融学院邮件系统&lt;/title&gt;
+    &lt;base href=&quot;http://mail.pbcsf.tsinghua.edu.cn/coremail/common/index_cmxt30.jsp&quot; /&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;link href=&quot;index_cmxt30/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+    &lt;link href=&quot;../common/assets/70572/jquery-ui/themes/base/jquery.ui.tabs.css&quot; rel=&quot;stylesheet&quot;
+          type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot;&gt;
+    
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var markme_msg = &quot;请按 Ctrl-D 收藏本页&quot;;
+        var login_page_custom = {};
+        login_page_custom.locale = &quot;zh_CN&quot;;
+    &lt;/script&gt;
+
+    
+    
+
+
+
+
+    
+    
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/coremail/common/assets/70572/jquery/jquery-1.8.2.min.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    
+
+
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/70572/js/blur.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+
+    
+    
+    
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;logo&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;
+            &lt;img style=&quot;border:0 none;&quot; src=&quot;
+
+/coremail/s?func=getLoginLogoData&quot;
+                 alt=&quot;Coremail 电子邮件系统&quot;&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;Links&quot; id=&quot;links&quot;&gt;
+        
+        
+        &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;设为首页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;bookmark&quot;&gt;&lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;收藏本页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;localeSwitch&quot;&gt;&lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location = location;&quot;&gt;English&lt;/a&gt; |&amp;nbsp;&lt;/span&gt;
+        
+        &lt;span id=&quot;helpIndex&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;帮助&lt;/a&gt; | &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;Main&quot; id=&quot;Main&quot;&gt;
+&lt;div class=&quot;MainBg&quot; id=&quot;MainBg&quot;&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        
+        
+            
+        
+    
+
+
+
+    
+    
+        
+    
+
+
+
+
+&lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp?cus=1&quot; onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+&lt;div class=&quot;MainL&quot;&gt;
+&lt;/div&gt;
+
+    
+    
+        &lt;div id=&quot;mainRCommon&quot;&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;MainR&quot; style=&quot;width: 335px;&quot;&gt;
+        &lt;div class=&quot;Header&quot;&gt;
+            
+            &lt;div class=&quot;title&quot;&gt;电子邮箱登录&lt;/div&gt;
+            &lt;div class=&quot;language&quot; id=&quot;language&quot; onclick=&quot;fadeInElement(jQ('.localePanel').get(0), this, 5, -4);&quot;&gt;
+                &lt;span&gt;Language:&lt;/span&gt;
+                &lt;span id=&quot;languageName&quot;&gt;简体中文&lt;/span&gt;
+                &lt;b class=&quot;ico icoArr&quot;&gt;&lt;/b&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; id=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;select_options localePanel&quot;&gt;
+            &lt;ul&gt;
+                
+                    
+                    
+                        
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('zh_CN', '简体中文'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;简体中文&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+                    
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('en_US', 'English'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;English&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div id=&quot;logArea&quot; class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;inpUser&quot; value=&quot;&quot;&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot; /&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot; class=&quot;inpPW&quot; autocomplete=&quot;off&quot;
+                       value=&quot;&quot;&gt;
+            &lt;/div&gt;
+            
+            
+
+            
+                
+                
+            
+            
+            &lt;div class=&quot;inplist&quot;&gt;
+                &lt;label for=&quot;saveUsername&quot; id=&quot;saveUsernameLabel&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; class=&quot;checkboxfix&quot; checked /&gt;
+                    记住用户名
+                &lt;/label&gt;
+                
+            &lt;/div&gt;
+            &lt;div class=&quot;inpB&quot;&gt;
+                &lt;div&gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot; id=&quot;login_button&quot;&gt;
+                        登录
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;inplist&quot;&gt;
+                
+
+                
+                
+                
+            &lt;/div&gt;
+            
+        &lt;/div&gt;
+
+        &lt;div class=&quot;Bottom&quot;&gt;
+            &lt;div&gt;
+                &lt;div class=&quot;TLine&quot;&gt;&lt;/div&gt;
+                
+                &lt;label id=&quot;faceSelectOption&quot;&gt;
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;displayFacePanel(this)&quot;&gt;
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+                    &lt;/a&gt;
+                &lt;/label&gt;
+
+                
+                
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        
+        
+    &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;&lt;/div&gt;
+    
+
+
+&lt;/form&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;/div&gt;
+
+&lt;div class=&quot;MainM&quot; id=&quot;newFeatures&quot;&gt;
+    &lt;div class=&quot;main&quot;&gt;
+        
+            
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/mobile_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoPhone&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;移动办公&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/coremail_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoTemplate&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;全新风格&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/multiSecurity_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoMultiSecurity&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;多重密保&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/calendar_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoCalendar&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;会议与日程&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件系统&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件服务器&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;div class=&quot;copyright&quot; id=&quot;copyright&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;Coremail. &amp;copy; Copyright 2000 - 2015 Mailtech.&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    
+    initXT3(&quot;uid&quot;);
+
+&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.7.22</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 09:54:05 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;五道口金融学院邮件系统&lt;/title&gt;
+    &lt;base href=&quot;http://mail.pbcsf.tsinghua.edu.cn/coremail/common/index_cmxt30.jsp&quot; /&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;link href=&quot;index_cmxt30/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+    &lt;link href=&quot;../common/assets/70572/jquery-ui/themes/base/jquery.ui.tabs.css&quot; rel=&quot;stylesheet&quot;
+          type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot;&gt;
+    
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var markme_msg = &quot;请按 Ctrl-D 收藏本页&quot;;
+        var login_page_custom = {};
+        login_page_custom.locale = &quot;zh_CN&quot;;
+    &lt;/script&gt;
+
+    
+    
+
+
+
+
+    
+    
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/coremail/common/assets/70572/jquery/jquery-1.8.2.min.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    
+
+
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/70572/js/blur.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+
+    
+    
+    
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;logo&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;
+            &lt;img style=&quot;border:0 none;&quot; src=&quot;
+
+/coremail/s?func=getLoginLogoData&quot;
+                 alt=&quot;Coremail 电子邮件系统&quot;&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;Links&quot; id=&quot;links&quot;&gt;
+        
+        
+        &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;设为首页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;bookmark&quot;&gt;&lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;收藏本页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;localeSwitch&quot;&gt;&lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location = location;&quot;&gt;English&lt;/a&gt; |&amp;nbsp;&lt;/span&gt;
+        
+        &lt;span id=&quot;helpIndex&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;帮助&lt;/a&gt; | &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;Main&quot; id=&quot;Main&quot;&gt;
+&lt;div class=&quot;MainBg&quot; id=&quot;MainBg&quot;&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        
+        
+            
+        
+    
+
+
+
+    
+    
+        
+    
+
+
+
+
+&lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp?cus=1&quot; onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+&lt;div class=&quot;MainL&quot;&gt;
+&lt;/div&gt;
+
+    
+    
+        &lt;div id=&quot;mainRCommon&quot;&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;MainR&quot; style=&quot;width: 335px;&quot;&gt;
+        &lt;div class=&quot;Header&quot;&gt;
+            
+            &lt;div class=&quot;title&quot;&gt;电子邮箱登录&lt;/div&gt;
+            &lt;div class=&quot;language&quot; id=&quot;language&quot; onclick=&quot;fadeInElement(jQ('.localePanel').get(0), this, 5, -4);&quot;&gt;
+                &lt;span&gt;Language:&lt;/span&gt;
+                &lt;span id=&quot;languageName&quot;&gt;简体中文&lt;/span&gt;
+                &lt;b class=&quot;ico icoArr&quot;&gt;&lt;/b&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; id=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;select_options localePanel&quot;&gt;
+            &lt;ul&gt;
+                
+                    
+                    
+                        
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('zh_CN', '简体中文'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;简体中文&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+                    
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('en_US', 'English'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;English&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div id=&quot;logArea&quot; class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;inpUser&quot; value=&quot;&quot;&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot; /&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot; class=&quot;inpPW&quot; autocomplete=&quot;off&quot;
+                       value=&quot;&quot;&gt;
+            &lt;/div&gt;
+            
+            
+
+            
+                
+                
+            
+            
+            &lt;div class=&quot;inplist&quot;&gt;
+                &lt;label for=&quot;saveUsername&quot; id=&quot;saveUsernameLabel&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; class=&quot;checkboxfix&quot; checked /&gt;
+                    记住用户名
+                &lt;/label&gt;
+                
+            &lt;/div&gt;
+            &lt;div class=&quot;inpB&quot;&gt;
+                &lt;div&gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot; id=&quot;login_button&quot;&gt;
+                        登录
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;inplist&quot;&gt;
+                
+
+                
+                
+                
+            &lt;/div&gt;
+            
+        &lt;/div&gt;
+
+        &lt;div class=&quot;Bottom&quot;&gt;
+            &lt;div&gt;
+                &lt;div class=&quot;TLine&quot;&gt;&lt;/div&gt;
+                
+                &lt;label id=&quot;faceSelectOption&quot;&gt;
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;displayFacePanel(this)&quot;&gt;
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+                    &lt;/a&gt;
+                &lt;/label&gt;
+
+                
+                
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        
+        
+    &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;&lt;/div&gt;
+    
+
+
+&lt;/form&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;/div&gt;
+
+&lt;div class=&quot;MainM&quot; id=&quot;newFeatures&quot;&gt;
+    &lt;div class=&quot;main&quot;&gt;
+        
+            
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/mobile_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoPhone&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;移动办公&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/coremail_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoTemplate&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;全新风格&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/multiSecurity_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoMultiSecurity&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;多重密保&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/calendar_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoCalendar&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;会议与日程&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件系统&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件服务器&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;div class=&quot;copyright&quot; id=&quot;copyright&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;Coremail. &amp;copy; Copyright 2000 - 2015 Mailtech.&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    
+    initXT3(&quot;uid&quot;);
+
+&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 71, 110, 111, 124, 209, 210, 215, 216, 224, 228, 229]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 09:54:05 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;五道口金融学院邮件系统&lt;/title&gt;
+    &lt;base href=&quot;http://mail.pbcsf.tsinghua.edu.cn/coremail/common/index_cmxt30.jsp&quot; /&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;link href=&quot;index_cmxt30/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+    &lt;link href=&quot;../common/assets/70572/jquery-ui/themes/base/jquery.ui.tabs.css&quot; rel=&quot;stylesheet&quot;
+          type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot;&gt;
+    
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var markme_msg = &quot;请按 Ctrl-D 收藏本页&quot;;
+        var login_page_custom = {};
+        login_page_custom.locale = &quot;zh_CN&quot;;
+    &lt;/script&gt;
+
+    
+    
+
+
+
+
+    
+    
+        &lt;script type=&quot;text/javascript&quot; src=&quot;/coremail/common/assets/70572/jquery/jquery-1.8.2.min.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    
+
+
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../common/assets/70572/js/blur.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+
+    
+    
+    
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;logo&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;
+            &lt;img style=&quot;border:0 none;&quot; src=&quot;
+
+/coremail/s?func=getLoginLogoData&quot;
+                 alt=&quot;Coremail 电子邮件系统&quot;&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;Links&quot; id=&quot;links&quot;&gt;
+        
+        
+        &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;设为首页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;bookmark&quot;&gt;&lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;收藏本页&lt;/a&gt; | &lt;/span&gt;
+        
+        &lt;span id=&quot;localeSwitch&quot;&gt;&lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location = location;&quot;&gt;English&lt;/a&gt; |&amp;nbsp;&lt;/span&gt;
+        
+        &lt;span id=&quot;helpIndex&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;帮助&lt;/a&gt; | &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;Main&quot; id=&quot;Main&quot;&gt;
+&lt;div class=&quot;MainBg&quot; id=&quot;MainBg&quot;&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        
+        
+            
+        
+    
+
+
+
+    
+    
+        
+    
+
+
+
+
+&lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp?cus=1&quot; onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+&lt;div class=&quot;MainL&quot;&gt;
+&lt;/div&gt;
+
+    
+    
+        &lt;div id=&quot;mainRCommon&quot;&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;MainR&quot; style=&quot;width: 335px;&quot;&gt;
+        &lt;div class=&quot;Header&quot;&gt;
+            
+            &lt;div class=&quot;title&quot;&gt;电子邮箱登录&lt;/div&gt;
+            &lt;div class=&quot;language&quot; id=&quot;language&quot; onclick=&quot;fadeInElement(jQ('.localePanel').get(0), this, 5, -4);&quot;&gt;
+                &lt;span&gt;Language:&lt;/span&gt;
+                &lt;span id=&quot;languageName&quot;&gt;简体中文&lt;/span&gt;
+                &lt;b class=&quot;ico icoArr&quot;&gt;&lt;/b&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; id=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;select_options localePanel&quot;&gt;
+            &lt;ul&gt;
+                
+                    
+                    
+                        
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('zh_CN', '简体中文'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;简体中文&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+                    
+                    
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;changeLocale('en_US', 'English'); return false;&quot;&gt;
+                        &lt;li&gt;
+                            &lt;span&gt;English&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/a&gt;
+                
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div id=&quot;logArea&quot; class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;inpUser&quot; value=&quot;&quot;&gt;
+                &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot; /&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;inptr&quot;&gt;
+                &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot; class=&quot;inpPW&quot; autocomplete=&quot;off&quot;
+                       value=&quot;&quot;&gt;
+            &lt;/div&gt;
+            
+            
+
+            
+                
+                
+            
+            
+            &lt;div class=&quot;inplist&quot;&gt;
+                &lt;label for=&quot;saveUsername&quot; id=&quot;saveUsernameLabel&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; class=&quot;checkboxfix&quot; checked /&gt;
+                    记住用户名
+                &lt;/label&gt;
+                
+            &lt;/div&gt;
+            &lt;div class=&quot;inpB&quot;&gt;
+                &lt;div&gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot; id=&quot;login_button&quot;&gt;
+                        登录
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;inplist&quot;&gt;
+                
+
+                
+                
+                
+            &lt;/div&gt;
+            
+        &lt;/div&gt;
+
+        &lt;div class=&quot;Bottom&quot;&gt;
+            &lt;div&gt;
+                &lt;div class=&quot;TLine&quot;&gt;&lt;/div&gt;
+                
+                &lt;label id=&quot;faceSelectOption&quot;&gt;
+                    &lt;a href=&quot;javascript:void(0);&quot; onclick=&quot;displayFacePanel(this)&quot;&gt;
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+                    &lt;/a&gt;
+                &lt;/label&gt;
+
+                
+                
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        
+        
+    &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;&lt;/div&gt;
+    
+
+
+&lt;/form&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;/div&gt;
+
+&lt;div class=&quot;MainM&quot; id=&quot;newFeatures&quot;&gt;
+    &lt;div class=&quot;main&quot;&gt;
+        
+            
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/mobile_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoPhone&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;移动办公&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/coremail_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoTemplate&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;全新风格&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/multiSecurity_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoMultiSecurity&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;多重密保&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+            
+            &lt;dl&gt;
+                &lt;a href=&quot;/coremail/help/calendar_zh_CN.jsp&quot;&gt;
+                    &lt;b class=&quot;bico icoCalendar&quot;&gt;&lt;/b&gt;
+                    &lt;span class=&quot;dd&quot;&gt;会议与日程&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/dl&gt;
+        
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件系统&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;邮件服务器&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;企业邮箱&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;div class=&quot;copyright&quot; id=&quot;copyright&quot;&gt;
+        &lt;a href=&quot;http://www.coremail.cn&quot; target=&quot;_blank&quot;&gt;Coremail. &amp;copy; Copyright 2000 - 2015 Mailtech.&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    
+    initXT3(&quot;uid&quot;);
+
+&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="71">
+                <http-request>
+                    <status>PUT http://mail.pbcsf.tsinghua.edu.cn/yeNBa HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">NXyTuy</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:08 GMT" field="date"/>
+                        <header content="961" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.43 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.43&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="110">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:08 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="111">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/FuclJ.html HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:08 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="124">
+                <http-request>
+                    <status>POST http://mail.pbcsf.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L0Z1Y2xKLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguSmxjdUY=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:09 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="209">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:10 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="210">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:10 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="215">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:11 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="216">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:11 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="224">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:14 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="228">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:15 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="229">
+                <http-request>
+                    <status>GET http://mail.pbcsf.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 09:54:15 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The dns_wildcard plugin got an error while requesting &quot;http://166.111.7.22/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to mail.pbcsf.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">The xss plugin got an error while requesting &quot;http://mail.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+</w3af-run>

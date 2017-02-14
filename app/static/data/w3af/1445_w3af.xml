@@ -1,0 +1,1148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481167457" start-long="Wed Dec 07 22:24:17 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.x-lab.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.133"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1445_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Cross-domain javascript source" plugin="cross_domain_js" severity="Information" url="http://www.x-lab.tsinghua.edu.cn/" var="None">
+        <description>The application contains 1 different URLs with a script tag which includes JavaScript source from the potentially insecure &quot;a.yunshipei.com&quot; third party site. This practice is not recommended because it delegates the security of the site to an external entity. The first ten vulnerable URLs are:
+ - http://www.x-lab.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.x-lab.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.x-lab.tsinghua.edu.cn" field="Host"/>
+                        <header content="PHPSESSID=mrqtll309muhnplvkn9s8o5j92" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="5582" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Thu, 19 Nov 1981 08:52:00 GMT" field="expires"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 03:21:27 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;script id=&quot;allmobilize&quot; charset=&quot;utf-8&quot; src=&quot;http://a.yunshipei.com/3f84432ed5dfafe42b88fc4ae4efed7e/allmobilize.min.js&quot;&gt;&lt;/script&gt;&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-siteapp&quot; /&gt;&lt;link rel=&quot;alternate&quot; media=&quot;handheld&quot; href=&quot;#&quot; /&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/style/v1/base.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/style/v1/index.css&quot; /&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/script/jquery.min.1.10.js&quot;&gt;&lt;/script&gt;
+    &lt;title&gt;清华x-lab - 清华大学创意创新创业教育平台&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;!--头部开始--&gt;
+&lt;div class=&quot;head&quot;&gt;
+    &lt;div class=&quot;header wid&quot;&gt;
+        &lt;div class=&quot;top&quot;&gt;&lt;a href=&quot;/calendar.html&quot;&gt;活动日历&lt;/a&gt;&lt;a href=&quot;/?c=voice&amp;a=newsletter&quot;&gt;消息订阅&lt;/a&gt;             &lt;a href=&quot;/?c=members&amp;a=login&quot;&gt;登陆&lt;/a&gt;&lt;a href=&quot;/?c=members&amp;a=register&quot;&gt;注册&lt;/a&gt;
+            &lt;a href=&quot;/en/&quot;&gt;English&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;logo_nav clearfix&quot;&gt;
+            &lt;div class=&quot;logo fl&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;/images/v1/logo.gif&quot; width=&quot;196&quot; height=&quot;49&quot; /&gt;&lt;/a&gt;
+                &lt;p&gt;清华大学创意创新创业教育平台&lt;/p&gt;
+
+            &lt;/div&gt;
+            &lt;div class=&quot;nav fl&quot; id=&quot;nav&quot;&gt;
+                &lt;ul class=&quot;clearfix&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;我们&lt;/a&gt;
+                        &lt;ul class=&quot;box&quot; style=&quot;position:absolute; left:0px;display:none&quot;&gt;
+
+                                                            &lt;li&gt;&lt;a href=&quot;/about.html#xlabjj&quot;&gt;清华x-lab&lt;/a&gt;
+                                                                &lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=voice&quot;&gt;新闻动态&lt;/a&gt;
+                                                                &lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;创新中心&lt;/a&gt;
+                                                                    &lt;ol style=&quot;display: none&quot;&gt;
+                                                                           &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=6&quot;&gt;知识产权中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=8&quot;&gt;联合设计中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=12&quot;&gt;社会创新中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=13&quot;&gt;健康医疗创新中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=16&quot;&gt;科技与智能制造&lt;br /&gt;创新中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=14&quot;&gt;互联网与信息技术&lt;br /&gt;创新中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=17&quot;&gt;教育创新中心&lt;/a&gt;&lt;/li&gt;
+
+                                &lt;/ol&gt;                                &lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;创意创新创业团队&lt;/a&gt;
+                                                                    &lt;ol style=&quot;display: none&quot;&gt;
+                                                                           &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=project&quot;&gt;创意创新团队&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=project&amp;type=venture_enterprise&quot;&gt;创业企业&lt;/a&gt;&lt;/li&gt;
+
+                                &lt;/ol&gt;                                &lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=video&quot;&gt;视频库&lt;/a&gt;
+                                                                &lt;/li&gt;
+                                                    &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;活动&lt;/a&gt;
+                        &lt;ul class=&quot;box&quot; style=&quot;position:absolute; left:0px;display:none&quot;&gt;
+
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=activity#ac_main&quot;&gt;当前活动&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=activity&amp;old=1#ac_main&quot;&gt;往期活动&lt;/a&gt;&lt;/li&gt;
+                                                    &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;学习&lt;/a&gt;
+                        &lt;ul class=&quot;box&quot; style=&quot;position:absolute; left:0px;display:none&quot;&gt;
+
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=learn#zwxx&quot;&gt;自我学习&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=learn#kcxx&quot;&gt;课程学习&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=learn#xmxx&quot;&gt;项目学习&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=learn#gzf&quot;&gt;工作坊&lt;/a&gt;&lt;/li&gt;
+                                                    &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;/2017校长杯&quot;&gt;校长杯&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;合作&lt;/a&gt;
+                        &lt;ul class=&quot;box&quot; style=&quot;position:absolute; left:0px;display:none&quot;&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/ad-xlab/&quot;&gt;导师入口&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=pages&amp;a=daoshi&quot;&gt;成为导师&lt;/a&gt;&lt;/li&gt;
+                                                    &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;团队培育&lt;/a&gt;
+                        &lt;ul class=&quot;box&quot; style=&quot;position:absolute; left:0px;display:none&quot;&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=members&quot;&gt;会员中心&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=reservations&quot;&gt;场地预约&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=learn&amp;a=data&quot;&gt;资料库&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=members&amp;a=company_registry&amp;item=process&quot;&gt;公司注册&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=nurture&amp;a=train&quot;&gt;培训&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=nurture&amp;a=eir&quot;&gt;导师预约&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=nurture&amp;a=partner&quot;&gt;创业伙伴&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=nurture&amp;a=hr&quot;&gt;团队招募&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=pages&amp;a=index&quot;&gt;加速计划&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=industrialPark&quot;&gt;产业园&lt;/a&gt;&lt;/li&gt;
+                                                    &lt;/ul&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+                            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!--头部结束--&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+&lt;div style=&quot;height:30px;margin-top:15px;font-size:14px;margin-left:406px;color:#F00000;display:none;&quot;&gt;因机房维护,网站于9月15日下午5点-9月17日上午9点无法访问,给您带来不便请谅解&lt;/div&gt;
+&lt;!--banner开始--&gt;
+&lt;div class=&quot;banner&quot;&gt;
+    &lt;a href=&quot;javascript:void(0);&quot; id=&quot;banner_tab_link&quot;&gt;&lt;img src=&quot;uploads/2016120611274388073.jpg&quot; width=&quot;1440&quot; height=&quot;370&quot; id=&quot;banner_tab_display&quot;/&gt;&lt;/a&gt;
+    &lt;div style=&quot;display:none&quot;&gt;
+        
+        &lt;input type=&quot;hidden&quot; value=&quot;uploads/2016120611274388073.jpg&quot; id=&quot;banner_tab_1&quot; href=&quot;http://www.x-lab.tsinghua.edu.cn/activity/ztshow/323.html#ac_main&quot; &gt;
+       
+        &lt;input type=&quot;hidden&quot; value=&quot;uploads/2016120510344896216.jpg&quot; id=&quot;banner_tab_2&quot; href=&quot;http://www.x-lab.tsinghua.edu.cn/2017%E6%A0%A1%E9%95%BF%E6%9D%AF&quot; &gt;
+       
+        &lt;input type=&quot;hidden&quot; value=&quot;uploads/2016103112091683340.jpg&quot; id=&quot;banner_tab_3&quot; href=&quot;http://www.x-lab.tsinghua.edu.cn/activity/ztshow/307.html#ac_main&quot; &gt;
+           &lt;/div&gt;
+    &lt;ul class=&quot;clearfix&quot; id=&quot;banner_num&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;javascript:banner_select(1,0)&quot;&gt;&lt;img src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:banner_select(2,0)&quot;&gt;&lt;img src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:banner_select(3,0)&quot;&gt;&lt;img src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;script type=&quot;text/javascript&quot;&gt;
+            banner_select_num = $(&quot;#banner_num li&quot;).length;
+        &lt;/script&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;!--banner结束--&gt;
+
+&lt;!--内容开始--&gt;
+&lt;div class=&quot;content&quot;&gt;
+    &lt;div class=&quot;con_1 wid&quot;&gt;
+        &lt;h2&gt;最新动态&lt;/h2&gt;
+        &lt;div class=&quot;dt clearfix&quot;&gt;
+                       &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;14&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/323.html#ac_main&quot;&gt;ACT TALK |艺术&amp;middot;创造力&amp;middot;科技讲座系列 第...&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+                        &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;14&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/322.html#ac_main&quot;&gt;硅谷银行创业分享会IV &amp;mdash;&amp;mdash;从硅谷的视角看创...&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+                        &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;12&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/321.html#ac_main&quot;&gt;“眼界与思维的盛宴”主题工作坊&amp;mdash;&amp;mdash;&amp;mdash;铸就属...&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+                        &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;11&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/324.html#ac_main&quot;&gt;【清华x-lab公开课】对话 唱吧创始人兼CEO 陈华&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+                        &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;04&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/317.html#ac_main&quot;&gt;【抢票福利】虎嗅F&amp;amp;创新节：2000+创新先锋齐聚...&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+                        &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;04&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/320.html#ac_main&quot;&gt;【清华x-lab公开课】大公司不断被创业公司颠覆...&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;con_2 clearfix&quot;&gt;
+        &lt;div class=&quot;coner_2 wid&quot;&gt;
+            &lt;div class=&quot;con_2_l fl&quot; onclick=&quot;window.open('/calendar.html')&quot;&gt;
+                &lt;div class=&quot;rl clearfix&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;/images/v1/1.jpg&quot; width=&quot;13&quot; height=&quot;21&quot; class=&quot;img1&quot; /&gt;&lt;/a&gt;&lt;span&gt;12月&lt;/span&gt;&lt;em&gt;2016&lt;/em&gt;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;/images/v1/2.jpg&quot; width=&quot;13&quot; height=&quot;21&quot; class=&quot;img2&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+                &lt;ul class=&quot;clearfix&quot; &gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;日&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;一&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;三&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;四&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;五&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class=&quot;last&quot;&gt;&lt;a href=&quot;#&quot;&gt;六&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li &gt;&lt;a href=&quot;#&quot; style=&quot;color:#67d375&quot;&gt;27&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href=&quot;#&quot; style=&quot;color:#67d375&quot;&gt;28&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href=&quot;#&quot; style=&quot;color:#67d375&quot;&gt;29&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href=&quot;#&quot; style=&quot;color:#67d375&quot;&gt;30&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;1&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;2&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;last&quot;&gt;&lt;a href='#'  &gt;3&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;4&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;5&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;6&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;7&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#' style=&quot;color:#22af73;background:#fff&quot; &gt;8&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;9&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;last&quot;&gt;&lt;a href='#'  &gt;10&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;11&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;12&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;13&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;14&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;15&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;16&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;last&quot;&gt;&lt;a href='#'  &gt;17&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;18&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;19&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;20&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;21&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;22&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;23&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;last&quot;&gt;&lt;a href='#'  &gt;24&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;25&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;26&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;27&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;28&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;29&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;30&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;last&quot;&gt;&lt;a href='#'  &gt;31&lt;/a&gt;&lt;/li&gt;                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;con_2_m fl&quot;&gt;
+                                &lt;h2&gt;星期日                    &lt;br /&gt;
+                    12月11日&lt;/h2&gt;
+                &lt;p class=&quot;p1&quot;&gt;                               &lt;a href='?c=activity&amp;a=ztshow&amp;id=324#ac_main'target=&quot;_blank&quot; &gt;【清华x-lab公开课】对话 唱吧创始人兼CEO 陈华&lt;/a&gt;
+                                                                                                    &lt;/p&gt;
+                
+                				&lt;p class=&quot;p2&quot;&gt;&lt;a href=&quot;/calendar.html&quot;&gt;打开日历&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;con_2_r fl&quot;&gt;
+                &lt;img src=&quot;/images/v1/img1.gif&quot; width=&quot;50&quot; height=&quot;61&quot; /&gt;&lt;p&gt;&lt;a href=&quot;/?c=members&amp;a=register&quot;&gt;项目提交&lt;br /&gt;&lt;span&gt;SUBMIT&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;con_3&quot;&gt;
+        &lt;h2&gt;团队故事&lt;/h2&gt;
+        &lt;div class=&quot;fc clearfix wid&quot; id=&quot;tuanduiList&quot;&gt;
+                        &lt;div class=&quot;fc_1 fl  clearfix&quot;&gt; &lt;img src=&quot;uploads/2016060613314453051.jpg&quot; width=&quot;360&quot; height=&quot;142&quot; /&gt;
+                &lt;h3&gt;【第三届校长杯十强故事汇】艺妙神州：向白血病宣战&lt;/h3&gt;
+                &lt;div class=&quot;text&quot;&gt;
+	艺妙神州 
+
+
+	
+
+
+	艺妙神州团队，2015年1月加入清华x－lab，其CAR-T技术是最新一代免疫治疗技术，对多种癌症具有革命性的治疗效果，在美...&lt;/div&gt;
+                &lt;p&gt;&lt;a href=&quot;/team/7.html&quot;&gt;更多&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+                       &lt;div class=&quot;fc_1 fl  clearfix&quot;&gt; &lt;img src=&quot;uploads/2016060613320534584.jpg&quot; width=&quot;360&quot; height=&quot;142&quot; /&gt;
+                &lt;h3&gt;【第三届校长杯十强故事汇】OwlReality：清华技术控的科技创业&lt;/h3&gt;
+                &lt;div class=&quot;text&quot;&gt;
+	OwlReality团队：2016年2月加入清华x-lab。团队致力于研发VR/AR媒体解决方案，从视频采集、拼接、编码传输，到解码显示。OwlReality致力...&lt;/div&gt;
+                &lt;p&gt;&lt;a href=&quot;/team/6.html&quot;&gt;更多&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+                       &lt;div class=&quot;fc_1 fl  last  clearfix&quot;&gt; &lt;img src=&quot;uploads/2016060613312732377.jpg&quot; width=&quot;360&quot; height=&quot;142&quot; /&gt;
+                &lt;h3&gt;【第三届校长杯十强故事汇】光和未来: 把家变成花园，和植物生活在一起&lt;/h3&gt;
+                &lt;div class=&quot;text&quot;&gt;
+	光合未来团队：2015年11月加入清华x-lab，主要从事与空间绿化相关的设计、产品和技术研发业务，通过整合行业资源，借助科技与艺术，提供...&lt;/div&gt;
+                &lt;p&gt;&lt;a href=&quot;/team/8.html&quot;&gt;更多&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+                   &lt;/div&gt;
+        &lt;ul class=&quot;clearfix fr&quot;  style=&quot;width:950px&quot;&gt;
+
+                       &lt;li style=&quot;margin-right: 20px;&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:getSpList(1)&quot;&gt;&lt;img id=&quot;tuanduiList_page_1&quot; src=&quot;/images/v1/yuanquan1.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                        &lt;li style=&quot;margin-right: 20px;&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:getSpList(2)&quot;&gt;&lt;img id=&quot;tuanduiList_page_2&quot; src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                        &lt;li style=&quot;margin-right: 20px;&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:getSpList(3)&quot;&gt;&lt;img id=&quot;tuanduiList_page_3&quot; src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                        &lt;li style=&quot;margin-right: 20px;&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:getSpList(4)&quot;&gt;&lt;img id=&quot;tuanduiList_page_4&quot; src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                        &lt;li style=&quot;margin-right: 20px;&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:getSpList(5)&quot;&gt;&lt;img id=&quot;tuanduiList_page_5&quot; src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!--内容结束--&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    spTotal = 5;
+    function getSpList(page){
+
+        $.ajax( {
+            url:'/index.php',
+            data:{
+                sp : page,
+                spAjax: 1
+            },
+            type:'post',
+            cache:false,
+            dataType:'json',
+            success:function(data) {
+
+               $(&quot;#tuanduiList&quot;).html(data.content);
+                for(var i=1;i&lt;=spTotal;i++){
+                    if (i!=page){
+                        $(&quot;#tuanduiList_page_&quot;+i).attr(&quot;src&quot;,&quot;/images/v1/yuanquan.gif&quot;);
+                    }
+                }
+               $(&quot;#tuanduiList_page_&quot;+page).attr(&quot;src&quot;,&quot;/images/v1/yuanquan1.gif&quot;);
+            },
+            error : function() {
+                // view(&quot;异常！&quot;);
+                alert(&quot;系统繁忙，稍后重试&quot;);
+            }
+        });
+    }
+&lt;/script&gt;
+&lt;!--尾部开始--&gt;
+&lt;div class=&quot;foot&quot;&gt;
+    &lt;div class=&quot;footer wid clearfix&quot;&gt;
+        &lt;div class=&quot;ft_l fl clearfix&quot;&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;关于&lt;/dt&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/about.html#xlabjj&quot;&gt;清华x-lab&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=6&quot;&gt;知识产权中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=8&quot;&gt;联合设计中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=12&quot;&gt;社会创新中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=13&quot;&gt;健康医疗创新中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=16&quot;&gt;科技与智能制造&lt;br /&gt;创新中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=14&quot;&gt;互联网与信息技术&lt;br /&gt;创新中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=17&quot;&gt;教育创新中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=project&quot;&gt;创意创新团队&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=project&amp;type=venture_enterprise&quot;&gt;创业企业&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=video&quot;&gt;视频库&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=voice&quot;&gt;新闻动态&lt;/a&gt;&lt;/dd&gt;
+                            &lt;/dl&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;活动&lt;/dt&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=activity#ac_main&quot;&gt;当前活动&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=activity&amp;old=1#ac_main&quot;&gt;往期活动&lt;/a&gt;&lt;/dd&gt;
+                            &lt;/dl&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;学习&lt;/dt&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=learn#zwxx&quot;&gt;自我学习&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=learn#kcxx&quot;&gt;课程学习&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=learn#xmxx&quot;&gt;项目学习&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=learn#gzf&quot;&gt;工作坊&lt;/a&gt;&lt;/dd&gt;
+                            &lt;/dl&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;&lt;a href=&quot;/?c=activity&amp;a=top&amp;id=309#ac_main&quot; style=&quot;color:#808080&quot;&gt;校长杯&lt;/a&gt;&lt;/dt&gt;
+                            &lt;/dl&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;合作&lt;/dt&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/ad-xlab/&quot;&gt;导师入口&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=pages&amp;a=daoshi&quot;&gt;成为导师&lt;/a&gt;&lt;/dd&gt;
+                            &lt;/dl&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;团队培育&lt;/dt&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=members&quot;&gt;会员中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=reservations&quot;&gt;场地预约&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=learn&amp;a=data&quot;&gt;资料库&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=members&amp;a=company_registry&amp;item=process&quot;&gt;公司注册&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=train&quot;&gt;培训&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=eir&quot;&gt;导师预约&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=partner&quot;&gt;创业伙伴&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=hr&quot;&gt;团队招募&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=pages&amp;a=index&quot;&gt;加速计划&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=industrialPark&quot;&gt;产业园&lt;/a&gt;&lt;/dd&gt;
+                            &lt;/dl&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;fl_r fr&quot;&gt;
+            &lt;h2&gt;关注微信&lt;/h2&gt;
+            &lt;img src=&quot;/images/v1/erweima.gif&quot; width=&quot;116&quot; height=&quot;115&quot; /&gt;
+            &lt;p&gt;&lt;a href=&quot;/?c=voice&amp;a=newsletter&quot;&gt;获取电子资讯&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;ft_bot&quot;&gt;
+        &lt;p&gt;版权所有&amp;copy;清华大学经济管理学院（清华x-lab） 2016&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    banner_auto_time = window.setInterval(&quot;autoBannerSelect()&quot;,2000);
+    function banner_select(index,auto){
+        if (index &lt; 0){
+            return false;
+        }
+
+        var img_src = $(&quot;#banner_tab_display &quot;).attr(&quot;src&quot;);
+        var new_img_src = $(&quot;#banner_tab_&quot;+index).val();
+		var new_img_link = $(&quot;#banner_tab_&quot;+index).attr(&quot;href&quot;);
+        if (new_img_src!=img_src){
+            $(&quot;#banner_tab_display &quot;).attr(&quot;src&quot;,new_img_src);
+        }
+		if (new_img_link ==''){
+           new_img_link = 'javascript:void(0);';
+        }
+        $(&quot;#banner_tab_link&quot;).attr(&quot;href&quot;,new_img_link);
+        // 增加选中样式
+        $(&quot;#banner_num li:nth-child(&quot;+index+&quot;) img&quot;).attr(&quot;src&quot;,&quot;/images/v1/yuanquan1.gif&quot;);
+        // 之前的样式还原
+        if (index == 1){
+            $(&quot;#banner_num li:nth-child(&quot;+banner_select_num+&quot;) img&quot;).attr(&quot;src&quot;,&quot;/images/v1/yuanquan.gif&quot;);
+
+        }else{
+            $(&quot;#banner_num li:nth-child(&quot;+(index-1)+&quot;) img&quot;).attr(&quot;src&quot;,&quot;/images/v1/yuanquan.gif&quot;);
+        }
+
+        if (auto==0) {
+            window.clearInterval(banner_auto_time);
+        }
+    }
+    j = 2;
+    function autoBannerSelect(){
+        if (j &gt; banner_select_num){
+            j = 1;
+        }
+        banner_select(j,1);
+        j++;
+
+    }
+    /*
+    function nav(){
+        var nav_num = $(&quot;#nav ul li&quot;).length;
+        var sub_nav_num = $(&quot;#nav div&quot;).length;
+        for (var i=1;i&lt;=nav_num;i++) {
+            $(&quot;#nav ul li:nth-child(&quot;+i+&quot;)&quot;).hover(
+                function () {
+                    $(this).children(&quot;a&quot;).css({&quot;background-color&quot;:&quot;#fff&quot;,&quot;color&quot;:&quot;#999&quot;});
+                    var nav_index = $(this).index();
+                    var sub_nav_index = nav_index+2;
+                    //$(&quot;#nav div:nth-child(&quot;+sub_nav_index+&quot;)&quot;).css('display','block');
+                    $(&quot;#nav div:nth-child(&quot;+sub_nav_index+&quot;)&quot;).slideDown(400);
+                    nav_sub(sub_nav_num,sub_nav_index,nav_num,nav_index);
+
+                },function(){
+                    /*var nav_index = $(this).index();
+                    var l = nav_index+2;
+                    $(&quot;#nav div:nth-child(&quot; + l + &quot;)&quot;).slideUp(400);
+                }
+            );
+        }
+    }
+    function nav_sub_hover(){
+        var sub_nav_num = $(&quot;#nav div&quot;).length;
+        for(var j=1;j&lt;=sub_nav_num+1;j++){
+            $(&quot;#nav div:nth-child(&quot; + j + &quot;)&quot;).hover(function(){},
+                function(){
+                    for(var l=1;l&lt;=sub_nav_num+1;l++){
+                        //$(&quot;#nav div:nth-child(&quot; + l + &quot;)&quot;).css('display', 'none');
+                        $(&quot;#nav div:nth-child(&quot; + l + &quot;)&quot;).slideUp(400);
+                    }
+                    for(var k=1;k&lt;=sub_nav_num;k++){
+                        $(&quot;#nav ul li:nth-child(&quot; + k + &quot;)&quot;).children(&quot;a&quot;).css({
+                            &quot;background-color&quot;: &quot;&quot;,
+                            &quot;color&quot;: &quot;&quot;
+                        });
+                    }
+                });
+
+        }
+    }
+    function nav_sub(sub_nav_num,sub_nav_index,nav_num,nav_index){
+        for(var j=1;j&lt;=sub_nav_num+1;j++){
+            if (j!=sub_nav_index) {
+               //$(&quot;#nav div:nth-child(&quot; + j + &quot;)&quot;).css('display', 'none');
+                $(&quot;#nav div:nth-child(&quot; + j + &quot;)&quot;).slideUp(400);
+            }
+        }
+        for(var k=1;k&lt;=nav_num+1;k++){
+            if (k!=nav_index+1) {
+                $(&quot;#nav ul li:nth-child(&quot; + k + &quot;)&quot;).children(&quot;a&quot;).css({
+                    &quot;background-color&quot;: &quot;&quot;,
+                    &quot;color&quot;: &quot;&quot;
+                });
+            }
+        }
+    }*/
+   // nav();
+   // nav_sub_hover();
+   jQuery(&quot;#nav li:has(ul)&quot;).hover(function(){
+    jQuery(this).children(&quot;ul&quot;).stop(true,true).slideDown(400);
+},function(){
+    jQuery(this).children(&quot;ul&quot;).stop(true,true).slideUp(&quot;fast&quot;);
+});
+
+jQuery(&quot;#nav li:has(ul) li&quot;).hover(function(){
+    jQuery(this).children(&quot;ol&quot;).stop(true,true).slideDown(400);
+},function(){
+    jQuery(this).children(&quot;ol&quot;).stop(true,true).slideUp(&quot;fast&quot;);
+});
+	
+&lt;/script&gt;
+&lt;div style=&quot;display:none&quot;&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var cnzz_protocol = ((&quot;https:&quot; == document.location.protocol) ? &quot; https://&quot; : &quot; http://&quot;);document.write(unescape(&quot;%3Cspan id='cnzz_stat_icon_1000364076'%3E%3C/span%3E%3Cscript src='&quot; + cnzz_protocol + &quot;s22.cnzz.com/z_stat.php%3Fid%3D1000364076%26show%3Dpic' type='text/javascript'%3E%3C/script%3E&quot;));
+&lt;/script&gt;
+&lt;/div&gt;&lt;!--尾部结束--&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.x-lab.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.x-lab.tsinghua.edu.cn" field="Host"/>
+                        <header content="PHPSESSID=mrqtll309muhnplvkn9s8o5j92" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="5582" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Thu, 19 Nov 1981 08:52:00 GMT" field="expires"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 03:21:27 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;script id=&quot;allmobilize&quot; charset=&quot;utf-8&quot; src=&quot;http://a.yunshipei.com/3f84432ed5dfafe42b88fc4ae4efed7e/allmobilize.min.js&quot;&gt;&lt;/script&gt;&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-siteapp&quot; /&gt;&lt;link rel=&quot;alternate&quot; media=&quot;handheld&quot; href=&quot;#&quot; /&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/style/v1/base.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/style/v1/index.css&quot; /&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/script/jquery.min.1.10.js&quot;&gt;&lt;/script&gt;
+    &lt;title&gt;清华x-lab - 清华大学创意创新创业教育平台&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;!--头部开始--&gt;
+&lt;div class=&quot;head&quot;&gt;
+    &lt;div class=&quot;header wid&quot;&gt;
+        &lt;div class=&quot;top&quot;&gt;&lt;a href=&quot;/calendar.html&quot;&gt;活动日历&lt;/a&gt;&lt;a href=&quot;/?c=voice&amp;a=newsletter&quot;&gt;消息订阅&lt;/a&gt;             &lt;a href=&quot;/?c=members&amp;a=login&quot;&gt;登陆&lt;/a&gt;&lt;a href=&quot;/?c=members&amp;a=register&quot;&gt;注册&lt;/a&gt;
+            &lt;a href=&quot;/en/&quot;&gt;English&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;logo_nav clearfix&quot;&gt;
+            &lt;div class=&quot;logo fl&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;/images/v1/logo.gif&quot; width=&quot;196&quot; height=&quot;49&quot; /&gt;&lt;/a&gt;
+                &lt;p&gt;清华大学创意创新创业教育平台&lt;/p&gt;
+
+            &lt;/div&gt;
+            &lt;div class=&quot;nav fl&quot; id=&quot;nav&quot;&gt;
+                &lt;ul class=&quot;clearfix&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;我们&lt;/a&gt;
+                        &lt;ul class=&quot;box&quot; style=&quot;position:absolute; left:0px;display:none&quot;&gt;
+
+                                                            &lt;li&gt;&lt;a href=&quot;/about.html#xlabjj&quot;&gt;清华x-lab&lt;/a&gt;
+                                                                &lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=voice&quot;&gt;新闻动态&lt;/a&gt;
+                                                                &lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;创新中心&lt;/a&gt;
+                                                                    &lt;ol style=&quot;display: none&quot;&gt;
+                                                                           &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=6&quot;&gt;知识产权中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=8&quot;&gt;联合设计中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=12&quot;&gt;社会创新中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=13&quot;&gt;健康医疗创新中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=16&quot;&gt;科技与智能制造&lt;br /&gt;创新中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=14&quot;&gt;互联网与信息技术&lt;br /&gt;创新中心&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=17&quot;&gt;教育创新中心&lt;/a&gt;&lt;/li&gt;
+
+                                &lt;/ol&gt;                                &lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;创意创新创业团队&lt;/a&gt;
+                                                                    &lt;ol style=&quot;display: none&quot;&gt;
+                                                                           &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=project&quot;&gt;创意创新团队&lt;/a&gt;&lt;/li&gt;
+
+                                                                       &lt;li&gt; &lt;a href=&quot;/?c=nurture&amp;a=project&amp;type=venture_enterprise&quot;&gt;创业企业&lt;/a&gt;&lt;/li&gt;
+
+                                &lt;/ol&gt;                                &lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=video&quot;&gt;视频库&lt;/a&gt;
+                                                                &lt;/li&gt;
+                                                    &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;活动&lt;/a&gt;
+                        &lt;ul class=&quot;box&quot; style=&quot;position:absolute; left:0px;display:none&quot;&gt;
+
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=activity#ac_main&quot;&gt;当前活动&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=activity&amp;old=1#ac_main&quot;&gt;往期活动&lt;/a&gt;&lt;/li&gt;
+                                                    &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;学习&lt;/a&gt;
+                        &lt;ul class=&quot;box&quot; style=&quot;position:absolute; left:0px;display:none&quot;&gt;
+
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=learn#zwxx&quot;&gt;自我学习&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=learn#kcxx&quot;&gt;课程学习&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=learn#xmxx&quot;&gt;项目学习&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=learn#gzf&quot;&gt;工作坊&lt;/a&gt;&lt;/li&gt;
+                                                    &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;/2017校长杯&quot;&gt;校长杯&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;合作&lt;/a&gt;
+                        &lt;ul class=&quot;box&quot; style=&quot;position:absolute; left:0px;display:none&quot;&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/ad-xlab/&quot;&gt;导师入口&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=pages&amp;a=daoshi&quot;&gt;成为导师&lt;/a&gt;&lt;/li&gt;
+                                                    &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;团队培育&lt;/a&gt;
+                        &lt;ul class=&quot;box&quot; style=&quot;position:absolute; left:0px;display:none&quot;&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=members&quot;&gt;会员中心&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=reservations&quot;&gt;场地预约&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=learn&amp;a=data&quot;&gt;资料库&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=members&amp;a=company_registry&amp;item=process&quot;&gt;公司注册&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=nurture&amp;a=train&quot;&gt;培训&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=nurture&amp;a=eir&quot;&gt;导师预约&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=nurture&amp;a=partner&quot;&gt;创业伙伴&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=nurture&amp;a=hr&quot;&gt;团队招募&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=pages&amp;a=index&quot;&gt;加速计划&lt;/a&gt;&lt;/li&gt;
+                                                            &lt;li&gt;&lt;a href=&quot;/?c=industrialPark&quot;&gt;产业园&lt;/a&gt;&lt;/li&gt;
+                                                    &lt;/ul&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+                            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!--头部结束--&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+&lt;div style=&quot;height:30px;margin-top:15px;font-size:14px;margin-left:406px;color:#F00000;display:none;&quot;&gt;因机房维护,网站于9月15日下午5点-9月17日上午9点无法访问,给您带来不便请谅解&lt;/div&gt;
+&lt;!--banner开始--&gt;
+&lt;div class=&quot;banner&quot;&gt;
+    &lt;a href=&quot;javascript:void(0);&quot; id=&quot;banner_tab_link&quot;&gt;&lt;img src=&quot;uploads/2016120611274388073.jpg&quot; width=&quot;1440&quot; height=&quot;370&quot; id=&quot;banner_tab_display&quot;/&gt;&lt;/a&gt;
+    &lt;div style=&quot;display:none&quot;&gt;
+        
+        &lt;input type=&quot;hidden&quot; value=&quot;uploads/2016120611274388073.jpg&quot; id=&quot;banner_tab_1&quot; href=&quot;http://www.x-lab.tsinghua.edu.cn/activity/ztshow/323.html#ac_main&quot; &gt;
+       
+        &lt;input type=&quot;hidden&quot; value=&quot;uploads/2016120510344896216.jpg&quot; id=&quot;banner_tab_2&quot; href=&quot;http://www.x-lab.tsinghua.edu.cn/2017%E6%A0%A1%E9%95%BF%E6%9D%AF&quot; &gt;
+       
+        &lt;input type=&quot;hidden&quot; value=&quot;uploads/2016103112091683340.jpg&quot; id=&quot;banner_tab_3&quot; href=&quot;http://www.x-lab.tsinghua.edu.cn/activity/ztshow/307.html#ac_main&quot; &gt;
+           &lt;/div&gt;
+    &lt;ul class=&quot;clearfix&quot; id=&quot;banner_num&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;javascript:banner_select(1,0)&quot;&gt;&lt;img src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:banner_select(2,0)&quot;&gt;&lt;img src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:banner_select(3,0)&quot;&gt;&lt;img src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;script type=&quot;text/javascript&quot;&gt;
+            banner_select_num = $(&quot;#banner_num li&quot;).length;
+        &lt;/script&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;!--banner结束--&gt;
+
+&lt;!--内容开始--&gt;
+&lt;div class=&quot;content&quot;&gt;
+    &lt;div class=&quot;con_1 wid&quot;&gt;
+        &lt;h2&gt;最新动态&lt;/h2&gt;
+        &lt;div class=&quot;dt clearfix&quot;&gt;
+                       &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;14&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/323.html#ac_main&quot;&gt;ACT TALK |艺术&amp;middot;创造力&amp;middot;科技讲座系列 第...&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+                        &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;14&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/322.html#ac_main&quot;&gt;硅谷银行创业分享会IV &amp;mdash;&amp;mdash;从硅谷的视角看创...&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+                        &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;12&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/321.html#ac_main&quot;&gt;“眼界与思维的盛宴”主题工作坊&amp;mdash;&amp;mdash;&amp;mdash;铸就属...&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+                        &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;11&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/324.html#ac_main&quot;&gt;【清华x-lab公开课】对话 唱吧创始人兼CEO 陈华&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+                        &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;04&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/317.html#ac_main&quot;&gt;【抢票福利】虎嗅F&amp;amp;创新节：2000+创新先锋齐聚...&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+                        &lt;div class=&quot;dt_1 fl last clearfix&quot;&gt;
+
+            &lt;div class=&quot;riqi fl&quot;&gt;&lt;strong&gt;04&lt;/strong&gt;&lt;br /&gt;
+                2016.12&lt;/div&gt;
+            &lt;p&gt;&lt;a href=&quot;/activity/ztshow/320.html#ac_main&quot;&gt;【清华x-lab公开课】大公司不断被创业公司颠覆...&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;con_2 clearfix&quot;&gt;
+        &lt;div class=&quot;coner_2 wid&quot;&gt;
+            &lt;div class=&quot;con_2_l fl&quot; onclick=&quot;window.open('/calendar.html')&quot;&gt;
+                &lt;div class=&quot;rl clearfix&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;/images/v1/1.jpg&quot; width=&quot;13&quot; height=&quot;21&quot; class=&quot;img1&quot; /&gt;&lt;/a&gt;&lt;span&gt;12月&lt;/span&gt;&lt;em&gt;2016&lt;/em&gt;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;/images/v1/2.jpg&quot; width=&quot;13&quot; height=&quot;21&quot; class=&quot;img2&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+                &lt;ul class=&quot;clearfix&quot; &gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;日&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;一&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;二&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;三&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;四&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;五&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class=&quot;last&quot;&gt;&lt;a href=&quot;#&quot;&gt;六&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li &gt;&lt;a href=&quot;#&quot; style=&quot;color:#67d375&quot;&gt;27&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href=&quot;#&quot; style=&quot;color:#67d375&quot;&gt;28&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href=&quot;#&quot; style=&quot;color:#67d375&quot;&gt;29&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href=&quot;#&quot; style=&quot;color:#67d375&quot;&gt;30&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;1&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;2&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;last&quot;&gt;&lt;a href='#'  &gt;3&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;4&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;5&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;6&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;7&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#' style=&quot;color:#22af73;background:#fff&quot; &gt;8&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;9&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;last&quot;&gt;&lt;a href='#'  &gt;10&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;11&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;12&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;13&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;14&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;15&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;16&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;last&quot;&gt;&lt;a href='#'  &gt;17&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;18&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;19&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;20&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;21&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;22&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;23&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;last&quot;&gt;&lt;a href='#'  &gt;24&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;25&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;26&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;27&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;28&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;29&lt;/a&gt;&lt;/li&gt;&lt;li &gt;&lt;a href='#'  &gt;30&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;last&quot;&gt;&lt;a href='#'  &gt;31&lt;/a&gt;&lt;/li&gt;                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;con_2_m fl&quot;&gt;
+                                &lt;h2&gt;星期日                    &lt;br /&gt;
+                    12月11日&lt;/h2&gt;
+                &lt;p class=&quot;p1&quot;&gt;                               &lt;a href='?c=activity&amp;a=ztshow&amp;id=324#ac_main'target=&quot;_blank&quot; &gt;【清华x-lab公开课】对话 唱吧创始人兼CEO 陈华&lt;/a&gt;
+                                                                                                    &lt;/p&gt;
+                
+                				&lt;p class=&quot;p2&quot;&gt;&lt;a href=&quot;/calendar.html&quot;&gt;打开日历&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;con_2_r fl&quot;&gt;
+                &lt;img src=&quot;/images/v1/img1.gif&quot; width=&quot;50&quot; height=&quot;61&quot; /&gt;&lt;p&gt;&lt;a href=&quot;/?c=members&amp;a=register&quot;&gt;项目提交&lt;br /&gt;&lt;span&gt;SUBMIT&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;con_3&quot;&gt;
+        &lt;h2&gt;团队故事&lt;/h2&gt;
+        &lt;div class=&quot;fc clearfix wid&quot; id=&quot;tuanduiList&quot;&gt;
+                        &lt;div class=&quot;fc_1 fl  clearfix&quot;&gt; &lt;img src=&quot;uploads/2016060613314453051.jpg&quot; width=&quot;360&quot; height=&quot;142&quot; /&gt;
+                &lt;h3&gt;【第三届校长杯十强故事汇】艺妙神州：向白血病宣战&lt;/h3&gt;
+                &lt;div class=&quot;text&quot;&gt;
+	艺妙神州 
+
+
+	
+
+
+	艺妙神州团队，2015年1月加入清华x－lab，其CAR-T技术是最新一代免疫治疗技术，对多种癌症具有革命性的治疗效果，在美...&lt;/div&gt;
+                &lt;p&gt;&lt;a href=&quot;/team/7.html&quot;&gt;更多&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+                       &lt;div class=&quot;fc_1 fl  clearfix&quot;&gt; &lt;img src=&quot;uploads/2016060613320534584.jpg&quot; width=&quot;360&quot; height=&quot;142&quot; /&gt;
+                &lt;h3&gt;【第三届校长杯十强故事汇】OwlReality：清华技术控的科技创业&lt;/h3&gt;
+                &lt;div class=&quot;text&quot;&gt;
+	OwlReality团队：2016年2月加入清华x-lab。团队致力于研发VR/AR媒体解决方案，从视频采集、拼接、编码传输，到解码显示。OwlReality致力...&lt;/div&gt;
+                &lt;p&gt;&lt;a href=&quot;/team/6.html&quot;&gt;更多&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+                       &lt;div class=&quot;fc_1 fl  last  clearfix&quot;&gt; &lt;img src=&quot;uploads/2016060613312732377.jpg&quot; width=&quot;360&quot; height=&quot;142&quot; /&gt;
+                &lt;h3&gt;【第三届校长杯十强故事汇】光和未来: 把家变成花园，和植物生活在一起&lt;/h3&gt;
+                &lt;div class=&quot;text&quot;&gt;
+	光合未来团队：2015年11月加入清华x-lab，主要从事与空间绿化相关的设计、产品和技术研发业务，通过整合行业资源，借助科技与艺术，提供...&lt;/div&gt;
+                &lt;p&gt;&lt;a href=&quot;/team/8.html&quot;&gt;更多&lt;/a&gt;&lt;/p&gt;
+            &lt;/div&gt;
+                   &lt;/div&gt;
+        &lt;ul class=&quot;clearfix fr&quot;  style=&quot;width:950px&quot;&gt;
+
+                       &lt;li style=&quot;margin-right: 20px;&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:getSpList(1)&quot;&gt;&lt;img id=&quot;tuanduiList_page_1&quot; src=&quot;/images/v1/yuanquan1.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                        &lt;li style=&quot;margin-right: 20px;&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:getSpList(2)&quot;&gt;&lt;img id=&quot;tuanduiList_page_2&quot; src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                        &lt;li style=&quot;margin-right: 20px;&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:getSpList(3)&quot;&gt;&lt;img id=&quot;tuanduiList_page_3&quot; src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                        &lt;li style=&quot;margin-right: 20px;&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:getSpList(4)&quot;&gt;&lt;img id=&quot;tuanduiList_page_4&quot; src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+                        &lt;li style=&quot;margin-right: 20px;&quot;&gt;&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;javascript:getSpList(5)&quot;&gt;&lt;img id=&quot;tuanduiList_page_5&quot; src=&quot;/images/v1/yuanquan.gif&quot; width=&quot;20&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!--内容结束--&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    spTotal = 5;
+    function getSpList(page){
+
+        $.ajax( {
+            url:'/index.php',
+            data:{
+                sp : page,
+                spAjax: 1
+            },
+            type:'post',
+            cache:false,
+            dataType:'json',
+            success:function(data) {
+
+               $(&quot;#tuanduiList&quot;).html(data.content);
+                for(var i=1;i&lt;=spTotal;i++){
+                    if (i!=page){
+                        $(&quot;#tuanduiList_page_&quot;+i).attr(&quot;src&quot;,&quot;/images/v1/yuanquan.gif&quot;);
+                    }
+                }
+               $(&quot;#tuanduiList_page_&quot;+page).attr(&quot;src&quot;,&quot;/images/v1/yuanquan1.gif&quot;);
+            },
+            error : function() {
+                // view(&quot;异常！&quot;);
+                alert(&quot;系统繁忙，稍后重试&quot;);
+            }
+        });
+    }
+&lt;/script&gt;
+&lt;!--尾部开始--&gt;
+&lt;div class=&quot;foot&quot;&gt;
+    &lt;div class=&quot;footer wid clearfix&quot;&gt;
+        &lt;div class=&quot;ft_l fl clearfix&quot;&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;关于&lt;/dt&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/about.html#xlabjj&quot;&gt;清华x-lab&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=6&quot;&gt;知识产权中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=8&quot;&gt;联合设计中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=12&quot;&gt;社会创新中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=13&quot;&gt;健康医疗创新中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=16&quot;&gt;科技与智能制造&lt;br /&gt;创新中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=14&quot;&gt;互联网与信息技术&lt;br /&gt;创新中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=fshow&amp;id=17&quot;&gt;教育创新中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=project&quot;&gt;创意创新团队&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=project&amp;type=venture_enterprise&quot;&gt;创业企业&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=video&quot;&gt;视频库&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=voice&quot;&gt;新闻动态&lt;/a&gt;&lt;/dd&gt;
+                            &lt;/dl&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;活动&lt;/dt&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=activity#ac_main&quot;&gt;当前活动&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=activity&amp;old=1#ac_main&quot;&gt;往期活动&lt;/a&gt;&lt;/dd&gt;
+                            &lt;/dl&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;学习&lt;/dt&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=learn#zwxx&quot;&gt;自我学习&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=learn#kcxx&quot;&gt;课程学习&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=learn#xmxx&quot;&gt;项目学习&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=learn#gzf&quot;&gt;工作坊&lt;/a&gt;&lt;/dd&gt;
+                            &lt;/dl&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;&lt;a href=&quot;/?c=activity&amp;a=top&amp;id=309#ac_main&quot; style=&quot;color:#808080&quot;&gt;校长杯&lt;/a&gt;&lt;/dt&gt;
+                            &lt;/dl&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;合作&lt;/dt&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/ad-xlab/&quot;&gt;导师入口&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=pages&amp;a=daoshi&quot;&gt;成为导师&lt;/a&gt;&lt;/dd&gt;
+                            &lt;/dl&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;团队培育&lt;/dt&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=members&quot;&gt;会员中心&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=reservations&quot;&gt;场地预约&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=learn&amp;a=data&quot;&gt;资料库&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=members&amp;a=company_registry&amp;item=process&quot;&gt;公司注册&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=train&quot;&gt;培训&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=eir&quot;&gt;导师预约&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=partner&quot;&gt;创业伙伴&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=nurture&amp;a=hr&quot;&gt;团队招募&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=pages&amp;a=index&quot;&gt;加速计划&lt;/a&gt;&lt;/dd&gt;
+                                    &lt;dd&gt;&lt;a href=&quot;/?c=industrialPark&quot;&gt;产业园&lt;/a&gt;&lt;/dd&gt;
+                            &lt;/dl&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;fl_r fr&quot;&gt;
+            &lt;h2&gt;关注微信&lt;/h2&gt;
+            &lt;img src=&quot;/images/v1/erweima.gif&quot; width=&quot;116&quot; height=&quot;115&quot; /&gt;
+            &lt;p&gt;&lt;a href=&quot;/?c=voice&amp;a=newsletter&quot;&gt;获取电子资讯&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;ft_bot&quot;&gt;
+        &lt;p&gt;版权所有&amp;copy;清华大学经济管理学院（清华x-lab） 2016&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    banner_auto_time = window.setInterval(&quot;autoBannerSelect()&quot;,2000);
+    function banner_select(index,auto){
+        if (index &lt; 0){
+            return false;
+        }
+
+        var img_src = $(&quot;#banner_tab_display &quot;).attr(&quot;src&quot;);
+        var new_img_src = $(&quot;#banner_tab_&quot;+index).val();
+		var new_img_link = $(&quot;#banner_tab_&quot;+index).attr(&quot;href&quot;);
+        if (new_img_src!=img_src){
+            $(&quot;#banner_tab_display &quot;).attr(&quot;src&quot;,new_img_src);
+        }
+		if (new_img_link ==''){
+           new_img_link = 'javascript:void(0);';
+        }
+        $(&quot;#banner_tab_link&quot;).attr(&quot;href&quot;,new_img_link);
+        // 增加选中样式
+        $(&quot;#banner_num li:nth-child(&quot;+index+&quot;) img&quot;).attr(&quot;src&quot;,&quot;/images/v1/yuanquan1.gif&quot;);
+        // 之前的样式还原
+        if (index == 1){
+            $(&quot;#banner_num li:nth-child(&quot;+banner_select_num+&quot;) img&quot;).attr(&quot;src&quot;,&quot;/images/v1/yuanquan.gif&quot;);
+
+        }else{
+            $(&quot;#banner_num li:nth-child(&quot;+(index-1)+&quot;) img&quot;).attr(&quot;src&quot;,&quot;/images/v1/yuanquan.gif&quot;);
+        }
+
+        if (auto==0) {
+            window.clearInterval(banner_auto_time);
+        }
+    }
+    j = 2;
+    function autoBannerSelect(){
+        if (j &gt; banner_select_num){
+            j = 1;
+        }
+        banner_select(j,1);
+        j++;
+
+    }
+    /*
+    function nav(){
+        var nav_num = $(&quot;#nav ul li&quot;).length;
+        var sub_nav_num = $(&quot;#nav div&quot;).length;
+        for (var i=1;i&lt;=nav_num;i++) {
+            $(&quot;#nav ul li:nth-child(&quot;+i+&quot;)&quot;).hover(
+                function () {
+                    $(this).children(&quot;a&quot;).css({&quot;background-color&quot;:&quot;#fff&quot;,&quot;color&quot;:&quot;#999&quot;});
+                    var nav_index = $(this).index();
+                    var sub_nav_index = nav_index+2;
+                    //$(&quot;#nav div:nth-child(&quot;+sub_nav_index+&quot;)&quot;).css('display','block');
+                    $(&quot;#nav div:nth-child(&quot;+sub_nav_index+&quot;)&quot;).slideDown(400);
+                    nav_sub(sub_nav_num,sub_nav_index,nav_num,nav_index);
+
+                },function(){
+                    /*var nav_index = $(this).index();
+                    var l = nav_index+2;
+                    $(&quot;#nav div:nth-child(&quot; + l + &quot;)&quot;).slideUp(400);
+                }
+            );
+        }
+    }
+    function nav_sub_hover(){
+        var sub_nav_num = $(&quot;#nav div&quot;).length;
+        for(var j=1;j&lt;=sub_nav_num+1;j++){
+            $(&quot;#nav div:nth-child(&quot; + j + &quot;)&quot;).hover(function(){},
+                function(){
+                    for(var l=1;l&lt;=sub_nav_num+1;l++){
+                        //$(&quot;#nav div:nth-child(&quot; + l + &quot;)&quot;).css('display', 'none');
+                        $(&quot;#nav div:nth-child(&quot; + l + &quot;)&quot;).slideUp(400);
+                    }
+                    for(var k=1;k&lt;=sub_nav_num;k++){
+                        $(&quot;#nav ul li:nth-child(&quot; + k + &quot;)&quot;).children(&quot;a&quot;).css({
+                            &quot;background-color&quot;: &quot;&quot;,
+                            &quot;color&quot;: &quot;&quot;
+                        });
+                    }
+                });
+
+        }
+    }
+    function nav_sub(sub_nav_num,sub_nav_index,nav_num,nav_index){
+        for(var j=1;j&lt;=sub_nav_num+1;j++){
+            if (j!=sub_nav_index) {
+               //$(&quot;#nav div:nth-child(&quot; + j + &quot;)&quot;).css('display', 'none');
+                $(&quot;#nav div:nth-child(&quot; + j + &quot;)&quot;).slideUp(400);
+            }
+        }
+        for(var k=1;k&lt;=nav_num+1;k++){
+            if (k!=nav_index+1) {
+                $(&quot;#nav ul li:nth-child(&quot; + k + &quot;)&quot;).children(&quot;a&quot;).css({
+                    &quot;background-color&quot;: &quot;&quot;,
+                    &quot;color&quot;: &quot;&quot;
+                });
+            }
+        }
+    }*/
+   // nav();
+   // nav_sub_hover();
+   jQuery(&quot;#nav li:has(ul)&quot;).hover(function(){
+    jQuery(this).children(&quot;ul&quot;).stop(true,true).slideDown(400);
+},function(){
+    jQuery(this).children(&quot;ul&quot;).stop(true,true).slideUp(&quot;fast&quot;);
+});
+
+jQuery(&quot;#nav li:has(ul) li&quot;).hover(function(){
+    jQuery(this).children(&quot;ol&quot;).stop(true,true).slideDown(400);
+},function(){
+    jQuery(this).children(&quot;ol&quot;).stop(true,true).slideUp(&quot;fast&quot;);
+});
+	
+&lt;/script&gt;
+&lt;div style=&quot;display:none&quot;&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var cnzz_protocol = ((&quot;https:&quot; == document.location.protocol) ? &quot; https://&quot; : &quot; http://&quot;);document.write(unescape(&quot;%3Cspan id='cnzz_stat_icon_1000364076'%3E%3C/span%3E%3Cscript src='&quot; + cnzz_protocol + &quot;s22.cnzz.com/z_stat.php%3Fid%3D1000364076%26show%3Dpic' type='text/javascript'%3E%3C/script%3E&quot;));
+&lt;/script&gt;
+&lt;/div&gt;&lt;!--尾部结束--&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The following error was detected and could not be resolved:
+Failed to initialize the 404 detection, original exception was: &quot;Exception found while detecting 404: &quot;HTTP timeout error&quot;&quot;.
+</error>
+</w3af-run>

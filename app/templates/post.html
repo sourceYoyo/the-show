@@ -1,0 +1,109 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{{post.titile}}</title>
+  <base href="/">
+  <meta name="fragment" content="!">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <!--script>document.documentElement.className += ('ontouchstart' in window) ? ' touch' : ' no-touch'</script-->
+  <script src="{{url_for('static', filename='js/jquery-1.11.3.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/95e46879.main.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/poststyle.css')}}">
+  <style type="text/css" id="syntaxhighlighteranchor"></style>
+  
+
+
+</head>
+<body ng-app="columnWebApp" ng-controller="AppCtrl" ng-class="pageClass">
+
+  <div class="navbar col-sm-2 " >
+    <div>
+      <a href="/" data-toggle="popover" data-placement="right" data-content="首页" data-trigger="hover" data-original-title="" title="">
+        返回首页
+        <span class="glyphicon glyphicon-home"></span>
+      </a>
+    </div>
+{% if logined == 1%}
+    <div>
+      <a href="/admin/write-post/cid/{{post.id}}" data-toggle="popover" data-placement="right" data-trigger="hover" data-original-title="" title="">
+        修改报告
+        <span class="glyphicon glyphicon-pencil"></span>
+      </a>
+    </div>   
+{% endif %} 
+  </div>
+
+
+
+<main class="main-container ng-scope col-sm-10" ng-view="">
+<div class="main receptacle post-view ng-scope">
+
+  <article class="entry ng-scope" ng-controller="EntryCtrl" ui-lightbox="">
+    <header>
+      <h1 class="entry-title ng-binding">{{post.title}}</h1>      
+      <div class="entry-meta">
+        <a target="_blank" class="author name ng-binding">{{post.author}}</a>
+        <span class="bull">·</span>
+        #<time title="{{post.time}}" ui-time="" datetime="{{post.time}}" class="published ng-binding ng-isolate-scope">{{post.time}}</time>
+        <span class="bull">·</span>
+        <a>漏洞等级：{{post.level}}</a>
+        <span class="bull">·</span>
+        <a>漏洞类型：{{post.category.name}}</a>
+      </div>
+    </header>
+
+    <!-- ngIf: isCensoring -->
+
+    <section class="entry-content ng-binding" ng-bind-html="postContentTrustedHtml">
+ {{- post.html_text | safe -}}      
+	<p>
+   
+</div>
+</body>
+
+<script>
+  //代码高亮功能
+  $ = jQuery;
+
+  $("pre").each(function(){
+    txt = $(this).text();
+    lang = txt.split("\n")[0];
+    if(lang.indexOf("#!") == 0){
+      name = lang.replace("#!", "");
+      txt = txt.replace(lang + "\n", "");
+      $(this).addClass("brush:" + name)
+    }else{
+      $(this).addClass("highlight");
+    }
+    $(this).text(txt)
+  })
+
+  function TimeToStr(){
+    var now = new Date();
+
+    var year = now.getFullYear();       //年
+    var month = now.getMonth() + 1;     //月
+    var day = now.getDate();            //日
+
+    var hh = now.getHours();            //时
+    var mm = now.getMinutes();          //分
+    var ss = now.getSeconds();
+
+    if(month < 10){
+      month = "0" + month;
+    }
+    if(day < 10){
+      day = "0" + day;
+    }
+    if(ss < 10){
+      ss = "0" + day;
+    }
+    return year + "-" + month + "-" + day + " " + hh + ":" + mm + ":" + ss;
+  }
+
+</div>
+</body>
+</html>

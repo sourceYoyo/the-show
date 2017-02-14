@@ -1,0 +1,1819 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480512012" start-long="Wed Nov 30 08:20:12 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://oa.ee.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.132"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/756_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[39, 53]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://oa.ee.tsinghua.edu.cn/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="39">
+                <http-request>
+                    <status>ARGENTINA http://oa.ee.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="90" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=97" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:56 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;
+&lt;meta http-equiv=&quot;Refresh&quot;
+content=&quot;0;url=http://www.ee.tsinghua.edu.cn&quot;&gt;
+&lt;/head&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="53">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="90" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=80" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:56 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;
+&lt;meta http-equiv=&quot;Refresh&quot;
+content=&quot;0;url=http://www.ee.tsinghua.edu.cn&quot;&gt;
+&lt;/head&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[57]" method="GET" name="Cross site tracing vulnerability" plugin="xst" severity="Low" url="http://oa.ee.tsinghua.edu.cn/" var="None">
+        <description>The web server at &quot;http://oa.ee.tsinghua.edu.cn/&quot; is vulnerable to Cross Site Tracing.</description>
+        <long-description>The `TRACE` HTTP method allows a client so send a request to the server, and have the same request then send back in the server's response. This allows the client to determine if the server is receiving the request as expected or if specific parts of the request are not arriving as expected. For example incorrect encoding or a load balancer has filtered or changed a value. On many default installations the `TRACE` method is still enabled.
+
+While not vulnerable by itself, it does provide a method for cyber-criminals to bypass the `HTTPOnly` cookie flag, and therefore could allow a XSS attack to successfully access a session token.
+
+The tool has discovered that the affected page permits the HTTP `TRACE` method.</long-description>
+        <fix-guidance>The HTTP `TRACE` method is normally not required within production sites and should therefore be disabled.
+
+Depending on the function being performed by the web application, the risk level can start low and increase as more functionality is implemented.
+
+The remediation is typically a very simple configuration change and in most cases will not have any negative impact on the server or application.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="CAPEC" url="http://capec.mitre.org/data/definitions/107.html"/>
+            <reference title="OWASP" url="http://www.owasp.org/index.php/Cross_Site_Tracing"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="57">
+                <http-request>
+                    <status>TRACE http://oa.ee.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                        <header content="XST" field="Fakeheader"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:56 GMT" field="date"/>
+                        <header content="message/http" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">VFJBQ0UgLyBIVFRQLzEuMQ0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KQ29udGVudC1sZW5ndGg6
+IDANCkFjY2VwdC1lbmNvZGluZzogZ3ppcCwgZGVmbGF0ZQ0KQWNjZXB0OiAqLyoNClVzZXItYWdl
+bnQ6IG5pc2wNCkhvc3Q6IG9hLmVlLnRzaW5naHVhLmVkdS5jbg0KQ29udGVudC10eXBlOiBhcHBs
+aWNhdGlvbi94LXd3dy1mb3JtLXVybGVuY29kZWQNCkZha2VoZWFkZXI6IFhTVA0KDQo=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[87]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2&quot;.</description>
+        <http-transactions>
+            <http-transaction id="87">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="90" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:51 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;
+&lt;meta http-equiv=&quot;Refresh&quot;
+content=&quot;0;url=http://www.ee.tsinghua.edu.cn&quot;&gt;
+&lt;/head&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[167]" method="GET" name="Powered-by header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The x-powered-by header for the target HTTP server is &quot;PHP/5.3.10&quot;.</description>
+        <http-transactions>
+            <http-transaction id="167">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="90" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:51 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;
+&lt;meta http-equiv=&quot;Refresh&quot;
+content=&quot;0;url=http://www.ee.tsinghua.edu.cn&quot;&gt;
+&lt;/head&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[173]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://oa.ee.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://ee.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://oa.ee.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="173">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="90" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=73" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:58 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;
+&lt;meta http-equiv=&quot;Refresh&quot;
+content=&quot;0;url=http://www.ee.tsinghua.edu.cn&quot;&gt;
+&lt;/head&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[168]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://oa.ee.tsinghua.edu.cn/GsWbs" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://oa.ee.tsinghua.edu.cn/GsWbs
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="168">
+                <http-request>
+                    <status>PUT http://oa.ee.tsinghua.edu.cn/GsWbs HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">CIZBQo</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="timeout=5, max=87" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:03:57 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /GsWbs.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[92]" method="GET" name="PHP Egg" plugin="php_eggs" severity="Information" url="http://oa.ee.tsinghua.edu.cn/" var="None">
+        <description>The PHP framework running on the remote server has a &quot;PHP Logo&quot; easter egg, access to the PHP egg is possible through the URL: &quot;http://oa.ee.tsinghua.edu.cn/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42&quot;.</description>
+        <http-transactions>
+            <http-transaction id="92">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42 HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2524" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=97" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:57 GMT" field="date"/>
+                        <header content="image/gif" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">R0lGODlheABDAOZqAH+CuDk3RyglKszN4qGky9PV57K01ENCWIOGuYKDs1JScpCSwsLE3qqs0ExL
+Y1tcg93e7Ds4PG5xpWptnWFjjXV5sXt+teXm8JmcxoyNwbm62Wtrkk5Oa3F0qXp6o4iLvXJ0o3Rz
+mI6QwVpbfuLj73t9raSl0G1wonJ2rJWWyLu92XR4roWIu5KVw9jZ6pKSxGRmkmtun6WozpSWxS4r
+L1NRaLO012xqjFxbdoqNv2ZolmhqmpyfyDEuOa6w05yczVVWeJ6hypaZxYGCr2dplz89ULy+2l5g
+iZiZyIyOv4mKuldYfLa319XX6CIeIGxvns7Q5L/A3Hd7tHZ4p19efZmZzG5vmHN3riIeH////5CO
+j1lWV8fGx+7u9dXU1fb2+oKAgayqq3Ryc/Hw8Z6cnePi40tISbm4uWdkZYmJtgD/AEdGX9/g7Zuc
+zGlrnG9zp4yMuri52bi615qbzKeqz9vc65qcyWZkhGhniaeo0m5woIuLucbH4MfJ4WlsnJeYyyH5
+BAEAAGoALAAAAAB4AEMAAAf/gGqCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXlm0/bXOYnp+gP3l5Nj4a
+cUwaGkwGPj4NMgRBPBhCLQtJIjkfGTkiLymgwqENGgx9TQVQUAN9fAxRUSpyrK90sbNCMy26HwgA
+FhYVVyglFgkZwcPrjCZxfC5sbBAQdS7JA9QysyIf/iwAEQgEQLDgN4LhpKxA8UbCCT87nkwZkoSd
+RTVBbAxgQ+KCRxIk8jUQskCKyZMoU6pceXJcBwkTduiAQeEIBStDRFzEFIQJFI4eL7gwQqcFy6NI
+k6K88iYGjCNHHoxYcsSDzp2Qfmh0AYEjBCMEWCgdSzbplRM6HiwBokDBiCkz/7AuMqGhQBMXdQoY
+SFK2r1+kHWAsUcCBgwM8CeQayhNlAJQCA3zk+LtyAYbLmDF8oJz0DQUFDtasUeBBsZo8Rvj0GcBk
+BueVH7JwmU2bS5fXSt0sWXPggIMQO91FYcCgAQLcKzFwwcK8uZnbyJN22F2kyJrSw374kGNEBQ8L
+0VeqINO8uZgC4ZVeeXAgQAAOcECZMMBEDgEA6VcWEFOeORkV+Sn1hgLu9XAHJnPQ4YMBMhwXoEpd
+mNEfFlwQ8KBSMazRQw8H7FHJDzI00EBJF6YEQBYTYpHFZiUm9UAAGwInSRsE7ONgiycpN6EZX+Co
+lB9F0EADFZHYEQQBM4CH1P8HmTXZJItHqRDGhGJc0CSJLDHp5Jb4jYWCAzQIUMMjSGAQBJRHffBF
+Fmy26eabWXRRQANdolQAGBOSAWebFwxg4UkL7Ckom10M0IBSQAgggAONzCAEBmIpRcByKVZqBhhc
+fAEgSl1sUWmKNGyhRRldkGjAlJ9OuAUYXnRxKFIjCOAEo4psI8SNSY2X6qdbeAFBlyfu+ikYY2Ag
+xQB4CqtqGQMkNYITTuCQSAoitIBmUhDwp2yKYUBgEgZebJsiGrdd4Km45dHgRbNIrQEtdoX84ctk
+ZX0hIbr9eQGglPjm2wCK/TZHQxl/HhWAEwIsYEg/9JIVW8DlbdHjnRAzp8X/BeFWjIUY0B3Vgaxj
+EpICAh/UOdakO8I5xhnaTugFAZ1OyMWbY3CBRopaZIFqxHCWcca5E5aBJUsKQJsGId7gOpau/Ynh
+LUoLNNAFeRNqwQDA/a2IEgYNfBFB1VloUTW7gBrwRbL9hWGAUjTMOsgfACCgZFnZ5rmpiVl83XQW
+GZfH40oQAN1czoIzd8baKn0wBs53H7UEtAqrIYIFJpNlr8wFpxS4qjpT+XRKMfd3RhY0BG3sSqGX
+p0XjLHUA7Q2CsJBQXw9POMa1J23eHxpZoN3cfyoFG3QZE9KQxVGpD846S0W4rUY4c5OFcn8R9MjS
+5f0RjrlK4BafxRmqXnAU/9blAa8UB070IEgFlDFdHhqfp1R72uQ3d7tK/Pa3Rdhjs4QB8dtTCgWg
+JYgVUKZu2VueSQwAvqD1rTnV04/vmAOGLBQOC4djCQOo1p/7CZCAKbgC+/yCvfJUiCXJY04EOre7
++J0khVgIA+lMtxIAeG1C5CLLAJ0gCBQYsC/C6yDujkWp7PWuassLYnm8AMB0HU8/HCxPGBS4kh0K
+ogMoGCFZdES9J6LkAwXwQun6Q4MxfOGCJ0xJ9yb0vfBxDwJinFD1KncUK6phIVpcWhSZQy4V+FEF
+EOjCGLQwRtENoH7M8SBK8sczsWWvC38EZBfK4EiZUXEl6FPf8zpwhb7sR/9VWghlKMVwrxSJ4QsE
+eKAKvWinCWKhghcUlSi1QMphia8szaPVB97Qgb5ESGNo+MICToVDF5rEXBOSYSEDdsqhSed1gkiB
+BN7wQ6UosV/NPJYrrbYSRGKBiRoDgzD78jgnRO55EujlWNbYLxqcYZxSQGZ/uPCqramSOW0MWATO
+cAFnss15gnjBCSTQSaUwUlxmIMMYBlCnGXbQn8TUH//wZQYZMoCOSSmaE45GiCGc4A1joZj+ZjlL
+MnBhDIVCU6BIGkpWnkQFXGDp6C4oBpaG0qQoZcAQpQMyQ6TgBCdQJ1JgyIUL0IMeBfgjAfxpEkAe
+9aiZA9QAnkqPQy6TOV7/MOpRk+pHAux0LAdL2CGSEIMToAAp10wkU30khQU0sTxZwChy3OUEeBki
+AWUtaHLuuUK2sqQBDYxYx/JTTmkpogR5ZclB+WhMv0qBAZVsDhjQE6By0moRiDWrBKvGAMeqRHdS
+vCRlNHpZRpRgAjHoQB6lQNR6etYkeXPZ6aLTgQNAq7SNSABqJaDFtGJhDGv10QIWx0a5+oUIPYCW
+YSOhhCdMQLNS+N8Wpktd3r3WntSlLhgG+xoFyEoAMprEC0DghxjwFgAFoCo9EHddKaBXvRBwLWWI
+cDAnRICjlkiAG1D7htW2168nsK1yQfGCKfgBtar9r19RwAFZOaEI+AWF/xL04IYD91fBJTrBGhzc
+g/CygwUUPrAEzorh8BzhAIoSQA9gpxgWgGAHbnBDDKhZYsr4gQMBCJMAAsBi0wgiCSUgwg5gPAEa
+1zgpEyBQD4QkJrv6eBApSIAedEAEIbshqP7F8BuOgOMNLbkIeHjBkxfxAinr4Mxn3sFHSXzdHRxB
+Ae2B0YYOcAMPjfkRL0DAFIgAgz77mQh++KhQ8zMBIjwANNVxj6JxEAI735kSIhjCnilA6UpT+gh9
+rnCg38BpTkvg058GKlCJcGm2iKY3B6hOEQJwABxsIDGPFkYKPlACEFgBKlB5gK53PZUlrAUIbGkL
+YQpjmNCcujdFUAAVbjgwBDHHWjEpUAICPOCBDWwgLb4GdrDbQmzDcIAKIxiBFaxQgmY/+9yLEEEa
+EHAVdLv73fCOd7wDAQA7AA==
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[94]" method="GET" name="PHP Egg" plugin="php_eggs" severity="Information" url="http://oa.ee.tsinghua.edu.cn/" var="None">
+        <description>The PHP framework running on the remote server has a &quot;Zend Logo&quot; easter egg, access to the PHP egg is possible through the URL: &quot;http://oa.ee.tsinghua.edu.cn/?=PHPE9568F35-D428-11d2-A769-00AA001ACF42&quot;.</description>
+        <http-transactions>
+            <http-transaction id="94">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/?=PHPE9568F35-D428-11d2-A769-00AA001ACF42 HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2146" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:57 GMT" field="date"/>
+                        <header content="image/gif" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">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
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[110]" method="GET" name="PHP Egg" plugin="php_eggs" severity="Information" url="http://oa.ee.tsinghua.edu.cn/" var="None">
+        <description>The PHP framework running on the remote server has a &quot;PHP Credits&quot; easter egg, access to the PHP egg is possible through the URL: &quot;http://oa.ee.tsinghua.edu.cn/?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000&quot;.</description>
+        <http-transactions>
+            <http-transaction id="110">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000 HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=77" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:57 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+body {background-color: #ffffff; color: #000000;}
+body, td, th, h1, h2 {font-family: sans-serif;}
+pre {margin: 0px; font-family: monospace;}
+a:link {color: #000099; text-decoration: none; background-color: #ffffff;}
+a:hover {text-decoration: underline;}
+table {border-collapse: collapse;}
+.center {text-align: center;}
+.center table { margin-left: auto; margin-right: auto; text-align: left;}
+.center th { text-align: center !important; }
+td, th { border: 1px solid #000000; font-size: 75%; vertical-align: baseline;}
+h1 {font-size: 150%;}
+h2 {font-size: 125%;}
+.p {text-align: left;}
+.e {background-color: #ccccff; font-weight: bold; color: #000000;}
+.h {background-color: #9999cc; font-weight: bold; color: #000000;}
+.v {background-color: #cccccc; color: #000000;}
+.vr {background-color: #cccccc; text-align: right; color: #000000;}
+img {float: right; border: 0px;}
+hr {width: 600px; background-color: #cccccc; border: 0px; height: 1px; color: #000000;}
+&lt;/style&gt;
+&lt;title&gt;phpinfo()&lt;/title&gt;&lt;meta name=&quot;ROBOTS&quot; content=&quot;NOINDEX,NOFOLLOW,NOARCHIVE&quot; /&gt;&lt;/head&gt;
+&lt;body&gt;&lt;div class=&quot;center&quot;&gt;
+&lt;h1&gt;PHP Credits&lt;/h1&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;PHP Group&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Thies C. Arntzen, Stig Bakken, Shane Caraveo, Andi Gutmans, Rasmus Lerdorf, Sam Ruby, Sascha Schumann, Zeev Suraski, Jim Winstead, Andrei Zmievski &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;Language Design &amp;amp; Concept&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Andi Gutmans, Rasmus Lerdorf, Zeev Suraski, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th colspan=&quot;2&quot;&gt;PHP Authors&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;Contribution&lt;/th&gt;&lt;th&gt;Authors&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Zend Scripting Language Engine &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andi Gutmans, Zeev Suraski, Stanislav Malyshev, Marcus Boerger, Dmitry Stogov &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Extension Module API &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andi Gutmans, Zeev Suraski, Andrei Zmievski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;UNIX Build and Modularization &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stig Bakken, Sascha Schumann, Jani Taskinen &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Windows Port &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Shane Caraveo, Zeev Suraski, Wez Furlong, Pierre-Alain Joye &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Server API (SAPI) Abstraction Layer &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andi Gutmans, Shane Caraveo, Zeev Suraski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Streams Abstraction Layer &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong, Sara Golemon &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PHP Data Objects Layer &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong, Marcus Boerger, Sterling Hughes, George Schlossnagle, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th colspan=&quot;2&quot;&gt;SAPI Modules&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;Contribution&lt;/th&gt;&lt;th&gt;Authors&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;AOLserver &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Apache 1.3 (apache_hooks) &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Zeev Suraski, Stig Bakken, David Sklar, George Schlossnagle, Lukas Schroeder &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Apache 1.3 &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Zeev Suraski, Stig Bakken, David Sklar &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Apache 2.0 Filter &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann, Aaron Bannert &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Apache 2.0 Handler &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Ian Holsman, Justin Erenkrantz (based on Apache 2.0 Filter code) &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Caudium / Roxen &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;David Hedbor &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;CGI / FastCGI &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Stig Bakken, Shane Caraveo, Dmitry Stogov &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;CLI &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Edin Kadribasic, Marcus Boerger, Johannes Schlueter &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Continuity &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Alex Leigh (based on nsapi code) &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Embed &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Edin Kadribasic &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;FastCGI Process Manager &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andrei Nigmatulin, dreamcat4, Antony Dovgal, Jerome Loyet &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;ISAPI &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andi Gutmans, Zeev Suraski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;litespeed &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;George Wang &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;NSAPI &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Jayakumar Muthukumarasamy, Uwe Schindler &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;phttpd &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Thies C. Arntzen &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;pi3web &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Holger Zimmermann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Sendmail Milter &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Harald Radi &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;thttpd &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;tux &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;WebJames &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Alex Waugh &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th colspan=&quot;2&quot;&gt;Module Authors&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;Module&lt;/th&gt;&lt;th&gt;Authors&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;BC Math &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andi Gutmans &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Bzip2 &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sterling Hughes &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Calendar &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Shane Caraveo, Colin Viebrock, Hartmut Holzgraefe, Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;COM and .Net &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;ctype &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Hartmut Holzgraefe &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;cURL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sterling Hughes &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Date/Time Support &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Derick Rethans &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;DBA &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;DB-LIB (MS SQL, Sybase) &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong, Frank M. Kromann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;DOM &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Christian Stocker, Rob Richards, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;enchant &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Pierre-Alain Joye, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;ereg &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Jim Winstead, Jaakko Hyvätti &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;EXIF &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;fileinfo &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Ilia Alshanetsky, Pierre Alain Joye, Scott MacVicar, Derick Rethans &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Firebird/InterBase driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Ard Biesheuvel &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;FTP &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stefan Esser, Andrew Skalski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;GD imaging &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Stig Bakken, Jim Winstead, Jouni Ahto, Ilia Alshanetsky, Pierre-Alain Joye, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;GetText &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Alex Plotnick &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;GNU GMP support &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stanislav Malyshev &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Iconv &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rui Hirokawa, Stig Bakken, Moriyoshi Koizumi  &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;IMAP &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rex Logan, Mark Musone, Brian Wang, Kaj-Michael Lang, Antoni Pamies Olive, Rasmus Lerdorf, Andrew Skalski, Chuck Hagenbuch, Daniel R Kalowsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Input Filter &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Derick Rethans, Pierre-Alain Joye, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;InterBase &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Jouni Ahto, Andrew Avdeev, Ard Biesheuvel &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Internationalization &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Ed Batutis, Vladimir Iordanov, Dmitry Lakhtyuk, Stanislav Malyshev, Vadim Savchuk, Kirti Velankar &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;JSON &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Omar Kilani, Scott MacVicar &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;LDAP &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Amitay Isaacs, Eric Warnke, Rasmus Lerdorf, Gerrit Thomson, Stig Venaas &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;LIBXML &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Christian Stocker, Rob Richards, Marcus Boerger, Wez Furlong, Shane Caraveo &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;mcrypt &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann, Derick Rethans &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;MS SQL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Frank M. Kromann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Multibyte String Functions &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Tsukada Takuya, Rui Hirokawa &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;MySQL driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;George Schlossnagle, Wez Furlong, Ilia Alshanetsky, Johannes Schlueter &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;MySQLi &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Zak Greant, Georg Richter, Andrey Hristov, Ulf Wendel &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;MySQLnd &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Georg Richter, Andrey Hristov, Ulf Wendel &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;MySQL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Zeev Suraski, Zak Greant, Georg Richter &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;OCI8 &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stig Bakken, Thies C. Arntzen, Andy Sautins, David Benson, Maxim Maletsky, Harald Radi, Antony Dovgal, Andi Gutmans, Wez Furlong, Christopher Jones, Oracle Corporation &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;ODBC driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;ODBC &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stig Bakken, Andreas Karajannis, Frank M. Kromann, Daniel R. Kalowsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;OpenSSL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stig Venaas, Wez Furlong, Sascha Kettler &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Oracle (OCI) driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;pcntl &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Jason Greene, Arnaud Le Blanc &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Perl Compatible Regexps &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andrei Zmievski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PHP Archive &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Gregory Beaver, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PHP Data Objects &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong, Marcus Boerger, Sterling Hughes, George Schlossnagle, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PHP hash &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sara Golemon, Rasmus Lerdorf, Stefan Esser, Michael Wallner, Scott MacVicar &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Posix &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Kristian Koehntopp &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PostgreSQL driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Edin Kadribasic, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PostgreSQL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Jouni Ahto, Zeev Suraski, Yasuo Ohgaki, Chris Kings-Lynne &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Pspell &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Vlad Krupin &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Readline &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Thies C. Arntzen &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Recode &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Kristian Koehntopp &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Reflection &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Marcus Boerger, Timm Friebe, George Schlossnagle, Andrei Zmievski, Johannes Schlueter &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Sessions &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann, Andrei Zmievski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Shared Memory Operations &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Slava Poliakov, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SimpleXML &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sterling Hughes, Marcus Boerger, Rob Richards &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SNMP &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Harrie Hazewinkel, Mike Jackson, Steven Lawrance, Johann Hanne &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SOAP &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Brad Lafountain, Shane Caraveo, Dmitry Stogov &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Sockets &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Chris Vandomelen, Sterling Hughes, Daniel Beulshausen, Jason Greene &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SPL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Marcus Boerger, Etienne Kneuss &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SQLite3 &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Scott MacVicar, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SQLite 3.x driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SQLite &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong, Tal Peer, Marcus Boerger, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Sybase-CT &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Zeev Suraski, Tom May, Timm Friebe &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;System V Message based IPC &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;System V Semaphores &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Tom May &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;System V Shared Memory &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Christian Cartus &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;tidy &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;John Coggeshall, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;tokenizer &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andrei Zmievski, Johannes Schlueter &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;WDDX &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andrei Zmievski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;XMLReader &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rob Richards &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;xmlrpc &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Dan Libby &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;XML &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stig Bakken, Thies C. Arntzen, Sterling Hughes &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;XMLWriter &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rob Richards, Pierre-Alain Joye &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;XSL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Christian Stocker, Rob Richards &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Zip &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Pierre-Alain Joye &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Zlib &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Stefan Roehrich, Zeev Suraski, Jade Nicoletti &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th colspan=&quot;2&quot;&gt;PHP Documentation&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Authors &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Mehdi Achour, Friedhelm Betz, Antony Dovgal, Nuno Lopes, Hannes Magnusson, Georg Richter, Damien Seguy, Jakub Vrana &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Editor &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Philip Olson &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;User Note Maintainers &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Daniel P. Brown, Thiago Henrique Pojda &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Other Contributors &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Previously active authors, editors and other contributors are listed in the manual. &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;PHP Quality Assurance Team&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Ilia Alshanetsky, Joerg Behrens, Antony Dovgal, Stefan Esser, Moriyoshi Koizumi, Magnus Maatta, Sebastian Nohn, Derick Rethans, Melvyn Sopacua, Jani Taskinen, Pierre-Alain Joye, Dmitry Stogov, Felipe Pena &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th colspan=&quot;2&quot;&gt;Websites and Infrastructure team&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PHP Websites Team &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Hannes Magnusson, Philip Olson, Lukas Kahwe Smith, Pierre-Alain Joye, Kalle Sommer Nielsen &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Event Maintainers &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Damien Seguy, Daniel P. Brown &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Network Infrastructure &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Daniel P. Brown &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Windows Infrastructure &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Alex Schoenmaker &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[183]" method="GET" name="PHP Egg" plugin="php_eggs" severity="Information" url="http://oa.ee.tsinghua.edu.cn/" var="None">
+        <description>The PHP framework running on the remote server has a &quot;PHP Logo 2&quot; easter egg, access to the PHP egg is possible through the URL: &quot;http://oa.ee.tsinghua.edu.cn/?=PHPE9568F36-D428-11d2-A769-00AA001ACF42&quot;.</description>
+        <http-transactions>
+            <http-transaction id="183">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/?=PHPE9568F36-D428-11d2-A769-00AA001ACF42 HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="5840" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=87" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:04:00 GMT" field="date"/>
+                        <header content="image/gif" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">R0lGODlheABDAOf/ABIZISAeIhwhLA8jRwYlVSUoLyIpNSkoKwkvbR4tRBUwVDMuNysxOx87Yg89
+gDo3RTI5SgBCkDg6PDY7RyBCcTxBQz9BVD9ETxxPkQ9SoktIYkROVkpNWDJSeilVhkxObEZTZQVe
+vgBfxVZQZRxcn1BUYFNTc1FXWRZht1ZYVQBm0ghlzBhksVVafyNlqSpkn1hcZwBr2EVfhABs0lRd
+cF5adRJpyWBcaVlgYl5dh15efh5q0gdw3iFsxhBy2Rtxxhhx0Ttsn2BkigB45SxwtDFwq0dslGNo
+c1pqfRtz6GRmkypzwFZuiQl772psaWlpiiF25Ax94zB10BB+3iV44BR96yN71TJ5vit7zih73Glu
+oDt6tk53nix66QOG+nBwl0l7r3F2cjOAzSKB9guI9SKC8HF1lW90pm93jTCC3SaE6zWC12F8knR6
+fHV5gzaC5SmH6ESC3y6H9kGGyiqJ8UuDzXx5oWV9v1aA0nl6qWmAnXl6tHJ8tV6AyVGGuS6K/EyH
+wyKO/D6J5T+K2SGQ9zqL3ziN9jaP6jmP8WaHwYGCsHqIkC6U/C2V9naFv0GS50mS2IGFuYeHnEWU
+4iyZ/16P2ISIr1iSz4mLiF2SxV+TvImLlmiSsnqPrIeLvzmc/kOa9Uaa74aNtHWRyXiSvk+a6YyN
+vIGQwo6OsImTnFib3lKd5l2d2kKi/WSd0k2h9zeo/1Gi8ZSUw5GVyn+czE2m/46bsY2ZyHugwUmr
+/12n8GCn6pieoGWn5Hekzpueq26n25yby1ms/ICk25ejrlGy/56iymav+V2y+2yv7Wex9KaopWG2
+/1e5/5Wu2H216265/HW3/qus0aavxWe+/66wvYy33YC4+Hi7+bO0uHPB/aq3wa6112vF/4e/9pfA
+27u31YDF/XnK/5PG77y/25TI/MDBxYbN/qvH7LfH2qPP+47V/57T/cPN2abT9c3M5Jna/77S7LrU
+57HV+KLg/7zd+tbb3dbb6a7l/sbh99Hi+Lrp++Pm7+Hx/P3//P///yH5BAEKAP8ALAAAAAB4AEMA
+AAj+AP8JHEiwoMGDCBMqXMiwocOHECNKnEixosWLFoNpDIaxo8ePwaRJ4yaNHDhw5EySFCnNmEtj
+t2TJMmXKk01PpmbN+sgTZEly7+7de0eUaMqj4FaKfBlzps1IkfZI3cMnzx5Fnnb23MrQGLig/PgJ
+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
+FeEKS4ACNvADQpQG5LILwMAE7J7vAhEQADs=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[92, 94, 110, 183]" method="GET" name="Fingerprinted PHP version" plugin="php_eggs" severity="Information" url="None" var="None">
+        <description>A PHP easter egg was found that matches several different versions of PHP. The PHP framework version running on the remote server was identified as one of the following:
+- 5.3.17
+- 5.3.16
+- 5.3.15
+- 5.3.13
+- 5.3.12
+- 5.3.11
+- 5.3.10
+- 5.3.19
+- 5.3.18
+- 5.3.21
+- 5.3.21-pl1-gentoo
+- 5.3.14
+- 5.3.26
+- 5.3.27
+- 5.3.24
+- 5.3.25
+- 5.3.22
+- 5.3.23
+- 5.3.20
+- 5.3.9</description>
+        <http-transactions>
+            <http-transaction id="92">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42 HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2524" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=97" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:57 GMT" field="date"/>
+                        <header content="image/gif" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">R0lGODlheABDAOZqAH+CuDk3RyglKszN4qGky9PV57K01ENCWIOGuYKDs1JScpCSwsLE3qqs0ExL
+Y1tcg93e7Ds4PG5xpWptnWFjjXV5sXt+teXm8JmcxoyNwbm62Wtrkk5Oa3F0qXp6o4iLvXJ0o3Rz
+mI6QwVpbfuLj73t9raSl0G1wonJ2rJWWyLu92XR4roWIu5KVw9jZ6pKSxGRmkmtun6WozpSWxS4r
+L1NRaLO012xqjFxbdoqNv2ZolmhqmpyfyDEuOa6w05yczVVWeJ6hypaZxYGCr2dplz89ULy+2l5g
+iZiZyIyOv4mKuldYfLa319XX6CIeIGxvns7Q5L/A3Hd7tHZ4p19efZmZzG5vmHN3riIeH////5CO
+j1lWV8fGx+7u9dXU1fb2+oKAgayqq3Ryc/Hw8Z6cnePi40tISbm4uWdkZYmJtgD/AEdGX9/g7Zuc
+zGlrnG9zp4yMuri52bi615qbzKeqz9vc65qcyWZkhGhniaeo0m5woIuLucbH4MfJ4WlsnJeYyyH5
+BAEAAGoALAAAAAB4AEMAAAf/gGqCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXlm0/bXOYnp+gP3l5Nj4a
+cUwaGkwGPj4NMgRBPBhCLQtJIjkfGTkiLymgwqENGgx9TQVQUAN9fAxRUSpyrK90sbNCMy26HwgA
+FhYVVyglFgkZwcPrjCZxfC5sbBAQdS7JA9QysyIf/iwAEQgEQLDgN4LhpKxA8UbCCT87nkwZkoSd
+RTVBbAxgQ+KCRxIk8jUQskCKyZMoU6pceXJcBwkTduiAQeEIBStDRFzEFIQJFI4eL7gwQqcFy6NI
+k6K88iYGjCNHHoxYcsSDzp2Qfmh0AYEjBCMEWCgdSzbplRM6HiwBokDBiCkz/7AuMqGhQBMXdQoY
+SFK2r1+kHWAsUcCBgwM8CeQayhNlAJQCA3zk+LtyAYbLmDF8oJz0DQUFDtasUeBBsZo8Rvj0GcBk
+BueVH7JwmU2bS5fXSt0sWXPggIMQO91FYcCgAQLcKzFwwcK8uZnbyJN22F2kyJrSw374kGNEBQ8L
+0VeqINO8uZgC4ZVeeXAgQAAOcECZMMBEDgEA6VcWEFOeORkV+Sn1hgLu9XAHJnPQ4YMBMhwXoEpd
+mNEfFlwQ8KBSMazRQw8H7FHJDzI00EBJF6YEQBYTYpHFZiUm9UAAGwInSRsE7ONgiycpN6EZX+Co
+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
+EHAVdLv73fCOd7wDAQA7AA==
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="94">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/?=PHPE9568F35-D428-11d2-A769-00AA001ACF42 HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2146" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:57 GMT" field="date"/>
+                        <header content="image/gif" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">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
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="110">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000 HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=77" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:57 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+body {background-color: #ffffff; color: #000000;}
+body, td, th, h1, h2 {font-family: sans-serif;}
+pre {margin: 0px; font-family: monospace;}
+a:link {color: #000099; text-decoration: none; background-color: #ffffff;}
+a:hover {text-decoration: underline;}
+table {border-collapse: collapse;}
+.center {text-align: center;}
+.center table { margin-left: auto; margin-right: auto; text-align: left;}
+.center th { text-align: center !important; }
+td, th { border: 1px solid #000000; font-size: 75%; vertical-align: baseline;}
+h1 {font-size: 150%;}
+h2 {font-size: 125%;}
+.p {text-align: left;}
+.e {background-color: #ccccff; font-weight: bold; color: #000000;}
+.h {background-color: #9999cc; font-weight: bold; color: #000000;}
+.v {background-color: #cccccc; color: #000000;}
+.vr {background-color: #cccccc; text-align: right; color: #000000;}
+img {float: right; border: 0px;}
+hr {width: 600px; background-color: #cccccc; border: 0px; height: 1px; color: #000000;}
+&lt;/style&gt;
+&lt;title&gt;phpinfo()&lt;/title&gt;&lt;meta name=&quot;ROBOTS&quot; content=&quot;NOINDEX,NOFOLLOW,NOARCHIVE&quot; /&gt;&lt;/head&gt;
+&lt;body&gt;&lt;div class=&quot;center&quot;&gt;
+&lt;h1&gt;PHP Credits&lt;/h1&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;PHP Group&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Thies C. Arntzen, Stig Bakken, Shane Caraveo, Andi Gutmans, Rasmus Lerdorf, Sam Ruby, Sascha Schumann, Zeev Suraski, Jim Winstead, Andrei Zmievski &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;Language Design &amp;amp; Concept&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Andi Gutmans, Rasmus Lerdorf, Zeev Suraski, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th colspan=&quot;2&quot;&gt;PHP Authors&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;Contribution&lt;/th&gt;&lt;th&gt;Authors&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Zend Scripting Language Engine &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andi Gutmans, Zeev Suraski, Stanislav Malyshev, Marcus Boerger, Dmitry Stogov &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Extension Module API &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andi Gutmans, Zeev Suraski, Andrei Zmievski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;UNIX Build and Modularization &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stig Bakken, Sascha Schumann, Jani Taskinen &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Windows Port &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Shane Caraveo, Zeev Suraski, Wez Furlong, Pierre-Alain Joye &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Server API (SAPI) Abstraction Layer &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andi Gutmans, Shane Caraveo, Zeev Suraski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Streams Abstraction Layer &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong, Sara Golemon &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PHP Data Objects Layer &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong, Marcus Boerger, Sterling Hughes, George Schlossnagle, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th colspan=&quot;2&quot;&gt;SAPI Modules&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;Contribution&lt;/th&gt;&lt;th&gt;Authors&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;AOLserver &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Apache 1.3 (apache_hooks) &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Zeev Suraski, Stig Bakken, David Sklar, George Schlossnagle, Lukas Schroeder &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Apache 1.3 &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Zeev Suraski, Stig Bakken, David Sklar &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Apache 2.0 Filter &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann, Aaron Bannert &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Apache 2.0 Handler &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Ian Holsman, Justin Erenkrantz (based on Apache 2.0 Filter code) &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Caudium / Roxen &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;David Hedbor &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;CGI / FastCGI &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Stig Bakken, Shane Caraveo, Dmitry Stogov &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;CLI &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Edin Kadribasic, Marcus Boerger, Johannes Schlueter &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Continuity &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Alex Leigh (based on nsapi code) &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Embed &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Edin Kadribasic &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;FastCGI Process Manager &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andrei Nigmatulin, dreamcat4, Antony Dovgal, Jerome Loyet &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;ISAPI &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andi Gutmans, Zeev Suraski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;litespeed &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;George Wang &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;NSAPI &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Jayakumar Muthukumarasamy, Uwe Schindler &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;phttpd &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Thies C. Arntzen &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;pi3web &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Holger Zimmermann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Sendmail Milter &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Harald Radi &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;thttpd &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;tux &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;WebJames &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Alex Waugh &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th colspan=&quot;2&quot;&gt;Module Authors&lt;/th&gt;&lt;/tr&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;Module&lt;/th&gt;&lt;th&gt;Authors&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;BC Math &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andi Gutmans &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Bzip2 &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sterling Hughes &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Calendar &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Shane Caraveo, Colin Viebrock, Hartmut Holzgraefe, Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;COM and .Net &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;ctype &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Hartmut Holzgraefe &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;cURL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sterling Hughes &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Date/Time Support &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Derick Rethans &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;DBA &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;DB-LIB (MS SQL, Sybase) &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong, Frank M. Kromann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;DOM &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Christian Stocker, Rob Richards, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;enchant &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Pierre-Alain Joye, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;ereg &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Jim Winstead, Jaakko Hyvätti &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;EXIF &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;fileinfo &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Ilia Alshanetsky, Pierre Alain Joye, Scott MacVicar, Derick Rethans &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Firebird/InterBase driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Ard Biesheuvel &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;FTP &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stefan Esser, Andrew Skalski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;GD imaging &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Stig Bakken, Jim Winstead, Jouni Ahto, Ilia Alshanetsky, Pierre-Alain Joye, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;GetText &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Alex Plotnick &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;GNU GMP support &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stanislav Malyshev &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Iconv &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rui Hirokawa, Stig Bakken, Moriyoshi Koizumi  &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;IMAP &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rex Logan, Mark Musone, Brian Wang, Kaj-Michael Lang, Antoni Pamies Olive, Rasmus Lerdorf, Andrew Skalski, Chuck Hagenbuch, Daniel R Kalowsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Input Filter &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Derick Rethans, Pierre-Alain Joye, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;InterBase &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Jouni Ahto, Andrew Avdeev, Ard Biesheuvel &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Internationalization &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Ed Batutis, Vladimir Iordanov, Dmitry Lakhtyuk, Stanislav Malyshev, Vadim Savchuk, Kirti Velankar &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;JSON &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Omar Kilani, Scott MacVicar &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;LDAP &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Amitay Isaacs, Eric Warnke, Rasmus Lerdorf, Gerrit Thomson, Stig Venaas &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;LIBXML &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Christian Stocker, Rob Richards, Marcus Boerger, Wez Furlong, Shane Caraveo &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;mcrypt &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann, Derick Rethans &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;MS SQL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Frank M. Kromann &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Multibyte String Functions &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Tsukada Takuya, Rui Hirokawa &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;MySQL driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;George Schlossnagle, Wez Furlong, Ilia Alshanetsky, Johannes Schlueter &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;MySQLi &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Zak Greant, Georg Richter, Andrey Hristov, Ulf Wendel &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;MySQLnd &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Georg Richter, Andrey Hristov, Ulf Wendel &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;MySQL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Zeev Suraski, Zak Greant, Georg Richter &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;OCI8 &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stig Bakken, Thies C. Arntzen, Andy Sautins, David Benson, Maxim Maletsky, Harald Radi, Antony Dovgal, Andi Gutmans, Wez Furlong, Christopher Jones, Oracle Corporation &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;ODBC driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;ODBC &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stig Bakken, Andreas Karajannis, Frank M. Kromann, Daniel R. Kalowsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;OpenSSL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stig Venaas, Wez Furlong, Sascha Kettler &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Oracle (OCI) driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;pcntl &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Jason Greene, Arnaud Le Blanc &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Perl Compatible Regexps &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andrei Zmievski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PHP Archive &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Gregory Beaver, Marcus Boerger &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PHP Data Objects &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong, Marcus Boerger, Sterling Hughes, George Schlossnagle, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PHP hash &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sara Golemon, Rasmus Lerdorf, Stefan Esser, Michael Wallner, Scott MacVicar &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Posix &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Kristian Koehntopp &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PostgreSQL driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Edin Kadribasic, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PostgreSQL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Jouni Ahto, Zeev Suraski, Yasuo Ohgaki, Chris Kings-Lynne &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Pspell &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Vlad Krupin &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Readline &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Thies C. Arntzen &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Recode &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Kristian Koehntopp &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Reflection &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Marcus Boerger, Timm Friebe, George Schlossnagle, Andrei Zmievski, Johannes Schlueter &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Sessions &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sascha Schumann, Andrei Zmievski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Shared Memory Operations &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Slava Poliakov, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SimpleXML &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Sterling Hughes, Marcus Boerger, Rob Richards &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SNMP &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Harrie Hazewinkel, Mike Jackson, Steven Lawrance, Johann Hanne &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SOAP &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Brad Lafountain, Shane Caraveo, Dmitry Stogov &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Sockets &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Chris Vandomelen, Sterling Hughes, Daniel Beulshausen, Jason Greene &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SPL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Marcus Boerger, Etienne Kneuss &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SQLite3 &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Scott MacVicar, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SQLite 3.x driver for PDO &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;SQLite &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong, Tal Peer, Marcus Boerger, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Sybase-CT &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Zeev Suraski, Tom May, Timm Friebe &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;System V Message based IPC &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Wez Furlong &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;System V Semaphores &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Tom May &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;System V Shared Memory &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Christian Cartus &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;tidy &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;John Coggeshall, Ilia Alshanetsky &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;tokenizer &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andrei Zmievski, Johannes Schlueter &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;WDDX &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Andrei Zmievski &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;XMLReader &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rob Richards &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;xmlrpc &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Dan Libby &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;XML &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Stig Bakken, Thies C. Arntzen, Sterling Hughes &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;XMLWriter &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rob Richards, Pierre-Alain Joye &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;XSL &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Christian Stocker, Rob Richards &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Zip &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Pierre-Alain Joye &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Zlib &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Stefan Roehrich, Zeev Suraski, Jade Nicoletti &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th colspan=&quot;2&quot;&gt;PHP Documentation&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Authors &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Mehdi Achour, Friedhelm Betz, Antony Dovgal, Nuno Lopes, Hannes Magnusson, Georg Richter, Damien Seguy, Jakub Vrana &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Editor &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Philip Olson &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;User Note Maintainers &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Daniel P. Brown, Thiago Henrique Pojda &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Other Contributors &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Previously active authors, editors and other contributors are listed in the manual. &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th&gt;PHP Quality Assurance Team&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Ilia Alshanetsky, Joerg Behrens, Antony Dovgal, Stefan Esser, Moriyoshi Koizumi, Magnus Maatta, Sebastian Nohn, Derick Rethans, Melvyn Sopacua, Jani Taskinen, Pierre-Alain Joye, Dmitry Stogov, Felipe Pena &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;3&quot; width=&quot;600&quot;&gt;
+&lt;tr class=&quot;h&quot;&gt;&lt;th colspan=&quot;2&quot;&gt;Websites and Infrastructure team&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;PHP Websites Team &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Rasmus Lerdorf, Hannes Magnusson, Philip Olson, Lukas Kahwe Smith, Pierre-Alain Joye, Kalle Sommer Nielsen &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Event Maintainers &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Damien Seguy, Daniel P. Brown &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Network Infrastructure &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Daniel P. Brown &lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;e&quot;&gt;Windows Infrastructure &lt;/td&gt;&lt;td class=&quot;v&quot;&gt;Alex Schoenmaker &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br /&gt;
+&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="183">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/?=PHPE9568F36-D428-11d2-A769-00AA001ACF42 HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="5840" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=87" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:04:00 GMT" field="date"/>
+                        <header content="image/gif" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">R0lGODlheABDAOf/ABIZISAeIhwhLA8jRwYlVSUoLyIpNSkoKwkvbR4tRBUwVDMuNysxOx87Yg89
+gDo3RTI5SgBCkDg6PDY7RyBCcTxBQz9BVD9ETxxPkQ9SoktIYkROVkpNWDJSeilVhkxObEZTZQVe
+vgBfxVZQZRxcn1BUYFNTc1FXWRZht1ZYVQBm0ghlzBhksVVafyNlqSpkn1hcZwBr2EVfhABs0lRd
+cF5adRJpyWBcaVlgYl5dh15efh5q0gdw3iFsxhBy2Rtxxhhx0Ttsn2BkigB45SxwtDFwq0dslGNo
+c1pqfRtz6GRmkypzwFZuiQl772psaWlpiiF25Ax94zB10BB+3iV44BR96yN71TJ5vit7zih73Glu
+oDt6tk53nix66QOG+nBwl0l7r3F2cjOAzSKB9guI9SKC8HF1lW90pm93jTCC3SaE6zWC12F8knR6
+fHV5gzaC5SmH6ESC3y6H9kGGyiqJ8UuDzXx5oWV9v1aA0nl6qWmAnXl6tHJ8tV6AyVGGuS6K/EyH
+wyKO/D6J5T+K2SGQ9zqL3ziN9jaP6jmP8WaHwYGCsHqIkC6U/C2V9naFv0GS50mS2IGFuYeHnEWU
+4iyZ/16P2ISIr1iSz4mLiF2SxV+TvImLlmiSsnqPrIeLvzmc/kOa9Uaa74aNtHWRyXiSvk+a6YyN
+vIGQwo6OsImTnFib3lKd5l2d2kKi/WSd0k2h9zeo/1Gi8ZSUw5GVyn+czE2m/46bsY2ZyHugwUmr
+/12n8GCn6pieoGWn5Hekzpueq26n25yby1ms/ICk25ejrlGy/56iymav+V2y+2yv7Wex9KaopWG2
+/1e5/5Wu2H216265/HW3/qus0aavxWe+/66wvYy33YC4+Hi7+bO0uHPB/aq3wa6112vF/4e/9pfA
+27u31YDF/XnK/5PG77y/25TI/MDBxYbN/qvH7LfH2qPP+47V/57T/cPN2abT9c3M5Jna/77S7LrU
+57HV+KLg/7zd+tbb3dbb6a7l/sbh99Hi+Lrp++Pm7+Hx/P3//P///yH5BAEKAP8ALAAAAAB4AEMA
+AAj+AP8JHEiwoMGDCBMqXMiwocOHECNKnEixosWLFoNpDIaxo8ePwaRJ4yaNHDhw5EySFCnNmEtj
+t2TJMmXKk01PpmbN+sgTZEly7+7de0eUaMqj4FaKfBlzps1IkfZI3cMnzx5Fnnb23MrQGLig/PgJ
+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
+FeEKS4ACNvADQpQG5LILwMAE7J7vAhEQADs=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.64.8</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="90" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:51 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;
+&lt;meta http-equiv=&quot;Refresh&quot;
+content=&quot;0;url=http://www.ee.tsinghua.edu.cn&quot;&gt;
+&lt;/head&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 107, 122, 168, 181, 185, 188, 189, 190, 191, 192, 193, 196]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="90" field="content-length"/>
+                        <header content="PHP/5.3.10" field="x-powered-by"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:51 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;
+&lt;meta http-equiv=&quot;Refresh&quot;
+content=&quot;0;url=http://www.ee.tsinghua.edu.cn&quot;&gt;
+&lt;/head&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="107">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/xKbbp.html HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="208" field="content-length"/>
+                        <header content="timeout=5, max=97" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:57 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /xKbbp.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="122">
+                <http-request>
+                    <status>POST http://oa.ee.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3hLYmJwLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGgucGJiS3g=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="timeout=5, max=96" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:57 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="168">
+                <http-request>
+                    <status>PUT http://oa.ee.tsinghua.edu.cn/GsWbs HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">CIZBQo</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="timeout=5, max=87" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:03:57 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /GsWbs.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="181">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="209" field="content-length"/>
+                        <header content="timeout=5, max=81" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:03:59 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /favicon.ico was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="185">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="211" field="content-length"/>
+                        <header content="timeout=5, max=74" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:04:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="188">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="210" field="content-length"/>
+                        <header content="timeout=5, max=90" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:04:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /jmx-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="189">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="204" field="content-length"/>
+                        <header content="timeout=5, max=84" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:04:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="216" field="content-length"/>
+                        <header content="timeout=5, max=86" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:04:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/Invoker was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="191">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="224" field="content-length"/>
+                        <header content="timeout=5, max=86" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:04:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /web-console/ServerInfo.jsp was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="192">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="223" field="content-length"/>
+                        <header content="timeout=5, max=79" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:04:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/JMXInvokerServlet was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="193">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="212" field="content-length"/>
+                        <header content="timeout=5, max=73" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:04:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /admin-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="196">
+                <http-request>
+                    <status>GET http://oa.ee.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="oa.ee.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="211" field="content-length"/>
+                        <header content="timeout=5, max=92" field="keep-alive"/>
+                        <header content="Apache/2.2.22 (FreeBSD) PHP/5.3.10 with Suhosin-Patch mod_ssl/2.2.22 OpenSSL/0.9.8q DAV/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 13:04:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /server-status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to oa.ee.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

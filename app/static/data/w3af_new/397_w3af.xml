@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481260021" start-long="Fri Dec 09 00:07:01 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://gperf.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/397_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[123]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;TornadoServer/4.3&quot;.</description>
+        <http-transactions>
+            <http-transaction id="123">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:43 GMT" field="date"/>
+                        <header content="2146" field="content-length"/>
+                        <header content="&quot;0591f1024d5e41fd14d16ce62def182aab9817ff&quot;" field="etag"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;GPerf&lt;/title&gt;
+&lt;link href=&quot;http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/lib/bootstarp-dropdown/dropdown.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/styles/global.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/styles/search/index.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;common-header&gt;&lt;/common-header&gt;
+&lt;div v-cloak&gt;
+&lt;section :style=&quot;{height: screenHeight}&quot; class=&quot;search&quot;&gt;
+&lt;!--&lt;img src=&quot;../../static/images/zoomeye.svg&quot; alt=&quot;GPerf&quot; /&gt;--&gt;
+&lt;form :action=&quot;searchURL&quot; method=&quot;get&quot; class=&quot;searchform&quot;&gt;
+&lt;div class=&quot;search-input clearfix&quot;&gt;
+&lt;input name=&quot;search&quot; id=&quot;search-input&quot; class=&quot;sr-input&quot; type=&quot;text&quot; required=&quot;required&quot; @focus=&quot;hidePlaceholder()&quot; @blur=&quot;showPlaceholder()&quot; :placeholder=&quot;searchPlaceholder&quot; /&gt;
+&lt;div class=&quot;btn-group&quot; id=&quot;search-type&quot;&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
+&lt;span class=&quot;current&quot;&gt;${searchTypeText}&lt;/span&gt;
+&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot;&gt;
+&lt;li data-type=&quot;web&quot;&gt;&lt;a href=&quot;#&quot; @click=&quot;setSearchType('probe','请输入机构名称、自治域、城市、IP前缀等关键词搜索')&quot;&gt;探针&lt;/a&gt;&lt;/li&gt;
+&lt;li data-type=&quot;host&quot;&gt;&lt;a href=&quot;#&quot; @click=&quot;setSearchType('ip','请输入IP地址')&quot;&gt;IP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p class=&quot;btngroup&quot;&gt;
+&lt;input type=&quot;submit&quot; class=&quot;sr-btn&quot; value=&quot;搜索&quot; /&gt;
+&lt;a class=&quot;sr-btn&quot; href=&quot;#&quot;&gt;高级搜索&lt;/a&gt;
+&lt;/p&gt;
+&lt;/form&gt;
+&lt;/section&gt;
+&lt;section class=&quot;map&quot;&gt;
+&lt;div id=&quot;map-wrap&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;common-footer&gt;&lt;/common-footer&gt;
+&lt;/div&gt;
+&lt;script src=&quot;../../static/home/lib/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/bootstarp-dropdown/bootstrap-dropdown.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/echarts/echarts.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/echarts/echarts-map/world.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/moment.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/dist/common/api.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/dist/search/index.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[219]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://gperf.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://foobar.gperf.edu.cn/&quot; are equal to the ones of &quot;http://gperf.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="219">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="foobar.gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:48 GMT" field="date"/>
+                        <header content="2146" field="content-length"/>
+                        <header content="&quot;0591f1024d5e41fd14d16ce62def182aab9817ff&quot;" field="etag"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;GPerf&lt;/title&gt;
+&lt;link href=&quot;http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/lib/bootstarp-dropdown/dropdown.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/styles/global.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/styles/search/index.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;common-header&gt;&lt;/common-header&gt;
+&lt;div v-cloak&gt;
+&lt;section :style=&quot;{height: screenHeight}&quot; class=&quot;search&quot;&gt;
+&lt;!--&lt;img src=&quot;../../static/images/zoomeye.svg&quot; alt=&quot;GPerf&quot; /&gt;--&gt;
+&lt;form :action=&quot;searchURL&quot; method=&quot;get&quot; class=&quot;searchform&quot;&gt;
+&lt;div class=&quot;search-input clearfix&quot;&gt;
+&lt;input name=&quot;search&quot; id=&quot;search-input&quot; class=&quot;sr-input&quot; type=&quot;text&quot; required=&quot;required&quot; @focus=&quot;hidePlaceholder()&quot; @blur=&quot;showPlaceholder()&quot; :placeholder=&quot;searchPlaceholder&quot; /&gt;
+&lt;div class=&quot;btn-group&quot; id=&quot;search-type&quot;&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
+&lt;span class=&quot;current&quot;&gt;${searchTypeText}&lt;/span&gt;
+&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot;&gt;
+&lt;li data-type=&quot;web&quot;&gt;&lt;a href=&quot;#&quot; @click=&quot;setSearchType('probe','请输入机构名称、自治域、城市、IP前缀等关键词搜索')&quot;&gt;探针&lt;/a&gt;&lt;/li&gt;
+&lt;li data-type=&quot;host&quot;&gt;&lt;a href=&quot;#&quot; @click=&quot;setSearchType('ip','请输入IP地址')&quot;&gt;IP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p class=&quot;btngroup&quot;&gt;
+&lt;input type=&quot;submit&quot; class=&quot;sr-btn&quot; value=&quot;搜索&quot; /&gt;
+&lt;a class=&quot;sr-btn&quot; href=&quot;#&quot;&gt;高级搜索&lt;/a&gt;
+&lt;/p&gt;
+&lt;/form&gt;
+&lt;/section&gt;
+&lt;section class=&quot;map&quot;&gt;
+&lt;div id=&quot;map-wrap&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;common-footer&gt;&lt;/common-footer&gt;
+&lt;/div&gt;
+&lt;script src=&quot;../../static/home/lib/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/bootstarp-dropdown/bootstrap-dropdown.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/echarts/echarts.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/echarts/echarts-map/world.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/moment.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/dist/common/api.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/dist/search/index.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[36, 204]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://gperf.edu.cn/" var="None">
+        <description>The URL &quot;http://gperf.edu.cn/&quot; has the following enabled HTTP methods: GET</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="36">
+                <http-request>
+                    <status>OPTIONS http://gperf.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:46 GMT" field="date"/>
+                        <header content="321" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1443, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 230, in options
+    raise HTTPError(405)
+HTTPError: HTTP 405: Method Not Allowed
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="204">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:47 GMT" field="date"/>
+                        <header content="2146" field="content-length"/>
+                        <header content="&quot;0591f1024d5e41fd14d16ce62def182aab9817ff&quot;" field="etag"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;GPerf&lt;/title&gt;
+&lt;link href=&quot;http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/lib/bootstarp-dropdown/dropdown.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/styles/global.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/styles/search/index.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;common-header&gt;&lt;/common-header&gt;
+&lt;div v-cloak&gt;
+&lt;section :style=&quot;{height: screenHeight}&quot; class=&quot;search&quot;&gt;
+&lt;!--&lt;img src=&quot;../../static/images/zoomeye.svg&quot; alt=&quot;GPerf&quot; /&gt;--&gt;
+&lt;form :action=&quot;searchURL&quot; method=&quot;get&quot; class=&quot;searchform&quot;&gt;
+&lt;div class=&quot;search-input clearfix&quot;&gt;
+&lt;input name=&quot;search&quot; id=&quot;search-input&quot; class=&quot;sr-input&quot; type=&quot;text&quot; required=&quot;required&quot; @focus=&quot;hidePlaceholder()&quot; @blur=&quot;showPlaceholder()&quot; :placeholder=&quot;searchPlaceholder&quot; /&gt;
+&lt;div class=&quot;btn-group&quot; id=&quot;search-type&quot;&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
+&lt;span class=&quot;current&quot;&gt;${searchTypeText}&lt;/span&gt;
+&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot;&gt;
+&lt;li data-type=&quot;web&quot;&gt;&lt;a href=&quot;#&quot; @click=&quot;setSearchType('probe','请输入机构名称、自治域、城市、IP前缀等关键词搜索')&quot;&gt;探针&lt;/a&gt;&lt;/li&gt;
+&lt;li data-type=&quot;host&quot;&gt;&lt;a href=&quot;#&quot; @click=&quot;setSearchType('ip','请输入IP地址')&quot;&gt;IP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p class=&quot;btngroup&quot;&gt;
+&lt;input type=&quot;submit&quot; class=&quot;sr-btn&quot; value=&quot;搜索&quot; /&gt;
+&lt;a class=&quot;sr-btn&quot; href=&quot;#&quot;&gt;高级搜索&lt;/a&gt;
+&lt;/p&gt;
+&lt;/form&gt;
+&lt;/section&gt;
+&lt;section class=&quot;map&quot;&gt;
+&lt;div id=&quot;map-wrap&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;common-footer&gt;&lt;/common-footer&gt;
+&lt;/div&gt;
+&lt;script src=&quot;../../static/home/lib/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/bootstarp-dropdown/bootstrap-dropdown.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/echarts/echarts.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/echarts/echarts-map/world.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/moment.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/dist/common/api.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/dist/search/index.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[135]" method="GET" name="Path disclosure vulnerability" plugin="path_disclosure" severity="Low" url="http://gperf.edu.cn/favicon.ico" var="None">
+        <description>The URL: &quot;http://gperf.edu.cn/favicon.ico&quot; has a path disclosure vulnerability which discloses &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;.</description>
+        <http-transactions>
+            <http-transaction id="135">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:47 GMT" field="date"/>
+                        <header content="741" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1445, in _execute
+    result = yield result
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/gen.py&quot;, line 1008, in run
+    value = future.result()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/concurrent.py&quot;, line 232, in result
+    raise_exc_info(self._exc_info)
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/gen.py&quot;, line 282, in wrapper
+    yielded = next(result)
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2265, in get
+    self.root, absolute_path)
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2456, in validate_absolute_path
+    raise HTTPError(404)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.9.229</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:43 GMT" field="date"/>
+                        <header content="2146" field="content-length"/>
+                        <header content="&quot;0591f1024d5e41fd14d16ce62def182aab9817ff&quot;" field="etag"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;GPerf&lt;/title&gt;
+&lt;link href=&quot;http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/lib/bootstarp-dropdown/dropdown.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/styles/global.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/styles/search/index.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;common-header&gt;&lt;/common-header&gt;
+&lt;div v-cloak&gt;
+&lt;section :style=&quot;{height: screenHeight}&quot; class=&quot;search&quot;&gt;
+&lt;!--&lt;img src=&quot;../../static/images/zoomeye.svg&quot; alt=&quot;GPerf&quot; /&gt;--&gt;
+&lt;form :action=&quot;searchURL&quot; method=&quot;get&quot; class=&quot;searchform&quot;&gt;
+&lt;div class=&quot;search-input clearfix&quot;&gt;
+&lt;input name=&quot;search&quot; id=&quot;search-input&quot; class=&quot;sr-input&quot; type=&quot;text&quot; required=&quot;required&quot; @focus=&quot;hidePlaceholder()&quot; @blur=&quot;showPlaceholder()&quot; :placeholder=&quot;searchPlaceholder&quot; /&gt;
+&lt;div class=&quot;btn-group&quot; id=&quot;search-type&quot;&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
+&lt;span class=&quot;current&quot;&gt;${searchTypeText}&lt;/span&gt;
+&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot;&gt;
+&lt;li data-type=&quot;web&quot;&gt;&lt;a href=&quot;#&quot; @click=&quot;setSearchType('probe','请输入机构名称、自治域、城市、IP前缀等关键词搜索')&quot;&gt;探针&lt;/a&gt;&lt;/li&gt;
+&lt;li data-type=&quot;host&quot;&gt;&lt;a href=&quot;#&quot; @click=&quot;setSearchType('ip','请输入IP地址')&quot;&gt;IP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p class=&quot;btngroup&quot;&gt;
+&lt;input type=&quot;submit&quot; class=&quot;sr-btn&quot; value=&quot;搜索&quot; /&gt;
+&lt;a class=&quot;sr-btn&quot; href=&quot;#&quot;&gt;高级搜索&lt;/a&gt;
+&lt;/p&gt;
+&lt;/form&gt;
+&lt;/section&gt;
+&lt;section class=&quot;map&quot;&gt;
+&lt;div id=&quot;map-wrap&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;common-footer&gt;&lt;/common-footer&gt;
+&lt;/div&gt;
+&lt;script src=&quot;../../static/home/lib/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/bootstarp-dropdown/bootstrap-dropdown.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/echarts/echarts.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/echarts/echarts-map/world.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/moment.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/dist/common/api.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/dist/search/index.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 134, 135, 154, 180, 184, 216, 228, 229, 230, 232, 234, 235]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:43 GMT" field="date"/>
+                        <header content="2146" field="content-length"/>
+                        <header content="&quot;0591f1024d5e41fd14d16ce62def182aab9817ff&quot;" field="etag"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;GPerf&lt;/title&gt;
+&lt;link href=&quot;http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/lib/bootstarp-dropdown/dropdown.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/styles/global.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../static/home/styles/search/index.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;common-header&gt;&lt;/common-header&gt;
+&lt;div v-cloak&gt;
+&lt;section :style=&quot;{height: screenHeight}&quot; class=&quot;search&quot;&gt;
+&lt;!--&lt;img src=&quot;../../static/images/zoomeye.svg&quot; alt=&quot;GPerf&quot; /&gt;--&gt;
+&lt;form :action=&quot;searchURL&quot; method=&quot;get&quot; class=&quot;searchform&quot;&gt;
+&lt;div class=&quot;search-input clearfix&quot;&gt;
+&lt;input name=&quot;search&quot; id=&quot;search-input&quot; class=&quot;sr-input&quot; type=&quot;text&quot; required=&quot;required&quot; @focus=&quot;hidePlaceholder()&quot; @blur=&quot;showPlaceholder()&quot; :placeholder=&quot;searchPlaceholder&quot; /&gt;
+&lt;div class=&quot;btn-group&quot; id=&quot;search-type&quot;&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
+&lt;span class=&quot;current&quot;&gt;${searchTypeText}&lt;/span&gt;
+&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;ul class=&quot;dropdown-menu dropdown-menu-right&quot;&gt;
+&lt;li data-type=&quot;web&quot;&gt;&lt;a href=&quot;#&quot; @click=&quot;setSearchType('probe','请输入机构名称、自治域、城市、IP前缀等关键词搜索')&quot;&gt;探针&lt;/a&gt;&lt;/li&gt;
+&lt;li data-type=&quot;host&quot;&gt;&lt;a href=&quot;#&quot; @click=&quot;setSearchType('ip','请输入IP地址')&quot;&gt;IP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p class=&quot;btngroup&quot;&gt;
+&lt;input type=&quot;submit&quot; class=&quot;sr-btn&quot; value=&quot;搜索&quot; /&gt;
+&lt;a class=&quot;sr-btn&quot; href=&quot;#&quot;&gt;高级搜索&lt;/a&gt;
+&lt;/p&gt;
+&lt;/form&gt;
+&lt;/section&gt;
+&lt;section class=&quot;map&quot;&gt;
+&lt;div id=&quot;map-wrap&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;common-footer&gt;&lt;/common-footer&gt;
+&lt;/div&gt;
+&lt;script src=&quot;../../static/home/lib/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/bootstarp-dropdown/bootstrap-dropdown.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/echarts/echarts.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/echarts/echarts-map/world.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/lib/moment.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/dist/common/api.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../../static/home/dist/search/index.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="134">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:47 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1422, in _execute
+    result = self.prepare()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2149, in prepare
+    raise HTTPError(self._status_code)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="135">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:47 GMT" field="date"/>
+                        <header content="741" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1445, in _execute
+    result = yield result
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/gen.py&quot;, line 1008, in run
+    value = future.result()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/concurrent.py&quot;, line 232, in result
+    raise_exc_info(self._exc_info)
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/gen.py&quot;, line 282, in wrapper
+    yielded = next(result)
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2265, in get
+    self.root, absolute_path)
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2456, in validate_absolute_path
+    raise HTTPError(404)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="154">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/jfzBk.html HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:47 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1422, in _execute
+    result = self.prepare()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2149, in prepare
+    raise HTTPError(self._status_code)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="180">
+                <http-request>
+                    <status>POST http://gperf.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2pmekJrLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGgua0J6Zmo=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:47 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1422, in _execute
+    result = self.prepare()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2149, in prepare
+    raise HTTPError(self._status_code)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="184">
+                <http-request>
+                    <status>PUT http://gperf.edu.cn/xLaou HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">GWvt12</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:47 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1422, in _execute
+    result = self.prepare()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2149, in prepare
+    raise HTTPError(self._status_code)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="216">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:48 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1422, in _execute
+    result = self.prepare()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2149, in prepare
+    raise HTTPError(self._status_code)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="228">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:48 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1422, in _execute
+    result = self.prepare()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2149, in prepare
+    raise HTTPError(self._status_code)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="229">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:48 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1422, in _execute
+    result = self.prepare()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2149, in prepare
+    raise HTTPError(self._status_code)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="230">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:48 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1422, in _execute
+    result = self.prepare()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2149, in prepare
+    raise HTTPError(self._status_code)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="232">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:48 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1422, in _execute
+    result = self.prepare()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2149, in prepare
+    raise HTTPError(self._status_code)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="234">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:48 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1422, in _execute
+    result = self.prepare()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2149, in prepare
+    raise HTTPError(self._status_code)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="235">
+                <http-request>
+                    <status>GET http://gperf.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="gperf.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 09 Dec 2016 05:07:48 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/plain" field="content-type"/>
+                        <header content="TornadoServer/4.3" field="server"/>
+                    </headers>
+                    <body content-encoding="text">Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 1422, in _execute
+    result = self.prepare()
+  File &quot;/usr/lib64/python2.6/site-packages/tornado/web.py&quot;, line 2149, in prepare
+    raise HTTPError(self._status_code)
+HTTPError: HTTP 404: Not Found
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to gperf.edu.cn:80&quot;</error>
+</w3af-run>

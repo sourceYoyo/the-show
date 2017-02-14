@@ -1,0 +1,1633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480520673" start-long="Wed Nov 30 10:44:33 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://storage.cs.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.132"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/941_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[40]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4&quot;.</description>
+        <http-transactions>
+            <http-transaction id="40">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3439" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Mon, 11 Jul 2016 13:08:52 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;d6f-5375bda9c84ee&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 15:44:38 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Jiwu Shu's Storage Research Group, Tsinghua University&lt;/title&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bootstrap.min.css&quot;&gt;
+        &lt;script src=&quot;/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/master.css&quot; media=&quot;screen&quot; title=&quot;no title&quot; charset=&quot;utf-8&quot;&gt;
+        &lt;link rel=&quot;icon&quot; href=&quot;/images/thu-logo.png&quot;&gt;
+	&lt;!--
+		Author: Zhu Li
+		E-mail: zhuli19901106@gmail.com
+		Timestamp: 1468055499
+	--&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;div class=&quot;header-wrapper&quot;&gt;
+                &lt;iframe src=&quot;/header.html&quot; class=&quot;iframe-header&quot;&gt;&lt;/iframe&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;h3&gt;About Prof. Jiwu Shu:&lt;/h3&gt;
+
+            &lt;p&gt;
+                &lt;b&gt;Welcome to Prof. Jiwu Shu's Storage Research Group!&lt;/b&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                Jiwu Shu is a professor, doctoral advisor at &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.cs.tsinghua.edu.cn/&quot;&gt;Department of Computer Science and Technology&lt;/a&gt; of &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.tsinghua.edu.cn/&quot;&gt;Tsinghua University&lt;/a&gt;, a Changjiang scholar (recognized by the Ministry of Education) and a recipient of National Distinguished Young Scholar Funds.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                He is deputy director of the &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.ccf.org.cn/sites/ccf/xxcczw.jsp&quot;&gt;Information Storage Technology Technical Committee&lt;/a&gt; of the &lt;a class=&quot;a-no-decoaration&quot; href=&quot;http://www.ccf.org.cn/&quot;&gt;China Computer Federation&lt;/a&gt;, deputy director of National Engineering Laboratory for Disaster Backup and Recovery, member of the academic committee at School of Information Science and Technology of Tsinghua University. He has also been technical program commmittee member or chair of various international and domestic conferences.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                He is an award recipient of 2nd class National Science and Technology Progress Prize and 2nd class State Technological Invention Prize.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                His major &lt;b&gt;research interests&lt;/b&gt; are in &lt;span class=&quot;hover-text&quot;&gt;network/cloud/big data storage systems&lt;/span&gt;, &lt;span class=&quot;hover-text&quot;&gt;non-volatile memory systems and technologies&lt;/span&gt;, &lt;span class=&quot;hover-text&quot;&gt;storage reliability and security, parallel/distributed processing&lt;/span&gt;, etc..
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                The &lt;b&gt;research results&lt;/b&gt; of the Storage Research Group have produced around a hundred publications on international conferences like FAST, USENIX ATC, EuroSys, MICRO, ISCA, DSN, IPDPS, MSST, DAC, etc. as well as authoritative journals including IEEE TC, IEEE TPDS, ACM TOS, etc..
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;a href=&quot;#&quot; class=&quot;scrollup&quot;&gt;
+            &lt;img src=&quot;/images/back-to-top.png&quot; alt=&quot;Top&quot; style=&quot;width:42px;height:42px;border:0;&quot;/&gt;
+        &lt;/a&gt;
+        &lt;script src=&quot;/js/scrollup.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+        &lt;div class=&quot;footer-wrapper&quot;&gt;
+            &lt;footer&gt;
+                Copyright ©2016 Tsinghua University, All rights reserved.&lt;br /&gt;
+                Jiwu Shu's Storage Research Group, Department of Computer Science and Technology.&lt;br /&gt;
+            &lt;/footer&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[134]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://storage.cs.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://cs.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://storage.cs.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="134">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3439" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=5, max=91" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Mon, 11 Jul 2016 13:08:52 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;d6f-5375bda9c84ee&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 15:44:43 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Jiwu Shu's Storage Research Group, Tsinghua University&lt;/title&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bootstrap.min.css&quot;&gt;
+        &lt;script src=&quot;/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/master.css&quot; media=&quot;screen&quot; title=&quot;no title&quot; charset=&quot;utf-8&quot;&gt;
+        &lt;link rel=&quot;icon&quot; href=&quot;/images/thu-logo.png&quot;&gt;
+	&lt;!--
+		Author: Zhu Li
+		E-mail: zhuli19901106@gmail.com
+		Timestamp: 1468055499
+	--&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;div class=&quot;header-wrapper&quot;&gt;
+                &lt;iframe src=&quot;/header.html&quot; class=&quot;iframe-header&quot;&gt;&lt;/iframe&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;h3&gt;About Prof. Jiwu Shu:&lt;/h3&gt;
+
+            &lt;p&gt;
+                &lt;b&gt;Welcome to Prof. Jiwu Shu's Storage Research Group!&lt;/b&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                Jiwu Shu is a professor, doctoral advisor at &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.cs.tsinghua.edu.cn/&quot;&gt;Department of Computer Science and Technology&lt;/a&gt; of &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.tsinghua.edu.cn/&quot;&gt;Tsinghua University&lt;/a&gt;, a Changjiang scholar (recognized by the Ministry of Education) and a recipient of National Distinguished Young Scholar Funds.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                He is deputy director of the &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.ccf.org.cn/sites/ccf/xxcczw.jsp&quot;&gt;Information Storage Technology Technical Committee&lt;/a&gt; of the &lt;a class=&quot;a-no-decoaration&quot; href=&quot;http://www.ccf.org.cn/&quot;&gt;China Computer Federation&lt;/a&gt;, deputy director of National Engineering Laboratory for Disaster Backup and Recovery, member of the academic committee at School of Information Science and Technology of Tsinghua University. He has also been technical program commmittee member or chair of various international and domestic conferences.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                He is an award recipient of 2nd class National Science and Technology Progress Prize and 2nd class State Technological Invention Prize.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                His major &lt;b&gt;research interests&lt;/b&gt; are in &lt;span class=&quot;hover-text&quot;&gt;network/cloud/big data storage systems&lt;/span&gt;, &lt;span class=&quot;hover-text&quot;&gt;non-volatile memory systems and technologies&lt;/span&gt;, &lt;span class=&quot;hover-text&quot;&gt;storage reliability and security, parallel/distributed processing&lt;/span&gt;, etc..
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                The &lt;b&gt;research results&lt;/b&gt; of the Storage Research Group have produced around a hundred publications on international conferences like FAST, USENIX ATC, EuroSys, MICRO, ISCA, DSN, IPDPS, MSST, DAC, etc. as well as authoritative journals including IEEE TC, IEEE TPDS, ACM TOS, etc..
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;a href=&quot;#&quot; class=&quot;scrollup&quot;&gt;
+            &lt;img src=&quot;/images/back-to-top.png&quot; alt=&quot;Top&quot; style=&quot;width:42px;height:42px;border:0;&quot;/&gt;
+        &lt;/a&gt;
+        &lt;script src=&quot;/js/scrollup.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+        &lt;div class=&quot;footer-wrapper&quot;&gt;
+            &lt;footer&gt;
+                Copyright ©2016 Tsinghua University, All rights reserved.&lt;br /&gt;
+                Jiwu Shu's Storage Research Group, Department of Computer Science and Technology.&lt;br /&gt;
+            &lt;/footer&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[203]" method="GET" name="WebConsole Invoker found" plugin="find_jboss" severity="Low" url="http://storage.cs.tsinghua.edu.cn/WebConsole/Invoker" var="None">
+        <description>JBoss WebConsole Invoker enables attackers to send any JMX command to JBoss AS</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[207]" method="GET" name="WebConsole ServerInfo.jsp found" plugin="find_jboss" severity="Information" url="http://storage.cs.tsinghua.edu.cn/web-console/ServerInfo.jsp" var="None">
+        <description>WebConsole ServerInfo.jsp gives valuable information</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[208]" method="GET" name="JMX Invoker enabled without Auth" plugin="find_jboss" severity="Low" url="http://storage.cs.tsinghua.edu.cn/invoker/JMXInvokerServlet" var="None">
+        <description>JMX Invoker enables attackers to send any JMX command to JBoss AS</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[222, 223]" method="GET" name="Operating system" plugin="fingerprint_os" severity="Information" url="http://storage.cs.tsinghua.edu.cn/WebConsole\Invoker" var="None">
+        <description>Fingerprinted this host as a *nix system. Detection for this operating system is weak, &quot;if not windows then linux&quot;.</description>
+        <http-transactions>
+            <http-transaction id="222">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/WebConsole%5CInvoker HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="216" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole\Invoker was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="223">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="216" field="content-length"/>
+                        <header content="timeout=5, max=93" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/Invoker was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[186]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://storage.cs.tsinghua.edu.cn/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;intra.storage.cs.tsinghua.edu.cn&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;intra.storage.cs.tsinghua.edu.cn&quot; to the IP address of &quot;storage.cs.tsinghua.edu.cn&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[194]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://storage.cs.tsinghua.edu.cn/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;test&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;test&quot; to the IP address of &quot;storage.cs.tsinghua.edu.cn&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[195]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://storage.cs.tsinghua.edu.cn/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;test.tsinghua.edu.cn&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;test.tsinghua.edu.cn&quot; to the IP address of &quot;storage.cs.tsinghua.edu.cn&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[196]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://storage.cs.tsinghua.edu.cn/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;test.storage.cs.tsinghua.edu.cn&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;test.storage.cs.tsinghua.edu.cn&quot; to the IP address of &quot;storage.cs.tsinghua.edu.cn&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[34, 188, 209, 242, 259, 262, 265]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://storage.cs.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://storage.cs.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: CONNECT, GET, HEAD, OPTIONS, POST, RMDIR, SEARCH</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="34">
+                <http-request>
+                    <status>OPTIONS http://storage.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 15:44:42 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="188">
+                <http-request>
+                    <status>HEAD http://storage.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3439" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=5, max=79" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Mon, 11 Jul 2016 13:08:52 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;d6f-5375bda9c84ee&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 15:44:46 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="242">
+                <http-request>
+                    <status>OPTIONS http://storage.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 15:45:11 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="262">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3439" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Mon, 11 Jul 2016 13:08:52 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;d6f-5375bda9c84ee&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 15:45:15 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Jiwu Shu's Storage Research Group, Tsinghua University&lt;/title&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bootstrap.min.css&quot;&gt;
+        &lt;script src=&quot;/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/master.css&quot; media=&quot;screen&quot; title=&quot;no title&quot; charset=&quot;utf-8&quot;&gt;
+        &lt;link rel=&quot;icon&quot; href=&quot;/images/thu-logo.png&quot;&gt;
+	&lt;!--
+		Author: Zhu Li
+		E-mail: zhuli19901106@gmail.com
+		Timestamp: 1468055499
+	--&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;div class=&quot;header-wrapper&quot;&gt;
+                &lt;iframe src=&quot;/header.html&quot; class=&quot;iframe-header&quot;&gt;&lt;/iframe&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;h3&gt;About Prof. Jiwu Shu:&lt;/h3&gt;
+
+            &lt;p&gt;
+                &lt;b&gt;Welcome to Prof. Jiwu Shu's Storage Research Group!&lt;/b&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                Jiwu Shu is a professor, doctoral advisor at &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.cs.tsinghua.edu.cn/&quot;&gt;Department of Computer Science and Technology&lt;/a&gt; of &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.tsinghua.edu.cn/&quot;&gt;Tsinghua University&lt;/a&gt;, a Changjiang scholar (recognized by the Ministry of Education) and a recipient of National Distinguished Young Scholar Funds.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                He is deputy director of the &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.ccf.org.cn/sites/ccf/xxcczw.jsp&quot;&gt;Information Storage Technology Technical Committee&lt;/a&gt; of the &lt;a class=&quot;a-no-decoaration&quot; href=&quot;http://www.ccf.org.cn/&quot;&gt;China Computer Federation&lt;/a&gt;, deputy director of National Engineering Laboratory for Disaster Backup and Recovery, member of the academic committee at School of Information Science and Technology of Tsinghua University. He has also been technical program commmittee member or chair of various international and domestic conferences.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                He is an award recipient of 2nd class National Science and Technology Progress Prize and 2nd class State Technological Invention Prize.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                His major &lt;b&gt;research interests&lt;/b&gt; are in &lt;span class=&quot;hover-text&quot;&gt;network/cloud/big data storage systems&lt;/span&gt;, &lt;span class=&quot;hover-text&quot;&gt;non-volatile memory systems and technologies&lt;/span&gt;, &lt;span class=&quot;hover-text&quot;&gt;storage reliability and security, parallel/distributed processing&lt;/span&gt;, etc..
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                The &lt;b&gt;research results&lt;/b&gt; of the Storage Research Group have produced around a hundred publications on international conferences like FAST, USENIX ATC, EuroSys, MICRO, ISCA, DSN, IPDPS, MSST, DAC, etc. as well as authoritative journals including IEEE TC, IEEE TPDS, ACM TOS, etc..
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;a href=&quot;#&quot; class=&quot;scrollup&quot;&gt;
+            &lt;img src=&quot;/images/back-to-top.png&quot; alt=&quot;Top&quot; style=&quot;width:42px;height:42px;border:0;&quot;/&gt;
+        &lt;/a&gt;
+        &lt;script src=&quot;/js/scrollup.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+        &lt;div class=&quot;footer-wrapper&quot;&gt;
+            &lt;footer&gt;
+                Copyright ©2016 Tsinghua University, All rights reserved.&lt;br /&gt;
+                Jiwu Shu's Storage Research Group, Department of Computer Science and Technology.&lt;br /&gt;
+            &lt;/footer&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="265">
+                <http-request>
+                    <status>CONNECT http://storage.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 15:45:15 GMT" field="date"/>
+                        <header content="226" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;400 Bad Request&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Bad Request&lt;/h1&gt;
+&lt;p&gt;Your browser sent a request that this server could not understand.&lt;br /&gt;
+&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[272, 75, 276, 254]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://storage.cs.tsinghua.edu.cn/SmyqU" var="None">
+        <description>The remote web server sent 4 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://storage.cs.tsinghua.edu.cn/WebConsole/
+ - http://storage.cs.tsinghua.edu.cn/WebConsole/JTAal
+ - http://storage.cs.tsinghua.edu.cn/web-console/fZLKu
+ - http://storage.cs.tsinghua.edu.cn/SmyqU
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="272">
+                <http-request>
+                    <status>PUT http://storage.cs.tsinghua.edu.cn/WebConsole/JTAal HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">aFY65U</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="237" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 15:45:16 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /WebConsole/JTAal.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="75">
+                <http-request>
+                    <status>PUT http://storage.cs.tsinghua.edu.cn/SmyqU HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">VlZK1b</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 15:44:42 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /SmyqU.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="276">
+                <http-request>
+                    <status>PUT http://storage.cs.tsinghua.edu.cn/web-console/fZLKu HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">NsZL3z</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="238" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 15:45:16 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /web-console/fZLKu.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="254">
+                <http-request>
+                    <status>SEARCH http://storage.cs.tsinghua.edu.cn/WebConsole/ HTTP/1.1</status>
+                    <headers>
+                        <header content="135" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/xml; charset=&quot;utf-8&quot;" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PD94bWwgdmVyc2lvbj0nMS4wJz8+DQo8ZzpzZWFyY2hyZXF1ZXN0IHhtbG5zOmc9J0RBVjonPg0K
+PGc6c3FsPg0KU2VsZWN0ICdEQVY6ZGlzcGxheW5hbWUnIGZyb20gc2NvcGUoKQ0KPC9nOnNxbD4N
+CjwvZzpzZWFyY2hyZXF1ZXN0Pg0K
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="235" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 15:45:14 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method SEARCH is not allowed for the URL /WebConsole/.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 75, 84, 91, 95, 184, 185, 192, 201, 204, 217, 222, 225, 233, 249, 251, 254, 256, 257, 272, 274, 276, 278]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3439" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Mon, 11 Jul 2016 13:08:52 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;d6f-5375bda9c84ee&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 15:44:38 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Jiwu Shu's Storage Research Group, Tsinghua University&lt;/title&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bootstrap.min.css&quot;&gt;
+        &lt;script src=&quot;/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/master.css&quot; media=&quot;screen&quot; title=&quot;no title&quot; charset=&quot;utf-8&quot;&gt;
+        &lt;link rel=&quot;icon&quot; href=&quot;/images/thu-logo.png&quot;&gt;
+	&lt;!--
+		Author: Zhu Li
+		E-mail: zhuli19901106@gmail.com
+		Timestamp: 1468055499
+	--&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;div class=&quot;header-wrapper&quot;&gt;
+                &lt;iframe src=&quot;/header.html&quot; class=&quot;iframe-header&quot;&gt;&lt;/iframe&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;h3&gt;About Prof. Jiwu Shu:&lt;/h3&gt;
+
+            &lt;p&gt;
+                &lt;b&gt;Welcome to Prof. Jiwu Shu's Storage Research Group!&lt;/b&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                Jiwu Shu is a professor, doctoral advisor at &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.cs.tsinghua.edu.cn/&quot;&gt;Department of Computer Science and Technology&lt;/a&gt; of &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.tsinghua.edu.cn/&quot;&gt;Tsinghua University&lt;/a&gt;, a Changjiang scholar (recognized by the Ministry of Education) and a recipient of National Distinguished Young Scholar Funds.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                He is deputy director of the &lt;a class=&quot;a-no-decoration&quot; href=&quot;http://www.ccf.org.cn/sites/ccf/xxcczw.jsp&quot;&gt;Information Storage Technology Technical Committee&lt;/a&gt; of the &lt;a class=&quot;a-no-decoaration&quot; href=&quot;http://www.ccf.org.cn/&quot;&gt;China Computer Federation&lt;/a&gt;, deputy director of National Engineering Laboratory for Disaster Backup and Recovery, member of the academic committee at School of Information Science and Technology of Tsinghua University. He has also been technical program commmittee member or chair of various international and domestic conferences.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                He is an award recipient of 2nd class National Science and Technology Progress Prize and 2nd class State Technological Invention Prize.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                His major &lt;b&gt;research interests&lt;/b&gt; are in &lt;span class=&quot;hover-text&quot;&gt;network/cloud/big data storage systems&lt;/span&gt;, &lt;span class=&quot;hover-text&quot;&gt;non-volatile memory systems and technologies&lt;/span&gt;, &lt;span class=&quot;hover-text&quot;&gt;storage reliability and security, parallel/distributed processing&lt;/span&gt;, etc..
+            &lt;/p&gt;
+
+            &lt;p&gt;
+                The &lt;b&gt;research results&lt;/b&gt; of the Storage Research Group have produced around a hundred publications on international conferences like FAST, USENIX ATC, EuroSys, MICRO, ISCA, DSN, IPDPS, MSST, DAC, etc. as well as authoritative journals including IEEE TC, IEEE TPDS, ACM TOS, etc..
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;a href=&quot;#&quot; class=&quot;scrollup&quot;&gt;
+            &lt;img src=&quot;/images/back-to-top.png&quot; alt=&quot;Top&quot; style=&quot;width:42px;height:42px;border:0;&quot;/&gt;
+        &lt;/a&gt;
+        &lt;script src=&quot;/js/scrollup.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+        &lt;div class=&quot;footer-wrapper&quot;&gt;
+            &lt;footer&gt;
+                Copyright ©2016 Tsinghua University, All rights reserved.&lt;br /&gt;
+                Jiwu Shu's Storage Research Group, Department of Computer Science and Technology.&lt;br /&gt;
+            &lt;/footer&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="75">
+                <http-request>
+                    <status>PUT http://storage.cs.tsinghua.edu.cn/SmyqU HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">VlZK1b</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 15:44:42 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /SmyqU.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="84">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="211" field="content-length"/>
+                        <header content="timeout=5, max=93" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:44:42 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="91">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/BHUoG.html HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="208" field="content-length"/>
+                        <header content="timeout=5, max=92" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:44:42 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /BHUoG.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="95">
+                <http-request>
+                    <status>POST http://storage.cs.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L0JIVW9HLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguR29VSEI=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="timeout=5, max=91" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:44:42 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="184">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="211" field="content-length"/>
+                        <header content="timeout=5, max=82" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:44:46 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /server-status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="185">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="212" field="content-length"/>
+                        <header content="timeout=5, max=81" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:44:46 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /admin-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="192">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="209" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:44:47 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /favicon.ico was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="201">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="210" field="content-length"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:44:49 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /jmx-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="204">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="204" field="content-length"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:44:54 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="217">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="216" field="content-length"/>
+                        <header content="timeout=5, max=96" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/Invoker was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="222">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/WebConsole%5CInvoker HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="216" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole\Invoker was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="225">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="224" field="content-length"/>
+                        <header content="timeout=5, max=91" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /web-console/ServerInfo.jsp was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="233">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="223" field="content-length"/>
+                        <header content="timeout=5, max=86" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:01 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/JMXInvokerServlet was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="249">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/web-console/wsELo.html HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="220" field="content-length"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:13 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /web-console/wsELo.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="251">
+                <http-request>
+                    <status>POST http://storage.cs.tsinghua.edu.cn/web-console/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="170" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3dlYi1jb25zb2xlL3dzRUxvLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0
+aW9uPW92ZXJ3cml0ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGgub0xFc3c=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="238" field="content-length"/>
+                        <header content="timeout=5, max=97" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:13 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /web-console/_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="254">
+                <http-request>
+                    <status>SEARCH http://storage.cs.tsinghua.edu.cn/WebConsole/ HTTP/1.1</status>
+                    <headers>
+                        <header content="135" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/xml; charset=&quot;utf-8&quot;" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PD94bWwgdmVyc2lvbj0nMS4wJz8+DQo8ZzpzZWFyY2hyZXF1ZXN0IHhtbG5zOmc9J0RBVjonPg0K
+PGc6c3FsPg0KU2VsZWN0ICdEQVY6ZGlzcGxheW5hbWUnIGZyb20gc2NvcGUoKQ0KPC9nOnNxbD4N
+CjwvZzpzZWFyY2hyZXF1ZXN0Pg0K
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="235" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 15:45:14 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method SEARCH is not allowed for the URL /WebConsole/.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="256">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/invoker/HGSSd.html HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="216" field="content-length"/>
+                        <header content="timeout=5, max=95" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:14 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/HGSSd.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="257">
+                <http-request>
+                    <status>POST http://storage.cs.tsinghua.edu.cn/invoker/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="166" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2ludm9rZXIvSEdTU2QuaHRtbDttZXRhX2luZm89W11dJnB1dF9vcHRpb249
+b3ZlcndyaXRlJmNvbW1lbnQ9JmtlZXBfY2hlY2tlZF9vdXQ9ZmFsc2UKbG10aC5kU1NHSA==
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="234" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:14 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="272">
+                <http-request>
+                    <status>PUT http://storage.cs.tsinghua.edu.cn/WebConsole/JTAal HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">aFY65U</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="237" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 15:45:16 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /WebConsole/JTAal.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="274">
+                <http-request>
+                    <status>GET http://storage.cs.tsinghua.edu.cn/WebConsole/uxxVu.html HTTP/1.1</status>
+                    <headers>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="219" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:16 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/uxxVu.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="276">
+                <http-request>
+                    <status>PUT http://storage.cs.tsinghua.edu.cn/web-console/fZLKu HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">NsZL3z</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="238" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 15:45:16 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /web-console/fZLKu.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="278">
+                <http-request>
+                    <status>POST http://storage.cs.tsinghua.edu.cn/WebConsole/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="169" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="storage.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L1dlYkNvbnNvbGUvdXh4VnUuaHRtbDttZXRhX2luZm89W11dJnB1dF9vcHRp
+b249b3ZlcndyaXRlJmNvbW1lbnQ9JmtlZXBfY2hlY2tlZF9vdXQ9ZmFsc2UKbG10aC51Vnh4dQ==
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="237" field="content-length"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Fedora) mod_nss/2.4.6 NSS/3.15.3 Basic ECC PHP/5.5.26 mod_wsgi/3.5 Python/2.7.5 mod_perl/2.0.9-dev Perl/v5.18.4" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 15:45:16 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The dav plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/SmyqU&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/WebConsole/Invoker&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/web-console/ServerInfo.jsp&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/invoker/JMXInvokerServlet&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to storage.cs.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve storage.cs.tsinghua.edu.cn</error>
+    <error caller="threading">The cors_origin plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/WebConsole/Invoker&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The dav plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/web-console/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The cors_origin plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/invoker/JMXInvokerServlet&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The dav plugin got an error while requesting &quot;http://storage.cs.tsinghua.edu.cn/web-console/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

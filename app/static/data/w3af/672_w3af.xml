@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480506114" start-long="Wed Nov 30 06:41:54 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://caerc.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.132"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/672_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Cross-domain javascript source" plugin="cross_domain_js" severity="Information" url="http://caerc.tsinghua.edu.cn/" var="None">
+        <description>The application contains 1 different URLs with a script tag which includes JavaScript source from the potentially insecure &quot;apps.bdimg.com&quot; third party site. This practice is not recommended because it delegates the security of the site to an external entity. The first ten vulnerable URLs are:
+ - http://caerc.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://caerc.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="caerc.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.18 (Win32) PHP/5.3.29" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 11:37:22 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html lang=&quot;zh-cn&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;meta name=&quot;keywords&quot; content=&quot;清华大学车用能源研究中心&quot;&gt;
+	&lt;meta name=&quot;description&quot; content=&quot;清华大学车用能源研究中心&quot;&gt;
+	&lt;title&gt;清华大学车用能源研究中心&lt;/title&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/reset.css&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/lce.css&quot;&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/lce_cn.css&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/common.css&quot;&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/plugin/fontawesome/css/font-awesome.min.css&quot;&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/plugin/fontawesome/css/font-awesome-ie7.min.css&quot;&gt;
+	&lt;script src=&quot;http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;header&quot;&gt;
+	&lt;div class=&quot;logobox&quot;&gt;
+		&lt;div class=&quot;top&quot;&gt;
+			&lt;ul class=&quot;topnav&quot;&gt;
+				&lt;li&gt;&lt;a style=&quot;width: 115px;&quot; href=&quot;mailto:lce@tsinghua.edu.cn&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a style=&quot;width: 85px;&quot; href=&quot;http://caerc.tsinghua.edu.cn&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a style=&quot;width: 109px;&quot; href=&quot;http://caerc.tsinghua.edu.cn/en&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;bottom&quot;&gt;&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;banner banner-0&quot;&gt;&lt;/div&gt;
+	&lt;div class=&quot;nav&quot;&gt;
+		&lt;ul&gt;
+									&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/&quot;&gt;&lt;/a&gt;&lt;span class=&quot;active&quot;&gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-8-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-14-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-20-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-24-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-28-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-35-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-39-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/plugin/slide/css/style.css&quot;&gt;
+	&lt;div class=&quot;container&quot;&gt;
+		&lt;div class=&quot;block_left&quot;&gt;
+			&lt;div class=&quot;top&quot;&gt;
+				&lt;div class=&quot;linkimg&quot;&gt;&lt;/div&gt;
+				&lt;ul class=&quot;link&quot;&gt;
+															&lt;li&gt;&lt;a href=&quot;http://www.moe.edu.cn/&quot; target=&quot;_blank&quot;&gt;中华人民共和国教育部&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://lce.tsinghua.edu.cn/&quot; target=&quot;_blank&quot;&gt;清华大学低碳能源实验室&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://www.gmchina.com/chinese/&quot; target=&quot;_blank&quot;&gt;通用汽车公司&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://www.saicmotor.com/&quot; target=&quot;_blank&quot;&gt;上海汽车集团股份有限公司&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://www.catarc.ac.cn&quot; target=&quot;_blank&quot;&gt;中国汽车技术研究中心&lt;/a&gt;&lt;/li&gt;
+														&lt;/ul&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;bottom index-bottom&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;block_right&quot;&gt;
+			&lt;div class=&quot;block_r_top index_block_r_top&quot;&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-aboutus&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-8-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+												&lt;p&gt;　　 能源安全和气候变化已成为当前国际政治、经济和环境领域的热点问题。在现代化过程中，中国将长期面临保障能源安全和减缓气候变化所带来的挑战。中国能源未来发展的道路会对全球能源市场和应对气候变化格局产生广泛而重大的影响。目前，中国已成为全球汽车市场增长最快的地区之一，在不远的将来中国有可能成为全球最大的汽车消费国和生产国。车用能源问题已成为中国能源和环境问题中的一个核心问题。中国车用能源问题十分复杂，涉及能源、环境、技术、经济、社会、政策、管理体制等多个方面。&lt;/p&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item-date&quot;&gt;
+												&lt;div class=&quot;t t-rili&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-103-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div id=&quot;ca&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot; style=&quot;width: 710px;&quot;&gt;
+												&lt;div class=&quot;t t-news&quot; style=&quot;width: 710px;&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-24-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;div class=&quot;silder&quot; id=&quot;silder&quot;&gt;
+									&lt;ul class=&quot;silder_list&quot; id=&quot;silder_list&quot;&gt;
+																																								&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;uploadfile/2016/0420/20160420095432127.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+																														&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;uploadfile/2016/0419/20160419044650733.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+																														&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;uploadfile/2016/0419/20160419031933479.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+																													&lt;/ul&gt;
+								&lt;/div&gt;
+															&lt;/div&gt;
+							&lt;ul style=&quot;width: 410px;float: right;&quot;&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-39-1.html&quot;&gt;中心接待&amp;quot;小熊油耗&amp;quot;公司来访&lt;/a&gt;&lt;span&gt;2015-12-17&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-38-1.html&quot;&gt;中心参与中国工程院强国战略研究&lt;/a&gt;&lt;span&gt;2015-11-29&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-37-1.html&quot;&gt;中心中标上海汽车科技发展基金会项目&lt;/a&gt;&lt;span&gt;2015-11-29&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-36-1.html&quot;&gt;中心成功主办可持续城市交通论坛&lt;/a&gt;&lt;span&gt;2014-10-16&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-46-1.html&quot;&gt;中心成功举办中国未来机动性发展研究项目之交通研&lt;/a&gt;&lt;span&gt;2014-05-30&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-47-1.html&quot;&gt;中心成功举办中国未来机动性发展研究项目之能源研&lt;/a&gt;&lt;span&gt;2014-05-28&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-45-1.html&quot;&gt;我中心参加财政部清洁油品税收优惠政策课题研究&lt;/a&gt;&lt;span&gt;2012-03-23&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-44-1.html&quot;&gt;我中心主持完成两项自然科学基金项目&lt;/a&gt;&lt;span&gt;2012-01-13&lt;/span&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-haibao&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-35-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;/uploadfile/2016/0422/20160422011955107.jpg&quot;&gt;								&lt;p&gt;严晋跃博士&lt;/p&gt;							&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-36-57-1.html&quot;&gt;招聘启事：清华大学中国车用能源研究&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-36-56-1.html&quot;&gt;招聘启事：清华大学中国车用能源研究&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-55-1.html&quot;&gt;2013.04.09 第二届《中国车用能源论&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-54-1.html&quot;&gt;2012.2.28 中国车用能源论坛暨《中&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-53-1.html&quot;&gt;11月15-16日清华大学－剑桥大学－麻&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-52-1.html&quot;&gt;8月17日美国能源部圣地亚国家实验室&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-51-1.html&quot;&gt;瑞典皇家工学院终身教授、《Applied&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-48-1.html&quot;&gt;6月25日下午2：00中心召开全体研究人&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-xinxi&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-28-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;uploadfile/2016/0419/20160419031852128.jpg&quot;&gt;															&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-30-60-1.html&quot;&gt;我国新能源汽车产业突飞猛进&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-30-59-1.html&quot;&gt;工业和信息化部：我国将加速电动汽车&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-32-58-1.html&quot;&gt;关于开展节能与新能源汽车示范推广试&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-hezuo&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-20-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;uploadfile/2016/0419/20160419031933479.jpg&quot;&gt;															&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-105-61-1.html&quot;&gt;中心代表访问UC Davis的交通系统研&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-kexue&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-14-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;uploadfile/2016/0419/20160419031240154.jpg&quot;&gt;															&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-18-50-1.html&quot;&gt;获得奖励正在建设中&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-17-49-1.html&quot;&gt;中心出版专著《中国车用能源展望2012&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;script type=&quot;text/javascript&quot; src=&quot;/statics/plugin/calendar/js/calendar.js&quot;&gt;&lt;/script&gt;
+			&lt;div class=&quot;footer&quot;&gt;
+	&lt;div class=&quot;copyright&quot;&gt;
+		&lt;ul&gt;
+&lt;li&gt;版权所有：清华大学低碳能源实验室&lt;/li&gt;
+&lt;li&gt;地址：清华大学 低碳能源楼&lt;/li&gt;
+&lt;li&gt;联系电话：8610-62794858/62796657/62797187&lt;/li&gt;
+&lt;li&gt;传真：8610-62796617&lt;/li&gt;
+&lt;li&gt;E-mail：lce@tsinghua.edu.cn&lt;/li&gt;
+&lt;/ul&gt;	&lt;/div&gt;
+&lt;/div&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;script src=&quot;/statics/plugin/slide/js/jquery.img_silder.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		$(function(){
+			$('#ca').calendar({});
+
+			$('#silder').imgSilder({
+					s_width:280, //容器宽度
+					s_height:180, //容器高度
+					is_showTit:true, // 是否显示图片标题 false :不显示，true :显示
+					s_times:3000, //设置滚动时间
+					css_link:'css/style.css'
+				});
+			});
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Email address disclosure" plugin="get_emails" severity="Information" url="http://caerc.tsinghua.edu.cn/" var="None">
+        <description>The application discloses the &quot;lce@tsinghua.edu.cn&quot; email address in 1 different HTTP responses. The first ten URLs which sent the email are:
+ - http://caerc.tsinghua.edu.cn/
+</description>
+        <long-description>Email addresses are typically found on &quot;Contact us&quot; pages, however, they can also be found within scripts or code comments of the application. They are used to provide a legitimate means of contacting an organisation.
+
+As one of the initial steps in information gathering, cyber-criminals will spider a website and using automated methods collect as many email addresses as possible, that they may then use in a social engineering attack.
+
+Using the same automated methods, the tool was able to detect one or more email addresses that were stored within the affected page.</long-description>
+        <fix-guidance>E-mail addresses should be presented in such a way that it is hard to process them automatically.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://caerc.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="caerc.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.18 (Win32) PHP/5.3.29" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 11:37:22 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html lang=&quot;zh-cn&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;meta name=&quot;keywords&quot; content=&quot;清华大学车用能源研究中心&quot;&gt;
+	&lt;meta name=&quot;description&quot; content=&quot;清华大学车用能源研究中心&quot;&gt;
+	&lt;title&gt;清华大学车用能源研究中心&lt;/title&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/reset.css&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/lce.css&quot;&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/lce_cn.css&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/common.css&quot;&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/plugin/fontawesome/css/font-awesome.min.css&quot;&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/plugin/fontawesome/css/font-awesome-ie7.min.css&quot;&gt;
+	&lt;script src=&quot;http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;header&quot;&gt;
+	&lt;div class=&quot;logobox&quot;&gt;
+		&lt;div class=&quot;top&quot;&gt;
+			&lt;ul class=&quot;topnav&quot;&gt;
+				&lt;li&gt;&lt;a style=&quot;width: 115px;&quot; href=&quot;mailto:lce@tsinghua.edu.cn&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a style=&quot;width: 85px;&quot; href=&quot;http://caerc.tsinghua.edu.cn&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a style=&quot;width: 109px;&quot; href=&quot;http://caerc.tsinghua.edu.cn/en&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;bottom&quot;&gt;&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;banner banner-0&quot;&gt;&lt;/div&gt;
+	&lt;div class=&quot;nav&quot;&gt;
+		&lt;ul&gt;
+									&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/&quot;&gt;&lt;/a&gt;&lt;span class=&quot;active&quot;&gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-8-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-14-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-20-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-24-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-28-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-35-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-39-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/plugin/slide/css/style.css&quot;&gt;
+	&lt;div class=&quot;container&quot;&gt;
+		&lt;div class=&quot;block_left&quot;&gt;
+			&lt;div class=&quot;top&quot;&gt;
+				&lt;div class=&quot;linkimg&quot;&gt;&lt;/div&gt;
+				&lt;ul class=&quot;link&quot;&gt;
+															&lt;li&gt;&lt;a href=&quot;http://www.moe.edu.cn/&quot; target=&quot;_blank&quot;&gt;中华人民共和国教育部&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://lce.tsinghua.edu.cn/&quot; target=&quot;_blank&quot;&gt;清华大学低碳能源实验室&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://www.gmchina.com/chinese/&quot; target=&quot;_blank&quot;&gt;通用汽车公司&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://www.saicmotor.com/&quot; target=&quot;_blank&quot;&gt;上海汽车集团股份有限公司&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://www.catarc.ac.cn&quot; target=&quot;_blank&quot;&gt;中国汽车技术研究中心&lt;/a&gt;&lt;/li&gt;
+														&lt;/ul&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;bottom index-bottom&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;block_right&quot;&gt;
+			&lt;div class=&quot;block_r_top index_block_r_top&quot;&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-aboutus&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-8-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+												&lt;p&gt;　　 能源安全和气候变化已成为当前国际政治、经济和环境领域的热点问题。在现代化过程中，中国将长期面临保障能源安全和减缓气候变化所带来的挑战。中国能源未来发展的道路会对全球能源市场和应对气候变化格局产生广泛而重大的影响。目前，中国已成为全球汽车市场增长最快的地区之一，在不远的将来中国有可能成为全球最大的汽车消费国和生产国。车用能源问题已成为中国能源和环境问题中的一个核心问题。中国车用能源问题十分复杂，涉及能源、环境、技术、经济、社会、政策、管理体制等多个方面。&lt;/p&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item-date&quot;&gt;
+												&lt;div class=&quot;t t-rili&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-103-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div id=&quot;ca&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot; style=&quot;width: 710px;&quot;&gt;
+												&lt;div class=&quot;t t-news&quot; style=&quot;width: 710px;&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-24-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;div class=&quot;silder&quot; id=&quot;silder&quot;&gt;
+									&lt;ul class=&quot;silder_list&quot; id=&quot;silder_list&quot;&gt;
+																																								&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;uploadfile/2016/0420/20160420095432127.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+																														&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;uploadfile/2016/0419/20160419044650733.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+																														&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;uploadfile/2016/0419/20160419031933479.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+																													&lt;/ul&gt;
+								&lt;/div&gt;
+															&lt;/div&gt;
+							&lt;ul style=&quot;width: 410px;float: right;&quot;&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-39-1.html&quot;&gt;中心接待&amp;quot;小熊油耗&amp;quot;公司来访&lt;/a&gt;&lt;span&gt;2015-12-17&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-38-1.html&quot;&gt;中心参与中国工程院强国战略研究&lt;/a&gt;&lt;span&gt;2015-11-29&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-37-1.html&quot;&gt;中心中标上海汽车科技发展基金会项目&lt;/a&gt;&lt;span&gt;2015-11-29&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-36-1.html&quot;&gt;中心成功主办可持续城市交通论坛&lt;/a&gt;&lt;span&gt;2014-10-16&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-46-1.html&quot;&gt;中心成功举办中国未来机动性发展研究项目之交通研&lt;/a&gt;&lt;span&gt;2014-05-30&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-47-1.html&quot;&gt;中心成功举办中国未来机动性发展研究项目之能源研&lt;/a&gt;&lt;span&gt;2014-05-28&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-45-1.html&quot;&gt;我中心参加财政部清洁油品税收优惠政策课题研究&lt;/a&gt;&lt;span&gt;2012-03-23&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-44-1.html&quot;&gt;我中心主持完成两项自然科学基金项目&lt;/a&gt;&lt;span&gt;2012-01-13&lt;/span&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-haibao&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-35-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;/uploadfile/2016/0422/20160422011955107.jpg&quot;&gt;								&lt;p&gt;严晋跃博士&lt;/p&gt;							&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-36-57-1.html&quot;&gt;招聘启事：清华大学中国车用能源研究&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-36-56-1.html&quot;&gt;招聘启事：清华大学中国车用能源研究&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-55-1.html&quot;&gt;2013.04.09 第二届《中国车用能源论&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-54-1.html&quot;&gt;2012.2.28 中国车用能源论坛暨《中&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-53-1.html&quot;&gt;11月15-16日清华大学－剑桥大学－麻&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-52-1.html&quot;&gt;8月17日美国能源部圣地亚国家实验室&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-51-1.html&quot;&gt;瑞典皇家工学院终身教授、《Applied&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-48-1.html&quot;&gt;6月25日下午2：00中心召开全体研究人&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-xinxi&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-28-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;uploadfile/2016/0419/20160419031852128.jpg&quot;&gt;															&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-30-60-1.html&quot;&gt;我国新能源汽车产业突飞猛进&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-30-59-1.html&quot;&gt;工业和信息化部：我国将加速电动汽车&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-32-58-1.html&quot;&gt;关于开展节能与新能源汽车示范推广试&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-hezuo&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-20-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;uploadfile/2016/0419/20160419031933479.jpg&quot;&gt;															&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-105-61-1.html&quot;&gt;中心代表访问UC Davis的交通系统研&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-kexue&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-14-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;uploadfile/2016/0419/20160419031240154.jpg&quot;&gt;															&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-18-50-1.html&quot;&gt;获得奖励正在建设中&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-17-49-1.html&quot;&gt;中心出版专著《中国车用能源展望2012&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;script type=&quot;text/javascript&quot; src=&quot;/statics/plugin/calendar/js/calendar.js&quot;&gt;&lt;/script&gt;
+			&lt;div class=&quot;footer&quot;&gt;
+	&lt;div class=&quot;copyright&quot;&gt;
+		&lt;ul&gt;
+&lt;li&gt;版权所有：清华大学低碳能源实验室&lt;/li&gt;
+&lt;li&gt;地址：清华大学 低碳能源楼&lt;/li&gt;
+&lt;li&gt;联系电话：8610-62794858/62796657/62797187&lt;/li&gt;
+&lt;li&gt;传真：8610-62796617&lt;/li&gt;
+&lt;li&gt;E-mail：lce@tsinghua.edu.cn&lt;/li&gt;
+&lt;/ul&gt;	&lt;/div&gt;
+&lt;/div&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;script src=&quot;/statics/plugin/slide/js/jquery.img_silder.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		$(function(){
+			$('#ca').calendar({});
+
+			$('#silder').imgSilder({
+					s_width:280, //容器宽度
+					s_height:180, //容器高度
+					is_showTit:true, // 是否显示图片标题 false :不显示，true :显示
+					s_times:3000, //设置滚动时间
+					css_link:'css/style.css'
+				});
+			});
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://caerc.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="caerc.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.18 (Win32) PHP/5.3.29" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 11:37:22 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html lang=&quot;zh-cn&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;meta name=&quot;keywords&quot; content=&quot;清华大学车用能源研究中心&quot;&gt;
+	&lt;meta name=&quot;description&quot; content=&quot;清华大学车用能源研究中心&quot;&gt;
+	&lt;title&gt;清华大学车用能源研究中心&lt;/title&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/reset.css&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/lce.css&quot;&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/lce_cn.css&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/css/lce/common.css&quot;&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/plugin/fontawesome/css/font-awesome.min.css&quot;&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/plugin/fontawesome/css/font-awesome-ie7.min.css&quot;&gt;
+	&lt;script src=&quot;http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;header&quot;&gt;
+	&lt;div class=&quot;logobox&quot;&gt;
+		&lt;div class=&quot;top&quot;&gt;
+			&lt;ul class=&quot;topnav&quot;&gt;
+				&lt;li&gt;&lt;a style=&quot;width: 115px;&quot; href=&quot;mailto:lce@tsinghua.edu.cn&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a style=&quot;width: 85px;&quot; href=&quot;http://caerc.tsinghua.edu.cn&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a style=&quot;width: 109px;&quot; href=&quot;http://caerc.tsinghua.edu.cn/en&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;bottom&quot;&gt;&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;banner banner-0&quot;&gt;&lt;/div&gt;
+	&lt;div class=&quot;nav&quot;&gt;
+		&lt;ul&gt;
+									&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/&quot;&gt;&lt;/a&gt;&lt;span class=&quot;active&quot;&gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-8-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-14-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-20-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-24-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-28-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-35-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-39-1.html&quot;&gt;&lt;/a&gt;&lt;span &gt;&lt;/span&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/statics/plugin/slide/css/style.css&quot;&gt;
+	&lt;div class=&quot;container&quot;&gt;
+		&lt;div class=&quot;block_left&quot;&gt;
+			&lt;div class=&quot;top&quot;&gt;
+				&lt;div class=&quot;linkimg&quot;&gt;&lt;/div&gt;
+				&lt;ul class=&quot;link&quot;&gt;
+															&lt;li&gt;&lt;a href=&quot;http://www.moe.edu.cn/&quot; target=&quot;_blank&quot;&gt;中华人民共和国教育部&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://lce.tsinghua.edu.cn/&quot; target=&quot;_blank&quot;&gt;清华大学低碳能源实验室&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://www.gmchina.com/chinese/&quot; target=&quot;_blank&quot;&gt;通用汽车公司&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://www.saicmotor.com/&quot; target=&quot;_blank&quot;&gt;上海汽车集团股份有限公司&lt;/a&gt;&lt;/li&gt;
+										&lt;li&gt;&lt;a href=&quot;http://www.catarc.ac.cn&quot; target=&quot;_blank&quot;&gt;中国汽车技术研究中心&lt;/a&gt;&lt;/li&gt;
+														&lt;/ul&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;bottom index-bottom&quot;&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;block_right&quot;&gt;
+			&lt;div class=&quot;block_r_top index_block_r_top&quot;&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-aboutus&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-8-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+												&lt;p&gt;　　 能源安全和气候变化已成为当前国际政治、经济和环境领域的热点问题。在现代化过程中，中国将长期面临保障能源安全和减缓气候变化所带来的挑战。中国能源未来发展的道路会对全球能源市场和应对气候变化格局产生广泛而重大的影响。目前，中国已成为全球汽车市场增长最快的地区之一，在不远的将来中国有可能成为全球最大的汽车消费国和生产国。车用能源问题已成为中国能源和环境问题中的一个核心问题。中国车用能源问题十分复杂，涉及能源、环境、技术、经济、社会、政策、管理体制等多个方面。&lt;/p&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item-date&quot;&gt;
+												&lt;div class=&quot;t t-rili&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-103-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div id=&quot;ca&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot; style=&quot;width: 710px;&quot;&gt;
+												&lt;div class=&quot;t t-news&quot; style=&quot;width: 710px;&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-24-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;div class=&quot;silder&quot; id=&quot;silder&quot;&gt;
+									&lt;ul class=&quot;silder_list&quot; id=&quot;silder_list&quot;&gt;
+																																								&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;uploadfile/2016/0420/20160420095432127.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+																														&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;uploadfile/2016/0419/20160419044650733.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+																														&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;uploadfile/2016/0419/20160419031933479.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+																													&lt;/ul&gt;
+								&lt;/div&gt;
+															&lt;/div&gt;
+							&lt;ul style=&quot;width: 410px;float: right;&quot;&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-39-1.html&quot;&gt;中心接待&amp;quot;小熊油耗&amp;quot;公司来访&lt;/a&gt;&lt;span&gt;2015-12-17&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-38-1.html&quot;&gt;中心参与中国工程院强国战略研究&lt;/a&gt;&lt;span&gt;2015-11-29&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-37-1.html&quot;&gt;中心中标上海汽车科技发展基金会项目&lt;/a&gt;&lt;span&gt;2015-11-29&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-24-36-1.html&quot;&gt;中心成功主办可持续城市交通论坛&lt;/a&gt;&lt;span&gt;2014-10-16&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-46-1.html&quot;&gt;中心成功举办中国未来机动性发展研究项目之交通研&lt;/a&gt;&lt;span&gt;2014-05-30&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-47-1.html&quot;&gt;中心成功举办中国未来机动性发展研究项目之能源研&lt;/a&gt;&lt;span&gt;2014-05-28&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-45-1.html&quot;&gt;我中心参加财政部清洁油品税收优惠政策课题研究&lt;/a&gt;&lt;span&gt;2012-03-23&lt;/span&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-25-44-1.html&quot;&gt;我中心主持完成两项自然科学基金项目&lt;/a&gt;&lt;span&gt;2012-01-13&lt;/span&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-haibao&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-35-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;/uploadfile/2016/0422/20160422011955107.jpg&quot;&gt;								&lt;p&gt;严晋跃博士&lt;/p&gt;							&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-36-57-1.html&quot;&gt;招聘启事：清华大学中国车用能源研究&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-36-56-1.html&quot;&gt;招聘启事：清华大学中国车用能源研究&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-55-1.html&quot;&gt;2013.04.09 第二届《中国车用能源论&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-54-1.html&quot;&gt;2012.2.28 中国车用能源论坛暨《中&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-53-1.html&quot;&gt;11月15-16日清华大学－剑桥大学－麻&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-52-1.html&quot;&gt;8月17日美国能源部圣地亚国家实验室&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-51-1.html&quot;&gt;瑞典皇家工学院终身教授、《Applied&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-35-48-1.html&quot;&gt;6月25日下午2：00中心召开全体研究人&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-xinxi&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-28-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;uploadfile/2016/0419/20160419031852128.jpg&quot;&gt;															&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-30-60-1.html&quot;&gt;我国新能源汽车产业突飞猛进&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-30-59-1.html&quot;&gt;工业和信息化部：我国将加速电动汽车&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-32-58-1.html&quot;&gt;关于开展节能与新能源汽车示范推广试&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class=&quot;index_item&quot;&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-hezuo&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-20-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;uploadfile/2016/0419/20160419031933479.jpg&quot;&gt;															&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-105-61-1.html&quot;&gt;中心代表访问UC Davis的交通系统研&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class=&quot;item&quot;&gt;
+												&lt;div class=&quot;t t-kexue&quot;&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/list-14-1.html&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;itemlist&quot;&gt;
+							&lt;div class=&quot;itemlist_left&quot;&gt;
+								&lt;img src=&quot;uploadfile/2016/0419/20160419031240154.jpg&quot;&gt;															&lt;/div&gt;
+							&lt;ul&gt;
+																								&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-18-50-1.html&quot;&gt;获得奖励正在建设中&lt;/a&gt;&lt;/li&gt;
+																&lt;li&gt;&lt;i class=&quot;fa fa-circle&quot;&gt;&lt;/i&gt;&lt;a href=&quot;http://caerc.tsinghua.edu.cn/show-17-49-1.html&quot;&gt;中心出版专著《中国车用能源展望2012&lt;/a&gt;&lt;/li&gt;
+																							&lt;/ul&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;script type=&quot;text/javascript&quot; src=&quot;/statics/plugin/calendar/js/calendar.js&quot;&gt;&lt;/script&gt;
+			&lt;div class=&quot;footer&quot;&gt;
+	&lt;div class=&quot;copyright&quot;&gt;
+		&lt;ul&gt;
+&lt;li&gt;版权所有：清华大学低碳能源实验室&lt;/li&gt;
+&lt;li&gt;地址：清华大学 低碳能源楼&lt;/li&gt;
+&lt;li&gt;联系电话：8610-62794858/62796657/62797187&lt;/li&gt;
+&lt;li&gt;传真：8610-62796617&lt;/li&gt;
+&lt;li&gt;E-mail：lce@tsinghua.edu.cn&lt;/li&gt;
+&lt;/ul&gt;	&lt;/div&gt;
+&lt;/div&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;script src=&quot;/statics/plugin/slide/js/jquery.img_silder.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		$(function(){
+			$('#ca').calendar({});
+
+			$('#silder').imgSilder({
+					s_width:280, //容器宽度
+					s_height:180, //容器高度
+					is_showTit:true, // 是否显示图片标题 false :不显示，true :显示
+					s_times:3000, //设置滚动时间
+					css_link:'css/style.css'
+				});
+			});
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The following error was detected and could not be resolved:
+Failed to initialize the 404 detection, original exception was: &quot;w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).&quot;.
+</error>
+</w3af-run>

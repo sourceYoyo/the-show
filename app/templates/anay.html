@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+{% block header %}
+    <script src="{{url_for('static', filename='highcharts/highcharts.js')}}"></script>
+    <script src="{{url_for('static', filename='highcharts/modules/exporting.js')}}"></script>
+    <script src="{{url_for('static', filename='highcharts/modules/data.js')}}"></script>
+    <script src="{{url_for('static', filename='highcharts/modules/data.js')}}"></script>    
+{% endblock %}
+{% block content %}
+
+    <div class="jumbotron" id="common">                    
+
+            <div class="row"><div id="port-envolve" class="col-md-10 col-md-offset-1 "></div></div>
+            <div class="row"><div id="port-stable" class="col-md-10 col-md-offset-1 "></div></div>
+            <div class="row"><div id="port-sum" class=" col-md-10 col-md-offset-1 "></div></div>
+        
+    </div>  
+    
+
+    <script type="text/javascript">
+    var data_port_revolve_dates = {{port_revolve_dates.titles|safe}};
+    var data_port_revolve_data = {{port_revolve_dates.data|safe}};
+    var data_port_stable_titles = {{port_stable_data.categories|safe}};
+    var data_port_newest_titles = {{port_newest_data.titles|safe}};
+    var data_port_stable_series = {{port_stable_data.series|safe}};
+    var data_port_newest_series = {{port_newest_data.data|safe}};
+    $(function () {
+    $('#port-sum').highcharts({
+        credits: {
+            enabled: false
+        },
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: '端口服务分布'
+        },
+        subtitle: {
+            text: '当前总端口以及稳定端口'
+        },
+        xAxis: {
+            categories: data_port_newest_titles,
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '最新的端口状况（总量/稳定服务）',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' '
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 100,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+         series:data_port_newest_series //[{
+        //     name: '稳定服务',
+        //     data: [490, 120, 129, 139, 200]
+        // },  {
+        //     name: '最新状况',
+        //     data: [1573, 327, 823, 577]
+        // }]
+    });
+});
+ $(function () {
+    $('#port-stable').highcharts({
+         credits: {
+            enabled: false
+        },
+        title: {
+            text: '稳定端口变化统计',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: ip扫描数据',
+            x: -20
+        },
+        xAxis: {
+            
+            categories: data_port_stable_titles//['20161117', '20161204', '20161214']//data_port_revolve_dates
+        },
+        yAxis: {
+            title: {
+                text: '端口数'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        
+        series: data_port_stable_series
+        // [{
+        //     name: 'tcp/80端口',
+        //     data: [0,49,23]
+        // }, {
+        //     name: 'tcp/21端口',
+        //     data: [ 0,32, 20]
+        // }, {
+        //     name: 'tcp/22端口',
+        //     data: [0, 22, 11]
+        // }, {
+        //     name: 'tcp/443端口',
+        //     data: [0, 27,19]
+        // }
+        // ]
+    });
+});
+    $(function () {
+    $('#port-envolve').highcharts({
+         credits: {
+            enabled: false
+        },
+        title: {
+            text: '校园网常用服务端口变化统计',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: ip扫描数据',
+            x: -20
+        },
+        xAxis: {
+            categories: data_port_revolve_dates//['20161117', '20161204', '20161214']//data_port_revolve_dates
+        },
+        yAxis: {
+            title: {
+                text: '端口数'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+         series: data_port_revolve_data
+         //[{
+        //     name: 'tcp/80端口',
+        //     data: [419,332,1573]
+        // }, {
+        //     name: 'tcp/21端口',
+        //     data: [ 120,117, 327]
+        // }, {
+        //     name: 'tcp/22端口',
+        //     data: [119, 538, 823]
+        // }, {
+        //     name: 'tcp/443端口',
+        //     data: [419, 322,577]
+        // }, {
+        //     name: '主机总数',
+        //     data: [3009,4801,6771]
+        // }
+        // ]
+    });
+});
+
+    </script>
+{% endblock %}

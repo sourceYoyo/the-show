@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480513009" start-long="Wed Nov 30 08:36:49 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://sunist.org/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.132"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/770_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[41]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Microsoft-IIS/7.5&quot;.</description>
+        <http-transactions>
+            <http-transaction id="41">
+                <http-request>
+                    <status>GET http://sunist.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="145" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:51 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[43, 72]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://sunist.org/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="43">
+                <http-request>
+                    <status>ARGENTINA http://sunist.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="145" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:55 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="72">
+                <http-request>
+                    <status>GET http://sunist.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="145" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:55 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[82]" method="GET" name="Powered-by header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The x-powered-by header for the target HTTP server is &quot;ASP.NET&quot;.</description>
+        <http-transactions>
+            <http-transaction id="82">
+                <http-request>
+                    <status>GET http://sunist.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="145" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:51 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[192, 201]" method="GET" name="Potential virtual host misconfiguration" plugin="domain_dot" severity="Information" url="None" var="None">
+        <description>[Manual verification required] The response body for a request with a trailing dot in the domain, and the response body without a trailing dot in the domain differ. This could indicate a misconfiguration in the virtual host settings. In some cases, this misconfiguration permits the attacker to read the source code of the web application.</description>
+        <http-transactions>
+            <http-transaction id="192">
+                <http-request>
+                    <status>GET http://sunist.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="145" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:56 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="201">
+                <http-request>
+                    <status>GET http://sunist.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org." field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:36:56 GMT" field="date"/>
+                        <header content="close" field="connection"/>
+                        <header content="text/html; charset=us-ascii" field="content-type"/>
+                        <header content="334" field="content-length"/>
+                        <header content="Microsoft-HTTPAPI/2.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;Bad Request&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=us-ascii&quot;&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;&lt;h2&gt;Bad Request - Invalid Hostname&lt;/h2&gt;
+&lt;hr&gt;&lt;p&gt;HTTP Error 400. The request hostname is invalid.&lt;/p&gt;
+&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[203]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://foobar.sunist.org/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://foobar.sunist.org/&quot; differ from the contents of &quot;http://sunist.org/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="203">
+                <http-request>
+                    <status>GET http://sunist.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="foobar.sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1572" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="Thu, 24 Nov 2016 06:06:36 GMT" field="last-modified"/>
+                        <header content="&quot;07ea1e91846d21:0&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:36:56 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!doctype html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;about/about_files/main.css&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;about/about_files/bootstrap.css&quot;&gt;
+		&lt;title&gt;SUNIST&lt;/title&gt;
+	&lt;/head&gt;
+    
+&lt;body class=&quot;background&quot;&gt;
+
+	&lt;!--logo area--&gt;
+	&lt;div class=&quot;logo&quot;&gt;
+		&lt;table&gt;
+			&lt;tbody&gt;
+    			&lt;tr style=&quot;width:925px ; height:140px;&quot;&gt;
+					&lt;td style=&quot;width: 925px; padding-right:30px; text-align:left&quot;&gt;
+						&lt;img style=&quot;margin-left:30px; margin-top:30px;&quot; src=&quot;about/about_files/sunist-logo.png&quot; width=&quot;230px&quot; align=&quot;left&quot;&gt;
+    					&lt;p style=&quot;font-size:36px; font-weight:800; color:#ff2b2b; margin-left:300px;&quot;&gt;Sino-UNIted Spherical Tokamak&lt;/p&gt;
+						&lt;p style=&quot;font-size:23px; font-weight:800; color:#dfcccb; margin-left:360px;&quot;&gt;Fusion and Plasma Science Laboratory&lt;/p&gt;    
+					&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/tbody&gt;
+		&lt;/table&gt;
+	&lt;/div&gt;
+
+	&lt;!--navigation area--&gt;
+	&lt;div class=&quot;nav&quot;&gt;
+		&lt;div class=&quot;active-nav&quot;&gt;
+			&lt;p&gt;
+				&lt;a href=&quot;http://192.168.1.24/&quot;&gt;About&lt;/a&gt;
+			&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div&gt;
+			&lt;p&gt;
+				&lt;a href=&quot;research/research.html&quot;&gt;Research&lt;/a&gt;
+			&lt;/p&gt;
+		&lt;/div&gt; 
+		&lt;div&gt;
+			&lt;p&gt;
+				&lt;a href=&quot;gallery/gallery.html&quot;&gt;Gallery&lt;/a&gt;
+			&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div&gt;
+			&lt;p&gt;
+				&lt;a href=&quot;people/people.html&quot;&gt;People&lt;/a&gt;
+			&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div&gt;
+			&lt;p&gt;
+				&lt;a href=&quot;archives/archives.html&quot;&gt;Archives&lt;/a&gt;
+			&lt;/p&gt;
+		&lt;/div&gt;
+		&lt;div&gt;
+			&lt;p&gt;
+				&lt;a href=&quot;links/links.html&quot;&gt;Links&lt;/a&gt;
+			&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+  
+	&lt;!--main content--&gt;
+	&lt;div class=&quot;main&quot;&gt;
+		
+        &lt;!--sidebar--&gt;
+        &lt;div class=&quot;sidebar&quot;&gt;
+			&lt;div class=&quot;side-navigation&quot;&gt;
+				&lt;ul class=&quot;menu&quot;&gt;
+					&lt;li&gt;&lt;a class=&quot;active2&quot;&gt;ABOUT&lt;/a&gt;&lt;/li&gt;
+					&lt;div class=&quot;main-subpane&quot;&gt;							
+						&lt;li&gt;&lt;a class=&quot;active&quot; href=&quot;http://192.168.1.24/&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;about/para.html&quot;&gt;Main Parameters&lt;/a&gt;&lt;/li&gt;
+					&lt;/div&gt;
+				&lt;/ul&gt;
+			&lt;/div&gt;				
+		&lt;/div&gt;
+		
+        &lt;!--content--&gt;
+		&lt;div class=&quot;main-banner&quot;&gt;
+			&lt;div class=&quot;content&quot;&gt;
+                &lt;p class=&quot;heading&quot;&gt;Welcome to SUNIST Fusion and Plasma Science Laboratory&lt;/p&gt;
+				&lt;p&gt;SUNIST, the abbreviation of Sino-UNIted Spherical Tokamak, is a small spherical tokamak in the Department of Engineering Physics, Tsinghua University, Beijing, China. Currently SUNIST is the only spherical tokamak in China.&lt;/p&gt;
+                &lt;br&gt;
+				&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;about/about_files/overview.jpg&quot; width=&quot;400&quot; height=&quot;300&quot; border=&quot;0&quot;&gt;
+				&lt;/p&gt;
+                &lt;p align=&quot;center&quot;&gt;Overview of SUNIST device
+                &lt;/p&gt;
+                &lt;br&gt;
+				&lt;p&gt;The device construction of SUNIST was completed in 2002, and the first plasma current was obtained on November 4th, 2002. SUNIST United Laboratory was founded on December 29th, 2005. The united lab consists of &lt;a class=&quot;one&quot; href=&quot;http://www.ep.tsinghua.edu.cn/publish/epen/index.html&quot; target=&quot;_blank&quot;&gt;Department of Engineering Physics&lt;/a&gt;, &lt;a class=&quot;one&quot; href=&quot;http://www.tsinghua.edu.cn/publish/newthuen/index.html&quot; target=&quot;_blank&quot;&gt;Tsinghua University&lt;/a&gt; and &lt;a class=&quot;one&quot; href=&quot;http://english.iop.cas.cn/&quot; target=&quot;_blank&quot;&gt;Institute of Physics, Chinese Academy of Sciences&lt;/a&gt;, keeping close collaboration with &lt;a class=&quot;one&quot; href=&quot;http://www.swip.ac.cn/cfs/english/&quot; target=&quot;_blank&quot;&gt;Southwestern Institute of Physics&lt;/a&gt;, &lt;a class=&quot;one&quot; href=&quot;http://en.cnnc.com.cn/index.html&quot; target=&quot;_blank&quot;&gt;China National Nuclear Corporation&lt;/a&gt; and &lt;a class=&quot;one&quot; href=&quot;http://english.ipp.cas.cn/&quot; target=&quot;_blank&quot;&gt;Institute of Plasma Physics, Chinese Academy of Sciences&lt;/a&gt;&lt;/p&gt;
+				&lt;br&gt;
+				&lt;p&gt;The mission of SUNIST is to explore spherical torus plasmas. Main experiments were involved with breakdown and plasma current set-up with a mode of saving volt-second and without ohmic-heating system, equilibrium and instability, edge turbulence, current driving, heating and profile modification.&lt;/p&gt;
+				&lt;br&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;!--footer--&gt;
+		&lt;div class=&quot;footer&quot;&gt;
+			&lt;div class=&quot;organizations&quot;&gt;
+				&lt;div&gt;
+					&lt;a target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn/publish/newthuen/index.html&quot;&gt; &lt;img src=&quot;about/about_files/thu-logo.png&quot;&gt;&lt;/a&gt;
+				&lt;/div&gt;
+				&lt;div&gt;
+					&lt;a target=&quot;_blank&quot; href=&quot;http://english.cas.cn/&quot;&gt;&lt;img src=&quot;about/about_files/cas-logo.png&quot;&gt;&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;copyright&quot;&gt;
+				&lt;p&gt;? 2016 SUNIST Laboratory. All rights reserved.&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[195]" method="GET" name="JBoss Status Servlet found" plugin="find_jboss" severity="Information" url="http://sunist.org/status" var="None">
+        <description>JBoss Status Servlet gives valuable information</description>
+        <http-transactions>
+            <http-transaction id="195">
+                <http-request>
+                    <status>GET http://sunist.org/status HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="151" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/status" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:56 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/status&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.89.112</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://sunist.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="145" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:51 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 38, 42, 69, 70, 88, 186, 187, 188, 189, 190, 193, 195]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://sunist.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="145" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:51 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="38">
+                <http-request>
+                    <status>GET http://sunist.org/hoQjO.html HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="155" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/hoQjO.html" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:55 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/hoQjO.html&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="42">
+                <http-request>
+                    <status>PUT http://sunist.org/oQTEX HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">uZkyWh</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="150" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/oQTEX" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:55 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/oQTEX&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="69">
+                <http-request>
+                    <status>GET http://sunist.org/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="158" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/_vti_inf.html" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:55 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/_vti_inf.html&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="70">
+                <http-request>
+                    <status>GET http://sunist.org/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="156" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/favicon.ico" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:55 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/favicon.ico&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="88">
+                <http-request>
+                    <status>POST http://sunist.org/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2hvUWpPLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguT2pRb2g=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="173" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/_vti_bin/_vti_aut/author.dll" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:55 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/_vti_bin/_vti_aut/author.dll&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://sunist.org/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="157" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/jmx-console/" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:56 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/jmx-console/&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="187">
+                <http-request>
+                    <status>GET http://sunist.org/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="163" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/WebConsole/Invoker" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:56 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/WebConsole/Invoker&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="188">
+                <http-request>
+                    <status>GET http://sunist.org/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="170" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/invoker/JMXInvokerServlet" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:56 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/invoker/JMXInvokerServlet&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="189">
+                <http-request>
+                    <status>GET http://sunist.org/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="171" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/web-console/ServerInfo.jsp" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:56 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/web-console/ServerInfo.jsp&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://sunist.org/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="158" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/server-status" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:56 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/server-status&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="193">
+                <http-request>
+                    <status>GET http://sunist.org/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="159" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/admin-console/" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:56 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/admin-console/&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="195">
+                <http-request>
+                    <status>GET http://sunist.org/status HTTP/1.1</status>
+                    <headers>
+                        <header content="sunist.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="151" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="Microsoft-IIS/7.5" field="server"/>
+                        <header content="http://www.sunist.org/status" field="location"/>
+                        <header content="Wed, 30 Nov 2016 13:36:56 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF=&quot;http://www.sunist.org/status&quot;&gt;here&lt;/a&gt;&lt;/body&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to sunist.org:80&quot;</error>
+</w3af-run>

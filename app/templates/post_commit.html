@@ -1,0 +1,386 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{{info.titile}}</title>
+  <base href="/">
+  <meta name="fragment" content="!">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <script>document.documentElement.className += ('ontouchstart' in window) ? ' touch' : ' no-touch'</script>
+  <script src="static/drops/js/jquery.js"></script>
+  <script src="static/dropsjs/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="static/drops/css/95e46879.main.css">
+  <link rel="stylesheet" href="static/drops/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/drops/css/style.css">
+  <style type="text/css" id="syntaxhighlighteranchor"></style>
+  
+
+
+</head>
+<body ng-app="columnWebApp" ng-controller="AppCtrl" ng-class="pageClass">
+
+  <div class="navbar-wooyun">
+    <div class="home-author-wooyun">
+      <a href="/" data-toggle="popover" data-placement="right" data-content="首页" data-trigger="hover" data-original-title="" title="">
+        返回首页
+        <span class="glyphicon glyphicon-home"></span>
+      </a>
+    </div>
+    {% if info.isPOST %}
+    <div class="home-author-wooyun">
+      <a href="/newsend" data-toggle="popover" data-placement="right" data-trigger="hover" data-original-title="" title="">
+        修改报告
+        <span class="glyphicon glyphicon-pencil"></span>
+      </a>
+    </div>    
+    {% endif %}
+  </div>
+
+
+
+<main class="main-container ng-scope" ng-view="">
+<div class="main receptacle post-view ng-scope">
+
+  <article class="entry ng-scope" ng-controller="EntryCtrl" ui-lightbox="">
+    <header>
+      <h1 class="entry-title ng-binding">{{info.title}}</h1>      
+      <div class="entry-meta">
+        <a target="_blank" class="author name ng-binding">{{info.author}}</a>
+        <span class="bull">·</span>
+        <time title="{{info.time}}" ui-time="" datetime="{{info.time}}" class="published ng-binding ng-isolate-scope">{{info.time}}</time>
+        <span class="bull">·</span>
+        <a>漏洞等级：{{info.level}}</a>
+        <span class="bull">·</span>
+        <a>漏洞状态：{{info.status}}</a>
+      </div>
+    </header>
+
+    <!-- ngIf: isCensoring -->
+
+    <section class="entry-content ng-binding" ng-bind-html="postContentTrustedHtml">
+      <p>
+
+<h1>0x00 漏洞摘要</h1>
+
+<hr />
+
+<p>asdasd</p>
+
+<p>发现其有两个比较鲜明的特点。</p>
+
+<ol>
+<li><p>并且控制方式上非常隐蔽。</p></li>
+</ol>
+
+<p>test</p>
+
+<!--more-->
+
+<p><img src="static/drops/full/e0e2b28abc7ca327236f462324ef315e652220c4.jpg" alt="" /></p>
+
+<p><img src="static/drops/full/a0156edb5d318d5bc5e2f731f49e4cdc7a733a53.jpg" alt="" /></p>
+
+<h1>0x01 详细说明</h1>
+
+<hr />
+
+<p>漏洞的位置，原理，发现的详细过程、POC</p>
+
+<p>相关代码如下：</p>
+
+<p><img src="static/drops/full/2793a104c3502bbfecee01ce84fdbc59efa8eb0f.jpg" alt="" /></p>
+
+<h1>0x03 漏洞证明</h1>
+
+图片
+
+<h1>0x04 修复方案</h1>
+
+<hr />
+
+<p>查杀工具与恶意代码的攻防竞赛一直在进行中，在PE文件被作为严防死守对象的今天， Office宏、VBS，Powershell、Javascript等非PE的脚本攻击载荷由于方便进行加密混淆而有很好的免杀性，对抗恶意代码的厂商有必要采取更多的手段来应对此类威胁。</p>
+
+
+</div>
+</body>
+
+<script>
+  //代码高亮功能
+  $ = jQuery;
+
+  $("pre").each(function(){
+    txt = $(this).text();
+    lang = txt.split("\n")[0];
+    if(lang.indexOf("#!") == 0){
+      name = lang.replace("#!", "");
+      txt = txt.replace(lang + "\n", "");
+      $(this).addClass("brush:" + name)
+    }else{
+      $(this).addClass("highlight");
+    }
+    $(this).text(txt)
+  })
+
+  function TimeToStr(){
+    var now = new Date();
+
+    var year = now.getFullYear();       //年
+    var month = now.getMonth() + 1;     //月
+    var day = now.getDate();            //日
+
+    var hh = now.getHours();            //时
+    var mm = now.getMinutes();          //分
+    var ss = now.getSeconds();
+
+    if(month < 10){
+      month = "0" + month;
+    }
+    if(day < 10){
+      day = "0" + day;
+    }
+    if(ss < 10){
+      ss = "0" + day;
+    }
+    return year + "-" + month + "-" + day + " " + hh + ":" + mm + ":" + ss;
+  }
+
+  var reply = function(name){
+    data = $("#comment_content").val();
+    value = data + "@" + unescape(name) + " ";
+    $("#comment_content").val(value);
+    $("html,body").animate({scrollTop:$("#comments").offset().top},1000)
+  }
+
+  function js_relace(str){
+    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  $("input[name=commit]").bind("click", function(){
+    $("input[name=commit]").attr("value", "提交中...")
+
+    author = $("input[name=nickname]").val();
+    content = $("#comment_content").val();
+    captcha = $("input[name=captcha]").val();
+    comment_post_ID = $("input[name=comment_post_ID]").attr("value")
+    $.post("/wp-comments-ajax.php", {comment_post_ID: comment_post_ID, author: author, comment: content, captcha: captcha}, function(data){
+      $("input[name=commit]").attr("value", "发 表")
+      //清空验证码
+      $("input[name=captcha]").val("");
+      if(data.status == 1){
+        alert("操作失败");
+        return;
+      }
+
+      id = "note-conmment-" + Math.round(Math.random() * 1000);
+      html = '  <div class="note-comment" id="'+ id + '" style="display:none">\
+          <img class="avatar" alt="30" src="http://wooyun.b0.upaiyun.com/wooyun_job/avatar/default.png">\
+          <div class="content">\
+            <div class="comment-header"><span class="author-link">' + js_relace($("input[name=nickname]").val()) +'</span>\
+              <span class="reply-time">' + TimeToStr() + '</span>\
+            </div>\
+            <p>'+ data.content +'</p>\
+            <div class="comment-footer clearfix">   <a href="javascript:void(null)" class="reply pull-right" onclick=reply("' + escape($("input[name=nickname]").val()) + '")> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>\
+          </div>\
+        </div>';
+
+      $($.parseHTML(html)).prependTo("#comment-list");
+
+      $("#" + id).fadeIn(1000);
+      //清空评论
+      $("#comment_content").val("");
+
+      $("#captcha_img").click()
+
+    }).error(function(xhr,errorText,errorType){
+      $("input[name=commit]").attr("value", "发 表")
+      alert("您提交评论的速度太快了，请稍后再发表评论");
+    });
+
+  })
+
+  $(function(){
+    $("#captcha_img").click()
+  })
+
+  $(function (){
+    $("[data-toggle='popover']").popover();
+  });
+  //判断是否为移动端
+  if (navigator.userAgent.match(/(iPhone|iPod|Android|ios|SymbianOS)/i)){
+    $(".navbar-wooyun").addClass("hidden");
+    $(".navbar-mobile").removeClass("hidden");
+    $("body").addClass("navbar-mobile-show");
+  }
+
+  //收藏 取消收藏功能
+  var postID='17213';
+  var token='';
+  var actionUrl='/wooyun/action.php';
+
+  //添加收藏
+  $(document).on("click", ".fav-add", function(){
+    if(token == ""){
+      alert("请登录后操作");
+      return;
+    }
+    $.getJSON(actionUrl, {'act': 'collect', 'id': postID, 'token': token, 'rid':Math.random()}, function(data){
+      if(data.error == 0){
+        //操作成功
+        $(".fav-add").removeClass("fav-add").addClass("fav-cancel");
+        $(".fav-cancel").find("i").removeClass("glyphicon-star-empty").addClass("glyphicon-star");
+        $(".fav-cancel").find("span").text("已收藏");
+      }else{
+        alert(data.content);
+      }
+    })
+  });
+  //取消收藏
+  $(document).on("click", ".fav-cancel",function(){
+    $.getJSON(actionUrl, {'act': 'collectcancel', 'id': postID, 'token': token, 'rid':Math.random()}, function(data){
+      if(data.error == 0){
+        //操作成功
+        $(".fav-cancel").removeClass("fav-cancel").addClass("fav-add");
+        $(".fav-add").find("i").removeClass("glyphicon-star").addClass("glyphicon-star-empty");
+        $(".fav-add").find("span").text("收藏");
+      }else{
+        alert(data.content);
+      }
+    })
+  })
+
+//判断用户是否已经收藏
+if(token != ""){
+  $.getJSON(actionUrl, {'act': 'checkcollect', 'id': postID, 'token': token, 'rid':Math.random()}, function(data){
+    if(data.error == 1){
+      //已经收藏了
+      $(".fav-add").removeClass("fav-add").addClass("fav-cancel");
+      $(".fav-cancel").find("i").removeClass("glyphicon-star-empty").addClass("glyphicon-star");
+      $(".fav-cancel").find("span").text("已收藏");
+    }
+  })
+}
+//控制分享代码
+$(document).on("mouseover", ".post-share-button", function(){$(".post-share-button").addClass("open")})
+$(document).on("mouseleave", ".post-share-button", function(){$(".post-share-button").removeClass("open")})
+
+$(document).on("click", ".share-weibo", function(){
+  $(".post-share-button").removeClass("open");
+})
+//设置一下微博分享的链接
+$(".share-sina-weibo").attr("target", "_blank");
+share_title = $("header h1").text() + "（分享来自 @乌云知识库 · 作者：" + $("header div a").attr("href").replace("/author/", "") +  "）";
+share_url = escape(location.href)
+share_pic = $($(".entry-content img")[0]).attr("src");
+share_url = "http://service.weibo.com/share/share.php?title= " + share_title + "&url=" + share_url + "&pic=" + share_pic;
+$(".share-sina-weibo").attr("href", share_url)
+</script>
+<script>
+/* <![CDATA[ */
+var rcGlobal = {
+	serverUrl		:'http://drops.wooyun.org',
+	infoTemp		:'%REVIEWER% 在 %POST%',
+	loadingText		:'正在加载',
+	noCommentsText	:'没有任何评论',
+	newestText		:'&laquo; 最新的',
+	newerText		:'&laquo; 上一页',
+	olderText		:'下一页 &raquo;',
+	showContent		:'1',
+	external		:'1',
+	avatarSize		:'32',
+	avatarPosition	:'left',
+	anonymous		:'匿名'
+};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushAS3.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushBash.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushColdFusion.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/third-party-brushes/shBrushClojure.js?ver=20090602'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCss.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushDelphi.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushDiff.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushErlang.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/third-party-brushes/shBrushFSharp.js?ver=20091003'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushGroovy.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJava.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJavaFX.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJScript.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/third-party-brushes/shBrushLatex.js?ver=20090613'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/third-party-brushes/shBrushMatlabKey.js?ver=20091209'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/third-party-brushes/shBrushObjC.js?ver=20091207'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPerl.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPhp.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPowerShell.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPython.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/third-party-brushes/shBrushR.js?ver=20100919'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushRuby.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushScala.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushSql.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushVb.js?ver=3.0.83c'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js?ver=3.0.83c'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.83c";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.83c";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '帮助';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = '无法找到Brush：';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush不能设置 html-script选项';
+	SyntaxHighlighter.defaults['auto-links'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+<link rel='stylesheet' id='yarppWidgetCss-css'  href='http://drops.wooyun.org/wp-content/plugins/yet-another-related-posts-plugin/style/widget.css?ver=3.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-easyarchives-css'  href='http://drops.wooyun.org/wp-content/plugins/wp-easyarchives/css/wp-easyarchives.css?ver=3.1' type='text/css' media='screen' />
+<link rel='stylesheet' id='wp-recentcomments-css'  href='http://drops.wooyun.org/wp-content/plugins/wp-recentcomments/css/wp-recentcomments.css?ver=2.2.5' type='text/css' media='screen' />
+<link rel='stylesheet' id='yarppRelatedCss-css'  href='http://drops.wooyun.org/wp-content/plugins/yet-another-related-posts-plugin/style/related.css?ver=3.4.1' type='text/css' media='all' />
+<script type='text/javascript' src='http://drops.wooyun.org/wp-includes/js/jquery/jquery.js?ver=1.7.2'></script>
+<script type='text/javascript' src='http://drops.wooyun.org/wp-content/plugins/wp-recentcomments/js/wp-recentcomments.js?ver=2.2.5'></script>
+<span style="float: right;">感谢知乎授权页面模版</span>
+<!-- 百度统计-->
+<div style="display:none">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9fc41da6a2322bdd80563c9d5a4bdb1d' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+</body>
+<script>
+</script>
+<script>
+/*
+$("img").bind('error', function(){
+  img_src = $(this).attr("src");
+  new_src = img_src.replace('static.wooyun.org', 'wooyun.b0.upaiyun.com');
+  $(this).attr("src", new_src);
+})
+*/
+</script>
+</html>

@@ -1,0 +1,2160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480514470" start-long="Wed Nov 30 09:01:10 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://infosource.lib.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/480_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Auto-completable form" plugin="form_autocomplete" severity="Information" url="http://infosource.lib.tsinghua.edu.cn/" var="None">
+        <description>The URL: &quot;http://infosource.lib.tsinghua.edu.cn/&quot; has a &quot;&lt;form&gt;&quot; element with auto-complete enabled.</description>
+        <long-description>In typical form-based web applications, it is common practice for developers to allow `autocomplete` within the HTML form to improve the usability of the page. With `autocomplete` enabled (default), the browser is allowed to cache previously entered form values.
+
+For legitimate purposes, this allows the user to quickly re-enter the same data when completing the form multiple times.
+
+When `autocomplete` is enabled on either/both the username and password fields, this could allow a cyber-criminal with access to the victim's computer the ability to have the victim's credentials automatically entered as the cyber-criminal visits the affected page.
+
+The tool has discovered that the affected page contains a form containing a password field that has not disabled `autocomplete`.</long-description>
+        <fix-guidance>The `autocomplete` value can be configured in two different locations. The first and most secure location is to disable the `autocomplete` attribute on the `&lt;form&gt;` HTML tag. This will disable `autocomplete` for all inputs within that form. An example of disabling `autocomplete` within the form tag is `&lt;form autocomplete=off&gt;`.
+
+The second slightly less desirable option is to disable the `autocomplete` attribute for a specific `&lt;input&gt;` HTML tag. While this may be the less desired solution from a security perspective, it may be preferred method for usability reasons, depending on size of the form. An example of disabling the `autocomplete` attribute within a password input tag is `&lt;input type=password autocomplete=off&gt;`.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 14:01:14 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+
+
+
+
+
+
+
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+  &lt;head&gt;
+    &lt;base href=&quot;http://infosource.lib.tsinghua.edu.cn/authjsp/login.jsp&quot;&gt;
+    &lt;link href=&quot;../images/css.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;title&gt;易瑞授权访问系统&lt;/title&gt;
+
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;../iras.js&quot;&gt;&lt;/script&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+	body {
+		margin: 0px;
+		background:#E7F0FA url(&quot;../images/bg.gif&quot;) top repeat-x  ;
+	
+	}
+	&lt;/style&gt;
+	
+&lt;script language=&quot;javascript&quot;&gt;
+
+function changeRegImg()
+{
+	document.getElementById(&quot;regimg&quot;).src = &quot;../servlet/verifycode?&quot;+Math.random();
+}
+
+function changeHost(host) {
+	
+	window.location.href = 'http://' +  host + ':'+window.location.port+window.location.pathname;
+}
+function onBodyLoad()
+{
+	try{  
+    	IfcCtrl.logout();
+    }catch(err) {}
+
+	var mac;
+	try{  
+    	mac = IfcCtrl.GetMacAddrs();
+    }catch(err) {
+  		
+    }
+	if(typeof(mac)!=null &amp;&amp; typeof(mac)!=&quot;undefined&quot;){
+		document.getElementById(&quot;mac&quot;).value = mac;
+	}
+}
+window.onload = onBodyLoad;
+
+&lt;/script&gt;
+&lt;OBJECT ID=&quot;IfcCtrl&quot; CLASSID=&quot;CLSID:FE0174BB-F093-42AF-AB20-7EC621D10488&quot; width=0 height=0&gt;&lt;/OBJECT&gt;
+  &lt;/head&gt;
+  &lt;body background=&quot;../images/bg.gif&quot;  leftmargin=&quot;0&quot; topmargin=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;
+    
+    &lt;form name=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/auth/login.do&quot; onsubmit=&quot;return a341(this);&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;url&quot; value=&quot;&quot;&gt;
+     &lt;input type=&quot;hidden&quot; name=&quot;mac&quot;&gt;
+     &lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/logo.gif&quot; width=&quot;651&quot; height=&quot;79&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;44&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/txtbg.gif&quot; class=&quot;namett&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;44&quot; align=&quot;center&quot; valign=&quot;top&quot; style=&quot;padding-top:5px;&quot;&gt;&lt;font face=&quot;隶书&quot;&gt;清华大学图书馆&lt;/font&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;29&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/mbg.gif&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;29&quot; align=&quot;right&quot; valign=&quot;top&quot; style=&quot;padding:7px 35px 0px 0px;&quot;&gt;
+	    &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion1.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/logout.do&quot;&gt;退出登录&lt;/a&gt;&lt;/div&gt;
+		
+      &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion2.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/faq.do&quot;&gt;常见问题&lt;/a&gt;&lt;/div&gt;
+
+	&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/ctop.gif&quot; width=&quot;651&quot; height=&quot;11&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/cbg.gif&quot; class=&quot;h12&quot;&gt;
+
+  &lt;tr&gt; 
+    &lt;td width=&quot;19&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td width=&quot;614&quot; align=&quot;center&quot; valign=&quot;top&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('166.111.120.6')&quot;   value=&quot;166.111.120.6&quot; name=&quot;network&quot; id=&quot;network1&quot;&quot;&gt;&lt;label for=&quot;network1&quot;&gt;&lt;/label&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('eproxy.lib.tsinghua.edu.cn')&quot;   value=&quot;eproxy.lib.tsinghua.edu.cn&quot; name=&quot;network&quot; id=&quot;network2&quot;&quot;&gt;&lt;label for=&quot;network2&quot;&gt;&lt;/label&gt;
+
+        
+
+ 
+ 
+
+        &lt;table width=&quot;100%&quot; height=&quot;26&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot; style=&quot;margin:5px 0px;padding:4px 0px 0px 20px;&quot;&gt;
+          
+            &lt;/br&gt;
+            &lt;p&gt;&lt;strong&gt;&lt;font align=&quot;center&quot; color=&quot;red&quot;style=&quot;font-size:15px&quot;&gt;此系统仅供用户在校外访问数据库使用，校内访问数据库不能使用本系统&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+          &lt;!--
+          &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;&lt;span id=&quot;prompt&quot;&gt;请输入您的用户名和密码:&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          --&gt;
+          
+          &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;&lt;font style=&quot;font-size:15px&quot;&gt;&lt;b&gt;请输入您的用户名和密码:&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;
+
+        &lt;/table&gt;
+        &lt;span id=&quot;loginHtml&quot;&gt;
+        &lt;table  border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot;&gt;
+          &lt;tr&gt; 
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;学号/工作证号：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;验证码：&lt;/td&gt;&lt;td valign=&quot;middle&quot;&gt;
+              &lt;input type=&quot;text&quot; name=&quot;verifycode&quot; size=&quot;3&quot; value=&quot;&quot;&gt;&lt;img id=&quot;regimg&quot; src=&quot;../servlet/verifycode&quot; align=&quot;absmiddle&quot;/&gt; &lt;a href=&quot;javascript:changeRegImg()&quot; class=&quot;h12&quot; &gt;看不清换一张&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          
+        &lt;/table&gt;
+        &lt;/span&gt;
+        &lt;table width=&quot;95%&quot; height=&quot;4&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/dotbg.gif&quot;&gt;
+          &lt;tr&gt;
+            &lt;td&gt; &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;table width=&quot;86%&quot; height=&quot;34&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;submit&quot; class=&quot;button12&quot; value=&quot;提 交&quot;&gt;
+              
+             &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+&lt;!--  以下添加公告   --&gt;
+		&lt;table width=&quot;99%&quot; height=&quot;30&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;huibg&quot;&gt;
+			&lt;tr&gt;
+				&lt;td align=&quot;left&quot; valign=&quot;top&quot;&gt;
+					&lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;a name=&quot;visitor&quot;&gt;&lt;/a&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;b&gt;特别提示&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;
+					&lt;ul&gt;&lt;li&gt;本系统仅对本校在职教工和在校研究生、本科生开放；&lt;/li&gt;
+                    &lt;li&gt;如果不确定自己的用户名和口令，请咨询计算中心，电话：62771940 62771942；&lt;/li&gt;
+                    &lt;li&gt; 目前，通过本系统可以访问的电子资源包括：清华大学图书馆绝大多数已经订购电子资源；&lt;/li&gt;
+                    &lt;li&gt;通过该系统访问资源时，&lt;span class=&quot;style2&quot;&gt;&lt;font color=&quot;#990000&quot;&gt;不得连续、系统、集中、批量地下载文献&lt;/font&gt;&lt;/span&gt;（一般数据库商认为，如果超出正常阅读速度下载文献就视为滥用，通常正常阅读一篇文献的速度至少需要几分钟）；如果在短时间内有过量下载的行为，本系统将将自动暂时冻结读者的访问权限。&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;b&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;/b&gt;&lt;/span&gt;&lt;b&gt;咨询反馈：&lt;/b&gt;&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn责任馆员&lt;/a&gt;
+                    　&lt;a href=&quot;http://vrs.lib.tsinghua.edu.cn&quot;&gt;咨询台&lt;/a&gt;&lt;/p&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+				&lt;/td&gt;
+				&lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+&lt;!--  以上添加公告   --&gt;
+    &lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/bkk.gif&quot; width=&quot;651&quot; height=&quot;23&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; height=&quot;40&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;bq12&quot;&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;2006 - 2012版权所有：&lt;a href=&quot;http://www.infcn.com.cn&quot; class=&quot;bq12&quot;&gt;北京英富森信息技术有限公司&lt;/a&gt;&lt;br&gt;
+      技术支持邮箱：&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/td&gt;
+      
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+    &lt;/form&gt;
+&lt;script type=&quot;text/javascript&quot; language=&quot;JavaScript&quot;&gt;
+  &lt;!--
+  var focusControl = document.forms[&quot;loginForm&quot;].elements[&quot;username&quot;];
+
+  if (focusControl.type != &quot;hidden&quot; &amp;&amp; !focusControl.disabled) {
+     focusControl.focus();
+  }
+  // --&gt;
+&lt;/script&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[38]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache-Coyote/1.1&quot;.</description>
+        <http-transactions>
+            <http-transaction id="38">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 14:01:14 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+
+
+
+
+
+
+
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+  &lt;head&gt;
+    &lt;base href=&quot;http://infosource.lib.tsinghua.edu.cn/authjsp/login.jsp&quot;&gt;
+    &lt;link href=&quot;../images/css.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;title&gt;易瑞授权访问系统&lt;/title&gt;
+
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;../iras.js&quot;&gt;&lt;/script&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+	body {
+		margin: 0px;
+		background:#E7F0FA url(&quot;../images/bg.gif&quot;) top repeat-x  ;
+	
+	}
+	&lt;/style&gt;
+	
+&lt;script language=&quot;javascript&quot;&gt;
+
+function changeRegImg()
+{
+	document.getElementById(&quot;regimg&quot;).src = &quot;../servlet/verifycode?&quot;+Math.random();
+}
+
+function changeHost(host) {
+	
+	window.location.href = 'http://' +  host + ':'+window.location.port+window.location.pathname;
+}
+function onBodyLoad()
+{
+	try{  
+    	IfcCtrl.logout();
+    }catch(err) {}
+
+	var mac;
+	try{  
+    	mac = IfcCtrl.GetMacAddrs();
+    }catch(err) {
+  		
+    }
+	if(typeof(mac)!=null &amp;&amp; typeof(mac)!=&quot;undefined&quot;){
+		document.getElementById(&quot;mac&quot;).value = mac;
+	}
+}
+window.onload = onBodyLoad;
+
+&lt;/script&gt;
+&lt;OBJECT ID=&quot;IfcCtrl&quot; CLASSID=&quot;CLSID:FE0174BB-F093-42AF-AB20-7EC621D10488&quot; width=0 height=0&gt;&lt;/OBJECT&gt;
+  &lt;/head&gt;
+  &lt;body background=&quot;../images/bg.gif&quot;  leftmargin=&quot;0&quot; topmargin=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;
+    
+    &lt;form name=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/auth/login.do&quot; onsubmit=&quot;return a341(this);&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;url&quot; value=&quot;&quot;&gt;
+     &lt;input type=&quot;hidden&quot; name=&quot;mac&quot;&gt;
+     &lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/logo.gif&quot; width=&quot;651&quot; height=&quot;79&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;44&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/txtbg.gif&quot; class=&quot;namett&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;44&quot; align=&quot;center&quot; valign=&quot;top&quot; style=&quot;padding-top:5px;&quot;&gt;&lt;font face=&quot;隶书&quot;&gt;清华大学图书馆&lt;/font&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;29&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/mbg.gif&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;29&quot; align=&quot;right&quot; valign=&quot;top&quot; style=&quot;padding:7px 35px 0px 0px;&quot;&gt;
+	    &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion1.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/logout.do&quot;&gt;退出登录&lt;/a&gt;&lt;/div&gt;
+		
+      &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion2.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/faq.do&quot;&gt;常见问题&lt;/a&gt;&lt;/div&gt;
+
+	&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/ctop.gif&quot; width=&quot;651&quot; height=&quot;11&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/cbg.gif&quot; class=&quot;h12&quot;&gt;
+
+  &lt;tr&gt; 
+    &lt;td width=&quot;19&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td width=&quot;614&quot; align=&quot;center&quot; valign=&quot;top&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('166.111.120.6')&quot;   value=&quot;166.111.120.6&quot; name=&quot;network&quot; id=&quot;network1&quot;&quot;&gt;&lt;label for=&quot;network1&quot;&gt;&lt;/label&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('eproxy.lib.tsinghua.edu.cn')&quot;   value=&quot;eproxy.lib.tsinghua.edu.cn&quot; name=&quot;network&quot; id=&quot;network2&quot;&quot;&gt;&lt;label for=&quot;network2&quot;&gt;&lt;/label&gt;
+
+        
+
+ 
+ 
+
+        &lt;table width=&quot;100%&quot; height=&quot;26&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot; style=&quot;margin:5px 0px;padding:4px 0px 0px 20px;&quot;&gt;
+          
+            &lt;/br&gt;
+            &lt;p&gt;&lt;strong&gt;&lt;font align=&quot;center&quot; color=&quot;red&quot;style=&quot;font-size:15px&quot;&gt;此系统仅供用户在校外访问数据库使用，校内访问数据库不能使用本系统&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+          &lt;!--
+          &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;&lt;span id=&quot;prompt&quot;&gt;请输入您的用户名和密码:&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          --&gt;
+          
+          &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;&lt;font style=&quot;font-size:15px&quot;&gt;&lt;b&gt;请输入您的用户名和密码:&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;
+
+        &lt;/table&gt;
+        &lt;span id=&quot;loginHtml&quot;&gt;
+        &lt;table  border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot;&gt;
+          &lt;tr&gt; 
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;学号/工作证号：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;验证码：&lt;/td&gt;&lt;td valign=&quot;middle&quot;&gt;
+              &lt;input type=&quot;text&quot; name=&quot;verifycode&quot; size=&quot;3&quot; value=&quot;&quot;&gt;&lt;img id=&quot;regimg&quot; src=&quot;../servlet/verifycode&quot; align=&quot;absmiddle&quot;/&gt; &lt;a href=&quot;javascript:changeRegImg()&quot; class=&quot;h12&quot; &gt;看不清换一张&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          
+        &lt;/table&gt;
+        &lt;/span&gt;
+        &lt;table width=&quot;95%&quot; height=&quot;4&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/dotbg.gif&quot;&gt;
+          &lt;tr&gt;
+            &lt;td&gt; &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;table width=&quot;86%&quot; height=&quot;34&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;submit&quot; class=&quot;button12&quot; value=&quot;提 交&quot;&gt;
+              
+             &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+&lt;!--  以下添加公告   --&gt;
+		&lt;table width=&quot;99%&quot; height=&quot;30&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;huibg&quot;&gt;
+			&lt;tr&gt;
+				&lt;td align=&quot;left&quot; valign=&quot;top&quot;&gt;
+					&lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;a name=&quot;visitor&quot;&gt;&lt;/a&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;b&gt;特别提示&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;
+					&lt;ul&gt;&lt;li&gt;本系统仅对本校在职教工和在校研究生、本科生开放；&lt;/li&gt;
+                    &lt;li&gt;如果不确定自己的用户名和口令，请咨询计算中心，电话：62771940 62771942；&lt;/li&gt;
+                    &lt;li&gt; 目前，通过本系统可以访问的电子资源包括：清华大学图书馆绝大多数已经订购电子资源；&lt;/li&gt;
+                    &lt;li&gt;通过该系统访问资源时，&lt;span class=&quot;style2&quot;&gt;&lt;font color=&quot;#990000&quot;&gt;不得连续、系统、集中、批量地下载文献&lt;/font&gt;&lt;/span&gt;（一般数据库商认为，如果超出正常阅读速度下载文献就视为滥用，通常正常阅读一篇文献的速度至少需要几分钟）；如果在短时间内有过量下载的行为，本系统将将自动暂时冻结读者的访问权限。&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;b&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;/b&gt;&lt;/span&gt;&lt;b&gt;咨询反馈：&lt;/b&gt;&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn责任馆员&lt;/a&gt;
+                    　&lt;a href=&quot;http://vrs.lib.tsinghua.edu.cn&quot;&gt;咨询台&lt;/a&gt;&lt;/p&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+				&lt;/td&gt;
+				&lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+&lt;!--  以上添加公告   --&gt;
+    &lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/bkk.gif&quot; width=&quot;651&quot; height=&quot;23&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; height=&quot;40&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;bq12&quot;&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;2006 - 2012版权所有：&lt;a href=&quot;http://www.infcn.com.cn&quot; class=&quot;bq12&quot;&gt;北京英富森信息技术有限公司&lt;/a&gt;&lt;br&gt;
+      技术支持邮箱：&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/td&gt;
+      
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+    &lt;/form&gt;
+&lt;script type=&quot;text/javascript&quot; language=&quot;JavaScript&quot;&gt;
+  &lt;!--
+  var focusControl = document.forms[&quot;loginForm&quot;].elements[&quot;username&quot;];
+
+  if (focusControl.type != &quot;hidden&quot; &amp;&amp; !focusControl.disabled) {
+     focusControl.focus();
+  }
+  // --&gt;
+&lt;/script&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[175, 179]" method="PUT" name="DAV incorrect configuration" plugin="dav" severity="Information" url="http://infosource.lib.tsinghua.edu.cn/zWLKe" var="None">
+        <description>DAV seems to be correctly configured and allowing you to use the PUT method but the directory does not have the right permissions that would allow the web server to write to it. This error was found at: &quot;http://infosource.lib.tsinghua.edu.cn/zWLKe&quot;.</description>
+        <http-transactions>
+            <http-transaction id="175">
+                <http-request>
+                    <status>PUT http://infosource.lib.tsinghua.edu.cn/zWLKe HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">Mwsjck</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:16 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="179">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/zWLKe HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:16 GMT" field="date"/>
+                        <header content="970" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /zWLKe&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/zWLKe&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/zWLKe) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[184]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://infosource.lib.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://lib.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://infosource.lib.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="184">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 14:01:17 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+
+
+
+
+
+
+
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+  &lt;head&gt;
+    &lt;base href=&quot;http://lib.tsinghua.edu.cn/authjsp/login.jsp&quot;&gt;
+    &lt;link href=&quot;../images/css.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;title&gt;易瑞授权访问系统&lt;/title&gt;
+
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;../iras.js&quot;&gt;&lt;/script&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+	body {
+		margin: 0px;
+		background:#E7F0FA url(&quot;../images/bg.gif&quot;) top repeat-x  ;
+	
+	}
+	&lt;/style&gt;
+	
+&lt;script language=&quot;javascript&quot;&gt;
+
+function changeRegImg()
+{
+	document.getElementById(&quot;regimg&quot;).src = &quot;../servlet/verifycode?&quot;+Math.random();
+}
+
+function changeHost(host) {
+	
+	window.location.href = 'http://' +  host + ':'+window.location.port+window.location.pathname;
+}
+function onBodyLoad()
+{
+	try{  
+    	IfcCtrl.logout();
+    }catch(err) {}
+
+	var mac;
+	try{  
+    	mac = IfcCtrl.GetMacAddrs();
+    }catch(err) {
+  		
+    }
+	if(typeof(mac)!=null &amp;&amp; typeof(mac)!=&quot;undefined&quot;){
+		document.getElementById(&quot;mac&quot;).value = mac;
+	}
+}
+window.onload = onBodyLoad;
+
+&lt;/script&gt;
+&lt;OBJECT ID=&quot;IfcCtrl&quot; CLASSID=&quot;CLSID:FE0174BB-F093-42AF-AB20-7EC621D10488&quot; width=0 height=0&gt;&lt;/OBJECT&gt;
+  &lt;/head&gt;
+  &lt;body background=&quot;../images/bg.gif&quot;  leftmargin=&quot;0&quot; topmargin=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;
+    
+    &lt;form name=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/auth/login.do&quot; onsubmit=&quot;return a341(this);&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;url&quot; value=&quot;&quot;&gt;
+     &lt;input type=&quot;hidden&quot; name=&quot;mac&quot;&gt;
+     &lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/logo.gif&quot; width=&quot;651&quot; height=&quot;79&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;44&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/txtbg.gif&quot; class=&quot;namett&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;44&quot; align=&quot;center&quot; valign=&quot;top&quot; style=&quot;padding-top:5px;&quot;&gt;&lt;font face=&quot;隶书&quot;&gt;清华大学图书馆&lt;/font&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;29&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/mbg.gif&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;29&quot; align=&quot;right&quot; valign=&quot;top&quot; style=&quot;padding:7px 35px 0px 0px;&quot;&gt;
+	    &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion1.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/logout.do&quot;&gt;退出登录&lt;/a&gt;&lt;/div&gt;
+		
+      &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion2.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/faq.do&quot;&gt;常见问题&lt;/a&gt;&lt;/div&gt;
+
+	&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/ctop.gif&quot; width=&quot;651&quot; height=&quot;11&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/cbg.gif&quot; class=&quot;h12&quot;&gt;
+
+  &lt;tr&gt; 
+    &lt;td width=&quot;19&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td width=&quot;614&quot; align=&quot;center&quot; valign=&quot;top&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('166.111.120.6')&quot;   value=&quot;166.111.120.6&quot; name=&quot;network&quot; id=&quot;network1&quot;&quot;&gt;&lt;label for=&quot;network1&quot;&gt;&lt;/label&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('eproxy.lib.tsinghua.edu.cn')&quot;   value=&quot;eproxy.lib.tsinghua.edu.cn&quot; name=&quot;network&quot; id=&quot;network2&quot;&quot;&gt;&lt;label for=&quot;network2&quot;&gt;&lt;/label&gt;
+
+        
+
+ 
+ 
+
+        &lt;table width=&quot;100%&quot; height=&quot;26&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot; style=&quot;margin:5px 0px;padding:4px 0px 0px 20px;&quot;&gt;
+          
+            &lt;/br&gt;
+            &lt;p&gt;&lt;strong&gt;&lt;font align=&quot;center&quot; color=&quot;red&quot;style=&quot;font-size:15px&quot;&gt;此系统仅供用户在校外访问数据库使用，校内访问数据库不能使用本系统&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+          &lt;!--
+          &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;&lt;span id=&quot;prompt&quot;&gt;请输入您的用户名和密码:&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          --&gt;
+          
+          &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;&lt;font style=&quot;font-size:15px&quot;&gt;&lt;b&gt;请输入您的用户名和密码:&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;
+
+        &lt;/table&gt;
+        &lt;span id=&quot;loginHtml&quot;&gt;
+        &lt;table  border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot;&gt;
+          &lt;tr&gt; 
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;学号/工作证号：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;验证码：&lt;/td&gt;&lt;td valign=&quot;middle&quot;&gt;
+              &lt;input type=&quot;text&quot; name=&quot;verifycode&quot; size=&quot;3&quot; value=&quot;&quot;&gt;&lt;img id=&quot;regimg&quot; src=&quot;../servlet/verifycode&quot; align=&quot;absmiddle&quot;/&gt; &lt;a href=&quot;javascript:changeRegImg()&quot; class=&quot;h12&quot; &gt;看不清换一张&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          
+        &lt;/table&gt;
+        &lt;/span&gt;
+        &lt;table width=&quot;95%&quot; height=&quot;4&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/dotbg.gif&quot;&gt;
+          &lt;tr&gt;
+            &lt;td&gt; &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;table width=&quot;86%&quot; height=&quot;34&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;submit&quot; class=&quot;button12&quot; value=&quot;提 交&quot;&gt;
+              
+             &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+&lt;!--  以下添加公告   --&gt;
+		&lt;table width=&quot;99%&quot; height=&quot;30&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;huibg&quot;&gt;
+			&lt;tr&gt;
+				&lt;td align=&quot;left&quot; valign=&quot;top&quot;&gt;
+					&lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;a name=&quot;visitor&quot;&gt;&lt;/a&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;b&gt;特别提示&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;
+					&lt;ul&gt;&lt;li&gt;本系统仅对本校在职教工和在校研究生、本科生开放；&lt;/li&gt;
+                    &lt;li&gt;如果不确定自己的用户名和口令，请咨询计算中心，电话：62771940 62771942；&lt;/li&gt;
+                    &lt;li&gt; 目前，通过本系统可以访问的电子资源包括：清华大学图书馆绝大多数已经订购电子资源；&lt;/li&gt;
+                    &lt;li&gt;通过该系统访问资源时，&lt;span class=&quot;style2&quot;&gt;&lt;font color=&quot;#990000&quot;&gt;不得连续、系统、集中、批量地下载文献&lt;/font&gt;&lt;/span&gt;（一般数据库商认为，如果超出正常阅读速度下载文献就视为滥用，通常正常阅读一篇文献的速度至少需要几分钟）；如果在短时间内有过量下载的行为，本系统将将自动暂时冻结读者的访问权限。&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;b&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;/b&gt;&lt;/span&gt;&lt;b&gt;咨询反馈：&lt;/b&gt;&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn责任馆员&lt;/a&gt;
+                    　&lt;a href=&quot;http://vrs.lib.tsinghua.edu.cn&quot;&gt;咨询台&lt;/a&gt;&lt;/p&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+				&lt;/td&gt;
+				&lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+&lt;!--  以上添加公告   --&gt;
+    &lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/bkk.gif&quot; width=&quot;651&quot; height=&quot;23&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; height=&quot;40&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;bq12&quot;&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;2006 - 2012版权所有：&lt;a href=&quot;http://www.infcn.com.cn&quot; class=&quot;bq12&quot;&gt;北京英富森信息技术有限公司&lt;/a&gt;&lt;br&gt;
+      技术支持邮箱：&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/td&gt;
+      
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+    &lt;/form&gt;
+&lt;script type=&quot;text/javascript&quot; language=&quot;JavaScript&quot;&gt;
+  &lt;!--
+  var focusControl = document.forms[&quot;loginForm&quot;].elements[&quot;username&quot;];
+
+  if (focusControl.type != &quot;hidden&quot; &amp;&amp; !focusControl.disabled) {
+     focusControl.focus();
+  }
+  // --&gt;
+&lt;/script&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Browser plugin content" plugin="objects" severity="Information" url="http://infosource.lib.tsinghua.edu.cn/" var="None">
+        <description>The URL: &quot;http://infosource.lib.tsinghua.edu.cn/&quot; has an &quot;object&quot; tag. We recommend you download the client side code and analyze it manually.</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 14:01:14 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+
+
+
+
+
+
+
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+  &lt;head&gt;
+    &lt;base href=&quot;http://infosource.lib.tsinghua.edu.cn/authjsp/login.jsp&quot;&gt;
+    &lt;link href=&quot;../images/css.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;title&gt;易瑞授权访问系统&lt;/title&gt;
+
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;../iras.js&quot;&gt;&lt;/script&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+	body {
+		margin: 0px;
+		background:#E7F0FA url(&quot;../images/bg.gif&quot;) top repeat-x  ;
+	
+	}
+	&lt;/style&gt;
+	
+&lt;script language=&quot;javascript&quot;&gt;
+
+function changeRegImg()
+{
+	document.getElementById(&quot;regimg&quot;).src = &quot;../servlet/verifycode?&quot;+Math.random();
+}
+
+function changeHost(host) {
+	
+	window.location.href = 'http://' +  host + ':'+window.location.port+window.location.pathname;
+}
+function onBodyLoad()
+{
+	try{  
+    	IfcCtrl.logout();
+    }catch(err) {}
+
+	var mac;
+	try{  
+    	mac = IfcCtrl.GetMacAddrs();
+    }catch(err) {
+  		
+    }
+	if(typeof(mac)!=null &amp;&amp; typeof(mac)!=&quot;undefined&quot;){
+		document.getElementById(&quot;mac&quot;).value = mac;
+	}
+}
+window.onload = onBodyLoad;
+
+&lt;/script&gt;
+&lt;OBJECT ID=&quot;IfcCtrl&quot; CLASSID=&quot;CLSID:FE0174BB-F093-42AF-AB20-7EC621D10488&quot; width=0 height=0&gt;&lt;/OBJECT&gt;
+  &lt;/head&gt;
+  &lt;body background=&quot;../images/bg.gif&quot;  leftmargin=&quot;0&quot; topmargin=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;
+    
+    &lt;form name=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/auth/login.do&quot; onsubmit=&quot;return a341(this);&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;url&quot; value=&quot;&quot;&gt;
+     &lt;input type=&quot;hidden&quot; name=&quot;mac&quot;&gt;
+     &lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/logo.gif&quot; width=&quot;651&quot; height=&quot;79&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;44&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/txtbg.gif&quot; class=&quot;namett&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;44&quot; align=&quot;center&quot; valign=&quot;top&quot; style=&quot;padding-top:5px;&quot;&gt;&lt;font face=&quot;隶书&quot;&gt;清华大学图书馆&lt;/font&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;29&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/mbg.gif&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;29&quot; align=&quot;right&quot; valign=&quot;top&quot; style=&quot;padding:7px 35px 0px 0px;&quot;&gt;
+	    &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion1.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/logout.do&quot;&gt;退出登录&lt;/a&gt;&lt;/div&gt;
+		
+      &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion2.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/faq.do&quot;&gt;常见问题&lt;/a&gt;&lt;/div&gt;
+
+	&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/ctop.gif&quot; width=&quot;651&quot; height=&quot;11&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/cbg.gif&quot; class=&quot;h12&quot;&gt;
+
+  &lt;tr&gt; 
+    &lt;td width=&quot;19&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td width=&quot;614&quot; align=&quot;center&quot; valign=&quot;top&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('166.111.120.6')&quot;   value=&quot;166.111.120.6&quot; name=&quot;network&quot; id=&quot;network1&quot;&quot;&gt;&lt;label for=&quot;network1&quot;&gt;&lt;/label&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('eproxy.lib.tsinghua.edu.cn')&quot;   value=&quot;eproxy.lib.tsinghua.edu.cn&quot; name=&quot;network&quot; id=&quot;network2&quot;&quot;&gt;&lt;label for=&quot;network2&quot;&gt;&lt;/label&gt;
+
+        
+
+ 
+ 
+
+        &lt;table width=&quot;100%&quot; height=&quot;26&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot; style=&quot;margin:5px 0px;padding:4px 0px 0px 20px;&quot;&gt;
+          
+            &lt;/br&gt;
+            &lt;p&gt;&lt;strong&gt;&lt;font align=&quot;center&quot; color=&quot;red&quot;style=&quot;font-size:15px&quot;&gt;此系统仅供用户在校外访问数据库使用，校内访问数据库不能使用本系统&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+          &lt;!--
+          &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;&lt;span id=&quot;prompt&quot;&gt;请输入您的用户名和密码:&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          --&gt;
+          
+          &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;&lt;font style=&quot;font-size:15px&quot;&gt;&lt;b&gt;请输入您的用户名和密码:&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;
+
+        &lt;/table&gt;
+        &lt;span id=&quot;loginHtml&quot;&gt;
+        &lt;table  border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot;&gt;
+          &lt;tr&gt; 
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;学号/工作证号：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;验证码：&lt;/td&gt;&lt;td valign=&quot;middle&quot;&gt;
+              &lt;input type=&quot;text&quot; name=&quot;verifycode&quot; size=&quot;3&quot; value=&quot;&quot;&gt;&lt;img id=&quot;regimg&quot; src=&quot;../servlet/verifycode&quot; align=&quot;absmiddle&quot;/&gt; &lt;a href=&quot;javascript:changeRegImg()&quot; class=&quot;h12&quot; &gt;看不清换一张&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          
+        &lt;/table&gt;
+        &lt;/span&gt;
+        &lt;table width=&quot;95%&quot; height=&quot;4&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/dotbg.gif&quot;&gt;
+          &lt;tr&gt;
+            &lt;td&gt; &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;table width=&quot;86%&quot; height=&quot;34&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;submit&quot; class=&quot;button12&quot; value=&quot;提 交&quot;&gt;
+              
+             &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+&lt;!--  以下添加公告   --&gt;
+		&lt;table width=&quot;99%&quot; height=&quot;30&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;huibg&quot;&gt;
+			&lt;tr&gt;
+				&lt;td align=&quot;left&quot; valign=&quot;top&quot;&gt;
+					&lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;a name=&quot;visitor&quot;&gt;&lt;/a&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;b&gt;特别提示&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;
+					&lt;ul&gt;&lt;li&gt;本系统仅对本校在职教工和在校研究生、本科生开放；&lt;/li&gt;
+                    &lt;li&gt;如果不确定自己的用户名和口令，请咨询计算中心，电话：62771940 62771942；&lt;/li&gt;
+                    &lt;li&gt; 目前，通过本系统可以访问的电子资源包括：清华大学图书馆绝大多数已经订购电子资源；&lt;/li&gt;
+                    &lt;li&gt;通过该系统访问资源时，&lt;span class=&quot;style2&quot;&gt;&lt;font color=&quot;#990000&quot;&gt;不得连续、系统、集中、批量地下载文献&lt;/font&gt;&lt;/span&gt;（一般数据库商认为，如果超出正常阅读速度下载文献就视为滥用，通常正常阅读一篇文献的速度至少需要几分钟）；如果在短时间内有过量下载的行为，本系统将将自动暂时冻结读者的访问权限。&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;b&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;/b&gt;&lt;/span&gt;&lt;b&gt;咨询反馈：&lt;/b&gt;&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn责任馆员&lt;/a&gt;
+                    　&lt;a href=&quot;http://vrs.lib.tsinghua.edu.cn&quot;&gt;咨询台&lt;/a&gt;&lt;/p&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+				&lt;/td&gt;
+				&lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+&lt;!--  以上添加公告   --&gt;
+    &lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/bkk.gif&quot; width=&quot;651&quot; height=&quot;23&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; height=&quot;40&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;bq12&quot;&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;2006 - 2012版权所有：&lt;a href=&quot;http://www.infcn.com.cn&quot; class=&quot;bq12&quot;&gt;北京英富森信息技术有限公司&lt;/a&gt;&lt;br&gt;
+      技术支持邮箱：&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/td&gt;
+      
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+    &lt;/form&gt;
+&lt;script type=&quot;text/javascript&quot; language=&quot;JavaScript&quot;&gt;
+  &lt;!--
+  var focusControl = document.forms[&quot;loginForm&quot;].elements[&quot;username&quot;];
+
+  if (focusControl.type != &quot;hidden&quot; &amp;&amp; !focusControl.disabled) {
+     focusControl.focus();
+  }
+  // --&gt;
+&lt;/script&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[36, 79, 207, 214, 240]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://infosource.lib.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://infosource.lib.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: GET, HEAD, OPTIONS, POST, TRACE</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="36">
+                <http-request>
+                    <status>OPTIONS http://infosource.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:15 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="GET, HEAD, POST, TRACE, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="79">
+                <http-request>
+                    <status>HEAD http://infosource.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:15 GMT" field="date"/>
+                        <header content="8346" field="content-length"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="207">
+                <http-request>
+                    <status>OPTIONS http://infosource.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:17 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="GET, HEAD, POST, TRACE, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="214">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 14:01:17 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+
+
+
+
+
+
+
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+  &lt;head&gt;
+    &lt;base href=&quot;http://infosource.lib.tsinghua.edu.cn/authjsp/login.jsp&quot;&gt;
+    &lt;link href=&quot;../images/css.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;title&gt;易瑞授权访问系统&lt;/title&gt;
+
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;../iras.js&quot;&gt;&lt;/script&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+	body {
+		margin: 0px;
+		background:#E7F0FA url(&quot;../images/bg.gif&quot;) top repeat-x  ;
+	
+	}
+	&lt;/style&gt;
+	
+&lt;script language=&quot;javascript&quot;&gt;
+
+function changeRegImg()
+{
+	document.getElementById(&quot;regimg&quot;).src = &quot;../servlet/verifycode?&quot;+Math.random();
+}
+
+function changeHost(host) {
+	
+	window.location.href = 'http://' +  host + ':'+window.location.port+window.location.pathname;
+}
+function onBodyLoad()
+{
+	try{  
+    	IfcCtrl.logout();
+    }catch(err) {}
+
+	var mac;
+	try{  
+    	mac = IfcCtrl.GetMacAddrs();
+    }catch(err) {
+  		
+    }
+	if(typeof(mac)!=null &amp;&amp; typeof(mac)!=&quot;undefined&quot;){
+		document.getElementById(&quot;mac&quot;).value = mac;
+	}
+}
+window.onload = onBodyLoad;
+
+&lt;/script&gt;
+&lt;OBJECT ID=&quot;IfcCtrl&quot; CLASSID=&quot;CLSID:FE0174BB-F093-42AF-AB20-7EC621D10488&quot; width=0 height=0&gt;&lt;/OBJECT&gt;
+  &lt;/head&gt;
+  &lt;body background=&quot;../images/bg.gif&quot;  leftmargin=&quot;0&quot; topmargin=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;
+    
+    &lt;form name=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/auth/login.do&quot; onsubmit=&quot;return a341(this);&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;url&quot; value=&quot;&quot;&gt;
+     &lt;input type=&quot;hidden&quot; name=&quot;mac&quot;&gt;
+     &lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/logo.gif&quot; width=&quot;651&quot; height=&quot;79&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;44&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/txtbg.gif&quot; class=&quot;namett&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;44&quot; align=&quot;center&quot; valign=&quot;top&quot; style=&quot;padding-top:5px;&quot;&gt;&lt;font face=&quot;隶书&quot;&gt;清华大学图书馆&lt;/font&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;29&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/mbg.gif&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;29&quot; align=&quot;right&quot; valign=&quot;top&quot; style=&quot;padding:7px 35px 0px 0px;&quot;&gt;
+	    &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion1.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/logout.do&quot;&gt;退出登录&lt;/a&gt;&lt;/div&gt;
+		
+      &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion2.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/faq.do&quot;&gt;常见问题&lt;/a&gt;&lt;/div&gt;
+
+	&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/ctop.gif&quot; width=&quot;651&quot; height=&quot;11&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/cbg.gif&quot; class=&quot;h12&quot;&gt;
+
+  &lt;tr&gt; 
+    &lt;td width=&quot;19&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td width=&quot;614&quot; align=&quot;center&quot; valign=&quot;top&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('166.111.120.6')&quot;   value=&quot;166.111.120.6&quot; name=&quot;network&quot; id=&quot;network1&quot;&quot;&gt;&lt;label for=&quot;network1&quot;&gt;&lt;/label&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('eproxy.lib.tsinghua.edu.cn')&quot;   value=&quot;eproxy.lib.tsinghua.edu.cn&quot; name=&quot;network&quot; id=&quot;network2&quot;&quot;&gt;&lt;label for=&quot;network2&quot;&gt;&lt;/label&gt;
+
+        
+
+ 
+ 
+
+        &lt;table width=&quot;100%&quot; height=&quot;26&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot; style=&quot;margin:5px 0px;padding:4px 0px 0px 20px;&quot;&gt;
+          
+            &lt;/br&gt;
+            &lt;p&gt;&lt;strong&gt;&lt;font align=&quot;center&quot; color=&quot;red&quot;style=&quot;font-size:15px&quot;&gt;此系统仅供用户在校外访问数据库使用，校内访问数据库不能使用本系统&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+          &lt;!--
+          &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;&lt;span id=&quot;prompt&quot;&gt;请输入您的用户名和密码:&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          --&gt;
+          
+          &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;&lt;font style=&quot;font-size:15px&quot;&gt;&lt;b&gt;请输入您的用户名和密码:&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;
+
+        &lt;/table&gt;
+        &lt;span id=&quot;loginHtml&quot;&gt;
+        &lt;table  border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot;&gt;
+          &lt;tr&gt; 
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;学号/工作证号：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;验证码：&lt;/td&gt;&lt;td valign=&quot;middle&quot;&gt;
+              &lt;input type=&quot;text&quot; name=&quot;verifycode&quot; size=&quot;3&quot; value=&quot;&quot;&gt;&lt;img id=&quot;regimg&quot; src=&quot;../servlet/verifycode&quot; align=&quot;absmiddle&quot;/&gt; &lt;a href=&quot;javascript:changeRegImg()&quot; class=&quot;h12&quot; &gt;看不清换一张&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          
+        &lt;/table&gt;
+        &lt;/span&gt;
+        &lt;table width=&quot;95%&quot; height=&quot;4&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/dotbg.gif&quot;&gt;
+          &lt;tr&gt;
+            &lt;td&gt; &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;table width=&quot;86%&quot; height=&quot;34&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;submit&quot; class=&quot;button12&quot; value=&quot;提 交&quot;&gt;
+              
+             &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+&lt;!--  以下添加公告   --&gt;
+		&lt;table width=&quot;99%&quot; height=&quot;30&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;huibg&quot;&gt;
+			&lt;tr&gt;
+				&lt;td align=&quot;left&quot; valign=&quot;top&quot;&gt;
+					&lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;a name=&quot;visitor&quot;&gt;&lt;/a&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;b&gt;特别提示&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;
+					&lt;ul&gt;&lt;li&gt;本系统仅对本校在职教工和在校研究生、本科生开放；&lt;/li&gt;
+                    &lt;li&gt;如果不确定自己的用户名和口令，请咨询计算中心，电话：62771940 62771942；&lt;/li&gt;
+                    &lt;li&gt; 目前，通过本系统可以访问的电子资源包括：清华大学图书馆绝大多数已经订购电子资源；&lt;/li&gt;
+                    &lt;li&gt;通过该系统访问资源时，&lt;span class=&quot;style2&quot;&gt;&lt;font color=&quot;#990000&quot;&gt;不得连续、系统、集中、批量地下载文献&lt;/font&gt;&lt;/span&gt;（一般数据库商认为，如果超出正常阅读速度下载文献就视为滥用，通常正常阅读一篇文献的速度至少需要几分钟）；如果在短时间内有过量下载的行为，本系统将将自动暂时冻结读者的访问权限。&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;b&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;/b&gt;&lt;/span&gt;&lt;b&gt;咨询反馈：&lt;/b&gt;&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn责任馆员&lt;/a&gt;
+                    　&lt;a href=&quot;http://vrs.lib.tsinghua.edu.cn&quot;&gt;咨询台&lt;/a&gt;&lt;/p&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+				&lt;/td&gt;
+				&lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+&lt;!--  以上添加公告   --&gt;
+    &lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/bkk.gif&quot; width=&quot;651&quot; height=&quot;23&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; height=&quot;40&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;bq12&quot;&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;2006 - 2012版权所有：&lt;a href=&quot;http://www.infcn.com.cn&quot; class=&quot;bq12&quot;&gt;北京英富森信息技术有限公司&lt;/a&gt;&lt;br&gt;
+      技术支持邮箱：&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/td&gt;
+      
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+    &lt;/form&gt;
+&lt;script type=&quot;text/javascript&quot; language=&quot;JavaScript&quot;&gt;
+  &lt;!--
+  var focusControl = document.forms[&quot;loginForm&quot;].elements[&quot;username&quot;];
+
+  if (focusControl.type != &quot;hidden&quot; &amp;&amp; !focusControl.disabled) {
+     focusControl.focus();
+  }
+  // --&gt;
+&lt;/script&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="240">
+                <http-request>
+                    <status>POST http://infosource.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 14:01:24 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+
+
+
+
+
+
+
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+  &lt;head&gt;
+    &lt;base href=&quot;http://infosource.lib.tsinghua.edu.cn/authjsp/login.jsp&quot;&gt;
+    &lt;link href=&quot;../images/css.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;title&gt;易瑞授权访问系统&lt;/title&gt;
+
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;../iras.js&quot;&gt;&lt;/script&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+	body {
+		margin: 0px;
+		background:#E7F0FA url(&quot;../images/bg.gif&quot;) top repeat-x  ;
+	
+	}
+	&lt;/style&gt;
+	
+&lt;script language=&quot;javascript&quot;&gt;
+
+function changeRegImg()
+{
+	document.getElementById(&quot;regimg&quot;).src = &quot;../servlet/verifycode?&quot;+Math.random();
+}
+
+function changeHost(host) {
+	
+	window.location.href = 'http://' +  host + ':'+window.location.port+window.location.pathname;
+}
+function onBodyLoad()
+{
+	try{  
+    	IfcCtrl.logout();
+    }catch(err) {}
+
+	var mac;
+	try{  
+    	mac = IfcCtrl.GetMacAddrs();
+    }catch(err) {
+  		
+    }
+	if(typeof(mac)!=null &amp;&amp; typeof(mac)!=&quot;undefined&quot;){
+		document.getElementById(&quot;mac&quot;).value = mac;
+	}
+}
+window.onload = onBodyLoad;
+
+&lt;/script&gt;
+&lt;OBJECT ID=&quot;IfcCtrl&quot; CLASSID=&quot;CLSID:FE0174BB-F093-42AF-AB20-7EC621D10488&quot; width=0 height=0&gt;&lt;/OBJECT&gt;
+  &lt;/head&gt;
+  &lt;body background=&quot;../images/bg.gif&quot;  leftmargin=&quot;0&quot; topmargin=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;
+    
+    &lt;form name=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/auth/login.do&quot; onsubmit=&quot;return a341(this);&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;url&quot; value=&quot;&quot;&gt;
+     &lt;input type=&quot;hidden&quot; name=&quot;mac&quot;&gt;
+     &lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/logo.gif&quot; width=&quot;651&quot; height=&quot;79&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;44&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/txtbg.gif&quot; class=&quot;namett&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;44&quot; align=&quot;center&quot; valign=&quot;top&quot; style=&quot;padding-top:5px;&quot;&gt;&lt;font face=&quot;隶书&quot;&gt;清华大学图书馆&lt;/font&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;29&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/mbg.gif&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;29&quot; align=&quot;right&quot; valign=&quot;top&quot; style=&quot;padding:7px 35px 0px 0px;&quot;&gt;
+	    &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion1.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/logout.do&quot;&gt;退出登录&lt;/a&gt;&lt;/div&gt;
+		
+      &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion2.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/faq.do&quot;&gt;常见问题&lt;/a&gt;&lt;/div&gt;
+
+	&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/ctop.gif&quot; width=&quot;651&quot; height=&quot;11&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/cbg.gif&quot; class=&quot;h12&quot;&gt;
+
+  &lt;tr&gt; 
+    &lt;td width=&quot;19&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td width=&quot;614&quot; align=&quot;center&quot; valign=&quot;top&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('166.111.120.6')&quot;   value=&quot;166.111.120.6&quot; name=&quot;network&quot; id=&quot;network1&quot;&quot;&gt;&lt;label for=&quot;network1&quot;&gt;&lt;/label&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('eproxy.lib.tsinghua.edu.cn')&quot;   value=&quot;eproxy.lib.tsinghua.edu.cn&quot; name=&quot;network&quot; id=&quot;network2&quot;&quot;&gt;&lt;label for=&quot;network2&quot;&gt;&lt;/label&gt;
+
+        
+
+ 
+ 
+
+        &lt;table width=&quot;100%&quot; height=&quot;26&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot; style=&quot;margin:5px 0px;padding:4px 0px 0px 20px;&quot;&gt;
+          
+            &lt;/br&gt;
+            &lt;p&gt;&lt;strong&gt;&lt;font align=&quot;center&quot; color=&quot;red&quot;style=&quot;font-size:15px&quot;&gt;此系统仅供用户在校外访问数据库使用，校内访问数据库不能使用本系统&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+          &lt;!--
+          &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;&lt;span id=&quot;prompt&quot;&gt;请输入您的用户名和密码:&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          --&gt;
+          
+          &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;&lt;font style=&quot;font-size:15px&quot;&gt;&lt;b&gt;请输入您的用户名和密码:&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;
+
+        &lt;/table&gt;
+        &lt;span id=&quot;loginHtml&quot;&gt;
+        &lt;table  border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot;&gt;
+          &lt;tr&gt; 
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;学号/工作证号：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;验证码：&lt;/td&gt;&lt;td valign=&quot;middle&quot;&gt;
+              &lt;input type=&quot;text&quot; name=&quot;verifycode&quot; size=&quot;3&quot; value=&quot;&quot;&gt;&lt;img id=&quot;regimg&quot; src=&quot;../servlet/verifycode&quot; align=&quot;absmiddle&quot;/&gt; &lt;a href=&quot;javascript:changeRegImg()&quot; class=&quot;h12&quot; &gt;看不清换一张&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          
+        &lt;/table&gt;
+        &lt;/span&gt;
+        &lt;table width=&quot;95%&quot; height=&quot;4&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/dotbg.gif&quot;&gt;
+          &lt;tr&gt;
+            &lt;td&gt; &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;table width=&quot;86%&quot; height=&quot;34&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;submit&quot; class=&quot;button12&quot; value=&quot;提 交&quot;&gt;
+              
+             &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+&lt;!--  以下添加公告   --&gt;
+		&lt;table width=&quot;99%&quot; height=&quot;30&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;huibg&quot;&gt;
+			&lt;tr&gt;
+				&lt;td align=&quot;left&quot; valign=&quot;top&quot;&gt;
+					&lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;a name=&quot;visitor&quot;&gt;&lt;/a&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;b&gt;特别提示&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;
+					&lt;ul&gt;&lt;li&gt;本系统仅对本校在职教工和在校研究生、本科生开放；&lt;/li&gt;
+                    &lt;li&gt;如果不确定自己的用户名和口令，请咨询计算中心，电话：62771940 62771942；&lt;/li&gt;
+                    &lt;li&gt; 目前，通过本系统可以访问的电子资源包括：清华大学图书馆绝大多数已经订购电子资源；&lt;/li&gt;
+                    &lt;li&gt;通过该系统访问资源时，&lt;span class=&quot;style2&quot;&gt;&lt;font color=&quot;#990000&quot;&gt;不得连续、系统、集中、批量地下载文献&lt;/font&gt;&lt;/span&gt;（一般数据库商认为，如果超出正常阅读速度下载文献就视为滥用，通常正常阅读一篇文献的速度至少需要几分钟）；如果在短时间内有过量下载的行为，本系统将将自动暂时冻结读者的访问权限。&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;b&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;/b&gt;&lt;/span&gt;&lt;b&gt;咨询反馈：&lt;/b&gt;&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn责任馆员&lt;/a&gt;
+                    　&lt;a href=&quot;http://vrs.lib.tsinghua.edu.cn&quot;&gt;咨询台&lt;/a&gt;&lt;/p&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+				&lt;/td&gt;
+				&lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+&lt;!--  以上添加公告   --&gt;
+    &lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/bkk.gif&quot; width=&quot;651&quot; height=&quot;23&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; height=&quot;40&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;bq12&quot;&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;2006 - 2012版权所有：&lt;a href=&quot;http://www.infcn.com.cn&quot; class=&quot;bq12&quot;&gt;北京英富森信息技术有限公司&lt;/a&gt;&lt;br&gt;
+      技术支持邮箱：&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/td&gt;
+      
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+    &lt;/form&gt;
+&lt;script type=&quot;text/javascript&quot; language=&quot;JavaScript&quot;&gt;
+  &lt;!--
+  var focusControl = document.forms[&quot;loginForm&quot;].elements[&quot;username&quot;];
+
+  if (focusControl.type != &quot;hidden&quot; &amp;&amp; !focusControl.disabled) {
+     focusControl.focus();
+  }
+  // --&gt;
+&lt;/script&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 94, 105, 121, 133, 175, 198, 199, 200, 201, 202, 203, 211]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Wed, 30 Nov 2016 14:01:14 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+
+
+
+
+
+
+
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+  &lt;head&gt;
+    &lt;base href=&quot;http://infosource.lib.tsinghua.edu.cn/authjsp/login.jsp&quot;&gt;
+    &lt;link href=&quot;../images/css.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;title&gt;易瑞授权访问系统&lt;/title&gt;
+
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;../iras.js&quot;&gt;&lt;/script&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+	body {
+		margin: 0px;
+		background:#E7F0FA url(&quot;../images/bg.gif&quot;) top repeat-x  ;
+	
+	}
+	&lt;/style&gt;
+	
+&lt;script language=&quot;javascript&quot;&gt;
+
+function changeRegImg()
+{
+	document.getElementById(&quot;regimg&quot;).src = &quot;../servlet/verifycode?&quot;+Math.random();
+}
+
+function changeHost(host) {
+	
+	window.location.href = 'http://' +  host + ':'+window.location.port+window.location.pathname;
+}
+function onBodyLoad()
+{
+	try{  
+    	IfcCtrl.logout();
+    }catch(err) {}
+
+	var mac;
+	try{  
+    	mac = IfcCtrl.GetMacAddrs();
+    }catch(err) {
+  		
+    }
+	if(typeof(mac)!=null &amp;&amp; typeof(mac)!=&quot;undefined&quot;){
+		document.getElementById(&quot;mac&quot;).value = mac;
+	}
+}
+window.onload = onBodyLoad;
+
+&lt;/script&gt;
+&lt;OBJECT ID=&quot;IfcCtrl&quot; CLASSID=&quot;CLSID:FE0174BB-F093-42AF-AB20-7EC621D10488&quot; width=0 height=0&gt;&lt;/OBJECT&gt;
+  &lt;/head&gt;
+  &lt;body background=&quot;../images/bg.gif&quot;  leftmargin=&quot;0&quot; topmargin=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot;&gt;
+    
+    &lt;form name=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/auth/login.do&quot; onsubmit=&quot;return a341(this);&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;url&quot; value=&quot;&quot;&gt;
+     &lt;input type=&quot;hidden&quot; name=&quot;mac&quot;&gt;
+     &lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/logo.gif&quot; width=&quot;651&quot; height=&quot;79&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;44&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/txtbg.gif&quot; class=&quot;namett&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;44&quot; align=&quot;center&quot; valign=&quot;top&quot; style=&quot;padding-top:5px;&quot;&gt;&lt;font face=&quot;隶书&quot;&gt;清华大学图书馆&lt;/font&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; height=&quot;29&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/mbg.gif&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot; height=&quot;29&quot; align=&quot;right&quot; valign=&quot;top&quot; style=&quot;padding:7px 35px 0px 0px;&quot;&gt;
+	    &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion1.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/logout.do&quot;&gt;退出登录&lt;/a&gt;&lt;/div&gt;
+		
+      &lt;div id=&quot;tmenu&quot;&gt;&lt;img src=&quot;../images/ion2.gif&quot; width=&quot;18&quot; height=&quot;18&quot; hspace=&quot;4&quot; border=&quot;0&quot; align=&quot;absmiddle&quot;&gt;&lt;a href=&quot;../auth/faq.do&quot;&gt;常见问题&lt;/a&gt;&lt;/div&gt;
+
+	&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/ctop.gif&quot; width=&quot;651&quot; height=&quot;11&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/cbg.gif&quot; class=&quot;h12&quot;&gt;
+
+  &lt;tr&gt; 
+    &lt;td width=&quot;19&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+      &lt;td width=&quot;614&quot; align=&quot;center&quot; valign=&quot;top&quot;&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('166.111.120.6')&quot;   value=&quot;166.111.120.6&quot; name=&quot;network&quot; id=&quot;network1&quot;&quot;&gt;&lt;label for=&quot;network1&quot;&gt;&lt;/label&gt;
+
+&lt;INPUT type=&quot;hidden&quot; onclick=&quot;changeHost('eproxy.lib.tsinghua.edu.cn')&quot;   value=&quot;eproxy.lib.tsinghua.edu.cn&quot; name=&quot;network&quot; id=&quot;network2&quot;&quot;&gt;&lt;label for=&quot;network2&quot;&gt;&lt;/label&gt;
+
+        
+
+ 
+ 
+
+        &lt;table width=&quot;100%&quot; height=&quot;26&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot; style=&quot;margin:5px 0px;padding:4px 0px 0px 20px;&quot;&gt;
+          
+            &lt;/br&gt;
+            &lt;p&gt;&lt;strong&gt;&lt;font align=&quot;center&quot; color=&quot;red&quot;style=&quot;font-size:15px&quot;&gt;此系统仅供用户在校外访问数据库使用，校内访问数据库不能使用本系统&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+          &lt;!--
+          &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;&lt;span id=&quot;prompt&quot;&gt;请输入您的用户名和密码:&lt;/span&gt;&lt;/strong&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          --&gt;
+          
+          &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;&lt;font style=&quot;font-size:15px&quot;&gt;&lt;b&gt;请输入您的用户名和密码:&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;
+
+        &lt;/table&gt;
+        &lt;span id=&quot;loginHtml&quot;&gt;
+        &lt;table  border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;h12&quot;&gt;
+          &lt;tr&gt; 
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;学号/工作证号：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;密&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;码：&lt;/td&gt;&lt;td&gt;
+              &lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot; class=&quot;textbox&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;验证码：&lt;/td&gt;&lt;td valign=&quot;middle&quot;&gt;
+              &lt;input type=&quot;text&quot; name=&quot;verifycode&quot; size=&quot;3&quot; value=&quot;&quot;&gt;&lt;img id=&quot;regimg&quot; src=&quot;../servlet/verifycode&quot; align=&quot;absmiddle&quot;/&gt; &lt;a href=&quot;javascript:changeRegImg()&quot; class=&quot;h12&quot; &gt;看不清换一张&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          
+        &lt;/table&gt;
+        &lt;/span&gt;
+        &lt;table width=&quot;95%&quot; height=&quot;4&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; background=&quot;../images/dotbg.gif&quot;&gt;
+          &lt;tr&gt;
+            &lt;td&gt; &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;table width=&quot;86%&quot; height=&quot;34&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td align=&quot;center&quot;&gt;&lt;input type=&quot;submit&quot; class=&quot;button12&quot; value=&quot;提 交&quot;&gt;
+              
+             &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+&lt;!--  以下添加公告   --&gt;
+		&lt;table width=&quot;99%&quot; height=&quot;30&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;huibg&quot;&gt;
+			&lt;tr&gt;
+				&lt;td align=&quot;left&quot; valign=&quot;top&quot;&gt;
+					&lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;a name=&quot;visitor&quot;&gt;&lt;/a&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;b&gt;特别提示&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;
+					&lt;ul&gt;&lt;li&gt;本系统仅对本校在职教工和在校研究生、本科生开放；&lt;/li&gt;
+                    &lt;li&gt;如果不确定自己的用户名和口令，请咨询计算中心，电话：62771940 62771942；&lt;/li&gt;
+                    &lt;li&gt; 目前，通过本系统可以访问的电子资源包括：清华大学图书馆绝大多数已经订购电子资源；&lt;/li&gt;
+                    &lt;li&gt;通过该系统访问资源时，&lt;span class=&quot;style2&quot;&gt;&lt;font color=&quot;#990000&quot;&gt;不得连续、系统、集中、批量地下载文献&lt;/font&gt;&lt;/span&gt;（一般数据库商认为，如果超出正常阅读速度下载文献就视为滥用，通常正常阅读一篇文献的速度至少需要几分钟）；如果在短时间内有过量下载的行为，本系统将将自动暂时冻结读者的访问权限。&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt;&lt;b&gt;&lt;img border=&quot;0&quot; src=&quot;http://lib.tsinghua.edu.cn/images/redarrow.gif&quot; width=&quot;12&quot; height=&quot;14&quot;&gt;　&lt;/b&gt;&lt;/span&gt;&lt;b&gt;咨询反馈：&lt;/b&gt;&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn责任馆员&lt;/a&gt;
+                    　&lt;a href=&quot;http://vrs.lib.tsinghua.edu.cn&quot;&gt;咨询台&lt;/a&gt;&lt;/p&gt;
+                  &lt;p&gt;&lt;span class=&quot;word&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+				&lt;/td&gt;
+				&lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+&lt;!--  以上添加公告   --&gt;
+    &lt;td width=&quot;18&quot; valign=&quot;top&quot;&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;table width=&quot;651&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;651&quot;&gt;&lt;img src=&quot;../images/bkk.gif&quot; width=&quot;651&quot; height=&quot;23&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; height=&quot;40&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;bq12&quot;&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;2006 - 2012版权所有：&lt;a href=&quot;http://www.infcn.com.cn&quot; class=&quot;bq12&quot;&gt;北京英富森信息技术有限公司&lt;/a&gt;&lt;br&gt;
+      技术支持邮箱：&lt;a href=&quot;mailto:guanczh@lib.tsinghua.edu.cn&quot;&gt;guanczh@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/td&gt;
+      
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+    &lt;/form&gt;
+&lt;script type=&quot;text/javascript&quot; language=&quot;JavaScript&quot;&gt;
+  &lt;!--
+  var focusControl = document.forms[&quot;loginForm&quot;].elements[&quot;username&quot;];
+
+  if (focusControl.type != &quot;hidden&quot; &amp;&amp; !focusControl.disabled) {
+     focusControl.focus();
+  }
+  // --&gt;
+&lt;/script&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="94">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:16 GMT" field="date"/>
+                        <header content="994" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /_vti_inf.html&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/_vti_inf.html&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/_vti_inf.html) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="105">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:16 GMT" field="date"/>
+                        <header content="988" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /favicon.ico&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/favicon.ico&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/favicon.ico) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="121">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/FpPvg.html HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:16 GMT" field="date"/>
+                        <header content="985" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /FpPvg.html&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/FpPvg.html&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/FpPvg.html) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="133">
+                <http-request>
+                    <status>POST http://infosource.lib.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L0ZwUHZnLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguZ3ZQcEY=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:16 GMT" field="date"/>
+                        <header content="1039" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /_vti_bin/_vti_aut/author.dll&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/_vti_bin/_vti_aut/author.dll&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/_vti_bin/_vti_aut/author.dll) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="175">
+                <http-request>
+                    <status>PUT http://infosource.lib.tsinghua.edu.cn/zWLKe HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">Mwsjck</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:16 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="198">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:17 GMT" field="date"/>
+                        <header content="991" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /jmx-console/&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/jmx-console/&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/jmx-console/) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="199">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:17 GMT" field="date"/>
+                        <header content="994" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /server-status&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/server-status&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/server-status) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="200">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:17 GMT" field="date"/>
+                        <header content="1009" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /WebConsole/Invoker&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/WebConsole/Invoker&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/WebConsole/Invoker) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="201">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:17 GMT" field="date"/>
+                        <header content="997" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /admin-console/&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/admin-console/&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/admin-console/) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="202">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:17 GMT" field="date"/>
+                        <header content="973" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /status&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/status&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/status) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="203">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:17 GMT" field="date"/>
+                        <header content="1030" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /invoker/JMXInvokerServlet&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/invoker/JMXInvokerServlet&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/invoker/JMXInvokerServlet) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="211">
+                <http-request>
+                    <status>GET http://infosource.lib.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="infosource.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="JSESSIONID=E5A2C05E3FCD0AC34D404806F6671782" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:01:17 GMT" field="date"/>
+                        <header content="1033" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.26 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /web-console/ServerInfo.jsp&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/web-console/ServerInfo.jsp&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/web-console/ServerInfo.jsp) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.26&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The port '443' is not open on target infosource.lib.tsinghua.edu.cn</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to infosource.lib.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

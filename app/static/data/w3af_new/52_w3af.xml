@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481220855" start-long="Thu Dec 08 13:14:15 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://mldm.bigdata-thu.org/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/52_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="HTML comment contains HTML code" plugin="html_comments" severity="Information" url="http://mldm.bigdata-thu.org/" var="None">
+        <description>A comment with the string &quot;&lt;li&gt;&lt;a href=&quot;experiment&quot;&gt; &lt;i class='fa f&quot; was found in: &quot;http://mldm.bigdata-thu.org/&quot;. This could be interesting.</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://mldm.bigdata-thu.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mldm.bigdata-thu.org" field="Host"/>
+                        <header content="_mLDM_session=eVFiSTR1b3htUkVlZThTVTAvTGtxRUNERVJmQXQwbFJPR09yekJDb0hBKy9yVU1DaDB0SXlWVEk4T3E2bjZXeThsQ2srekNiRzQvSTZGTlV1N21lbU8raXZuWDY5cGoxOFkzZ0NTZlVpVExqQlF5RUtxNkpYNDd1cTVNTEUrK3B1UXFhQzQveDBnRkJmTHVpVWxzRUN3PT0tLStjaExOckdXcTlHNGhFenU5TTlGMXc9PQ%3D%3D--55f60a4f0c9074a0174a0b494c48c5ff457e24ef" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="385ebba7-caf6-4523-82e5-bfbb4f2e564e" field="x-request-id"/>
+                        <header content="1; mode=block" field="x-xss-protection"/>
+                        <header content="nosniff" field="x-content-type-options"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="_mLDM_session=UkhXSGhuUHVNOTg2bHB1NDdCakJCV1pUSFpIZklIaFpiY1luNXFyMUpqRXR2ZWZ1TlFudG1md21rTmI4MjZLSVpTVUpzU2JYVzZmOEQzenM5M1QrMjdPUGtNYng1dW1JejA4VW4vZVV2Y0tSVHlrckNWMXY5OUtlbzF4bklKakpzZGNCN1lPRlNjRnI5ZTMxdUZHQnJnPT0tLXdlSU1sRlpNTFZNc0FFN05iQkx3dUE9PQ%3D%3D--26f8110336fdf5f21f6e2d4e81d8b866877d0e2d; path=/; HttpOnly" field="set-cookie"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                        <header content="0.050358" field="x-runtime"/>
+                        <header content="max-age=0, private, must-revalidate" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 18:14:18 GMT" field="date"/>
+                        <header content="SAMEORIGIN" field="x-frame-options"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge,chrome=1&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;mLDM&lt;/title&gt;
+    &lt;meta name=&quot;csrf-param&quot; content=&quot;authenticity_token&quot; /&gt;
+&lt;meta name=&quot;csrf-token&quot; content=&quot;JY3uaWQnhKUUyFr0kIrMNHzx/scCHhJ+fS/xI+6gYKeEYVT4wZW3DH1yO3oJ5LT3zHvhH6RbYsWR2MSSx41KBg==&quot; /&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/twitter-bootstrap-static/bootstrap.self-603f330c29af013305325569c8c75d03d688963abd8cde4fffec17b5ce417bfb.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/twitter-bootstrap-static/fontawesome.self-2fe4f8a61d73606fbcb036b41f380591906a4da65a9eb5ec0a210fe6980b2ca7.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/bootstrap_and_overrides.self-2cb3834583dfbaf0a39c7139750bf963e05d79cbe811126997e013400be5d8dc.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1&quot; /&gt;
+
+    &lt;!-- For third-generation iPad with high-resolution Retina display: --&gt;
+    &lt;!-- Size should be 144 x 144 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-144x144-precomposed.png&quot; sizes=&quot;144x144&quot; /&gt;
+
+    &lt;!-- For iPhone with high-resolution Retina display: --&gt;
+    &lt;!-- Size should be 114 x 114 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-114x114-precomposed.png&quot; sizes=&quot;114x114&quot; /&gt;
+
+    &lt;!-- For first- and second-generation iPad: --&gt;
+    &lt;!-- Size should be 72 x 72 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-72x72-precomposed.png&quot; sizes=&quot;72x72&quot; /&gt;
+
+    &lt;!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: --&gt;
+    &lt;!-- Size should be 57 x 57 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-precomposed.png&quot; /&gt;
+
+    &lt;!-- For all other devices --&gt;
+    &lt;!-- Size should be 32 x 32 pixels --&gt;
+    &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;/images/favicon.ico&quot; /&gt;
+
+    &lt;script src=&quot;/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/transition.self-09ff30b1e8a93d1f7728b9855f55d9c9d8d5734c8861e0d8139994e50944572a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/alert.self-a29e91e8cd3ddaba9bbc466901d53ec2127e9256b9b941905d525a3a716bd1a5.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/modal.self-72f95ffa1071297725a9ac91989693d56d1abf23f441a47455073b0da2857a5b.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/dropdown.self-9314126777c6be5443e37ea7f7967d7914d72b3e60449ba50edc967446373059.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/scrollspy.self-a155b9d4b2f978905f0326c0f6635e1134fe91c6bfbfcbad079fa24a9fef2b0e.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/tab.self-122235057fbd4c6c7da377d59dc58f47b44cb1088a2e38e6ee6ce9d8ac29a26a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/tooltip.self-11cf547be953f25f511cec668f6690473fd97b2f65502e4032f4030999a3f0c3.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/popover.self-77d8e3a2499c1104ef146396a68b82469ee2bdb365199b874694698d10405e9a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/button.self-a6cb16785434acb365ae426aef9f1fce05ed553cae7a965e4471c3da71509175.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/collapse.self-7dc8bfbc2fbfabd2bad62c58ff8ffeaf8f20fb87c7ca6cd35f06d4dc19632587.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/carousel.self-57eb8422043cf0a85b7a9dc6843916eb0a3e35b419c7798a5eb254b918997631.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/affix.self-d2b642d8fbfc1d7041e2edefd66683ada567a980789dcd6f94fddda0b33408b5.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/bootstrap.self-fdc98dee79ee88255e10cac6caa91338165cb76cf0d263744d8d90011fc2ef8f.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- Le HTML5 shim, for IE6-8 support of HTML elements --&gt;
+    &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+
+    &lt;style type='text/css'&gt;
+        body{
+            font-family:'Microsoft YaHei',Arial,Helvetica,sans-serif,'宋体';
+        }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;div class=&quot;navbar navbar-default navbar-static-top&quot; style='background-color:#FFF5EE'&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;navbar-toggle&quot; data-toggle=&quot;collapse&quot; data-target=&quot;.navbar-responsive-collapse&quot;&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;a class=&quot;navbar-brand&quot; href=&quot;/&quot;&gt;&lt;strong&gt;&lt;p class='text-primary'&gt;mLDM&lt;/p&gt;&lt;/strong&gt;&lt;/a&gt;
+        &lt;div class=&quot;navbar-collapse collapse navbar-responsive-collapse&quot;&gt;
+          &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/&quot;&gt; &lt;i class='fa fa-home'&gt;&lt;/i&gt; Home &lt;/a&gt;&lt;/li&gt;
+              &lt;!-- &lt;li&gt;&lt;a href=&quot;experiment&quot;&gt; &lt;i class='fa fa-image'&gt;&lt;/i&gt; Experiment&lt;/a&gt;&lt;/li&gt; --&gt;
+            &lt;li&gt;&lt;a href=&quot;download&quot;&gt; &lt;i class='fa fa-code'&gt; &lt;/i&gt; Code&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;contact&quot;&gt; &lt;i class='fa fa-envelope'&gt;&lt;/i&gt; Contact &lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-9&quot;&gt;
+          
+          &lt;h2&gt;&lt;strong&gt;mLDM&lt;/strong&gt;: a new hierarchical Bayesian statistical model for sparse microbial association discovery&lt;/h2&gt;
+&lt;br/&gt;
+&lt;ul&gt;
+&lt;p&gt;
+    &lt;li&gt;&lt;h4 id='intr'&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    &lt;div&gt;    
+Understanding associations among microbes and associations between microbes and their microenvironment from metagenomic data is a key research topic in microbial community ecology [8], which could help us to unravel real interactions (e.g., commensalism, parasitism, competition, etc.) in a community as well as understanding community-wide dynamics. Although several statistical tools [12,7,3,10,11,2,5,6,9,4] have been developed for metagenomic association studies, they suffer from compositional
+&lt;img class=&quot;img-rounded&quot; width=&quot;150&quot; height=&quot;300&quot; style=&quot;float:right&quot; src=&quot;/assets/indirect_association-1f5fdff49eba6dbb2ece1b13d9cc8e029dde8c6d1b260233dfb462436421bf55.jpg&quot; alt=&quot;Indirect association 1f5fdff49eba6dbb2ece1b13d9cc8e029dde8c6d1b260233dfb462436421bf55&quot; /&gt;
+bias [1] or fail to take into account environmental factors that directly affect the composition of a microbial community, leading to some unrealistic associations.
+For example, &lt;strong&gt;Figure 1&lt;/strong&gt; shows that two unrelated microbes (OTU-1 and OTU-2) may appear to be associated just because they both respond to the same environmental perturbation (EF-1). 
+&lt;br/&gt;
+In this paper, we propose &lt;u&gt;&lt;strong&gt;m&lt;/strong&gt;&lt;/u&gt;etagenomic &lt;u&gt;&lt;strong&gt;L&lt;/strong&gt;&lt;/u&gt;ognormal-&lt;u&gt;&lt;strong&gt;D&lt;/strong&gt;&lt;/u&gt;irichlet-&lt;u&gt;&lt;strong&gt;M&lt;/strong&gt;&lt;/u&gt;ultinomial
+(&lt;strong&gt;mLDM&lt;/strong&gt;), a hierarchical Bayesian model with sparsity constraints to bypass compositional bias and discover new associations among microbes and associations between microbes and factors impacting their microenvironment. The mLDM model is able to: &lt;strong&gt;1)&lt;/strong&gt; infer both conditionally independent associations among microbes
+and direct associations between microbes and environmental factors; &lt;strong&gt;2)&lt;/strong&gt; consider both compositional bias and variance of metagenomic
+data; and &lt;strong&gt;3)&lt;/strong&gt; estimate absolute abundance for microbes. Thus, conditionally independent associations can
+capture the direct relationship underlying each microbial pair and remove the indirect connection induced from other common factors.
+&lt;/div&gt;
+    &lt;li&gt;&lt;h4 id='meth'&gt;&lt;strong&gt;Methods&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    mLDM discovers the metagenomic associations using a hierarchical Bayesian graphical model with sparse constraints, where the metagenomic sequencing data generating process is captured by the hierarchical latent variable model. Speicifically, we assume that the read counts are proportional to the latent microbial ratios which are determined by their absolute abundance. The microbial absolute abundance is influenced by two factors: &lt;strong&gt;1)&lt;/strong&gt; environmental factors, whose effects on the microbes are denoted by a linear regression model; and 
+    &lt;img class=&quot;img-rounded&quot; width=&quot;450&quot; height=&quot;200&quot; style=&quot;float:left&quot; src=&quot;/assets/LDM_model-49069a6b24d67663db2ce3694a327424df983723b081b97c4bade22a6a2d373c.jpg&quot; alt=&quot;Ldm model 49069a6b24d67663db2ce3694a327424df983723b081b97c4bade22a6a2d373c&quot; /&gt;
+    &lt;strong&gt;2)&lt;/strong&gt; the associations among microbes encoded by a latent vector, which is determined by the matrix that records microbial associations and the mean vector that affects the basic absolute abundance of microbes.&lt;strong&gt;Figure 2&lt;/strong&gt; illustrates the mLDM model for metagenomic sequencing. By introducing sparsity regularizations, mLDM can capture both the conditionally independent associations among microbes and the direct associations between microbes and environmental factors. The task is formulated as solving an optimization problem, which can be solved using coordinate descent or proximal methods. For model selection, we choose the best parameters via extended Bayesian information criteria (EBIC).
+
+    &lt;br/&gt;
+    &lt;li&gt;&lt;h4 id='resu'&gt;&lt;strong&gt;Results&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    To quantitatively show the effectiveness of the proposed mLDM model, we conducted several experiments on both synthetic data and western English Channel time-series data, by comparing it with several state-of-the-art methodologies. For synthetic data, we compared mLDM with eight programs: PCC, SCC, CCREPE, SparCC, CCLasso, glasso (graphical lasso), SPIEC-EASI (mlasso) and SPIEC-EASI (glasso). The first six methods estimate associations via the calculation of correlations with PCC as the baseline, and the last three compute the conditional independence with glasso as the baseline.
+We estimate both the OTU-OTU associations among all microbes (or OTUs) and EF-OTU associations between environmental factors and microbes. The results demonstrate that the association network computed by the mLDM model, is closest to
+the true network, and that the mLDM model recovers most of the conditionally independent associations. For the real western English Channel time-series data, which does not contain the ground truth, we applied mLDM to discover several potentially interesting OTU-OTU associations and EF-OTU associations.
+
+&lt;/p&gt;
+&lt;/ul&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;col-lg-3&quot;&gt;
+          &lt;div class=&quot;well sidebar-nav&quot;&gt;
+              &lt;h3&gt;&lt;p class='text-danger'&gt;Content&lt;/p&gt;&lt;/h3&gt;
+            &lt;ul class=&quot;nav nav-list&quot;&gt;
+                &lt;!-- &lt;li class=&quot;nav-header&quot;&gt;Sidebar&lt;/li&gt; --&gt;
+              &lt;li&gt;&lt;a href=&quot;#intr&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#meth&quot;&gt;Method&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#resu&quot;&gt;Results&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;h3&gt;&lt;p style='color:#5cb85c'&gt;Manuscript&lt;/p&gt;&lt;/h3&gt;
+            &lt;ul&gt;
+            &lt;li&gt;&lt;a href='mLDM.pdf'&gt;mLDM.pdf&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;&lt;!--/.well --&gt;
+        &lt;/div&gt;&lt;!--/span--&gt;
+      &lt;/div&gt;&lt;!--/row--&gt;
+
+      &lt;footer&gt;
+        &lt;p&gt;&amp;copy; Tim Group, Tsinghua University&lt;/p&gt;
+      &lt;/footer&gt;
+
+    &lt;/div&gt; &lt;!-- /container --&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Strange header" plugin="strange_headers" severity="Information" url="http://mldm.bigdata-thu.org/" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response header &quot;x-request-id&quot;, one of the received header values is &quot;385ebba7-caf6-4523-82e5-bfbb4f2e564e&quot;. The first ten URLs which sent the uncommon header are:
+ - http://mldm.bigdata-thu.org/
+</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://mldm.bigdata-thu.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mldm.bigdata-thu.org" field="Host"/>
+                        <header content="_mLDM_session=eVFiSTR1b3htUkVlZThTVTAvTGtxRUNERVJmQXQwbFJPR09yekJDb0hBKy9yVU1DaDB0SXlWVEk4T3E2bjZXeThsQ2srekNiRzQvSTZGTlV1N21lbU8raXZuWDY5cGoxOFkzZ0NTZlVpVExqQlF5RUtxNkpYNDd1cTVNTEUrK3B1UXFhQzQveDBnRkJmTHVpVWxzRUN3PT0tLStjaExOckdXcTlHNGhFenU5TTlGMXc9PQ%3D%3D--55f60a4f0c9074a0174a0b494c48c5ff457e24ef" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="385ebba7-caf6-4523-82e5-bfbb4f2e564e" field="x-request-id"/>
+                        <header content="1; mode=block" field="x-xss-protection"/>
+                        <header content="nosniff" field="x-content-type-options"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="_mLDM_session=UkhXSGhuUHVNOTg2bHB1NDdCakJCV1pUSFpIZklIaFpiY1luNXFyMUpqRXR2ZWZ1TlFudG1md21rTmI4MjZLSVpTVUpzU2JYVzZmOEQzenM5M1QrMjdPUGtNYng1dW1JejA4VW4vZVV2Y0tSVHlrckNWMXY5OUtlbzF4bklKakpzZGNCN1lPRlNjRnI5ZTMxdUZHQnJnPT0tLXdlSU1sRlpNTFZNc0FFN05iQkx3dUE9PQ%3D%3D--26f8110336fdf5f21f6e2d4e81d8b866877d0e2d; path=/; HttpOnly" field="set-cookie"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                        <header content="0.050358" field="x-runtime"/>
+                        <header content="max-age=0, private, must-revalidate" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 18:14:18 GMT" field="date"/>
+                        <header content="SAMEORIGIN" field="x-frame-options"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge,chrome=1&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;mLDM&lt;/title&gt;
+    &lt;meta name=&quot;csrf-param&quot; content=&quot;authenticity_token&quot; /&gt;
+&lt;meta name=&quot;csrf-token&quot; content=&quot;JY3uaWQnhKUUyFr0kIrMNHzx/scCHhJ+fS/xI+6gYKeEYVT4wZW3DH1yO3oJ5LT3zHvhH6RbYsWR2MSSx41KBg==&quot; /&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/twitter-bootstrap-static/bootstrap.self-603f330c29af013305325569c8c75d03d688963abd8cde4fffec17b5ce417bfb.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/twitter-bootstrap-static/fontawesome.self-2fe4f8a61d73606fbcb036b41f380591906a4da65a9eb5ec0a210fe6980b2ca7.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/bootstrap_and_overrides.self-2cb3834583dfbaf0a39c7139750bf963e05d79cbe811126997e013400be5d8dc.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1&quot; /&gt;
+
+    &lt;!-- For third-generation iPad with high-resolution Retina display: --&gt;
+    &lt;!-- Size should be 144 x 144 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-144x144-precomposed.png&quot; sizes=&quot;144x144&quot; /&gt;
+
+    &lt;!-- For iPhone with high-resolution Retina display: --&gt;
+    &lt;!-- Size should be 114 x 114 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-114x114-precomposed.png&quot; sizes=&quot;114x114&quot; /&gt;
+
+    &lt;!-- For first- and second-generation iPad: --&gt;
+    &lt;!-- Size should be 72 x 72 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-72x72-precomposed.png&quot; sizes=&quot;72x72&quot; /&gt;
+
+    &lt;!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: --&gt;
+    &lt;!-- Size should be 57 x 57 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-precomposed.png&quot; /&gt;
+
+    &lt;!-- For all other devices --&gt;
+    &lt;!-- Size should be 32 x 32 pixels --&gt;
+    &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;/images/favicon.ico&quot; /&gt;
+
+    &lt;script src=&quot;/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/transition.self-09ff30b1e8a93d1f7728b9855f55d9c9d8d5734c8861e0d8139994e50944572a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/alert.self-a29e91e8cd3ddaba9bbc466901d53ec2127e9256b9b941905d525a3a716bd1a5.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/modal.self-72f95ffa1071297725a9ac91989693d56d1abf23f441a47455073b0da2857a5b.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/dropdown.self-9314126777c6be5443e37ea7f7967d7914d72b3e60449ba50edc967446373059.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/scrollspy.self-a155b9d4b2f978905f0326c0f6635e1134fe91c6bfbfcbad079fa24a9fef2b0e.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/tab.self-122235057fbd4c6c7da377d59dc58f47b44cb1088a2e38e6ee6ce9d8ac29a26a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/tooltip.self-11cf547be953f25f511cec668f6690473fd97b2f65502e4032f4030999a3f0c3.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/popover.self-77d8e3a2499c1104ef146396a68b82469ee2bdb365199b874694698d10405e9a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/button.self-a6cb16785434acb365ae426aef9f1fce05ed553cae7a965e4471c3da71509175.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/collapse.self-7dc8bfbc2fbfabd2bad62c58ff8ffeaf8f20fb87c7ca6cd35f06d4dc19632587.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/carousel.self-57eb8422043cf0a85b7a9dc6843916eb0a3e35b419c7798a5eb254b918997631.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/affix.self-d2b642d8fbfc1d7041e2edefd66683ada567a980789dcd6f94fddda0b33408b5.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/bootstrap.self-fdc98dee79ee88255e10cac6caa91338165cb76cf0d263744d8d90011fc2ef8f.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- Le HTML5 shim, for IE6-8 support of HTML elements --&gt;
+    &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+
+    &lt;style type='text/css'&gt;
+        body{
+            font-family:'Microsoft YaHei',Arial,Helvetica,sans-serif,'宋体';
+        }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;div class=&quot;navbar navbar-default navbar-static-top&quot; style='background-color:#FFF5EE'&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;navbar-toggle&quot; data-toggle=&quot;collapse&quot; data-target=&quot;.navbar-responsive-collapse&quot;&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;a class=&quot;navbar-brand&quot; href=&quot;/&quot;&gt;&lt;strong&gt;&lt;p class='text-primary'&gt;mLDM&lt;/p&gt;&lt;/strong&gt;&lt;/a&gt;
+        &lt;div class=&quot;navbar-collapse collapse navbar-responsive-collapse&quot;&gt;
+          &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/&quot;&gt; &lt;i class='fa fa-home'&gt;&lt;/i&gt; Home &lt;/a&gt;&lt;/li&gt;
+              &lt;!-- &lt;li&gt;&lt;a href=&quot;experiment&quot;&gt; &lt;i class='fa fa-image'&gt;&lt;/i&gt; Experiment&lt;/a&gt;&lt;/li&gt; --&gt;
+            &lt;li&gt;&lt;a href=&quot;download&quot;&gt; &lt;i class='fa fa-code'&gt; &lt;/i&gt; Code&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;contact&quot;&gt; &lt;i class='fa fa-envelope'&gt;&lt;/i&gt; Contact &lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-9&quot;&gt;
+          
+          &lt;h2&gt;&lt;strong&gt;mLDM&lt;/strong&gt;: a new hierarchical Bayesian statistical model for sparse microbial association discovery&lt;/h2&gt;
+&lt;br/&gt;
+&lt;ul&gt;
+&lt;p&gt;
+    &lt;li&gt;&lt;h4 id='intr'&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    &lt;div&gt;    
+Understanding associations among microbes and associations between microbes and their microenvironment from metagenomic data is a key research topic in microbial community ecology [8], which could help us to unravel real interactions (e.g., commensalism, parasitism, competition, etc.) in a community as well as understanding community-wide dynamics. Although several statistical tools [12,7,3,10,11,2,5,6,9,4] have been developed for metagenomic association studies, they suffer from compositional
+&lt;img class=&quot;img-rounded&quot; width=&quot;150&quot; height=&quot;300&quot; style=&quot;float:right&quot; src=&quot;/assets/indirect_association-1f5fdff49eba6dbb2ece1b13d9cc8e029dde8c6d1b260233dfb462436421bf55.jpg&quot; alt=&quot;Indirect association 1f5fdff49eba6dbb2ece1b13d9cc8e029dde8c6d1b260233dfb462436421bf55&quot; /&gt;
+bias [1] or fail to take into account environmental factors that directly affect the composition of a microbial community, leading to some unrealistic associations.
+For example, &lt;strong&gt;Figure 1&lt;/strong&gt; shows that two unrelated microbes (OTU-1 and OTU-2) may appear to be associated just because they both respond to the same environmental perturbation (EF-1). 
+&lt;br/&gt;
+In this paper, we propose &lt;u&gt;&lt;strong&gt;m&lt;/strong&gt;&lt;/u&gt;etagenomic &lt;u&gt;&lt;strong&gt;L&lt;/strong&gt;&lt;/u&gt;ognormal-&lt;u&gt;&lt;strong&gt;D&lt;/strong&gt;&lt;/u&gt;irichlet-&lt;u&gt;&lt;strong&gt;M&lt;/strong&gt;&lt;/u&gt;ultinomial
+(&lt;strong&gt;mLDM&lt;/strong&gt;), a hierarchical Bayesian model with sparsity constraints to bypass compositional bias and discover new associations among microbes and associations between microbes and factors impacting their microenvironment. The mLDM model is able to: &lt;strong&gt;1)&lt;/strong&gt; infer both conditionally independent associations among microbes
+and direct associations between microbes and environmental factors; &lt;strong&gt;2)&lt;/strong&gt; consider both compositional bias and variance of metagenomic
+data; and &lt;strong&gt;3)&lt;/strong&gt; estimate absolute abundance for microbes. Thus, conditionally independent associations can
+capture the direct relationship underlying each microbial pair and remove the indirect connection induced from other common factors.
+&lt;/div&gt;
+    &lt;li&gt;&lt;h4 id='meth'&gt;&lt;strong&gt;Methods&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    mLDM discovers the metagenomic associations using a hierarchical Bayesian graphical model with sparse constraints, where the metagenomic sequencing data generating process is captured by the hierarchical latent variable model. Speicifically, we assume that the read counts are proportional to the latent microbial ratios which are determined by their absolute abundance. The microbial absolute abundance is influenced by two factors: &lt;strong&gt;1)&lt;/strong&gt; environmental factors, whose effects on the microbes are denoted by a linear regression model; and 
+    &lt;img class=&quot;img-rounded&quot; width=&quot;450&quot; height=&quot;200&quot; style=&quot;float:left&quot; src=&quot;/assets/LDM_model-49069a6b24d67663db2ce3694a327424df983723b081b97c4bade22a6a2d373c.jpg&quot; alt=&quot;Ldm model 49069a6b24d67663db2ce3694a327424df983723b081b97c4bade22a6a2d373c&quot; /&gt;
+    &lt;strong&gt;2)&lt;/strong&gt; the associations among microbes encoded by a latent vector, which is determined by the matrix that records microbial associations and the mean vector that affects the basic absolute abundance of microbes.&lt;strong&gt;Figure 2&lt;/strong&gt; illustrates the mLDM model for metagenomic sequencing. By introducing sparsity regularizations, mLDM can capture both the conditionally independent associations among microbes and the direct associations between microbes and environmental factors. The task is formulated as solving an optimization problem, which can be solved using coordinate descent or proximal methods. For model selection, we choose the best parameters via extended Bayesian information criteria (EBIC).
+
+    &lt;br/&gt;
+    &lt;li&gt;&lt;h4 id='resu'&gt;&lt;strong&gt;Results&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    To quantitatively show the effectiveness of the proposed mLDM model, we conducted several experiments on both synthetic data and western English Channel time-series data, by comparing it with several state-of-the-art methodologies. For synthetic data, we compared mLDM with eight programs: PCC, SCC, CCREPE, SparCC, CCLasso, glasso (graphical lasso), SPIEC-EASI (mlasso) and SPIEC-EASI (glasso). The first six methods estimate associations via the calculation of correlations with PCC as the baseline, and the last three compute the conditional independence with glasso as the baseline.
+We estimate both the OTU-OTU associations among all microbes (or OTUs) and EF-OTU associations between environmental factors and microbes. The results demonstrate that the association network computed by the mLDM model, is closest to
+the true network, and that the mLDM model recovers most of the conditionally independent associations. For the real western English Channel time-series data, which does not contain the ground truth, we applied mLDM to discover several potentially interesting OTU-OTU associations and EF-OTU associations.
+
+&lt;/p&gt;
+&lt;/ul&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;col-lg-3&quot;&gt;
+          &lt;div class=&quot;well sidebar-nav&quot;&gt;
+              &lt;h3&gt;&lt;p class='text-danger'&gt;Content&lt;/p&gt;&lt;/h3&gt;
+            &lt;ul class=&quot;nav nav-list&quot;&gt;
+                &lt;!-- &lt;li class=&quot;nav-header&quot;&gt;Sidebar&lt;/li&gt; --&gt;
+              &lt;li&gt;&lt;a href=&quot;#intr&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#meth&quot;&gt;Method&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#resu&quot;&gt;Results&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;h3&gt;&lt;p style='color:#5cb85c'&gt;Manuscript&lt;/p&gt;&lt;/h3&gt;
+            &lt;ul&gt;
+            &lt;li&gt;&lt;a href='mLDM.pdf'&gt;mLDM.pdf&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;&lt;!--/.well --&gt;
+        &lt;/div&gt;&lt;!--/span--&gt;
+      &lt;/div&gt;&lt;!--/row--&gt;
+
+      &lt;footer&gt;
+        &lt;p&gt;&amp;copy; Tim Group, Tsinghua University&lt;/p&gt;
+      &lt;/footer&gt;
+
+    &lt;/div&gt; &lt;!-- /container --&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Strange header" plugin="strange_headers" severity="Information" url="http://mldm.bigdata-thu.org/" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response header &quot;x-runtime&quot;, one of the received header values is &quot;0.050358&quot;. The first ten URLs which sent the uncommon header are:
+ - http://mldm.bigdata-thu.org/
+</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://mldm.bigdata-thu.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mldm.bigdata-thu.org" field="Host"/>
+                        <header content="_mLDM_session=eVFiSTR1b3htUkVlZThTVTAvTGtxRUNERVJmQXQwbFJPR09yekJDb0hBKy9yVU1DaDB0SXlWVEk4T3E2bjZXeThsQ2srekNiRzQvSTZGTlV1N21lbU8raXZuWDY5cGoxOFkzZ0NTZlVpVExqQlF5RUtxNkpYNDd1cTVNTEUrK3B1UXFhQzQveDBnRkJmTHVpVWxzRUN3PT0tLStjaExOckdXcTlHNGhFenU5TTlGMXc9PQ%3D%3D--55f60a4f0c9074a0174a0b494c48c5ff457e24ef" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="385ebba7-caf6-4523-82e5-bfbb4f2e564e" field="x-request-id"/>
+                        <header content="1; mode=block" field="x-xss-protection"/>
+                        <header content="nosniff" field="x-content-type-options"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="_mLDM_session=UkhXSGhuUHVNOTg2bHB1NDdCakJCV1pUSFpIZklIaFpiY1luNXFyMUpqRXR2ZWZ1TlFudG1md21rTmI4MjZLSVpTVUpzU2JYVzZmOEQzenM5M1QrMjdPUGtNYng1dW1JejA4VW4vZVV2Y0tSVHlrckNWMXY5OUtlbzF4bklKakpzZGNCN1lPRlNjRnI5ZTMxdUZHQnJnPT0tLXdlSU1sRlpNTFZNc0FFN05iQkx3dUE9PQ%3D%3D--26f8110336fdf5f21f6e2d4e81d8b866877d0e2d; path=/; HttpOnly" field="set-cookie"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                        <header content="0.050358" field="x-runtime"/>
+                        <header content="max-age=0, private, must-revalidate" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 18:14:18 GMT" field="date"/>
+                        <header content="SAMEORIGIN" field="x-frame-options"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge,chrome=1&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;mLDM&lt;/title&gt;
+    &lt;meta name=&quot;csrf-param&quot; content=&quot;authenticity_token&quot; /&gt;
+&lt;meta name=&quot;csrf-token&quot; content=&quot;JY3uaWQnhKUUyFr0kIrMNHzx/scCHhJ+fS/xI+6gYKeEYVT4wZW3DH1yO3oJ5LT3zHvhH6RbYsWR2MSSx41KBg==&quot; /&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/twitter-bootstrap-static/bootstrap.self-603f330c29af013305325569c8c75d03d688963abd8cde4fffec17b5ce417bfb.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/twitter-bootstrap-static/fontawesome.self-2fe4f8a61d73606fbcb036b41f380591906a4da65a9eb5ec0a210fe6980b2ca7.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/bootstrap_and_overrides.self-2cb3834583dfbaf0a39c7139750bf963e05d79cbe811126997e013400be5d8dc.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1&quot; /&gt;
+
+    &lt;!-- For third-generation iPad with high-resolution Retina display: --&gt;
+    &lt;!-- Size should be 144 x 144 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-144x144-precomposed.png&quot; sizes=&quot;144x144&quot; /&gt;
+
+    &lt;!-- For iPhone with high-resolution Retina display: --&gt;
+    &lt;!-- Size should be 114 x 114 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-114x114-precomposed.png&quot; sizes=&quot;114x114&quot; /&gt;
+
+    &lt;!-- For first- and second-generation iPad: --&gt;
+    &lt;!-- Size should be 72 x 72 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-72x72-precomposed.png&quot; sizes=&quot;72x72&quot; /&gt;
+
+    &lt;!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: --&gt;
+    &lt;!-- Size should be 57 x 57 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-precomposed.png&quot; /&gt;
+
+    &lt;!-- For all other devices --&gt;
+    &lt;!-- Size should be 32 x 32 pixels --&gt;
+    &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;/images/favicon.ico&quot; /&gt;
+
+    &lt;script src=&quot;/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/transition.self-09ff30b1e8a93d1f7728b9855f55d9c9d8d5734c8861e0d8139994e50944572a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/alert.self-a29e91e8cd3ddaba9bbc466901d53ec2127e9256b9b941905d525a3a716bd1a5.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/modal.self-72f95ffa1071297725a9ac91989693d56d1abf23f441a47455073b0da2857a5b.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/dropdown.self-9314126777c6be5443e37ea7f7967d7914d72b3e60449ba50edc967446373059.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/scrollspy.self-a155b9d4b2f978905f0326c0f6635e1134fe91c6bfbfcbad079fa24a9fef2b0e.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/tab.self-122235057fbd4c6c7da377d59dc58f47b44cb1088a2e38e6ee6ce9d8ac29a26a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/tooltip.self-11cf547be953f25f511cec668f6690473fd97b2f65502e4032f4030999a3f0c3.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/popover.self-77d8e3a2499c1104ef146396a68b82469ee2bdb365199b874694698d10405e9a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/button.self-a6cb16785434acb365ae426aef9f1fce05ed553cae7a965e4471c3da71509175.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/collapse.self-7dc8bfbc2fbfabd2bad62c58ff8ffeaf8f20fb87c7ca6cd35f06d4dc19632587.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/carousel.self-57eb8422043cf0a85b7a9dc6843916eb0a3e35b419c7798a5eb254b918997631.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/affix.self-d2b642d8fbfc1d7041e2edefd66683ada567a980789dcd6f94fddda0b33408b5.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/bootstrap.self-fdc98dee79ee88255e10cac6caa91338165cb76cf0d263744d8d90011fc2ef8f.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- Le HTML5 shim, for IE6-8 support of HTML elements --&gt;
+    &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+
+    &lt;style type='text/css'&gt;
+        body{
+            font-family:'Microsoft YaHei',Arial,Helvetica,sans-serif,'宋体';
+        }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;div class=&quot;navbar navbar-default navbar-static-top&quot; style='background-color:#FFF5EE'&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;navbar-toggle&quot; data-toggle=&quot;collapse&quot; data-target=&quot;.navbar-responsive-collapse&quot;&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;a class=&quot;navbar-brand&quot; href=&quot;/&quot;&gt;&lt;strong&gt;&lt;p class='text-primary'&gt;mLDM&lt;/p&gt;&lt;/strong&gt;&lt;/a&gt;
+        &lt;div class=&quot;navbar-collapse collapse navbar-responsive-collapse&quot;&gt;
+          &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/&quot;&gt; &lt;i class='fa fa-home'&gt;&lt;/i&gt; Home &lt;/a&gt;&lt;/li&gt;
+              &lt;!-- &lt;li&gt;&lt;a href=&quot;experiment&quot;&gt; &lt;i class='fa fa-image'&gt;&lt;/i&gt; Experiment&lt;/a&gt;&lt;/li&gt; --&gt;
+            &lt;li&gt;&lt;a href=&quot;download&quot;&gt; &lt;i class='fa fa-code'&gt; &lt;/i&gt; Code&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;contact&quot;&gt; &lt;i class='fa fa-envelope'&gt;&lt;/i&gt; Contact &lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-9&quot;&gt;
+          
+          &lt;h2&gt;&lt;strong&gt;mLDM&lt;/strong&gt;: a new hierarchical Bayesian statistical model for sparse microbial association discovery&lt;/h2&gt;
+&lt;br/&gt;
+&lt;ul&gt;
+&lt;p&gt;
+    &lt;li&gt;&lt;h4 id='intr'&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    &lt;div&gt;    
+Understanding associations among microbes and associations between microbes and their microenvironment from metagenomic data is a key research topic in microbial community ecology [8], which could help us to unravel real interactions (e.g., commensalism, parasitism, competition, etc.) in a community as well as understanding community-wide dynamics. Although several statistical tools [12,7,3,10,11,2,5,6,9,4] have been developed for metagenomic association studies, they suffer from compositional
+&lt;img class=&quot;img-rounded&quot; width=&quot;150&quot; height=&quot;300&quot; style=&quot;float:right&quot; src=&quot;/assets/indirect_association-1f5fdff49eba6dbb2ece1b13d9cc8e029dde8c6d1b260233dfb462436421bf55.jpg&quot; alt=&quot;Indirect association 1f5fdff49eba6dbb2ece1b13d9cc8e029dde8c6d1b260233dfb462436421bf55&quot; /&gt;
+bias [1] or fail to take into account environmental factors that directly affect the composition of a microbial community, leading to some unrealistic associations.
+For example, &lt;strong&gt;Figure 1&lt;/strong&gt; shows that two unrelated microbes (OTU-1 and OTU-2) may appear to be associated just because they both respond to the same environmental perturbation (EF-1). 
+&lt;br/&gt;
+In this paper, we propose &lt;u&gt;&lt;strong&gt;m&lt;/strong&gt;&lt;/u&gt;etagenomic &lt;u&gt;&lt;strong&gt;L&lt;/strong&gt;&lt;/u&gt;ognormal-&lt;u&gt;&lt;strong&gt;D&lt;/strong&gt;&lt;/u&gt;irichlet-&lt;u&gt;&lt;strong&gt;M&lt;/strong&gt;&lt;/u&gt;ultinomial
+(&lt;strong&gt;mLDM&lt;/strong&gt;), a hierarchical Bayesian model with sparsity constraints to bypass compositional bias and discover new associations among microbes and associations between microbes and factors impacting their microenvironment. The mLDM model is able to: &lt;strong&gt;1)&lt;/strong&gt; infer both conditionally independent associations among microbes
+and direct associations between microbes and environmental factors; &lt;strong&gt;2)&lt;/strong&gt; consider both compositional bias and variance of metagenomic
+data; and &lt;strong&gt;3)&lt;/strong&gt; estimate absolute abundance for microbes. Thus, conditionally independent associations can
+capture the direct relationship underlying each microbial pair and remove the indirect connection induced from other common factors.
+&lt;/div&gt;
+    &lt;li&gt;&lt;h4 id='meth'&gt;&lt;strong&gt;Methods&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    mLDM discovers the metagenomic associations using a hierarchical Bayesian graphical model with sparse constraints, where the metagenomic sequencing data generating process is captured by the hierarchical latent variable model. Speicifically, we assume that the read counts are proportional to the latent microbial ratios which are determined by their absolute abundance. The microbial absolute abundance is influenced by two factors: &lt;strong&gt;1)&lt;/strong&gt; environmental factors, whose effects on the microbes are denoted by a linear regression model; and 
+    &lt;img class=&quot;img-rounded&quot; width=&quot;450&quot; height=&quot;200&quot; style=&quot;float:left&quot; src=&quot;/assets/LDM_model-49069a6b24d67663db2ce3694a327424df983723b081b97c4bade22a6a2d373c.jpg&quot; alt=&quot;Ldm model 49069a6b24d67663db2ce3694a327424df983723b081b97c4bade22a6a2d373c&quot; /&gt;
+    &lt;strong&gt;2)&lt;/strong&gt; the associations among microbes encoded by a latent vector, which is determined by the matrix that records microbial associations and the mean vector that affects the basic absolute abundance of microbes.&lt;strong&gt;Figure 2&lt;/strong&gt; illustrates the mLDM model for metagenomic sequencing. By introducing sparsity regularizations, mLDM can capture both the conditionally independent associations among microbes and the direct associations between microbes and environmental factors. The task is formulated as solving an optimization problem, which can be solved using coordinate descent or proximal methods. For model selection, we choose the best parameters via extended Bayesian information criteria (EBIC).
+
+    &lt;br/&gt;
+    &lt;li&gt;&lt;h4 id='resu'&gt;&lt;strong&gt;Results&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    To quantitatively show the effectiveness of the proposed mLDM model, we conducted several experiments on both synthetic data and western English Channel time-series data, by comparing it with several state-of-the-art methodologies. For synthetic data, we compared mLDM with eight programs: PCC, SCC, CCREPE, SparCC, CCLasso, glasso (graphical lasso), SPIEC-EASI (mlasso) and SPIEC-EASI (glasso). The first six methods estimate associations via the calculation of correlations with PCC as the baseline, and the last three compute the conditional independence with glasso as the baseline.
+We estimate both the OTU-OTU associations among all microbes (or OTUs) and EF-OTU associations between environmental factors and microbes. The results demonstrate that the association network computed by the mLDM model, is closest to
+the true network, and that the mLDM model recovers most of the conditionally independent associations. For the real western English Channel time-series data, which does not contain the ground truth, we applied mLDM to discover several potentially interesting OTU-OTU associations and EF-OTU associations.
+
+&lt;/p&gt;
+&lt;/ul&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;col-lg-3&quot;&gt;
+          &lt;div class=&quot;well sidebar-nav&quot;&gt;
+              &lt;h3&gt;&lt;p class='text-danger'&gt;Content&lt;/p&gt;&lt;/h3&gt;
+            &lt;ul class=&quot;nav nav-list&quot;&gt;
+                &lt;!-- &lt;li class=&quot;nav-header&quot;&gt;Sidebar&lt;/li&gt; --&gt;
+              &lt;li&gt;&lt;a href=&quot;#intr&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#meth&quot;&gt;Method&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#resu&quot;&gt;Results&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;h3&gt;&lt;p style='color:#5cb85c'&gt;Manuscript&lt;/p&gt;&lt;/h3&gt;
+            &lt;ul&gt;
+            &lt;li&gt;&lt;a href='mLDM.pdf'&gt;mLDM.pdf&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;&lt;!--/.well --&gt;
+        &lt;/div&gt;&lt;!--/span--&gt;
+      &lt;/div&gt;&lt;!--/row--&gt;
+
+      &lt;footer&gt;
+        &lt;p&gt;&amp;copy; Tim Group, Tsinghua University&lt;/p&gt;
+      &lt;/footer&gt;
+
+    &lt;/div&gt; &lt;!-- /container --&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Cookie" plugin="analyze_cookies" severity="Information" url="http://mldm.bigdata-thu.org/" var="None">
+        <description>The application sent the &quot;_mLDM_session&quot; cookie in 1 different URLs. The first ten URLs are:
+ - http://mldm.bigdata-thu.org/
+</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://mldm.bigdata-thu.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mldm.bigdata-thu.org" field="Host"/>
+                        <header content="_mLDM_session=eVFiSTR1b3htUkVlZThTVTAvTGtxRUNERVJmQXQwbFJPR09yekJDb0hBKy9yVU1DaDB0SXlWVEk4T3E2bjZXeThsQ2srekNiRzQvSTZGTlV1N21lbU8raXZuWDY5cGoxOFkzZ0NTZlVpVExqQlF5RUtxNkpYNDd1cTVNTEUrK3B1UXFhQzQveDBnRkJmTHVpVWxzRUN3PT0tLStjaExOckdXcTlHNGhFenU5TTlGMXc9PQ%3D%3D--55f60a4f0c9074a0174a0b494c48c5ff457e24ef" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="385ebba7-caf6-4523-82e5-bfbb4f2e564e" field="x-request-id"/>
+                        <header content="1; mode=block" field="x-xss-protection"/>
+                        <header content="nosniff" field="x-content-type-options"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="_mLDM_session=UkhXSGhuUHVNOTg2bHB1NDdCakJCV1pUSFpIZklIaFpiY1luNXFyMUpqRXR2ZWZ1TlFudG1md21rTmI4MjZLSVpTVUpzU2JYVzZmOEQzenM5M1QrMjdPUGtNYng1dW1JejA4VW4vZVV2Y0tSVHlrckNWMXY5OUtlbzF4bklKakpzZGNCN1lPRlNjRnI5ZTMxdUZHQnJnPT0tLXdlSU1sRlpNTFZNc0FFN05iQkx3dUE9PQ%3D%3D--26f8110336fdf5f21f6e2d4e81d8b866877d0e2d; path=/; HttpOnly" field="set-cookie"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.4.6 (Ubuntu)" field="server"/>
+                        <header content="0.050358" field="x-runtime"/>
+                        <header content="max-age=0, private, must-revalidate" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 18:14:18 GMT" field="date"/>
+                        <header content="SAMEORIGIN" field="x-frame-options"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge,chrome=1&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;mLDM&lt;/title&gt;
+    &lt;meta name=&quot;csrf-param&quot; content=&quot;authenticity_token&quot; /&gt;
+&lt;meta name=&quot;csrf-token&quot; content=&quot;JY3uaWQnhKUUyFr0kIrMNHzx/scCHhJ+fS/xI+6gYKeEYVT4wZW3DH1yO3oJ5LT3zHvhH6RbYsWR2MSSx41KBg==&quot; /&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/twitter-bootstrap-static/bootstrap.self-603f330c29af013305325569c8c75d03d688963abd8cde4fffec17b5ce417bfb.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/twitter-bootstrap-static/fontawesome.self-2fe4f8a61d73606fbcb036b41f380591906a4da65a9eb5ec0a210fe6980b2ca7.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/bootstrap_and_overrides.self-2cb3834583dfbaf0a39c7139750bf963e05d79cbe811126997e013400be5d8dc.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/welcome.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1&quot; /&gt;
+
+    &lt;!-- For third-generation iPad with high-resolution Retina display: --&gt;
+    &lt;!-- Size should be 144 x 144 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-144x144-precomposed.png&quot; sizes=&quot;144x144&quot; /&gt;
+
+    &lt;!-- For iPhone with high-resolution Retina display: --&gt;
+    &lt;!-- Size should be 114 x 114 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-114x114-precomposed.png&quot; sizes=&quot;114x114&quot; /&gt;
+
+    &lt;!-- For first- and second-generation iPad: --&gt;
+    &lt;!-- Size should be 72 x 72 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-72x72-precomposed.png&quot; sizes=&quot;72x72&quot; /&gt;
+
+    &lt;!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: --&gt;
+    &lt;!-- Size should be 57 x 57 pixels --&gt;
+    &lt;link rel=&quot;apple-touch-icon-precomposed&quot; type=&quot;image/png&quot; href=&quot;/images/apple-touch-icon-precomposed.png&quot; /&gt;
+
+    &lt;!-- For all other devices --&gt;
+    &lt;!-- Size should be 32 x 32 pixels --&gt;
+    &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;/images/favicon.ico&quot; /&gt;
+
+    &lt;script src=&quot;/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/transition.self-09ff30b1e8a93d1f7728b9855f55d9c9d8d5734c8861e0d8139994e50944572a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/alert.self-a29e91e8cd3ddaba9bbc466901d53ec2127e9256b9b941905d525a3a716bd1a5.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/modal.self-72f95ffa1071297725a9ac91989693d56d1abf23f441a47455073b0da2857a5b.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/dropdown.self-9314126777c6be5443e37ea7f7967d7914d72b3e60449ba50edc967446373059.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/scrollspy.self-a155b9d4b2f978905f0326c0f6635e1134fe91c6bfbfcbad079fa24a9fef2b0e.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/tab.self-122235057fbd4c6c7da377d59dc58f47b44cb1088a2e38e6ee6ce9d8ac29a26a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/tooltip.self-11cf547be953f25f511cec668f6690473fd97b2f65502e4032f4030999a3f0c3.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/popover.self-77d8e3a2499c1104ef146396a68b82469ee2bdb365199b874694698d10405e9a.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/button.self-a6cb16785434acb365ae426aef9f1fce05ed553cae7a965e4471c3da71509175.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/collapse.self-7dc8bfbc2fbfabd2bad62c58ff8ffeaf8f20fb87c7ca6cd35f06d4dc19632587.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/carousel.self-57eb8422043cf0a85b7a9dc6843916eb0a3e35b419c7798a5eb254b918997631.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap/affix.self-d2b642d8fbfc1d7041e2edefd66683ada567a980789dcd6f94fddda0b33408b5.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/twitter/bootstrap.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/bootstrap.self-fdc98dee79ee88255e10cac6caa91338165cb76cf0d263744d8d90011fc2ef8f.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- Le HTML5 shim, for IE6-8 support of HTML elements --&gt;
+    &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+
+    &lt;style type='text/css'&gt;
+        body{
+            font-family:'Microsoft YaHei',Arial,Helvetica,sans-serif,'宋体';
+        }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;div class=&quot;navbar navbar-default navbar-static-top&quot; style='background-color:#FFF5EE'&gt;
+      &lt;div class=&quot;container&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;navbar-toggle&quot; data-toggle=&quot;collapse&quot; data-target=&quot;.navbar-responsive-collapse&quot;&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;a class=&quot;navbar-brand&quot; href=&quot;/&quot;&gt;&lt;strong&gt;&lt;p class='text-primary'&gt;mLDM&lt;/p&gt;&lt;/strong&gt;&lt;/a&gt;
+        &lt;div class=&quot;navbar-collapse collapse navbar-responsive-collapse&quot;&gt;
+          &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;/&quot;&gt; &lt;i class='fa fa-home'&gt;&lt;/i&gt; Home &lt;/a&gt;&lt;/li&gt;
+              &lt;!-- &lt;li&gt;&lt;a href=&quot;experiment&quot;&gt; &lt;i class='fa fa-image'&gt;&lt;/i&gt; Experiment&lt;/a&gt;&lt;/li&gt; --&gt;
+            &lt;li&gt;&lt;a href=&quot;download&quot;&gt; &lt;i class='fa fa-code'&gt; &lt;/i&gt; Code&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;contact&quot;&gt; &lt;i class='fa fa-envelope'&gt;&lt;/i&gt; Contact &lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-9&quot;&gt;
+          
+          &lt;h2&gt;&lt;strong&gt;mLDM&lt;/strong&gt;: a new hierarchical Bayesian statistical model for sparse microbial association discovery&lt;/h2&gt;
+&lt;br/&gt;
+&lt;ul&gt;
+&lt;p&gt;
+    &lt;li&gt;&lt;h4 id='intr'&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    &lt;div&gt;    
+Understanding associations among microbes and associations between microbes and their microenvironment from metagenomic data is a key research topic in microbial community ecology [8], which could help us to unravel real interactions (e.g., commensalism, parasitism, competition, etc.) in a community as well as understanding community-wide dynamics. Although several statistical tools [12,7,3,10,11,2,5,6,9,4] have been developed for metagenomic association studies, they suffer from compositional
+&lt;img class=&quot;img-rounded&quot; width=&quot;150&quot; height=&quot;300&quot; style=&quot;float:right&quot; src=&quot;/assets/indirect_association-1f5fdff49eba6dbb2ece1b13d9cc8e029dde8c6d1b260233dfb462436421bf55.jpg&quot; alt=&quot;Indirect association 1f5fdff49eba6dbb2ece1b13d9cc8e029dde8c6d1b260233dfb462436421bf55&quot; /&gt;
+bias [1] or fail to take into account environmental factors that directly affect the composition of a microbial community, leading to some unrealistic associations.
+For example, &lt;strong&gt;Figure 1&lt;/strong&gt; shows that two unrelated microbes (OTU-1 and OTU-2) may appear to be associated just because they both respond to the same environmental perturbation (EF-1). 
+&lt;br/&gt;
+In this paper, we propose &lt;u&gt;&lt;strong&gt;m&lt;/strong&gt;&lt;/u&gt;etagenomic &lt;u&gt;&lt;strong&gt;L&lt;/strong&gt;&lt;/u&gt;ognormal-&lt;u&gt;&lt;strong&gt;D&lt;/strong&gt;&lt;/u&gt;irichlet-&lt;u&gt;&lt;strong&gt;M&lt;/strong&gt;&lt;/u&gt;ultinomial
+(&lt;strong&gt;mLDM&lt;/strong&gt;), a hierarchical Bayesian model with sparsity constraints to bypass compositional bias and discover new associations among microbes and associations between microbes and factors impacting their microenvironment. The mLDM model is able to: &lt;strong&gt;1)&lt;/strong&gt; infer both conditionally independent associations among microbes
+and direct associations between microbes and environmental factors; &lt;strong&gt;2)&lt;/strong&gt; consider both compositional bias and variance of metagenomic
+data; and &lt;strong&gt;3)&lt;/strong&gt; estimate absolute abundance for microbes. Thus, conditionally independent associations can
+capture the direct relationship underlying each microbial pair and remove the indirect connection induced from other common factors.
+&lt;/div&gt;
+    &lt;li&gt;&lt;h4 id='meth'&gt;&lt;strong&gt;Methods&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    mLDM discovers the metagenomic associations using a hierarchical Bayesian graphical model with sparse constraints, where the metagenomic sequencing data generating process is captured by the hierarchical latent variable model. Speicifically, we assume that the read counts are proportional to the latent microbial ratios which are determined by their absolute abundance. The microbial absolute abundance is influenced by two factors: &lt;strong&gt;1)&lt;/strong&gt; environmental factors, whose effects on the microbes are denoted by a linear regression model; and 
+    &lt;img class=&quot;img-rounded&quot; width=&quot;450&quot; height=&quot;200&quot; style=&quot;float:left&quot; src=&quot;/assets/LDM_model-49069a6b24d67663db2ce3694a327424df983723b081b97c4bade22a6a2d373c.jpg&quot; alt=&quot;Ldm model 49069a6b24d67663db2ce3694a327424df983723b081b97c4bade22a6a2d373c&quot; /&gt;
+    &lt;strong&gt;2)&lt;/strong&gt; the associations among microbes encoded by a latent vector, which is determined by the matrix that records microbial associations and the mean vector that affects the basic absolute abundance of microbes.&lt;strong&gt;Figure 2&lt;/strong&gt; illustrates the mLDM model for metagenomic sequencing. By introducing sparsity regularizations, mLDM can capture both the conditionally independent associations among microbes and the direct associations between microbes and environmental factors. The task is formulated as solving an optimization problem, which can be solved using coordinate descent or proximal methods. For model selection, we choose the best parameters via extended Bayesian information criteria (EBIC).
+
+    &lt;br/&gt;
+    &lt;li&gt;&lt;h4 id='resu'&gt;&lt;strong&gt;Results&lt;/strong&gt;&lt;/h4&gt;&lt;/li&gt;
+    To quantitatively show the effectiveness of the proposed mLDM model, we conducted several experiments on both synthetic data and western English Channel time-series data, by comparing it with several state-of-the-art methodologies. For synthetic data, we compared mLDM with eight programs: PCC, SCC, CCREPE, SparCC, CCLasso, glasso (graphical lasso), SPIEC-EASI (mlasso) and SPIEC-EASI (glasso). The first six methods estimate associations via the calculation of correlations with PCC as the baseline, and the last three compute the conditional independence with glasso as the baseline.
+We estimate both the OTU-OTU associations among all microbes (or OTUs) and EF-OTU associations between environmental factors and microbes. The results demonstrate that the association network computed by the mLDM model, is closest to
+the true network, and that the mLDM model recovers most of the conditionally independent associations. For the real western English Channel time-series data, which does not contain the ground truth, we applied mLDM to discover several potentially interesting OTU-OTU associations and EF-OTU associations.
+
+&lt;/p&gt;
+&lt;/ul&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;col-lg-3&quot;&gt;
+          &lt;div class=&quot;well sidebar-nav&quot;&gt;
+              &lt;h3&gt;&lt;p class='text-danger'&gt;Content&lt;/p&gt;&lt;/h3&gt;
+            &lt;ul class=&quot;nav nav-list&quot;&gt;
+                &lt;!-- &lt;li class=&quot;nav-header&quot;&gt;Sidebar&lt;/li&gt; --&gt;
+              &lt;li&gt;&lt;a href=&quot;#intr&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#meth&quot;&gt;Method&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#resu&quot;&gt;Results&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;h3&gt;&lt;p style='color:#5cb85c'&gt;Manuscript&lt;/p&gt;&lt;/h3&gt;
+            &lt;ul&gt;
+            &lt;li&gt;&lt;a href='mLDM.pdf'&gt;mLDM.pdf&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;&lt;!--/.well --&gt;
+        &lt;/div&gt;&lt;!--/span--&gt;
+      &lt;/div&gt;&lt;!--/row--&gt;
+
+      &lt;footer&gt;
+        &lt;p&gt;&amp;copy; Tim Group, Tsinghua University&lt;/p&gt;
+      &lt;/footer&gt;
+
+    &lt;/div&gt; &lt;!-- /container --&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The following error was detected and could not be resolved:
+Failed to initialize the 404 detection, original exception was: &quot;Exception found while detecting 404: &quot;HTTP timeout error&quot;&quot;.
+</error>
+</w3af-run>

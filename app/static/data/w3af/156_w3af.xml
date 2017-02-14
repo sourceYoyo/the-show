@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481167541" start-long="Wed Dec 07 22:25:41 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://mail.sz.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/156_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[71]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache-Coyote/1.1&quot;.</description>
+        <http-transactions>
+            <http-transaction id="71">
+                <http-request>
+                    <status>GET http://mail.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 03:20:16 GMT" field="date"/>
+                        <header content="text/html;charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;濞撳懎宕曟径褍\xad\xa6濞ｅ崬婀烽惍鏃傗敀閻㈢喖娅岄柇\xae\xe4娆㈢化鑽ょ埠&lt;/title&gt;
+&lt;base href=&quot;http://mail.sz.tsinghua.edu.cn/coremail/common/index_cm40.jsp&quot; /&gt;
+&lt;link href=&quot;index_cm40/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/js/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var markme_msg = &quot;鐠囬攱瀵\x9c Ctrl-D 閺\x80\xe6儼妫岄張\xac\xe9銆\x89&quot;;
+&lt;/script&gt;
+
+
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;Links&quot;&gt;
+      
+      &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;鐠佸彞璐熸＃鏍\xad\xe3\x80\x89&lt;/a&gt; |&lt;/span&gt;
+      
+      &lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;閺\x80\xe6儼妫岄張\xac\xe9銆\x89&lt;/a&gt; |
+      
+      &lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location.reload();&quot;&gt;English Version&lt;/a&gt; |
+      
+      &lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;鐢痋xae\xe5濮\xaa&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;Main&quot;&gt;
+      &lt;div class=&quot;MainL&quot;&gt;
+          &lt;div class=&quot;LTop&quot;&gt;
+              &lt;div class=&quot;logo&quot;&gt;&lt;a href=&quot;http://www.sz.tsinghua.cn&quot; target=&quot;_blank&quot;&gt;&lt;img style=&quot;border:0 none;&quot; src=&quot;/coremail/s?sid=&amp;func=getSiteLogoData&quot;
+                                     alt=&quot;濞ｈ京鐖洪悽鐔兼珜閻㈤潧鐡欓柇\xae\xe4娆㈢化鑽ょ埠&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;LContent&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;LB&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;MainR&quot;&gt;
+          &lt;h3 class=&quot;Header&quot;&gt;濞ｈ京鐖洪悽鐔兼珜閻㈤潧鐡欓柇\xae\xe7\xae\xb1閻ц\xaf\xb2缍\x8d&lt;/h3&gt;
+          &lt;div class=&quot;Error&quot;&gt;
+              &lt;div class=&quot;NoteError&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp&quot;
+                onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+            &lt;table class=&quot;loginTable&quot;&gt;
+              &lt;tfoot&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&lt;/td&gt;
+                  &lt;td colspan=&quot;2&quot; &gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot;&gt;
+                      閻ф眹\x80\x80瑜癨x95\n                    &lt;/button&gt;
+
+                    
+                    &amp;nbsp;&amp;nbsp;
+                    
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tfoot&gt;
+              &lt;tr&gt;
+                &lt;th&gt;閻\xa2\xe3劍鍩涢崥\x8d&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;input&quot;
+                           value=&quot;&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    
+                    
+                      &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot;/&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+              
+              &lt;tr&gt;
+                &lt;th&gt;鐎靛棎\x80\x80閻甛x81&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; class=&quot;input&quot; autocomplete=&quot;off&quot;
+                           value=&quot;&quot; /&gt;&lt;/td&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+              
+              
+              
+
+
+
+
+    
+    
+        &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+    
+
+
+
+              
+
+
+
+
+
+
+
+
+
+              &lt;tr&gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;td colspan=&quot;2&quot;&gt;
+                    
+                        &lt;div&gt;
+                              &lt;label class=&quot;for&quot; style=&quot;display:none&quot;&gt;
+                                  &lt;input type=&quot;checkbox&quot; name=&quot;useSSL&quot; class=&quot;checkboxfix&quot; value=&quot;true&quot; checked checked/&gt;
+                                  SSL 鐎瑰\xa4\x8a鍙忛惂璇茬秿
+                              &lt;/label&gt;
+                        &lt;/div&gt;
+                    
+                    &lt;div&gt;
+                        &lt;label&gt;
+                            &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; checked /&gt;
+                            閸︺劍\xad\xa4閻\xa2\xe4絻鍓虫稉濠匼xae\xb0娴ｅ繒鏁ら幋宄版倳
+                        &lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;
+          &lt;/form&gt;
+          
+          
+      &lt;/div&gt;
+
+      &lt;div class=&quot;footer&quot;&gt;
+          &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;闁璡xae\xe4娆㈢化鑽ょ埠&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;闁璡xae\xe4娆㈤張宥呭\xa7\x9f閸\xa3\\xa8&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;娴间椒绗熼柇\xae\xe7\xae\xb1&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;娴间椒绗熼柇\xae\xe7\xae\xb1&lt;/a&gt;
+        &lt;/div&gt;
+          &lt;div class=&quot;footerBg&quot;&gt;
+              &lt;div class=&quot;copyright&quot;&gt;
+                  &lt;a href=&quot;http://www.sz.tsinghua.edu.cn&quot; target=&quot;_blank&quot;&gt;濞撳懎宕曟径褍\xad\xa6濞ｅ崬婀烽惍鏃傗敀閻㈢喖娅\x8c. &amp;copy; Copyright 2000 - 2014.&lt;/a&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script type=&quot;text/javascript&quot;&gt;
+      init(&quot;uid&quot;);
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[159, 161]" method="PUT" name="DAV incorrect configuration" plugin="dav" severity="Information" url="http://mail.sz.tsinghua.edu.cn/mGXzg" var="None">
+        <description>DAV seems to be correctly configured and allowing you to use the PUT method but the directory does not have the right permissions that would allow the web server to write to it. This error was found at: &quot;http://mail.sz.tsinghua.edu.cn/mGXzg&quot;.</description>
+        <http-transactions>
+            <http-transaction id="159">
+                <http-request>
+                    <status>PUT http://mail.sz.tsinghua.edu.cn/mGXzg HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">aSIdE3</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:20:23 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.35 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.35&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="161">
+                <http-request>
+                    <status>GET http://mail.sz.tsinghua.edu.cn/mGXzg HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:20:23 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="Active filter detected" plugin="afd" severity="Information" url="None" var="None">
+        <description>The remote network has an active filter. IMPORTANT: The result of all the other plugins will be inaccurate, web applications could be vulnerable but &quot;protected&quot; by the active filter.</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://mail.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 03:20:16 GMT" field="date"/>
+                        <header content="text/html;charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;娓呭崕澶у\xad\xa6娣卞湷鐮旂┒鐢熼櫌閭\xae\xe4欢绯荤粺&lt;/title&gt;
+&lt;base href=&quot;http://mail.sz.tsinghua.edu.cn/coremail/common/index_cm40.jsp&quot; /&gt;
+&lt;link href=&quot;index_cm40/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/js/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var markme_msg = &quot;璇锋寜 Ctrl-D 鏀惰棌鏈\xac\xe9〉&quot;;
+&lt;/script&gt;
+
+
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;Links&quot;&gt;
+      
+      &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;璁句负棣栭〉&lt;/a&gt; |&lt;/span&gt;
+      
+      &lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;鏀惰棌鏈\xac\xe9〉&lt;/a&gt; |
+      
+      &lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location.reload();&quot;&gt;English Version&lt;/a&gt; |
+      
+      &lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;甯\xae\xe5姪&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;Main&quot;&gt;
+      &lt;div class=&quot;MainL&quot;&gt;
+          &lt;div class=&quot;LTop&quot;&gt;
+              &lt;div class=&quot;logo&quot;&gt;&lt;a href=&quot;http://www.sz.tsinghua.cn&quot; target=&quot;_blank&quot;&gt;&lt;img style=&quot;border:0 none;&quot; src=&quot;/coremail/s?sid=&amp;func=getSiteLogoData&quot;
+                                     alt=&quot;娣辩爺鐢熼櫌鐢靛瓙閭\xae\xe4欢绯荤粺&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;LContent&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;LB&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;MainR&quot;&gt;
+          &lt;h3 class=&quot;Header&quot;&gt;娣辩爺鐢熼櫌鐢靛瓙閭\xae\xe7\xae\xb1鐧诲綍&lt;/h3&gt;
+          &lt;div class=&quot;Error&quot;&gt;
+              &lt;div class=&quot;NoteError&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp&quot;
+                onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+            &lt;table class=&quot;loginTable&quot;&gt;
+              &lt;tfoot&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&lt;/td&gt;
+                  &lt;td colspan=&quot;2&quot; &gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot;&gt;
+                      鐧汇\x80\x80褰\x95\n                    &lt;/button&gt;
+
+                    
+                    &amp;nbsp;&amp;nbsp;
+                    
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tfoot&gt;
+              &lt;tr&gt;
+                &lt;th&gt;鐢ㄦ埛鍚\x8d&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;input&quot;
+                           value=&quot;&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    
+                    
+                      &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot;/&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+              
+              &lt;tr&gt;
+                &lt;th&gt;瀵嗐\x80\x80鐮\x81&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; class=&quot;input&quot; autocomplete=&quot;off&quot;
+                           value=&quot;&quot; /&gt;&lt;/td&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+              
+              
+              
+
+
+
+
+    
+    
+        &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+    
+
+
+
+              
+
+
+
+
+
+
+
+
+
+              &lt;tr&gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;td colspan=&quot;2&quot;&gt;
+                    
+                        &lt;div&gt;
+                              &lt;label class=&quot;for&quot; style=&quot;display:none&quot;&gt;
+                                  &lt;input type=&quot;checkbox&quot; name=&quot;useSSL&quot; class=&quot;checkboxfix&quot; value=&quot;true&quot; checked checked/&gt;
+                                  SSL 瀹夊叏鐧诲綍
+                              &lt;/label&gt;
+                        &lt;/div&gt;
+                    
+                    &lt;div&gt;
+                        &lt;label&gt;
+                            &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; checked /&gt;
+                            鍦ㄦ\xad\xa4鐢佃剳涓婅\xae\xb0浣忕敤鎴峰悕
+                        &lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;
+          &lt;/form&gt;
+          
+          
+      &lt;/div&gt;
+
+      &lt;div class=&quot;footer&quot;&gt;
+          &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;閭\xae\xe4欢绯荤粺&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;閭\xae\xe4欢鏈嶅姟鍣\xa8&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;浼佷笟閭\xae\xe7\xae\xb1&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;浼佷笟閭\xae\xe7\xae\xb1&lt;/a&gt;
+        &lt;/div&gt;
+          &lt;div class=&quot;footerBg&quot;&gt;
+              &lt;div class=&quot;copyright&quot;&gt;
+                  &lt;a href=&quot;http://www.sz.tsinghua.edu.cn&quot; target=&quot;_blank&quot;&gt;娓呭崕澶у\xad\xa6娣卞湷鐮旂┒鐢熼櫌. &amp;copy; Copyright 2000 - 2014.&lt;/a&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script type=&quot;text/javascript&quot;&gt;
+      init(&quot;uid&quot;);
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[183]" method="GET" name="Favicon identification" plugin="favicon_identification" severity="Information" url="http://mail.sz.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>Favicon.ico file was identified as &quot;Zero byte favicon&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[195]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://sz.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://sz.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://mail.sz.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[35, 186, 196, 205, 207, 209, 211, 212, 213]" method="GET" name="DAV methods enabled" plugin="allowed_methods" severity="Information" url="http://mail.sz.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://mail.sz.tsinghua.edu.cn/&quot; has the following allowed methods. These include DAV methods and should be disabled: GET, HEAD, LINK, MKCOL, NOTIFY, OPTIONS, POST, REPORT, RMDIR, UNLINK</description>
+        <http-transactions>
+            <http-transaction id="35">
+                <http-request>
+                    <status>OPTIONS http://mail.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:20:21 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="GET, HEAD, POST, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 159, 177, 178, 181]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://mail.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 03:20:16 GMT" field="date"/>
+                        <header content="text/html;charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;濞撳懎宕曟径褍\xad\xa6濞ｅ崬婀烽惍鏃傗敀閻㈢喖娅岄柇\xae\xe4娆㈢化鑽ょ埠&lt;/title&gt;
+&lt;base href=&quot;http://mail.sz.tsinghua.edu.cn/coremail/common/index_cm40.jsp&quot; /&gt;
+&lt;link href=&quot;index_cm40/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/js/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var markme_msg = &quot;鐠囬攱瀵\x9c Ctrl-D 閺\x80\xe6儼妫岄張\xac\xe9銆\x89&quot;;
+&lt;/script&gt;
+
+
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;Links&quot;&gt;
+      
+      &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;鐠佸彞璐熸＃鏍\xad\xe3\x80\x89&lt;/a&gt; |&lt;/span&gt;
+      
+      &lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;閺\x80\xe6儼妫岄張\xac\xe9銆\x89&lt;/a&gt; |
+      
+      &lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location.reload();&quot;&gt;English Version&lt;/a&gt; |
+      
+      &lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;鐢痋xae\xe5濮\xaa&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;Main&quot;&gt;
+      &lt;div class=&quot;MainL&quot;&gt;
+          &lt;div class=&quot;LTop&quot;&gt;
+              &lt;div class=&quot;logo&quot;&gt;&lt;a href=&quot;http://www.sz.tsinghua.cn&quot; target=&quot;_blank&quot;&gt;&lt;img style=&quot;border:0 none;&quot; src=&quot;/coremail/s?sid=&amp;func=getSiteLogoData&quot;
+                                     alt=&quot;濞ｈ京鐖洪悽鐔兼珜閻㈤潧鐡欓柇\xae\xe4娆㈢化鑽ょ埠&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;LContent&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;LB&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;MainR&quot;&gt;
+          &lt;h3 class=&quot;Header&quot;&gt;濞ｈ京鐖洪悽鐔兼珜閻㈤潧鐡欓柇\xae\xe7\xae\xb1閻ц\xaf\xb2缍\x8d&lt;/h3&gt;
+          &lt;div class=&quot;Error&quot;&gt;
+              &lt;div class=&quot;NoteError&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp&quot;
+                onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+            &lt;table class=&quot;loginTable&quot;&gt;
+              &lt;tfoot&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&lt;/td&gt;
+                  &lt;td colspan=&quot;2&quot; &gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot;&gt;
+                      閻ф眹\x80\x80瑜癨x95\n                    &lt;/button&gt;
+
+                    
+                    &amp;nbsp;&amp;nbsp;
+                    
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tfoot&gt;
+              &lt;tr&gt;
+                &lt;th&gt;閻\xa2\xe3劍鍩涢崥\x8d&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;input&quot;
+                           value=&quot;&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    
+                    
+                      &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot;/&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+              
+              &lt;tr&gt;
+                &lt;th&gt;鐎靛棎\x80\x80閻甛x81&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; class=&quot;input&quot; autocomplete=&quot;off&quot;
+                           value=&quot;&quot; /&gt;&lt;/td&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+              
+              
+              
+
+
+
+
+    
+    
+        &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+    
+
+
+
+              
+
+
+
+
+
+
+
+
+
+              &lt;tr&gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;td colspan=&quot;2&quot;&gt;
+                    
+                        &lt;div&gt;
+                              &lt;label class=&quot;for&quot; style=&quot;display:none&quot;&gt;
+                                  &lt;input type=&quot;checkbox&quot; name=&quot;useSSL&quot; class=&quot;checkboxfix&quot; value=&quot;true&quot; checked checked/&gt;
+                                  SSL 鐎瑰\xa4\x8a鍙忛惂璇茬秿
+                              &lt;/label&gt;
+                        &lt;/div&gt;
+                    
+                    &lt;div&gt;
+                        &lt;label&gt;
+                            &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; checked /&gt;
+                            閸︺劍\xad\xa4閻\xa2\xe4絻鍓虫稉濠匼xae\xb0娴ｅ繒鏁ら幋宄版倳
+                        &lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;
+          &lt;/form&gt;
+          
+          
+      &lt;/div&gt;
+
+      &lt;div class=&quot;footer&quot;&gt;
+          &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;闁璡xae\xe4娆㈢化鑽ょ埠&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;闁璡xae\xe4娆㈤張宥呭\xa7\x9f閸\xa3\\xa8&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;娴间椒绗熼柇\xae\xe7\xae\xb1&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;娴间椒绗熼柇\xae\xe7\xae\xb1&lt;/a&gt;
+        &lt;/div&gt;
+          &lt;div class=&quot;footerBg&quot;&gt;
+              &lt;div class=&quot;copyright&quot;&gt;
+                  &lt;a href=&quot;http://www.sz.tsinghua.edu.cn&quot; target=&quot;_blank&quot;&gt;濞撳懎宕曟径褍\xad\xa6濞ｅ崬婀烽惍鏃傗敀閻㈢喖娅\x8c. &amp;copy; Copyright 2000 - 2014.&lt;/a&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script type=&quot;text/javascript&quot;&gt;
+      init(&quot;uid&quot;);
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="159">
+                <http-request>
+                    <status>PUT http://mail.sz.tsinghua.edu.cn/mGXzg HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">aSIdE3</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:20:23 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.35 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.35&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="177">
+                <http-request>
+                    <status>GET http://mail.sz.tsinghua.edu.cn/xeWak.html HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:20:29 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="178">
+                <http-request>
+                    <status>GET http://mail.sz.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:20:30 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="181">
+                <http-request>
+                    <status>POST http://mail.sz.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3hlV2FrLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGgua2FXZXg=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:20:32 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/?6aJi4hi=exec%20master..xp_cmdshell%20dir&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/?6aJi4hi=SELECT%20TOP%201%20name%20FROM%20sysusers&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/?6aJi4hi=exec%20xp_cmdshell%20dir&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/?=PHPE9568F35-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The fingerprint_WAF plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The favicon_identification plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/favicon.ico&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/?=PHPE9568F36-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The fingerprint_WAF plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The dns_wildcard plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to mail.sz.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">The detect_reverse_proxy plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The fingerprint_WAF plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The domain_dot plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The server_status plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/server-status&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The fingerprint_WAF plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve mail.sz.tsinghua.edu.cn</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The domain_dot plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mail.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

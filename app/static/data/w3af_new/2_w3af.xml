@@ -1,0 +1,1178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481215070" start-long="Thu Dec 08 11:37:50 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://code.jinzihao.me/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/2_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[52, 57]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://code.jinzihao.me/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="52">
+                <http-request>
+                    <status>ARGENTINA http://code.jinzihao.me/ HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="314" field="content-length"/>
+                        <header content="timeout=5, max=96" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="57">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/ HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="314" field="content-length"/>
+                        <header content="timeout=5, max=95" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[69]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache/2.4.7 (Ubuntu)&quot;.</description>
+        <http-transactions>
+            <http-transaction id="69">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/ HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="314" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:37:56 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[173]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://jinzihao.me/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://jinzihao.me/&quot; differ from the contents of &quot;http://code.jinzihao.me/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="173">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/ HTTP/1.1</status>
+                    <headers>
+                        <header content="jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3256" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=79" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Thu, 20 Oct 2016 16:22:52 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;2cf6-53f4e56572544-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 16:38:01 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+  &lt;!--
+    Modified from the Debian original for Ubuntu
+    Last updated: 2014-03-19
+    See: https://launchpad.net/bugs/1288690
+  --&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;title&gt;Apache2 Ubuntu Default Page: It works&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+  * {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+  }
+
+  body, html {
+    padding: 3px 3px 3px 3px;
+
+    background-color: #D8DBE2;
+
+    font-family: Verdana, sans-serif;
+    font-size: 11pt;
+    text-align: center;
+  }
+
+  div.main_page {
+    position: relative;
+    display: table;
+
+    width: 800px;
+
+    margin-bottom: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 0px 0px 0px;
+
+    border-width: 2px;
+    border-color: #212738;
+    border-style: solid;
+
+    background-color: #FFFFFF;
+
+    text-align: center;
+  }
+
+  div.page_header {
+    height: 99px;
+    width: 100%;
+
+    background-color: #F5F6F7;
+  }
+
+  div.page_header span {
+    margin: 15px 0px 0px 50px;
+
+    font-size: 180%;
+    font-weight: bold;
+  }
+
+  div.page_header img {
+    margin: 3px 0px 0px 40px;
+
+    border: 0px 0px 0px;
+  }
+
+  div.table_of_contents {
+    clear: left;
+
+    min-width: 200px;
+
+    margin: 3px 3px 3px 3px;
+
+    background-color: #FFFFFF;
+
+    text-align: left;
+  }
+
+  div.table_of_contents_item {
+    clear: left;
+
+    width: 100%;
+
+    margin: 4px 0px 0px 0px;
+
+    background-color: #FFFFFF;
+
+    color: #000000;
+    text-align: left;
+  }
+
+  div.table_of_contents_item a {
+    margin: 6px 0px 0px 6px;
+  }
+
+  div.content_section {
+    margin: 3px 3px 3px 3px;
+
+    background-color: #FFFFFF;
+
+    text-align: left;
+  }
+
+  div.content_section_text {
+    padding: 4px 8px 4px 8px;
+
+    color: #000000;
+    font-size: 100%;
+  }
+
+  div.content_section_text pre {
+    margin: 8px 0px 8px 0px;
+    padding: 8px 8px 8px 8px;
+
+    border-width: 1px;
+    border-style: dotted;
+    border-color: #000000;
+
+    background-color: #F5F6F7;
+
+    font-style: italic;
+  }
+
+  div.content_section_text p {
+    margin-bottom: 6px;
+  }
+
+  div.content_section_text ul, div.content_section_text li {
+    padding: 4px 8px 4px 16px;
+  }
+
+  div.section_header {
+    padding: 3px 6px 3px 6px;
+
+    background-color: #8E9CB2;
+
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 112%;
+    text-align: center;
+  }
+
+  div.section_header_red {
+    background-color: #CD214F;
+  }
+
+  div.section_header_grey {
+    background-color: #9F9386;
+  }
+
+  .floating_element {
+    position: relative;
+    float: left;
+  }
+
+  div.table_of_contents_item a,
+  div.content_section_text a {
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  div.table_of_contents_item a:link,
+  div.table_of_contents_item a:visited,
+  div.table_of_contents_item a:active {
+    color: #000000;
+  }
+
+  div.table_of_contents_item a:hover {
+    background-color: #000000;
+
+    color: #FFFFFF;
+  }
+
+  div.content_section_text a:link,
+  div.content_section_text a:visited,
+   div.content_section_text a:active {
+    background-color: #DCDFE6;
+
+    color: #000000;
+  }
+
+  div.content_section_text a:hover {
+    background-color: #000000;
+
+    color: #DCDFE6;
+  }
+
+  div.validator {
+  }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;main_page&quot;&gt;
+      &lt;div class=&quot;page_header floating_element&quot;&gt;
+        &lt;img src=&quot;/icons/ubuntu-logo.png&quot; alt=&quot;Ubuntu Logo&quot; class=&quot;floating_element&quot;/&gt;
+        &lt;span class=&quot;floating_element&quot;&gt;
+          Apache2 Ubuntu Default Page
+        &lt;/span&gt;
+      &lt;/div&gt;
+&lt;!--      &lt;div class=&quot;table_of_contents floating_element&quot;&gt;
+        &lt;div class=&quot;section_header section_header_grey&quot;&gt;
+          TABLE OF CONTENTS
+        &lt;/div&gt;
+        &lt;div class=&quot;table_of_contents_item floating_element&quot;&gt;
+          &lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;table_of_contents_item floating_element&quot;&gt;
+          &lt;a href=&quot;#changes&quot;&gt;Changes&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;table_of_contents_item floating_element&quot;&gt;
+          &lt;a href=&quot;#scope&quot;&gt;Scope&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;table_of_contents_item floating_element&quot;&gt;
+          &lt;a href=&quot;#files&quot;&gt;Config files&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+--&gt;
+      &lt;div class=&quot;content_section floating_element&quot;&gt;
+
+
+        &lt;div class=&quot;section_header section_header_red&quot;&gt;
+          &lt;div id=&quot;about&quot;&gt;&lt;/div&gt;
+          It works!
+        &lt;/div&gt;
+        &lt;div class=&quot;content_section_text&quot;&gt;
+          &lt;p&gt;
+                This is the default welcome page used to test the correct 
+                operation of the Apache2 server after installation on Ubuntu systems.
+                It is based on the equivalent page on Debian, from which the Ubuntu Apache
+                packaging is derived.
+                If you can read this page, it means that the Apache HTTP server installed at
+                this site is working properly. You should &lt;b&gt;replace this file&lt;/b&gt; (located at
+                &lt;tt&gt;/var/www/html/index.html&lt;/tt&gt;) before continuing to operate your HTTP server.
+          &lt;/p&gt;
+
+
+          &lt;p&gt;
+                If you are a normal user of this web site and don't know what this page is
+                about, this probably means that the site is currently unavailable due to
+                maintenance.
+                If the problem persists, please contact the site's administrator.
+          &lt;/p&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;section_header&quot;&gt;
+          &lt;div id=&quot;changes&quot;&gt;&lt;/div&gt;
+                Configuration Overview
+        &lt;/div&gt;
+        &lt;div class=&quot;content_section_text&quot;&gt;
+          &lt;p&gt;
+                Ubuntu's Apache2 default configuration is different from the
+                upstream default configuration, and split into several files optimized for
+                interaction with Ubuntu tools. The configuration system is
+                &lt;b&gt;fully documented in
+                /usr/share/doc/apache2/README.Debian.gz&lt;/b&gt;. Refer to this for the full
+                documentation. Documentation for the web server itself can be
+                found by accessing the &lt;a href=&quot;/manual&quot;&gt;manual&lt;/a&gt; if the &lt;tt&gt;apache2-doc&lt;/tt&gt;
+                package was installed on this server.
+
+          &lt;/p&gt;
+          &lt;p&gt;
+                The configuration layout for an Apache2 web server installation on Ubuntu systems is as follows:
+          &lt;/p&gt;
+          &lt;pre&gt;
+/etc/apache2/
+|-- apache2.conf
+|       `--  ports.conf
+|-- mods-enabled
+|       |-- *.load
+|       `-- *.conf
+|-- conf-enabled
+|       `-- *.conf
+|-- sites-enabled
+|       `-- *.conf
+          &lt;/pre&gt;
+          &lt;ul&gt;
+                        &lt;li&gt;
+                           &lt;tt&gt;apache2.conf&lt;/tt&gt; is the main configuration
+                           file. It puts the pieces together by including all remaining configuration
+                           files when starting up the web server.
+                        &lt;/li&gt;
+
+                        &lt;li&gt;
+                           &lt;tt&gt;ports.conf&lt;/tt&gt; is always included from the
+                           main configuration file. It is used to determine the listening ports for
+                           incoming connections, and this file can be customized anytime.
+                        &lt;/li&gt;
+
+                        &lt;li&gt;
+                           Configuration files in the &lt;tt&gt;mods-enabled/&lt;/tt&gt;,
+                           &lt;tt&gt;conf-enabled/&lt;/tt&gt; and &lt;tt&gt;sites-enabled/&lt;/tt&gt; directories contain
+                           particular configuration snippets which manage modules, global configuration
+                           fragments, or virtual host configurations, respectively.
+                        &lt;/li&gt;
+
+                        &lt;li&gt;
+                           They are activated by symlinking available
+                           configuration files from their respective
+                           *-available/ counterparts. These should be managed
+                           by using our helpers
+                           &lt;tt&gt;
+                                &lt;a href=&quot;http://manpages.debian.org/cgi-bin/man.cgi?query=a2enmod&quot;&gt;a2enmod&lt;/a&gt;,
+                                &lt;a href=&quot;http://manpages.debian.org/cgi-bin/man.cgi?query=a2dismod&quot;&gt;a2dismod&lt;/a&gt;,
+                           &lt;/tt&gt;
+                           &lt;tt&gt;
+                                &lt;a href=&quot;http://manpages.debian.org/cgi-bin/man.cgi?query=a2ensite&quot;&gt;a2ensite&lt;/a&gt;,
+                                &lt;a href=&quot;http://manpages.debian.org/cgi-bin/man.cgi?query=a2dissite&quot;&gt;a2dissite&lt;/a&gt;,
+                            &lt;/tt&gt;
+                                and
+                           &lt;tt&gt;
+                                &lt;a href=&quot;http://manpages.debian.org/cgi-bin/man.cgi?query=a2enconf&quot;&gt;a2enconf&lt;/a&gt;,
+                                &lt;a href=&quot;http://manpages.debian.org/cgi-bin/man.cgi?query=a2disconf&quot;&gt;a2disconf&lt;/a&gt;
+                           &lt;/tt&gt;. See their respective man pages for detailed information.
+                        &lt;/li&gt;
+
+                        &lt;li&gt;
+                           The binary is called apache2. Due to the use of
+                           environment variables, in the default configuration, apache2 needs to be
+                           started/stopped with &lt;tt&gt;/etc/init.d/apache2&lt;/tt&gt; or &lt;tt&gt;apache2ctl&lt;/tt&gt;.
+                           &lt;b&gt;Calling &lt;tt&gt;/usr/bin/apache2&lt;/tt&gt; directly will not work&lt;/b&gt; with the
+                           default configuration.
+                        &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;section_header&quot;&gt;
+            &lt;div id=&quot;docroot&quot;&gt;&lt;/div&gt;
+                Document Roots
+        &lt;/div&gt;
+
+        &lt;div class=&quot;content_section_text&quot;&gt;
+            &lt;p&gt;
+                By default, Ubuntu does not allow access through the web browser to
+                &lt;em&gt;any&lt;/em&gt; file apart of those located in &lt;tt&gt;/var/www&lt;/tt&gt;,
+                &lt;a href=&quot;http://httpd.apache.org/docs/2.4/mod/mod_userdir.html&quot;&gt;public_html&lt;/a&gt;
+                directories (when enabled) and &lt;tt&gt;/usr/share&lt;/tt&gt; (for web
+                applications). If your site is using a web document root
+                located elsewhere (such as in &lt;tt&gt;/srv&lt;/tt&gt;) you may need to whitelist your
+                document root directory in &lt;tt&gt;/etc/apache2/apache2.conf&lt;/tt&gt;.
+            &lt;/p&gt;
+            &lt;p&gt;
+                The default Ubuntu document root is &lt;tt&gt;/var/www/html&lt;/tt&gt;. You
+                can make your own virtual hosts under /var/www. This is different
+                to previous releases which provides better security out of the box.
+            &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;section_header&quot;&gt;
+          &lt;div id=&quot;bugs&quot;&gt;&lt;/div&gt;
+                Reporting Problems
+        &lt;/div&gt;
+        &lt;div class=&quot;content_section_text&quot;&gt;
+          &lt;p&gt;
+                Please use the &lt;tt&gt;ubuntu-bug&lt;/tt&gt; tool to report bugs in the
+                Apache2 package with Ubuntu. However, check &lt;a
+                href=&quot;https://bugs.launchpad.net/ubuntu/+source/apache2&quot;&gt;existing
+                bug reports&lt;/a&gt; before reporting a new bug.
+          &lt;/p&gt;
+          &lt;p&gt;
+                Please report bugs specific to modules (such as PHP and others)
+                to respective packages, not to the web server itself.
+          &lt;/p&gt;
+        &lt;/div&gt;
+
+
+
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;validator&quot;&gt;
+    &lt;p&gt;
+      &lt;a href=&quot;http://validator.w3.org/check?uri=referer&quot;&gt;&lt;img src=&quot;http://www.w3.org/Icons/valid-xhtml10&quot; alt=&quot;Valid XHTML 1.0 Transitional&quot; height=&quot;31&quot; width=&quot;88&quot; /&gt;&lt;/a&gt;
+    &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 101.6.163.59</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/ HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="314" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:37:56 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 63, 78, 79, 85, 104, 177, 178, 179, 180, 181, 182, 183]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/ HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="314" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:37:56 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="63">
+                <http-request>
+                    <status>PUT http://code.jinzihao.me/ujcmm HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">jgdBuC</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="319" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/ujcmm" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/ujcmm&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="78">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="325" field="content-length"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/favicon.ico" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/favicon.ico&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="79">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/QTqAy.html HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="324" field="content-length"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/QTqAy.html" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/QTqAy.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="85">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="327" field="content-length"/>
+                        <header content="timeout=5, max=91" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/_vti_inf.html" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/_vti_inf.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="104">
+                <http-request>
+                    <status>POST http://code.jinzihao.me/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L1FUcUF5Lmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGgueUFxVFE=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="342" field="content-length"/>
+                        <header content="timeout=5, max=96" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/_vti_bin/_vti_aut/author.dll" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:00 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/_vti_bin/_vti_aut/author.dll&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="177">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="327" field="content-length"/>
+                        <header content="timeout=5, max=71" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/server-status" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:01 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/server-status&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="178">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="332" field="content-length"/>
+                        <header content="timeout=5, max=83" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/WebConsole/Invoker" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:02 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/WebConsole/Invoker&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="179">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="339" field="content-length"/>
+                        <header content="timeout=5, max=86" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/invoker/JMXInvokerServlet" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:02 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/invoker/JMXInvokerServlet&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="180">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="326" field="content-length"/>
+                        <header content="timeout=5, max=87" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/jmx-console/" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:02 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/jmx-console/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="181">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="340" field="content-length"/>
+                        <header content="timeout=5, max=83" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/web-console/ServerInfo.jsp" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:02 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/web-console/ServerInfo.jsp&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="182">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/status HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="320" field="content-length"/>
+                        <header content="timeout=5, max=78" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/status" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:02 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/status&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="183">
+                <http-request>
+                    <status>GET http://code.jinzihao.me/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="code.jinzihao.me" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 301 Moved Permanently</status>
+                    <headers>
+                        <header content="328" field="content-length"/>
+                        <header content="timeout=5, max=70" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="https://code.jinzihao.me/admin-console/" field="location"/>
+                        <header content="Thu, 08 Dec 2016 16:38:02 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+&lt;p&gt;The document has moved &lt;a href=&quot;https://code.jinzihao.me/admin-console/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at code.jinzihao.me Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to code.jinzihao.me:80&quot;</error>
+    <error caller="threading">The ssi plugin got an error while requesting &quot;http://code.jinzihao.me/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+</w3af-run>

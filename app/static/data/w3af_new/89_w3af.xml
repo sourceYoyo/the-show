@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481224544" start-long="Thu Dec 08 14:15:44 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.yun-tao.wang/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/89_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[62]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache&quot;.</description>
+        <http-transactions>
+            <http-transaction id="62">
+                <http-request>
+                    <status>GET http://www.yun-tao.wang/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.yun-tao.wang" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2320" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 22 Oct 2015 09:24:09 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;24e8-522ae0ea68040-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 19:15:50 GMT" field="date"/>
+                        <header content="*" field="access-control-allow-origin"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;!-- saved from url=(0031)http://www.wantstobegreat.com/# --&gt;
+&lt;html class=&quot; js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+  	&lt;meta charset=&quot;utf-8&quot;&gt;
+  	&lt;title&gt;Yuntao Wang&lt;/title&gt;
+
+
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/style.css&quot;&gt;
+  &lt;script src=&quot;./js/ga.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;./js/modernizr-2.0.6.min.js&quot; style=&quot;color: rgb(37, 37, 37);&quot;&gt;&lt;/script&gt;
+  &lt;!--[if IE 8]&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;css/ie-suckers.css&quot;&gt;
+   &lt;![endif]--&gt;
+&lt;/head&gt;
+
+&lt;body style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;
+
+
+	&lt;div id=&quot;background&quot;&gt;
+    	&lt;div id=&quot;b1&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-project&quot; class=&quot;b_active&quot; style=&quot;background-color: rgb(240, 241, 242);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-publication&quot; class=&quot;&quot; style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-social&quot; class=&quot;&quot; style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-about&quot; class=&quot;&quot; style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b6&quot;&gt;&amp;nbsp;&lt;/div&gt;
+    &lt;/div&gt;
+
+	&lt;div id=&quot;container&quot;&gt;
+  	
+    
+        &lt;header id=&quot;top&quot;&gt;
+        	&lt;div &gt;
+            &lt;img src=&quot;./img/photo.png&quot; alt=&quot;Yuntao Wang's Personal Photo&quot; height=&quot;250&quot; width=&quot;250&quot;&gt;
+          	&lt;/div&gt;
+          	&lt;p&gt; &lt;h2&gt;Yuntao Wang&lt;/h2&gt; &lt;br&gt; Ph.D Candidate, HCI and Pervasive Computing Group &lt;/p&gt;
+            &lt;p&gt; Department of Computer Science and Technology, Tsinghua University &lt;/p&gt;
+            
+            &lt;nav&gt;
+                &lt;ul&gt;
+                	&lt;li id=&quot;l1&quot;&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-project&quot; class=&quot;active&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 
+                        	Project&lt;span&gt;selected works&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-publication&quot; class=&quot;&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 
+                    		Publication&lt;span&gt;papers and patents&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-about&quot; class=&quot;&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 	
+                    		About&lt;span&gt;a bit more about me&lt;/span&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-social&quot; class=&quot;&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 
+                        	Contact&lt;span&gt;keep in touch&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l6&quot;&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+        
+        
+        &lt;!-- All content gets loaded in the cases div --&gt;
+         &lt;div id=&quot;cases&quot; role=&quot;main&quot;&gt;
+      	    &lt;section&gt;
+                &lt;div id=&quot;description&quot;&gt;
+                &lt;/div&gt;
+            &lt;/section&gt;
+        &lt;/div&gt;  
+        
+        &lt;div id=&quot;grid&quot; style=&quot;margin-top: 225px; opacity: 1;&quot;&gt;
+        	
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot; &gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot; align=&quot;center&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#bodyrc&quot; rel=&quot;bodyrc&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/bodyrc.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; Wearable Device: BodyRC &lt;span&gt; On-body touch &amp;amp; body gesture using body as &lt;br&gt; lossy signal transmission medium &lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot; &gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot; align=&quot;center&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#focus&quot; rel=&quot;focus&quot; class=&quot;caselink&quot;&gt;
+                        &lt;img src=&quot;./img/focus.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; FOCUS &lt;span&gt; Enhancing children'engagement in reading by &lt;br&gt; using contextual BCI training sessions  &lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#tvcontrol&quot; rel=&quot;/tvcontrol&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/tvcontrol.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; User Defined Gesture &lt;span&gt;TV control commands on touch screen phone&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#its2013&quot; rel=&quot;its2013&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/its2013.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; Effect on Pointing Performance &lt;span&gt; The effect of view distance &lt;br&gt; on mouse pointing performance&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+             
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#mobilehci2013&quot; rel=&quot;mobilehci2013&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/mobilehci2013.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;Eyes-free Pointing&lt;span&gt;Eyes-free absolute poosition control &lt;br&gt; on touch screen phones&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#paintora&quot; rel=&quot;paintora&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/paintora.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;Paintora&lt;span&gt;More than just doodling&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#umarker&quot; rel=&quot;umarker&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/umarker.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;uMarker&lt;span&gt;Passive marker design on uTable&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#utable&quot; rel=&quot;utable&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/utable.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;uTable&lt;span&gt;a seamlessly tiled, &lt;br&gt; very large interactive tabletop system&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+          &lt;div id=&quot;footermargin&quot;&gt;&amp;nbsp;&lt;/div&gt;            
+        
+        &lt;/div&gt;
+	&lt;/div&gt;
+	
+	
+	&lt;!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline --&gt;
+    &lt;script src=&quot;./js/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;window.jQuery || document.write('&lt;script src=&quot;js/libs/jquery-1.6.2.min.js&quot;&gt;&lt;\/script&gt;')&lt;/script&gt;
+
+
+  &lt;!-- scripts concatenated and minified via ant build script--&gt;
+  	&lt;script src=&quot;./js/jquery.animate-colors-min.js&quot;&gt;&lt;/script&gt;
+  	&lt;script src=&quot;./js/jquery-ui-1.8.17.custom.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;./js/plugins.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./js/scripts.js&quot;&gt;&lt;/script&gt;
+    
+    &lt;!-- Google analytics --&gt;	
+	&lt;script&gt;
+	    var _gaq=[['_setAccount','UA-11500613-2'],['_trackPageview', location.pathname + location.search + location.hash]];
+	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g,s)}(document,'script'));
+  	&lt;/script&gt;
+  
+
+
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[48]" method="GET" name="Access-Control-Allow-Origin set to &quot;*&quot;" plugin="cors_origin" severity="Low" url="http://www.yun-tao.wang/" var="None">
+        <description>The application sent the CORS response header Access-Control-Allow-Origin with the value set to &quot;*&quot; which is considered insecure and leaves the application open to Cross-domain attacks. The first ten URLs which sent the insecure header are:
+ - http://www.yun-tao.wang/
+</description>
+        <http-transactions>
+            <http-transaction id="48">
+                <http-request>
+                    <status>GET http://www.yun-tao.wang/ HTTP/1.1</status>
+                    <headers>
+                        <header content="http://w3af.org/" field="Origin"/>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.yun-tao.wang" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2320" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 22 Oct 2015 09:24:09 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;24e8-522ae0ea68040-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 19:15:53 GMT" field="date"/>
+                        <header content="*" field="access-control-allow-origin"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;!-- saved from url=(0031)http://www.wantstobegreat.com/# --&gt;
+&lt;html class=&quot; js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+  	&lt;meta charset=&quot;utf-8&quot;&gt;
+  	&lt;title&gt;Yuntao Wang&lt;/title&gt;
+
+
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/style.css&quot;&gt;
+  &lt;script src=&quot;./js/ga.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;./js/modernizr-2.0.6.min.js&quot; style=&quot;color: rgb(37, 37, 37);&quot;&gt;&lt;/script&gt;
+  &lt;!--[if IE 8]&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;css/ie-suckers.css&quot;&gt;
+   &lt;![endif]--&gt;
+&lt;/head&gt;
+
+&lt;body style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;
+
+
+	&lt;div id=&quot;background&quot;&gt;
+    	&lt;div id=&quot;b1&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-project&quot; class=&quot;b_active&quot; style=&quot;background-color: rgb(240, 241, 242);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-publication&quot; class=&quot;&quot; style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-social&quot; class=&quot;&quot; style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-about&quot; class=&quot;&quot; style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b6&quot;&gt;&amp;nbsp;&lt;/div&gt;
+    &lt;/div&gt;
+
+	&lt;div id=&quot;container&quot;&gt;
+  	
+    
+        &lt;header id=&quot;top&quot;&gt;
+        	&lt;div &gt;
+            &lt;img src=&quot;./img/photo.png&quot; alt=&quot;Yuntao Wang's Personal Photo&quot; height=&quot;250&quot; width=&quot;250&quot;&gt;
+          	&lt;/div&gt;
+          	&lt;p&gt; &lt;h2&gt;Yuntao Wang&lt;/h2&gt; &lt;br&gt; Ph.D Candidate, HCI and Pervasive Computing Group &lt;/p&gt;
+            &lt;p&gt; Department of Computer Science and Technology, Tsinghua University &lt;/p&gt;
+            
+            &lt;nav&gt;
+                &lt;ul&gt;
+                	&lt;li id=&quot;l1&quot;&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-project&quot; class=&quot;active&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 
+                        	Project&lt;span&gt;selected works&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-publication&quot; class=&quot;&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 
+                    		Publication&lt;span&gt;papers and patents&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-about&quot; class=&quot;&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 	
+                    		About&lt;span&gt;a bit more about me&lt;/span&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-social&quot; class=&quot;&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 
+                        	Contact&lt;span&gt;keep in touch&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l6&quot;&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+        
+        
+        &lt;!-- All content gets loaded in the cases div --&gt;
+         &lt;div id=&quot;cases&quot; role=&quot;main&quot;&gt;
+      	    &lt;section&gt;
+                &lt;div id=&quot;description&quot;&gt;
+                &lt;/div&gt;
+            &lt;/section&gt;
+        &lt;/div&gt;  
+        
+        &lt;div id=&quot;grid&quot; style=&quot;margin-top: 225px; opacity: 1;&quot;&gt;
+        	
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot; &gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot; align=&quot;center&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#bodyrc&quot; rel=&quot;bodyrc&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/bodyrc.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; Wearable Device: BodyRC &lt;span&gt; On-body touch &amp;amp; body gesture using body as &lt;br&gt; lossy signal transmission medium &lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot; &gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot; align=&quot;center&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#focus&quot; rel=&quot;focus&quot; class=&quot;caselink&quot;&gt;
+                        &lt;img src=&quot;./img/focus.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; FOCUS &lt;span&gt; Enhancing children'engagement in reading by &lt;br&gt; using contextual BCI training sessions  &lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#tvcontrol&quot; rel=&quot;/tvcontrol&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/tvcontrol.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; User Defined Gesture &lt;span&gt;TV control commands on touch screen phone&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#its2013&quot; rel=&quot;its2013&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/its2013.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; Effect on Pointing Performance &lt;span&gt; The effect of view distance &lt;br&gt; on mouse pointing performance&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+             
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#mobilehci2013&quot; rel=&quot;mobilehci2013&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/mobilehci2013.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;Eyes-free Pointing&lt;span&gt;Eyes-free absolute poosition control &lt;br&gt; on touch screen phones&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#paintora&quot; rel=&quot;paintora&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/paintora.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;Paintora&lt;span&gt;More than just doodling&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#umarker&quot; rel=&quot;umarker&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/umarker.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;uMarker&lt;span&gt;Passive marker design on uTable&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#utable&quot; rel=&quot;utable&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/utable.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;uTable&lt;span&gt;a seamlessly tiled, &lt;br&gt; very large interactive tabletop system&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+          &lt;div id=&quot;footermargin&quot;&gt;&amp;nbsp;&lt;/div&gt;            
+        
+        &lt;/div&gt;
+	&lt;/div&gt;
+	
+	
+	&lt;!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline --&gt;
+    &lt;script src=&quot;./js/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;window.jQuery || document.write('&lt;script src=&quot;js/libs/jquery-1.6.2.min.js&quot;&gt;&lt;\/script&gt;')&lt;/script&gt;
+
+
+  &lt;!-- scripts concatenated and minified via ant build script--&gt;
+  	&lt;script src=&quot;./js/jquery.animate-colors-min.js&quot;&gt;&lt;/script&gt;
+  	&lt;script src=&quot;./js/jquery-ui-1.8.17.custom.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;./js/plugins.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./js/scripts.js&quot;&gt;&lt;/script&gt;
+    
+    &lt;!-- Google analytics --&gt;	
+	&lt;script&gt;
+	    var _gaq=[['_setAccount','UA-11500613-2'],['_trackPageview', location.pathname + location.search + location.hash]];
+	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g,s)}(document,'script'));
+  	&lt;/script&gt;
+  
+
+
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[114]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://yun-tao.wang/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://yun-tao.wang/&quot; differ from the contents of &quot;http://www.yun-tao.wang/&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.yun-tao.wang/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.yun-tao.wang" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2320" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 22 Oct 2015 09:24:09 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;24e8-522ae0ea68040-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 19:15:50 GMT" field="date"/>
+                        <header content="*" field="access-control-allow-origin"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;!-- saved from url=(0031)http://www.wantstobegreat.com/# --&gt;
+&lt;html class=&quot; js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+  	&lt;meta charset=&quot;utf-8&quot;&gt;
+  	&lt;title&gt;Yuntao Wang&lt;/title&gt;
+
+
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/style.css&quot;&gt;
+  &lt;script src=&quot;./js/ga.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;./js/modernizr-2.0.6.min.js&quot; style=&quot;color: rgb(37, 37, 37);&quot;&gt;&lt;/script&gt;
+  &lt;!--[if IE 8]&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;css/ie-suckers.css&quot;&gt;
+   &lt;![endif]--&gt;
+&lt;/head&gt;
+
+&lt;body style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;
+
+
+	&lt;div id=&quot;background&quot;&gt;
+    	&lt;div id=&quot;b1&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-project&quot; class=&quot;b_active&quot; style=&quot;background-color: rgb(240, 241, 242);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-publication&quot; class=&quot;&quot; style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-social&quot; class=&quot;&quot; style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b-about&quot; class=&quot;&quot; style=&quot;background-color: rgb(247, 247, 248);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+        &lt;div id=&quot;b6&quot;&gt;&amp;nbsp;&lt;/div&gt;
+    &lt;/div&gt;
+
+	&lt;div id=&quot;container&quot;&gt;
+  	
+    
+        &lt;header id=&quot;top&quot;&gt;
+        	&lt;div &gt;
+            &lt;img src=&quot;./img/photo.png&quot; alt=&quot;Yuntao Wang's Personal Photo&quot; height=&quot;250&quot; width=&quot;250&quot;&gt;
+          	&lt;/div&gt;
+          	&lt;p&gt; &lt;h2&gt;Yuntao Wang&lt;/h2&gt; &lt;br&gt; Ph.D Candidate, HCI and Pervasive Computing Group &lt;/p&gt;
+            &lt;p&gt; Department of Computer Science and Technology, Tsinghua University &lt;/p&gt;
+            
+            &lt;nav&gt;
+                &lt;ul&gt;
+                	&lt;li id=&quot;l1&quot;&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-project&quot; class=&quot;active&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 
+                        	Project&lt;span&gt;selected works&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-publication&quot; class=&quot;&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 
+                    		Publication&lt;span&gt;papers and patents&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-about&quot; class=&quot;&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 	
+                    		About&lt;span&gt;a bit more about me&lt;/span&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l-social&quot; class=&quot;&quot;&gt;
+                    	&lt;a href=&quot;#&quot;&gt; 
+                        	Contact&lt;span&gt;keep in touch&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li id=&quot;l6&quot;&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+        
+        
+        &lt;!-- All content gets loaded in the cases div --&gt;
+         &lt;div id=&quot;cases&quot; role=&quot;main&quot;&gt;
+      	    &lt;section&gt;
+                &lt;div id=&quot;description&quot;&gt;
+                &lt;/div&gt;
+            &lt;/section&gt;
+        &lt;/div&gt;  
+        
+        &lt;div id=&quot;grid&quot; style=&quot;margin-top: 225px; opacity: 1;&quot;&gt;
+        	
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot; &gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot; align=&quot;center&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#bodyrc&quot; rel=&quot;bodyrc&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/bodyrc.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; Wearable Device: BodyRC &lt;span&gt; On-body touch &amp;amp; body gesture using body as &lt;br&gt; lossy signal transmission medium &lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot; &gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot; align=&quot;center&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#focus&quot; rel=&quot;focus&quot; class=&quot;caselink&quot;&gt;
+                        &lt;img src=&quot;./img/focus.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; FOCUS &lt;span&gt; Enhancing children'engagement in reading by &lt;br&gt; using contextual BCI training sessions  &lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#tvcontrol&quot; rel=&quot;/tvcontrol&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/tvcontrol.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; User Defined Gesture &lt;span&gt;TV control commands on touch screen phone&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#its2013&quot; rel=&quot;its2013&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/its2013.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt; Effect on Pointing Performance &lt;span&gt; The effect of view distance &lt;br&gt; on mouse pointing performance&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+             
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;left&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                	&lt;div class=&quot;left-container&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#mobilehci2013&quot; rel=&quot;mobilehci2013&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/mobilehci2013.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;Eyes-free Pointing&lt;span&gt;Eyes-free absolute poosition control &lt;br&gt; on touch screen phones&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+             &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#paintora&quot; rel=&quot;paintora&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/paintora.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;Paintora&lt;span&gt;More than just doodling&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#umarker&quot; rel=&quot;umarker&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/umarker.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;uMarker&lt;span&gt;Passive marker design on uTable&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div id=&quot;thumb&quot;&gt;
+            	&lt;div class=&quot;right&quot; style=&quot;-webkit-transform: rotate(-3deg); transform: rotate(-3deg);&quot;&gt;
+                	&lt;div class=&quot;right-container&quot; style=&quot;-webkit-transform: rotate(3deg); transform: rotate(3deg);&quot;&gt;
+                    	&lt;a href=&quot;http://www.wantstobegreat.com/#utable&quot; rel=&quot;utable&quot; class=&quot;caselink&quot;&gt;
+                            &lt;img src=&quot;./img/utable.jpg&quot; alt=&quot;&quot;&gt;
+                            &lt;div class=&quot;thumbhover&quot;&gt;uTable&lt;span&gt;a seamlessly tiled, &lt;br&gt; very large interactive tabletop system&lt;/span&gt;&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+          &lt;div id=&quot;footermargin&quot;&gt;&amp;nbsp;&lt;/div&gt;            
+        
+        &lt;/div&gt;
+	&lt;/div&gt;
+	
+	
+	&lt;!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline --&gt;
+    &lt;script src=&quot;./js/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;window.jQuery || document.write('&lt;script src=&quot;js/libs/jquery-1.6.2.min.js&quot;&gt;&lt;\/script&gt;')&lt;/script&gt;
+
+
+  &lt;!-- scripts concatenated and minified via ant build script--&gt;
+  	&lt;script src=&quot;./js/jquery.animate-colors-min.js&quot;&gt;&lt;/script&gt;
+  	&lt;script src=&quot;./js/jquery-ui-1.8.17.custom.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script defer src=&quot;./js/plugins.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./js/scripts.js&quot;&gt;&lt;/script&gt;
+    
+    &lt;!-- Google analytics --&gt;	
+	&lt;script&gt;
+	    var _gaq=[['_setAccount','UA-11500613-2'],['_trackPageview', location.pathname + location.search + location.hash]];
+	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g,s)}(document,'script'));
+  	&lt;/script&gt;
+  
+
+
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.yun-tao.wang/?8dLM6OF=SELECT%20TOP%201%20name%20FROM%20sysusers&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.yun-tao.wang/?8dLM6OF=exec%20xp_cmdshell%20dir&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.yun-tao.wang/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.yun-tao.wang/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.yun-tao.wang/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.yun-tao.wang/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.yun-tao.wang/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.yun-tao.wang/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The dns_wildcard plugin got an error while requesting &quot;http://www.yun-tao.wang/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The domain_dot plugin got an error while requesting &quot;http://www.yun-tao.wang/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.yun-tao.wang/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.yun-tao.wang/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to www.yun-tao.wang:80&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve www.yun-tao.wang</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

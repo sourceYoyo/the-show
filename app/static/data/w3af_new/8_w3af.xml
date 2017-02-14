@@ -1,0 +1,1384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481215762" start-long="Thu Dec 08 11:49:22 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://sem.tsinghuax.org/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/8_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[56]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;nginx/1.10.0 (Ubuntu)&quot;.</description>
+        <http-transactions>
+            <http-transaction id="56">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="Mon, 05 Dec 2016 02:31:23 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="W/&quot;5844d17b-1459&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 16:49:28 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;演播室预订&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/book-c39a86fa69.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/book-9346e63bcb.css&quot; /&gt;
+&lt;/head&gt;
+&lt;body ng-app=&quot;app&quot; ng-controller=&quot;book_controller&quot;&gt;
+    &lt;div id=&quot;content&quot;&gt;
+        &lt;h2&gt;
+			演播室预订  &lt;small&gt;hello, {{ user }}&lt;/small&gt;
+			&lt;span class=&quot;btn btn-sm btn-danger&quot; ng-click=&quot;logout()&quot;&gt;退出&lt;/span&gt;
+			&lt;a class=&quot;btn btn-sm&quot; href=&quot;/history.html&quot;&gt;我的预订&lt;/a&gt;
+		&lt;/h2&gt;
+        &lt;hr /&gt;
+        &lt;div class=&quot;container-fluid raw&quot;&gt;
+            &lt;div class=&quot;col-md-3 calendar&quot;&gt;
+                &lt;datetimepicker
+                    data-ng-model=&quot;date&quot;
+                    data-datetimepicker-config=&quot;{ startView:'day', minView:'day' }&quot;
+                    ng-change=&quot;get_status()&quot;
+                &gt;&lt;/datetimepicker&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-9&quot;&gt;
+                &lt;table class=&quot;table table-bordered&quot;&gt;
+                    &lt;colgroup&gt;
+                        &lt;col class=&quot;col-xs-1&quot; /&gt;
+                        &lt;col class=&quot;col-xs-7&quot; /&gt;
+                    &lt;/colgroup&gt;
+                    &lt;tr &gt;
+                        &lt;th&gt;演播室名&lt;/th&gt;
+                        &lt;th&gt;演播室状态&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;tr
+                        ng-repeat=&quot;room in rooms | orderBy: 'rank'&quot;
+                    &gt;
+                        &lt;td&gt;{{ room.name }}&lt;/td&gt;
+                        &lt;td class=&quot;status&quot;&gt;
+                            &lt;table class=&quot;table table-condensed times&quot;&gt;
+                                &lt;colgroup&gt;
+                                    &lt;col class=&quot;col-xs-4&quot; /&gt;
+                                    &lt;col class=&quot;col-xs-2&quot; /&gt;
+                                    &lt;col class=&quot;col-xs-2&quot; /&gt;
+                                &lt;/colgroup&gt;
+                                &lt;tr
+                                    ng-repeat=&quot;time in times | orderBy: 'rank'&quot;
+                                &gt;
+                                    &lt;td&gt;时段: {{ time.desc }}&lt;/td&gt;
+                                    &lt;td&gt;
+                                        &lt;span class=&quot;label label-success&quot;
+                                            ng-if=&quot;is_empty(room, time)&quot;
+                                        &gt;空闲&lt;/span&gt;
+                                        &lt;span class=&quot;label label-danger&quot;
+                                            ng-if=&quot;!is_empty(room, time)&quot;
+                                        &gt;已预订&lt;/span&gt;
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        &lt;button class=&quot;btn btn-xs btn-primary&quot;
+											ng-if=&quot;is_empty(room, time)&quot;
+                                            data-target=&quot;#new-book&quot;
+                                            data-toggle=&quot;modal&quot;
+                                            ng-click=&quot;open(room, time)&quot;
+                                        &gt;预订&lt;/button&gt;
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;/table&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;modal fade bs-example-modal-sm&quot; id=&quot;new-book&quot;&gt;
+        &lt;div class=&quot;modal-dialog&quot;&gt;
+            &lt;div class=&quot;modal-content&quot;&gt;
+                &lt;div class=&quot;modal-header&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+                    &lt;h4 class=&quot;modal-title&quot;&gt;新订单&lt;/h4&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-body&quot; style=&quot;text-align: left;&quot;&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;演播室&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.room.name&quot;
+                        /&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;日期&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.date&quot;
+                        /&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;时段&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.time.desc&quot;
+                        /&gt;
+                    &lt;/div&gt;
+					&lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;备注&lt;/label&gt;
+                        &lt;textarea class=&quot;form-control&quot;
+                            ng-model=&quot;new_book.comment&quot;
+                        &gt;&lt;/textarea&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-footer&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;取消&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;
+                        ng-click=&quot;create_book();&quot;
+                    &gt;确定&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;&lt;!-- /.modal-content --&gt;
+        &lt;/div&gt;&lt;!-- /.modal-dialog --&gt;
+    &lt;/div&gt;&lt;!-- /.modal --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[121]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://sem.tsinghuax.org/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://tsinghuax.org/&quot; are equal to the ones of &quot;http://sem.tsinghuax.org/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="121">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="Mon, 05 Dec 2016 02:31:23 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="W/&quot;5844d17b-1459&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 16:49:34 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;演播室预订&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/book-c39a86fa69.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/book-9346e63bcb.css&quot; /&gt;
+&lt;/head&gt;
+&lt;body ng-app=&quot;app&quot; ng-controller=&quot;book_controller&quot;&gt;
+    &lt;div id=&quot;content&quot;&gt;
+        &lt;h2&gt;
+			演播室预订  &lt;small&gt;hello, {{ user }}&lt;/small&gt;
+			&lt;span class=&quot;btn btn-sm btn-danger&quot; ng-click=&quot;logout()&quot;&gt;退出&lt;/span&gt;
+			&lt;a class=&quot;btn btn-sm&quot; href=&quot;/history.html&quot;&gt;我的预订&lt;/a&gt;
+		&lt;/h2&gt;
+        &lt;hr /&gt;
+        &lt;div class=&quot;container-fluid raw&quot;&gt;
+            &lt;div class=&quot;col-md-3 calendar&quot;&gt;
+                &lt;datetimepicker
+                    data-ng-model=&quot;date&quot;
+                    data-datetimepicker-config=&quot;{ startView:'day', minView:'day' }&quot;
+                    ng-change=&quot;get_status()&quot;
+                &gt;&lt;/datetimepicker&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-9&quot;&gt;
+                &lt;table class=&quot;table table-bordered&quot;&gt;
+                    &lt;colgroup&gt;
+                        &lt;col class=&quot;col-xs-1&quot; /&gt;
+                        &lt;col class=&quot;col-xs-7&quot; /&gt;
+                    &lt;/colgroup&gt;
+                    &lt;tr &gt;
+                        &lt;th&gt;演播室名&lt;/th&gt;
+                        &lt;th&gt;演播室状态&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;tr
+                        ng-repeat=&quot;room in rooms | orderBy: 'rank'&quot;
+                    &gt;
+                        &lt;td&gt;{{ room.name }}&lt;/td&gt;
+                        &lt;td class=&quot;status&quot;&gt;
+                            &lt;table class=&quot;table table-condensed times&quot;&gt;
+                                &lt;colgroup&gt;
+                                    &lt;col class=&quot;col-xs-4&quot; /&gt;
+                                    &lt;col class=&quot;col-xs-2&quot; /&gt;
+                                    &lt;col class=&quot;col-xs-2&quot; /&gt;
+                                &lt;/colgroup&gt;
+                                &lt;tr
+                                    ng-repeat=&quot;time in times | orderBy: 'rank'&quot;
+                                &gt;
+                                    &lt;td&gt;时段: {{ time.desc }}&lt;/td&gt;
+                                    &lt;td&gt;
+                                        &lt;span class=&quot;label label-success&quot;
+                                            ng-if=&quot;is_empty(room, time)&quot;
+                                        &gt;空闲&lt;/span&gt;
+                                        &lt;span class=&quot;label label-danger&quot;
+                                            ng-if=&quot;!is_empty(room, time)&quot;
+                                        &gt;已预订&lt;/span&gt;
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        &lt;button class=&quot;btn btn-xs btn-primary&quot;
+											ng-if=&quot;is_empty(room, time)&quot;
+                                            data-target=&quot;#new-book&quot;
+                                            data-toggle=&quot;modal&quot;
+                                            ng-click=&quot;open(room, time)&quot;
+                                        &gt;预订&lt;/button&gt;
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;/table&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;modal fade bs-example-modal-sm&quot; id=&quot;new-book&quot;&gt;
+        &lt;div class=&quot;modal-dialog&quot;&gt;
+            &lt;div class=&quot;modal-content&quot;&gt;
+                &lt;div class=&quot;modal-header&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+                    &lt;h4 class=&quot;modal-title&quot;&gt;新订单&lt;/h4&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-body&quot; style=&quot;text-align: left;&quot;&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;演播室&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.room.name&quot;
+                        /&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;日期&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.date&quot;
+                        /&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;时段&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.time.desc&quot;
+                        /&gt;
+                    &lt;/div&gt;
+					&lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;备注&lt;/label&gt;
+                        &lt;textarea class=&quot;form-control&quot;
+                            ng-model=&quot;new_book.comment&quot;
+                        &gt;&lt;/textarea&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-footer&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;取消&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;
+                        ng-click=&quot;create_book();&quot;
+                    &gt;确定&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;&lt;!-- /.modal-content --&gt;
+        &lt;/div&gt;&lt;!-- /.modal-dialog --&gt;
+    &lt;/div&gt;&lt;!-- /.modal --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[39, 65, 190, 193]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://sem.tsinghuax.org/" var="None">
+        <description>The URL &quot;http://sem.tsinghuax.org/&quot; has the following enabled HTTP methods: *, GET, HEAD</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="39">
+                <http-request>
+                    <status>OPTIONS http://sem.tsinghuax.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Not Allowed</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:49:32 GMT" field="date"/>
+                        <header content="182" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="65">
+                <http-request>
+                    <status>HEAD http://sem.tsinghuax.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="Mon, 05 Dec 2016 02:31:23 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="W/&quot;5844d17b-1459&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 16:49:32 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="Mon, 05 Dec 2016 02:31:23 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="W/&quot;5844d17b-1459&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 16:49:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;演播室预订&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/book-c39a86fa69.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/book-9346e63bcb.css&quot; /&gt;
+&lt;/head&gt;
+&lt;body ng-app=&quot;app&quot; ng-controller=&quot;book_controller&quot;&gt;
+    &lt;div id=&quot;content&quot;&gt;
+        &lt;h2&gt;
+			演播室预订  &lt;small&gt;hello, {{ user }}&lt;/small&gt;
+			&lt;span class=&quot;btn btn-sm btn-danger&quot; ng-click=&quot;logout()&quot;&gt;退出&lt;/span&gt;
+			&lt;a class=&quot;btn btn-sm&quot; href=&quot;/history.html&quot;&gt;我的预订&lt;/a&gt;
+		&lt;/h2&gt;
+        &lt;hr /&gt;
+        &lt;div class=&quot;container-fluid raw&quot;&gt;
+            &lt;div class=&quot;col-md-3 calendar&quot;&gt;
+                &lt;datetimepicker
+                    data-ng-model=&quot;date&quot;
+                    data-datetimepicker-config=&quot;{ startView:'day', minView:'day' }&quot;
+                    ng-change=&quot;get_status()&quot;
+                &gt;&lt;/datetimepicker&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-9&quot;&gt;
+                &lt;table class=&quot;table table-bordered&quot;&gt;
+                    &lt;colgroup&gt;
+                        &lt;col class=&quot;col-xs-1&quot; /&gt;
+                        &lt;col class=&quot;col-xs-7&quot; /&gt;
+                    &lt;/colgroup&gt;
+                    &lt;tr &gt;
+                        &lt;th&gt;演播室名&lt;/th&gt;
+                        &lt;th&gt;演播室状态&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;tr
+                        ng-repeat=&quot;room in rooms | orderBy: 'rank'&quot;
+                    &gt;
+                        &lt;td&gt;{{ room.name }}&lt;/td&gt;
+                        &lt;td class=&quot;status&quot;&gt;
+                            &lt;table class=&quot;table table-condensed times&quot;&gt;
+                                &lt;colgroup&gt;
+                                    &lt;col class=&quot;col-xs-4&quot; /&gt;
+                                    &lt;col class=&quot;col-xs-2&quot; /&gt;
+                                    &lt;col class=&quot;col-xs-2&quot; /&gt;
+                                &lt;/colgroup&gt;
+                                &lt;tr
+                                    ng-repeat=&quot;time in times | orderBy: 'rank'&quot;
+                                &gt;
+                                    &lt;td&gt;时段: {{ time.desc }}&lt;/td&gt;
+                                    &lt;td&gt;
+                                        &lt;span class=&quot;label label-success&quot;
+                                            ng-if=&quot;is_empty(room, time)&quot;
+                                        &gt;空闲&lt;/span&gt;
+                                        &lt;span class=&quot;label label-danger&quot;
+                                            ng-if=&quot;!is_empty(room, time)&quot;
+                                        &gt;已预订&lt;/span&gt;
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        &lt;button class=&quot;btn btn-xs btn-primary&quot;
+											ng-if=&quot;is_empty(room, time)&quot;
+                                            data-target=&quot;#new-book&quot;
+                                            data-toggle=&quot;modal&quot;
+                                            ng-click=&quot;open(room, time)&quot;
+                                        &gt;预订&lt;/button&gt;
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;/table&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;modal fade bs-example-modal-sm&quot; id=&quot;new-book&quot;&gt;
+        &lt;div class=&quot;modal-dialog&quot;&gt;
+            &lt;div class=&quot;modal-content&quot;&gt;
+                &lt;div class=&quot;modal-header&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+                    &lt;h4 class=&quot;modal-title&quot;&gt;新订单&lt;/h4&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-body&quot; style=&quot;text-align: left;&quot;&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;演播室&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.room.name&quot;
+                        /&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;日期&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.date&quot;
+                        /&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;时段&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.time.desc&quot;
+                        /&gt;
+                    &lt;/div&gt;
+					&lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;备注&lt;/label&gt;
+                        &lt;textarea class=&quot;form-control&quot;
+                            ng-model=&quot;new_book.comment&quot;
+                        &gt;&lt;/textarea&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-footer&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;取消&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;
+                        ng-click=&quot;create_book();&quot;
+                    &gt;确定&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;&lt;!-- /.modal-content --&gt;
+        &lt;/div&gt;&lt;!-- /.modal-dialog --&gt;
+    &lt;/div&gt;&lt;!-- /.modal --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="193">
+                <http-request>
+                    <status>* http://sem.tsinghuax.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 16:49:35 GMT" field="date"/>
+                        <header content="182" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;400 Bad Request&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;400 Bad Request&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="Active filter detected" plugin="afd" severity="Information" url="None" var="None">
+        <description>The remote network has an active filter. IMPORTANT: The result of all the other plugins will be inaccurate, web applications could be vulnerable but &quot;protected&quot; by the active filter.</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="Mon, 05 Dec 2016 02:31:23 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="W/&quot;5844d17b-1459&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 16:49:28 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;演播室预订&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/book-c39a86fa69.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/book-9346e63bcb.css&quot; /&gt;
+&lt;/head&gt;
+&lt;body ng-app=&quot;app&quot; ng-controller=&quot;book_controller&quot;&gt;
+    &lt;div id=&quot;content&quot;&gt;
+        &lt;h2&gt;
+			演播室预订  &lt;small&gt;hello, {{ user }}&lt;/small&gt;
+			&lt;span class=&quot;btn btn-sm btn-danger&quot; ng-click=&quot;logout()&quot;&gt;退出&lt;/span&gt;
+			&lt;a class=&quot;btn btn-sm&quot; href=&quot;/history.html&quot;&gt;我的预订&lt;/a&gt;
+		&lt;/h2&gt;
+        &lt;hr /&gt;
+        &lt;div class=&quot;container-fluid raw&quot;&gt;
+            &lt;div class=&quot;col-md-3 calendar&quot;&gt;
+                &lt;datetimepicker
+                    data-ng-model=&quot;date&quot;
+                    data-datetimepicker-config=&quot;{ startView:'day', minView:'day' }&quot;
+                    ng-change=&quot;get_status()&quot;
+                &gt;&lt;/datetimepicker&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-9&quot;&gt;
+                &lt;table class=&quot;table table-bordered&quot;&gt;
+                    &lt;colgroup&gt;
+                        &lt;col class=&quot;col-xs-1&quot; /&gt;
+                        &lt;col class=&quot;col-xs-7&quot; /&gt;
+                    &lt;/colgroup&gt;
+                    &lt;tr &gt;
+                        &lt;th&gt;演播室名&lt;/th&gt;
+                        &lt;th&gt;演播室状态&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;tr
+                        ng-repeat=&quot;room in rooms | orderBy: 'rank'&quot;
+                    &gt;
+                        &lt;td&gt;{{ room.name }}&lt;/td&gt;
+                        &lt;td class=&quot;status&quot;&gt;
+                            &lt;table class=&quot;table table-condensed times&quot;&gt;
+                                &lt;colgroup&gt;
+                                    &lt;col class=&quot;col-xs-4&quot; /&gt;
+                                    &lt;col class=&quot;col-xs-2&quot; /&gt;
+                                    &lt;col class=&quot;col-xs-2&quot; /&gt;
+                                &lt;/colgroup&gt;
+                                &lt;tr
+                                    ng-repeat=&quot;time in times | orderBy: 'rank'&quot;
+                                &gt;
+                                    &lt;td&gt;时段: {{ time.desc }}&lt;/td&gt;
+                                    &lt;td&gt;
+                                        &lt;span class=&quot;label label-success&quot;
+                                            ng-if=&quot;is_empty(room, time)&quot;
+                                        &gt;空闲&lt;/span&gt;
+                                        &lt;span class=&quot;label label-danger&quot;
+                                            ng-if=&quot;!is_empty(room, time)&quot;
+                                        &gt;已预订&lt;/span&gt;
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        &lt;button class=&quot;btn btn-xs btn-primary&quot;
+											ng-if=&quot;is_empty(room, time)&quot;
+                                            data-target=&quot;#new-book&quot;
+                                            data-toggle=&quot;modal&quot;
+                                            ng-click=&quot;open(room, time)&quot;
+                                        &gt;预订&lt;/button&gt;
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;/table&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;modal fade bs-example-modal-sm&quot; id=&quot;new-book&quot;&gt;
+        &lt;div class=&quot;modal-dialog&quot;&gt;
+            &lt;div class=&quot;modal-content&quot;&gt;
+                &lt;div class=&quot;modal-header&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+                    &lt;h4 class=&quot;modal-title&quot;&gt;新订单&lt;/h4&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-body&quot; style=&quot;text-align: left;&quot;&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;演播室&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.room.name&quot;
+                        /&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;日期&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.date&quot;
+                        /&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;时段&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.time.desc&quot;
+                        /&gt;
+                    &lt;/div&gt;
+					&lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;备注&lt;/label&gt;
+                        &lt;textarea class=&quot;form-control&quot;
+                            ng-model=&quot;new_book.comment&quot;
+                        &gt;&lt;/textarea&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-footer&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;取消&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;
+                        ng-click=&quot;create_book();&quot;
+                    &gt;确定&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;&lt;!-- /.modal-content --&gt;
+        &lt;/div&gt;&lt;!-- /.modal-dialog --&gt;
+    &lt;/div&gt;&lt;!-- /.modal --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[239]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://sem.tsinghuax.org/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;intra.sem.tsinghuax.org&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;intra.sem.tsinghuax.org&quot; to the IP address of &quot;sem.tsinghuax.org&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[18, 61, 67, 69, 72, 142, 222, 223, 224, 225, 226, 227, 248]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="Mon, 05 Dec 2016 02:31:23 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="W/&quot;5844d17b-1459&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 16:49:28 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;演播室预订&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/book-c39a86fa69.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/book-9346e63bcb.css&quot; /&gt;
+&lt;/head&gt;
+&lt;body ng-app=&quot;app&quot; ng-controller=&quot;book_controller&quot;&gt;
+    &lt;div id=&quot;content&quot;&gt;
+        &lt;h2&gt;
+			演播室预订  &lt;small&gt;hello, {{ user }}&lt;/small&gt;
+			&lt;span class=&quot;btn btn-sm btn-danger&quot; ng-click=&quot;logout()&quot;&gt;退出&lt;/span&gt;
+			&lt;a class=&quot;btn btn-sm&quot; href=&quot;/history.html&quot;&gt;我的预订&lt;/a&gt;
+		&lt;/h2&gt;
+        &lt;hr /&gt;
+        &lt;div class=&quot;container-fluid raw&quot;&gt;
+            &lt;div class=&quot;col-md-3 calendar&quot;&gt;
+                &lt;datetimepicker
+                    data-ng-model=&quot;date&quot;
+                    data-datetimepicker-config=&quot;{ startView:'day', minView:'day' }&quot;
+                    ng-change=&quot;get_status()&quot;
+                &gt;&lt;/datetimepicker&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-9&quot;&gt;
+                &lt;table class=&quot;table table-bordered&quot;&gt;
+                    &lt;colgroup&gt;
+                        &lt;col class=&quot;col-xs-1&quot; /&gt;
+                        &lt;col class=&quot;col-xs-7&quot; /&gt;
+                    &lt;/colgroup&gt;
+                    &lt;tr &gt;
+                        &lt;th&gt;演播室名&lt;/th&gt;
+                        &lt;th&gt;演播室状态&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;tr
+                        ng-repeat=&quot;room in rooms | orderBy: 'rank'&quot;
+                    &gt;
+                        &lt;td&gt;{{ room.name }}&lt;/td&gt;
+                        &lt;td class=&quot;status&quot;&gt;
+                            &lt;table class=&quot;table table-condensed times&quot;&gt;
+                                &lt;colgroup&gt;
+                                    &lt;col class=&quot;col-xs-4&quot; /&gt;
+                                    &lt;col class=&quot;col-xs-2&quot; /&gt;
+                                    &lt;col class=&quot;col-xs-2&quot; /&gt;
+                                &lt;/colgroup&gt;
+                                &lt;tr
+                                    ng-repeat=&quot;time in times | orderBy: 'rank'&quot;
+                                &gt;
+                                    &lt;td&gt;时段: {{ time.desc }}&lt;/td&gt;
+                                    &lt;td&gt;
+                                        &lt;span class=&quot;label label-success&quot;
+                                            ng-if=&quot;is_empty(room, time)&quot;
+                                        &gt;空闲&lt;/span&gt;
+                                        &lt;span class=&quot;label label-danger&quot;
+                                            ng-if=&quot;!is_empty(room, time)&quot;
+                                        &gt;已预订&lt;/span&gt;
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        &lt;button class=&quot;btn btn-xs btn-primary&quot;
+											ng-if=&quot;is_empty(room, time)&quot;
+                                            data-target=&quot;#new-book&quot;
+                                            data-toggle=&quot;modal&quot;
+                                            ng-click=&quot;open(room, time)&quot;
+                                        &gt;预订&lt;/button&gt;
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;/table&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;modal fade bs-example-modal-sm&quot; id=&quot;new-book&quot;&gt;
+        &lt;div class=&quot;modal-dialog&quot;&gt;
+            &lt;div class=&quot;modal-content&quot;&gt;
+                &lt;div class=&quot;modal-header&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+                    &lt;h4 class=&quot;modal-title&quot;&gt;新订单&lt;/h4&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-body&quot; style=&quot;text-align: left;&quot;&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;演播室&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.room.name&quot;
+                        /&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;日期&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.date&quot;
+                        /&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;时段&lt;/label&gt;
+                        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; disabled
+                            ng-model=&quot;new_book.time.desc&quot;
+                        /&gt;
+                    &lt;/div&gt;
+					&lt;div class=&quot;form-group&quot;&gt;
+                        &lt;label&gt;备注&lt;/label&gt;
+                        &lt;textarea class=&quot;form-control&quot;
+                            ng-model=&quot;new_book.comment&quot;
+                        &gt;&lt;/textarea&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-footer&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;取消&lt;/button&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;
+                        ng-click=&quot;create_book();&quot;
+                    &gt;确定&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;&lt;!-- /.modal-content --&gt;
+        &lt;/div&gt;&lt;!-- /.modal-dialog --&gt;
+    &lt;/div&gt;&lt;!-- /.modal --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="61">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:32 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="67">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:32 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="69">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/vXuKS.html HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:32 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="72">
+                <http-request>
+                    <status>PUT http://sem.tsinghuax.org/Gjcac HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">pAixxO</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:32 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="142">
+                <http-request>
+                    <status>POST http://sem.tsinghuax.org/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3ZYdUtTLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguU0t1WHY=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:34 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="222">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="223">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="224">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="225">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="226">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="227">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/status HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:35 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="248">
+                <http-request>
+                    <status>GET http://sem.tsinghuax.org/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="sem.tsinghuax.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.10.0 (Ubuntu)" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 16:49:37 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://sem.tsinghuax.org/?FAtJGth=../../WINNT/system32/cmd.exe?dir+c:\&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://sem.tsinghuax.org/?FAtJGth=&lt;?%20passthru(&quot;id&quot;);?&gt;&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://sem.tsinghuax.org/?FAtJGth=../../../../etc/passwd&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://sem.tsinghuax.org/?FAtJGth=../../../../bin/chgrp%20nobody%20/etc/shadow|&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://sem.tsinghuax.org/?FAtJGth=exec%20xp_cmdshell%20dir&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://sem.tsinghuax.org/?FAtJGth=SELECT%20TOP%201%20name%20FROM%20sysusers&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://sem.tsinghuax.org/?=PHPE9568F36-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The fingerprint_WAF plugin got an error while requesting &quot;http://sem.tsinghuax.org/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://sem.tsinghuax.org/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to sem.tsinghuax.org:80&quot;</error>
+</w3af-run>

@@ -1,0 +1,1954 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481166322" start-long="Wed Dec 07 22:05:22 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.rccm.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.133"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1420_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[50]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache/2.2.19 (Unix) mod_jk/1.2.32&quot;.</description>
+        <http-transactions>
+            <http-transaction id="50">
+                <http-request>
+                    <status>GET http://www.rccm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.rccm.tsinghua.edu.cn" field="Host"/>
+                        <header content="clientlanguage=zh_CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="clientlanguage=zh_CN; Path=/" field="set-cookie"/>
+                        <header content="Thu, 08 Dec 2016 02:14:44 GMT" field="expires"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="DAV" field="ms-author-via"/>
+                        <header content="Apache/2.2.19 (Unix) mod_jk/1.2.32" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="max-age=0" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:14:44 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta content=&quot;text/html; charset=GBK&quot; http-equiv=&quot;Content-Type&quot;&gt;
+&lt;title&gt;清华大学现代管理研究中心&lt;/title&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/rccm/font.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;    
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+	  &lt;td valign=&quot;center&quot; height=&quot;30&quot; background=&quot;/rccm/images/s_02.gif&quot; class=&quot;small&quot;&gt;&amp;nbsp;&amp;nbsp;
+	   	&lt;a class=&quot;headertime&quot;&gt;&lt;script language=&quot;JavaScript&quot;&gt;
+				var today=new Date;
+				var week=new Array(7);
+				week[0]=&quot;日&quot;;
+				week[1]=&quot;一&quot;;
+				week[2]=&quot;二&quot;;
+				week[3]=&quot;三&quot;;
+				week[4]=&quot;四&quot;; 
+				week[5]=&quot;五&quot;;
+				week[6]=&quot;六&quot;;
+				document.write(today.getFullYear()+&quot;年&quot;+(today.getMonth()+1)+&quot;月&quot;+today.getDate()+&quot;日&quot;+&quot;&amp;nbsp;星期&quot;+week[today.getDay()]);
+		 &lt;/script&gt;&lt;/a&gt;
+	  &lt;/td&gt;
+   	&lt;td valign=&quot;center&quot; background=&quot;/rccm/images/s_02.gif&quot; align=&quot;right&quot;&gt;&lt;a class=&quot;linka&quot; href=&quot;/&quot;&gt;首页&lt;/a&gt;&amp;nbsp; │&amp;nbsp; &lt;a class=&quot;linka&quot; href=&quot;#&quot;&gt;English Version&lt;/a&gt; &amp;nbsp;&lt;/td&gt; &lt;/tr&gt;			&lt;tr&gt;	  &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img width=&quot;960&quot; height=&quot;110&quot; border=&quot;0&quot; src=&quot;/rccm/images/rccmtitle.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;	&lt;/tr&gt;	&lt;tr&gt;	  &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	&lt;tr&gt;		&lt;td height=&quot;30&quot; background=&quot;/rccm/images/nav_2.gif&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/zxjs/index.jhtml&quot;&gt;中心介绍&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/news/index.jhtml&quot;&gt;新闻报道&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/yjdt/index.jhtml&quot;&gt;研究动态&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/kxdw/index.jhtml&quot;&gt;科学队伍&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xzjj/index.jhtml&quot;&gt;学者见解&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xshy/index.jhtml&quot;&gt;学术会议&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xsbg/index.jhtml&quot;&gt;学术报告&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/tzgg/index.jhtml&quot;&gt;通知公告&lt;/a&gt;  			
+
+   		&lt;/td&gt;	&lt;/tr&gt;		&lt;tr&gt;	  &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;white&quot; align=&quot;center&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;240&quot; valign=&quot;top&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;left&quot;&gt;
+
+		&lt;table width=&quot;95%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;center&quot; style=&quot;margin-top:5px;margin-bottom:5px;&quot;&gt;	&lt;tbody&gt;
+		&lt;tr&gt;		
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;LeftDiv_title&quot;&gt;		 			
+		&lt;li class=&quot;center&quot;&gt;最新提示&lt;/li&gt;		&lt;/td&gt;	
+		&lt;/tr&gt;	
+		&lt;tr&gt;		&lt;td class=&quot;LeftDiv_list&quot; colspan=&quot;2&quot;&gt;				
+		&lt;ul&gt; 	
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259019.jhtml&quot;&gt;【学术报告】Dynamic Pricing and Inventory Manageme...[2016-12-14]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;【学术报告】The Value of Trade Credit under Risk C...[2016-12-14]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259011.jhtml&quot;&gt;【学术报告】Technology Support and Post-Adoption I...[2016-11-29]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/259012.jhtml&quot;&gt;【新闻报道】现代管理研究中心研究员徐心教授获中国信...[2016-11-29]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259000.jhtml&quot;&gt;【学术报告】Grab Users’ Attention Through Choice-...[2016-11-18]&lt;/a&gt;&lt;/li&gt; 						
+		&lt;/ul&gt; 		
+		&lt;/td&gt;&lt;/tr&gt;
+		&lt;/tbody&gt;
+		&lt;/table&gt;
+		&lt;!--学者见解  --&gt;
+		&lt;table width=&quot;95%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;center&quot; style=&quot;margin-top:5px;margin-bottom:5px;&quot;&gt;	&lt;tbody&gt;
+			&lt;tr&gt;		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;LeftDiv_title&quot; colspan=&quot;2&quot;&gt;		 			&lt;li class=&quot;center&quot;&gt;学者见解&lt;/li&gt;		&lt;/td&gt;	&lt;/tr&gt;	
+			&lt;tr&gt;		
+				&lt;td&gt;	
+					&lt;table class=&quot;LeftDiv_view&quot;&gt;	&lt;tbody&gt;
+							
+										    &lt;tr&gt;		
+											  	&lt;td class=&quot;LeftDiv_image&quot;&gt;&lt;img width=&quot;70px&quot; src=&quot;/r/cms/www/professor/XunhuaGuo.jpg&quot;&gt;&lt;/td&gt;
+											  	&lt;td id=&quot;datalist&quot;&gt;&lt;ul&gt;&lt;li  style=&quot;width:135px&quot;&gt;&lt;span class=&quot;bluetxt&quot;&gt;药品编码转换公共平台&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://cms.sem.tsinghua.edu.cn/semcms/res_base/semcms_com_www/upload/article/image/2014_2/6_23/j2guhwr7pos5.pdf&quot;&gt;本报告提出药品编码转换公共平台的原型设计建议方案，这一...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+											  	&lt;/td&gt;
+												&lt;/tr&gt;
+										    &lt;tr&gt;		
+											  	&lt;td class=&quot;LeftDiv_image&quot;&gt;&lt;img width=&quot;70px&quot; src=&quot;/r/cms/www/professor/JiankunHe.jpg&quot;&gt;&lt;/td&gt;
+											  	&lt;td id=&quot;datalist&quot;&gt;&lt;ul&gt;&lt;li  style=&quot;width:135px&quot;&gt;&lt;span class=&quot;bluetxt&quot;&gt;何建坤：认证认可助力低碳发展&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/xzjj/257278.jhtml&quot;&gt;积极转变经济发展模式，推动低碳发展，实现产业转型升级，...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+											  	&lt;/td&gt;
+												&lt;/tr&gt;
+												&lt;tr&gt;&lt;td class=&quot;line&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;&lt;/tr&gt;					
+						&lt;/tbody&gt;
+					&lt;/table&gt;		
+				&lt;/td&gt;  
+			&lt;/tr&gt;
+		&lt;/tbody&gt;&lt;/table&gt;
+
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://pomc.sem.tsinghua.edu.cn&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/POMS.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/jssse.jhtml&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/JSSSE.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/zhengwm.jhtml&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/zhengwm.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/healthcare/index.html&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/r/cms/www/red/img/healthcare.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://caa.sem.tsinghua.edu.cn&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/r/cms/www/red/img/caa.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+
+		&lt;/td&gt;
+		&lt;td valign=&quot;top&quot; bgcolor=&quot;#F5FFFA&quot; align=&quot;center&quot;&gt;
+			
+&lt;!--新闻动态  --&gt;
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:5px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;新闻动态 &lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt;
+   
+		&lt;td class=&quot;RightDiv_newsimage&quot;&gt;
+			&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;&lt;img height=&quot;140px&quot; src=&quot;/u/cms/www/201606/08133859lo65.jpg&quot;&gt;&lt;/a&gt;    &lt;/td&gt;
+    &lt;td class=&quot;RightDiv_newsheadline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li class=&quot;title&quot;&gt;清华大学现代管理研究中心主办第七届Mostly OM运营管理前...&lt;/li&gt;
+	  &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;2016年5月27至28日 中国北京清华大学
+&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;&lt;/li&gt; 		
+
+			&lt;/ul&gt; 
+		&lt;/td&gt;
+			
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td class=&quot;RightDiv_newslist&quot;&gt;
+    
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-29&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/259012.jhtml&quot;&gt;
+现代管理研究中心研究员徐心教授获中国信息经济...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;09-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258948.jhtml&quot;&gt;
+我中心欧训民副教授获2015年度清华大学“学术新...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-26&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258797.jhtml&quot;&gt;
+中心在国家自然科学基金项目结题评估中再创佳绩&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-12&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258773.jhtml&quot;&gt;
+徐心、肖勇波入选2015年度“长江学者奖励计划”&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    		&lt;/td&gt;
+			   &lt;td class=&quot;RightDiv_newslist&quot;&gt;
+			   &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;01-11&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258650.jhtml&quot;&gt;
+国家自然科学基金重大研究计划“大数据驱动的管...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;08-06&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258495.jhtml&quot;&gt;
+2015年第四届现代管理研究前沿研讨会成功举办&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;07-03&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258423.jhtml&quot;&gt;
+首届大数据环境下商务管理研究年会在合肥工业大...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;06-25&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258496.jhtml&quot;&gt;
+华南理工大学举办ICSSSM2015国际学术会议&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+    &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+			&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:5px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;left&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;
+					&lt;li&gt;学术报告&lt;/li&gt;
+					&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;180px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt;
+  
+  
+  
+	
+	
+	
+		&lt;td class=&quot;RightDiv_image&quot;&gt;
+			&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;&lt;img width=&quot;120px&quot; src=&quot;/u/cms/www/201612/05102720nl3y.png&quot;&gt;&lt;/a&gt;    &lt;/td&gt;
+    &lt;td class=&quot;RightDiv_headline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li class=&quot;title&quot;&gt;
+				The Value of Trade Credit under Risk Controls&lt;/li&gt;
+	  &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;&lt;strong&gt;Lian Qi&lt;br&gt;2016年12月14日，周三，9:00-10:30 清华经管学院伟伦楼453&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;&lt;/li&gt; 		
+
+			&lt;/ul&gt; 
+		&lt;/td&gt; 
+		
+		
+		
+		
+		
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;100%&quot; height=&quot;250px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+&lt;tbody&gt;&lt;tr&gt;&lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot;&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259019.jhtml&quot;&gt;张任宇：Dynamic Pricing and Inventory Management under Network Externalities&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-29&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259011.jhtml&quot;&gt;吴东军 ：Technology Support and Post-Adoption IT Service Use: Evidence from the Cloud&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-18&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259000.jhtml&quot;&gt;蒋镇辉：Grab Users’ Attention Through Choice-based Advertising: An Eye-tracking Study&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+			&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;right&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;学术会议&lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xshy/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;180px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt; 
+    &lt;td class=&quot;RightDiv_image&quot;&gt;
+				&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;&lt;img height=&quot;110px&quot; width=&quot;120px&quot; src=&quot;/u/cms/www/201603/18130155wkqk.jpg&quot;&gt;&lt;/a&gt;
+    &lt;/td&gt; 
+    &lt;td class=&quot;RightDiv_headline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li&gt;
+				&lt;span class=&quot;title&quot;&gt;
+ The 13th International Conference on Service Systems and Service Management				&lt;/span&gt;
+				&lt;/li&gt; 
+				&lt;li&gt; 
+					&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;
+					&lt;strong&gt;
+					June 24 - June 26, 2016 &lt;br&gt;Kunming, China&lt;/strong&gt;
+					
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;
+				&lt;/li&gt; 
+			&lt;/ul&gt; 
+		&lt;/td&gt; 
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;100%&quot; height=&quot;250px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot;&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/mostlyom/2016/index.html&quot;&gt;Mostly OM 2016 Workshop [2016-05-27]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/mostlyom/2015/index.html&quot;&gt;International Workshop on Advanced Topics in Operations Management (Mostly OM 2015) [2015-06-12]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.scut.edu.cn/icsssm15/&quot;&gt; The 12th International Conference on Service Systems and Service Management [2015-01-19]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+	&lt;/tr&gt;
+	
+	
+	
+		&lt;tr&gt;
+		&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;left&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;
+					&lt;li&gt;研究动态&lt;/li&gt;
+					&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;160px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+&lt;tbody&gt;&lt;tr&gt;&lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot; style=&quot;height:170px&quot;&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-01&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/257637.jhtml&quot;&gt;中国药品供应链学习社区简介&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;10-09&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200643.jhtml&quot;&gt;2012年中心再获多项国家级研究项目&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;09-12&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200642.jhtml&quot;&gt;空客将与清华大学联手推动“地沟油”等替代燃料研发&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-11&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200441.jhtml&quot;&gt;陈剑教授等编著的《适应制运作管理》一书出版&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+  &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+			&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;right&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;通知公告&lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/tzgg/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;160px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot; style=&quot;height:170px&quot;&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;04-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/u/cms/www/201504/140953345960.docx&quot;&gt;2015年全国MBA《生产运作管理》教学和学术研讨会通知 （第一次）&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;04-02&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/tzgg/258305.jhtml&quot;&gt;SMC2015投稿延长至4月15日&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-23&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/zhengwm4/257952.jhtml&quot;&gt;2013-2014学年度郑维敏奖学金获奖名单&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-19&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/zhengwm4/257751.jhtml&quot;&gt;2013-2014学年度郑维敏奖学金获奖名单公示&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/tbody&gt;&lt;/table&gt;	
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;		&lt;tbody&gt;&lt;tr&gt; &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	  &lt;tr&gt;&lt;td height=&quot;30&quot; background=&quot;/rccm/images/nav_2.gif&quot; align=&quot;center&quot;&gt; 	  &lt;a color=&quot;#02469b&quot;&gt;友情链接：&lt;/a&gt;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.moe.edu.cn/&quot;&gt;中华人民共和国教育部&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.sinoss.net&quot;&gt;高校社科网&lt;/a&gt; &amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;清华大学&lt;/a&gt; &amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.sem.tsinghua.edu.cn&quot;&gt;清华经管学院&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;     &lt;A href=&quot;http://www.rccm.tsinghua.edu.cn/smc-bj/index.htm&quot; target=_blank&gt;IEEE SMC 北京支部&lt;/A&gt;&amp;nbsp;&lt;FONT size=3&gt;|&lt;/FONT&gt;&amp;nbsp;           &lt;a target=&quot;_blank&quot; href=&quot;http://cnais.sem.tsinghua.edu.cn&quot;&gt;信息系统协会中国分会&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                         &lt;a target=&quot;_blank&quot; href=&quot;http://cjis.sem.tsinghua.edu.cn&quot;&gt;信息系统学报&lt;/a&gt;   	  &lt;/td&gt;&lt;/tr&gt;	  &lt;tr&gt; &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	  &lt;tr&gt;&lt;td height=&quot;40&quot; bgcolor=&quot;white&quot; align=&quot;center&quot; class=&quot;small&quot;&gt;通信地址：清华大学经济管理学院伟伦楼447（100084）&amp;nbsp;&amp;nbsp;电子邮箱: &lt;a href=&quot;mailto:rccm@mail.tsinghua.edu.cn&quot;&gt;rccm@mail.tsinghua.edu.cn&lt;/a&gt;&amp;nbsp;&amp;nbsp;联系电话：010-62771663&amp;nbsp;&amp;nbsp;传真：010-62784555    
+&lt;br&gt;Copyright @ 2012 清华大学现代管理研究中心 版权所有
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[37]" method="GET" name="DAV methods enabled" plugin="allowed_methods" severity="Information" url="http://www.rccm.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://www.rccm.tsinghua.edu.cn/&quot; has the following allowed methods. These include DAV methods and should be disabled: DELETE, GET, HEAD, OPTIONS, POST, PUT, TRACE</description>
+        <http-transactions>
+            <http-transaction id="37">
+                <http-request>
+                    <status>OPTIONS http://www.rccm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.rccm.tsinghua.edu.cn" field="Host"/>
+                        <header content="clientlanguage=zh_CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="Thu, 08 Dec 2016 14:14:50 GMT" field="expires"/>
+                        <header content="timeout=5, max=95" field="keep-alive"/>
+                        <header content="DAV" field="ms-author-via"/>
+                        <header content="Apache/2.2.19 (Unix) mod_jk/1.2.32" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS" field="allow"/>
+                        <header content="max-age=43200" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:14:50 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Strange header" plugin="strange_headers" severity="Information" url="http://www.rccm.tsinghua.edu.cn/" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response header &quot;ms-author-via&quot;, one of the received header values is &quot;DAV&quot;. The first ten URLs which sent the uncommon header are:
+ - http://www.rccm.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.rccm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.rccm.tsinghua.edu.cn" field="Host"/>
+                        <header content="clientlanguage=zh_CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="clientlanguage=zh_CN; Path=/" field="set-cookie"/>
+                        <header content="Thu, 08 Dec 2016 02:14:44 GMT" field="expires"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="DAV" field="ms-author-via"/>
+                        <header content="Apache/2.2.19 (Unix) mod_jk/1.2.32" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="max-age=0" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:14:44 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta content=&quot;text/html; charset=GBK&quot; http-equiv=&quot;Content-Type&quot;&gt;
+&lt;title&gt;清华大学现代管理研究中心&lt;/title&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/rccm/font.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;    
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+	  &lt;td valign=&quot;center&quot; height=&quot;30&quot; background=&quot;/rccm/images/s_02.gif&quot; class=&quot;small&quot;&gt;&amp;nbsp;&amp;nbsp;
+	   	&lt;a class=&quot;headertime&quot;&gt;&lt;script language=&quot;JavaScript&quot;&gt;
+				var today=new Date;
+				var week=new Array(7);
+				week[0]=&quot;日&quot;;
+				week[1]=&quot;一&quot;;
+				week[2]=&quot;二&quot;;
+				week[3]=&quot;三&quot;;
+				week[4]=&quot;四&quot;; 
+				week[5]=&quot;五&quot;;
+				week[6]=&quot;六&quot;;
+				document.write(today.getFullYear()+&quot;年&quot;+(today.getMonth()+1)+&quot;月&quot;+today.getDate()+&quot;日&quot;+&quot;&amp;nbsp;星期&quot;+week[today.getDay()]);
+		 &lt;/script&gt;&lt;/a&gt;
+	  &lt;/td&gt;
+   	&lt;td valign=&quot;center&quot; background=&quot;/rccm/images/s_02.gif&quot; align=&quot;right&quot;&gt;&lt;a class=&quot;linka&quot; href=&quot;/&quot;&gt;首页&lt;/a&gt;&amp;nbsp; │&amp;nbsp; &lt;a class=&quot;linka&quot; href=&quot;#&quot;&gt;English Version&lt;/a&gt; &amp;nbsp;&lt;/td&gt; &lt;/tr&gt;			&lt;tr&gt;	  &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img width=&quot;960&quot; height=&quot;110&quot; border=&quot;0&quot; src=&quot;/rccm/images/rccmtitle.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;	&lt;/tr&gt;	&lt;tr&gt;	  &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	&lt;tr&gt;		&lt;td height=&quot;30&quot; background=&quot;/rccm/images/nav_2.gif&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/zxjs/index.jhtml&quot;&gt;中心介绍&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/news/index.jhtml&quot;&gt;新闻报道&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/yjdt/index.jhtml&quot;&gt;研究动态&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/kxdw/index.jhtml&quot;&gt;科学队伍&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xzjj/index.jhtml&quot;&gt;学者见解&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xshy/index.jhtml&quot;&gt;学术会议&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xsbg/index.jhtml&quot;&gt;学术报告&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/tzgg/index.jhtml&quot;&gt;通知公告&lt;/a&gt;  			
+
+   		&lt;/td&gt;	&lt;/tr&gt;		&lt;tr&gt;	  &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;white&quot; align=&quot;center&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;240&quot; valign=&quot;top&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;left&quot;&gt;
+
+		&lt;table width=&quot;95%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;center&quot; style=&quot;margin-top:5px;margin-bottom:5px;&quot;&gt;	&lt;tbody&gt;
+		&lt;tr&gt;		
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;LeftDiv_title&quot;&gt;		 			
+		&lt;li class=&quot;center&quot;&gt;最新提示&lt;/li&gt;		&lt;/td&gt;	
+		&lt;/tr&gt;	
+		&lt;tr&gt;		&lt;td class=&quot;LeftDiv_list&quot; colspan=&quot;2&quot;&gt;				
+		&lt;ul&gt; 	
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259019.jhtml&quot;&gt;【学术报告】Dynamic Pricing and Inventory Manageme...[2016-12-14]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;【学术报告】The Value of Trade Credit under Risk C...[2016-12-14]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259011.jhtml&quot;&gt;【学术报告】Technology Support and Post-Adoption I...[2016-11-29]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/259012.jhtml&quot;&gt;【新闻报道】现代管理研究中心研究员徐心教授获中国信...[2016-11-29]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259000.jhtml&quot;&gt;【学术报告】Grab Users’ Attention Through Choice-...[2016-11-18]&lt;/a&gt;&lt;/li&gt; 						
+		&lt;/ul&gt; 		
+		&lt;/td&gt;&lt;/tr&gt;
+		&lt;/tbody&gt;
+		&lt;/table&gt;
+		&lt;!--学者见解  --&gt;
+		&lt;table width=&quot;95%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;center&quot; style=&quot;margin-top:5px;margin-bottom:5px;&quot;&gt;	&lt;tbody&gt;
+			&lt;tr&gt;		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;LeftDiv_title&quot; colspan=&quot;2&quot;&gt;		 			&lt;li class=&quot;center&quot;&gt;学者见解&lt;/li&gt;		&lt;/td&gt;	&lt;/tr&gt;	
+			&lt;tr&gt;		
+				&lt;td&gt;	
+					&lt;table class=&quot;LeftDiv_view&quot;&gt;	&lt;tbody&gt;
+							
+										    &lt;tr&gt;		
+											  	&lt;td class=&quot;LeftDiv_image&quot;&gt;&lt;img width=&quot;70px&quot; src=&quot;/r/cms/www/professor/XunhuaGuo.jpg&quot;&gt;&lt;/td&gt;
+											  	&lt;td id=&quot;datalist&quot;&gt;&lt;ul&gt;&lt;li  style=&quot;width:135px&quot;&gt;&lt;span class=&quot;bluetxt&quot;&gt;药品编码转换公共平台&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://cms.sem.tsinghua.edu.cn/semcms/res_base/semcms_com_www/upload/article/image/2014_2/6_23/j2guhwr7pos5.pdf&quot;&gt;本报告提出药品编码转换公共平台的原型设计建议方案，这一...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+											  	&lt;/td&gt;
+												&lt;/tr&gt;
+										    &lt;tr&gt;		
+											  	&lt;td class=&quot;LeftDiv_image&quot;&gt;&lt;img width=&quot;70px&quot; src=&quot;/r/cms/www/professor/JiankunHe.jpg&quot;&gt;&lt;/td&gt;
+											  	&lt;td id=&quot;datalist&quot;&gt;&lt;ul&gt;&lt;li  style=&quot;width:135px&quot;&gt;&lt;span class=&quot;bluetxt&quot;&gt;何建坤：认证认可助力低碳发展&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/xzjj/257278.jhtml&quot;&gt;积极转变经济发展模式，推动低碳发展，实现产业转型升级，...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+											  	&lt;/td&gt;
+												&lt;/tr&gt;
+												&lt;tr&gt;&lt;td class=&quot;line&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;&lt;/tr&gt;					
+						&lt;/tbody&gt;
+					&lt;/table&gt;		
+				&lt;/td&gt;  
+			&lt;/tr&gt;
+		&lt;/tbody&gt;&lt;/table&gt;
+
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://pomc.sem.tsinghua.edu.cn&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/POMS.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/jssse.jhtml&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/JSSSE.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/zhengwm.jhtml&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/zhengwm.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/healthcare/index.html&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/r/cms/www/red/img/healthcare.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://caa.sem.tsinghua.edu.cn&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/r/cms/www/red/img/caa.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+
+		&lt;/td&gt;
+		&lt;td valign=&quot;top&quot; bgcolor=&quot;#F5FFFA&quot; align=&quot;center&quot;&gt;
+			
+&lt;!--新闻动态  --&gt;
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:5px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;新闻动态 &lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt;
+   
+		&lt;td class=&quot;RightDiv_newsimage&quot;&gt;
+			&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;&lt;img height=&quot;140px&quot; src=&quot;/u/cms/www/201606/08133859lo65.jpg&quot;&gt;&lt;/a&gt;    &lt;/td&gt;
+    &lt;td class=&quot;RightDiv_newsheadline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li class=&quot;title&quot;&gt;清华大学现代管理研究中心主办第七届Mostly OM运营管理前...&lt;/li&gt;
+	  &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;2016年5月27至28日 中国北京清华大学
+&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;&lt;/li&gt; 		
+
+			&lt;/ul&gt; 
+		&lt;/td&gt;
+			
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td class=&quot;RightDiv_newslist&quot;&gt;
+    
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-29&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/259012.jhtml&quot;&gt;
+现代管理研究中心研究员徐心教授获中国信息经济...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;09-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258948.jhtml&quot;&gt;
+我中心欧训民副教授获2015年度清华大学“学术新...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-26&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258797.jhtml&quot;&gt;
+中心在国家自然科学基金项目结题评估中再创佳绩&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-12&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258773.jhtml&quot;&gt;
+徐心、肖勇波入选2015年度“长江学者奖励计划”&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    		&lt;/td&gt;
+			   &lt;td class=&quot;RightDiv_newslist&quot;&gt;
+			   &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;01-11&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258650.jhtml&quot;&gt;
+国家自然科学基金重大研究计划“大数据驱动的管...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;08-06&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258495.jhtml&quot;&gt;
+2015年第四届现代管理研究前沿研讨会成功举办&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;07-03&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258423.jhtml&quot;&gt;
+首届大数据环境下商务管理研究年会在合肥工业大...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;06-25&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258496.jhtml&quot;&gt;
+华南理工大学举办ICSSSM2015国际学术会议&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+    &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+			&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:5px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;left&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;
+					&lt;li&gt;学术报告&lt;/li&gt;
+					&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;180px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt;
+  
+  
+  
+	
+	
+	
+		&lt;td class=&quot;RightDiv_image&quot;&gt;
+			&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;&lt;img width=&quot;120px&quot; src=&quot;/u/cms/www/201612/05102720nl3y.png&quot;&gt;&lt;/a&gt;    &lt;/td&gt;
+    &lt;td class=&quot;RightDiv_headline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li class=&quot;title&quot;&gt;
+				The Value of Trade Credit under Risk Controls&lt;/li&gt;
+	  &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;&lt;strong&gt;Lian Qi&lt;br&gt;2016年12月14日，周三，9:00-10:30 清华经管学院伟伦楼453&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;&lt;/li&gt; 		
+
+			&lt;/ul&gt; 
+		&lt;/td&gt; 
+		
+		
+		
+		
+		
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;100%&quot; height=&quot;250px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+&lt;tbody&gt;&lt;tr&gt;&lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot;&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259019.jhtml&quot;&gt;张任宇：Dynamic Pricing and Inventory Management under Network Externalities&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-29&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259011.jhtml&quot;&gt;吴东军 ：Technology Support and Post-Adoption IT Service Use: Evidence from the Cloud&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-18&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259000.jhtml&quot;&gt;蒋镇辉：Grab Users’ Attention Through Choice-based Advertising: An Eye-tracking Study&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+			&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;right&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;学术会议&lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xshy/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;180px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt; 
+    &lt;td class=&quot;RightDiv_image&quot;&gt;
+				&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;&lt;img height=&quot;110px&quot; width=&quot;120px&quot; src=&quot;/u/cms/www/201603/18130155wkqk.jpg&quot;&gt;&lt;/a&gt;
+    &lt;/td&gt; 
+    &lt;td class=&quot;RightDiv_headline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li&gt;
+				&lt;span class=&quot;title&quot;&gt;
+ The 13th International Conference on Service Systems and Service Management				&lt;/span&gt;
+				&lt;/li&gt; 
+				&lt;li&gt; 
+					&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;
+					&lt;strong&gt;
+					June 24 - June 26, 2016 &lt;br&gt;Kunming, China&lt;/strong&gt;
+					
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;
+				&lt;/li&gt; 
+			&lt;/ul&gt; 
+		&lt;/td&gt; 
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;100%&quot; height=&quot;250px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot;&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/mostlyom/2016/index.html&quot;&gt;Mostly OM 2016 Workshop [2016-05-27]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/mostlyom/2015/index.html&quot;&gt;International Workshop on Advanced Topics in Operations Management (Mostly OM 2015) [2015-06-12]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.scut.edu.cn/icsssm15/&quot;&gt; The 12th International Conference on Service Systems and Service Management [2015-01-19]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+	&lt;/tr&gt;
+	
+	
+	
+		&lt;tr&gt;
+		&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;left&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;
+					&lt;li&gt;研究动态&lt;/li&gt;
+					&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;160px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+&lt;tbody&gt;&lt;tr&gt;&lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot; style=&quot;height:170px&quot;&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-01&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/257637.jhtml&quot;&gt;中国药品供应链学习社区简介&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;10-09&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200643.jhtml&quot;&gt;2012年中心再获多项国家级研究项目&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;09-12&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200642.jhtml&quot;&gt;空客将与清华大学联手推动“地沟油”等替代燃料研发&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-11&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200441.jhtml&quot;&gt;陈剑教授等编著的《适应制运作管理》一书出版&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+  &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+			&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;right&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;通知公告&lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/tzgg/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;160px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot; style=&quot;height:170px&quot;&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;04-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/u/cms/www/201504/140953345960.docx&quot;&gt;2015年全国MBA《生产运作管理》教学和学术研讨会通知 （第一次）&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;04-02&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/tzgg/258305.jhtml&quot;&gt;SMC2015投稿延长至4月15日&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-23&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/zhengwm4/257952.jhtml&quot;&gt;2013-2014学年度郑维敏奖学金获奖名单&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-19&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/zhengwm4/257751.jhtml&quot;&gt;2013-2014学年度郑维敏奖学金获奖名单公示&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/tbody&gt;&lt;/table&gt;	
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;		&lt;tbody&gt;&lt;tr&gt; &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	  &lt;tr&gt;&lt;td height=&quot;30&quot; background=&quot;/rccm/images/nav_2.gif&quot; align=&quot;center&quot;&gt; 	  &lt;a color=&quot;#02469b&quot;&gt;友情链接：&lt;/a&gt;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.moe.edu.cn/&quot;&gt;中华人民共和国教育部&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.sinoss.net&quot;&gt;高校社科网&lt;/a&gt; &amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;清华大学&lt;/a&gt; &amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.sem.tsinghua.edu.cn&quot;&gt;清华经管学院&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;     &lt;A href=&quot;http://www.rccm.tsinghua.edu.cn/smc-bj/index.htm&quot; target=_blank&gt;IEEE SMC 北京支部&lt;/A&gt;&amp;nbsp;&lt;FONT size=3&gt;|&lt;/FONT&gt;&amp;nbsp;           &lt;a target=&quot;_blank&quot; href=&quot;http://cnais.sem.tsinghua.edu.cn&quot;&gt;信息系统协会中国分会&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                         &lt;a target=&quot;_blank&quot; href=&quot;http://cjis.sem.tsinghua.edu.cn&quot;&gt;信息系统学报&lt;/a&gt;   	  &lt;/td&gt;&lt;/tr&gt;	  &lt;tr&gt; &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	  &lt;tr&gt;&lt;td height=&quot;40&quot; bgcolor=&quot;white&quot; align=&quot;center&quot; class=&quot;small&quot;&gt;通信地址：清华大学经济管理学院伟伦楼447（100084）&amp;nbsp;&amp;nbsp;电子邮箱: &lt;a href=&quot;mailto:rccm@mail.tsinghua.edu.cn&quot;&gt;rccm@mail.tsinghua.edu.cn&lt;/a&gt;&amp;nbsp;&amp;nbsp;联系电话：010-62771663&amp;nbsp;&amp;nbsp;传真：010-62784555    
+&lt;br&gt;Copyright @ 2012 清华大学现代管理研究中心 版权所有
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Cookie" plugin="analyze_cookies" severity="Information" url="http://www.rccm.tsinghua.edu.cn/" var="None">
+        <description>The application sent the &quot;clientlanguage&quot; cookie in 1 different URLs. The first ten URLs are:
+ - http://www.rccm.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.rccm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.rccm.tsinghua.edu.cn" field="Host"/>
+                        <header content="clientlanguage=zh_CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="clientlanguage=zh_CN; Path=/" field="set-cookie"/>
+                        <header content="Thu, 08 Dec 2016 02:14:44 GMT" field="expires"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="DAV" field="ms-author-via"/>
+                        <header content="Apache/2.2.19 (Unix) mod_jk/1.2.32" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="max-age=0" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:14:44 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta content=&quot;text/html; charset=GBK&quot; http-equiv=&quot;Content-Type&quot;&gt;
+&lt;title&gt;清华大学现代管理研究中心&lt;/title&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/rccm/font.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;    
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+	  &lt;td valign=&quot;center&quot; height=&quot;30&quot; background=&quot;/rccm/images/s_02.gif&quot; class=&quot;small&quot;&gt;&amp;nbsp;&amp;nbsp;
+	   	&lt;a class=&quot;headertime&quot;&gt;&lt;script language=&quot;JavaScript&quot;&gt;
+				var today=new Date;
+				var week=new Array(7);
+				week[0]=&quot;日&quot;;
+				week[1]=&quot;一&quot;;
+				week[2]=&quot;二&quot;;
+				week[3]=&quot;三&quot;;
+				week[4]=&quot;四&quot;; 
+				week[5]=&quot;五&quot;;
+				week[6]=&quot;六&quot;;
+				document.write(today.getFullYear()+&quot;年&quot;+(today.getMonth()+1)+&quot;月&quot;+today.getDate()+&quot;日&quot;+&quot;&amp;nbsp;星期&quot;+week[today.getDay()]);
+		 &lt;/script&gt;&lt;/a&gt;
+	  &lt;/td&gt;
+   	&lt;td valign=&quot;center&quot; background=&quot;/rccm/images/s_02.gif&quot; align=&quot;right&quot;&gt;&lt;a class=&quot;linka&quot; href=&quot;/&quot;&gt;首页&lt;/a&gt;&amp;nbsp; │&amp;nbsp; &lt;a class=&quot;linka&quot; href=&quot;#&quot;&gt;English Version&lt;/a&gt; &amp;nbsp;&lt;/td&gt; &lt;/tr&gt;			&lt;tr&gt;	  &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img width=&quot;960&quot; height=&quot;110&quot; border=&quot;0&quot; src=&quot;/rccm/images/rccmtitle.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;	&lt;/tr&gt;	&lt;tr&gt;	  &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	&lt;tr&gt;		&lt;td height=&quot;30&quot; background=&quot;/rccm/images/nav_2.gif&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/zxjs/index.jhtml&quot;&gt;中心介绍&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/news/index.jhtml&quot;&gt;新闻报道&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/yjdt/index.jhtml&quot;&gt;研究动态&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/kxdw/index.jhtml&quot;&gt;科学队伍&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xzjj/index.jhtml&quot;&gt;学者见解&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xshy/index.jhtml&quot;&gt;学术会议&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xsbg/index.jhtml&quot;&gt;学术报告&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/tzgg/index.jhtml&quot;&gt;通知公告&lt;/a&gt;  			
+
+   		&lt;/td&gt;	&lt;/tr&gt;		&lt;tr&gt;	  &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;white&quot; align=&quot;center&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;240&quot; valign=&quot;top&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;left&quot;&gt;
+
+		&lt;table width=&quot;95%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;center&quot; style=&quot;margin-top:5px;margin-bottom:5px;&quot;&gt;	&lt;tbody&gt;
+		&lt;tr&gt;		
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;LeftDiv_title&quot;&gt;		 			
+		&lt;li class=&quot;center&quot;&gt;最新提示&lt;/li&gt;		&lt;/td&gt;	
+		&lt;/tr&gt;	
+		&lt;tr&gt;		&lt;td class=&quot;LeftDiv_list&quot; colspan=&quot;2&quot;&gt;				
+		&lt;ul&gt; 	
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259019.jhtml&quot;&gt;【学术报告】Dynamic Pricing and Inventory Manageme...[2016-12-14]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;【学术报告】The Value of Trade Credit under Risk C...[2016-12-14]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259011.jhtml&quot;&gt;【学术报告】Technology Support and Post-Adoption I...[2016-11-29]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/259012.jhtml&quot;&gt;【新闻报道】现代管理研究中心研究员徐心教授获中国信...[2016-11-29]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259000.jhtml&quot;&gt;【学术报告】Grab Users’ Attention Through Choice-...[2016-11-18]&lt;/a&gt;&lt;/li&gt; 						
+		&lt;/ul&gt; 		
+		&lt;/td&gt;&lt;/tr&gt;
+		&lt;/tbody&gt;
+		&lt;/table&gt;
+		&lt;!--学者见解  --&gt;
+		&lt;table width=&quot;95%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;center&quot; style=&quot;margin-top:5px;margin-bottom:5px;&quot;&gt;	&lt;tbody&gt;
+			&lt;tr&gt;		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;LeftDiv_title&quot; colspan=&quot;2&quot;&gt;		 			&lt;li class=&quot;center&quot;&gt;学者见解&lt;/li&gt;		&lt;/td&gt;	&lt;/tr&gt;	
+			&lt;tr&gt;		
+				&lt;td&gt;	
+					&lt;table class=&quot;LeftDiv_view&quot;&gt;	&lt;tbody&gt;
+							
+										    &lt;tr&gt;		
+											  	&lt;td class=&quot;LeftDiv_image&quot;&gt;&lt;img width=&quot;70px&quot; src=&quot;/r/cms/www/professor/XunhuaGuo.jpg&quot;&gt;&lt;/td&gt;
+											  	&lt;td id=&quot;datalist&quot;&gt;&lt;ul&gt;&lt;li  style=&quot;width:135px&quot;&gt;&lt;span class=&quot;bluetxt&quot;&gt;药品编码转换公共平台&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://cms.sem.tsinghua.edu.cn/semcms/res_base/semcms_com_www/upload/article/image/2014_2/6_23/j2guhwr7pos5.pdf&quot;&gt;本报告提出药品编码转换公共平台的原型设计建议方案，这一...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+											  	&lt;/td&gt;
+												&lt;/tr&gt;
+										    &lt;tr&gt;		
+											  	&lt;td class=&quot;LeftDiv_image&quot;&gt;&lt;img width=&quot;70px&quot; src=&quot;/r/cms/www/professor/JiankunHe.jpg&quot;&gt;&lt;/td&gt;
+											  	&lt;td id=&quot;datalist&quot;&gt;&lt;ul&gt;&lt;li  style=&quot;width:135px&quot;&gt;&lt;span class=&quot;bluetxt&quot;&gt;何建坤：认证认可助力低碳发展&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/xzjj/257278.jhtml&quot;&gt;积极转变经济发展模式，推动低碳发展，实现产业转型升级，...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+											  	&lt;/td&gt;
+												&lt;/tr&gt;
+												&lt;tr&gt;&lt;td class=&quot;line&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;&lt;/tr&gt;					
+						&lt;/tbody&gt;
+					&lt;/table&gt;		
+				&lt;/td&gt;  
+			&lt;/tr&gt;
+		&lt;/tbody&gt;&lt;/table&gt;
+
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://pomc.sem.tsinghua.edu.cn&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/POMS.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/jssse.jhtml&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/JSSSE.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/zhengwm.jhtml&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/zhengwm.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/healthcare/index.html&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/r/cms/www/red/img/healthcare.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://caa.sem.tsinghua.edu.cn&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/r/cms/www/red/img/caa.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+
+		&lt;/td&gt;
+		&lt;td valign=&quot;top&quot; bgcolor=&quot;#F5FFFA&quot; align=&quot;center&quot;&gt;
+			
+&lt;!--新闻动态  --&gt;
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:5px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;新闻动态 &lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt;
+   
+		&lt;td class=&quot;RightDiv_newsimage&quot;&gt;
+			&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;&lt;img height=&quot;140px&quot; src=&quot;/u/cms/www/201606/08133859lo65.jpg&quot;&gt;&lt;/a&gt;    &lt;/td&gt;
+    &lt;td class=&quot;RightDiv_newsheadline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li class=&quot;title&quot;&gt;清华大学现代管理研究中心主办第七届Mostly OM运营管理前...&lt;/li&gt;
+	  &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;2016年5月27至28日 中国北京清华大学
+&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;&lt;/li&gt; 		
+
+			&lt;/ul&gt; 
+		&lt;/td&gt;
+			
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td class=&quot;RightDiv_newslist&quot;&gt;
+    
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-29&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/259012.jhtml&quot;&gt;
+现代管理研究中心研究员徐心教授获中国信息经济...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;09-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258948.jhtml&quot;&gt;
+我中心欧训民副教授获2015年度清华大学“学术新...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-26&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258797.jhtml&quot;&gt;
+中心在国家自然科学基金项目结题评估中再创佳绩&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-12&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258773.jhtml&quot;&gt;
+徐心、肖勇波入选2015年度“长江学者奖励计划”&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    		&lt;/td&gt;
+			   &lt;td class=&quot;RightDiv_newslist&quot;&gt;
+			   &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;01-11&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258650.jhtml&quot;&gt;
+国家自然科学基金重大研究计划“大数据驱动的管...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;08-06&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258495.jhtml&quot;&gt;
+2015年第四届现代管理研究前沿研讨会成功举办&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;07-03&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258423.jhtml&quot;&gt;
+首届大数据环境下商务管理研究年会在合肥工业大...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;06-25&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258496.jhtml&quot;&gt;
+华南理工大学举办ICSSSM2015国际学术会议&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+    &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+			&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:5px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;left&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;
+					&lt;li&gt;学术报告&lt;/li&gt;
+					&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;180px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt;
+  
+  
+  
+	
+	
+	
+		&lt;td class=&quot;RightDiv_image&quot;&gt;
+			&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;&lt;img width=&quot;120px&quot; src=&quot;/u/cms/www/201612/05102720nl3y.png&quot;&gt;&lt;/a&gt;    &lt;/td&gt;
+    &lt;td class=&quot;RightDiv_headline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li class=&quot;title&quot;&gt;
+				The Value of Trade Credit under Risk Controls&lt;/li&gt;
+	  &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;&lt;strong&gt;Lian Qi&lt;br&gt;2016年12月14日，周三，9:00-10:30 清华经管学院伟伦楼453&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;&lt;/li&gt; 		
+
+			&lt;/ul&gt; 
+		&lt;/td&gt; 
+		
+		
+		
+		
+		
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;100%&quot; height=&quot;250px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+&lt;tbody&gt;&lt;tr&gt;&lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot;&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259019.jhtml&quot;&gt;张任宇：Dynamic Pricing and Inventory Management under Network Externalities&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-29&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259011.jhtml&quot;&gt;吴东军 ：Technology Support and Post-Adoption IT Service Use: Evidence from the Cloud&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-18&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259000.jhtml&quot;&gt;蒋镇辉：Grab Users’ Attention Through Choice-based Advertising: An Eye-tracking Study&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+			&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;right&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;学术会议&lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xshy/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;180px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt; 
+    &lt;td class=&quot;RightDiv_image&quot;&gt;
+				&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;&lt;img height=&quot;110px&quot; width=&quot;120px&quot; src=&quot;/u/cms/www/201603/18130155wkqk.jpg&quot;&gt;&lt;/a&gt;
+    &lt;/td&gt; 
+    &lt;td class=&quot;RightDiv_headline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li&gt;
+				&lt;span class=&quot;title&quot;&gt;
+ The 13th International Conference on Service Systems and Service Management				&lt;/span&gt;
+				&lt;/li&gt; 
+				&lt;li&gt; 
+					&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;
+					&lt;strong&gt;
+					June 24 - June 26, 2016 &lt;br&gt;Kunming, China&lt;/strong&gt;
+					
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;
+				&lt;/li&gt; 
+			&lt;/ul&gt; 
+		&lt;/td&gt; 
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;100%&quot; height=&quot;250px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot;&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/mostlyom/2016/index.html&quot;&gt;Mostly OM 2016 Workshop [2016-05-27]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/mostlyom/2015/index.html&quot;&gt;International Workshop on Advanced Topics in Operations Management (Mostly OM 2015) [2015-06-12]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.scut.edu.cn/icsssm15/&quot;&gt; The 12th International Conference on Service Systems and Service Management [2015-01-19]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+	&lt;/tr&gt;
+	
+	
+	
+		&lt;tr&gt;
+		&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;left&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;
+					&lt;li&gt;研究动态&lt;/li&gt;
+					&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;160px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+&lt;tbody&gt;&lt;tr&gt;&lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot; style=&quot;height:170px&quot;&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-01&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/257637.jhtml&quot;&gt;中国药品供应链学习社区简介&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;10-09&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200643.jhtml&quot;&gt;2012年中心再获多项国家级研究项目&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;09-12&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200642.jhtml&quot;&gt;空客将与清华大学联手推动“地沟油”等替代燃料研发&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-11&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200441.jhtml&quot;&gt;陈剑教授等编著的《适应制运作管理》一书出版&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+  &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+			&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;right&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;通知公告&lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/tzgg/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;160px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot; style=&quot;height:170px&quot;&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;04-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/u/cms/www/201504/140953345960.docx&quot;&gt;2015年全国MBA《生产运作管理》教学和学术研讨会通知 （第一次）&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;04-02&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/tzgg/258305.jhtml&quot;&gt;SMC2015投稿延长至4月15日&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-23&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/zhengwm4/257952.jhtml&quot;&gt;2013-2014学年度郑维敏奖学金获奖名单&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-19&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/zhengwm4/257751.jhtml&quot;&gt;2013-2014学年度郑维敏奖学金获奖名单公示&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/tbody&gt;&lt;/table&gt;	
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;		&lt;tbody&gt;&lt;tr&gt; &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	  &lt;tr&gt;&lt;td height=&quot;30&quot; background=&quot;/rccm/images/nav_2.gif&quot; align=&quot;center&quot;&gt; 	  &lt;a color=&quot;#02469b&quot;&gt;友情链接：&lt;/a&gt;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.moe.edu.cn/&quot;&gt;中华人民共和国教育部&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.sinoss.net&quot;&gt;高校社科网&lt;/a&gt; &amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;清华大学&lt;/a&gt; &amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.sem.tsinghua.edu.cn&quot;&gt;清华经管学院&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;     &lt;A href=&quot;http://www.rccm.tsinghua.edu.cn/smc-bj/index.htm&quot; target=_blank&gt;IEEE SMC 北京支部&lt;/A&gt;&amp;nbsp;&lt;FONT size=3&gt;|&lt;/FONT&gt;&amp;nbsp;           &lt;a target=&quot;_blank&quot; href=&quot;http://cnais.sem.tsinghua.edu.cn&quot;&gt;信息系统协会中国分会&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                         &lt;a target=&quot;_blank&quot; href=&quot;http://cjis.sem.tsinghua.edu.cn&quot;&gt;信息系统学报&lt;/a&gt;   	  &lt;/td&gt;&lt;/tr&gt;	  &lt;tr&gt; &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	  &lt;tr&gt;&lt;td height=&quot;40&quot; bgcolor=&quot;white&quot; align=&quot;center&quot; class=&quot;small&quot;&gt;通信地址：清华大学经济管理学院伟伦楼447（100084）&amp;nbsp;&amp;nbsp;电子邮箱: &lt;a href=&quot;mailto:rccm@mail.tsinghua.edu.cn&quot;&gt;rccm@mail.tsinghua.edu.cn&lt;/a&gt;&amp;nbsp;&amp;nbsp;联系电话：010-62771663&amp;nbsp;&amp;nbsp;传真：010-62784555    
+&lt;br&gt;Copyright @ 2012 清华大学现代管理研究中心 版权所有
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Cookie without HttpOnly" plugin="analyze_cookies" severity="Low" url="http://www.rccm.tsinghua.edu.cn/" var="None">
+        <description>The application sent the &quot;clientlanguage&quot; cookie without the HttpOnly flag in 1 different responses. The HttpOnly flag prevents potential intruders from accessing the cookie value through Cross-Site Scripting attacks. The first ten URLs which sent the insecure cookie are:
+ - http://www.rccm.tsinghua.edu.cn/
+</description>
+        <long-description>HTTP by itself is a stateless protocol. Therefore the server is unable to determine which requests are performed by which client, and which clients are authenticated or unauthenticated.
+
+The use of HTTP cookies within the headers, allows a web server to identify each individual client and can therefore determine which clients hold valid authentication, from those that do not. These are known as session cookies.
+
+When a cookie is set by the server (sent the header of an HTTP response) there are several flags that can be set to configure the properties of the cookie and how it is to be handled by the browser.
+
+The `HttpOnly` flag assists in the prevention of client side-scripts (such as JavaScript) accessing and using the cookie. This can help prevent XSS attacks targeting the cookies holding the client's session token (setting the `HttpOnly` flag does not prevent, nor safeguard against XSS vulnerabilities themselves).</long-description>
+        <fix-guidance>The initial step to remedy this would be to determine whether any client-side scripts (such as JavaScript) need to access the cookie and if not, set the `HttpOnly` flag.
+
+Additionally, it should be noted that some older browsers are not compatible with the `HttpOnly` flag, and therefore setting this flag will not protect those clients against this form of attack.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="HttpOnly - OWASP" url="https://www.owasp.org/index.php/HttpOnly"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.rccm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.rccm.tsinghua.edu.cn" field="Host"/>
+                        <header content="clientlanguage=zh_CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="clientlanguage=zh_CN; Path=/" field="set-cookie"/>
+                        <header content="Thu, 08 Dec 2016 02:14:44 GMT" field="expires"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="DAV" field="ms-author-via"/>
+                        <header content="Apache/2.2.19 (Unix) mod_jk/1.2.32" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="max-age=0" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:14:44 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta content=&quot;text/html; charset=GBK&quot; http-equiv=&quot;Content-Type&quot;&gt;
+&lt;title&gt;清华大学现代管理研究中心&lt;/title&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/rccm/font.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;    
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+	  &lt;td valign=&quot;center&quot; height=&quot;30&quot; background=&quot;/rccm/images/s_02.gif&quot; class=&quot;small&quot;&gt;&amp;nbsp;&amp;nbsp;
+	   	&lt;a class=&quot;headertime&quot;&gt;&lt;script language=&quot;JavaScript&quot;&gt;
+				var today=new Date;
+				var week=new Array(7);
+				week[0]=&quot;日&quot;;
+				week[1]=&quot;一&quot;;
+				week[2]=&quot;二&quot;;
+				week[3]=&quot;三&quot;;
+				week[4]=&quot;四&quot;; 
+				week[5]=&quot;五&quot;;
+				week[6]=&quot;六&quot;;
+				document.write(today.getFullYear()+&quot;年&quot;+(today.getMonth()+1)+&quot;月&quot;+today.getDate()+&quot;日&quot;+&quot;&amp;nbsp;星期&quot;+week[today.getDay()]);
+		 &lt;/script&gt;&lt;/a&gt;
+	  &lt;/td&gt;
+   	&lt;td valign=&quot;center&quot; background=&quot;/rccm/images/s_02.gif&quot; align=&quot;right&quot;&gt;&lt;a class=&quot;linka&quot; href=&quot;/&quot;&gt;首页&lt;/a&gt;&amp;nbsp; │&amp;nbsp; &lt;a class=&quot;linka&quot; href=&quot;#&quot;&gt;English Version&lt;/a&gt; &amp;nbsp;&lt;/td&gt; &lt;/tr&gt;			&lt;tr&gt;	  &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img width=&quot;960&quot; height=&quot;110&quot; border=&quot;0&quot; src=&quot;/rccm/images/rccmtitle.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;	&lt;/tr&gt;	&lt;tr&gt;	  &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	&lt;tr&gt;		&lt;td height=&quot;30&quot; background=&quot;/rccm/images/nav_2.gif&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/zxjs/index.jhtml&quot;&gt;中心介绍&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/news/index.jhtml&quot;&gt;新闻报道&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/yjdt/index.jhtml&quot;&gt;研究动态&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/kxdw/index.jhtml&quot;&gt;科学队伍&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xzjj/index.jhtml&quot;&gt;学者见解&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xshy/index.jhtml&quot;&gt;学术会议&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xsbg/index.jhtml&quot;&gt;学术报告&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/tzgg/index.jhtml&quot;&gt;通知公告&lt;/a&gt;  			
+
+   		&lt;/td&gt;	&lt;/tr&gt;		&lt;tr&gt;	  &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;white&quot; align=&quot;center&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;240&quot; valign=&quot;top&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;left&quot;&gt;
+
+		&lt;table width=&quot;95%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;center&quot; style=&quot;margin-top:5px;margin-bottom:5px;&quot;&gt;	&lt;tbody&gt;
+		&lt;tr&gt;		
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;LeftDiv_title&quot;&gt;		 			
+		&lt;li class=&quot;center&quot;&gt;最新提示&lt;/li&gt;		&lt;/td&gt;	
+		&lt;/tr&gt;	
+		&lt;tr&gt;		&lt;td class=&quot;LeftDiv_list&quot; colspan=&quot;2&quot;&gt;				
+		&lt;ul&gt; 	
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259019.jhtml&quot;&gt;【学术报告】Dynamic Pricing and Inventory Manageme...[2016-12-14]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;【学术报告】The Value of Trade Credit under Risk C...[2016-12-14]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259011.jhtml&quot;&gt;【学术报告】Technology Support and Post-Adoption I...[2016-11-29]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/259012.jhtml&quot;&gt;【新闻报道】现代管理研究中心研究员徐心教授获中国信...[2016-11-29]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259000.jhtml&quot;&gt;【学术报告】Grab Users’ Attention Through Choice-...[2016-11-18]&lt;/a&gt;&lt;/li&gt; 						
+		&lt;/ul&gt; 		
+		&lt;/td&gt;&lt;/tr&gt;
+		&lt;/tbody&gt;
+		&lt;/table&gt;
+		&lt;!--学者见解  --&gt;
+		&lt;table width=&quot;95%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;center&quot; style=&quot;margin-top:5px;margin-bottom:5px;&quot;&gt;	&lt;tbody&gt;
+			&lt;tr&gt;		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;LeftDiv_title&quot; colspan=&quot;2&quot;&gt;		 			&lt;li class=&quot;center&quot;&gt;学者见解&lt;/li&gt;		&lt;/td&gt;	&lt;/tr&gt;	
+			&lt;tr&gt;		
+				&lt;td&gt;	
+					&lt;table class=&quot;LeftDiv_view&quot;&gt;	&lt;tbody&gt;
+							
+										    &lt;tr&gt;		
+											  	&lt;td class=&quot;LeftDiv_image&quot;&gt;&lt;img width=&quot;70px&quot; src=&quot;/r/cms/www/professor/XunhuaGuo.jpg&quot;&gt;&lt;/td&gt;
+											  	&lt;td id=&quot;datalist&quot;&gt;&lt;ul&gt;&lt;li  style=&quot;width:135px&quot;&gt;&lt;span class=&quot;bluetxt&quot;&gt;药品编码转换公共平台&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://cms.sem.tsinghua.edu.cn/semcms/res_base/semcms_com_www/upload/article/image/2014_2/6_23/j2guhwr7pos5.pdf&quot;&gt;本报告提出药品编码转换公共平台的原型设计建议方案，这一...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+											  	&lt;/td&gt;
+												&lt;/tr&gt;
+										    &lt;tr&gt;		
+											  	&lt;td class=&quot;LeftDiv_image&quot;&gt;&lt;img width=&quot;70px&quot; src=&quot;/r/cms/www/professor/JiankunHe.jpg&quot;&gt;&lt;/td&gt;
+											  	&lt;td id=&quot;datalist&quot;&gt;&lt;ul&gt;&lt;li  style=&quot;width:135px&quot;&gt;&lt;span class=&quot;bluetxt&quot;&gt;何建坤：认证认可助力低碳发展&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/xzjj/257278.jhtml&quot;&gt;积极转变经济发展模式，推动低碳发展，实现产业转型升级，...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+											  	&lt;/td&gt;
+												&lt;/tr&gt;
+												&lt;tr&gt;&lt;td class=&quot;line&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;&lt;/tr&gt;					
+						&lt;/tbody&gt;
+					&lt;/table&gt;		
+				&lt;/td&gt;  
+			&lt;/tr&gt;
+		&lt;/tbody&gt;&lt;/table&gt;
+
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://pomc.sem.tsinghua.edu.cn&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/POMS.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/jssse.jhtml&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/JSSSE.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/zhengwm.jhtml&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/zhengwm.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/healthcare/index.html&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/r/cms/www/red/img/healthcare.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://caa.sem.tsinghua.edu.cn&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/r/cms/www/red/img/caa.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+
+		&lt;/td&gt;
+		&lt;td valign=&quot;top&quot; bgcolor=&quot;#F5FFFA&quot; align=&quot;center&quot;&gt;
+			
+&lt;!--新闻动态  --&gt;
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:5px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;新闻动态 &lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt;
+   
+		&lt;td class=&quot;RightDiv_newsimage&quot;&gt;
+			&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;&lt;img height=&quot;140px&quot; src=&quot;/u/cms/www/201606/08133859lo65.jpg&quot;&gt;&lt;/a&gt;    &lt;/td&gt;
+    &lt;td class=&quot;RightDiv_newsheadline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li class=&quot;title&quot;&gt;清华大学现代管理研究中心主办第七届Mostly OM运营管理前...&lt;/li&gt;
+	  &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;2016年5月27至28日 中国北京清华大学
+&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;&lt;/li&gt; 		
+
+			&lt;/ul&gt; 
+		&lt;/td&gt;
+			
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td class=&quot;RightDiv_newslist&quot;&gt;
+    
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-29&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/259012.jhtml&quot;&gt;
+现代管理研究中心研究员徐心教授获中国信息经济...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;09-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258948.jhtml&quot;&gt;
+我中心欧训民副教授获2015年度清华大学“学术新...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-26&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258797.jhtml&quot;&gt;
+中心在国家自然科学基金项目结题评估中再创佳绩&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-12&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258773.jhtml&quot;&gt;
+徐心、肖勇波入选2015年度“长江学者奖励计划”&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    		&lt;/td&gt;
+			   &lt;td class=&quot;RightDiv_newslist&quot;&gt;
+			   &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;01-11&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258650.jhtml&quot;&gt;
+国家自然科学基金重大研究计划“大数据驱动的管...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;08-06&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258495.jhtml&quot;&gt;
+2015年第四届现代管理研究前沿研讨会成功举办&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;07-03&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258423.jhtml&quot;&gt;
+首届大数据环境下商务管理研究年会在合肥工业大...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;06-25&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258496.jhtml&quot;&gt;
+华南理工大学举办ICSSSM2015国际学术会议&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+    &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+			&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:5px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;left&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;
+					&lt;li&gt;学术报告&lt;/li&gt;
+					&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;180px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt;
+  
+  
+  
+	
+	
+	
+		&lt;td class=&quot;RightDiv_image&quot;&gt;
+			&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;&lt;img width=&quot;120px&quot; src=&quot;/u/cms/www/201612/05102720nl3y.png&quot;&gt;&lt;/a&gt;    &lt;/td&gt;
+    &lt;td class=&quot;RightDiv_headline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li class=&quot;title&quot;&gt;
+				The Value of Trade Credit under Risk Controls&lt;/li&gt;
+	  &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;&lt;strong&gt;Lian Qi&lt;br&gt;2016年12月14日，周三，9:00-10:30 清华经管学院伟伦楼453&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;&lt;/li&gt; 		
+
+			&lt;/ul&gt; 
+		&lt;/td&gt; 
+		
+		
+		
+		
+		
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;100%&quot; height=&quot;250px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+&lt;tbody&gt;&lt;tr&gt;&lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot;&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259019.jhtml&quot;&gt;张任宇：Dynamic Pricing and Inventory Management under Network Externalities&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-29&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259011.jhtml&quot;&gt;吴东军 ：Technology Support and Post-Adoption IT Service Use: Evidence from the Cloud&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-18&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259000.jhtml&quot;&gt;蒋镇辉：Grab Users’ Attention Through Choice-based Advertising: An Eye-tracking Study&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+			&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;right&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;学术会议&lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xshy/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;180px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt; 
+    &lt;td class=&quot;RightDiv_image&quot;&gt;
+				&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;&lt;img height=&quot;110px&quot; width=&quot;120px&quot; src=&quot;/u/cms/www/201603/18130155wkqk.jpg&quot;&gt;&lt;/a&gt;
+    &lt;/td&gt; 
+    &lt;td class=&quot;RightDiv_headline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li&gt;
+				&lt;span class=&quot;title&quot;&gt;
+ The 13th International Conference on Service Systems and Service Management				&lt;/span&gt;
+				&lt;/li&gt; 
+				&lt;li&gt; 
+					&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;
+					&lt;strong&gt;
+					June 24 - June 26, 2016 &lt;br&gt;Kunming, China&lt;/strong&gt;
+					
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;
+				&lt;/li&gt; 
+			&lt;/ul&gt; 
+		&lt;/td&gt; 
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;100%&quot; height=&quot;250px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot;&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/mostlyom/2016/index.html&quot;&gt;Mostly OM 2016 Workshop [2016-05-27]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/mostlyom/2015/index.html&quot;&gt;International Workshop on Advanced Topics in Operations Management (Mostly OM 2015) [2015-06-12]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.scut.edu.cn/icsssm15/&quot;&gt; The 12th International Conference on Service Systems and Service Management [2015-01-19]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+	&lt;/tr&gt;
+	
+	
+	
+		&lt;tr&gt;
+		&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;left&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;
+					&lt;li&gt;研究动态&lt;/li&gt;
+					&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;160px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+&lt;tbody&gt;&lt;tr&gt;&lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot; style=&quot;height:170px&quot;&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-01&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/257637.jhtml&quot;&gt;中国药品供应链学习社区简介&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;10-09&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200643.jhtml&quot;&gt;2012年中心再获多项国家级研究项目&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;09-12&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200642.jhtml&quot;&gt;空客将与清华大学联手推动“地沟油”等替代燃料研发&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-11&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200441.jhtml&quot;&gt;陈剑教授等编著的《适应制运作管理》一书出版&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+  &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+			&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;right&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;通知公告&lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/tzgg/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;160px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot; style=&quot;height:170px&quot;&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;04-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/u/cms/www/201504/140953345960.docx&quot;&gt;2015年全国MBA《生产运作管理》教学和学术研讨会通知 （第一次）&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;04-02&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/tzgg/258305.jhtml&quot;&gt;SMC2015投稿延长至4月15日&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-23&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/zhengwm4/257952.jhtml&quot;&gt;2013-2014学年度郑维敏奖学金获奖名单&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-19&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/zhengwm4/257751.jhtml&quot;&gt;2013-2014学年度郑维敏奖学金获奖名单公示&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/tbody&gt;&lt;/table&gt;	
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;		&lt;tbody&gt;&lt;tr&gt; &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	  &lt;tr&gt;&lt;td height=&quot;30&quot; background=&quot;/rccm/images/nav_2.gif&quot; align=&quot;center&quot;&gt; 	  &lt;a color=&quot;#02469b&quot;&gt;友情链接：&lt;/a&gt;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.moe.edu.cn/&quot;&gt;中华人民共和国教育部&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.sinoss.net&quot;&gt;高校社科网&lt;/a&gt; &amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;清华大学&lt;/a&gt; &amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.sem.tsinghua.edu.cn&quot;&gt;清华经管学院&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;     &lt;A href=&quot;http://www.rccm.tsinghua.edu.cn/smc-bj/index.htm&quot; target=_blank&gt;IEEE SMC 北京支部&lt;/A&gt;&amp;nbsp;&lt;FONT size=3&gt;|&lt;/FONT&gt;&amp;nbsp;           &lt;a target=&quot;_blank&quot; href=&quot;http://cnais.sem.tsinghua.edu.cn&quot;&gt;信息系统协会中国分会&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                         &lt;a target=&quot;_blank&quot; href=&quot;http://cjis.sem.tsinghua.edu.cn&quot;&gt;信息系统学报&lt;/a&gt;   	  &lt;/td&gt;&lt;/tr&gt;	  &lt;tr&gt; &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	  &lt;tr&gt;&lt;td height=&quot;40&quot; bgcolor=&quot;white&quot; align=&quot;center&quot; class=&quot;small&quot;&gt;通信地址：清华大学经济管理学院伟伦楼447（100084）&amp;nbsp;&amp;nbsp;电子邮箱: &lt;a href=&quot;mailto:rccm@mail.tsinghua.edu.cn&quot;&gt;rccm@mail.tsinghua.edu.cn&lt;/a&gt;&amp;nbsp;&amp;nbsp;联系电话：010-62771663&amp;nbsp;&amp;nbsp;传真：010-62784555    
+&lt;br&gt;Copyright @ 2012 清华大学现代管理研究中心 版权所有
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.rccm.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.rccm.tsinghua.edu.cn" field="Host"/>
+                        <header content="clientlanguage=zh_CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="clientlanguage=zh_CN; Path=/" field="set-cookie"/>
+                        <header content="Thu, 08 Dec 2016 02:14:44 GMT" field="expires"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="DAV" field="ms-author-via"/>
+                        <header content="Apache/2.2.19 (Unix) mod_jk/1.2.32" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="max-age=0" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:14:44 GMT" field="date"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;meta content=&quot;text/html; charset=GBK&quot; http-equiv=&quot;Content-Type&quot;&gt;
+&lt;title&gt;清华大学现代管理研究中心&lt;/title&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;/rccm/font.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;    
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+	  &lt;td valign=&quot;center&quot; height=&quot;30&quot; background=&quot;/rccm/images/s_02.gif&quot; class=&quot;small&quot;&gt;&amp;nbsp;&amp;nbsp;
+	   	&lt;a class=&quot;headertime&quot;&gt;&lt;script language=&quot;JavaScript&quot;&gt;
+				var today=new Date;
+				var week=new Array(7);
+				week[0]=&quot;日&quot;;
+				week[1]=&quot;一&quot;;
+				week[2]=&quot;二&quot;;
+				week[3]=&quot;三&quot;;
+				week[4]=&quot;四&quot;; 
+				week[5]=&quot;五&quot;;
+				week[6]=&quot;六&quot;;
+				document.write(today.getFullYear()+&quot;年&quot;+(today.getMonth()+1)+&quot;月&quot;+today.getDate()+&quot;日&quot;+&quot;&amp;nbsp;星期&quot;+week[today.getDay()]);
+		 &lt;/script&gt;&lt;/a&gt;
+	  &lt;/td&gt;
+   	&lt;td valign=&quot;center&quot; background=&quot;/rccm/images/s_02.gif&quot; align=&quot;right&quot;&gt;&lt;a class=&quot;linka&quot; href=&quot;/&quot;&gt;首页&lt;/a&gt;&amp;nbsp; │&amp;nbsp; &lt;a class=&quot;linka&quot; href=&quot;#&quot;&gt;English Version&lt;/a&gt; &amp;nbsp;&lt;/td&gt; &lt;/tr&gt;			&lt;tr&gt;	  &lt;td colspan=&quot;2&quot;&gt;&lt;a href=&quot;/&quot;&gt;&lt;img width=&quot;960&quot; height=&quot;110&quot; border=&quot;0&quot; src=&quot;/rccm/images/rccmtitle.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;	&lt;/tr&gt;	&lt;tr&gt;	  &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	&lt;tr&gt;		&lt;td height=&quot;30&quot; background=&quot;/rccm/images/nav_2.gif&quot; align=&quot;center&quot; colspan=&quot;2&quot;&gt;
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/zxjs/index.jhtml&quot;&gt;中心介绍&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/news/index.jhtml&quot;&gt;新闻报道&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/yjdt/index.jhtml&quot;&gt;研究动态&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/kxdw/index.jhtml&quot;&gt;科学队伍&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xzjj/index.jhtml&quot;&gt;学者见解&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xshy/index.jhtml&quot;&gt;学术会议&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/xsbg/index.jhtml&quot;&gt;学术报告&lt;/a&gt;  				&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;
+
+   		        &lt;a class=&quot;linkheader&quot; href=&quot;/tzgg/index.jhtml&quot;&gt;通知公告&lt;/a&gt;  			
+
+   		&lt;/td&gt;	&lt;/tr&gt;		&lt;tr&gt;	  &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;white&quot; align=&quot;center&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;240&quot; valign=&quot;top&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;left&quot;&gt;
+
+		&lt;table width=&quot;95%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;center&quot; style=&quot;margin-top:5px;margin-bottom:5px;&quot;&gt;	&lt;tbody&gt;
+		&lt;tr&gt;		
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;LeftDiv_title&quot;&gt;		 			
+		&lt;li class=&quot;center&quot;&gt;最新提示&lt;/li&gt;		&lt;/td&gt;	
+		&lt;/tr&gt;	
+		&lt;tr&gt;		&lt;td class=&quot;LeftDiv_list&quot; colspan=&quot;2&quot;&gt;				
+		&lt;ul&gt; 	
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259019.jhtml&quot;&gt;【学术报告】Dynamic Pricing and Inventory Manageme...[2016-12-14]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;【学术报告】The Value of Trade Credit under Risk C...[2016-12-14]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259011.jhtml&quot;&gt;【学术报告】Technology Support and Post-Adoption I...[2016-11-29]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/259012.jhtml&quot;&gt;【新闻报道】现代管理研究中心研究员徐心教授获中国信...[2016-11-29]&lt;/a&gt;&lt;/li&gt; 						
+							&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259000.jhtml&quot;&gt;【学术报告】Grab Users’ Attention Through Choice-...[2016-11-18]&lt;/a&gt;&lt;/li&gt; 						
+		&lt;/ul&gt; 		
+		&lt;/td&gt;&lt;/tr&gt;
+		&lt;/tbody&gt;
+		&lt;/table&gt;
+		&lt;!--学者见解  --&gt;
+		&lt;table width=&quot;95%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; bgcolor=&quot;#E8F0FB&quot; align=&quot;center&quot; style=&quot;margin-top:5px;margin-bottom:5px;&quot;&gt;	&lt;tbody&gt;
+			&lt;tr&gt;		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;LeftDiv_title&quot; colspan=&quot;2&quot;&gt;		 			&lt;li class=&quot;center&quot;&gt;学者见解&lt;/li&gt;		&lt;/td&gt;	&lt;/tr&gt;	
+			&lt;tr&gt;		
+				&lt;td&gt;	
+					&lt;table class=&quot;LeftDiv_view&quot;&gt;	&lt;tbody&gt;
+							
+										    &lt;tr&gt;		
+											  	&lt;td class=&quot;LeftDiv_image&quot;&gt;&lt;img width=&quot;70px&quot; src=&quot;/r/cms/www/professor/XunhuaGuo.jpg&quot;&gt;&lt;/td&gt;
+											  	&lt;td id=&quot;datalist&quot;&gt;&lt;ul&gt;&lt;li  style=&quot;width:135px&quot;&gt;&lt;span class=&quot;bluetxt&quot;&gt;药品编码转换公共平台&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://cms.sem.tsinghua.edu.cn/semcms/res_base/semcms_com_www/upload/article/image/2014_2/6_23/j2guhwr7pos5.pdf&quot;&gt;本报告提出药品编码转换公共平台的原型设计建议方案，这一...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+											  	&lt;/td&gt;
+												&lt;/tr&gt;
+										    &lt;tr&gt;		
+											  	&lt;td class=&quot;LeftDiv_image&quot;&gt;&lt;img width=&quot;70px&quot; src=&quot;/r/cms/www/professor/JiankunHe.jpg&quot;&gt;&lt;/td&gt;
+											  	&lt;td id=&quot;datalist&quot;&gt;&lt;ul&gt;&lt;li  style=&quot;width:135px&quot;&gt;&lt;span class=&quot;bluetxt&quot;&gt;何建坤：认证认可助力低碳发展&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/xzjj/257278.jhtml&quot;&gt;积极转变经济发展模式，推动低碳发展，实现产业转型升级，...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+											  	&lt;/td&gt;
+												&lt;/tr&gt;
+												&lt;tr&gt;&lt;td class=&quot;line&quot; colspan=&quot;2&quot;&gt;&lt;/td&gt;&lt;/tr&gt;					
+						&lt;/tbody&gt;
+					&lt;/table&gt;		
+				&lt;/td&gt;  
+			&lt;/tr&gt;
+		&lt;/tbody&gt;&lt;/table&gt;
+
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://pomc.sem.tsinghua.edu.cn&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/POMS.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/jssse.jhtml&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/JSSSE.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/zhengwm.jhtml&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/rccm/images/zhengwm.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;		&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/healthcare/index.html&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/r/cms/www/red/img/healthcare.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+   &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:10px&quot;&gt;	&lt;tbody&gt;&lt;tr&gt;		&lt;td class=&quot;LeftDown_image&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://caa.sem.tsinghua.edu.cn&quot;&gt;&lt;img width=&quot;200px&quot; src=&quot;/r/cms/www/red/img/caa.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+
+		&lt;/td&gt;
+		&lt;td valign=&quot;top&quot; bgcolor=&quot;#F5FFFA&quot; align=&quot;center&quot;&gt;
+			
+&lt;!--新闻动态  --&gt;
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:5px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;新闻动态 &lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt;
+   
+		&lt;td class=&quot;RightDiv_newsimage&quot;&gt;
+			&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;&lt;img height=&quot;140px&quot; src=&quot;/u/cms/www/201606/08133859lo65.jpg&quot;&gt;&lt;/a&gt;    &lt;/td&gt;
+    &lt;td class=&quot;RightDiv_newsheadline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li class=&quot;title&quot;&gt;清华大学现代管理研究中心主办第七届Mostly OM运营管理前...&lt;/li&gt;
+	  &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;2016年5月27至28日 中国北京清华大学
+&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258798.jhtml&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;&lt;/li&gt; 		
+
+			&lt;/ul&gt; 
+		&lt;/td&gt;
+			
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td class=&quot;RightDiv_newslist&quot;&gt;
+    
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-29&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/259012.jhtml&quot;&gt;
+现代管理研究中心研究员徐心教授获中国信息经济...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;09-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258948.jhtml&quot;&gt;
+我中心欧训民副教授获2015年度清华大学“学术新...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-26&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258797.jhtml&quot;&gt;
+中心在国家自然科学基金项目结题评估中再创佳绩&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-12&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258773.jhtml&quot;&gt;
+徐心、肖勇波入选2015年度“长江学者奖励计划”&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    		&lt;/td&gt;
+			   &lt;td class=&quot;RightDiv_newslist&quot;&gt;
+			   &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;01-11&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258650.jhtml&quot;&gt;
+国家自然科学基金重大研究计划“大数据驱动的管...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;08-06&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258495.jhtml&quot;&gt;
+2015年第四届现代管理研究前沿研讨会成功举办&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;07-03&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258423.jhtml&quot;&gt;
+首届大数据环境下商务管理研究年会在合肥工业大...&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+	    	 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;06-25&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/news/258496.jhtml&quot;&gt;
+华南理工大学举办ICSSSM2015国际学术会议&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      
+    &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+			&lt;table width=&quot;98%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:5px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;left&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;
+					&lt;li&gt;学术报告&lt;/li&gt;
+					&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;180px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt;
+  
+  
+  
+	
+	
+	
+		&lt;td class=&quot;RightDiv_image&quot;&gt;
+			&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;&lt;img width=&quot;120px&quot; src=&quot;/u/cms/www/201612/05102720nl3y.png&quot;&gt;&lt;/a&gt;    &lt;/td&gt;
+    &lt;td class=&quot;RightDiv_headline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li class=&quot;title&quot;&gt;
+				The Value of Trade Credit under Risk Controls&lt;/li&gt;
+	  &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;&lt;strong&gt;Lian Qi&lt;br&gt;2016年12月14日，周三，9:00-10:30 清华经管学院伟伦楼453&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259018.jhtml&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;&lt;/li&gt; 		
+
+			&lt;/ul&gt; 
+		&lt;/td&gt; 
+		
+		
+		
+		
+		
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;100%&quot; height=&quot;250px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+&lt;tbody&gt;&lt;tr&gt;&lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot;&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259019.jhtml&quot;&gt;张任宇：Dynamic Pricing and Inventory Management under Network Externalities&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-29&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259011.jhtml&quot;&gt;吴东军 ：Technology Support and Post-Adoption IT Service Use: Evidence from the Cloud&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+		 &lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;11-18&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xsbg/259000.jhtml&quot;&gt;蒋镇辉：Grab Users’ Attention Through Choice-based Advertising: An Eye-tracking Study&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+			&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;right&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;学术会议&lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/xshy/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;180px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:0px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;&quot;&gt;
+  &lt;tbody&gt;&lt;tr&gt; 
+    &lt;td class=&quot;RightDiv_image&quot;&gt;
+				&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;&lt;img height=&quot;110px&quot; width=&quot;120px&quot; src=&quot;/u/cms/www/201603/18130155wkqk.jpg&quot;&gt;&lt;/a&gt;
+    &lt;/td&gt; 
+    &lt;td class=&quot;RightDiv_headline&quot;&gt;
+			&lt;ul&gt; 
+				&lt;li&gt;
+				&lt;span class=&quot;title&quot;&gt;
+ The 13th International Conference on Service Systems and Service Management				&lt;/span&gt;
+				&lt;/li&gt; 
+				&lt;li&gt; 
+					&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;
+					&lt;strong&gt;
+					June 24 - June 26, 2016 &lt;br&gt;Kunming, China&lt;/strong&gt;
+					
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://mef.kmust.edu.cn/html/ICSSSM/&quot;&gt;详细&amp;gt;&amp;gt;&lt;/a&gt;
+				&lt;/li&gt; 
+			&lt;/ul&gt; 
+		&lt;/td&gt; 
+	&lt;/tr&gt; 
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;100%&quot; height=&quot;250px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot;&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/mostlyom/2016/index.html&quot;&gt;Mostly OM 2016 Workshop [2016-05-27]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/mostlyom/2015/index.html&quot;&gt;International Workshop on Advanced Topics in Operations Management (Mostly OM 2015) [2015-06-12]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+      		&lt;ul&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.scut.edu.cn/icsssm15/&quot;&gt; The 12th International Conference on Service Systems and Service Management [2015-01-19]&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+	&lt;/tr&gt;
+	
+	
+	
+		&lt;tr&gt;
+		&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;left&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;
+					&lt;li&gt;研究动态&lt;/li&gt;
+					&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;160px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+&lt;tbody&gt;&lt;tr&gt;&lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot; style=&quot;height:170px&quot;&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-01&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/257637.jhtml&quot;&gt;中国药品供应链学习社区简介&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;10-09&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200643.jhtml&quot;&gt;2012年中心再获多项国家级研究项目&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;09-12&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200642.jhtml&quot;&gt;空客将与清华大学联手推动“地沟油”等替代燃料研发&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;05-11&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/yjdt/200441.jhtml&quot;&gt;陈剑教授等编著的《适应制运作管理》一书出版&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+  &lt;/td&gt;
+  &lt;/tr&gt;
+
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+			&lt;td width=&quot;348&quot; valign=&quot;top&quot; align=&quot;right&quot;&gt;
+
+&lt;table width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:3px;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td width=&quot;100%&quot; align=&quot;center&quot; class=&quot;RightDiv_title&quot;&gt;		        						
+			&lt;li&gt;通知公告&lt;/li&gt;
+			&lt;li class=&quot;right&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/tzgg/index.jhtml&quot;&gt;&amp;gt;&amp;gt;更多&lt;/a&gt;&lt;/li&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;	
+&lt;table width=&quot;100%&quot; height=&quot;160px&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot; style=&quot;margin-top:0px;margin-bottom:5px; border-left:#dadada 1px solid;border-right:#dadada 1px solid;border-bottom:#dadada 1px solid;&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt; 
+    &lt;td valign=&quot;top&quot; class=&quot;RightDiv_list&quot; style=&quot;height:170px&quot;&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;04-14&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/u/cms/www/201504/140953345960.docx&quot;&gt;2015年全国MBA《生产运作管理》教学和学术研讨会通知 （第一次）&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;04-02&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/tzgg/258305.jhtml&quot;&gt;SMC2015投稿延长至4月15日&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-23&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/zhengwm4/257952.jhtml&quot;&gt;2013-2014学年度郑维敏奖学金获奖名单&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+						&lt;ul&gt;&lt;li class=&quot;list_time&quot;&gt;12-19&lt;/li&gt;&lt;li class=&quot;list_title&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.rccm.tsinghua.edu.cn/zhengwm4/257751.jhtml&quot;&gt;2013-2014学年度郑维敏奖学金获奖名单公示&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/tbody&gt;&lt;/table&gt;	
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table width=&quot;960&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;		&lt;tbody&gt;&lt;tr&gt; &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	  &lt;tr&gt;&lt;td height=&quot;30&quot; background=&quot;/rccm/images/nav_2.gif&quot; align=&quot;center&quot;&gt; 	  &lt;a color=&quot;#02469b&quot;&gt;友情链接：&lt;/a&gt;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.moe.edu.cn/&quot;&gt;中华人民共和国教育部&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.sinoss.net&quot;&gt;高校社科网&lt;/a&gt; &amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;清华大学&lt;/a&gt; &amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                &lt;a target=&quot;_blank&quot; href=&quot;http://www.sem.tsinghua.edu.cn&quot;&gt;清华经管学院&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;     &lt;A href=&quot;http://www.rccm.tsinghua.edu.cn/smc-bj/index.htm&quot; target=_blank&gt;IEEE SMC 北京支部&lt;/A&gt;&amp;nbsp;&lt;FONT size=3&gt;|&lt;/FONT&gt;&amp;nbsp;           &lt;a target=&quot;_blank&quot; href=&quot;http://cnais.sem.tsinghua.edu.cn&quot;&gt;信息系统协会中国分会&lt;/a&gt;&amp;nbsp;&lt;font size=&quot;3&quot;&gt;|&lt;/font&gt;&amp;nbsp;                         &lt;a target=&quot;_blank&quot; href=&quot;http://cjis.sem.tsinghua.edu.cn&quot;&gt;信息系统学报&lt;/a&gt;   	  &lt;/td&gt;&lt;/tr&gt;	  &lt;tr&gt; &lt;td height=&quot;1&quot; background=&quot;/rccm/images/nav_1.gif&quot;&gt;&lt;/td&gt;	&lt;/tr&gt;	  &lt;tr&gt;&lt;td height=&quot;40&quot; bgcolor=&quot;white&quot; align=&quot;center&quot; class=&quot;small&quot;&gt;通信地址：清华大学经济管理学院伟伦楼447（100084）&amp;nbsp;&amp;nbsp;电子邮箱: &lt;a href=&quot;mailto:rccm@mail.tsinghua.edu.cn&quot;&gt;rccm@mail.tsinghua.edu.cn&lt;/a&gt;&amp;nbsp;&amp;nbsp;联系电话：010-62771663&amp;nbsp;&amp;nbsp;传真：010-62784555    
+&lt;br&gt;Copyright @ 2012 清华大学现代管理研究中心 版权所有
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.rccm.tsinghua.edu.cn/?n0UPwx4=aIvZcDx&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The cors_origin plugin got an error while requesting &quot;http://www.rccm.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.rccm.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.rccm.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.rccm.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.rccm.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.rccm.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The xst plugin got an error while requesting &quot;http://www.rccm.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.rccm.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to www.rccm.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve www.rccm.tsinghua.edu.cn</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

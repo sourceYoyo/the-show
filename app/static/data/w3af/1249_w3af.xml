@@ -1,0 +1,4952 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480502911" start-long="Wed Nov 30 05:48:31 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.ampt.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.133"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1249_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[75]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache&quot;.</description>
+        <http-transactions>
+            <http-transaction id="75">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:35 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+
+&lt;html lang=&quot;zh-cmn-Hans&quot;&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+
+    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;/&gt;
+
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;/&gt;
+
+    &lt;meta name=&quot;ljl&quot; content=&quot;ljl,lijinlun@tsinghua.edu.cn&quot;/&gt;
+
+    &lt;title&gt;先进成形制造教育部重点实验室&lt;/title&gt;
+
+
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/css.css&quot;/&gt;  
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon.css&quot;/&gt; 
+
+    &lt;script src=&quot;/sites/js/jq.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+  &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/trunk8.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;/sites/js/banner.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+
+  
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+    
+
+    &lt;!--[if lt IE 9]&gt;
+
+    &lt;script src=&quot;/sites/js/html5.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;!--[if IE 7]&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon-ie7.css&quot;&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;script&gt;
+
+	$(function () {
+
+	$(&quot;.box ul li&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+			$(this).find(&quot;.ls&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		 },
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+			$(this).find(&quot;.ls&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	$(&quot;.box section&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		},
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	})
+
+	&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+
+&lt;header&gt;
+
+	  &lt;!--
+
+	  &lt;section class=&quot;top_bg&quot;&gt;
+
+        &lt;section class=&quot;topmenu&quot;&gt;
+
+            &lt;section class=&quot;wbwx&quot;&gt;
+
+                &lt;img src=&quot;/sites/images/wb_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微博&lt;/a&gt;&lt;img src=&quot;/sites/images/wx_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微信&lt;/a&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;zyw&quot;&gt;
+
+                &lt;a href=&quot;/column/INDEX&quot; class=&quot;cur&quot;&gt;简体中文&lt;/a&gt;  |  &lt;a href=&quot;#&quot;&gt;English&lt;/a&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+--&gt;
+
+    &lt;section class=&quot;tophead&quot;&gt;
+
+        &lt;section class=&quot;logo&quot;&gt;
+
+            &lt;img src=&quot;/sites/images/logo_z.png&quot;&gt;
+
+            &lt;section class=&quot;logo_text&quot;&gt;
+
+                &lt;p class=&quot;cn&quot;&gt;先进成形制造教育部重点实验室&lt;/p&gt;
+
+                &lt;p class=&quot;en&quot;&gt;Key Laboratory for Advanced Materials Processing Technology, Ministry of Education, P.R.China&lt;/p&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+        &lt;section class=&quot;search&quot;&gt;
+
+        	&lt;input type=&quot;text&quot; value=&quot;关键词查找&quot; onfocus=&quot;if(value==defaultValue){value='';this.style.color='#555555'}&quot; onblur=&quot;if(!value){value=defaultValue;this.style.color='#555555'}&quot; class=&quot;sswz&quot;&gt;
+
+            &lt;input type=&quot;submit&quot;  value=&quot; &quot;  onclick=&quot;keysearch()&quot; class=&quot;ssan&quot;&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+&lt;/header&gt;
+
+  &lt;!-- 导航 --&gt;
+
+&lt;nav&gt;
+
+     &lt;script type=&quot;text/javascript&quot;&gt;
+
+     jQuery(function(){
+
+      jQuery('#nav li a[class^=item]').removeClass('cur');
+
+      jQuery('#nav li a.item$columninfo.getCurrentColumnID()').addClass('cur');
+
+     });
+
+     &lt;/script&gt;
+    &lt;ul id=&quot;nav&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/INDEX&quot;  class=&quot;cur&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjsgk&quot;&gt;研究室概况&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysjj_2&quot;&gt;实验室简介&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zyjs&quot;&gt;主任介绍&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xswyh&quot;&gt;学术委员会&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kefx_&quot;&gt;科研方向&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/szh&quot;&gt;数字化&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/qjs&quot;&gt;轻金属&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/kszz&quot;&gt;快速制造&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jqr&quot;&gt;机器人&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zdzb&quot;&gt;重大装备&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjdw&quot;&gt;研究队伍&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/dwgk&quot;&gt;队伍概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zjxz&quot;&gt;专家学者&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/rcpy&quot;&gt;人才培养&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/bsspy&quot;&gt;博士生培养&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/ssspy&quot;&gt;硕士生培养&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kycg&quot;&gt;科研成果&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gk&quot;&gt;概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xslz&quot;&gt;学术论著&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hjxm&quot;&gt;获奖项目&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;专利&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;成果鉴定&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kfyjl&quot;&gt;开放与交流&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gj&quot;&gt;国际&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gn&quot;&gt;国内&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hzyjjg&quot;&gt;合作研究机构&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kyzygx&quot;&gt;科研资源共享&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sypt&quot;&gt;实验平台&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysb&quot;&gt;实验设备&lt;/a&gt;&lt;/li&gt;
+
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yxgl&quot;&gt;运行管理&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gltl&quot;&gt;管理条例&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jjxx&quot;&gt;基金信息&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/wjxz&quot;&gt;文件下载&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zzxm&quot;&gt;资助项目&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/lxwm&quot;&gt;联系我们&lt;/a&gt;
+        &lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/nav&gt;
+
+    &lt;!-- 导航 --&gt;
+
+&lt;article class=&quot;content&quot;&gt;
+
+	&lt;section class=&quot;indexone&quot;&gt;
+
+    	&lt;section class=&quot;one&quot;&gt;
+
+        	&lt;section class=&quot;top&quot;&gt;
+
+            	&lt;!-- 代码 开始 --&gt;
+
+                &lt;section id=&quot;fsD1&quot; class=&quot;focus&quot;&gt;  
+
+                    &lt;section id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+
+                        
+                        
+                        &lt;section class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+
+                            &lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;&lt;img src=&quot;/upload_files/image/1450315430923_06.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+
+                            &lt;span class=&quot;shadow&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;图片新闻/成果图片&lt;/a&gt;&lt;/span&gt;
+
+                        &lt;/section&gt;
+
+                        
+                    &lt;/section&gt;
+
+                    &lt;section class=&quot;fbg&quot;&gt;  
+
+                    &lt;section class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt; 
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;  		
+
+                    &lt;/section&gt;  
+
+                    &lt;/section&gt;  
+
+                    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+
+                    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+
+                &lt;/section&gt;  
+
+                &lt;script type=&quot;text/javascript&quot;&gt;
+
+                    Qfast.add('widgets', { path: &quot;/sites/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+
+                    Qfast(false, 'widgets', function () {
+
+                        K.tabs({
+
+                            id: 'fsD1',   //焦点图包裹id  
+
+                            conId: &quot;D1pic1&quot;,  //** 大图域包裹id  
+
+                            tabId:&quot;D1fBt&quot;,  
+
+                            tabTn:&quot;a&quot;,
+
+                            conCn: '.fcon', //** 大图域配置class       
+
+                            auto: 1,   //自动播放 1或0
+
+                            effect: 'fade',   //效果配置
+
+                            eType: 'click', //** 鼠标事件
+
+                            pageBt:true,//是否有按钮切换页码
+
+                            bns: ['.prev', '.next'],//** 前后按钮配置class                          
+
+                            interval: 3000  //** 停顿时间  
+
+                        }) 
+
+                    })  
+
+                &lt;/script&gt;
+
+                &lt;!-- 代码 结束 --&gt;
+
+                &lt;section class=&quot;tzgg&quot;&gt;
+
+                	&lt;section class=&quot;btgd&quot;&gt;
+
+                    	&lt;h2&gt;通知公告&lt;/h2&gt;&lt;a href=&quot;/column/tzgg&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                	&lt;ul&gt;
+
+                    	
+                    	
+                        &lt;li&gt;&lt;span&gt;12.17&lt;/span&gt;&lt;a href=&quot;/info/tzgg/997&quot; sub-line=&quot;1&quot;&gt;通知公告通知公告通知公告通知公告通知公告通知公告通知公告&lt;/a&gt;&lt;/li&gt;
+
+						
+                    &lt;/ul&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;bottom&quot;&gt;
+
+            	&lt;section class=&quot;bottom_bk&quot;&gt;
+
+                	&lt;section class=&quot;sysjj&quot;&gt;
+
+                    	&lt;span&gt;实验室简介&lt;/span&gt;
+
+                        
+                    	  
+                        &lt;p&gt;&lt;/p&gt;
+
+                        
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indextwo&quot;&gt;
+
+    	&lt;section class=&quot;xwdt&quot;&gt;
+
+        	&lt;section class=&quot;xwdtbt&quot;&gt;信息动态&lt;a href=&quot;/column/xwdt&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;tp&quot;&gt;
+
+          			&lt;ul id=&quot;tmc&quot;&gt;
+
+        						
+                    
+                       
+
+                    
+	                    &lt;li &gt;
+
+	                        &lt;div class=&quot;img-wrapper&quot;&gt;
+
+	                            &lt;img src=&quot;/upload_files/image/1450315379610_05.jpg&quot; alt=&quot;&quot; width=&quot;290&quot; height=&quot;240&quot; border=&quot;0&quot; alt=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot; /&gt;
+
+	                            &lt;span class=&quot;rq&quot;&gt;12.17&lt;/span&gt;
+
+	                            &lt;a class=&quot;link&quot; href=&quot;/info/xwdt/999&quot; sub-line=&quot;1&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;
+
+	                        &lt;/div&gt;
+
+	                    &lt;/li&gt;
+
+                	
+                	
+                       
+
+                    
+                	
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+
+
+            &lt;section class=&quot;rqwz&quot;&gt;
+
+            	&lt;ul&gt;
+
+                      
+                    	
+                    	
+                    
+                    	
+                    &lt;li  class=&quot;even&quot; &gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;/info/xwdt/998&quot; title=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;&lt;span&gt;2015/12/17&lt;/span&gt;&lt;/li&gt;
+
+                    
+                    
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexthree&quot;&gt;
+
+    	&lt;section class=&quot;three&quot;&gt;
+
+        	&lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/xsbgicon.png&quot;&gt;&lt;span class=&quot;z&quot;&gt;开放与交流&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+            	&lt;img src=&quot;/sites/images/xsbgbg.jpg&quot; class=&quot;img&quot;&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt;  
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/kyjzicon.png&quot;&gt;&lt;span class=&quot;l&quot;&gt;科研成果&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/kyjzbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;mr0 wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/sbyqicon.png&quot;&gt;&lt;span class=&quot;h&quot;&gt;实验设备&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/sbyqbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexfour&quot;&gt;
+
+    	&lt;section class=&quot;ljgd&quot;&gt;
+
+        	&lt;section class=&quot;gdwz&quot;&gt;了解更多&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;box&quot;&gt;
+
+                &lt;section&gt;
+
+                    &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/gjjlyhz_bg.jpg);&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;section class=&quot;hs&quot;&gt;
+
+                        &lt;a href=&quot;#&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/sysgk_bg.jpg);&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyxm_bg.jpg);&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kfkt_bg.jpg);&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/fwxz_bg.jpg);&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/rcpy_bg.jpg);&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyzygx_bg.jpg);&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    
+
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+&lt;/article&gt;
+
+
+
+    &lt;!-- 尾部 --&gt;
+
+    &lt;footer&gt;
+
+	        &lt;section class=&quot;footlink&quot;&gt;
+        	&lt;dl&gt;
+            	&lt;dt&gt;友情链接：&lt;/dt&gt;
+                &lt;dd&gt;
+                 
+                &lt;/dd&gt;
+            &lt;/dl&gt;
+            &lt;section class=&quot;bq&quot;&gt;电话查号台：010-62793001   管理员信箱：xinxiban@tsinghua.edu.cn     地址：北京市海淀区清华大学&lt;br&gt;京公网安备 110402430053 号&lt;/section&gt;
+        &lt;/section&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[178]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://ampt.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://ampt.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://www.ampt.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="178">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2799" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=10, max=463" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Tue, 17 Mar 2015 08:41:15 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;4643d5-aef-51177edfb40c0&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 10:48:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;!-- saved from url=(0120)http://oars.tsinghua.edu.cn/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument --&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;֪ͨ&lt;/TITLE&gt;
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;STYLE type=text/css&gt;TD {
+        FONT-SIZE: 9pt; FONT-FAMILY: &quot;\xcb\xce\xcc\xe5&quot;, &quot;Verdana&quot;, &quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;
+}
+.p {
+        FONT-SIZE: 12px; LINE-HEIGHT: 150%
+}
+.p0 {
+        FONT-SIZE: 14px; LINE-HEIGHT: 150%
+}
+.p3 {
+        FONT-SIZE: 14px; TEXT-INDENT: 28px; LINE-HEIGHT: 150%
+}
+.p1 {
+        FONT-SIZE: 14px; FONT-FAMILY: &quot;Verdana&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;
+}
+.p2 {
+        FONT-SIZE: 9pt; LINE-HEIGHT: 18pt
+}
+.p4 {
+        FONT-WEIGHT: bold; FONT-SIZE: 16px
+}
+A:link {
+        FONT-SIZE: 9pt; COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+        FONT-SIZE: 9pt; COLOR: #cc3300; TEXT-DECORATION: underline
+}
+A:visited {
+        FONT-SIZE: 9pt; COLOR: #006666; TEXT-DECORATION: none
+}
+&lt;/STYLE&gt;
+
+&lt;SCRIPT language=JavaScript&gt;
+&lt;!--
+document._domino_target = &quot;_self&quot;;
+function _doClick(v, o, t) {
+  var url=&quot;/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument&amp;Click=&quot; + v;
+  if (o.href != null)
+    o.href = url;
+  else {
+    if (t == null)
+      t = document._domino_target;
+    window.open(url, t);
+  }
+
+}
+// --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;META content=&quot;MSHTML 6.00.2900.5848&quot; name=GENERATOR&gt;&lt;/HEAD&gt;
+&lt;BODY text=#000000 bgColor=#ffffff leftMargin=0 topMargin=0 marginheight=&quot;0&quot;
+marginwidth=&quot;0&quot;&gt;
+&lt;FORM&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD vAlign=top align=middle width=94 background=apperr.files/left2.gif
+    height=342&gt;&lt;BR&gt;&lt;BR&gt;
+     &lt;/TD&gt;
+    &lt;TD vAlign=top width=682 background=apperr.files/pattern.jpg&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD width=6&gt;&lt;IMG height=16 src=&quot;&quot; width=4&gt;&lt;/TD&gt;
+          &lt;TD class=p1&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD class=p3&gt;
+            &lt;P&gt;&lt;BR&gt;Sorry!&lt;TT&gt;
+            &amp;nbsp; &amp;nbsp;&lt;/TT&gt;&lt;BR&gt;&lt;TT&gt;&amp;nbsp;&lt;/TT&gt;
+           &lt;/TT&gt;
+
+
+        &lt;TR&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+        &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+      &lt;TABLE height=18 cellSpacing=0 cellPadding=7 width=&quot;90%&quot;  bgColor=#ccd3e8 border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD align=middle&gt; \xc7廪\xb4\xf3ѧ\xbc\xc6\xcb\xe3\xbb\xfa\xd3\xeb\xd0\xc5Ϣ\xb9\xdc\xc0\xed\xd6\xd0\xd0\xc4
+     &lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/FORM&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[225]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.7.160/" var="None">
+        <description>The contents of http://166.111.7.160/ and http://www.ampt.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="225">
+                <http-request>
+                    <status>GET http://166.111.7.160/ HTTP/1.1</status>
+                    <headers>
+                        <header content="166.111.7.160" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2799" field="content-length"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; path=/" field="set-cookie"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 23 Apr 2015 05:55:24 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;454d24-aef-5145decfbeb00&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 10:48:58 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;!-- saved from url=(0120)http://oars.tsinghua.edu.cn/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument --&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;֪ͨ&lt;/TITLE&gt;
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;STYLE type=text/css&gt;TD {
+        FONT-SIZE: 9pt; FONT-FAMILY: &quot;\xcb\xce\xcc\xe5&quot;, &quot;Verdana&quot;, &quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;
+}
+.p {
+        FONT-SIZE: 12px; LINE-HEIGHT: 150%
+}
+.p0 {
+        FONT-SIZE: 14px; LINE-HEIGHT: 150%
+}
+.p3 {
+        FONT-SIZE: 14px; TEXT-INDENT: 28px; LINE-HEIGHT: 150%
+}
+.p1 {
+        FONT-SIZE: 14px; FONT-FAMILY: &quot;Verdana&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;
+}
+.p2 {
+        FONT-SIZE: 9pt; LINE-HEIGHT: 18pt
+}
+.p4 {
+        FONT-WEIGHT: bold; FONT-SIZE: 16px
+}
+A:link {
+        FONT-SIZE: 9pt; COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+        FONT-SIZE: 9pt; COLOR: #cc3300; TEXT-DECORATION: underline
+}
+A:visited {
+        FONT-SIZE: 9pt; COLOR: #006666; TEXT-DECORATION: none
+}
+&lt;/STYLE&gt;
+
+&lt;SCRIPT language=JavaScript&gt;
+&lt;!--
+document._domino_target = &quot;_self&quot;;
+function _doClick(v, o, t) {
+  var url=&quot;/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument&amp;Click=&quot; + v;
+  if (o.href != null)
+    o.href = url;
+  else {
+    if (t == null)
+      t = document._domino_target;
+    window.open(url, t);
+  }
+
+}
+// --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;META content=&quot;MSHTML 6.00.2900.5848&quot; name=GENERATOR&gt;&lt;/HEAD&gt;
+&lt;BODY text=#000000 bgColor=#ffffff leftMargin=0 topMargin=0 marginheight=&quot;0&quot;
+marginwidth=&quot;0&quot;&gt;
+&lt;FORM&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD vAlign=top align=middle width=94 background=apperr.files/left2.gif
+    height=342&gt;&lt;BR&gt;&lt;BR&gt;
+     &lt;/TD&gt;
+    &lt;TD vAlign=top width=682 background=apperr.files/pattern.jpg&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD width=6&gt;&lt;IMG height=16 src=&quot;&quot; width=4&gt;&lt;/TD&gt;
+          &lt;TD class=p1&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD class=p3&gt;
+            &lt;P&gt;&lt;BR&gt;Sorry!&lt;TT&gt;
+            &amp;nbsp; &amp;nbsp;&lt;/TT&gt;&lt;BR&gt;&lt;TT&gt;&amp;nbsp;&lt;/TT&gt;
+           &lt;/TT&gt;
+
+
+        &lt;TR&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+        &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+      &lt;TABLE height=18 cellSpacing=0 cellPadding=7 width=&quot;90%&quot;  bgColor=#ccd3e8 border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD align=middle&gt; \xc7廪\xb4\xf3ѧ\xbc\xc6\xcb\xe3\xbb\xfa\xd3\xeb\xd0\xc5Ϣ\xb9\xdc\xc0\xed\xd6\xd0\xd0\xc4
+     &lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/FORM&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[218]" method="GET" name="Internal hostname in HTML link" plugin="find_vhosts" severity="Information" url="http://www.ampt.tsinghua.edu.cn/" var="None">
+        <description>The content of &quot;http://www.ampt.tsinghua.edu.cn/&quot; references a non existent domain: &quot;www.ampt.tsinghua.edu.cn&quot;. This can be a broken link, or an internal domain name.</description>
+        <http-transactions>
+            <http-transaction id="218">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:35 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+
+&lt;html lang=&quot;zh-cmn-Hans&quot;&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+
+    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;/&gt;
+
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;/&gt;
+
+    &lt;meta name=&quot;ljl&quot; content=&quot;ljl,lijinlun@tsinghua.edu.cn&quot;/&gt;
+
+    &lt;title&gt;先进成形制造教育部重点实验室&lt;/title&gt;
+
+
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/css.css&quot;/&gt;  
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon.css&quot;/&gt; 
+
+    &lt;script src=&quot;/sites/js/jq.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+  &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/trunk8.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;/sites/js/banner.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+
+  
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+    
+
+    &lt;!--[if lt IE 9]&gt;
+
+    &lt;script src=&quot;/sites/js/html5.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;!--[if IE 7]&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon-ie7.css&quot;&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;script&gt;
+
+	$(function () {
+
+	$(&quot;.box ul li&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+			$(this).find(&quot;.ls&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		 },
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+			$(this).find(&quot;.ls&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	$(&quot;.box section&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		},
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	})
+
+	&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+
+&lt;header&gt;
+
+	  &lt;!--
+
+	  &lt;section class=&quot;top_bg&quot;&gt;
+
+        &lt;section class=&quot;topmenu&quot;&gt;
+
+            &lt;section class=&quot;wbwx&quot;&gt;
+
+                &lt;img src=&quot;/sites/images/wb_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微博&lt;/a&gt;&lt;img src=&quot;/sites/images/wx_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微信&lt;/a&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;zyw&quot;&gt;
+
+                &lt;a href=&quot;/column/INDEX&quot; class=&quot;cur&quot;&gt;简体中文&lt;/a&gt;  |  &lt;a href=&quot;#&quot;&gt;English&lt;/a&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+--&gt;
+
+    &lt;section class=&quot;tophead&quot;&gt;
+
+        &lt;section class=&quot;logo&quot;&gt;
+
+            &lt;img src=&quot;/sites/images/logo_z.png&quot;&gt;
+
+            &lt;section class=&quot;logo_text&quot;&gt;
+
+                &lt;p class=&quot;cn&quot;&gt;先进成形制造教育部重点实验室&lt;/p&gt;
+
+                &lt;p class=&quot;en&quot;&gt;Key Laboratory for Advanced Materials Processing Technology, Ministry of Education, P.R.China&lt;/p&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+        &lt;section class=&quot;search&quot;&gt;
+
+        	&lt;input type=&quot;text&quot; value=&quot;关键词查找&quot; onfocus=&quot;if(value==defaultValue){value='';this.style.color='#555555'}&quot; onblur=&quot;if(!value){value=defaultValue;this.style.color='#555555'}&quot; class=&quot;sswz&quot;&gt;
+
+            &lt;input type=&quot;submit&quot;  value=&quot; &quot;  onclick=&quot;keysearch()&quot; class=&quot;ssan&quot;&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+&lt;/header&gt;
+
+  &lt;!-- 导航 --&gt;
+
+&lt;nav&gt;
+
+     &lt;script type=&quot;text/javascript&quot;&gt;
+
+     jQuery(function(){
+
+      jQuery('#nav li a[class^=item]').removeClass('cur');
+
+      jQuery('#nav li a.item$columninfo.getCurrentColumnID()').addClass('cur');
+
+     });
+
+     &lt;/script&gt;
+    &lt;ul id=&quot;nav&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/INDEX&quot;  class=&quot;cur&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjsgk&quot;&gt;研究室概况&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysjj_2&quot;&gt;实验室简介&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zyjs&quot;&gt;主任介绍&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xswyh&quot;&gt;学术委员会&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kefx_&quot;&gt;科研方向&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/szh&quot;&gt;数字化&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/qjs&quot;&gt;轻金属&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/kszz&quot;&gt;快速制造&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jqr&quot;&gt;机器人&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zdzb&quot;&gt;重大装备&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjdw&quot;&gt;研究队伍&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/dwgk&quot;&gt;队伍概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zjxz&quot;&gt;专家学者&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/rcpy&quot;&gt;人才培养&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/bsspy&quot;&gt;博士生培养&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/ssspy&quot;&gt;硕士生培养&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kycg&quot;&gt;科研成果&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gk&quot;&gt;概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xslz&quot;&gt;学术论著&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hjxm&quot;&gt;获奖项目&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;专利&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;成果鉴定&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kfyjl&quot;&gt;开放与交流&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gj&quot;&gt;国际&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gn&quot;&gt;国内&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hzyjjg&quot;&gt;合作研究机构&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kyzygx&quot;&gt;科研资源共享&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sypt&quot;&gt;实验平台&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysb&quot;&gt;实验设备&lt;/a&gt;&lt;/li&gt;
+
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yxgl&quot;&gt;运行管理&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gltl&quot;&gt;管理条例&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jjxx&quot;&gt;基金信息&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/wjxz&quot;&gt;文件下载&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zzxm&quot;&gt;资助项目&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/lxwm&quot;&gt;联系我们&lt;/a&gt;
+        &lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/nav&gt;
+
+    &lt;!-- 导航 --&gt;
+
+&lt;article class=&quot;content&quot;&gt;
+
+	&lt;section class=&quot;indexone&quot;&gt;
+
+    	&lt;section class=&quot;one&quot;&gt;
+
+        	&lt;section class=&quot;top&quot;&gt;
+
+            	&lt;!-- 代码 开始 --&gt;
+
+                &lt;section id=&quot;fsD1&quot; class=&quot;focus&quot;&gt;  
+
+                    &lt;section id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+
+                        
+                        
+                        &lt;section class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+
+                            &lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;&lt;img src=&quot;/upload_files/image/1450315430923_06.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+
+                            &lt;span class=&quot;shadow&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;图片新闻/成果图片&lt;/a&gt;&lt;/span&gt;
+
+                        &lt;/section&gt;
+
+                        
+                    &lt;/section&gt;
+
+                    &lt;section class=&quot;fbg&quot;&gt;  
+
+                    &lt;section class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt; 
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;  		
+
+                    &lt;/section&gt;  
+
+                    &lt;/section&gt;  
+
+                    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+
+                    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+
+                &lt;/section&gt;  
+
+                &lt;script type=&quot;text/javascript&quot;&gt;
+
+                    Qfast.add('widgets', { path: &quot;/sites/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+
+                    Qfast(false, 'widgets', function () {
+
+                        K.tabs({
+
+                            id: 'fsD1',   //焦点图包裹id  
+
+                            conId: &quot;D1pic1&quot;,  //** 大图域包裹id  
+
+                            tabId:&quot;D1fBt&quot;,  
+
+                            tabTn:&quot;a&quot;,
+
+                            conCn: '.fcon', //** 大图域配置class       
+
+                            auto: 1,   //自动播放 1或0
+
+                            effect: 'fade',   //效果配置
+
+                            eType: 'click', //** 鼠标事件
+
+                            pageBt:true,//是否有按钮切换页码
+
+                            bns: ['.prev', '.next'],//** 前后按钮配置class                          
+
+                            interval: 3000  //** 停顿时间  
+
+                        }) 
+
+                    })  
+
+                &lt;/script&gt;
+
+                &lt;!-- 代码 结束 --&gt;
+
+                &lt;section class=&quot;tzgg&quot;&gt;
+
+                	&lt;section class=&quot;btgd&quot;&gt;
+
+                    	&lt;h2&gt;通知公告&lt;/h2&gt;&lt;a href=&quot;/column/tzgg&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                	&lt;ul&gt;
+
+                    	
+                    	
+                        &lt;li&gt;&lt;span&gt;12.17&lt;/span&gt;&lt;a href=&quot;/info/tzgg/997&quot; sub-line=&quot;1&quot;&gt;通知公告通知公告通知公告通知公告通知公告通知公告通知公告&lt;/a&gt;&lt;/li&gt;
+
+						
+                    &lt;/ul&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;bottom&quot;&gt;
+
+            	&lt;section class=&quot;bottom_bk&quot;&gt;
+
+                	&lt;section class=&quot;sysjj&quot;&gt;
+
+                    	&lt;span&gt;实验室简介&lt;/span&gt;
+
+                        
+                    	  
+                        &lt;p&gt;&lt;/p&gt;
+
+                        
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indextwo&quot;&gt;
+
+    	&lt;section class=&quot;xwdt&quot;&gt;
+
+        	&lt;section class=&quot;xwdtbt&quot;&gt;信息动态&lt;a href=&quot;/column/xwdt&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;tp&quot;&gt;
+
+          			&lt;ul id=&quot;tmc&quot;&gt;
+
+        						
+                    
+                       
+
+                    
+	                    &lt;li &gt;
+
+	                        &lt;div class=&quot;img-wrapper&quot;&gt;
+
+	                            &lt;img src=&quot;/upload_files/image/1450315379610_05.jpg&quot; alt=&quot;&quot; width=&quot;290&quot; height=&quot;240&quot; border=&quot;0&quot; alt=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot; /&gt;
+
+	                            &lt;span class=&quot;rq&quot;&gt;12.17&lt;/span&gt;
+
+	                            &lt;a class=&quot;link&quot; href=&quot;/info/xwdt/999&quot; sub-line=&quot;1&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;
+
+	                        &lt;/div&gt;
+
+	                    &lt;/li&gt;
+
+                	
+                	
+                       
+
+                    
+                	
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+
+
+            &lt;section class=&quot;rqwz&quot;&gt;
+
+            	&lt;ul&gt;
+
+                      
+                    	
+                    	
+                    
+                    	
+                    &lt;li  class=&quot;even&quot; &gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;/info/xwdt/998&quot; title=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;&lt;span&gt;2015/12/17&lt;/span&gt;&lt;/li&gt;
+
+                    
+                    
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexthree&quot;&gt;
+
+    	&lt;section class=&quot;three&quot;&gt;
+
+        	&lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/xsbgicon.png&quot;&gt;&lt;span class=&quot;z&quot;&gt;开放与交流&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+            	&lt;img src=&quot;/sites/images/xsbgbg.jpg&quot; class=&quot;img&quot;&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt;  
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/kyjzicon.png&quot;&gt;&lt;span class=&quot;l&quot;&gt;科研成果&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/kyjzbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;mr0 wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/sbyqicon.png&quot;&gt;&lt;span class=&quot;h&quot;&gt;实验设备&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/sbyqbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexfour&quot;&gt;
+
+    	&lt;section class=&quot;ljgd&quot;&gt;
+
+        	&lt;section class=&quot;gdwz&quot;&gt;了解更多&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;box&quot;&gt;
+
+                &lt;section&gt;
+
+                    &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/gjjlyhz_bg.jpg);&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;section class=&quot;hs&quot;&gt;
+
+                        &lt;a href=&quot;#&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/sysgk_bg.jpg);&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyxm_bg.jpg);&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kfkt_bg.jpg);&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/fwxz_bg.jpg);&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/rcpy_bg.jpg);&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyzygx_bg.jpg);&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    
+
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+&lt;/article&gt;
+
+
+
+    &lt;!-- 尾部 --&gt;
+
+    &lt;footer&gt;
+
+	        &lt;section class=&quot;footlink&quot;&gt;
+        	&lt;dl&gt;
+            	&lt;dt&gt;友情链接：&lt;/dt&gt;
+                &lt;dd&gt;
+                 
+                &lt;/dd&gt;
+            &lt;/dl&gt;
+            &lt;section class=&quot;bq&quot;&gt;电话查号台：010-62793001   管理员信箱：xinxiban@tsinghua.edu.cn     地址：北京市海淀区清华大学&lt;br&gt;京公网安备 110402430053 号&lt;/section&gt;
+        &lt;/section&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[217]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://www.ampt.tsinghua.edu.cn/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;private.tsinghua.edu.cn&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;private.tsinghua.edu.cn&quot; to the IP address of &quot;www.ampt.tsinghua.edu.cn&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[35, 176, 215, 221, 223, 224, 226, 234, 241]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://www.ampt.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://www.ampt.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: *, CHECKOUT, CONNECT, GET, HEAD, LABEL, POST, UNCHECKOUT</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="35">
+                <http-request>
+                    <status>OPTIONS http://www.ampt.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 OPTIONS not supported</status>
+                    <headers>
+                        <header content="198" field="content-length"/>
+                        <header content="timeout=10, max=498" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:40 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 OPTIONS not supported&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;405 OPTIONS not supported&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="176">
+                <http-request>
+                    <status>HEAD http://www.ampt.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:48:41 GMT" field="date"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                        <header content="timeout=10, max=464" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="215">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:43 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+
+&lt;html lang=&quot;zh-cmn-Hans&quot;&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+
+    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;/&gt;
+
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;/&gt;
+
+    &lt;meta name=&quot;ljl&quot; content=&quot;ljl,lijinlun@tsinghua.edu.cn&quot;/&gt;
+
+    &lt;title&gt;先进成形制造教育部重点实验室&lt;/title&gt;
+
+
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/css.css&quot;/&gt;  
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon.css&quot;/&gt; 
+
+    &lt;script src=&quot;/sites/js/jq.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+  &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/trunk8.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;/sites/js/banner.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+
+  
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+    
+
+    &lt;!--[if lt IE 9]&gt;
+
+    &lt;script src=&quot;/sites/js/html5.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;!--[if IE 7]&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon-ie7.css&quot;&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;script&gt;
+
+	$(function () {
+
+	$(&quot;.box ul li&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+			$(this).find(&quot;.ls&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		 },
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+			$(this).find(&quot;.ls&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	$(&quot;.box section&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		},
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	})
+
+	&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+
+&lt;header&gt;
+
+	  &lt;!--
+
+	  &lt;section class=&quot;top_bg&quot;&gt;
+
+        &lt;section class=&quot;topmenu&quot;&gt;
+
+            &lt;section class=&quot;wbwx&quot;&gt;
+
+                &lt;img src=&quot;/sites/images/wb_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微博&lt;/a&gt;&lt;img src=&quot;/sites/images/wx_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微信&lt;/a&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;zyw&quot;&gt;
+
+                &lt;a href=&quot;/column/INDEX&quot; class=&quot;cur&quot;&gt;简体中文&lt;/a&gt;  |  &lt;a href=&quot;#&quot;&gt;English&lt;/a&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+--&gt;
+
+    &lt;section class=&quot;tophead&quot;&gt;
+
+        &lt;section class=&quot;logo&quot;&gt;
+
+            &lt;img src=&quot;/sites/images/logo_z.png&quot;&gt;
+
+            &lt;section class=&quot;logo_text&quot;&gt;
+
+                &lt;p class=&quot;cn&quot;&gt;先进成形制造教育部重点实验室&lt;/p&gt;
+
+                &lt;p class=&quot;en&quot;&gt;Key Laboratory for Advanced Materials Processing Technology, Ministry of Education, P.R.China&lt;/p&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+        &lt;section class=&quot;search&quot;&gt;
+
+        	&lt;input type=&quot;text&quot; value=&quot;关键词查找&quot; onfocus=&quot;if(value==defaultValue){value='';this.style.color='#555555'}&quot; onblur=&quot;if(!value){value=defaultValue;this.style.color='#555555'}&quot; class=&quot;sswz&quot;&gt;
+
+            &lt;input type=&quot;submit&quot;  value=&quot; &quot;  onclick=&quot;keysearch()&quot; class=&quot;ssan&quot;&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+&lt;/header&gt;
+
+  &lt;!-- 导航 --&gt;
+
+&lt;nav&gt;
+
+     &lt;script type=&quot;text/javascript&quot;&gt;
+
+     jQuery(function(){
+
+      jQuery('#nav li a[class^=item]').removeClass('cur');
+
+      jQuery('#nav li a.item$columninfo.getCurrentColumnID()').addClass('cur');
+
+     });
+
+     &lt;/script&gt;
+    &lt;ul id=&quot;nav&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/INDEX&quot;  class=&quot;cur&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjsgk&quot;&gt;研究室概况&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysjj_2&quot;&gt;实验室简介&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zyjs&quot;&gt;主任介绍&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xswyh&quot;&gt;学术委员会&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kefx_&quot;&gt;科研方向&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/szh&quot;&gt;数字化&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/qjs&quot;&gt;轻金属&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/kszz&quot;&gt;快速制造&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jqr&quot;&gt;机器人&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zdzb&quot;&gt;重大装备&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjdw&quot;&gt;研究队伍&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/dwgk&quot;&gt;队伍概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zjxz&quot;&gt;专家学者&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/rcpy&quot;&gt;人才培养&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/bsspy&quot;&gt;博士生培养&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/ssspy&quot;&gt;硕士生培养&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kycg&quot;&gt;科研成果&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gk&quot;&gt;概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xslz&quot;&gt;学术论著&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hjxm&quot;&gt;获奖项目&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;专利&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;成果鉴定&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kfyjl&quot;&gt;开放与交流&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gj&quot;&gt;国际&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gn&quot;&gt;国内&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hzyjjg&quot;&gt;合作研究机构&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kyzygx&quot;&gt;科研资源共享&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sypt&quot;&gt;实验平台&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysb&quot;&gt;实验设备&lt;/a&gt;&lt;/li&gt;
+
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yxgl&quot;&gt;运行管理&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gltl&quot;&gt;管理条例&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jjxx&quot;&gt;基金信息&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/wjxz&quot;&gt;文件下载&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zzxm&quot;&gt;资助项目&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/lxwm&quot;&gt;联系我们&lt;/a&gt;
+        &lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/nav&gt;
+
+    &lt;!-- 导航 --&gt;
+
+&lt;article class=&quot;content&quot;&gt;
+
+	&lt;section class=&quot;indexone&quot;&gt;
+
+    	&lt;section class=&quot;one&quot;&gt;
+
+        	&lt;section class=&quot;top&quot;&gt;
+
+            	&lt;!-- 代码 开始 --&gt;
+
+                &lt;section id=&quot;fsD1&quot; class=&quot;focus&quot;&gt;  
+
+                    &lt;section id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+
+                        
+                        
+                        &lt;section class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+
+                            &lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;&lt;img src=&quot;/upload_files/image/1450315430923_06.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+
+                            &lt;span class=&quot;shadow&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;图片新闻/成果图片&lt;/a&gt;&lt;/span&gt;
+
+                        &lt;/section&gt;
+
+                        
+                    &lt;/section&gt;
+
+                    &lt;section class=&quot;fbg&quot;&gt;  
+
+                    &lt;section class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt; 
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;  		
+
+                    &lt;/section&gt;  
+
+                    &lt;/section&gt;  
+
+                    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+
+                    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+
+                &lt;/section&gt;  
+
+                &lt;script type=&quot;text/javascript&quot;&gt;
+
+                    Qfast.add('widgets', { path: &quot;/sites/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+
+                    Qfast(false, 'widgets', function () {
+
+                        K.tabs({
+
+                            id: 'fsD1',   //焦点图包裹id  
+
+                            conId: &quot;D1pic1&quot;,  //** 大图域包裹id  
+
+                            tabId:&quot;D1fBt&quot;,  
+
+                            tabTn:&quot;a&quot;,
+
+                            conCn: '.fcon', //** 大图域配置class       
+
+                            auto: 1,   //自动播放 1或0
+
+                            effect: 'fade',   //效果配置
+
+                            eType: 'click', //** 鼠标事件
+
+                            pageBt:true,//是否有按钮切换页码
+
+                            bns: ['.prev', '.next'],//** 前后按钮配置class                          
+
+                            interval: 3000  //** 停顿时间  
+
+                        }) 
+
+                    })  
+
+                &lt;/script&gt;
+
+                &lt;!-- 代码 结束 --&gt;
+
+                &lt;section class=&quot;tzgg&quot;&gt;
+
+                	&lt;section class=&quot;btgd&quot;&gt;
+
+                    	&lt;h2&gt;通知公告&lt;/h2&gt;&lt;a href=&quot;/column/tzgg&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                	&lt;ul&gt;
+
+                    	
+                    	
+                        &lt;li&gt;&lt;span&gt;12.17&lt;/span&gt;&lt;a href=&quot;/info/tzgg/997&quot; sub-line=&quot;1&quot;&gt;通知公告通知公告通知公告通知公告通知公告通知公告通知公告&lt;/a&gt;&lt;/li&gt;
+
+						
+                    &lt;/ul&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;bottom&quot;&gt;
+
+            	&lt;section class=&quot;bottom_bk&quot;&gt;
+
+                	&lt;section class=&quot;sysjj&quot;&gt;
+
+                    	&lt;span&gt;实验室简介&lt;/span&gt;
+
+                        
+                    	  
+                        &lt;p&gt;&lt;/p&gt;
+
+                        
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indextwo&quot;&gt;
+
+    	&lt;section class=&quot;xwdt&quot;&gt;
+
+        	&lt;section class=&quot;xwdtbt&quot;&gt;信息动态&lt;a href=&quot;/column/xwdt&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;tp&quot;&gt;
+
+          			&lt;ul id=&quot;tmc&quot;&gt;
+
+        						
+                    
+                       
+
+                    
+	                    &lt;li &gt;
+
+	                        &lt;div class=&quot;img-wrapper&quot;&gt;
+
+	                            &lt;img src=&quot;/upload_files/image/1450315379610_05.jpg&quot; alt=&quot;&quot; width=&quot;290&quot; height=&quot;240&quot; border=&quot;0&quot; alt=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot; /&gt;
+
+	                            &lt;span class=&quot;rq&quot;&gt;12.17&lt;/span&gt;
+
+	                            &lt;a class=&quot;link&quot; href=&quot;/info/xwdt/999&quot; sub-line=&quot;1&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;
+
+	                        &lt;/div&gt;
+
+	                    &lt;/li&gt;
+
+                	
+                	
+                       
+
+                    
+                	
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+
+
+            &lt;section class=&quot;rqwz&quot;&gt;
+
+            	&lt;ul&gt;
+
+                      
+                    	
+                    	
+                    
+                    	
+                    &lt;li  class=&quot;even&quot; &gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;/info/xwdt/998&quot; title=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;&lt;span&gt;2015/12/17&lt;/span&gt;&lt;/li&gt;
+
+                    
+                    
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexthree&quot;&gt;
+
+    	&lt;section class=&quot;three&quot;&gt;
+
+        	&lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/xsbgicon.png&quot;&gt;&lt;span class=&quot;z&quot;&gt;开放与交流&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+            	&lt;img src=&quot;/sites/images/xsbgbg.jpg&quot; class=&quot;img&quot;&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt;  
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/kyjzicon.png&quot;&gt;&lt;span class=&quot;l&quot;&gt;科研成果&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/kyjzbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;mr0 wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/sbyqicon.png&quot;&gt;&lt;span class=&quot;h&quot;&gt;实验设备&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/sbyqbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexfour&quot;&gt;
+
+    	&lt;section class=&quot;ljgd&quot;&gt;
+
+        	&lt;section class=&quot;gdwz&quot;&gt;了解更多&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;box&quot;&gt;
+
+                &lt;section&gt;
+
+                    &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/gjjlyhz_bg.jpg);&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;section class=&quot;hs&quot;&gt;
+
+                        &lt;a href=&quot;#&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/sysgk_bg.jpg);&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyxm_bg.jpg);&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kfkt_bg.jpg);&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/fwxz_bg.jpg);&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/rcpy_bg.jpg);&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyzygx_bg.jpg);&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    
+
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+&lt;/article&gt;
+
+
+
+    &lt;!-- 尾部 --&gt;
+
+    &lt;footer&gt;
+
+	        &lt;section class=&quot;footlink&quot;&gt;
+        	&lt;dl&gt;
+            	&lt;dt&gt;友情链接：&lt;/dt&gt;
+                &lt;dd&gt;
+                 
+                &lt;/dd&gt;
+            &lt;/dl&gt;
+            &lt;section class=&quot;bq&quot;&gt;电话查号台：010-62793001   管理员信箱：xinxiban@tsinghua.edu.cn     地址：北京市海淀区清华大学&lt;br&gt;京公网安备 110402430053 号&lt;/section&gt;
+        &lt;/section&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="241">
+                <http-request>
+                    <status>POST http://www.ampt.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:49:12 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+
+&lt;html lang=&quot;zh-cmn-Hans&quot;&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+
+    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;/&gt;
+
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;/&gt;
+
+    &lt;meta name=&quot;ljl&quot; content=&quot;ljl,lijinlun@tsinghua.edu.cn&quot;/&gt;
+
+    &lt;title&gt;先进成形制造教育部重点实验室&lt;/title&gt;
+
+
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/css.css&quot;/&gt;  
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon.css&quot;/&gt; 
+
+    &lt;script src=&quot;/sites/js/jq.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+  &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/trunk8.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;/sites/js/banner.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+
+  
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+    
+
+    &lt;!--[if lt IE 9]&gt;
+
+    &lt;script src=&quot;/sites/js/html5.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;!--[if IE 7]&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon-ie7.css&quot;&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;script&gt;
+
+	$(function () {
+
+	$(&quot;.box ul li&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+			$(this).find(&quot;.ls&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		 },
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+			$(this).find(&quot;.ls&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	$(&quot;.box section&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		},
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	})
+
+	&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+
+&lt;header&gt;
+
+	  &lt;!--
+
+	  &lt;section class=&quot;top_bg&quot;&gt;
+
+        &lt;section class=&quot;topmenu&quot;&gt;
+
+            &lt;section class=&quot;wbwx&quot;&gt;
+
+                &lt;img src=&quot;/sites/images/wb_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微博&lt;/a&gt;&lt;img src=&quot;/sites/images/wx_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微信&lt;/a&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;zyw&quot;&gt;
+
+                &lt;a href=&quot;/column/INDEX&quot; class=&quot;cur&quot;&gt;简体中文&lt;/a&gt;  |  &lt;a href=&quot;#&quot;&gt;English&lt;/a&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+--&gt;
+
+    &lt;section class=&quot;tophead&quot;&gt;
+
+        &lt;section class=&quot;logo&quot;&gt;
+
+            &lt;img src=&quot;/sites/images/logo_z.png&quot;&gt;
+
+            &lt;section class=&quot;logo_text&quot;&gt;
+
+                &lt;p class=&quot;cn&quot;&gt;先进成形制造教育部重点实验室&lt;/p&gt;
+
+                &lt;p class=&quot;en&quot;&gt;Key Laboratory for Advanced Materials Processing Technology, Ministry of Education, P.R.China&lt;/p&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+        &lt;section class=&quot;search&quot;&gt;
+
+        	&lt;input type=&quot;text&quot; value=&quot;关键词查找&quot; onfocus=&quot;if(value==defaultValue){value='';this.style.color='#555555'}&quot; onblur=&quot;if(!value){value=defaultValue;this.style.color='#555555'}&quot; class=&quot;sswz&quot;&gt;
+
+            &lt;input type=&quot;submit&quot;  value=&quot; &quot;  onclick=&quot;keysearch()&quot; class=&quot;ssan&quot;&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+&lt;/header&gt;
+
+  &lt;!-- 导航 --&gt;
+
+&lt;nav&gt;
+
+     &lt;script type=&quot;text/javascript&quot;&gt;
+
+     jQuery(function(){
+
+      jQuery('#nav li a[class^=item]').removeClass('cur');
+
+      jQuery('#nav li a.item$columninfo.getCurrentColumnID()').addClass('cur');
+
+     });
+
+     &lt;/script&gt;
+    &lt;ul id=&quot;nav&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/INDEX&quot;  class=&quot;cur&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjsgk&quot;&gt;研究室概况&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysjj_2&quot;&gt;实验室简介&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zyjs&quot;&gt;主任介绍&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xswyh&quot;&gt;学术委员会&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kefx_&quot;&gt;科研方向&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/szh&quot;&gt;数字化&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/qjs&quot;&gt;轻金属&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/kszz&quot;&gt;快速制造&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jqr&quot;&gt;机器人&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zdzb&quot;&gt;重大装备&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjdw&quot;&gt;研究队伍&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/dwgk&quot;&gt;队伍概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zjxz&quot;&gt;专家学者&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/rcpy&quot;&gt;人才培养&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/bsspy&quot;&gt;博士生培养&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/ssspy&quot;&gt;硕士生培养&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kycg&quot;&gt;科研成果&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gk&quot;&gt;概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xslz&quot;&gt;学术论著&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hjxm&quot;&gt;获奖项目&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;专利&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;成果鉴定&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kfyjl&quot;&gt;开放与交流&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gj&quot;&gt;国际&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gn&quot;&gt;国内&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hzyjjg&quot;&gt;合作研究机构&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kyzygx&quot;&gt;科研资源共享&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sypt&quot;&gt;实验平台&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysb&quot;&gt;实验设备&lt;/a&gt;&lt;/li&gt;
+
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yxgl&quot;&gt;运行管理&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gltl&quot;&gt;管理条例&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jjxx&quot;&gt;基金信息&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/wjxz&quot;&gt;文件下载&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zzxm&quot;&gt;资助项目&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/lxwm&quot;&gt;联系我们&lt;/a&gt;
+        &lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/nav&gt;
+
+    &lt;!-- 导航 --&gt;
+
+&lt;article class=&quot;content&quot;&gt;
+
+	&lt;section class=&quot;indexone&quot;&gt;
+
+    	&lt;section class=&quot;one&quot;&gt;
+
+        	&lt;section class=&quot;top&quot;&gt;
+
+            	&lt;!-- 代码 开始 --&gt;
+
+                &lt;section id=&quot;fsD1&quot; class=&quot;focus&quot;&gt;  
+
+                    &lt;section id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+
+                        
+                        
+                        &lt;section class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+
+                            &lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;&lt;img src=&quot;/upload_files/image/1450315430923_06.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+
+                            &lt;span class=&quot;shadow&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;图片新闻/成果图片&lt;/a&gt;&lt;/span&gt;
+
+                        &lt;/section&gt;
+
+                        
+                    &lt;/section&gt;
+
+                    &lt;section class=&quot;fbg&quot;&gt;  
+
+                    &lt;section class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt; 
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;  		
+
+                    &lt;/section&gt;  
+
+                    &lt;/section&gt;  
+
+                    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+
+                    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+
+                &lt;/section&gt;  
+
+                &lt;script type=&quot;text/javascript&quot;&gt;
+
+                    Qfast.add('widgets', { path: &quot;/sites/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+
+                    Qfast(false, 'widgets', function () {
+
+                        K.tabs({
+
+                            id: 'fsD1',   //焦点图包裹id  
+
+                            conId: &quot;D1pic1&quot;,  //** 大图域包裹id  
+
+                            tabId:&quot;D1fBt&quot;,  
+
+                            tabTn:&quot;a&quot;,
+
+                            conCn: '.fcon', //** 大图域配置class       
+
+                            auto: 1,   //自动播放 1或0
+
+                            effect: 'fade',   //效果配置
+
+                            eType: 'click', //** 鼠标事件
+
+                            pageBt:true,//是否有按钮切换页码
+
+                            bns: ['.prev', '.next'],//** 前后按钮配置class                          
+
+                            interval: 3000  //** 停顿时间  
+
+                        }) 
+
+                    })  
+
+                &lt;/script&gt;
+
+                &lt;!-- 代码 结束 --&gt;
+
+                &lt;section class=&quot;tzgg&quot;&gt;
+
+                	&lt;section class=&quot;btgd&quot;&gt;
+
+                    	&lt;h2&gt;通知公告&lt;/h2&gt;&lt;a href=&quot;/column/tzgg&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                	&lt;ul&gt;
+
+                    	
+                    	
+                        &lt;li&gt;&lt;span&gt;12.17&lt;/span&gt;&lt;a href=&quot;/info/tzgg/997&quot; sub-line=&quot;1&quot;&gt;通知公告通知公告通知公告通知公告通知公告通知公告通知公告&lt;/a&gt;&lt;/li&gt;
+
+						
+                    &lt;/ul&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;bottom&quot;&gt;
+
+            	&lt;section class=&quot;bottom_bk&quot;&gt;
+
+                	&lt;section class=&quot;sysjj&quot;&gt;
+
+                    	&lt;span&gt;实验室简介&lt;/span&gt;
+
+                        
+                    	  
+                        &lt;p&gt;&lt;/p&gt;
+
+                        
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indextwo&quot;&gt;
+
+    	&lt;section class=&quot;xwdt&quot;&gt;
+
+        	&lt;section class=&quot;xwdtbt&quot;&gt;信息动态&lt;a href=&quot;/column/xwdt&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;tp&quot;&gt;
+
+          			&lt;ul id=&quot;tmc&quot;&gt;
+
+        						
+                    
+                       
+
+                    
+	                    &lt;li &gt;
+
+	                        &lt;div class=&quot;img-wrapper&quot;&gt;
+
+	                            &lt;img src=&quot;/upload_files/image/1450315379610_05.jpg&quot; alt=&quot;&quot; width=&quot;290&quot; height=&quot;240&quot; border=&quot;0&quot; alt=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot; /&gt;
+
+	                            &lt;span class=&quot;rq&quot;&gt;12.17&lt;/span&gt;
+
+	                            &lt;a class=&quot;link&quot; href=&quot;/info/xwdt/999&quot; sub-line=&quot;1&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;
+
+	                        &lt;/div&gt;
+
+	                    &lt;/li&gt;
+
+                	
+                	
+                       
+
+                    
+                	
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+
+
+            &lt;section class=&quot;rqwz&quot;&gt;
+
+            	&lt;ul&gt;
+
+                      
+                    	
+                    	
+                    
+                    	
+                    &lt;li  class=&quot;even&quot; &gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;/info/xwdt/998&quot; title=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;&lt;span&gt;2015/12/17&lt;/span&gt;&lt;/li&gt;
+
+                    
+                    
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexthree&quot;&gt;
+
+    	&lt;section class=&quot;three&quot;&gt;
+
+        	&lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/xsbgicon.png&quot;&gt;&lt;span class=&quot;z&quot;&gt;开放与交流&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+            	&lt;img src=&quot;/sites/images/xsbgbg.jpg&quot; class=&quot;img&quot;&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt;  
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/kyjzicon.png&quot;&gt;&lt;span class=&quot;l&quot;&gt;科研成果&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/kyjzbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;mr0 wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/sbyqicon.png&quot;&gt;&lt;span class=&quot;h&quot;&gt;实验设备&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/sbyqbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexfour&quot;&gt;
+
+    	&lt;section class=&quot;ljgd&quot;&gt;
+
+        	&lt;section class=&quot;gdwz&quot;&gt;了解更多&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;box&quot;&gt;
+
+                &lt;section&gt;
+
+                    &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/gjjlyhz_bg.jpg);&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;section class=&quot;hs&quot;&gt;
+
+                        &lt;a href=&quot;#&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/sysgk_bg.jpg);&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyxm_bg.jpg);&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kfkt_bg.jpg);&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/fwxz_bg.jpg);&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/rcpy_bg.jpg);&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyzygx_bg.jpg);&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    
+
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+&lt;/article&gt;
+
+
+
+    &lt;!-- 尾部 --&gt;
+
+    &lt;footer&gt;
+
+	        &lt;section class=&quot;footlink&quot;&gt;
+        	&lt;dl&gt;
+            	&lt;dt&gt;友情链接：&lt;/dt&gt;
+                &lt;dd&gt;
+                 
+                &lt;/dd&gt;
+            &lt;/dl&gt;
+            &lt;section class=&quot;bq&quot;&gt;电话查号台：010-62793001   管理员信箱：xinxiban@tsinghua.edu.cn     地址：北京市海淀区清华大学&lt;br&gt;京公网安备 110402430053 号&lt;/section&gt;
+        &lt;/section&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="HTML comment contains HTML code" plugin="html_comments" severity="Information" url="http://www.ampt.tsinghua.edu.cn/" var="None">
+        <description>A comment with the string &quot;&lt;section class=&quot;top_bg&quot;&gt;        &lt;section&quot; was found in: &quot;http://www.ampt.tsinghua.edu.cn/&quot;. This could be interesting.</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:35 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+
+&lt;html lang=&quot;zh-cmn-Hans&quot;&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+
+    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;/&gt;
+
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;/&gt;
+
+    &lt;meta name=&quot;ljl&quot; content=&quot;ljl,lijinlun@tsinghua.edu.cn&quot;/&gt;
+
+    &lt;title&gt;先进成形制造教育部重点实验室&lt;/title&gt;
+
+
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/css.css&quot;/&gt;  
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon.css&quot;/&gt; 
+
+    &lt;script src=&quot;/sites/js/jq.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+  &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/trunk8.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;/sites/js/banner.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+
+  
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+    
+
+    &lt;!--[if lt IE 9]&gt;
+
+    &lt;script src=&quot;/sites/js/html5.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;!--[if IE 7]&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon-ie7.css&quot;&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;script&gt;
+
+	$(function () {
+
+	$(&quot;.box ul li&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+			$(this).find(&quot;.ls&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		 },
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+			$(this).find(&quot;.ls&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	$(&quot;.box section&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		},
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	})
+
+	&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+
+&lt;header&gt;
+
+	  &lt;!--
+
+	  &lt;section class=&quot;top_bg&quot;&gt;
+
+        &lt;section class=&quot;topmenu&quot;&gt;
+
+            &lt;section class=&quot;wbwx&quot;&gt;
+
+                &lt;img src=&quot;/sites/images/wb_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微博&lt;/a&gt;&lt;img src=&quot;/sites/images/wx_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微信&lt;/a&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;zyw&quot;&gt;
+
+                &lt;a href=&quot;/column/INDEX&quot; class=&quot;cur&quot;&gt;简体中文&lt;/a&gt;  |  &lt;a href=&quot;#&quot;&gt;English&lt;/a&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+--&gt;
+
+    &lt;section class=&quot;tophead&quot;&gt;
+
+        &lt;section class=&quot;logo&quot;&gt;
+
+            &lt;img src=&quot;/sites/images/logo_z.png&quot;&gt;
+
+            &lt;section class=&quot;logo_text&quot;&gt;
+
+                &lt;p class=&quot;cn&quot;&gt;先进成形制造教育部重点实验室&lt;/p&gt;
+
+                &lt;p class=&quot;en&quot;&gt;Key Laboratory for Advanced Materials Processing Technology, Ministry of Education, P.R.China&lt;/p&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+        &lt;section class=&quot;search&quot;&gt;
+
+        	&lt;input type=&quot;text&quot; value=&quot;关键词查找&quot; onfocus=&quot;if(value==defaultValue){value='';this.style.color='#555555'}&quot; onblur=&quot;if(!value){value=defaultValue;this.style.color='#555555'}&quot; class=&quot;sswz&quot;&gt;
+
+            &lt;input type=&quot;submit&quot;  value=&quot; &quot;  onclick=&quot;keysearch()&quot; class=&quot;ssan&quot;&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+&lt;/header&gt;
+
+  &lt;!-- 导航 --&gt;
+
+&lt;nav&gt;
+
+     &lt;script type=&quot;text/javascript&quot;&gt;
+
+     jQuery(function(){
+
+      jQuery('#nav li a[class^=item]').removeClass('cur');
+
+      jQuery('#nav li a.item$columninfo.getCurrentColumnID()').addClass('cur');
+
+     });
+
+     &lt;/script&gt;
+    &lt;ul id=&quot;nav&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/INDEX&quot;  class=&quot;cur&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjsgk&quot;&gt;研究室概况&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysjj_2&quot;&gt;实验室简介&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zyjs&quot;&gt;主任介绍&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xswyh&quot;&gt;学术委员会&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kefx_&quot;&gt;科研方向&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/szh&quot;&gt;数字化&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/qjs&quot;&gt;轻金属&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/kszz&quot;&gt;快速制造&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jqr&quot;&gt;机器人&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zdzb&quot;&gt;重大装备&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjdw&quot;&gt;研究队伍&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/dwgk&quot;&gt;队伍概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zjxz&quot;&gt;专家学者&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/rcpy&quot;&gt;人才培养&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/bsspy&quot;&gt;博士生培养&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/ssspy&quot;&gt;硕士生培养&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kycg&quot;&gt;科研成果&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gk&quot;&gt;概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xslz&quot;&gt;学术论著&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hjxm&quot;&gt;获奖项目&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;专利&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;成果鉴定&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kfyjl&quot;&gt;开放与交流&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gj&quot;&gt;国际&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gn&quot;&gt;国内&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hzyjjg&quot;&gt;合作研究机构&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kyzygx&quot;&gt;科研资源共享&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sypt&quot;&gt;实验平台&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysb&quot;&gt;实验设备&lt;/a&gt;&lt;/li&gt;
+
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yxgl&quot;&gt;运行管理&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gltl&quot;&gt;管理条例&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jjxx&quot;&gt;基金信息&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/wjxz&quot;&gt;文件下载&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zzxm&quot;&gt;资助项目&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/lxwm&quot;&gt;联系我们&lt;/a&gt;
+        &lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/nav&gt;
+
+    &lt;!-- 导航 --&gt;
+
+&lt;article class=&quot;content&quot;&gt;
+
+	&lt;section class=&quot;indexone&quot;&gt;
+
+    	&lt;section class=&quot;one&quot;&gt;
+
+        	&lt;section class=&quot;top&quot;&gt;
+
+            	&lt;!-- 代码 开始 --&gt;
+
+                &lt;section id=&quot;fsD1&quot; class=&quot;focus&quot;&gt;  
+
+                    &lt;section id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+
+                        
+                        
+                        &lt;section class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+
+                            &lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;&lt;img src=&quot;/upload_files/image/1450315430923_06.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+
+                            &lt;span class=&quot;shadow&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;图片新闻/成果图片&lt;/a&gt;&lt;/span&gt;
+
+                        &lt;/section&gt;
+
+                        
+                    &lt;/section&gt;
+
+                    &lt;section class=&quot;fbg&quot;&gt;  
+
+                    &lt;section class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt; 
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;  		
+
+                    &lt;/section&gt;  
+
+                    &lt;/section&gt;  
+
+                    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+
+                    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+
+                &lt;/section&gt;  
+
+                &lt;script type=&quot;text/javascript&quot;&gt;
+
+                    Qfast.add('widgets', { path: &quot;/sites/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+
+                    Qfast(false, 'widgets', function () {
+
+                        K.tabs({
+
+                            id: 'fsD1',   //焦点图包裹id  
+
+                            conId: &quot;D1pic1&quot;,  //** 大图域包裹id  
+
+                            tabId:&quot;D1fBt&quot;,  
+
+                            tabTn:&quot;a&quot;,
+
+                            conCn: '.fcon', //** 大图域配置class       
+
+                            auto: 1,   //自动播放 1或0
+
+                            effect: 'fade',   //效果配置
+
+                            eType: 'click', //** 鼠标事件
+
+                            pageBt:true,//是否有按钮切换页码
+
+                            bns: ['.prev', '.next'],//** 前后按钮配置class                          
+
+                            interval: 3000  //** 停顿时间  
+
+                        }) 
+
+                    })  
+
+                &lt;/script&gt;
+
+                &lt;!-- 代码 结束 --&gt;
+
+                &lt;section class=&quot;tzgg&quot;&gt;
+
+                	&lt;section class=&quot;btgd&quot;&gt;
+
+                    	&lt;h2&gt;通知公告&lt;/h2&gt;&lt;a href=&quot;/column/tzgg&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                	&lt;ul&gt;
+
+                    	
+                    	
+                        &lt;li&gt;&lt;span&gt;12.17&lt;/span&gt;&lt;a href=&quot;/info/tzgg/997&quot; sub-line=&quot;1&quot;&gt;通知公告通知公告通知公告通知公告通知公告通知公告通知公告&lt;/a&gt;&lt;/li&gt;
+
+						
+                    &lt;/ul&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;bottom&quot;&gt;
+
+            	&lt;section class=&quot;bottom_bk&quot;&gt;
+
+                	&lt;section class=&quot;sysjj&quot;&gt;
+
+                    	&lt;span&gt;实验室简介&lt;/span&gt;
+
+                        
+                    	  
+                        &lt;p&gt;&lt;/p&gt;
+
+                        
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indextwo&quot;&gt;
+
+    	&lt;section class=&quot;xwdt&quot;&gt;
+
+        	&lt;section class=&quot;xwdtbt&quot;&gt;信息动态&lt;a href=&quot;/column/xwdt&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;tp&quot;&gt;
+
+          			&lt;ul id=&quot;tmc&quot;&gt;
+
+        						
+                    
+                       
+
+                    
+	                    &lt;li &gt;
+
+	                        &lt;div class=&quot;img-wrapper&quot;&gt;
+
+	                            &lt;img src=&quot;/upload_files/image/1450315379610_05.jpg&quot; alt=&quot;&quot; width=&quot;290&quot; height=&quot;240&quot; border=&quot;0&quot; alt=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot; /&gt;
+
+	                            &lt;span class=&quot;rq&quot;&gt;12.17&lt;/span&gt;
+
+	                            &lt;a class=&quot;link&quot; href=&quot;/info/xwdt/999&quot; sub-line=&quot;1&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;
+
+	                        &lt;/div&gt;
+
+	                    &lt;/li&gt;
+
+                	
+                	
+                       
+
+                    
+                	
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+
+
+            &lt;section class=&quot;rqwz&quot;&gt;
+
+            	&lt;ul&gt;
+
+                      
+                    	
+                    	
+                    
+                    	
+                    &lt;li  class=&quot;even&quot; &gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;/info/xwdt/998&quot; title=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;&lt;span&gt;2015/12/17&lt;/span&gt;&lt;/li&gt;
+
+                    
+                    
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexthree&quot;&gt;
+
+    	&lt;section class=&quot;three&quot;&gt;
+
+        	&lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/xsbgicon.png&quot;&gt;&lt;span class=&quot;z&quot;&gt;开放与交流&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+            	&lt;img src=&quot;/sites/images/xsbgbg.jpg&quot; class=&quot;img&quot;&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt;  
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/kyjzicon.png&quot;&gt;&lt;span class=&quot;l&quot;&gt;科研成果&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/kyjzbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;mr0 wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/sbyqicon.png&quot;&gt;&lt;span class=&quot;h&quot;&gt;实验设备&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/sbyqbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexfour&quot;&gt;
+
+    	&lt;section class=&quot;ljgd&quot;&gt;
+
+        	&lt;section class=&quot;gdwz&quot;&gt;了解更多&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;box&quot;&gt;
+
+                &lt;section&gt;
+
+                    &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/gjjlyhz_bg.jpg);&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;section class=&quot;hs&quot;&gt;
+
+                        &lt;a href=&quot;#&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/sysgk_bg.jpg);&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyxm_bg.jpg);&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kfkt_bg.jpg);&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/fwxz_bg.jpg);&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/rcpy_bg.jpg);&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyzygx_bg.jpg);&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    
+
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+&lt;/article&gt;
+
+
+
+    &lt;!-- 尾部 --&gt;
+
+    &lt;footer&gt;
+
+	        &lt;section class=&quot;footlink&quot;&gt;
+        	&lt;dl&gt;
+            	&lt;dt&gt;友情链接：&lt;/dt&gt;
+                &lt;dd&gt;
+                 
+                &lt;/dd&gt;
+            &lt;/dl&gt;
+            &lt;section class=&quot;bq&quot;&gt;电话查号台：010-62793001   管理员信箱：xinxiban@tsinghua.edu.cn     地址：北京市海淀区清华大学&lt;br&gt;京公网安备 110402430053 号&lt;/section&gt;
+        &lt;/section&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[161]" method="GET" name="Strange HTTP Reason message" plugin="strange_reason" severity="Information" url="http://www.ampt.tsinghua.edu.cn/NKhuA" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon status message &quot;Method not implemented&quot;, manual inspection is recommended. The first ten URLs which sent the uncommon message are:
+ - http://www.ampt.tsinghua.edu.cn/NKhuA
+</description>
+        <http-transactions>
+            <http-transaction id="161">
+                <http-request>
+                    <status>PUT http://www.ampt.tsinghua.edu.cn/NKhuA HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">5yAZAj</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:48:41 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 87, 88, 100, 117, 161, 186, 187, 188, 189, 190, 191, 192]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:35 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+
+&lt;html lang=&quot;zh-cmn-Hans&quot;&gt;
+
+&lt;head&gt;
+
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+
+    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;/&gt;
+
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;/&gt;
+
+    &lt;meta name=&quot;ljl&quot; content=&quot;ljl,lijinlun@tsinghua.edu.cn&quot;/&gt;
+
+    &lt;title&gt;先进成形制造教育部重点实验室&lt;/title&gt;
+
+
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/css.css&quot;/&gt;  
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon.css&quot;/&gt; 
+
+    &lt;script src=&quot;/sites/js/jq.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+  &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/trunk8.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;/sites/js/banner.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+
+  
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+    
+
+    &lt;!--[if lt IE 9]&gt;
+
+    &lt;script src=&quot;/sites/js/html5.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;!--[if IE 7]&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/font/css/thuicon-ie7.css&quot;&gt;
+
+    &lt;![endif]--&gt;
+
+    &lt;script&gt;
+
+	$(function () {
+
+	$(&quot;.box ul li&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+			$(this).find(&quot;.ls&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		 },
+
+		function () {
+
+			$(this).find(&quot;.zs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+			$(this).find(&quot;.ls&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	$(&quot;.box section&quot;).hover(
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().delay(50).animate({&quot;top&quot;:0,opacity:0.6},300)
+
+		},
+
+		function () {
+
+			$(this).find(&quot;.hs&quot;).stop().animate({&quot;top&quot;:-200,opacity:0},300)
+
+		}
+
+	)
+
+	})
+
+	&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+
+&lt;header&gt;
+
+	  &lt;!--
+
+	  &lt;section class=&quot;top_bg&quot;&gt;
+
+        &lt;section class=&quot;topmenu&quot;&gt;
+
+            &lt;section class=&quot;wbwx&quot;&gt;
+
+                &lt;img src=&quot;/sites/images/wb_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微博&lt;/a&gt;&lt;img src=&quot;/sites/images/wx_z.png&quot; height=&quot;19px&quot;&gt;&lt;a href=&quot;&quot;&gt;官方微信&lt;/a&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;zyw&quot;&gt;
+
+                &lt;a href=&quot;/column/INDEX&quot; class=&quot;cur&quot;&gt;简体中文&lt;/a&gt;  |  &lt;a href=&quot;#&quot;&gt;English&lt;/a&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+--&gt;
+
+    &lt;section class=&quot;tophead&quot;&gt;
+
+        &lt;section class=&quot;logo&quot;&gt;
+
+            &lt;img src=&quot;/sites/images/logo_z.png&quot;&gt;
+
+            &lt;section class=&quot;logo_text&quot;&gt;
+
+                &lt;p class=&quot;cn&quot;&gt;先进成形制造教育部重点实验室&lt;/p&gt;
+
+                &lt;p class=&quot;en&quot;&gt;Key Laboratory for Advanced Materials Processing Technology, Ministry of Education, P.R.China&lt;/p&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+        &lt;section class=&quot;search&quot;&gt;
+
+        	&lt;input type=&quot;text&quot; value=&quot;关键词查找&quot; onfocus=&quot;if(value==defaultValue){value='';this.style.color='#555555'}&quot; onblur=&quot;if(!value){value=defaultValue;this.style.color='#555555'}&quot; class=&quot;sswz&quot;&gt;
+
+            &lt;input type=&quot;submit&quot;  value=&quot; &quot;  onclick=&quot;keysearch()&quot; class=&quot;ssan&quot;&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+&lt;/header&gt;
+
+  &lt;!-- 导航 --&gt;
+
+&lt;nav&gt;
+
+     &lt;script type=&quot;text/javascript&quot;&gt;
+
+     jQuery(function(){
+
+      jQuery('#nav li a[class^=item]').removeClass('cur');
+
+      jQuery('#nav li a.item$columninfo.getCurrentColumnID()').addClass('cur');
+
+     });
+
+     &lt;/script&gt;
+    &lt;ul id=&quot;nav&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/INDEX&quot;  class=&quot;cur&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjsgk&quot;&gt;研究室概况&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysjj_2&quot;&gt;实验室简介&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zyjs&quot;&gt;主任介绍&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xswyh&quot;&gt;学术委员会&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kefx_&quot;&gt;科研方向&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/szh&quot;&gt;数字化&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/qjs&quot;&gt;轻金属&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/kszz&quot;&gt;快速制造&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jqr&quot;&gt;机器人&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zdzb&quot;&gt;重大装备&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yjdw&quot;&gt;研究队伍&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/dwgk&quot;&gt;队伍概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zjxz&quot;&gt;专家学者&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/rcpy&quot;&gt;人才培养&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/bsspy&quot;&gt;博士生培养&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/ssspy&quot;&gt;硕士生培养&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kycg&quot;&gt;科研成果&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gk&quot;&gt;概况&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/xslz&quot;&gt;学术论著&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hjxm&quot;&gt;获奖项目&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;专利&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zl&quot;&gt;成果鉴定&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kfyjl&quot;&gt;开放与交流&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt; 
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gj&quot;&gt;国际&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gn&quot;&gt;国内&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/hzyjjg&quot;&gt;合作研究机构&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/kyzygx&quot;&gt;科研资源共享&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sypt&quot;&gt;实验平台&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/sysb&quot;&gt;实验设备&lt;/a&gt;&lt;/li&gt;
+
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/yxgl&quot;&gt;运行管理&lt;i class=&quot;nav-down&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+        	&lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/gltl&quot;&gt;管理条例&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/jjxx&quot;&gt;基金信息&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/wjxz&quot;&gt;文件下载&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/column/zzxm&quot;&gt;资助项目&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/column/lxwm&quot;&gt;联系我们&lt;/a&gt;
+        &lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/nav&gt;
+
+    &lt;!-- 导航 --&gt;
+
+&lt;article class=&quot;content&quot;&gt;
+
+	&lt;section class=&quot;indexone&quot;&gt;
+
+    	&lt;section class=&quot;one&quot;&gt;
+
+        	&lt;section class=&quot;top&quot;&gt;
+
+            	&lt;!-- 代码 开始 --&gt;
+
+                &lt;section id=&quot;fsD1&quot; class=&quot;focus&quot;&gt;  
+
+                    &lt;section id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+
+                        
+                        
+                        &lt;section class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+
+                            &lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;&lt;img src=&quot;/upload_files/image/1450315430923_06.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+
+                            &lt;span class=&quot;shadow&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/tpxw/1000&quot;&gt;图片新闻/成果图片&lt;/a&gt;&lt;/span&gt;
+
+                        &lt;/section&gt;
+
+                        
+                    &lt;/section&gt;
+
+                    &lt;section class=&quot;fbg&quot;&gt;  
+
+                    &lt;section class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;  
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt; 
+
+                        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;  		
+
+                    &lt;/section&gt;  
+
+                    &lt;/section&gt;  
+
+                    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+
+                    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+
+                &lt;/section&gt;  
+
+                &lt;script type=&quot;text/javascript&quot;&gt;
+
+                    Qfast.add('widgets', { path: &quot;/sites/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+
+                    Qfast(false, 'widgets', function () {
+
+                        K.tabs({
+
+                            id: 'fsD1',   //焦点图包裹id  
+
+                            conId: &quot;D1pic1&quot;,  //** 大图域包裹id  
+
+                            tabId:&quot;D1fBt&quot;,  
+
+                            tabTn:&quot;a&quot;,
+
+                            conCn: '.fcon', //** 大图域配置class       
+
+                            auto: 1,   //自动播放 1或0
+
+                            effect: 'fade',   //效果配置
+
+                            eType: 'click', //** 鼠标事件
+
+                            pageBt:true,//是否有按钮切换页码
+
+                            bns: ['.prev', '.next'],//** 前后按钮配置class                          
+
+                            interval: 3000  //** 停顿时间  
+
+                        }) 
+
+                    })  
+
+                &lt;/script&gt;
+
+                &lt;!-- 代码 结束 --&gt;
+
+                &lt;section class=&quot;tzgg&quot;&gt;
+
+                	&lt;section class=&quot;btgd&quot;&gt;
+
+                    	&lt;h2&gt;通知公告&lt;/h2&gt;&lt;a href=&quot;/column/tzgg&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                	&lt;ul&gt;
+
+                    	
+                    	
+                        &lt;li&gt;&lt;span&gt;12.17&lt;/span&gt;&lt;a href=&quot;/info/tzgg/997&quot; sub-line=&quot;1&quot;&gt;通知公告通知公告通知公告通知公告通知公告通知公告通知公告&lt;/a&gt;&lt;/li&gt;
+
+						
+                    &lt;/ul&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;bottom&quot;&gt;
+
+            	&lt;section class=&quot;bottom_bk&quot;&gt;
+
+                	&lt;section class=&quot;sysjj&quot;&gt;
+
+                    	&lt;span&gt;实验室简介&lt;/span&gt;
+
+                        
+                    	  
+                        &lt;p&gt;&lt;/p&gt;
+
+                        
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indextwo&quot;&gt;
+
+    	&lt;section class=&quot;xwdt&quot;&gt;
+
+        	&lt;section class=&quot;xwdtbt&quot;&gt;信息动态&lt;a href=&quot;/column/xwdt&quot; title=&quot;更多&quot;&gt;&lt;/a&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;tp&quot;&gt;
+
+          			&lt;ul id=&quot;tmc&quot;&gt;
+
+        						
+                    
+                       
+
+                    
+	                    &lt;li &gt;
+
+	                        &lt;div class=&quot;img-wrapper&quot;&gt;
+
+	                            &lt;img src=&quot;/upload_files/image/1450315379610_05.jpg&quot; alt=&quot;&quot; width=&quot;290&quot; height=&quot;240&quot; border=&quot;0&quot; alt=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot; /&gt;
+
+	                            &lt;span class=&quot;rq&quot;&gt;12.17&lt;/span&gt;
+
+	                            &lt;a class=&quot;link&quot; href=&quot;/info/xwdt/999&quot; sub-line=&quot;1&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;
+
+	                        &lt;/div&gt;
+
+	                    &lt;/li&gt;
+
+                	
+                	
+                       
+
+                    
+                	
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+
+
+            &lt;section class=&quot;rqwz&quot;&gt;
+
+            	&lt;ul&gt;
+
+                      
+                    	
+                    	
+                    
+                    	
+                    &lt;li  class=&quot;even&quot; &gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;/info/xwdt/998&quot; title=&quot;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&quot;&gt;新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态新闻动态&lt;/a&gt;&lt;span&gt;2015/12/17&lt;/span&gt;&lt;/li&gt;
+
+                    
+                    
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexthree&quot;&gt;
+
+    	&lt;section class=&quot;three&quot;&gt;
+
+        	&lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/xsbgicon.png&quot;&gt;&lt;span class=&quot;z&quot;&gt;开放与交流&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+            	&lt;img src=&quot;/sites/images/xsbgbg.jpg&quot; class=&quot;img&quot;&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt;  
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/kyjzicon.png&quot;&gt;&lt;span class=&quot;l&quot;&gt;科研成果&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/kyjzbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;span&gt;7.28&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+            &lt;section class=&quot;mr0 wh rqwz&quot;&gt;
+
+            	&lt;h2&gt;&lt;img src=&quot;/sites/images/sbyqicon.png&quot;&gt;&lt;span class=&quot;h&quot;&gt;实验设备&lt;/span&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+                &lt;img src=&quot;/sites/images/sbyqbg.jpg&quot;  class=&quot;img&quot;&gt;
+
+                 &lt;ul&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                    &lt;li&gt;&lt;i class=&quot;icon&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;中科院天津工生所餐厅运营招标公告&lt;/a&gt;&lt;/li&gt;
+
+                   
+
+                &lt;/ul&gt; 
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+    &lt;section class=&quot;indexfour&quot;&gt;
+
+    	&lt;section class=&quot;ljgd&quot;&gt;
+
+        	&lt;section class=&quot;gdwz&quot;&gt;了解更多&gt;&lt;/section&gt;
+
+            &lt;section class=&quot;box&quot;&gt;
+
+                &lt;section&gt;
+
+                    &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/gjjlyhz_bg.jpg);&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;section class=&quot;hs&quot;&gt;
+
+                        &lt;a href=&quot;#&quot;&gt;&lt;span&gt;国际交流与合作&lt;/span&gt;&lt;/a&gt;
+
+                    &lt;/section&gt;
+
+                &lt;/section&gt;
+
+                &lt;ul&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/sysgk_bg.jpg);&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:60px&quot;&gt;实验室概况&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyxm_bg.jpg);&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;科研项目&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kfkt_bg.jpg);&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;开放课题&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/fwxz_bg.jpg);&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;访问学者&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/rcpy_bg.jpg);&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;zs&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span&gt;人才培养&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+
+                        &lt;a href=&quot;#&quot; style=&quot;background:url(/sites/images/kyzygx_bg.jpg);&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;section class=&quot;ls&quot;&gt;
+
+                            &lt;a href=&quot;#&quot;&gt;&lt;span style=&quot;left:54px&quot;&gt;科研资源共享&lt;/span&gt;&lt;/a&gt;
+
+                        &lt;/section&gt;
+
+                    &lt;/li&gt;
+
+                    
+
+                &lt;/ul&gt;
+
+            &lt;/section&gt;
+
+        &lt;/section&gt;	
+
+    &lt;/section&gt;
+
+&lt;/article&gt;
+
+
+
+    &lt;!-- 尾部 --&gt;
+
+    &lt;footer&gt;
+
+	        &lt;section class=&quot;footlink&quot;&gt;
+        	&lt;dl&gt;
+            	&lt;dt&gt;友情链接：&lt;/dt&gt;
+                &lt;dd&gt;
+                 
+                &lt;/dd&gt;
+            &lt;/dl&gt;
+            &lt;section class=&quot;bq&quot;&gt;电话查号台：010-62793001   管理员信箱：xinxiban@tsinghua.edu.cn     地址：北京市海淀区清华大学&lt;br&gt;京公网安备 110402430053 号&lt;/section&gt;
+        &lt;/section&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="87">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=493" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:40 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="88">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=496" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:40 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="100">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/KhXBI.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=498" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:41 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="117">
+                <http-request>
+                    <status>POST http://www.ampt.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L0toWEJJLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguSUJYaEs=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=493" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:41 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="161">
+                <http-request>
+                    <status>PUT http://www.ampt.tsinghua.edu.cn/NKhuA HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">5yAZAj</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:48:41 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=497" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="187">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=496" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="188">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="189">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=497" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="191">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="192">
+                <http-request>
+                    <status>GET http://www.ampt.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="www.ampt.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2617732874.20480.0000; JSESSIONID=abcTc4EXFIwRx_7dB20Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=492" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:48:42 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A &quot;UnicodeEncodeError&quot; exception was found while running infrastructure.favicon_identification on &quot;Method: GET | http://domain/&quot;. The exception was: &quot;'ascii' codec can't encode characters in position 240-243: ordinal not in range(128)&quot; at favicon_identification.py:discover():70. The scan will continue but some vulnerabilities might not be identified.</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.ampt.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.ampt.tsinghua.edu.cn/?Q8yY8Ds=exec%20xp_cmdshell%20dir&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.ampt.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.ampt.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.ampt.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.ampt.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.ampt.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.ampt.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to www.ampt.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

@@ -1,0 +1,2692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480666798" start-long="Fri Dec 02 03:19:58 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://ccctu.sss.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/20_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[43, 48]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://ccctu.sss.tsinghua.edu.cn/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="43">
+                <http-request>
+                    <status>ARGENTINA http://ccctu.sss.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 19 Nov 1981 08:52:00 GMT" field="expires"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:20:11 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/index.css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/lrtk.css&quot;/&gt;
+		&lt;script src=&quot;/themes/default/js/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;
+   		&lt;script type=&quot;text/javascript&quot; src=&quot;/themes/default/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class=&quot;head&quot;&gt;
+			&lt;a href=&quot;index.php&quot;&gt;&lt;img src=&quot;/themes/default/images/img04_04.png&quot; /&gt;&lt;/a&gt;
+			&lt;div class=&quot;search&quot;&gt;
+			&lt;form method=&quot;POST&quot; id=&quot;myform1&quot; name=&quot;myform1&quot; action=&quot;index.php?r=default/index/search&quot;  target=&quot;_self&quot;&gt;
+			&lt;input class=&quot;text&quot; type=&quot;text&quot; value=&quot;&quot; name=&quot;search&quot; id=&quot;searchword&quot; /&gt;
+			&lt;input type=&quot;submit&quot; class=&quot;btn&quot; value=&quot;&quot; style=&quot;cursor:pointer;&quot; onclick=&quot;return check_key()&quot;/&gt;
+			&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nav&quot;&gt;
+			&lt;ul&gt;
+            	&lt;li&gt;&lt;a href=&quot;index.php&quot;&gt;首 页&lt;/a&gt;&lt;/li&gt;
+		    		    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=1&quot;&gt;中心动态&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=3&quot;&gt;中心论文&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=4&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=5&quot;&gt;报告演讲&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=6&quot;&gt;合作交流 &lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=57&quot;&gt;学术著作&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=21&quot;&gt;学者观点&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=56&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;banner&quot;&gt;
+			&lt;div id=&quot;fsD1&quot; class=&quot;focus&quot; style=&quot;&quot;&gt;  
+    &lt;div id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+    	        &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-13/66353b70277e68288fda951287cb8d8b.png&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/c606d804b30fa5e24ee158ef6a8baf01.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/f91146ffc6c8474418fdf610c91c15c9.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/858fe14655c97cb6b27588e910f30559.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/3e8e647f6008fb3b23ec852feaededb3.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        	      
+    &lt;/div&gt;
+    &lt;div class=&quot;fbg&quot;&gt;  
+    &lt;div class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;
+    	        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;
+          
+    &lt;/div&gt;  
+    &lt;/div&gt;  
+    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+&lt;/div&gt;  
+&lt;script type=&quot;text/javascript&quot;&gt;
+	Qfast.add('widgets', { path: &quot;/themes/default/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+	Qfast(false, 'widgets', function () {
+		K.tabs({
+			id: 'fsD1',   
+			conId: &quot;D1pic1&quot;,  
+			tabId:&quot;D1fBt&quot;,  
+			tabTn:&quot;a&quot;,
+			conCn: '.fcon', 
+			auto: 1,   
+			effect: 'fade',   
+			eType: 'click', 
+			pageBt:true,
+			bns: ['.prev', '.next'],           
+			interval: 3000  
+		}) 
+	})  
+&lt;/script&gt;
+			
+			
+			
+		&lt;/div&gt;&lt;style&gt;
+.ftxt{ margin-right:30px;}
+.flink{width:120px;}
+.index_list{cursor:pointer; padding-right:40px;border-left:2px solid #fff; padding-left:6px;}
+.index_list2{display:none;}
+.ui-list-2 h2 a{margin-right:24px; color:#000;}
+.imgslide{display:none;}
+.bg_line{border-left:2px solid #b44db5; padding-left:6px;}
+&lt;/style&gt;
+
+		&lt;div class=&quot;contant&quot;&gt;
+			&lt;div class=&quot;ui-list-1&quot;&gt;
+				&lt;h2&gt;
+					&lt;span d_i=1 class=&quot;index_list bg_line&quot;&gt;中心动态&lt;/span&gt;&lt;span d_i=2 class=&quot;index_list&quot;&gt;学术会议&lt;/span&gt;
+				&lt;/h2&gt;			
+				&lt;dl&gt;
+			        			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=140&quot;&gt;服务与创新：外来工社会政策研讨...&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2015-01-02&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=121&quot;&gt;全球化与劳工问题学术研讨会&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2014-12-31&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			          			          					
+				&lt;/dl&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-2&quot;&gt;
+				&lt;h2&gt;
+					&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;城镇化专题&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;环境与保护&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;法制与社会&lt;/a&gt;
+				&lt;/h2&gt;
+				&lt;div style=&quot;height:116px; overflow:hidden;&quot;&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list1.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list2.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list3.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-3&quot;&gt;
+				&lt;h2&gt;&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;&lt;span style=&quot;margin-right:54px; color:#000;&quot;&gt;常用链接&lt;/span&gt;友情链接&lt;/h2&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_12.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;中心概括&lt;/span&gt;
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆社会学人类学门户&lt;/option&gt;
+													&lt;option value=&quot;http://ssps.ruc.edu.cn/index.asp&quot;&gt;社会与人口学院网站&lt;/option&gt;
+													&lt;option value=&quot;http://www.tsinghua.edu.cn/publish/newthu/index.html&quot;&gt;清华大学社会学学系&lt;/option&gt;
+													&lt;option value=&quot;http://www.shehui.pku.edu.cn/&quot;&gt;北京大学社会学系&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;中山大学人类学系&lt;/option&gt;
+												&lt;/select&gt;   	
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_15.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;学者观点&lt;/span&gt;  
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆学术网络资源&lt;/option&gt;
+													&lt;option value=&quot;http://www.ruc.edu.cn&quot;&gt;中国人民大学网&lt;/option&gt;
+												&lt;/select&gt;
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img04_17.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;联系我们 &lt;/span&gt; 
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆以外地区、国家资源&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;哈佛大学社会学系&lt;/option&gt;
+												&lt;/select&gt;    	
+					&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		
+&lt;script&gt;
+$(&quot;.index_list&quot;).mouseover(function(){
+	var d_i = $(this).attr('d_i');
+	$(&quot;.dt_dd&quot;).hide();
+	var index = d_i -1;
+	$(&quot;.index_list&quot;+d_i).show();
+	$(&quot;.index_list&quot;).css(&quot;border-left&quot;,&quot;2px solid #fff&quot;);
+	$(&quot;.index_list:eq(&quot;+index+&quot;)&quot;).css(&quot;border-left&quot;,&quot;2px solid #b44db5&quot;);
+})
+
+function gopage(val)
+{
+	if(val != 0)
+	{
+		window.open(val);
+	}
+}
+
+var cur_num = 1;
+var max_num = $('.imgslide').size();
+
+//第一个滚动
+function firstSlide()
+{
+	$('.imgslide:eq(0)').show();
+	var s = setInterval(&quot;imgSlide()&quot;,3000);
+}
+
+$(window).load(function(){
+	firstSlide();
+});
+
+//图片滚动
+function imgSlide()
+{
+
+	$('.imgslide').each(function(index){		
+		var i = index + 1;
+		if(cur_num == i)
+		{
+			$(this).show('fast');
+		}
+		else
+		{
+			$(this).hide('fast');
+		}
+	});
+	cur_num = cur_num &lt; max_num ? cur_num + 1 : 1;
+}
+&lt;/script&gt;		
+		&lt;div class=&quot;footer&quot;&gt;Copyright ©  2002 - 2010.12 清华大学社会科学学院&lt;/div&gt;
+		&lt;script&gt;
+		function check_key()
+		{
+			var key = document.getElementById(&quot;searchword&quot;).value;
+			if(key.length &gt; 0)
+			{
+				return true;
+			}
+			else
+			{
+				alert(&quot;请输入关键字&quot;);
+				return false;
+			}
+			return false;
+		}
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="48">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 19 Nov 1981 08:52:00 GMT" field="expires"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:20:11 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/index.css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/lrtk.css&quot;/&gt;
+		&lt;script src=&quot;/themes/default/js/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;
+   		&lt;script type=&quot;text/javascript&quot; src=&quot;/themes/default/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class=&quot;head&quot;&gt;
+			&lt;a href=&quot;index.php&quot;&gt;&lt;img src=&quot;/themes/default/images/img04_04.png&quot; /&gt;&lt;/a&gt;
+			&lt;div class=&quot;search&quot;&gt;
+			&lt;form method=&quot;POST&quot; id=&quot;myform1&quot; name=&quot;myform1&quot; action=&quot;index.php?r=default/index/search&quot;  target=&quot;_self&quot;&gt;
+			&lt;input class=&quot;text&quot; type=&quot;text&quot; value=&quot;&quot; name=&quot;search&quot; id=&quot;searchword&quot; /&gt;
+			&lt;input type=&quot;submit&quot; class=&quot;btn&quot; value=&quot;&quot; style=&quot;cursor:pointer;&quot; onclick=&quot;return check_key()&quot;/&gt;
+			&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nav&quot;&gt;
+			&lt;ul&gt;
+            	&lt;li&gt;&lt;a href=&quot;index.php&quot;&gt;首 页&lt;/a&gt;&lt;/li&gt;
+		    		    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=1&quot;&gt;中心动态&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=3&quot;&gt;中心论文&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=4&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=5&quot;&gt;报告演讲&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=6&quot;&gt;合作交流 &lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=57&quot;&gt;学术著作&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=21&quot;&gt;学者观点&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=56&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;banner&quot;&gt;
+			&lt;div id=&quot;fsD1&quot; class=&quot;focus&quot; style=&quot;&quot;&gt;  
+    &lt;div id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+    	        &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-13/66353b70277e68288fda951287cb8d8b.png&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/c606d804b30fa5e24ee158ef6a8baf01.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/f91146ffc6c8474418fdf610c91c15c9.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/858fe14655c97cb6b27588e910f30559.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/3e8e647f6008fb3b23ec852feaededb3.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        	      
+    &lt;/div&gt;
+    &lt;div class=&quot;fbg&quot;&gt;  
+    &lt;div class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;
+    	        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;
+          
+    &lt;/div&gt;  
+    &lt;/div&gt;  
+    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+&lt;/div&gt;  
+&lt;script type=&quot;text/javascript&quot;&gt;
+	Qfast.add('widgets', { path: &quot;/themes/default/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+	Qfast(false, 'widgets', function () {
+		K.tabs({
+			id: 'fsD1',   
+			conId: &quot;D1pic1&quot;,  
+			tabId:&quot;D1fBt&quot;,  
+			tabTn:&quot;a&quot;,
+			conCn: '.fcon', 
+			auto: 1,   
+			effect: 'fade',   
+			eType: 'click', 
+			pageBt:true,
+			bns: ['.prev', '.next'],           
+			interval: 3000  
+		}) 
+	})  
+&lt;/script&gt;
+			
+			
+			
+		&lt;/div&gt;&lt;style&gt;
+.ftxt{ margin-right:30px;}
+.flink{width:120px;}
+.index_list{cursor:pointer; padding-right:40px;border-left:2px solid #fff; padding-left:6px;}
+.index_list2{display:none;}
+.ui-list-2 h2 a{margin-right:24px; color:#000;}
+.imgslide{display:none;}
+.bg_line{border-left:2px solid #b44db5; padding-left:6px;}
+&lt;/style&gt;
+
+		&lt;div class=&quot;contant&quot;&gt;
+			&lt;div class=&quot;ui-list-1&quot;&gt;
+				&lt;h2&gt;
+					&lt;span d_i=1 class=&quot;index_list bg_line&quot;&gt;中心动态&lt;/span&gt;&lt;span d_i=2 class=&quot;index_list&quot;&gt;学术会议&lt;/span&gt;
+				&lt;/h2&gt;			
+				&lt;dl&gt;
+			        			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=140&quot;&gt;服务与创新：外来工社会政策研讨...&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2015-01-02&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=121&quot;&gt;全球化与劳工问题学术研讨会&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2014-12-31&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			          			          					
+				&lt;/dl&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-2&quot;&gt;
+				&lt;h2&gt;
+					&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;城镇化专题&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;环境与保护&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;法制与社会&lt;/a&gt;
+				&lt;/h2&gt;
+				&lt;div style=&quot;height:116px; overflow:hidden;&quot;&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list1.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list2.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list3.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-3&quot;&gt;
+				&lt;h2&gt;&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;&lt;span style=&quot;margin-right:54px; color:#000;&quot;&gt;常用链接&lt;/span&gt;友情链接&lt;/h2&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_12.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;中心概括&lt;/span&gt;
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆社会学人类学门户&lt;/option&gt;
+													&lt;option value=&quot;http://ssps.ruc.edu.cn/index.asp&quot;&gt;社会与人口学院网站&lt;/option&gt;
+													&lt;option value=&quot;http://www.tsinghua.edu.cn/publish/newthu/index.html&quot;&gt;清华大学社会学学系&lt;/option&gt;
+													&lt;option value=&quot;http://www.shehui.pku.edu.cn/&quot;&gt;北京大学社会学系&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;中山大学人类学系&lt;/option&gt;
+												&lt;/select&gt;   	
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_15.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;学者观点&lt;/span&gt;  
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆学术网络资源&lt;/option&gt;
+													&lt;option value=&quot;http://www.ruc.edu.cn&quot;&gt;中国人民大学网&lt;/option&gt;
+												&lt;/select&gt;
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img04_17.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;联系我们 &lt;/span&gt; 
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆以外地区、国家资源&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;哈佛大学社会学系&lt;/option&gt;
+												&lt;/select&gt;    	
+					&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		
+&lt;script&gt;
+$(&quot;.index_list&quot;).mouseover(function(){
+	var d_i = $(this).attr('d_i');
+	$(&quot;.dt_dd&quot;).hide();
+	var index = d_i -1;
+	$(&quot;.index_list&quot;+d_i).show();
+	$(&quot;.index_list&quot;).css(&quot;border-left&quot;,&quot;2px solid #fff&quot;);
+	$(&quot;.index_list:eq(&quot;+index+&quot;)&quot;).css(&quot;border-left&quot;,&quot;2px solid #b44db5&quot;);
+})
+
+function gopage(val)
+{
+	if(val != 0)
+	{
+		window.open(val);
+	}
+}
+
+var cur_num = 1;
+var max_num = $('.imgslide').size();
+
+//第一个滚动
+function firstSlide()
+{
+	$('.imgslide:eq(0)').show();
+	var s = setInterval(&quot;imgSlide()&quot;,3000);
+}
+
+$(window).load(function(){
+	firstSlide();
+});
+
+//图片滚动
+function imgSlide()
+{
+
+	$('.imgslide').each(function(index){		
+		var i = index + 1;
+		if(cur_num == i)
+		{
+			$(this).show('fast');
+		}
+		else
+		{
+			$(this).hide('fast');
+		}
+	});
+	cur_num = cur_num &lt; max_num ? cur_num + 1 : 1;
+}
+&lt;/script&gt;		
+		&lt;div class=&quot;footer&quot;&gt;Copyright ©  2002 - 2010.12 清华大学社会科学学院&lt;/div&gt;
+		&lt;script&gt;
+		function check_key()
+		{
+			var key = document.getElementById(&quot;searchword&quot;).value;
+			if(key.length &gt; 0)
+			{
+				return true;
+			}
+			else
+			{
+				alert(&quot;请输入关键字&quot;);
+				return false;
+			}
+			return false;
+		}
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[78]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;nginx/1.9.0&quot;.</description>
+        <http-transactions>
+            <http-transaction id="78">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 19 Nov 1981 08:52:00 GMT" field="expires"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:20:03 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/index.css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/lrtk.css&quot;/&gt;
+		&lt;script src=&quot;/themes/default/js/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;
+   		&lt;script type=&quot;text/javascript&quot; src=&quot;/themes/default/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class=&quot;head&quot;&gt;
+			&lt;a href=&quot;index.php&quot;&gt;&lt;img src=&quot;/themes/default/images/img04_04.png&quot; /&gt;&lt;/a&gt;
+			&lt;div class=&quot;search&quot;&gt;
+			&lt;form method=&quot;POST&quot; id=&quot;myform1&quot; name=&quot;myform1&quot; action=&quot;index.php?r=default/index/search&quot;  target=&quot;_self&quot;&gt;
+			&lt;input class=&quot;text&quot; type=&quot;text&quot; value=&quot;&quot; name=&quot;search&quot; id=&quot;searchword&quot; /&gt;
+			&lt;input type=&quot;submit&quot; class=&quot;btn&quot; value=&quot;&quot; style=&quot;cursor:pointer;&quot; onclick=&quot;return check_key()&quot;/&gt;
+			&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nav&quot;&gt;
+			&lt;ul&gt;
+            	&lt;li&gt;&lt;a href=&quot;index.php&quot;&gt;首 页&lt;/a&gt;&lt;/li&gt;
+		    		    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=1&quot;&gt;中心动态&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=3&quot;&gt;中心论文&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=4&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=5&quot;&gt;报告演讲&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=6&quot;&gt;合作交流 &lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=57&quot;&gt;学术著作&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=21&quot;&gt;学者观点&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=56&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;banner&quot;&gt;
+			&lt;div id=&quot;fsD1&quot; class=&quot;focus&quot; style=&quot;&quot;&gt;  
+    &lt;div id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+    	        &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-13/66353b70277e68288fda951287cb8d8b.png&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/c606d804b30fa5e24ee158ef6a8baf01.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/f91146ffc6c8474418fdf610c91c15c9.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/858fe14655c97cb6b27588e910f30559.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/3e8e647f6008fb3b23ec852feaededb3.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        	      
+    &lt;/div&gt;
+    &lt;div class=&quot;fbg&quot;&gt;  
+    &lt;div class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;
+    	        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;
+          
+    &lt;/div&gt;  
+    &lt;/div&gt;  
+    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+&lt;/div&gt;  
+&lt;script type=&quot;text/javascript&quot;&gt;
+	Qfast.add('widgets', { path: &quot;/themes/default/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+	Qfast(false, 'widgets', function () {
+		K.tabs({
+			id: 'fsD1',   
+			conId: &quot;D1pic1&quot;,  
+			tabId:&quot;D1fBt&quot;,  
+			tabTn:&quot;a&quot;,
+			conCn: '.fcon', 
+			auto: 1,   
+			effect: 'fade',   
+			eType: 'click', 
+			pageBt:true,
+			bns: ['.prev', '.next'],           
+			interval: 3000  
+		}) 
+	})  
+&lt;/script&gt;
+			
+			
+			
+		&lt;/div&gt;&lt;style&gt;
+.ftxt{ margin-right:30px;}
+.flink{width:120px;}
+.index_list{cursor:pointer; padding-right:40px;border-left:2px solid #fff; padding-left:6px;}
+.index_list2{display:none;}
+.ui-list-2 h2 a{margin-right:24px; color:#000;}
+.imgslide{display:none;}
+.bg_line{border-left:2px solid #b44db5; padding-left:6px;}
+&lt;/style&gt;
+
+		&lt;div class=&quot;contant&quot;&gt;
+			&lt;div class=&quot;ui-list-1&quot;&gt;
+				&lt;h2&gt;
+					&lt;span d_i=1 class=&quot;index_list bg_line&quot;&gt;中心动态&lt;/span&gt;&lt;span d_i=2 class=&quot;index_list&quot;&gt;学术会议&lt;/span&gt;
+				&lt;/h2&gt;			
+				&lt;dl&gt;
+			        			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=140&quot;&gt;服务与创新：外来工社会政策研讨...&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2015-01-02&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=121&quot;&gt;全球化与劳工问题学术研讨会&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2014-12-31&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			          			          					
+				&lt;/dl&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-2&quot;&gt;
+				&lt;h2&gt;
+					&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;城镇化专题&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;环境与保护&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;法制与社会&lt;/a&gt;
+				&lt;/h2&gt;
+				&lt;div style=&quot;height:116px; overflow:hidden;&quot;&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list1.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list2.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list3.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-3&quot;&gt;
+				&lt;h2&gt;&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;&lt;span style=&quot;margin-right:54px; color:#000;&quot;&gt;常用链接&lt;/span&gt;友情链接&lt;/h2&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_12.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;中心概括&lt;/span&gt;
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆社会学人类学门户&lt;/option&gt;
+													&lt;option value=&quot;http://ssps.ruc.edu.cn/index.asp&quot;&gt;社会与人口学院网站&lt;/option&gt;
+													&lt;option value=&quot;http://www.tsinghua.edu.cn/publish/newthu/index.html&quot;&gt;清华大学社会学学系&lt;/option&gt;
+													&lt;option value=&quot;http://www.shehui.pku.edu.cn/&quot;&gt;北京大学社会学系&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;中山大学人类学系&lt;/option&gt;
+												&lt;/select&gt;   	
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_15.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;学者观点&lt;/span&gt;  
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆学术网络资源&lt;/option&gt;
+													&lt;option value=&quot;http://www.ruc.edu.cn&quot;&gt;中国人民大学网&lt;/option&gt;
+												&lt;/select&gt;
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img04_17.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;联系我们 &lt;/span&gt; 
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆以外地区、国家资源&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;哈佛大学社会学系&lt;/option&gt;
+												&lt;/select&gt;    	
+					&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		
+&lt;script&gt;
+$(&quot;.index_list&quot;).mouseover(function(){
+	var d_i = $(this).attr('d_i');
+	$(&quot;.dt_dd&quot;).hide();
+	var index = d_i -1;
+	$(&quot;.index_list&quot;+d_i).show();
+	$(&quot;.index_list&quot;).css(&quot;border-left&quot;,&quot;2px solid #fff&quot;);
+	$(&quot;.index_list:eq(&quot;+index+&quot;)&quot;).css(&quot;border-left&quot;,&quot;2px solid #b44db5&quot;);
+})
+
+function gopage(val)
+{
+	if(val != 0)
+	{
+		window.open(val);
+	}
+}
+
+var cur_num = 1;
+var max_num = $('.imgslide').size();
+
+//第一个滚动
+function firstSlide()
+{
+	$('.imgslide:eq(0)').show();
+	var s = setInterval(&quot;imgSlide()&quot;,3000);
+}
+
+$(window).load(function(){
+	firstSlide();
+});
+
+//图片滚动
+function imgSlide()
+{
+
+	$('.imgslide').each(function(index){		
+		var i = index + 1;
+		if(cur_num == i)
+		{
+			$(this).show('fast');
+		}
+		else
+		{
+			$(this).hide('fast');
+		}
+	});
+	cur_num = cur_num &lt; max_num ? cur_num + 1 : 1;
+}
+&lt;/script&gt;		
+		&lt;div class=&quot;footer&quot;&gt;Copyright ©  2002 - 2010.12 清华大学社会科学学院&lt;/div&gt;
+		&lt;script&gt;
+		function check_key()
+		{
+			var key = document.getElementById(&quot;searchword&quot;).value;
+			if(key.length &gt; 0)
+			{
+				return true;
+			}
+			else
+			{
+				alert(&quot;请输入关键字&quot;);
+				return false;
+			}
+			return false;
+		}
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[171]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://sss.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://sss.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://ccctu.sss.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="171">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="47" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Thu, 03 Nov 2011 04:48:31 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;4eb21d1f-2f&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:20:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;header&gt;&lt;/header&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[173]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.7.161/" var="None">
+        <description>The contents of http://166.111.7.161/ and http://ccctu.sss.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="173">
+                <http-request>
+                    <status>GET http://166.111.7.161/ HTTP/1.1</status>
+                    <headers>
+                        <header content="166.111.7.161" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="47" field="content-length"/>
+                        <header content="thuwebcookie=2651287306.20480.0000; path=/" field="set-cookie"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Thu, 03 Nov 2011 04:48:31 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;4eb21d1f-2f&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:20:12 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;header&gt;&lt;/header&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[82, 204]" method="GET" name="Secure content over insecure channel" plugin="un_ssl" severity="Medium" url="http://ccctu.sss.tsinghua.edu.cn/" var="None">
+        <description>Secure content can be accessed using the insecure HTTP protocol. The vulnerable URLs used to verify this vulnerability are:
+ - https://ccctu.sss.tsinghua.edu.cn/
+ - http://ccctu.sss.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="82">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 19 Nov 1981 08:52:00 GMT" field="expires"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:20:11 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/index.css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/lrtk.css&quot;/&gt;
+		&lt;script src=&quot;/themes/default/js/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;
+   		&lt;script type=&quot;text/javascript&quot; src=&quot;/themes/default/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class=&quot;head&quot;&gt;
+			&lt;a href=&quot;index.php&quot;&gt;&lt;img src=&quot;/themes/default/images/img04_04.png&quot; /&gt;&lt;/a&gt;
+			&lt;div class=&quot;search&quot;&gt;
+			&lt;form method=&quot;POST&quot; id=&quot;myform1&quot; name=&quot;myform1&quot; action=&quot;index.php?r=default/index/search&quot;  target=&quot;_self&quot;&gt;
+			&lt;input class=&quot;text&quot; type=&quot;text&quot; value=&quot;&quot; name=&quot;search&quot; id=&quot;searchword&quot; /&gt;
+			&lt;input type=&quot;submit&quot; class=&quot;btn&quot; value=&quot;&quot; style=&quot;cursor:pointer;&quot; onclick=&quot;return check_key()&quot;/&gt;
+			&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nav&quot;&gt;
+			&lt;ul&gt;
+            	&lt;li&gt;&lt;a href=&quot;index.php&quot;&gt;首 页&lt;/a&gt;&lt;/li&gt;
+		    		    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=1&quot;&gt;中心动态&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=3&quot;&gt;中心论文&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=4&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=5&quot;&gt;报告演讲&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=6&quot;&gt;合作交流 &lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=57&quot;&gt;学术著作&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=21&quot;&gt;学者观点&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=56&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;banner&quot;&gt;
+			&lt;div id=&quot;fsD1&quot; class=&quot;focus&quot; style=&quot;&quot;&gt;  
+    &lt;div id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+    	        &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-13/66353b70277e68288fda951287cb8d8b.png&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/c606d804b30fa5e24ee158ef6a8baf01.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/f91146ffc6c8474418fdf610c91c15c9.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/858fe14655c97cb6b27588e910f30559.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/3e8e647f6008fb3b23ec852feaededb3.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        	      
+    &lt;/div&gt;
+    &lt;div class=&quot;fbg&quot;&gt;  
+    &lt;div class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;
+    	        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;
+          
+    &lt;/div&gt;  
+    &lt;/div&gt;  
+    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+&lt;/div&gt;  
+&lt;script type=&quot;text/javascript&quot;&gt;
+	Qfast.add('widgets', { path: &quot;/themes/default/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+	Qfast(false, 'widgets', function () {
+		K.tabs({
+			id: 'fsD1',   
+			conId: &quot;D1pic1&quot;,  
+			tabId:&quot;D1fBt&quot;,  
+			tabTn:&quot;a&quot;,
+			conCn: '.fcon', 
+			auto: 1,   
+			effect: 'fade',   
+			eType: 'click', 
+			pageBt:true,
+			bns: ['.prev', '.next'],           
+			interval: 3000  
+		}) 
+	})  
+&lt;/script&gt;
+			
+			
+			
+		&lt;/div&gt;&lt;style&gt;
+.ftxt{ margin-right:30px;}
+.flink{width:120px;}
+.index_list{cursor:pointer; padding-right:40px;border-left:2px solid #fff; padding-left:6px;}
+.index_list2{display:none;}
+.ui-list-2 h2 a{margin-right:24px; color:#000;}
+.imgslide{display:none;}
+.bg_line{border-left:2px solid #b44db5; padding-left:6px;}
+&lt;/style&gt;
+
+		&lt;div class=&quot;contant&quot;&gt;
+			&lt;div class=&quot;ui-list-1&quot;&gt;
+				&lt;h2&gt;
+					&lt;span d_i=1 class=&quot;index_list bg_line&quot;&gt;中心动态&lt;/span&gt;&lt;span d_i=2 class=&quot;index_list&quot;&gt;学术会议&lt;/span&gt;
+				&lt;/h2&gt;			
+				&lt;dl&gt;
+			        			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=140&quot;&gt;服务与创新：外来工社会政策研讨...&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2015-01-02&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=121&quot;&gt;全球化与劳工问题学术研讨会&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2014-12-31&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			          			          					
+				&lt;/dl&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-2&quot;&gt;
+				&lt;h2&gt;
+					&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;城镇化专题&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;环境与保护&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;法制与社会&lt;/a&gt;
+				&lt;/h2&gt;
+				&lt;div style=&quot;height:116px; overflow:hidden;&quot;&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list1.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list2.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list3.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-3&quot;&gt;
+				&lt;h2&gt;&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;&lt;span style=&quot;margin-right:54px; color:#000;&quot;&gt;常用链接&lt;/span&gt;友情链接&lt;/h2&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_12.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;中心概括&lt;/span&gt;
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆社会学人类学门户&lt;/option&gt;
+													&lt;option value=&quot;http://ssps.ruc.edu.cn/index.asp&quot;&gt;社会与人口学院网站&lt;/option&gt;
+													&lt;option value=&quot;http://www.tsinghua.edu.cn/publish/newthu/index.html&quot;&gt;清华大学社会学学系&lt;/option&gt;
+													&lt;option value=&quot;http://www.shehui.pku.edu.cn/&quot;&gt;北京大学社会学系&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;中山大学人类学系&lt;/option&gt;
+												&lt;/select&gt;   	
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_15.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;学者观点&lt;/span&gt;  
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆学术网络资源&lt;/option&gt;
+													&lt;option value=&quot;http://www.ruc.edu.cn&quot;&gt;中国人民大学网&lt;/option&gt;
+												&lt;/select&gt;
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img04_17.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;联系我们 &lt;/span&gt; 
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆以外地区、国家资源&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;哈佛大学社会学系&lt;/option&gt;
+												&lt;/select&gt;    	
+					&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		
+&lt;script&gt;
+$(&quot;.index_list&quot;).mouseover(function(){
+	var d_i = $(this).attr('d_i');
+	$(&quot;.dt_dd&quot;).hide();
+	var index = d_i -1;
+	$(&quot;.index_list&quot;+d_i).show();
+	$(&quot;.index_list&quot;).css(&quot;border-left&quot;,&quot;2px solid #fff&quot;);
+	$(&quot;.index_list:eq(&quot;+index+&quot;)&quot;).css(&quot;border-left&quot;,&quot;2px solid #b44db5&quot;);
+})
+
+function gopage(val)
+{
+	if(val != 0)
+	{
+		window.open(val);
+	}
+}
+
+var cur_num = 1;
+var max_num = $('.imgslide').size();
+
+//第一个滚动
+function firstSlide()
+{
+	$('.imgslide:eq(0)').show();
+	var s = setInterval(&quot;imgSlide()&quot;,3000);
+}
+
+$(window).load(function(){
+	firstSlide();
+});
+
+//图片滚动
+function imgSlide()
+{
+
+	$('.imgslide').each(function(index){		
+		var i = index + 1;
+		if(cur_num == i)
+		{
+			$(this).show('fast');
+		}
+		else
+		{
+			$(this).hide('fast');
+		}
+	});
+	cur_num = cur_num &lt; max_num ? cur_num + 1 : 1;
+}
+&lt;/script&gt;		
+		&lt;div class=&quot;footer&quot;&gt;Copyright ©  2002 - 2010.12 清华大学社会科学学院&lt;/div&gt;
+		&lt;script&gt;
+		function check_key()
+		{
+			var key = document.getElementById(&quot;searchword&quot;).value;
+			if(key.length &gt; 0)
+			{
+				return true;
+			}
+			else
+			{
+				alert(&quot;请输入关键字&quot;);
+				return false;
+			}
+			return false;
+		}
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="204">
+                <http-request>
+                    <status>GET https://ccctu.sss.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 19 Nov 1981 08:52:00 GMT" field="expires"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:20:21 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/index.css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/lrtk.css&quot;/&gt;
+		&lt;script src=&quot;/themes/default/js/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;
+   		&lt;script type=&quot;text/javascript&quot; src=&quot;/themes/default/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class=&quot;head&quot;&gt;
+			&lt;a href=&quot;index.php&quot;&gt;&lt;img src=&quot;/themes/default/images/img04_04.png&quot; /&gt;&lt;/a&gt;
+			&lt;div class=&quot;search&quot;&gt;
+			&lt;form method=&quot;POST&quot; id=&quot;myform1&quot; name=&quot;myform1&quot; action=&quot;index.php?r=default/index/search&quot;  target=&quot;_self&quot;&gt;
+			&lt;input class=&quot;text&quot; type=&quot;text&quot; value=&quot;&quot; name=&quot;search&quot; id=&quot;searchword&quot; /&gt;
+			&lt;input type=&quot;submit&quot; class=&quot;btn&quot; value=&quot;&quot; style=&quot;cursor:pointer;&quot; onclick=&quot;return check_key()&quot;/&gt;
+			&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nav&quot;&gt;
+			&lt;ul&gt;
+            	&lt;li&gt;&lt;a href=&quot;index.php&quot;&gt;首 页&lt;/a&gt;&lt;/li&gt;
+		    		    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=1&quot;&gt;中心动态&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=3&quot;&gt;中心论文&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=4&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=5&quot;&gt;报告演讲&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=6&quot;&gt;合作交流 &lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=57&quot;&gt;学术著作&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=21&quot;&gt;学者观点&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=56&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;banner&quot;&gt;
+			&lt;div id=&quot;fsD1&quot; class=&quot;focus&quot; style=&quot;&quot;&gt;  
+    &lt;div id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+    	        &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-13/66353b70277e68288fda951287cb8d8b.png&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/c606d804b30fa5e24ee158ef6a8baf01.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/f91146ffc6c8474418fdf610c91c15c9.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/858fe14655c97cb6b27588e910f30559.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/3e8e647f6008fb3b23ec852feaededb3.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        	      
+    &lt;/div&gt;
+    &lt;div class=&quot;fbg&quot;&gt;  
+    &lt;div class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;
+    	        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;
+          
+    &lt;/div&gt;  
+    &lt;/div&gt;  
+    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+&lt;/div&gt;  
+&lt;script type=&quot;text/javascript&quot;&gt;
+	Qfast.add('widgets', { path: &quot;/themes/default/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+	Qfast(false, 'widgets', function () {
+		K.tabs({
+			id: 'fsD1',   
+			conId: &quot;D1pic1&quot;,  
+			tabId:&quot;D1fBt&quot;,  
+			tabTn:&quot;a&quot;,
+			conCn: '.fcon', 
+			auto: 1,   
+			effect: 'fade',   
+			eType: 'click', 
+			pageBt:true,
+			bns: ['.prev', '.next'],           
+			interval: 3000  
+		}) 
+	})  
+&lt;/script&gt;
+			
+			
+			
+		&lt;/div&gt;&lt;style&gt;
+.ftxt{ margin-right:30px;}
+.flink{width:120px;}
+.index_list{cursor:pointer; padding-right:40px;border-left:2px solid #fff; padding-left:6px;}
+.index_list2{display:none;}
+.ui-list-2 h2 a{margin-right:24px; color:#000;}
+.imgslide{display:none;}
+.bg_line{border-left:2px solid #b44db5; padding-left:6px;}
+&lt;/style&gt;
+
+		&lt;div class=&quot;contant&quot;&gt;
+			&lt;div class=&quot;ui-list-1&quot;&gt;
+				&lt;h2&gt;
+					&lt;span d_i=1 class=&quot;index_list bg_line&quot;&gt;中心动态&lt;/span&gt;&lt;span d_i=2 class=&quot;index_list&quot;&gt;学术会议&lt;/span&gt;
+				&lt;/h2&gt;			
+				&lt;dl&gt;
+			        			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=140&quot;&gt;服务与创新：外来工社会政策研讨...&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2015-01-02&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=121&quot;&gt;全球化与劳工问题学术研讨会&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2014-12-31&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			          			          					
+				&lt;/dl&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-2&quot;&gt;
+				&lt;h2&gt;
+					&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;城镇化专题&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;环境与保护&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;法制与社会&lt;/a&gt;
+				&lt;/h2&gt;
+				&lt;div style=&quot;height:116px; overflow:hidden;&quot;&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list1.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list2.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list3.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-3&quot;&gt;
+				&lt;h2&gt;&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;&lt;span style=&quot;margin-right:54px; color:#000;&quot;&gt;常用链接&lt;/span&gt;友情链接&lt;/h2&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_12.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;中心概括&lt;/span&gt;
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆社会学人类学门户&lt;/option&gt;
+													&lt;option value=&quot;http://ssps.ruc.edu.cn/index.asp&quot;&gt;社会与人口学院网站&lt;/option&gt;
+													&lt;option value=&quot;http://www.tsinghua.edu.cn/publish/newthu/index.html&quot;&gt;清华大学社会学学系&lt;/option&gt;
+													&lt;option value=&quot;http://www.shehui.pku.edu.cn/&quot;&gt;北京大学社会学系&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;中山大学人类学系&lt;/option&gt;
+												&lt;/select&gt;   	
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_15.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;学者观点&lt;/span&gt;  
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆学术网络资源&lt;/option&gt;
+													&lt;option value=&quot;http://www.ruc.edu.cn&quot;&gt;中国人民大学网&lt;/option&gt;
+												&lt;/select&gt;
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img04_17.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;联系我们 &lt;/span&gt; 
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆以外地区、国家资源&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;哈佛大学社会学系&lt;/option&gt;
+												&lt;/select&gt;    	
+					&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		
+&lt;script&gt;
+$(&quot;.index_list&quot;).mouseover(function(){
+	var d_i = $(this).attr('d_i');
+	$(&quot;.dt_dd&quot;).hide();
+	var index = d_i -1;
+	$(&quot;.index_list&quot;+d_i).show();
+	$(&quot;.index_list&quot;).css(&quot;border-left&quot;,&quot;2px solid #fff&quot;);
+	$(&quot;.index_list:eq(&quot;+index+&quot;)&quot;).css(&quot;border-left&quot;,&quot;2px solid #b44db5&quot;);
+})
+
+function gopage(val)
+{
+	if(val != 0)
+	{
+		window.open(val);
+	}
+}
+
+var cur_num = 1;
+var max_num = $('.imgslide').size();
+
+//第一个滚动
+function firstSlide()
+{
+	$('.imgslide:eq(0)').show();
+	var s = setInterval(&quot;imgSlide()&quot;,3000);
+}
+
+$(window).load(function(){
+	firstSlide();
+});
+
+//图片滚动
+function imgSlide()
+{
+
+	$('.imgslide').each(function(index){		
+		var i = index + 1;
+		if(cur_num == i)
+		{
+			$(this).show('fast');
+		}
+		else
+		{
+			$(this).hide('fast');
+		}
+	});
+	cur_num = cur_num &lt; max_num ? cur_num + 1 : 1;
+}
+&lt;/script&gt;		
+		&lt;div class=&quot;footer&quot;&gt;Copyright ©  2002 - 2010.12 清华大学社会科学学院&lt;/div&gt;
+		&lt;script&gt;
+		function check_key()
+		{
+			var key = document.getElementById(&quot;searchword&quot;).value;
+			if(key.length &gt; 0)
+			{
+				return true;
+			}
+			else
+			{
+				alert(&quot;请输入关键字&quot;);
+				return false;
+			}
+			return false;
+		}
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Uncommon query string parameter" plugin="strange_parameters" severity="Information" url="http://ccctu.sss.tsinghua.edu.cn/index.php" var="None">
+        <description>The URI: &quot;http://ccctu.sss.tsinghua.edu.cn/&quot; has a parameter named: &quot;r&quot; with value: &quot;default/index/search&quot;, which is very uncommon. and requires manual verification.</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 19 Nov 1981 08:52:00 GMT" field="expires"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:20:03 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/index.css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/lrtk.css&quot;/&gt;
+		&lt;script src=&quot;/themes/default/js/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;
+   		&lt;script type=&quot;text/javascript&quot; src=&quot;/themes/default/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class=&quot;head&quot;&gt;
+			&lt;a href=&quot;index.php&quot;&gt;&lt;img src=&quot;/themes/default/images/img04_04.png&quot; /&gt;&lt;/a&gt;
+			&lt;div class=&quot;search&quot;&gt;
+			&lt;form method=&quot;POST&quot; id=&quot;myform1&quot; name=&quot;myform1&quot; action=&quot;index.php?r=default/index/search&quot;  target=&quot;_self&quot;&gt;
+			&lt;input class=&quot;text&quot; type=&quot;text&quot; value=&quot;&quot; name=&quot;search&quot; id=&quot;searchword&quot; /&gt;
+			&lt;input type=&quot;submit&quot; class=&quot;btn&quot; value=&quot;&quot; style=&quot;cursor:pointer;&quot; onclick=&quot;return check_key()&quot;/&gt;
+			&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nav&quot;&gt;
+			&lt;ul&gt;
+            	&lt;li&gt;&lt;a href=&quot;index.php&quot;&gt;首 页&lt;/a&gt;&lt;/li&gt;
+		    		    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=1&quot;&gt;中心动态&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=3&quot;&gt;中心论文&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=4&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=5&quot;&gt;报告演讲&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=6&quot;&gt;合作交流 &lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=57&quot;&gt;学术著作&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=21&quot;&gt;学者观点&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=56&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;banner&quot;&gt;
+			&lt;div id=&quot;fsD1&quot; class=&quot;focus&quot; style=&quot;&quot;&gt;  
+    &lt;div id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+    	        &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-13/66353b70277e68288fda951287cb8d8b.png&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/c606d804b30fa5e24ee158ef6a8baf01.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/f91146ffc6c8474418fdf610c91c15c9.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/858fe14655c97cb6b27588e910f30559.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/3e8e647f6008fb3b23ec852feaededb3.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        	      
+    &lt;/div&gt;
+    &lt;div class=&quot;fbg&quot;&gt;  
+    &lt;div class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;
+    	        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;
+          
+    &lt;/div&gt;  
+    &lt;/div&gt;  
+    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+&lt;/div&gt;  
+&lt;script type=&quot;text/javascript&quot;&gt;
+	Qfast.add('widgets', { path: &quot;/themes/default/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+	Qfast(false, 'widgets', function () {
+		K.tabs({
+			id: 'fsD1',   
+			conId: &quot;D1pic1&quot;,  
+			tabId:&quot;D1fBt&quot;,  
+			tabTn:&quot;a&quot;,
+			conCn: '.fcon', 
+			auto: 1,   
+			effect: 'fade',   
+			eType: 'click', 
+			pageBt:true,
+			bns: ['.prev', '.next'],           
+			interval: 3000  
+		}) 
+	})  
+&lt;/script&gt;
+			
+			
+			
+		&lt;/div&gt;&lt;style&gt;
+.ftxt{ margin-right:30px;}
+.flink{width:120px;}
+.index_list{cursor:pointer; padding-right:40px;border-left:2px solid #fff; padding-left:6px;}
+.index_list2{display:none;}
+.ui-list-2 h2 a{margin-right:24px; color:#000;}
+.imgslide{display:none;}
+.bg_line{border-left:2px solid #b44db5; padding-left:6px;}
+&lt;/style&gt;
+
+		&lt;div class=&quot;contant&quot;&gt;
+			&lt;div class=&quot;ui-list-1&quot;&gt;
+				&lt;h2&gt;
+					&lt;span d_i=1 class=&quot;index_list bg_line&quot;&gt;中心动态&lt;/span&gt;&lt;span d_i=2 class=&quot;index_list&quot;&gt;学术会议&lt;/span&gt;
+				&lt;/h2&gt;			
+				&lt;dl&gt;
+			        			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=140&quot;&gt;服务与创新：外来工社会政策研讨...&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2015-01-02&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=121&quot;&gt;全球化与劳工问题学术研讨会&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2014-12-31&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			          			          					
+				&lt;/dl&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-2&quot;&gt;
+				&lt;h2&gt;
+					&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;城镇化专题&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;环境与保护&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;法制与社会&lt;/a&gt;
+				&lt;/h2&gt;
+				&lt;div style=&quot;height:116px; overflow:hidden;&quot;&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list1.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list2.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list3.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-3&quot;&gt;
+				&lt;h2&gt;&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;&lt;span style=&quot;margin-right:54px; color:#000;&quot;&gt;常用链接&lt;/span&gt;友情链接&lt;/h2&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_12.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;中心概括&lt;/span&gt;
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆社会学人类学门户&lt;/option&gt;
+													&lt;option value=&quot;http://ssps.ruc.edu.cn/index.asp&quot;&gt;社会与人口学院网站&lt;/option&gt;
+													&lt;option value=&quot;http://www.tsinghua.edu.cn/publish/newthu/index.html&quot;&gt;清华大学社会学学系&lt;/option&gt;
+													&lt;option value=&quot;http://www.shehui.pku.edu.cn/&quot;&gt;北京大学社会学系&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;中山大学人类学系&lt;/option&gt;
+												&lt;/select&gt;   	
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_15.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;学者观点&lt;/span&gt;  
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆学术网络资源&lt;/option&gt;
+													&lt;option value=&quot;http://www.ruc.edu.cn&quot;&gt;中国人民大学网&lt;/option&gt;
+												&lt;/select&gt;
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img04_17.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;联系我们 &lt;/span&gt; 
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆以外地区、国家资源&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;哈佛大学社会学系&lt;/option&gt;
+												&lt;/select&gt;    	
+					&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		
+&lt;script&gt;
+$(&quot;.index_list&quot;).mouseover(function(){
+	var d_i = $(this).attr('d_i');
+	$(&quot;.dt_dd&quot;).hide();
+	var index = d_i -1;
+	$(&quot;.index_list&quot;+d_i).show();
+	$(&quot;.index_list&quot;).css(&quot;border-left&quot;,&quot;2px solid #fff&quot;);
+	$(&quot;.index_list:eq(&quot;+index+&quot;)&quot;).css(&quot;border-left&quot;,&quot;2px solid #b44db5&quot;);
+})
+
+function gopage(val)
+{
+	if(val != 0)
+	{
+		window.open(val);
+	}
+}
+
+var cur_num = 1;
+var max_num = $('.imgslide').size();
+
+//第一个滚动
+function firstSlide()
+{
+	$('.imgslide:eq(0)').show();
+	var s = setInterval(&quot;imgSlide()&quot;,3000);
+}
+
+$(window).load(function(){
+	firstSlide();
+});
+
+//图片滚动
+function imgSlide()
+{
+
+	$('.imgslide').each(function(index){		
+		var i = index + 1;
+		if(cur_num == i)
+		{
+			$(this).show('fast');
+		}
+		else
+		{
+			$(this).hide('fast');
+		}
+	});
+	cur_num = cur_num &lt; max_num ? cur_num + 1 : 1;
+}
+&lt;/script&gt;		
+		&lt;div class=&quot;footer&quot;&gt;Copyright ©  2002 - 2010.12 清华大学社会科学学院&lt;/div&gt;
+		&lt;script&gt;
+		function check_key()
+		{
+			var key = document.getElementById(&quot;searchword&quot;).value;
+			if(key.length &gt; 0)
+			{
+				return true;
+			}
+			else
+			{
+				alert(&quot;请输入关键字&quot;);
+				return false;
+			}
+			return false;
+		}
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[174]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://ccctu.sss.tsinghua.edu.cn/lakFn" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://ccctu.sss.tsinghua.edu.cn/lakFn
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="174">
+                <http-request>
+                    <status>PUT http://ccctu.sss.tsinghua.edu.cn/lakFn HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">ax9YW1</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /lakFn.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.7.161</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="PHPSESSID=56umupvg0bt0d447ia2mgekf34; path=/, thuwebcookie=2668064522.20480.0000; path=/" field="set-cookie"/>
+                        <header content="Thu, 19 Nov 1981 08:52:00 GMT" field="expires"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:20:03 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/index.css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/lrtk.css&quot;/&gt;
+		&lt;script src=&quot;/themes/default/js/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;
+   		&lt;script type=&quot;text/javascript&quot; src=&quot;/themes/default/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class=&quot;head&quot;&gt;
+			&lt;a href=&quot;index.php&quot;&gt;&lt;img src=&quot;/themes/default/images/img04_04.png&quot; /&gt;&lt;/a&gt;
+			&lt;div class=&quot;search&quot;&gt;
+			&lt;form method=&quot;POST&quot; id=&quot;myform1&quot; name=&quot;myform1&quot; action=&quot;index.php?r=default/index/search&quot;  target=&quot;_self&quot;&gt;
+			&lt;input class=&quot;text&quot; type=&quot;text&quot; value=&quot;&quot; name=&quot;search&quot; id=&quot;searchword&quot; /&gt;
+			&lt;input type=&quot;submit&quot; class=&quot;btn&quot; value=&quot;&quot; style=&quot;cursor:pointer;&quot; onclick=&quot;return check_key()&quot;/&gt;
+			&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nav&quot;&gt;
+			&lt;ul&gt;
+            	&lt;li&gt;&lt;a href=&quot;index.php&quot;&gt;首 页&lt;/a&gt;&lt;/li&gt;
+		    		    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=1&quot;&gt;中心动态&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=3&quot;&gt;中心论文&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=4&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=5&quot;&gt;报告演讲&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=6&quot;&gt;合作交流 &lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=57&quot;&gt;学术著作&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=21&quot;&gt;学者观点&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=56&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;banner&quot;&gt;
+			&lt;div id=&quot;fsD1&quot; class=&quot;focus&quot; style=&quot;&quot;&gt;  
+    &lt;div id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+    	        &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-13/66353b70277e68288fda951287cb8d8b.png&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/c606d804b30fa5e24ee158ef6a8baf01.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/f91146ffc6c8474418fdf610c91c15c9.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/858fe14655c97cb6b27588e910f30559.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/3e8e647f6008fb3b23ec852feaededb3.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        	      
+    &lt;/div&gt;
+    &lt;div class=&quot;fbg&quot;&gt;  
+    &lt;div class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;
+    	        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;
+          
+    &lt;/div&gt;  
+    &lt;/div&gt;  
+    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+&lt;/div&gt;  
+&lt;script type=&quot;text/javascript&quot;&gt;
+	Qfast.add('widgets', { path: &quot;/themes/default/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+	Qfast(false, 'widgets', function () {
+		K.tabs({
+			id: 'fsD1',   
+			conId: &quot;D1pic1&quot;,  
+			tabId:&quot;D1fBt&quot;,  
+			tabTn:&quot;a&quot;,
+			conCn: '.fcon', 
+			auto: 1,   
+			effect: 'fade',   
+			eType: 'click', 
+			pageBt:true,
+			bns: ['.prev', '.next'],           
+			interval: 3000  
+		}) 
+	})  
+&lt;/script&gt;
+			
+			
+			
+		&lt;/div&gt;&lt;style&gt;
+.ftxt{ margin-right:30px;}
+.flink{width:120px;}
+.index_list{cursor:pointer; padding-right:40px;border-left:2px solid #fff; padding-left:6px;}
+.index_list2{display:none;}
+.ui-list-2 h2 a{margin-right:24px; color:#000;}
+.imgslide{display:none;}
+.bg_line{border-left:2px solid #b44db5; padding-left:6px;}
+&lt;/style&gt;
+
+		&lt;div class=&quot;contant&quot;&gt;
+			&lt;div class=&quot;ui-list-1&quot;&gt;
+				&lt;h2&gt;
+					&lt;span d_i=1 class=&quot;index_list bg_line&quot;&gt;中心动态&lt;/span&gt;&lt;span d_i=2 class=&quot;index_list&quot;&gt;学术会议&lt;/span&gt;
+				&lt;/h2&gt;			
+				&lt;dl&gt;
+			        			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=140&quot;&gt;服务与创新：外来工社会政策研讨...&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2015-01-02&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=121&quot;&gt;全球化与劳工问题学术研讨会&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2014-12-31&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			          			          					
+				&lt;/dl&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-2&quot;&gt;
+				&lt;h2&gt;
+					&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;城镇化专题&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;环境与保护&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;法制与社会&lt;/a&gt;
+				&lt;/h2&gt;
+				&lt;div style=&quot;height:116px; overflow:hidden;&quot;&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list1.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list2.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list3.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-3&quot;&gt;
+				&lt;h2&gt;&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;&lt;span style=&quot;margin-right:54px; color:#000;&quot;&gt;常用链接&lt;/span&gt;友情链接&lt;/h2&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_12.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;中心概括&lt;/span&gt;
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆社会学人类学门户&lt;/option&gt;
+													&lt;option value=&quot;http://ssps.ruc.edu.cn/index.asp&quot;&gt;社会与人口学院网站&lt;/option&gt;
+													&lt;option value=&quot;http://www.tsinghua.edu.cn/publish/newthu/index.html&quot;&gt;清华大学社会学学系&lt;/option&gt;
+													&lt;option value=&quot;http://www.shehui.pku.edu.cn/&quot;&gt;北京大学社会学系&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;中山大学人类学系&lt;/option&gt;
+												&lt;/select&gt;   	
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_15.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;学者观点&lt;/span&gt;  
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆学术网络资源&lt;/option&gt;
+													&lt;option value=&quot;http://www.ruc.edu.cn&quot;&gt;中国人民大学网&lt;/option&gt;
+												&lt;/select&gt;
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img04_17.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;联系我们 &lt;/span&gt; 
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆以外地区、国家资源&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;哈佛大学社会学系&lt;/option&gt;
+												&lt;/select&gt;    	
+					&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		
+&lt;script&gt;
+$(&quot;.index_list&quot;).mouseover(function(){
+	var d_i = $(this).attr('d_i');
+	$(&quot;.dt_dd&quot;).hide();
+	var index = d_i -1;
+	$(&quot;.index_list&quot;+d_i).show();
+	$(&quot;.index_list&quot;).css(&quot;border-left&quot;,&quot;2px solid #fff&quot;);
+	$(&quot;.index_list:eq(&quot;+index+&quot;)&quot;).css(&quot;border-left&quot;,&quot;2px solid #b44db5&quot;);
+})
+
+function gopage(val)
+{
+	if(val != 0)
+	{
+		window.open(val);
+	}
+}
+
+var cur_num = 1;
+var max_num = $('.imgslide').size();
+
+//第一个滚动
+function firstSlide()
+{
+	$('.imgslide:eq(0)').show();
+	var s = setInterval(&quot;imgSlide()&quot;,3000);
+}
+
+$(window).load(function(){
+	firstSlide();
+});
+
+//图片滚动
+function imgSlide()
+{
+
+	$('.imgslide').each(function(index){		
+		var i = index + 1;
+		if(cur_num == i)
+		{
+			$(this).show('fast');
+		}
+		else
+		{
+			$(this).hide('fast');
+		}
+	});
+	cur_num = cur_num &lt; max_num ? cur_num + 1 : 1;
+}
+&lt;/script&gt;		
+		&lt;div class=&quot;footer&quot;&gt;Copyright ©  2002 - 2010.12 清华大学社会科学学院&lt;/div&gt;
+		&lt;script&gt;
+		function check_key()
+		{
+			var key = document.getElementById(&quot;searchword&quot;).value;
+			if(key.length &gt; 0)
+			{
+				return true;
+			}
+			else
+			{
+				alert(&quot;请输入关键字&quot;);
+				return false;
+			}
+			return false;
+		}
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 174, 180, 181, 182, 183, 184, 185, 186, 190, 193, 196, 202]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 19 Nov 1981 08:52:00 GMT" field="expires"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:20:03 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html;charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/index.css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/themes/default/css/lrtk.css&quot;/&gt;
+		&lt;script src=&quot;/themes/default/js/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;
+   		&lt;script type=&quot;text/javascript&quot; src=&quot;/themes/default/js/koala.min.1.5.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class=&quot;head&quot;&gt;
+			&lt;a href=&quot;index.php&quot;&gt;&lt;img src=&quot;/themes/default/images/img04_04.png&quot; /&gt;&lt;/a&gt;
+			&lt;div class=&quot;search&quot;&gt;
+			&lt;form method=&quot;POST&quot; id=&quot;myform1&quot; name=&quot;myform1&quot; action=&quot;index.php?r=default/index/search&quot;  target=&quot;_self&quot;&gt;
+			&lt;input class=&quot;text&quot; type=&quot;text&quot; value=&quot;&quot; name=&quot;search&quot; id=&quot;searchword&quot; /&gt;
+			&lt;input type=&quot;submit&quot; class=&quot;btn&quot; value=&quot;&quot; style=&quot;cursor:pointer;&quot; onclick=&quot;return check_key()&quot;/&gt;
+			&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nav&quot;&gt;
+			&lt;ul&gt;
+            	&lt;li&gt;&lt;a href=&quot;index.php&quot;&gt;首 页&lt;/a&gt;&lt;/li&gt;
+		    		    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=1&quot;&gt;中心动态&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=3&quot;&gt;中心论文&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=4&quot;&gt;学术会议&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=5&quot;&gt;报告演讲&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=6&quot;&gt;合作交流 &lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=57&quot;&gt;学术著作&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=21&quot;&gt;学者观点&lt;/a&gt;&lt;/li&gt;
+					    	&lt;li&gt;&lt;a href=&quot;index.php?r=default/index/channel&amp;cid=56&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;banner&quot;&gt;
+			&lt;div id=&quot;fsD1&quot; class=&quot;focus&quot; style=&quot;&quot;&gt;  
+    &lt;div id=&quot;D1pic1&quot; class=&quot;fPic&quot;&gt;  
+    	        &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-13/66353b70277e68288fda951287cb8d8b.png&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/c606d804b30fa5e24ee158ef6a8baf01.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/f91146ffc6c8474418fdf610c91c15c9.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/858fe14655c97cb6b27588e910f30559.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+                &lt;div class=&quot;fcon&quot; style=&quot;display: none;&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;&quot;&gt;&lt;img src=&quot;uploads/2014-12-21/3e8e647f6008fb3b23ec852feaededb3.jpg&quot; style=&quot;opacity: 1; &quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        	      
+    &lt;/div&gt;
+    &lt;div class=&quot;fbg&quot;&gt;  
+    &lt;div class=&quot;D1fBt&quot; id=&quot;D1fBt&quot;&gt;
+    	        &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;1&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;2&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;3&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;4&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:void(0)&quot; hidefocus=&quot;true&quot; target=&quot;_self&quot; class=&quot;&quot;&gt;&lt;i&gt;5&lt;/i&gt;&lt;/a&gt;
+          
+    &lt;/div&gt;  
+    &lt;/div&gt;  
+    &lt;span class=&quot;prev&quot;&gt;&lt;/span&gt;   
+    &lt;span class=&quot;next&quot;&gt;&lt;/span&gt;    
+&lt;/div&gt;  
+&lt;script type=&quot;text/javascript&quot;&gt;
+	Qfast.add('widgets', { path: &quot;/themes/default/js/terminator2.2.min.js&quot;, type: &quot;js&quot;, requires: ['fx'] });  
+	Qfast(false, 'widgets', function () {
+		K.tabs({
+			id: 'fsD1',   
+			conId: &quot;D1pic1&quot;,  
+			tabId:&quot;D1fBt&quot;,  
+			tabTn:&quot;a&quot;,
+			conCn: '.fcon', 
+			auto: 1,   
+			effect: 'fade',   
+			eType: 'click', 
+			pageBt:true,
+			bns: ['.prev', '.next'],           
+			interval: 3000  
+		}) 
+	})  
+&lt;/script&gt;
+			
+			
+			
+		&lt;/div&gt;&lt;style&gt;
+.ftxt{ margin-right:30px;}
+.flink{width:120px;}
+.index_list{cursor:pointer; padding-right:40px;border-left:2px solid #fff; padding-left:6px;}
+.index_list2{display:none;}
+.ui-list-2 h2 a{margin-right:24px; color:#000;}
+.imgslide{display:none;}
+.bg_line{border-left:2px solid #b44db5; padding-left:6px;}
+&lt;/style&gt;
+
+		&lt;div class=&quot;contant&quot;&gt;
+			&lt;div class=&quot;ui-list-1&quot;&gt;
+				&lt;h2&gt;
+					&lt;span d_i=1 class=&quot;index_list bg_line&quot;&gt;中心动态&lt;/span&gt;&lt;span d_i=2 class=&quot;index_list&quot;&gt;学术会议&lt;/span&gt;
+				&lt;/h2&gt;			
+				&lt;dl&gt;
+			        			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=140&quot;&gt;服务与创新：外来工社会政策研讨...&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2015-01-02&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			        			        	&lt;dd class=&quot;index_list2 dt_dd&quot;&gt;&lt;a href=&quot;index.php?r=default/index/read&amp;cid=1&amp;fid=121&quot;&gt;全球化与劳工问题学术研讨会&lt;/a&gt;&lt;span style=&quot;float:right;&quot;&gt;2014-12-31&lt;/span&gt;&lt;/dd&gt;
+			        	&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+			          			          					
+				&lt;/dl&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-2&quot;&gt;
+				&lt;h2&gt;
+					&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;城镇化专题&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;环境与保护&lt;/a&gt;
+					&lt;a href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;法制与社会&lt;/a&gt;
+				&lt;/h2&gt;
+				&lt;div style=&quot;height:116px; overflow:hidden;&quot;&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=24&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list1.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=25&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list2.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;a class=&quot;imgslide&quot; href=&quot;index.php?r=default/index/read&amp;cid=26&quot;&gt;&lt;img src=&quot;/themes/default/images/index_list3.jpg&quot; /&gt;&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;ui-list-3&quot;&gt;
+				&lt;h2&gt;&lt;span class=&quot;span_line&quot;&gt;|&lt;/span&gt;&lt;span style=&quot;margin-right:54px; color:#000;&quot;&gt;常用链接&lt;/span&gt;友情链接&lt;/h2&gt;
+				&lt;ul&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_12.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;中心概括&lt;/span&gt;
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆社会学人类学门户&lt;/option&gt;
+													&lt;option value=&quot;http://ssps.ruc.edu.cn/index.asp&quot;&gt;社会与人口学院网站&lt;/option&gt;
+													&lt;option value=&quot;http://www.tsinghua.edu.cn/publish/newthu/index.html&quot;&gt;清华大学社会学学系&lt;/option&gt;
+													&lt;option value=&quot;http://www.shehui.pku.edu.cn/&quot;&gt;北京大学社会学系&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;中山大学人类学系&lt;/option&gt;
+												&lt;/select&gt;   	
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img03_15.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;学者观点&lt;/span&gt;  
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆学术网络资源&lt;/option&gt;
+													&lt;option value=&quot;http://www.ruc.edu.cn&quot;&gt;中国人民大学网&lt;/option&gt;
+												&lt;/select&gt;
+					&lt;/li&gt;
+					&lt;li&gt;&lt;img src=&quot;/themes/default/images/img04_17.png&quot;/&gt; 
+						&lt;span class=&quot;ftxt&quot;&gt;联系我们 &lt;/span&gt; 
+						&lt;select class=&quot;flink&quot; onclick=&quot;gopage(this.value)&quot;&gt;
+							&lt;option value=&quot;0&quot;&gt;大陆以外地区、国家资源&lt;/option&gt;
+													&lt;option value=&quot;&quot;&gt;哈佛大学社会学系&lt;/option&gt;
+												&lt;/select&gt;    	
+					&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		
+&lt;script&gt;
+$(&quot;.index_list&quot;).mouseover(function(){
+	var d_i = $(this).attr('d_i');
+	$(&quot;.dt_dd&quot;).hide();
+	var index = d_i -1;
+	$(&quot;.index_list&quot;+d_i).show();
+	$(&quot;.index_list&quot;).css(&quot;border-left&quot;,&quot;2px solid #fff&quot;);
+	$(&quot;.index_list:eq(&quot;+index+&quot;)&quot;).css(&quot;border-left&quot;,&quot;2px solid #b44db5&quot;);
+})
+
+function gopage(val)
+{
+	if(val != 0)
+	{
+		window.open(val);
+	}
+}
+
+var cur_num = 1;
+var max_num = $('.imgslide').size();
+
+//第一个滚动
+function firstSlide()
+{
+	$('.imgslide:eq(0)').show();
+	var s = setInterval(&quot;imgSlide()&quot;,3000);
+}
+
+$(window).load(function(){
+	firstSlide();
+});
+
+//图片滚动
+function imgSlide()
+{
+
+	$('.imgslide').each(function(index){		
+		var i = index + 1;
+		if(cur_num == i)
+		{
+			$(this).show('fast');
+		}
+		else
+		{
+			$(this).hide('fast');
+		}
+	});
+	cur_num = cur_num &lt; max_num ? cur_num + 1 : 1;
+}
+&lt;/script&gt;		
+		&lt;div class=&quot;footer&quot;&gt;Copyright ©  2002 - 2010.12 清华大学社会科学学院&lt;/div&gt;
+		&lt;script&gt;
+		function check_key()
+		{
+			var key = document.getElementById(&quot;searchword&quot;).value;
+			if(key.length &gt; 0)
+			{
+				return true;
+			}
+			else
+			{
+				alert(&quot;请输入关键字&quot;);
+				return false;
+			}
+			return false;
+		}
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="174">
+                <http-request>
+                    <status>PUT http://ccctu.sss.tsinghua.edu.cn/lakFn HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">ax9YW1</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /lakFn.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="180">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /server-status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="181">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /admin-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="182">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="183">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/JMXInvokerServlet was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="184">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /jmx-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="185">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/Invoker was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /web-console/ServerInfo.jsp was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="193">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /favicon.ico was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="196">
+                <http-request>
+                    <status>GET http://ccctu.sss.tsinghua.edu.cn/sHfEq.html HTTP/1.1</status>
+                    <headers>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /sHfEq.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="202">
+                <http-request>
+                    <status>POST http://ccctu.sss.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ccctu.sss.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; PHPSESSID=56umupvg0bt0d447ia2mgekf34" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3NIZkVxLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGgucUVmSHM=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Fri, 02 Dec 2016 08:20:13 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to ccctu.sss.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

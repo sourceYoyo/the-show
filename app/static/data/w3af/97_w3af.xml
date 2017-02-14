@@ -1,0 +1,2178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481165172" start-long="Wed Dec 07 21:46:12 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://mail.biomed.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/97_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[52]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache-Coyote/1.1&quot;.</description>
+        <http-transactions>
+            <http-transaction id="52">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:46:32 GMT" field="date"/>
+                        <header content="text/html;charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;濞撳懎宕曟径褍\xad\xa6閻㈢喓澧块崠璇瞈xad\xa6闁璡xae\xe4娆㈢化鑽ょ埠&lt;/title&gt;
+&lt;base href=&quot;http://mail.biomed.tsinghua.edu.cn/coremail/common/index_cm40.jsp&quot; /&gt;
+&lt;link href=&quot;index_cm40/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/js/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var markme_msg = &quot;鐠囬攱瀵\x9c Ctrl-D 閺\x80\xe6儼妫岄張\xac\xe9銆\x89&quot;;
+&lt;/script&gt;
+
+
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;Links&quot;&gt;
+      
+      &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;鐠佸彞璐熸＃鏍\xad\xe3\x80\x89&lt;/a&gt; |&lt;/span&gt;
+      
+      &lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;閺\x80\xe6儼妫岄張\xac\xe9銆\x89&lt;/a&gt; |
+      
+      &lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location.reload();&quot;&gt;English Version&lt;/a&gt; |
+      
+      &lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;鐢痋xae\xe5濮\xaa&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;Main&quot;&gt;
+      &lt;div class=&quot;MainL&quot;&gt;
+          &lt;div class=&quot;LTop&quot;&gt;
+              &lt;div class=&quot;logo&quot;&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;img style=&quot;border:0 none;&quot; src=&quot;../common/login/logo.gif&quot;
+                  &gt;&lt;/a&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;LContent&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;LB&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;MainR&quot;&gt;
+          &lt;h3 class=&quot;Header&quot;&gt;閻㈤潧鐡欓柇\xae\xe7\xae\xb1閻ц\xaf\xb2缍\x8d&lt;/h3&gt;
+          &lt;div class=&quot;Error&quot;&gt;
+              &lt;div class=&quot;NoteError&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp&quot;
+                onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+            &lt;table class=&quot;loginTable&quot;&gt;
+              &lt;tfoot&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&lt;/td&gt;
+                  &lt;td colspan=&quot;2&quot; &gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot;&gt;
+                      閻ф眹\x80\x80瑜癨x95\n                    &lt;/button&gt;
+
+                    
+                    &amp;nbsp;&amp;nbsp;
+                    
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tfoot&gt;
+              &lt;tr&gt;
+                &lt;th&gt;閻\xa2\xe3劍鍩涢崥\x8d&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;input&quot;
+                           value=&quot;&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    
+                    
+                      &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot;/&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+              
+              &lt;tr&gt;
+                &lt;th&gt;鐎靛棎\x80\x80閻甛x81&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; class=&quot;input&quot; autocomplete=&quot;off&quot;
+                           value=&quot;&quot; /&gt;&lt;/td&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+              
+              
+              
+
+
+
+
+    
+    
+        &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+    
+
+
+
+              
+
+
+
+
+
+
+
+
+
+              &lt;tr&gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;td colspan=&quot;2&quot;&gt;
+                    
+                    &lt;div&gt;
+                        &lt;label&gt;
+                            &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; checked /&gt;
+                            閸︺劍\xad\xa4閻\xa2\xe4絻鍓虫稉濠匼xae\xb0娴ｅ繒鏁ら幋宄版倳
+                        &lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;
+          &lt;/form&gt;
+          
+          
+      &lt;/div&gt;
+
+      &lt;div class=&quot;footer&quot;&gt;
+          &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;闁璡xae\xe4娆㈢化鑽ょ埠&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;闁璡xae\xe4娆㈤張宥呭\xa7\x9f閸\xa3\\xa8&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;娴间椒绗熼柇\xae\xe7\xae\xb1&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;娴间椒绗熼柇\xae\xe7\xae\xb1&lt;/a&gt;
+        &lt;/div&gt;
+          &lt;div class=&quot;footerBg&quot;&gt;
+              &lt;div class=&quot;copyright&quot;&gt;
+                  &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;閳ユ窅opyright &amp;copy濞撳懎宕曟径褍\xad\xa6閻㈢喓澧块崠璇瞈xad\xa6闁璡xae\xe4娆㈢化鑽ょ埠&quot;&lt;/a&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script type=&quot;text/javascript&quot;&gt;
+      init(&quot;uid&quot;);
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[60]" method="GET" name="Favicon identification failed" plugin="favicon_identification" severity="Information" url="http://mail.biomed.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>Favicon identification failed. If the remote site is using framework that is being exposed by its favicon, please send an email to w3af-develop@lists.sourceforge.net including this md5 hash &quot;ad74ff8f9a2f630fc2c5e6b3aa0a5cb8&quot; and the name of the server or Web application it represents. New fingerprints make this plugin more powerful and  accurate.</description>
+        <http-transactions>
+            <http-transaction id="60">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="5430" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Thu, 21 Nov 2013 07:37:52 GMT" field="last-modified"/>
+                        <header content="W/&quot;5430-1385019472000&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 02:46:37 GMT" field="date"/>
+                    </headers>
+                    <body content-encoding="base64">AAABAAIAICAAAAEAIACoEAAAJgAAABAQAAABACAAaAQAAM4QAAAoAAAAIAAAAEAAAAABACAAAAAA
+AIAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwIgURNSUGITUlBiI1JQYi
+NSUGIjUlBiI1JQYiNSUGIjUlBiI1JQYiNSUGIjUlBiI1JQYiNSUGIjUlBiI1JQYiNSUGIjUlBiI1
+JQYiNSUGIjUlBiIyIwUTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnSAtcjGIP05Bl
+EP6QZRD/kGUQ/5BlEP+QZRD/kGUQ/5BlEf+QZRD/kGUQ/5BlEP+QZRD/kGUQ/5BlEf+QZRD/kGUR
+/5BlEP+QZRD/kGUQ/5BlEP+QZRD/kGUR/5BlEP6NYw/Zbk0MZhkRAgEAAAAAAAAAAAAAAAAAAAAA
+gVoOl41jD/+NYw//kWUQ/5JmEP+SZhD/kmYQ/5JmEP+SZhD/kmYQ/5JmEP+SZhD/kmYQ/5JmEP+S
+ZhD/kmYQ/5JmEP+SZhH/kmYQ/5JmEP+SZhD/kmYQ/5JmEP+SZhD/kWYQ/41jD/+NYw//hl4PphwT
+AwIAAAAAAAAAAGxLDGKOZA//jmQP/45kD/+SZhD/k2cQ/5NnEP+TZxD/k2cR/5NnEf+TZxH/k2cQ
+/5NnEP+TZxH/k2cQ/5NnEP+TZxH/k2cR/5NnEP+TZxD/k2cQ/5NnEP+TZxD/k2cR/5NnEf+TZxD/
+jmQP/45kD/+OZA//d1QNcgAAAAAAAAAAj2QQ3I9kEP+PZBD/j2QQ/5NnEP+UaBH/lGgR/5RoEf+U
+aBH/lGgR/5RoEf+UaBH/lGgR/5RoEf+UaBH/lWkS/5RoEf+UaBH/lGgR/5RoEf+UaBH/lGgR/5Ro
+Ef+UaBH/lGgR/5RoEf+PZBD/j2QQ/49kEP+PZBDpKyEMBEM2Gx+PZRD/j2UQ/49lEP+PZRD/lWgR
+/5ZpEv+WaRH/lmkR/5ZpEf+WaRH/lmkR/51yIP+5mV7/1cKf/+XZxP/p3sz/4tS9/8+4kP+wjEv/
+mG0X/5ZpEf+WaRH/lmkR/5ZpEf+WaRH/lWkR/49lEP+PZRD/j2UQ/49lEP9RQB0wSDgaMZBlEP+Q
+ZRD/kGUQ/5BlEP+WaRH/l2oS/5dqEv+XahH/l2oR/5lsFv++oGn/8Ojb//7+/v//////////////
+//////////////38+//l2cP/r4tH/5dqEv+XahH/l2oS/5dqEf+WaRH/kGUQ/5BlEP+QZRD/kGUQ
+/1ZCHUFIORoxkWYQ/5FmEP+RZhD/kWYQ/5dqEf+ZaxL/mWsS/5lrEf+dcRv/18Oh//39/P//////
+///////////////////////////////////////////69/P/wqZx/5lsE/+ZaxL/mWsS/5hqEf+R
+ZhD/kWYR/5FmEP+RZhD/VkMdQUg5GjGSZhD/kmYQ/5JmEP+SZhD/mWsS/5psEv+abBL/nG8X/9nG
+pf/+/v7/////////////////7Off/87ArP/Gt57/1Mi2//Xz7//////////////////8+/n/vqBo
+/5psEv+abBL/mWsS/5JmEP+SZhD/kmYQ/5JmEP9WQx1BSTkaMZJnEf+SZxD/kmcQ/5JnEP+abBL/
+m20T/5ttE//FqXX//v7+////////////6+Xd/6eKV/+OYxT/kGUR/5FmEf+TZxL/kWgc/7agev/4
+9vT///////Pw6/+hfj7/m20T/5ttE/+bbBL/kmcQ/5JnEP+SZxD/kmcR/1dDHUFJORsxk2cR/5Nn
+Ef+TZxH/k2cR/5ttEv+dbhP/pnsp//by6////////////+DXyf+WbiL/m20S/5RoEf+TZxH/k2cR
+/5NnEf+bbRL/nG0T/599QP/p49r/oH0//51uE/+dbhP/nW4T/5xuEv+TZxH/k2cR/5NnEf+TZxH/
+V0MdQUk5GzGUaBH/lGgS/5RoEf+UaBL/nW4T/55vE//LsoT////////////x7ef/mnIn/55vE/+W
+aRL/lGgS/5RoEf+UaBL/lGgR/5VpEv+ebxP/nm8T/5NoGP+ebxP/nm8T/55vE/+ebxP/nW4T/5Ro
+Ev+UaBL/lGgS/5RoEf9XRB1BSTobMZVpEv+VaRL/lWkS/5VpEv+ebxP/oXIX/+vj1P//////////
+/7idbv+gcBT/mWwS/5VpEf+VaRL/lWkR/5VpEv+VaRL/lWkS/5hrEv+gcBP/oHAU/6BwFP+gcBT/
+oHAU/6BwFP+fcBP/lWkS/5VpEf+VaRH/lWkR/1hEHUFKOhsxlmkR/5ZpEv+WaRH/lmkR/59wE/+o
+fi3//f38///////29PD/nHAb/51uE/+WaRH/lmkS/5ZpEv+WaRH/lmkS/5ZpEf+WaRH/lmkS/5xu
+E/+hcRT/oXEU/6FxFP+hcRT/oXEU/6BxE/+WaRH/lmkS/5ZpEv+WaRH/WEQdQUo6GzGWahL/lmoS
+/5ZqEv+WahL/oHEU/7eUU////////////9vPuv+gcRT/l2oS/5ZqEv+WahH/lmoS/5ZqEf+WahL/
+lmoS/5ZqEv+WahL/l2oS/6BxFP+ichT/onIU/6JyFP+ichT/oXEU/5ZqEv+WahL/lmoR/5ZqEf9Y
+RB1BSjobMZdqEv+XahL/l2oS/5dqEv+ichT/vqBm////////////0b6c/5psEv+XahL/l2oS/5dq
+Ev+XahL/l2oS/5dqEv+XahL/l2oS/5dqEv+XahL/mWwS/6NzFP+kcxX/pHMV/6RzFf+jchT/l2oS
+/5dqEv+XahL/l2oS/1lFHUFLOhsxmGsT/5hrE/+YaxP/mGsT/6NzFf+/oGf////////////PvJr/
+mGsT/5hrE/+YaxP/mGsT/5hrE/+abBP/mmwT/5hrE/+YaxP/mGsT/5hrE/+YaxP/nG4T/6V0Ff+l
+dBX/pXQV/6RzFf+YaxP/mGsT/5hrE/+YaxP/WUUeQUs7GzGZbBP/mWwT/5lsE/+ZbBP/pHQV/7eV
+Vf///////////9zPtv+ZbBP/mWwT/5lsE/+ZbBP/mWwT/6NzFf+kdBX/mWwT/5lsE/+ZbBP/mWwT
+/5lsE/+ZbBP/oXEU/6Z1Fv+mdRb/pXQV/5lsE/+ZbBP/mWwT/5lsE/9aRR5BSzsbMZpsE/+abBP/
+mmwT/5psE/+ldRX/qH8w//7+/v//////8u7n/55yHf+abBP/mmwT/5psE/+ichT/p3YW/6d2Fv+i
+chX/mmwT/5psE/+abBP/mmwT/5psE/+abBP/pXQV/6d2Fv+mdRX/mmwT/5psE/+abBP/mmwT/1pG
+HkFLOxsxm20T/5ttE/+bbRP/m20T/6d2Fv+ldBf/7Obd////////////u51k/5ttE/+bbRP/n3AU
+/6l3Fv+pdxf/qXcX/6l3Fv+gcRT/m20T/5ttE/+bbRP/m20T/5ttE/+cbhP/qHcW/6h2Fv+bbRP/
+m20T/5ttE/+bbRP/WkYeQUw7GzGbbRP/m20T/5ttE/+bbRP/qHcW/6FyFP/FsIz////////////v
+6Nv/o3gl/55vE/+qeBf/q3kX/6t5F/+reRf/q3kX/6p4F/+ebxP/m20T/5ttE/+bbRP/m20T/5tt
+E/+gcRT/qXgX/5ttE/+bbRP/m20T/5ttE/9bRh5BTDwbMZxuFP+cbhT/nG4U/5xuFP+kdBX/nG4U
+/5x1Kv/59/X////////////g0bb/rX4j/6x6GP+sehj/rHoY/6x6GP+sehj/rHoY/6l4F/+shDj/
+wKJp/5xuFP+cbhT/nG4U/5xuFP+kdBX/nG4U/5xuFP+cbhT/nG4U/1tGHkFMPBwxnW8U/51vFP+d
+bxT/nW8U/51vFP+dbxT/nG4U/76ogf////////////7+/v/p3cf/vJRI/659G/+uexn/rnsZ/657
+Gf+wfyD/xqRl//Tu5P/7+fb/vZxg/51vFP+dbxT/nW8U/51vFP+dbxT/nW8U/51vFP+dbxT/W0ce
+QU08HDGebxT/nm8U/55vFP+ebxT/nm8U/55vFP+ebxT/mGwW/9jNuv/////////////////7+fb/
+6NrD/9a+kv/St4T/2sSc/+7k1P/+/fz////////////59fD/qH8w/55vFP+ebxT/nm8U/55vFP+e
+bxT/nm8U/55vFP9cRx5BTTwcMZ9wFP+fcBT/n3AU/59wFP+fcBT/n3AU/59wFP+fcBT/mm8e/9nN
+u////////////////////////////////////////////////////////v79/72ohP+abBT/n3AU
+/59wFP+fcBT/n3AU/59wFP+fcBT/n3AU/1xHHkFNPRwxn3AU/59wFP+fcBT/n3AU/59wFP+fcBT/
+n3AU/6BxFP+vfBn/p3cd/72ngv/39fL//////////////////////////////////////+vm3v+u
+j1n/qnkZ/6BxFP+fcBT/n3AU/59wFP+fcBT/n3AU/59wFP+fcBT/XEceQUk6HB6gcRT/oHEU/6Bx
+FP+gcRT/oHEU/6BxFP+gcRT/q3oY/7SBHP+0gRz/sX8b/6J4Kv+6o3z/18y7/+zn3//x7un/5+HY
+/8/Crf+ylmX/o3Uf/7SAG/+0gRz/rXsZ/6BxFP+gcRT/oHEU/6BxFP+gcRT/oHEU/6BxFP9YRR4u
+AAAAAKN1GtmhcRX/oXEV/6FxFf+hcRX/oXEV/6d3F/+1ghz/toId/7aCHf+2gh3/toId/7WBHP+t
+fBz/pHQb/6FyG/+mdhz/sH4c/7WCHf+2gh3/toId/7aCHf+2gh3/qXgY/6FxFf+hcRX/oXEV/6Fx
+Ff+hcRX/oXIV5zEmDwMAAAAAg2IjXaJyFf+ichX/onIV/6JyFf+kdBb/toId/7eDHf+3gx3/t4Md
+/7eDHf+3gx3/t4Md/7eDHf+3gx3/t4Md/7eDHf+3gx3/t4Md/7eDHf+3gx3/t4Md/7eDHf+2gh3/
+pXUW/6JyFf+ichX/onIV/6JyFf+JYBFuAAAAAAAAAAAAAAAAmG4ckKJyFf6ichX/o3MV/7SBHP+4
+hB7/uIQe/7iEHv+4hB7/uIQe/7iEHv+4hB7/uIQe/7iEHv+4hB7/uIQe/7iEHv+4hB7/uIQe/7iE
+Hv+4hB7/uIQe/7iEHv+1gR3/o3MV/6JyFf+ichX/mm0UnyEXBAEAAAAAAAAAAAAAAAAAAAAAfl8g
+VaZ4Hcywfhv9uoUf/7qFH/+6hR//uoUf/7qFH/+6hR//uoUf/7qFH/+6hR//uoUf/7qFH/+6hR//
+uoUf/7qFH/+6hR//uoUf/7qFH/+6hR//uoUf/7qFH/+xfhv+o3MV0YBaEF4AAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAEM0FgtJNAsbSTQLG0k0CxtJNAsbSTQLG0k0CxtJNAsbSTQLG0k0
+CxtJNAsbSTQLG0k0CxtJNAsbSTQLG0k0CxtJNAsbSTQLG0k0CxtJNAsbSTQLG0AtCg0AAAAAAAAA
+AAAAAAAAAAAAAAAAAPgAAB/gAAADwAAAAYAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAIAAAACAAAABwAAAAeAAAAf4AAAfKAAAABAAAAAgAAAAAQAgAAAAAABABAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAB/WQ8XdVIOeGJFC5BiRQuQYkULkGJFC5BiRQuQYkULkGJFC5BiRQuQYkUL
+kGJFC5B3VRB6hV8UGQAAAACAWg8YimEO5Y9kD/+SZhD/kmYQ/5JmEP+SZhD/kmYQ/5JmEP+SZhD/
+kmYQ/5JmEP+SZhD/j2UP/4tiD+iIYBEdelgTfo9kEP+RZhD/lWgR/5VoEf+VaBH/n3Yo/7iaYf+9
+oGv/qYU//5VpEv+VaBH/lWgR/5FmEP+PZBD/f1sTh2xPFZiQZRD/k2cQ/5hqEv+ZbBP/yrOH//v5
+9f////////////7+/v/j1r//onkp/5hqEf+TZxD/kGUQ/3NUFqBtTxWYkmYQ/5VpEf+abBL/zreL
+//7+/v/k28z/tpts/6+TXf/OvqH//fz8/9PCov+abBL/lmkR/5JmEP90VBagblAWmJNnEf+XahL/
+q4I0//z7+v/azbX/mWwW/5NnEf+TZxH/mmwS/66NUf+ech7/nW4T/5hqEv+TZxH/dVUXoG9RFpiV
+aRH/mmwS/8y0hf/8/Pv/pHos/5ZpEf+VaRH/lWkR/5ZpEf+fbxP/oHAU/6BwFP+abBL/lWkR/3ZW
+F6BwUhaYlmoS/5ttE//czK3/6uLV/5psEv+WahH/lmoR/5ZqEv+WahL/mWwS/6JyFP+jchT/nG0T
+/5ZqEf93VxegcVMXmJhrE/+ebxT/3cyu/+ri0/+YaxP/mGsT/5ttE/+bbRP/mGsT/5hrE/+ebxP/
+pXQV/55vFP+YaxP/eVgYoHJTF5iabBP/oHEU/821iP/7+vn/o3op/5ttE/+mdRX/pnUW/5ttE/+a
+bBP/mmwT/6RzFf+gcRT/mmwT/3pZGKBzVBeYm20T/6BxFP+ngTf//f38/9zMrf+odxn/q3kX/6t5
+F/+ndhb/qIAx/5ttE/+cbhP/oXEU/5ttE/97WRigdVUYmJ1vFP+dbxT/nW4U/8u4lP/+/v7/59rB
+/8akYv/CnFT/2MGV//v59v++n2X/nW8U/51vFP+dbxT/fFsZoHZWGJifcBT/n3AU/59wFP+icxf/
+z7qW//38+//////////////////l3Mz/qH8x/59wFP+fcBT/n3AU/31bGaCJYxh9oHEU/6BxFP+i
+chX/sn8b/7SBHP+xhzf/xah0/8etfv+5llL/sH4d/7OAG/+ichX/oHEU/6BxFP+OZheFlGsaF59x
+FuOichX/sX4b/7eDHf+3gx3/t4Md/7eDHf+3gx3/t4Md/7eDHf+3gx3/sn8b/6JyFf+gcBTnm24V
+GwAAAACYbh0Vj2kcdYFcFY2BXBWNgVwVjYFcFY2BXBWNgVwVjYFcFY2BXBWNgVwVjYFcFY2RaBp3
+n3QfFwAAAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAACAAQAA
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[190]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://mail.biomed.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://biomed.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://mail.biomed.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:46:46 GMT" field="date"/>
+                        <header content="text/html;charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;娓呭崕澶у\xad\xa6鐢熺墿鍖诲\xad\xa6閭\xae\xe4欢绯荤粺&lt;/title&gt;
+&lt;base href=&quot;http://biomed.tsinghua.edu.cn/coremail/common/index_cm40.jsp&quot; /&gt;
+&lt;link href=&quot;index_cm40/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/js/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var markme_msg = &quot;璇锋寜 Ctrl-D 鏀惰棌鏈\xac\xe9〉&quot;;
+&lt;/script&gt;
+
+
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;Links&quot;&gt;
+      
+      &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;璁句负棣栭〉&lt;/a&gt; |&lt;/span&gt;
+      
+      &lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;鏀惰棌鏈\xac\xe9〉&lt;/a&gt; |
+      
+      &lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location.reload();&quot;&gt;English Version&lt;/a&gt; |
+      
+      &lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;甯\xae\xe5姪&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;Main&quot;&gt;
+      &lt;div class=&quot;MainL&quot;&gt;
+          &lt;div class=&quot;LTop&quot;&gt;
+              &lt;div class=&quot;logo&quot;&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;img style=&quot;border:0 none;&quot; src=&quot;../common/login/logo.gif&quot;
+                  &gt;&lt;/a&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;LContent&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;LB&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;MainR&quot;&gt;
+          &lt;h3 class=&quot;Header&quot;&gt;鐢靛瓙閭\xae\xe7\xae\xb1鐧诲綍&lt;/h3&gt;
+          &lt;div class=&quot;Error&quot;&gt;
+              &lt;div class=&quot;NoteError&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp&quot;
+                onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+            &lt;table class=&quot;loginTable&quot;&gt;
+              &lt;tfoot&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&lt;/td&gt;
+                  &lt;td colspan=&quot;2&quot; &gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot;&gt;
+                      鐧汇\x80\x80褰\x95\n                    &lt;/button&gt;
+
+                    
+                    &amp;nbsp;&amp;nbsp;
+                    
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tfoot&gt;
+              &lt;tr&gt;
+                &lt;th&gt;鐢ㄦ埛鍚\x8d&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;input&quot;
+                           value=&quot;&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    
+                    
+                      &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot;/&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+              
+              &lt;tr&gt;
+                &lt;th&gt;瀵嗐\x80\x80鐮\x81&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; class=&quot;input&quot; autocomplete=&quot;off&quot;
+                           value=&quot;&quot; /&gt;&lt;/td&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+              
+              
+              
+
+
+
+
+    
+    
+        &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+    
+
+
+
+              
+
+
+
+
+
+
+
+
+
+              &lt;tr&gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;td colspan=&quot;2&quot;&gt;
+                    
+                    &lt;div&gt;
+                        &lt;label&gt;
+                            &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; checked /&gt;
+                            鍦ㄦ\xad\xa4鐢佃剳涓婅\xae\xb0浣忕敤鎴峰悕
+                        &lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;
+          &lt;/form&gt;
+          
+          
+      &lt;/div&gt;
+
+      &lt;div class=&quot;footer&quot;&gt;
+          &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;閭\xae\xe4欢绯荤粺&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;閭\xae\xe4欢鏈嶅姟鍣\xa8&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;浼佷笟閭\xae\xe7\xae\xb1&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;浼佷笟閭\xae\xe7\xae\xb1&lt;/a&gt;
+        &lt;/div&gt;
+          &lt;div class=&quot;footerBg&quot;&gt;
+              &lt;div class=&quot;copyright&quot;&gt;
+                  &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;鈥淐opyright &amp;copy娓呭崕澶у\xad\xa6鐢熺墿鍖诲\xad\xa6閭\xae\xe4欢绯荤粺&quot;&lt;/a&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script type=&quot;text/javascript&quot;&gt;
+      init(&quot;uid&quot;);
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[171, 200]" method="PUT" name="DAV incorrect configuration" plugin="dav" severity="Information" url="http://mail.biomed.tsinghua.edu.cn/kdUdT" var="None">
+        <description>DAV seems to be correctly configured and allowing you to use the PUT method but the directory does not have the right permissions that would allow the web server to write to it. This error was found at: &quot;http://mail.biomed.tsinghua.edu.cn/kdUdT&quot;.</description>
+        <http-transactions>
+            <http-transaction id="171">
+                <http-request>
+                    <status>PUT http://mail.biomed.tsinghua.edu.cn/kdUdT HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">UBoN9F</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:39 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.35 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.35&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="200">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/kdUdT HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:48 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[210]" method="GET" name="JMX Invoker enabled without Auth" plugin="find_jboss" severity="Low" url="http://mail.biomed.tsinghua.edu.cn/invoker/JMXInvokerServlet" var="None">
+        <description>JMX Invoker enables attackers to send any JMX command to JBoss AS</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[220, 226]" method="GET" name="Operating system" plugin="fingerprint_os" severity="Information" url="http://mail.biomed.tsinghua.edu.cn/invoker\JMXInvokerServlet" var="None">
+        <description>Fingerprinted this host as a *nix system. Detection for this operating system is weak, &quot;if not windows then linux&quot;.</description>
+        <http-transactions>
+            <http-transaction id="226">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:47:03 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[191]" method="GET" name="Internal hostname in HTML link" plugin="find_vhosts" severity="Information" url="http://mail.biomed.tsinghua.edu.cn/" var="None">
+        <description>The content of &quot;http://mail.biomed.tsinghua.edu.cn/&quot; references a non existent domain: &quot;www.coremail.cn&quot;. This can be a broken link, or an internal domain name.</description>
+        <http-transactions>
+            <http-transaction id="191">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:46:32 GMT" field="date"/>
+                        <header content="text/html;charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;濞撳懎宕曟径褍\xad\xa6閻㈢喓澧块崠璇瞈xad\xa6闁璡xae\xe4娆㈢化鑽ょ埠&lt;/title&gt;
+&lt;base href=&quot;http://mail.biomed.tsinghua.edu.cn/coremail/common/index_cm40.jsp&quot; /&gt;
+&lt;link href=&quot;index_cm40/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/js/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var markme_msg = &quot;鐠囬攱瀵\x9c Ctrl-D 閺\x80\xe6儼妫岄張\xac\xe9銆\x89&quot;;
+&lt;/script&gt;
+
+
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;Links&quot;&gt;
+      
+      &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;鐠佸彞璐熸＃鏍\xad\xe3\x80\x89&lt;/a&gt; |&lt;/span&gt;
+      
+      &lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;閺\x80\xe6儼妫岄張\xac\xe9銆\x89&lt;/a&gt; |
+      
+      &lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location.reload();&quot;&gt;English Version&lt;/a&gt; |
+      
+      &lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;鐢痋xae\xe5濮\xaa&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;Main&quot;&gt;
+      &lt;div class=&quot;MainL&quot;&gt;
+          &lt;div class=&quot;LTop&quot;&gt;
+              &lt;div class=&quot;logo&quot;&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;img style=&quot;border:0 none;&quot; src=&quot;../common/login/logo.gif&quot;
+                  &gt;&lt;/a&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;LContent&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;LB&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;MainR&quot;&gt;
+          &lt;h3 class=&quot;Header&quot;&gt;閻㈤潧鐡欓柇\xae\xe7\xae\xb1閻ц\xaf\xb2缍\x8d&lt;/h3&gt;
+          &lt;div class=&quot;Error&quot;&gt;
+              &lt;div class=&quot;NoteError&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp&quot;
+                onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+            &lt;table class=&quot;loginTable&quot;&gt;
+              &lt;tfoot&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&lt;/td&gt;
+                  &lt;td colspan=&quot;2&quot; &gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot;&gt;
+                      閻ф眹\x80\x80瑜癨x95\n                    &lt;/button&gt;
+
+                    
+                    &amp;nbsp;&amp;nbsp;
+                    
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tfoot&gt;
+              &lt;tr&gt;
+                &lt;th&gt;閻\xa2\xe3劍鍩涢崥\x8d&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;input&quot;
+                           value=&quot;&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    
+                    
+                      &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot;/&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+              
+              &lt;tr&gt;
+                &lt;th&gt;鐎靛棎\x80\x80閻甛x81&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; class=&quot;input&quot; autocomplete=&quot;off&quot;
+                           value=&quot;&quot; /&gt;&lt;/td&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+              
+              
+              
+
+
+
+
+    
+    
+        &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+    
+
+
+
+              
+
+
+
+
+
+
+
+
+
+              &lt;tr&gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;td colspan=&quot;2&quot;&gt;
+                    
+                    &lt;div&gt;
+                        &lt;label&gt;
+                            &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; checked /&gt;
+                            閸︺劍\xad\xa4閻\xa2\xe4絻鍓虫稉濠匼xae\xb0娴ｅ繒鏁ら幋宄版倳
+                        &lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;
+          &lt;/form&gt;
+          
+          
+      &lt;/div&gt;
+
+      &lt;div class=&quot;footer&quot;&gt;
+          &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;闁璡xae\xe4娆㈢化鑽ょ埠&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;闁璡xae\xe4娆㈤張宥呭\xa7\x9f閸\xa3\\xa8&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;娴间椒绗熼柇\xae\xe7\xae\xb1&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;娴间椒绗熼柇\xae\xe7\xae\xb1&lt;/a&gt;
+        &lt;/div&gt;
+          &lt;div class=&quot;footerBg&quot;&gt;
+              &lt;div class=&quot;copyright&quot;&gt;
+                  &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;閳ユ窅opyright &amp;copy濞撳懎宕曟径褍\xad\xa6閻㈢喓澧块崠璇瞈xad\xa6闁璡xae\xe4娆㈢化鑽ょ埠&quot;&lt;/a&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script type=&quot;text/javascript&quot;&gt;
+      init(&quot;uid&quot;);
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[253, 254]" method="PUT" name="DAV incorrect configuration" plugin="dav" severity="Information" url="http://mail.biomed.tsinghua.edu.cn/invoker/VdGkS" var="None">
+        <description>DAV seems to be correctly configured and allowing you to use the PUT method but the directory does not have the right permissions that would allow the web server to write to it. This error was found at: &quot;http://mail.biomed.tsinghua.edu.cn/invoker/VdGkS&quot;.</description>
+        <http-transactions>
+            <http-transaction id="253">
+                <http-request>
+                    <status>PUT http://mail.biomed.tsinghua.edu.cn/invoker/VdGkS HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">PSdlpH</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:47:12 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.35 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.35&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="254">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/invoker/VdGkS HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:47:12 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[39, 206, 218, 229, 234, 236, 264]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://mail.biomed.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://mail.biomed.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: GET, HEAD, OPTIONS, POLL, POST, REPORT</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="39">
+                <http-request>
+                    <status>OPTIONS http://mail.biomed.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:34 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="GET, HEAD, POST, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="206">
+                <http-request>
+                    <status>HEAD http://mail.biomed.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:46:52 GMT" field="date"/>
+                        <header content="text/html;charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="229">
+                <http-request>
+                    <status>OPTIONS http://mail.biomed.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:47:04 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="GET, HEAD, POST, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="236">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:47:07 GMT" field="date"/>
+                        <header content="text/html;charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;娓呭崕澶у\xad\xa6鐢熺墿鍖诲\xad\xa6閭\xae\xe4欢绯荤粺&lt;/title&gt;
+&lt;base href=&quot;http://mail.biomed.tsinghua.edu.cn/coremail/common/index_cm40.jsp&quot; /&gt;
+&lt;link href=&quot;index_cm40/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/js/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var markme_msg = &quot;璇锋寜 Ctrl-D 鏀惰棌鏈\xac\xe9〉&quot;;
+&lt;/script&gt;
+
+
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;Links&quot;&gt;
+      
+      &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;璁句负棣栭〉&lt;/a&gt; |&lt;/span&gt;
+      
+      &lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;鏀惰棌鏈\xac\xe9〉&lt;/a&gt; |
+      
+      &lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location.reload();&quot;&gt;English Version&lt;/a&gt; |
+      
+      &lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;甯\xae\xe5姪&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;Main&quot;&gt;
+      &lt;div class=&quot;MainL&quot;&gt;
+          &lt;div class=&quot;LTop&quot;&gt;
+              &lt;div class=&quot;logo&quot;&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;img style=&quot;border:0 none;&quot; src=&quot;../common/login/logo.gif&quot;
+                  &gt;&lt;/a&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;LContent&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;LB&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;MainR&quot;&gt;
+          &lt;h3 class=&quot;Header&quot;&gt;鐢靛瓙閭\xae\xe7\xae\xb1鐧诲綍&lt;/h3&gt;
+          &lt;div class=&quot;Error&quot;&gt;
+              &lt;div class=&quot;NoteError&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp&quot;
+                onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+            &lt;table class=&quot;loginTable&quot;&gt;
+              &lt;tfoot&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&lt;/td&gt;
+                  &lt;td colspan=&quot;2&quot; &gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot;&gt;
+                      鐧汇\x80\x80褰\x95\n                    &lt;/button&gt;
+
+                    
+                    &amp;nbsp;&amp;nbsp;
+                    
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tfoot&gt;
+              &lt;tr&gt;
+                &lt;th&gt;鐢ㄦ埛鍚\x8d&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;input&quot;
+                           value=&quot;&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    
+                    
+                      &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot;/&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+              
+              &lt;tr&gt;
+                &lt;th&gt;瀵嗐\x80\x80鐮\x81&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; class=&quot;input&quot; autocomplete=&quot;off&quot;
+                           value=&quot;&quot; /&gt;&lt;/td&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+              
+              
+              
+
+
+
+
+    
+    
+        &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+    
+
+
+
+              
+
+
+
+
+
+
+
+
+
+              &lt;tr&gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;td colspan=&quot;2&quot;&gt;
+                    
+                    &lt;div&gt;
+                        &lt;label&gt;
+                            &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; checked /&gt;
+                            鍦ㄦ\xad\xa4鐢佃剳涓婅\xae\xb0浣忕敤鎴峰悕
+                        &lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;
+          &lt;/form&gt;
+          
+          
+      &lt;/div&gt;
+
+      &lt;div class=&quot;footer&quot;&gt;
+          &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;閭\xae\xe4欢绯荤粺&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;閭\xae\xe4欢鏈嶅姟鍣\xa8&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;浼佷笟閭\xae\xe7\xae\xb1&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;浼佷笟閭\xae\xe7\xae\xb1&lt;/a&gt;
+        &lt;/div&gt;
+          &lt;div class=&quot;footerBg&quot;&gt;
+              &lt;div class=&quot;copyright&quot;&gt;
+                  &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;鈥淐opyright &amp;copy娓呭崕澶у\xad\xa6鐢熺墿鍖诲\xad\xa6閭\xae\xe4欢绯荤粺&quot;&lt;/a&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script type=&quot;text/javascript&quot;&gt;
+      init(&quot;uid&quot;);
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="264">
+                <http-request>
+                    <status>POST http://mail.biomed.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:47:18 GMT" field="date"/>
+                        <header content="text/html;charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;娓呭崕澶у\xad\xa6鐢熺墿鍖诲\xad\xa6閭\xae\xe4欢绯荤粺&lt;/title&gt;
+&lt;base href=&quot;http://mail.biomed.tsinghua.edu.cn/coremail/common/index_cm40.jsp&quot; /&gt;
+&lt;link href=&quot;index_cm40/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/js/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var markme_msg = &quot;璇锋寜 Ctrl-D 鏀惰棌鏈\xac\xe9〉&quot;;
+&lt;/script&gt;
+
+
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;Links&quot;&gt;
+      
+      &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;璁句负棣栭〉&lt;/a&gt; |&lt;/span&gt;
+      
+      &lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;鏀惰棌鏈\xac\xe9〉&lt;/a&gt; |
+      
+      &lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location.reload();&quot;&gt;English Version&lt;/a&gt; |
+      
+      &lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;甯\xae\xe5姪&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;Main&quot;&gt;
+      &lt;div class=&quot;MainL&quot;&gt;
+          &lt;div class=&quot;LTop&quot;&gt;
+              &lt;div class=&quot;logo&quot;&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;img style=&quot;border:0 none;&quot; src=&quot;../common/login/logo.gif&quot;
+                  &gt;&lt;/a&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;LContent&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;LB&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;MainR&quot;&gt;
+          &lt;h3 class=&quot;Header&quot;&gt;鐢靛瓙閭\xae\xe7\xae\xb1鐧诲綍&lt;/h3&gt;
+          &lt;div class=&quot;Error&quot;&gt;
+              &lt;div class=&quot;NoteError&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp&quot;
+                onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+            &lt;table class=&quot;loginTable&quot;&gt;
+              &lt;tfoot&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&lt;/td&gt;
+                  &lt;td colspan=&quot;2&quot; &gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot;&gt;
+                      鐧汇\x80\x80褰\x95\n                    &lt;/button&gt;
+
+                    
+                    &amp;nbsp;&amp;nbsp;
+                    
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tfoot&gt;
+              &lt;tr&gt;
+                &lt;th&gt;鐢ㄦ埛鍚\x8d&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;input&quot;
+                           value=&quot;&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    
+                    
+                      &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot;/&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+              
+              &lt;tr&gt;
+                &lt;th&gt;瀵嗐\x80\x80鐮\x81&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; class=&quot;input&quot; autocomplete=&quot;off&quot;
+                           value=&quot;&quot; /&gt;&lt;/td&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+              
+              
+              
+
+
+
+
+    
+    
+        &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+    
+
+
+
+              
+
+
+
+
+
+
+
+
+
+              &lt;tr&gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;td colspan=&quot;2&quot;&gt;
+                    
+                    &lt;div&gt;
+                        &lt;label&gt;
+                            &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; checked /&gt;
+                            鍦ㄦ\xad\xa4鐢佃剳涓婅\xae\xb0浣忕敤鎴峰悕
+                        &lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;
+          &lt;/form&gt;
+          
+          
+      &lt;/div&gt;
+
+      &lt;div class=&quot;footer&quot;&gt;
+          &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;閭\xae\xe4欢绯荤粺&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;閭\xae\xe4欢鏈嶅姟鍣\xa8&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;浼佷笟閭\xae\xe7\xae\xb1&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;浼佷笟閭\xae\xe7\xae\xb1&lt;/a&gt;
+        &lt;/div&gt;
+          &lt;div class=&quot;footerBg&quot;&gt;
+              &lt;div class=&quot;copyright&quot;&gt;
+                  &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;鈥淐opyright &amp;copy娓呭崕澶у\xad\xa6鐢熺墿鍖诲\xad\xa6閭\xae\xe4欢绯荤粺&quot;&lt;/a&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script type=&quot;text/javascript&quot;&gt;
+      init(&quot;uid&quot;);
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 57, 59, 61, 171, 198, 199, 201, 203, 204, 209, 217, 251, 253, 260, 261]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 02:46:32 GMT" field="date"/>
+                        <header content="text/html;charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+     &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;濞撳懎宕曟径褍\xad\xa6閻㈢喓澧块崠璇瞈xad\xa6闁璡xae\xe4娆㈢化鑽ょ埠&lt;/title&gt;
+&lt;base href=&quot;http://mail.biomed.tsinghua.edu.cn/coremail/common/index_cm40.jsp&quot; /&gt;
+&lt;link href=&quot;index_cm40/login.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; charset=&quot;iso-8859-1&quot; /&gt;
+
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/js/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../common/login/login.js&quot; charset=&quot;iso-8859-1&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var markme_msg = &quot;鐠囬攱瀵\x9c Ctrl-D 閺\x80\xe6儼妫岄張\xac\xe9銆\x89&quot;;
+&lt;/script&gt;
+
+
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=&quot;Head&quot;&gt;
+    &lt;div class=&quot;Links&quot;&gt;
+      
+      &lt;span id=&quot;homepage&quot;&gt;&lt;a class=&quot;MTLinks&quot;&gt;鐠佸彞璐熸＃鏍\xad\xe3\x80\x89&lt;/a&gt; |&lt;/span&gt;
+      
+      &lt;a href=&quot;javascript:bookmarkMe()&quot;&gt;閺\x80\xe6儼妫岄張\xac\xe9銆\x89&lt;/a&gt; |
+      
+      &lt;a href=&quot;javascript:setCookie('locale','en_US'); window.location.reload();&quot;&gt;English Version&lt;/a&gt; |
+      
+      &lt;a target=&quot;_blank&quot; href=&quot;/coremail/help/index_zh_CN.jsp&quot;&gt;鐢痋xae\xe5濮\xaa&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;Main&quot;&gt;
+      &lt;div class=&quot;MainL&quot;&gt;
+          &lt;div class=&quot;LTop&quot;&gt;
+              &lt;div class=&quot;logo&quot;&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;&lt;img style=&quot;border:0 none;&quot; src=&quot;../common/login/logo.gif&quot;
+                  &gt;&lt;/a&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;LContent&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;LB&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;MainR&quot;&gt;
+          &lt;h3 class=&quot;Header&quot;&gt;閻㈤潧鐡欓柇\xae\xe7\xae\xb1閻ц\xaf\xb2缍\x8d&lt;/h3&gt;
+          &lt;div class=&quot;Error&quot;&gt;
+              &lt;div class=&quot;NoteError&quot;&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;form id=&quot;loginForm&quot; method=&quot;post&quot; action=&quot;/coremail/index.jsp&quot;
+                onsubmit=&quot;return loginSubmit(this, event);&quot;&gt;
+            &lt;table class=&quot;loginTable&quot;&gt;
+              &lt;tfoot&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&lt;/td&gt;
+                  &lt;td colspan=&quot;2&quot; &gt;
+                    &lt;button name=&quot;action:login&quot; type=&quot;submit&quot; class=&quot;Button&quot;&gt;
+                      閻ф眹\x80\x80瑜癨x95\n                    &lt;/button&gt;
+
+                    
+                    &amp;nbsp;&amp;nbsp;
+                    
+                  &lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tfoot&gt;
+              &lt;tr&gt;
+                &lt;th&gt;閻\xa2\xe3劍鍩涢崥\x8d&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;uid&quot; name=&quot;uid&quot; class=&quot;input&quot;
+                           value=&quot;&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    
+                    
+                      &lt;input type=&quot;hidden&quot; name=&quot;nodetect&quot; value=&quot;false&quot;/&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+              
+              &lt;tr&gt;
+                &lt;th&gt;鐎靛棎\x80\x80閻甛x81&lt;/th&gt;
+                &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; class=&quot;input&quot; autocomplete=&quot;off&quot;
+                           value=&quot;&quot; /&gt;&lt;/td&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+              &lt;/tr&gt;
+              
+              
+              
+
+
+
+
+    
+    
+        &lt;input type=&quot;hidden&quot; name=&quot;locale&quot; value=&quot;zh_CN&quot; /&gt;
+    
+
+
+
+              
+
+
+
+
+
+
+
+
+
+              &lt;tr&gt;
+                &lt;th&gt;&lt;/th&gt;
+                &lt;td colspan=&quot;2&quot;&gt;
+                    
+                    &lt;div&gt;
+                        &lt;label&gt;
+                            &lt;input type=&quot;checkbox&quot; id=&quot;saveUsername&quot; checked /&gt;
+                            閸︺劍\xad\xa4閻\xa2\xe4絻鍓虫稉濠匼xae\xb0娴ｅ繒鏁ら幋宄版倳
+                        &lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;
+          &lt;/form&gt;
+          
+          
+      &lt;/div&gt;
+
+      &lt;div class=&quot;footer&quot;&gt;
+          &lt;div class=&quot;link&quot;&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;闁璡xae\xe4娆㈢化鑽ょ埠&lt;/a&gt;
+            &lt;a href=&quot;http://www.coremail.cn/&quot; target=&quot;_blank&quot;&gt;闁璡xae\xe4娆㈤張宥呭\xa7\x9f閸\xa3\\xa8&lt;/a&gt;
+            &lt;a href=&quot;http://www.corpease.net/&quot; target=&quot;_blank&quot;&gt;娴间椒绗熼柇\xae\xe7\xae\xb1&lt;/a&gt;
+            &lt;a href=&quot;http://www.icoremail.cn/&quot; target=&quot;_blank&quot;&gt;娴间椒绗熼柇\xae\xe7\xae\xb1&lt;/a&gt;
+        &lt;/div&gt;
+          &lt;div class=&quot;footerBg&quot;&gt;
+              &lt;div class=&quot;copyright&quot;&gt;
+                  &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;閳ユ窅opyright &amp;copy濞撳懎宕曟径褍\xad\xa6閻㈢喓澧块崠璇瞈xad\xa6闁璡xae\xe4娆㈢化鑽ょ埠&quot;&lt;/a&gt;
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script type=&quot;text/javascript&quot;&gt;
+      init(&quot;uid&quot;);
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="57">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/WyWpV.html HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:37 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="59">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:37 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="61">
+                <http-request>
+                    <status>POST http://mail.biomed.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L1d5V3BWLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguVnBXeVc=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:37 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="171">
+                <http-request>
+                    <status>PUT http://mail.biomed.tsinghua.edu.cn/kdUdT HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">UBoN9F</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:39 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.35 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.35&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="198">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:48 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="199">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:48 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="201">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:48 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="203">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:52 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="204">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:52 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="209">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:53 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="217">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:46:56 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail娑\x93\\x93\xe4\xb8\x9a\xe9\x82\xae\xe4娆㈢化\xe8\x8d\xa4\\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      娴\xa3\\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缂\x83\\x91\xe9\xe3\x80\x89\xe6\xb6\x93\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5\xe5\x87\xa1\\xe6\x9b瀛\x98\\x94\xb9\xe6\x9d\x9e\\xac\xe7些\xe9\x94\x9b\\x8c&lt;br /&gt;
+      \xe7\x92\x87\xe9\x94\x8b\xa3\x80\xe6\x9f\xa5 URL 楠\x9e\xe5\x89\x81\xe2\x80\x98\xe6\xb7\x87\x9d\xe5\x85\xb6\xe6\x8b\xe7\x85\x8e\\x86\x99濮\x9d\xef\xbd\x87\xe2\x80\x98\\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="251">
+                <http-request>
+                    <status>PROPFIND http://mail.biomed.tsinghua.edu.cn/invoker/ HTTP/1.1</status>
+                    <headers>
+                        <header content="107" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="1" field="Depth"/>
+                        <header content="application/xml; charset=&quot;utf-8&quot;" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PD94bWwgdmVyc2lvbj0nMS4wJz8+DQo8YTpwcm9wZmluZCB4bWxuczphPSdEQVY6Jz4NCjxhOnBy
+b3A+DQo8YTpkaXNwbGF5bmFtZTovPg0KPC9hOnByb3A+DQo8L2E6cHJvcGZpbmQ+DQo=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Not Implemented</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:47:12 GMT" field="date"/>
+                        <header content="1202" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.35 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 501 - Method PROPFIND is not is not implemented by this servlet for this URI &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;Method PROPFIND is not is not implemented by this servlet for this URI &lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The server does not support the functionality needed to fulfill this request (Method PROPFIND is not is not implemented by this servlet for this URI ).&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.35&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="253">
+                <http-request>
+                    <status>PUT http://mail.biomed.tsinghua.edu.cn/invoker/VdGkS HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">PSdlpH</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:47:12 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.35 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.35&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="260">
+                <http-request>
+                    <status>GET http://mail.biomed.tsinghua.edu.cn/invoker/wJoWj.html HTTP/1.1</status>
+                    <headers>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:47:18 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="261">
+                <http-request>
+                    <status>POST http://mail.biomed.tsinghua.edu.cn/invoker/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="166" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mail.biomed.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2ludm9rZXIvd0pvV2ouaHRtbDttZXRhX2luZm89W11dJnB1dF9vcHRpb249
+b3ZlcndyaXRlJmNvbW1lbnQ9JmtlZXBfY2hlY2tlZF9vdXQ9ZmFsc2UKbG10aC5qV29Kdw==
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 02:47:18 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The dav plugin got an error while requesting &quot;http://mail.biomed.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://mail.biomed.tsinghua.edu.cn/?f3tDgYA=exec%20master..xp_cmdshell%20dir&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://mail.biomed.tsinghua.edu.cn/invoker/JMXInvokerServlet&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to mail.biomed.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mail.biomed.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://mail.biomed.tsinghua.edu.cn/invoker/JMXInvokerServlet&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The fingerprint_os plugin got an error while requesting &quot;http://mail.biomed.tsinghua.edu.cn/invoker\JMXInvokerServlet&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The port '443' is not open on target mail.biomed.tsinghua.edu.cn</error>
+    <error caller="threading">The port '80' is not open on target mail.biomed.tsinghua.edu.cn</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mail.biomed.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The frontpage plugin got an error while requesting &quot;http://mail.biomed.tsinghua.edu.cn/invoker/JtDiq.html&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+</w3af-run>

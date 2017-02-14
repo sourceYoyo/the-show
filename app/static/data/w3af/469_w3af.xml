@@ -1,0 +1,1418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480512201" start-long="Wed Nov 30 08:23:21 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://mob.lib.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/469_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[38]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache&quot;.</description>
+        <http-transactions>
+            <http-transaction id="38">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3024" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:26 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:26 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;sidebar-left&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;block-user-1&quot; class=&quot;clear-block block block-user&quot;&gt;
+
+  &lt;h2&gt;Navigation&lt;/h2&gt;
+
+  &lt;div class=&quot;content&quot;&gt;&lt;ul class=&quot;menu&quot;&gt;&lt;li class=&quot;leaf first last&quot;&gt;&lt;a href=&quot;/mt/mobile/node&quot;&gt;Mobile Site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+																					&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+				&lt;div id=&quot;block-block-1&quot; class=&quot;clear-block block block-block&quot;&gt;
+
+
+  &lt;div class=&quot;content&quot;&gt;&lt;p size=12px&gt;&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/intro/intro.jsp&quot;&gt;本馆概况&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/intro/news.jsp&quot;&gt;七日新闻公告&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/innopac/booksearch.jsp&quot;&gt;馆藏目录查询&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/innopac/readersinfo.jsp&quot;&gt;个人借阅信息&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/metalib/metalib.jsp&quot;&gt;电子资源/数据库&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/user/login.jsp&quot;&gt;登录&lt;/a&gt;|&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/user/reg.jsp&quot;&gt;注册&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/feedback/feedback.jsp&quot;&gt;留言反馈&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/help.jsp&quot;&gt;帮助信息&lt;/a&gt;&amp;nbsp;&lt;/p&gt;
+&lt;pre class=&quot;rtecenter&quot;&gt;&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/&quot;&gt;WML版&lt;/a&gt;|&lt;a href=&quot;http://mob.lib.tsinghua.edu.cn/iphone&quot;&gt;华丽版&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[73]" method="GET" name="Powered-by header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The x-powered-by header for the target HTTP server is &quot;PHP/5.4.45&quot;.</description>
+        <http-transactions>
+            <http-transaction id="73">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3024" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:26 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:26 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;sidebar-left&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;block-user-1&quot; class=&quot;clear-block block block-user&quot;&gt;
+
+  &lt;h2&gt;Navigation&lt;/h2&gt;
+
+  &lt;div class=&quot;content&quot;&gt;&lt;ul class=&quot;menu&quot;&gt;&lt;li class=&quot;leaf first last&quot;&gt;&lt;a href=&quot;/mt/mobile/node&quot;&gt;Mobile Site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+																					&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+				&lt;div id=&quot;block-block-1&quot; class=&quot;clear-block block block-block&quot;&gt;
+
+
+  &lt;div class=&quot;content&quot;&gt;&lt;p size=12px&gt;&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/intro/intro.jsp&quot;&gt;本馆概况&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/intro/news.jsp&quot;&gt;七日新闻公告&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/innopac/booksearch.jsp&quot;&gt;馆藏目录查询&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/innopac/readersinfo.jsp&quot;&gt;个人借阅信息&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/metalib/metalib.jsp&quot;&gt;电子资源/数据库&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/user/login.jsp&quot;&gt;登录&lt;/a&gt;|&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/user/reg.jsp&quot;&gt;注册&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/feedback/feedback.jsp&quot;&gt;留言反馈&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/help.jsp&quot;&gt;帮助信息&lt;/a&gt;&amp;nbsp;&lt;/p&gt;
+&lt;pre class=&quot;rtecenter&quot;&gt;&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/&quot;&gt;WML版&lt;/a&gt;|&lt;a href=&quot;http://mob.lib.tsinghua.edu.cn/iphone&quot;&gt;华丽版&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[55, 66]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://mob.lib.tsinghua.edu.cn/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="55">
+                <http-request>
+                    <status>ARGENTINA http://mob.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3024" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:31 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:31 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;sidebar-left&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;block-user-1&quot; class=&quot;clear-block block block-user&quot;&gt;
+
+  &lt;h2&gt;Navigation&lt;/h2&gt;
+
+  &lt;div class=&quot;content&quot;&gt;&lt;ul class=&quot;menu&quot;&gt;&lt;li class=&quot;leaf first last&quot;&gt;&lt;a href=&quot;/mt/mobile/node&quot;&gt;Mobile Site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+																					&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+				&lt;div id=&quot;block-block-1&quot; class=&quot;clear-block block block-block&quot;&gt;
+
+
+  &lt;div class=&quot;content&quot;&gt;&lt;p size=12px&gt;&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/intro/intro.jsp&quot;&gt;本馆概况&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/intro/news.jsp&quot;&gt;七日新闻公告&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/innopac/booksearch.jsp&quot;&gt;馆藏目录查询&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/innopac/readersinfo.jsp&quot;&gt;个人借阅信息&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/metalib/metalib.jsp&quot;&gt;电子资源/数据库&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/user/login.jsp&quot;&gt;登录&lt;/a&gt;|&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/user/reg.jsp&quot;&gt;注册&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/feedback/feedback.jsp&quot;&gt;留言反馈&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/help.jsp&quot;&gt;帮助信息&lt;/a&gt;&amp;nbsp;&lt;/p&gt;
+&lt;pre class=&quot;rtecenter&quot;&gt;&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/&quot;&gt;WML版&lt;/a&gt;|&lt;a href=&quot;http://mob.lib.tsinghua.edu.cn/iphone&quot;&gt;华丽版&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="66">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3024" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:31 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:31 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;sidebar-left&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;block-user-1&quot; class=&quot;clear-block block block-user&quot;&gt;
+
+  &lt;h2&gt;Navigation&lt;/h2&gt;
+
+  &lt;div class=&quot;content&quot;&gt;&lt;ul class=&quot;menu&quot;&gt;&lt;li class=&quot;leaf first last&quot;&gt;&lt;a href=&quot;/mt/mobile/node&quot;&gt;Mobile Site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+																					&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+				&lt;div id=&quot;block-block-1&quot; class=&quot;clear-block block block-block&quot;&gt;
+
+
+  &lt;div class=&quot;content&quot;&gt;&lt;p size=12px&gt;&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/intro/intro.jsp&quot;&gt;本馆概况&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/intro/news.jsp&quot;&gt;七日新闻公告&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/innopac/booksearch.jsp&quot;&gt;馆藏目录查询&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/innopac/readersinfo.jsp&quot;&gt;个人借阅信息&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/metalib/metalib.jsp&quot;&gt;电子资源/数据库&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/user/login.jsp&quot;&gt;登录&lt;/a&gt;|&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/user/reg.jsp&quot;&gt;注册&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/feedback/feedback.jsp&quot;&gt;留言反馈&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/help.jsp&quot;&gt;帮助信息&lt;/a&gt;&amp;nbsp;&lt;/p&gt;
+&lt;pre class=&quot;rtecenter&quot;&gt;&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/&quot;&gt;WML版&lt;/a&gt;|&lt;a href=&quot;http://mob.lib.tsinghua.edu.cn/iphone&quot;&gt;华丽版&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[133]" method="GET" name="Cross site tracing vulnerability" plugin="xst" severity="Low" url="http://mob.lib.tsinghua.edu.cn/" var="None">
+        <description>The web server at &quot;http://mob.lib.tsinghua.edu.cn/&quot; is vulnerable to Cross Site Tracing.</description>
+        <long-description>The `TRACE` HTTP method allows a client so send a request to the server, and have the same request then send back in the server's response. This allows the client to determine if the server is receiving the request as expected or if specific parts of the request are not arriving as expected. For example incorrect encoding or a load balancer has filtered or changed a value. On many default installations the `TRACE` method is still enabled.
+
+While not vulnerable by itself, it does provide a method for cyber-criminals to bypass the `HTTPOnly` cookie flag, and therefore could allow a XSS attack to successfully access a session token.
+
+The tool has discovered that the affected page permits the HTTP `TRACE` method.</long-description>
+        <fix-guidance>The HTTP `TRACE` method is normally not required within production sites and should therefore be disabled.
+
+Depending on the function being performed by the web application, the risk level can start low and increase as more functionality is implemented.
+
+The remediation is typically a very simple configuration change and in most cases will not have any negative impact on the server or application.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="CAPEC" url="http://capec.mitre.org/data/definitions/107.html"/>
+            <reference title="OWASP" url="http://www.owasp.org/index.php/Cross_Site_Tracing"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="133">
+                <http-request>
+                    <status>TRACE http://mob.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                        <header content="XST" field="Fakeheader"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:23:32 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="close" field="connection"/>
+                        <header content="message/http" field="content-type"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">VFJBQ0UgLyBIVFRQLzEuMQ0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KQ29udGVudC1sZW5ndGg6
+IDANCkFjY2VwdC1lbmNvZGluZzogZ3ppcCwgZGVmbGF0ZQ0KQWNjZXB0OiAqLyoNClVzZXItYWdl
+bnQ6IG5pc2wNCkhvc3Q6IG1vYi5saWIudHNpbmdodWEuZWR1LmNuDQpDb29raWU6IFNFU1M2MTll
+ZDQyZjA2YWJlNDRiNjUxMDUzMDJlMGU1MGE4OD1zdmg3MzMyNGs4ajVvMG5xYmV2bGJzMWcwMA0K
+Q29udGVudC10eXBlOiBhcHBsaWNhdGlvbi94LXd3dy1mb3JtLXVybGVuY29kZWQNCkZha2VoZWFk
+ZXI6IFhTVA0KDQo=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[195]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://lib.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://lib.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://mob.lib.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="195">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:23:34 GMT" field="date"/>
+                        <header content="271" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access /
+on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[197]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.120.160/" var="None">
+        <description>The contents of http://166.111.120.160/ and http://mob.lib.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="197">
+                <http-request>
+                    <status>GET http://166.111.120.160/ HTTP/1.1</status>
+                    <headers>
+                        <header content="166.111.120.160" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:23:35 GMT" field="date"/>
+                        <header content="267" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access /
+on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at 166.111.120.160 Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[198]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://mob.lib.tsinghua.edu.cn/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;webservice&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;webservice&quot; to the IP address of &quot;mob.lib.tsinghua.edu.cn&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[199]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://mob.lib.tsinghua.edu.cn/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;mail.tsinghua&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;mail.tsinghua&quot; to the IP address of &quot;mob.lib.tsinghua.edu.cn&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[18, 67, 76, 96, 141, 180, 182, 183, 185, 189, 190, 191, 192]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3024" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:26 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:26 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;sidebar-left&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;block-user-1&quot; class=&quot;clear-block block block-user&quot;&gt;
+
+  &lt;h2&gt;Navigation&lt;/h2&gt;
+
+  &lt;div class=&quot;content&quot;&gt;&lt;ul class=&quot;menu&quot;&gt;&lt;li class=&quot;leaf first last&quot;&gt;&lt;a href=&quot;/mt/mobile/node&quot;&gt;Mobile Site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+																					&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+				&lt;div id=&quot;block-block-1&quot; class=&quot;clear-block block block-block&quot;&gt;
+
+
+  &lt;div class=&quot;content&quot;&gt;&lt;p size=12px&gt;&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/intro/intro.jsp&quot;&gt;本馆概况&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/intro/news.jsp&quot;&gt;七日新闻公告&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/innopac/booksearch.jsp&quot;&gt;馆藏目录查询&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/innopac/readersinfo.jsp&quot;&gt;个人借阅信息&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/metalib/metalib.jsp&quot;&gt;电子资源/数据库&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/user/login.jsp&quot;&gt;登录&lt;/a&gt;|&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/user/reg.jsp&quot;&gt;注册&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/jsp/feedback/feedback.jsp&quot;&gt;留言反馈&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/thulibxhtml/help.jsp&quot;&gt;帮助信息&lt;/a&gt;&amp;nbsp;&lt;/p&gt;
+&lt;pre class=&quot;rtecenter&quot;&gt;&lt;a href=&quot;http://m.lib.tsinghua.edu.cn/&quot;&gt;WML版&lt;/a&gt;|&lt;a href=&quot;http://mob.lib.tsinghua.edu.cn/iphone&quot;&gt;华丽版&lt;/a&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="67">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:23:31 GMT" field="date"/>
+                        <header content="45" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">The requested file favicon.ico was not found.</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="76">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="1713" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:31 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:31 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;Page not found | 清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;main&quot;&gt;&lt;h2&gt;Page not found&lt;/h2&gt;&lt;/div&gt;															&lt;div id=&quot;content&quot;&gt;
+				The requested page could not be found.			&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="96">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/IPCUg.html HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="1713" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:31 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:31 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;Page not found | 清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;main&quot;&gt;&lt;h2&gt;Page not found&lt;/h2&gt;&lt;/div&gt;															&lt;div id=&quot;content&quot;&gt;
+				The requested page could not be found.			&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="141">
+                <http-request>
+                    <status>POST http://mob.lib.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L0lQQ1VnLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguZ1VDUEk=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="1713" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:32 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:32 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;Page not found | 清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;main&quot;&gt;&lt;h2&gt;Page not found&lt;/h2&gt;&lt;/div&gt;															&lt;div id=&quot;content&quot;&gt;
+				The requested page could not be found.			&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="180">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="1713" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;Page not found | 清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;main&quot;&gt;&lt;h2&gt;Page not found&lt;/h2&gt;&lt;/div&gt;															&lt;div id=&quot;content&quot;&gt;
+				The requested page could not be found.			&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="182">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="1713" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;Page not found | 清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;main&quot;&gt;&lt;h2&gt;Page not found&lt;/h2&gt;&lt;/div&gt;															&lt;div id=&quot;content&quot;&gt;
+				The requested page could not be found.			&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="183">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="1713" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;Page not found | 清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;main&quot;&gt;&lt;h2&gt;Page not found&lt;/h2&gt;&lt;/div&gt;															&lt;div id=&quot;content&quot;&gt;
+				The requested page could not be found.			&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="185">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="1713" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;Page not found | 清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;main&quot;&gt;&lt;h2&gt;Page not found&lt;/h2&gt;&lt;/div&gt;															&lt;div id=&quot;content&quot;&gt;
+				The requested page could not be found.			&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="189">
+                <http-request>
+                    <status>PUT http://mob.lib.tsinghua.edu.cn/YaabR HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">rGf5pQ</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="1713" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;Page not found | 清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;main&quot;&gt;&lt;h2&gt;Page not found&lt;/h2&gt;&lt;/div&gt;															&lt;div id=&quot;content&quot;&gt;
+				The requested page could not be found.			&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="1713" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;Page not found | 清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;main&quot;&gt;&lt;h2&gt;Page not found&lt;/h2&gt;&lt;/div&gt;															&lt;div id=&quot;content&quot;&gt;
+				The requested page could not be found.			&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="191">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="1713" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;Page not found | 清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;main&quot;&gt;&lt;h2&gt;Page not found&lt;/h2&gt;&lt;/div&gt;															&lt;div id=&quot;content&quot;&gt;
+				The requested page could not be found.			&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="192">
+                <http-request>
+                    <status>GET http://mob.lib.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="mob.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="SESS619ed42f06abe44b65105302e0e50a88=svh73324k8j5o0nqbevlbs1g00" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="1713" field="content-length"/>
+                        <header content="PHP/5.4.45" field="x-powered-by"/>
+                        <header content="Sun, 19 Nov 1978 05:00:00 GMT" field="expires"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="store, no-cache, must-revalidate, post-check=0, pre-check=0" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 13:23:33 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;!DOCTYPE html PUBLIC &quot;-//WAPFORUM//DTD XHTML Mobile 1.0//EN&quot; &quot;http://www.wapforum.org/DTD/xhtml-mobile10.dtd&quot; &gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;/misc/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+	&lt;title&gt;Page not found | 清华大学图书馆TWIMS系统&lt;/title&gt;
+	&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/node/node.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/defaults.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/system/system-menus.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/modules/user/user.css?L&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;/sites/default/files/color/mobile_garland-79f50f6a/style.css?L&quot; /&gt;
+	&lt;/head&gt;
+&lt;body class=&quot;&quot;&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;div id=&quot;header-region&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;header&quot; class=&quot;mobileregion&quot;&gt;
+			&lt;h1 id=&quot;sitename&quot;&gt;&lt;a title=&quot;&quot; href=&quot;/&quot;&gt;&lt;span&gt;清华大学图书馆TWIMS系统&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;		&lt;/div&gt;
+		&lt;div id=&quot;primary_links&quot;&gt;
+					&lt;/div&gt;
+	&lt;!--	 --&gt;
+				&lt;div id=&quot;maincontent&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;div id=&quot;main&quot;&gt;&lt;h2&gt;Page not found&lt;/h2&gt;&lt;/div&gt;															&lt;div id=&quot;content&quot;&gt;
+				The requested page could not be found.			&lt;/div&gt;
+			&lt;div id=&quot;content&quot;&gt;
+							&lt;/div&gt;
+		&lt;/div&gt;
+				&lt;div id=&quot;footer&quot; class=&quot;mobileregion&quot;&gt;
+						&lt;p&gt;&amp;copy;清华大学图书馆&lt;/p&gt;		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://mob.lib.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://mob.lib.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The port '443' is not open on target mob.lib.tsinghua.edu.cn</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to mob.lib.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

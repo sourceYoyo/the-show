@@ -1,0 +1,2321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480665989" start-long="Fri Dec 02 03:06:29 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://jetde.theti.org:85/ojs/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/9_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Auto-completable form" plugin="form_autocomplete" severity="Information" url="http://jetde.theti.org:85/ojs/" var="None">
+        <description>The URL: &quot;http://jetde.theti.org:85/ojs/&quot; has a &quot;&lt;form&gt;&quot; element with auto-complete enabled.</description>
+        <long-description>In typical form-based web applications, it is common practice for developers to allow `autocomplete` within the HTML form to improve the usability of the page. With `autocomplete` enabled (default), the browser is allowed to cache previously entered form values.
+
+For legitimate purposes, this allows the user to quickly re-enter the same data when completing the form multiple times.
+
+When `autocomplete` is enabled on either/both the username and password fields, this could allow a cyber-criminal with access to the victim's computer the ability to have the victim's credentials automatically entered as the cyber-criminal visits the affected page.
+
+The tool has discovered that the affected page contains a form containing a password field that has not disabled `autocomplete`.</long-description>
+        <fix-guidance>The `autocomplete` value can be configured in two different locations. The first and most secure location is to disable the `autocomplete` attribute on the `&lt;form&gt;` HTML tag. This will disable `autocomplete` for all inputs within that form. An example of disabling `autocomplete` within the form tag is `&lt;form autocomplete=off&gt;`.
+
+The second slightly less desirable option is to disable the `autocomplete` attribute for a specific `&lt;input&gt;` HTML tag. While this may be the less desired solution from a security perspective, it may be preferred method for usability reasons, depending on size of the form. An example of disabling the `autocomplete` attribute within a password input tag is `&lt;input type=password autocomplete=off&gt;`.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://jetde.theti.org:85/ojs/ HTTP/1.1</status>
+                    <headers>
+                        <header content="jetde.theti.org:85" field="Host"/>
+                        <header content="OJSSID=4t1agi887keo3hk6hkcinoh5j3" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.5.1" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.2.25 (Unix) PHP/5.5.1" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="public" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:05:59 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+	&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;title&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/title&gt;
+	&lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;keywords&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;generator&quot; content=&quot;Open Journal Systems 2.4.1.0&quot; /&gt;
+	
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/pkp.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/compiled.css&quot; type=&quot;text/css&quot; /&gt;
+
+	&lt;!-- Base Jquery --&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;//www.google.com/jsapi&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// Provide a local fallback if the CDN cannot be reached
+		if (typeof google == 'undefined') {
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/jquery.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+		} else {
+			google.load(&quot;jquery&quot;, &quot;1.4.4&quot;);
+			google.load(&quot;jqueryui&quot;, &quot;1.8.6&quot;);
+		}
+		// --&gt;
+	&lt;/script&gt;
+	
+	
+	
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/sidebar.css&quot; type=&quot;text/css&quot; /&gt;		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/rightSidebar.css&quot; type=&quot;text/css&quot; /&gt;	
+	
+	&lt;!-- Compiled scripts --&gt;
+			
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/fontController.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/general.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Helper.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/ObjectProxy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Handler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/SiteHandler.js&quot;&gt;&lt;/script&gt;&lt;!-- Included only for namespace definition --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/UrlInDivHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/grid/GridHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/AutocompleteHandler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.pkp.js&quot;&gt;&lt;/script&gt;	
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		$(function(){
+			fontSize(&quot;#sizer&quot;, &quot;body&quot;, 9, 16, 32, &quot;/ojs&quot;); // Initialize the font sizer
+		});
+		// --&gt;
+	&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// initialise plugins
+		
+		$(function(){
+			
+			$(&quot;.tagit&quot;).live('click', function() {
+				$(this).find('input').focus();
+			});
+		});
+		// --&gt;
+		
+	&lt;/script&gt;
+
+		
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;container&quot;&gt;
+
+&lt;div id=&quot;header&quot;&gt;
+&lt;div id=&quot;headerTitle&quot;&gt;
+&lt;h1&gt;
+	Journal of Educational Technology Development and Exchange (JETDE)
+&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;body&quot;&gt;
+
+	&lt;div id=&quot;sidebar&quot;&gt;
+							&lt;div id=&quot;rightSidebar&quot;&gt;
+				&lt;div class=&quot;block&quot; id=&quot;sidebarDevelopedBy&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;http://pkp.sfu.ca/ojs/&quot; id=&quot;developedBy&quot;&gt;Open Journal Systems&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarHelp&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;javascript:openHelp('http://jetde.theti.org:85/ojs/index.php/index/help/view/user/topic/000001')&quot;&gt;Journal Help&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarUser&quot;&gt;
+			&lt;span class=&quot;blockTitle&quot;&gt;User&lt;/span&gt;
+	
+						&lt;form method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/login/signIn&quot;&gt;
+				&lt;table&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-username&quot;&gt;Username&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;sidebar-username&quot; name=&quot;username&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-password&quot;&gt;Password&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;password&quot; id=&quot;sidebar-password&quot; name=&quot;password&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;remember&quot; name=&quot;remember&quot; value=&quot;1&quot; /&gt; &lt;label for=&quot;remember&quot;&gt;Remember me&lt;/label&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Login&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/form&gt;
+			&lt;/div&gt; &lt;div class=&quot;block&quot; id=&quot;sidebarLanguageToggle&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Language&lt;/span&gt;
+	&lt;form action=&quot;#&quot;&gt;
+		&lt;select size=&quot;1&quot; name=&quot;locale&quot; onchange=&quot;location.href=('http://jetde.theti.org:85/ojs/index.php/index/user/setLocale/NEW_LOCALE?source=%2Fojs%2F'.replace('NEW_LOCALE', this.options[this.selectedIndex].value))&quot; class=&quot;selectMenu&quot;&gt;&lt;option label=&quot;English&quot; value=&quot;en_US&quot; selected=&quot;selected&quot;&gt;English&lt;/option&gt;
+&lt;option label=&quot;简体中文&quot; value=&quot;zh_CN&quot;&gt;简体中文&lt;/option&gt;
+&lt;/select&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarNavigation&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Journal Content&lt;/span&gt;
+
+	&lt;span class=&quot;blockSubtitle&quot;&gt;Search&lt;/span&gt;
+	&lt;form id=&quot;simpleSearchForm&quot; method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/search/results&quot;&gt;
+	&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;query&quot; name=&quot;query&quot; size=&quot;15&quot; maxlength=&quot;255&quot; value=&quot;&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;select name=&quot;searchField&quot; size=&quot;1&quot; class=&quot;selectMenu&quot;&gt;
+			&lt;option label=&quot;All&quot; value=&quot;&quot;&gt;All&lt;/option&gt;
+&lt;option label=&quot;Authors&quot; value=&quot;1&quot;&gt;Authors&lt;/option&gt;
+&lt;option label=&quot;Title&quot; value=&quot;2&quot;&gt;Title&lt;/option&gt;
+&lt;option label=&quot;Abstract&quot; value=&quot;4&quot;&gt;Abstract&lt;/option&gt;
+&lt;option label=&quot;Index terms&quot; value=&quot;120&quot;&gt;Index terms&lt;/option&gt;
+&lt;option label=&quot;Full Text&quot; value=&quot;128&quot;&gt;Full Text&lt;/option&gt;
+
+		&lt;/select&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;Search&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/table&gt;
+	&lt;/form&gt;
+
+	&lt;br /&gt;
+
+	&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarFontSize&quot; style=&quot;margin-bottom: 4px;&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Font Size&lt;/span&gt;
+	&lt;div id=&quot;sizer&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+
+&lt;div id=&quot;main&quot;&gt;
+&lt;div id=&quot;navbar&quot;&gt;
+	&lt;ul class=&quot;menu&quot;&gt;
+		&lt;li id=&quot;home&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+		&lt;li id=&quot;about&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li id=&quot;login&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/login&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+							&lt;li id=&quot;register&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/user/register&quot;&gt;Register&lt;/a&gt;&lt;/li&gt;
+												&lt;!--&lt;li id=&quot;search&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/search&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;--&gt;
+		
+		
+				
+
+			&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;breadcrumb&quot;&gt;
+	&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt; &amp;gt;
+			&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php&quot; class=&quot;current&quot;&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h2&gt;
+
+
+&lt;div id=&quot;content&quot;&gt;
+
+
+
+&lt;br /&gt;
+
+
+&lt;a name=&quot;journals&quot;&gt;&lt;/a&gt;
+
+
+					&lt;div style=&quot;clear:left;&quot;&gt;
+				&lt;/div&gt;
+				&lt;h3&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h3&gt;
+							&lt;p&gt;&lt;p&gt;&lt;strong style=&quot;text-align: left; line-height: 19px; widows: 2; text-transform: none; background-color: #ffffff; font-variant: normal; font-style: normal; text-indent: 0px; margin: 0px; font-family: Arial, Verdana, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; color: #333333; font-size: 13px; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; padding: 0px;&quot;&gt;&lt;em style=&quot;margin: 0px; padding: 0px;&quot;&gt;The Journal of Educational Technology Development and Exchange (JETDE)&lt;/em&gt;&lt;/strong&gt;&lt;span style=&quot;text-align: left; widows: 2; text-transform: none; background-color: #ffffff; text-indent: 0px; display: inline !important; font: 13px/19px Arial, Verdana, sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #333333; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;is a refereed international journal published two issues annually (since 2013) in print and online by the Society of International Chinese in Educational Technology (SICET). With the aim of providing a platform for international Chinese scholars and experts in the field of education technology and encouraging academic cooperation, communication, and support among professionals, JETDE provides a multidisciplinary forum and focal points for SICET members to exchange practice and research between disciplines, educational levels, and educational technologies.&lt;/span&gt;&lt;/p&gt;&lt;/p&gt;
+				&lt;p&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde&quot; class=&quot;action&quot;&gt;View Journal&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/issue/current&quot; class=&quot;action&quot;&gt;Current Issue&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/user/register&quot; class=&quot;action&quot;&gt;Register&lt;/a&gt;&lt;/p&gt;
+
+&lt;div id=&quot;journalListPageInfo&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;journalListPageLinks&quot;&gt;
+
+
+&lt;/div&gt;&lt;!-- content --&gt;
+&lt;/div&gt;&lt;!-- main --&gt;
+&lt;/div&gt;&lt;!-- body --&gt;
+
+
+
+&lt;/div&gt;&lt;!-- container --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[46]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache/2.2.25 (Unix) PHP/5.5.1&quot;.</description>
+        <http-transactions>
+            <http-transaction id="46">
+                <http-request>
+                    <status>GET http://jetde.theti.org:85/ojs/ HTTP/1.1</status>
+                    <headers>
+                        <header content="jetde.theti.org:85" field="Host"/>
+                        <header content="OJSSID=4t1agi887keo3hk6hkcinoh5j3" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.5.1" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.2.25 (Unix) PHP/5.5.1" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="public" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:05:59 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+	&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;title&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/title&gt;
+	&lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;keywords&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;generator&quot; content=&quot;Open Journal Systems 2.4.1.0&quot; /&gt;
+	
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/pkp.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/compiled.css&quot; type=&quot;text/css&quot; /&gt;
+
+	&lt;!-- Base Jquery --&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;//www.google.com/jsapi&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// Provide a local fallback if the CDN cannot be reached
+		if (typeof google == 'undefined') {
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/jquery.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+		} else {
+			google.load(&quot;jquery&quot;, &quot;1.4.4&quot;);
+			google.load(&quot;jqueryui&quot;, &quot;1.8.6&quot;);
+		}
+		// --&gt;
+	&lt;/script&gt;
+	
+	
+	
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/sidebar.css&quot; type=&quot;text/css&quot; /&gt;		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/rightSidebar.css&quot; type=&quot;text/css&quot; /&gt;	
+	
+	&lt;!-- Compiled scripts --&gt;
+			
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/fontController.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/general.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Helper.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/ObjectProxy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Handler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/SiteHandler.js&quot;&gt;&lt;/script&gt;&lt;!-- Included only for namespace definition --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/UrlInDivHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/grid/GridHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/AutocompleteHandler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.pkp.js&quot;&gt;&lt;/script&gt;	
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		$(function(){
+			fontSize(&quot;#sizer&quot;, &quot;body&quot;, 9, 16, 32, &quot;/ojs&quot;); // Initialize the font sizer
+		});
+		// --&gt;
+	&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// initialise plugins
+		
+		$(function(){
+			
+			$(&quot;.tagit&quot;).live('click', function() {
+				$(this).find('input').focus();
+			});
+		});
+		// --&gt;
+		
+	&lt;/script&gt;
+
+		
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;container&quot;&gt;
+
+&lt;div id=&quot;header&quot;&gt;
+&lt;div id=&quot;headerTitle&quot;&gt;
+&lt;h1&gt;
+	Journal of Educational Technology Development and Exchange (JETDE)
+&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;body&quot;&gt;
+
+	&lt;div id=&quot;sidebar&quot;&gt;
+							&lt;div id=&quot;rightSidebar&quot;&gt;
+				&lt;div class=&quot;block&quot; id=&quot;sidebarDevelopedBy&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;http://pkp.sfu.ca/ojs/&quot; id=&quot;developedBy&quot;&gt;Open Journal Systems&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarHelp&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;javascript:openHelp('http://jetde.theti.org:85/ojs/index.php/index/help/view/user/topic/000001')&quot;&gt;Journal Help&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarUser&quot;&gt;
+			&lt;span class=&quot;blockTitle&quot;&gt;User&lt;/span&gt;
+	
+						&lt;form method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/login/signIn&quot;&gt;
+				&lt;table&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-username&quot;&gt;Username&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;sidebar-username&quot; name=&quot;username&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-password&quot;&gt;Password&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;password&quot; id=&quot;sidebar-password&quot; name=&quot;password&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;remember&quot; name=&quot;remember&quot; value=&quot;1&quot; /&gt; &lt;label for=&quot;remember&quot;&gt;Remember me&lt;/label&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Login&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/form&gt;
+			&lt;/div&gt; &lt;div class=&quot;block&quot; id=&quot;sidebarLanguageToggle&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Language&lt;/span&gt;
+	&lt;form action=&quot;#&quot;&gt;
+		&lt;select size=&quot;1&quot; name=&quot;locale&quot; onchange=&quot;location.href=('http://jetde.theti.org:85/ojs/index.php/index/user/setLocale/NEW_LOCALE?source=%2Fojs%2F'.replace('NEW_LOCALE', this.options[this.selectedIndex].value))&quot; class=&quot;selectMenu&quot;&gt;&lt;option label=&quot;English&quot; value=&quot;en_US&quot; selected=&quot;selected&quot;&gt;English&lt;/option&gt;
+&lt;option label=&quot;简体中文&quot; value=&quot;zh_CN&quot;&gt;简体中文&lt;/option&gt;
+&lt;/select&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarNavigation&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Journal Content&lt;/span&gt;
+
+	&lt;span class=&quot;blockSubtitle&quot;&gt;Search&lt;/span&gt;
+	&lt;form id=&quot;simpleSearchForm&quot; method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/search/results&quot;&gt;
+	&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;query&quot; name=&quot;query&quot; size=&quot;15&quot; maxlength=&quot;255&quot; value=&quot;&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;select name=&quot;searchField&quot; size=&quot;1&quot; class=&quot;selectMenu&quot;&gt;
+			&lt;option label=&quot;All&quot; value=&quot;&quot;&gt;All&lt;/option&gt;
+&lt;option label=&quot;Authors&quot; value=&quot;1&quot;&gt;Authors&lt;/option&gt;
+&lt;option label=&quot;Title&quot; value=&quot;2&quot;&gt;Title&lt;/option&gt;
+&lt;option label=&quot;Abstract&quot; value=&quot;4&quot;&gt;Abstract&lt;/option&gt;
+&lt;option label=&quot;Index terms&quot; value=&quot;120&quot;&gt;Index terms&lt;/option&gt;
+&lt;option label=&quot;Full Text&quot; value=&quot;128&quot;&gt;Full Text&lt;/option&gt;
+
+		&lt;/select&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;Search&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/table&gt;
+	&lt;/form&gt;
+
+	&lt;br /&gt;
+
+	&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarFontSize&quot; style=&quot;margin-bottom: 4px;&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Font Size&lt;/span&gt;
+	&lt;div id=&quot;sizer&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+
+&lt;div id=&quot;main&quot;&gt;
+&lt;div id=&quot;navbar&quot;&gt;
+	&lt;ul class=&quot;menu&quot;&gt;
+		&lt;li id=&quot;home&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+		&lt;li id=&quot;about&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li id=&quot;login&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/login&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+							&lt;li id=&quot;register&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/user/register&quot;&gt;Register&lt;/a&gt;&lt;/li&gt;
+												&lt;!--&lt;li id=&quot;search&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/search&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;--&gt;
+		
+		
+				
+
+			&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;breadcrumb&quot;&gt;
+	&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt; &amp;gt;
+			&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php&quot; class=&quot;current&quot;&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h2&gt;
+
+
+&lt;div id=&quot;content&quot;&gt;
+
+
+
+&lt;br /&gt;
+
+
+&lt;a name=&quot;journals&quot;&gt;&lt;/a&gt;
+
+
+					&lt;div style=&quot;clear:left;&quot;&gt;
+				&lt;/div&gt;
+				&lt;h3&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h3&gt;
+							&lt;p&gt;&lt;p&gt;&lt;strong style=&quot;text-align: left; line-height: 19px; widows: 2; text-transform: none; background-color: #ffffff; font-variant: normal; font-style: normal; text-indent: 0px; margin: 0px; font-family: Arial, Verdana, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; color: #333333; font-size: 13px; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; padding: 0px;&quot;&gt;&lt;em style=&quot;margin: 0px; padding: 0px;&quot;&gt;The Journal of Educational Technology Development and Exchange (JETDE)&lt;/em&gt;&lt;/strong&gt;&lt;span style=&quot;text-align: left; widows: 2; text-transform: none; background-color: #ffffff; text-indent: 0px; display: inline !important; font: 13px/19px Arial, Verdana, sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #333333; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;is a refereed international journal published two issues annually (since 2013) in print and online by the Society of International Chinese in Educational Technology (SICET). With the aim of providing a platform for international Chinese scholars and experts in the field of education technology and encouraging academic cooperation, communication, and support among professionals, JETDE provides a multidisciplinary forum and focal points for SICET members to exchange practice and research between disciplines, educational levels, and educational technologies.&lt;/span&gt;&lt;/p&gt;&lt;/p&gt;
+				&lt;p&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde&quot; class=&quot;action&quot;&gt;View Journal&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/issue/current&quot; class=&quot;action&quot;&gt;Current Issue&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/user/register&quot; class=&quot;action&quot;&gt;Register&lt;/a&gt;&lt;/p&gt;
+
+&lt;div id=&quot;journalListPageInfo&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;journalListPageLinks&quot;&gt;
+
+
+&lt;/div&gt;&lt;!-- content --&gt;
+&lt;/div&gt;&lt;!-- main --&gt;
+&lt;/div&gt;&lt;!-- body --&gt;
+
+
+
+&lt;/div&gt;&lt;!-- container --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[61]" method="GET" name="Powered-by header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The x-powered-by header for the target HTTP server is &quot;PHP/5.5.1&quot;.</description>
+        <http-transactions>
+            <http-transaction id="61">
+                <http-request>
+                    <status>GET http://jetde.theti.org:85/ojs/ HTTP/1.1</status>
+                    <headers>
+                        <header content="jetde.theti.org:85" field="Host"/>
+                        <header content="OJSSID=4t1agi887keo3hk6hkcinoh5j3" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.5.1" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.2.25 (Unix) PHP/5.5.1" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="public" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:05:59 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+	&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;title&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/title&gt;
+	&lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;keywords&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;generator&quot; content=&quot;Open Journal Systems 2.4.1.0&quot; /&gt;
+	
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/pkp.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/compiled.css&quot; type=&quot;text/css&quot; /&gt;
+
+	&lt;!-- Base Jquery --&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;//www.google.com/jsapi&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// Provide a local fallback if the CDN cannot be reached
+		if (typeof google == 'undefined') {
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/jquery.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+		} else {
+			google.load(&quot;jquery&quot;, &quot;1.4.4&quot;);
+			google.load(&quot;jqueryui&quot;, &quot;1.8.6&quot;);
+		}
+		// --&gt;
+	&lt;/script&gt;
+	
+	
+	
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/sidebar.css&quot; type=&quot;text/css&quot; /&gt;		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/rightSidebar.css&quot; type=&quot;text/css&quot; /&gt;	
+	
+	&lt;!-- Compiled scripts --&gt;
+			
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/fontController.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/general.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Helper.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/ObjectProxy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Handler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/SiteHandler.js&quot;&gt;&lt;/script&gt;&lt;!-- Included only for namespace definition --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/UrlInDivHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/grid/GridHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/AutocompleteHandler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.pkp.js&quot;&gt;&lt;/script&gt;	
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		$(function(){
+			fontSize(&quot;#sizer&quot;, &quot;body&quot;, 9, 16, 32, &quot;/ojs&quot;); // Initialize the font sizer
+		});
+		// --&gt;
+	&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// initialise plugins
+		
+		$(function(){
+			
+			$(&quot;.tagit&quot;).live('click', function() {
+				$(this).find('input').focus();
+			});
+		});
+		// --&gt;
+		
+	&lt;/script&gt;
+
+		
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;container&quot;&gt;
+
+&lt;div id=&quot;header&quot;&gt;
+&lt;div id=&quot;headerTitle&quot;&gt;
+&lt;h1&gt;
+	Journal of Educational Technology Development and Exchange (JETDE)
+&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;body&quot;&gt;
+
+	&lt;div id=&quot;sidebar&quot;&gt;
+							&lt;div id=&quot;rightSidebar&quot;&gt;
+				&lt;div class=&quot;block&quot; id=&quot;sidebarDevelopedBy&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;http://pkp.sfu.ca/ojs/&quot; id=&quot;developedBy&quot;&gt;Open Journal Systems&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarHelp&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;javascript:openHelp('http://jetde.theti.org:85/ojs/index.php/index/help/view/user/topic/000001')&quot;&gt;Journal Help&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarUser&quot;&gt;
+			&lt;span class=&quot;blockTitle&quot;&gt;User&lt;/span&gt;
+	
+						&lt;form method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/login/signIn&quot;&gt;
+				&lt;table&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-username&quot;&gt;Username&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;sidebar-username&quot; name=&quot;username&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-password&quot;&gt;Password&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;password&quot; id=&quot;sidebar-password&quot; name=&quot;password&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;remember&quot; name=&quot;remember&quot; value=&quot;1&quot; /&gt; &lt;label for=&quot;remember&quot;&gt;Remember me&lt;/label&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Login&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/form&gt;
+			&lt;/div&gt; &lt;div class=&quot;block&quot; id=&quot;sidebarLanguageToggle&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Language&lt;/span&gt;
+	&lt;form action=&quot;#&quot;&gt;
+		&lt;select size=&quot;1&quot; name=&quot;locale&quot; onchange=&quot;location.href=('http://jetde.theti.org:85/ojs/index.php/index/user/setLocale/NEW_LOCALE?source=%2Fojs%2F'.replace('NEW_LOCALE', this.options[this.selectedIndex].value))&quot; class=&quot;selectMenu&quot;&gt;&lt;option label=&quot;English&quot; value=&quot;en_US&quot; selected=&quot;selected&quot;&gt;English&lt;/option&gt;
+&lt;option label=&quot;简体中文&quot; value=&quot;zh_CN&quot;&gt;简体中文&lt;/option&gt;
+&lt;/select&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarNavigation&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Journal Content&lt;/span&gt;
+
+	&lt;span class=&quot;blockSubtitle&quot;&gt;Search&lt;/span&gt;
+	&lt;form id=&quot;simpleSearchForm&quot; method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/search/results&quot;&gt;
+	&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;query&quot; name=&quot;query&quot; size=&quot;15&quot; maxlength=&quot;255&quot; value=&quot;&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;select name=&quot;searchField&quot; size=&quot;1&quot; class=&quot;selectMenu&quot;&gt;
+			&lt;option label=&quot;All&quot; value=&quot;&quot;&gt;All&lt;/option&gt;
+&lt;option label=&quot;Authors&quot; value=&quot;1&quot;&gt;Authors&lt;/option&gt;
+&lt;option label=&quot;Title&quot; value=&quot;2&quot;&gt;Title&lt;/option&gt;
+&lt;option label=&quot;Abstract&quot; value=&quot;4&quot;&gt;Abstract&lt;/option&gt;
+&lt;option label=&quot;Index terms&quot; value=&quot;120&quot;&gt;Index terms&lt;/option&gt;
+&lt;option label=&quot;Full Text&quot; value=&quot;128&quot;&gt;Full Text&lt;/option&gt;
+
+		&lt;/select&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;Search&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/table&gt;
+	&lt;/form&gt;
+
+	&lt;br /&gt;
+
+	&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarFontSize&quot; style=&quot;margin-bottom: 4px;&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Font Size&lt;/span&gt;
+	&lt;div id=&quot;sizer&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+
+&lt;div id=&quot;main&quot;&gt;
+&lt;div id=&quot;navbar&quot;&gt;
+	&lt;ul class=&quot;menu&quot;&gt;
+		&lt;li id=&quot;home&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+		&lt;li id=&quot;about&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li id=&quot;login&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/login&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+							&lt;li id=&quot;register&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/user/register&quot;&gt;Register&lt;/a&gt;&lt;/li&gt;
+												&lt;!--&lt;li id=&quot;search&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/search&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;--&gt;
+		
+		
+				
+
+			&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;breadcrumb&quot;&gt;
+	&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt; &amp;gt;
+			&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php&quot; class=&quot;current&quot;&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h2&gt;
+
+
+&lt;div id=&quot;content&quot;&gt;
+
+
+
+&lt;br /&gt;
+
+
+&lt;a name=&quot;journals&quot;&gt;&lt;/a&gt;
+
+
+					&lt;div style=&quot;clear:left;&quot;&gt;
+				&lt;/div&gt;
+				&lt;h3&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h3&gt;
+							&lt;p&gt;&lt;p&gt;&lt;strong style=&quot;text-align: left; line-height: 19px; widows: 2; text-transform: none; background-color: #ffffff; font-variant: normal; font-style: normal; text-indent: 0px; margin: 0px; font-family: Arial, Verdana, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; color: #333333; font-size: 13px; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; padding: 0px;&quot;&gt;&lt;em style=&quot;margin: 0px; padding: 0px;&quot;&gt;The Journal of Educational Technology Development and Exchange (JETDE)&lt;/em&gt;&lt;/strong&gt;&lt;span style=&quot;text-align: left; widows: 2; text-transform: none; background-color: #ffffff; text-indent: 0px; display: inline !important; font: 13px/19px Arial, Verdana, sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #333333; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;is a refereed international journal published two issues annually (since 2013) in print and online by the Society of International Chinese in Educational Technology (SICET). With the aim of providing a platform for international Chinese scholars and experts in the field of education technology and encouraging academic cooperation, communication, and support among professionals, JETDE provides a multidisciplinary forum and focal points for SICET members to exchange practice and research between disciplines, educational levels, and educational technologies.&lt;/span&gt;&lt;/p&gt;&lt;/p&gt;
+				&lt;p&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde&quot; class=&quot;action&quot;&gt;View Journal&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/issue/current&quot; class=&quot;action&quot;&gt;Current Issue&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/user/register&quot; class=&quot;action&quot;&gt;Register&lt;/a&gt;&lt;/p&gt;
+
+&lt;div id=&quot;journalListPageInfo&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;journalListPageLinks&quot;&gt;
+
+
+&lt;/div&gt;&lt;!-- content --&gt;
+&lt;/div&gt;&lt;!-- main --&gt;
+&lt;/div&gt;&lt;!-- body --&gt;
+
+
+
+&lt;/div&gt;&lt;!-- container --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[70]" method="GET" name="Cross site tracing vulnerability" plugin="xst" severity="Low" url="http://jetde.theti.org:85/ojs/" var="None">
+        <description>The web server at &quot;http://jetde.theti.org:85/ojs/&quot; is vulnerable to Cross Site Tracing.</description>
+        <long-description>The `TRACE` HTTP method allows a client so send a request to the server, and have the same request then send back in the server's response. This allows the client to determine if the server is receiving the request as expected or if specific parts of the request are not arriving as expected. For example incorrect encoding or a load balancer has filtered or changed a value. On many default installations the `TRACE` method is still enabled.
+
+While not vulnerable by itself, it does provide a method for cyber-criminals to bypass the `HTTPOnly` cookie flag, and therefore could allow a XSS attack to successfully access a session token.
+
+The tool has discovered that the affected page permits the HTTP `TRACE` method.</long-description>
+        <fix-guidance>The HTTP `TRACE` method is normally not required within production sites and should therefore be disabled.
+
+Depending on the function being performed by the web application, the risk level can start low and increase as more functionality is implemented.
+
+The remediation is typically a very simple configuration change and in most cases will not have any negative impact on the server or application.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="CAPEC" url="http://capec.mitre.org/data/definitions/107.html"/>
+            <reference title="OWASP" url="http://www.owasp.org/index.php/Cross_Site_Tracing"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="70">
+                <http-request>
+                    <status>TRACE http://jetde.theti.org:85/ojs/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="jetde.theti.org:85" field="Host"/>
+                        <header content="OJSSID=4t1agi887keo3hk6hkcinoh5j3" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                        <header content="XST" field="Fakeheader"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=79" field="keep-alive"/>
+                        <header content="Apache/2.2.25 (Unix) PHP/5.5.1" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:06:07 GMT" field="date"/>
+                        <header content="message/http" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">VFJBQ0UgL29qcy8gSFRUUC8xLjENCkhvc3Q6IGpldGRlLmlvZS50c2luZ2h1YS5lZHUuY246ODUN
+CkFjY2VwdC1lbmNvZGluZzogZ3ppcCwgZGVmbGF0ZQ0KQWNjZXB0OiAqLyoNClVzZXItYWdlbnQ6
+IG5pc2wNCkNvb2tpZTogT0pTU0lEPTR0MWFnaTg4N2tlbzNoazZoa2Npbm9oNWozDQpDb250ZW50
+LXR5cGU6IGFwcGxpY2F0aW9uL3gtd3d3LWZvcm0tdXJsZW5jb2RlZA0KRmFrZWhlYWRlcjogWFNU
+DQpYLUZvcndhcmRlZC1Gb3I6IDIwMi4xMTIuNTEuMTQxDQpYLUZvcndhcmRlZC1Ib3N0OiBqZXRk
+ZS50aGV0aS5vcmc6ODUNClgtRm9yd2FyZGVkLVNlcnZlcjogamV0ZGUudGhldGkub3JnDQpDb25u
+ZWN0aW9uOiBLZWVwLUFsaXZlDQpDb250ZW50LUxlbmd0aDogMA0KDQo=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[74, 87]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://jetde.theti.org:85/ojs/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="74">
+                <http-request>
+                    <status>ARGENTINA http://jetde.theti.org:85/ojs/ HTTP/1.1</status>
+                    <headers>
+                        <header content="jetde.theti.org:85" field="Host"/>
+                        <header content="OJSSID=4t1agi887keo3hk6hkcinoh5j3" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.5.1" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=97" field="keep-alive"/>
+                        <header content="Apache/2.2.25 (Unix) PHP/5.5.1" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="public" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:06:07 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+	&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;title&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/title&gt;
+	&lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;keywords&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;generator&quot; content=&quot;Open Journal Systems 2.4.1.0&quot; /&gt;
+	
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/pkp.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/compiled.css&quot; type=&quot;text/css&quot; /&gt;
+
+	&lt;!-- Base Jquery --&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;//www.google.com/jsapi&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// Provide a local fallback if the CDN cannot be reached
+		if (typeof google == 'undefined') {
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/jquery.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+		} else {
+			google.load(&quot;jquery&quot;, &quot;1.4.4&quot;);
+			google.load(&quot;jqueryui&quot;, &quot;1.8.6&quot;);
+		}
+		// --&gt;
+	&lt;/script&gt;
+	
+	
+	
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/sidebar.css&quot; type=&quot;text/css&quot; /&gt;		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/rightSidebar.css&quot; type=&quot;text/css&quot; /&gt;	
+	
+	&lt;!-- Compiled scripts --&gt;
+			
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/fontController.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/general.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Helper.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/ObjectProxy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Handler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/SiteHandler.js&quot;&gt;&lt;/script&gt;&lt;!-- Included only for namespace definition --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/UrlInDivHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/grid/GridHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/AutocompleteHandler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.pkp.js&quot;&gt;&lt;/script&gt;	
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		$(function(){
+			fontSize(&quot;#sizer&quot;, &quot;body&quot;, 9, 16, 32, &quot;/ojs&quot;); // Initialize the font sizer
+		});
+		// --&gt;
+	&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// initialise plugins
+		
+		$(function(){
+			
+			$(&quot;.tagit&quot;).live('click', function() {
+				$(this).find('input').focus();
+			});
+		});
+		// --&gt;
+		
+	&lt;/script&gt;
+
+		
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;container&quot;&gt;
+
+&lt;div id=&quot;header&quot;&gt;
+&lt;div id=&quot;headerTitle&quot;&gt;
+&lt;h1&gt;
+	Journal of Educational Technology Development and Exchange (JETDE)
+&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;body&quot;&gt;
+
+	&lt;div id=&quot;sidebar&quot;&gt;
+							&lt;div id=&quot;rightSidebar&quot;&gt;
+				&lt;div class=&quot;block&quot; id=&quot;sidebarDevelopedBy&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;http://pkp.sfu.ca/ojs/&quot; id=&quot;developedBy&quot;&gt;Open Journal Systems&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarHelp&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;javascript:openHelp('http://jetde.theti.org:85/ojs/index.php/index/help/view/user/topic/000001')&quot;&gt;Journal Help&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarUser&quot;&gt;
+			&lt;span class=&quot;blockTitle&quot;&gt;User&lt;/span&gt;
+	
+						&lt;form method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/login/signIn&quot;&gt;
+				&lt;table&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-username&quot;&gt;Username&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;sidebar-username&quot; name=&quot;username&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-password&quot;&gt;Password&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;password&quot; id=&quot;sidebar-password&quot; name=&quot;password&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;remember&quot; name=&quot;remember&quot; value=&quot;1&quot; /&gt; &lt;label for=&quot;remember&quot;&gt;Remember me&lt;/label&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Login&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/form&gt;
+			&lt;/div&gt; &lt;div class=&quot;block&quot; id=&quot;sidebarLanguageToggle&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Language&lt;/span&gt;
+	&lt;form action=&quot;#&quot;&gt;
+		&lt;select size=&quot;1&quot; name=&quot;locale&quot; onchange=&quot;location.href=('http://jetde.theti.org:85/ojs/index.php/index/user/setLocale/NEW_LOCALE?source=%2Fojs%2F'.replace('NEW_LOCALE', this.options[this.selectedIndex].value))&quot; class=&quot;selectMenu&quot;&gt;&lt;option label=&quot;English&quot; value=&quot;en_US&quot; selected=&quot;selected&quot;&gt;English&lt;/option&gt;
+&lt;option label=&quot;简体中文&quot; value=&quot;zh_CN&quot;&gt;简体中文&lt;/option&gt;
+&lt;/select&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarNavigation&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Journal Content&lt;/span&gt;
+
+	&lt;span class=&quot;blockSubtitle&quot;&gt;Search&lt;/span&gt;
+	&lt;form id=&quot;simpleSearchForm&quot; method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/search/results&quot;&gt;
+	&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;query&quot; name=&quot;query&quot; size=&quot;15&quot; maxlength=&quot;255&quot; value=&quot;&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;select name=&quot;searchField&quot; size=&quot;1&quot; class=&quot;selectMenu&quot;&gt;
+			&lt;option label=&quot;All&quot; value=&quot;&quot;&gt;All&lt;/option&gt;
+&lt;option label=&quot;Authors&quot; value=&quot;1&quot;&gt;Authors&lt;/option&gt;
+&lt;option label=&quot;Title&quot; value=&quot;2&quot;&gt;Title&lt;/option&gt;
+&lt;option label=&quot;Abstract&quot; value=&quot;4&quot;&gt;Abstract&lt;/option&gt;
+&lt;option label=&quot;Index terms&quot; value=&quot;120&quot;&gt;Index terms&lt;/option&gt;
+&lt;option label=&quot;Full Text&quot; value=&quot;128&quot;&gt;Full Text&lt;/option&gt;
+
+		&lt;/select&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;Search&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/table&gt;
+	&lt;/form&gt;
+
+	&lt;br /&gt;
+
+	&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarFontSize&quot; style=&quot;margin-bottom: 4px;&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Font Size&lt;/span&gt;
+	&lt;div id=&quot;sizer&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+
+&lt;div id=&quot;main&quot;&gt;
+&lt;div id=&quot;navbar&quot;&gt;
+	&lt;ul class=&quot;menu&quot;&gt;
+		&lt;li id=&quot;home&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+		&lt;li id=&quot;about&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li id=&quot;login&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/login&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+							&lt;li id=&quot;register&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/user/register&quot;&gt;Register&lt;/a&gt;&lt;/li&gt;
+												&lt;!--&lt;li id=&quot;search&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/search&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;--&gt;
+		
+		
+				
+
+			&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;breadcrumb&quot;&gt;
+	&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt; &amp;gt;
+			&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php&quot; class=&quot;current&quot;&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h2&gt;
+
+
+&lt;div id=&quot;content&quot;&gt;
+
+
+
+&lt;br /&gt;
+
+
+&lt;a name=&quot;journals&quot;&gt;&lt;/a&gt;
+
+
+					&lt;div style=&quot;clear:left;&quot;&gt;
+				&lt;/div&gt;
+				&lt;h3&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h3&gt;
+							&lt;p&gt;&lt;p&gt;&lt;strong style=&quot;text-align: left; line-height: 19px; widows: 2; text-transform: none; background-color: #ffffff; font-variant: normal; font-style: normal; text-indent: 0px; margin: 0px; font-family: Arial, Verdana, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; color: #333333; font-size: 13px; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; padding: 0px;&quot;&gt;&lt;em style=&quot;margin: 0px; padding: 0px;&quot;&gt;The Journal of Educational Technology Development and Exchange (JETDE)&lt;/em&gt;&lt;/strong&gt;&lt;span style=&quot;text-align: left; widows: 2; text-transform: none; background-color: #ffffff; text-indent: 0px; display: inline !important; font: 13px/19px Arial, Verdana, sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #333333; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;is a refereed international journal published two issues annually (since 2013) in print and online by the Society of International Chinese in Educational Technology (SICET). With the aim of providing a platform for international Chinese scholars and experts in the field of education technology and encouraging academic cooperation, communication, and support among professionals, JETDE provides a multidisciplinary forum and focal points for SICET members to exchange practice and research between disciplines, educational levels, and educational technologies.&lt;/span&gt;&lt;/p&gt;&lt;/p&gt;
+				&lt;p&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde&quot; class=&quot;action&quot;&gt;View Journal&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/issue/current&quot; class=&quot;action&quot;&gt;Current Issue&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/user/register&quot; class=&quot;action&quot;&gt;Register&lt;/a&gt;&lt;/p&gt;
+
+&lt;div id=&quot;journalListPageInfo&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;journalListPageLinks&quot;&gt;
+
+
+&lt;/div&gt;&lt;!-- content --&gt;
+&lt;/div&gt;&lt;!-- main --&gt;
+&lt;/div&gt;&lt;!-- body --&gt;
+
+
+
+&lt;/div&gt;&lt;!-- container --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="87">
+                <http-request>
+                    <status>GET http://jetde.theti.org:85/ojs/ HTTP/1.1</status>
+                    <headers>
+                        <header content="jetde.theti.org:85" field="Host"/>
+                        <header content="OJSSID=4t1agi887keo3hk6hkcinoh5j3" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.5.1" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=77" field="keep-alive"/>
+                        <header content="Apache/2.2.25 (Unix) PHP/5.5.1" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="public" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:06:07 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+	&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;title&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/title&gt;
+	&lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;keywords&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;generator&quot; content=&quot;Open Journal Systems 2.4.1.0&quot; /&gt;
+	
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/pkp.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/compiled.css&quot; type=&quot;text/css&quot; /&gt;
+
+	&lt;!-- Base Jquery --&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;//www.google.com/jsapi&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// Provide a local fallback if the CDN cannot be reached
+		if (typeof google == 'undefined') {
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/jquery.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+		} else {
+			google.load(&quot;jquery&quot;, &quot;1.4.4&quot;);
+			google.load(&quot;jqueryui&quot;, &quot;1.8.6&quot;);
+		}
+		// --&gt;
+	&lt;/script&gt;
+	
+	
+	
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/sidebar.css&quot; type=&quot;text/css&quot; /&gt;		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/rightSidebar.css&quot; type=&quot;text/css&quot; /&gt;	
+	
+	&lt;!-- Compiled scripts --&gt;
+			
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/fontController.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/general.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Helper.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/ObjectProxy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Handler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/SiteHandler.js&quot;&gt;&lt;/script&gt;&lt;!-- Included only for namespace definition --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/UrlInDivHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/grid/GridHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/AutocompleteHandler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.pkp.js&quot;&gt;&lt;/script&gt;	
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		$(function(){
+			fontSize(&quot;#sizer&quot;, &quot;body&quot;, 9, 16, 32, &quot;/ojs&quot;); // Initialize the font sizer
+		});
+		// --&gt;
+	&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// initialise plugins
+		
+		$(function(){
+			
+			$(&quot;.tagit&quot;).live('click', function() {
+				$(this).find('input').focus();
+			});
+		});
+		// --&gt;
+		
+	&lt;/script&gt;
+
+		
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;container&quot;&gt;
+
+&lt;div id=&quot;header&quot;&gt;
+&lt;div id=&quot;headerTitle&quot;&gt;
+&lt;h1&gt;
+	Journal of Educational Technology Development and Exchange (JETDE)
+&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;body&quot;&gt;
+
+	&lt;div id=&quot;sidebar&quot;&gt;
+							&lt;div id=&quot;rightSidebar&quot;&gt;
+				&lt;div class=&quot;block&quot; id=&quot;sidebarDevelopedBy&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;http://pkp.sfu.ca/ojs/&quot; id=&quot;developedBy&quot;&gt;Open Journal Systems&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarHelp&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;javascript:openHelp('http://jetde.theti.org:85/ojs/index.php/index/help/view/user/topic/000001')&quot;&gt;Journal Help&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarUser&quot;&gt;
+			&lt;span class=&quot;blockTitle&quot;&gt;User&lt;/span&gt;
+	
+						&lt;form method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/login/signIn&quot;&gt;
+				&lt;table&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-username&quot;&gt;Username&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;sidebar-username&quot; name=&quot;username&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-password&quot;&gt;Password&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;password&quot; id=&quot;sidebar-password&quot; name=&quot;password&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;remember&quot; name=&quot;remember&quot; value=&quot;1&quot; /&gt; &lt;label for=&quot;remember&quot;&gt;Remember me&lt;/label&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Login&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/form&gt;
+			&lt;/div&gt; &lt;div class=&quot;block&quot; id=&quot;sidebarLanguageToggle&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Language&lt;/span&gt;
+	&lt;form action=&quot;#&quot;&gt;
+		&lt;select size=&quot;1&quot; name=&quot;locale&quot; onchange=&quot;location.href=('http://jetde.theti.org:85/ojs/index.php/index/user/setLocale/NEW_LOCALE?source=%2Fojs%2F'.replace('NEW_LOCALE', this.options[this.selectedIndex].value))&quot; class=&quot;selectMenu&quot;&gt;&lt;option label=&quot;English&quot; value=&quot;en_US&quot; selected=&quot;selected&quot;&gt;English&lt;/option&gt;
+&lt;option label=&quot;简体中文&quot; value=&quot;zh_CN&quot;&gt;简体中文&lt;/option&gt;
+&lt;/select&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarNavigation&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Journal Content&lt;/span&gt;
+
+	&lt;span class=&quot;blockSubtitle&quot;&gt;Search&lt;/span&gt;
+	&lt;form id=&quot;simpleSearchForm&quot; method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/search/results&quot;&gt;
+	&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;query&quot; name=&quot;query&quot; size=&quot;15&quot; maxlength=&quot;255&quot; value=&quot;&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;select name=&quot;searchField&quot; size=&quot;1&quot; class=&quot;selectMenu&quot;&gt;
+			&lt;option label=&quot;All&quot; value=&quot;&quot;&gt;All&lt;/option&gt;
+&lt;option label=&quot;Authors&quot; value=&quot;1&quot;&gt;Authors&lt;/option&gt;
+&lt;option label=&quot;Title&quot; value=&quot;2&quot;&gt;Title&lt;/option&gt;
+&lt;option label=&quot;Abstract&quot; value=&quot;4&quot;&gt;Abstract&lt;/option&gt;
+&lt;option label=&quot;Index terms&quot; value=&quot;120&quot;&gt;Index terms&lt;/option&gt;
+&lt;option label=&quot;Full Text&quot; value=&quot;128&quot;&gt;Full Text&lt;/option&gt;
+
+		&lt;/select&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;Search&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/table&gt;
+	&lt;/form&gt;
+
+	&lt;br /&gt;
+
+	&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarFontSize&quot; style=&quot;margin-bottom: 4px;&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Font Size&lt;/span&gt;
+	&lt;div id=&quot;sizer&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+
+&lt;div id=&quot;main&quot;&gt;
+&lt;div id=&quot;navbar&quot;&gt;
+	&lt;ul class=&quot;menu&quot;&gt;
+		&lt;li id=&quot;home&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+		&lt;li id=&quot;about&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li id=&quot;login&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/login&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+							&lt;li id=&quot;register&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/user/register&quot;&gt;Register&lt;/a&gt;&lt;/li&gt;
+												&lt;!--&lt;li id=&quot;search&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/search&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;--&gt;
+		
+		
+				
+
+			&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;breadcrumb&quot;&gt;
+	&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt; &amp;gt;
+			&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php&quot; class=&quot;current&quot;&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h2&gt;
+
+
+&lt;div id=&quot;content&quot;&gt;
+
+
+
+&lt;br /&gt;
+
+
+&lt;a name=&quot;journals&quot;&gt;&lt;/a&gt;
+
+
+					&lt;div style=&quot;clear:left;&quot;&gt;
+				&lt;/div&gt;
+				&lt;h3&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h3&gt;
+							&lt;p&gt;&lt;p&gt;&lt;strong style=&quot;text-align: left; line-height: 19px; widows: 2; text-transform: none; background-color: #ffffff; font-variant: normal; font-style: normal; text-indent: 0px; margin: 0px; font-family: Arial, Verdana, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; color: #333333; font-size: 13px; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; padding: 0px;&quot;&gt;&lt;em style=&quot;margin: 0px; padding: 0px;&quot;&gt;The Journal of Educational Technology Development and Exchange (JETDE)&lt;/em&gt;&lt;/strong&gt;&lt;span style=&quot;text-align: left; widows: 2; text-transform: none; background-color: #ffffff; text-indent: 0px; display: inline !important; font: 13px/19px Arial, Verdana, sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #333333; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;is a refereed international journal published two issues annually (since 2013) in print and online by the Society of International Chinese in Educational Technology (SICET). With the aim of providing a platform for international Chinese scholars and experts in the field of education technology and encouraging academic cooperation, communication, and support among professionals, JETDE provides a multidisciplinary forum and focal points for SICET members to exchange practice and research between disciplines, educational levels, and educational technologies.&lt;/span&gt;&lt;/p&gt;&lt;/p&gt;
+				&lt;p&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde&quot; class=&quot;action&quot;&gt;View Journal&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/issue/current&quot; class=&quot;action&quot;&gt;Current Issue&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/user/register&quot; class=&quot;action&quot;&gt;Register&lt;/a&gt;&lt;/p&gt;
+
+&lt;div id=&quot;journalListPageInfo&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;journalListPageLinks&quot;&gt;
+
+
+&lt;/div&gt;&lt;!-- content --&gt;
+&lt;/div&gt;&lt;!-- main --&gt;
+&lt;/div&gt;&lt;!-- body --&gt;
+
+
+
+&lt;/div&gt;&lt;!-- container --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[96]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://jetde.theti.org:85/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://theti.org:85/ojs/&quot; are equal to the ones of &quot;http://jetde.theti.org:85/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="96">
+                <http-request>
+                    <status>GET http://jetde.theti.org:85/ HTTP/1.1</status>
+                    <headers>
+                        <header content="theti.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="45" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=5, max=90" field="keep-alive"/>
+                        <header content="Apache/2.4.10 (Unix)" field="server"/>
+                        <header content="Mon, 11 Jun 2007 18:53:14 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;2d-432a5e4a73a80&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:07:18 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;body&gt;&lt;h1&gt;It works!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[117]" method="GET" name="Favicon identification failed" plugin="favicon_identification" severity="Information" url="http://jetde.theti.org:85/ojs/favicon.ico" var="None">
+        <description>Favicon identification failed. If the remote site is using framework that is being exposed by its favicon, please send an email to w3af-develop@lists.sourceforge.net including this md5 hash &quot;38aa930e2cd559868d5b97aae7e7e2bb&quot; and the name of the server or Web application it represents. New fingerprints make this plugin more powerful and  accurate.</description>
+        <http-transactions>
+            <http-transaction id="117">
+                <http-request>
+                    <status>GET http://jetde.theti.org:85/ojs/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="jetde.theti.org:85" field="Host"/>
+                        <header content="OJSSID=4t1agi887keo3hk6hkcinoh5j3" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1150" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.2.25 (Unix) PHP/5.5.1" field="server"/>
+                        <header content="Wed, 03 Oct 2012 00:07:08 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;a3d51fa-47e-4cb1c6b62c300&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 08:06:08 GMT" field="date"/>
+                        <header content="image/x-icon" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAA
+AAAAAAD/////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////+vr6/9QUFD/g4OD//j4+P//
+////2NjY/0lJSf+dnZ3//////9PT0/9OTk7/c3Nz/0dHR/+6urr/////////////////Li4u/5eX
+l/////////////z8/P8jIyP/tLS0/+Dg4P8RERH/jY2N/8/Pz/8TExP/5+fn////////////////
+/zc3N/+Wlpb/////////////////NTU1/5SUlP8uLi7/f39////////Pz8//Ghoa/+Pj4//9/f3/
+//////////86Ojr/lpaW/5+fn/+ioqL//////zs7O/8AAAD/dXV1////////////zs7O/xwcHP/R
+0dH/fn5+/93d3f//////ODg4/5ycnP//////PDw8/8vLy/9BQUH/WFhY/4aGhv///////////87O
+zv8ZGRn/+Pj4/7i4uP9NTU3//////zAwMP+enp7/9PT0/xsbG/+5ubn/NTU1/7S0tP+1tbX/dXV1
+///////Ozs7/GBgY//f39/+enp7/NDQ0/9vb2/9QUFD/bGxs/2NjY/+Wlpb/y8vL/0dHR/+cnJz/
+/////4KCgv+CgoL/oKCg/0hISP98fHz/Wlpa/8vLy///////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAA==
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[146]" method="GET" name="Reverse proxy identified" plugin="detect_reverse_proxy" severity="Information" url="http://jetde.theti.org:85/ojs/" var="None">
+        <description>The remote web server seems to have a reverse proxy installed.</description>
+        <http-transactions>
+            <http-transaction id="146">
+                <http-request>
+                    <status>TRACE http://jetde.theti.org:85/ojs/ HTTP/1.1</status>
+                    <headers>
+                        <header content="jetde.theti.org:85" field="Host"/>
+                        <header content="OJSSID=4t1agi887keo3hk6hkcinoh5j3" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=95" field="keep-alive"/>
+                        <header content="Apache/2.2.25 (Unix) PHP/5.5.1" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 08:06:08 GMT" field="date"/>
+                        <header content="message/http" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">VFJBQ0UgL29qcy8gSFRUUC8xLjENCkhvc3Q6IGpldGRlLmlvZS50c2luZ2h1YS5lZHUuY246ODUN
+CkNvb2tpZTogT0pTU0lEPTR0MWFnaTg4N2tlbzNoazZoa2Npbm9oNWozDQpBY2NlcHQtZW5jb2Rp
+bmc6IGd6aXAsIGRlZmxhdGUNCkFjY2VwdDogKi8qDQpVc2VyLWFnZW50OiBuaXNsDQpYLUZvcndh
+cmRlZC1Gb3I6IDIwMi4xMTIuNTEuMTQxDQpYLUZvcndhcmRlZC1Ib3N0OiBqZXRkZS50aGV0aS5v
+cmc6ODUNClgtRm9yd2FyZGVkLVNlcnZlcjogamV0ZGUudGhldGkub3JnDQpDb25uZWN0aW9uOiBL
+ZWVwLUFsaXZlDQoNCg==
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Path disclosure vulnerability" plugin="path_disclosure" severity="Low" url="http://jetde.theti.org:85/ojs/" var="None">
+        <description>The URL: &quot;http://jetde.theti.org:85/ojs/&quot; has a path disclosure vulnerability which discloses &quot;/lib/pkp/js/lib/jquery/jquery.min.js&quot;.</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://jetde.theti.org:85/ojs/ HTTP/1.1</status>
+                    <headers>
+                        <header content="jetde.theti.org:85" field="Host"/>
+                        <header content="OJSSID=4t1agi887keo3hk6hkcinoh5j3" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.5.1" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.2.25 (Unix) PHP/5.5.1" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="public" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:05:59 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+	&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;title&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/title&gt;
+	&lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;keywords&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;generator&quot; content=&quot;Open Journal Systems 2.4.1.0&quot; /&gt;
+	
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/pkp.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/compiled.css&quot; type=&quot;text/css&quot; /&gt;
+
+	&lt;!-- Base Jquery --&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;//www.google.com/jsapi&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// Provide a local fallback if the CDN cannot be reached
+		if (typeof google == 'undefined') {
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/jquery.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+		} else {
+			google.load(&quot;jquery&quot;, &quot;1.4.4&quot;);
+			google.load(&quot;jqueryui&quot;, &quot;1.8.6&quot;);
+		}
+		// --&gt;
+	&lt;/script&gt;
+	
+	
+	
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/sidebar.css&quot; type=&quot;text/css&quot; /&gt;		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/rightSidebar.css&quot; type=&quot;text/css&quot; /&gt;	
+	
+	&lt;!-- Compiled scripts --&gt;
+			
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/fontController.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/general.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Helper.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/ObjectProxy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Handler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/SiteHandler.js&quot;&gt;&lt;/script&gt;&lt;!-- Included only for namespace definition --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/UrlInDivHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/grid/GridHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/AutocompleteHandler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.pkp.js&quot;&gt;&lt;/script&gt;	
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		$(function(){
+			fontSize(&quot;#sizer&quot;, &quot;body&quot;, 9, 16, 32, &quot;/ojs&quot;); // Initialize the font sizer
+		});
+		// --&gt;
+	&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// initialise plugins
+		
+		$(function(){
+			
+			$(&quot;.tagit&quot;).live('click', function() {
+				$(this).find('input').focus();
+			});
+		});
+		// --&gt;
+		
+	&lt;/script&gt;
+
+		
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;container&quot;&gt;
+
+&lt;div id=&quot;header&quot;&gt;
+&lt;div id=&quot;headerTitle&quot;&gt;
+&lt;h1&gt;
+	Journal of Educational Technology Development and Exchange (JETDE)
+&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;body&quot;&gt;
+
+	&lt;div id=&quot;sidebar&quot;&gt;
+							&lt;div id=&quot;rightSidebar&quot;&gt;
+				&lt;div class=&quot;block&quot; id=&quot;sidebarDevelopedBy&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;http://pkp.sfu.ca/ojs/&quot; id=&quot;developedBy&quot;&gt;Open Journal Systems&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarHelp&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;javascript:openHelp('http://jetde.theti.org:85/ojs/index.php/index/help/view/user/topic/000001')&quot;&gt;Journal Help&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarUser&quot;&gt;
+			&lt;span class=&quot;blockTitle&quot;&gt;User&lt;/span&gt;
+	
+						&lt;form method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/login/signIn&quot;&gt;
+				&lt;table&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-username&quot;&gt;Username&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;sidebar-username&quot; name=&quot;username&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-password&quot;&gt;Password&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;password&quot; id=&quot;sidebar-password&quot; name=&quot;password&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;remember&quot; name=&quot;remember&quot; value=&quot;1&quot; /&gt; &lt;label for=&quot;remember&quot;&gt;Remember me&lt;/label&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Login&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/form&gt;
+			&lt;/div&gt; &lt;div class=&quot;block&quot; id=&quot;sidebarLanguageToggle&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Language&lt;/span&gt;
+	&lt;form action=&quot;#&quot;&gt;
+		&lt;select size=&quot;1&quot; name=&quot;locale&quot; onchange=&quot;location.href=('http://jetde.theti.org:85/ojs/index.php/index/user/setLocale/NEW_LOCALE?source=%2Fojs%2F'.replace('NEW_LOCALE', this.options[this.selectedIndex].value))&quot; class=&quot;selectMenu&quot;&gt;&lt;option label=&quot;English&quot; value=&quot;en_US&quot; selected=&quot;selected&quot;&gt;English&lt;/option&gt;
+&lt;option label=&quot;简体中文&quot; value=&quot;zh_CN&quot;&gt;简体中文&lt;/option&gt;
+&lt;/select&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarNavigation&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Journal Content&lt;/span&gt;
+
+	&lt;span class=&quot;blockSubtitle&quot;&gt;Search&lt;/span&gt;
+	&lt;form id=&quot;simpleSearchForm&quot; method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/search/results&quot;&gt;
+	&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;query&quot; name=&quot;query&quot; size=&quot;15&quot; maxlength=&quot;255&quot; value=&quot;&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;select name=&quot;searchField&quot; size=&quot;1&quot; class=&quot;selectMenu&quot;&gt;
+			&lt;option label=&quot;All&quot; value=&quot;&quot;&gt;All&lt;/option&gt;
+&lt;option label=&quot;Authors&quot; value=&quot;1&quot;&gt;Authors&lt;/option&gt;
+&lt;option label=&quot;Title&quot; value=&quot;2&quot;&gt;Title&lt;/option&gt;
+&lt;option label=&quot;Abstract&quot; value=&quot;4&quot;&gt;Abstract&lt;/option&gt;
+&lt;option label=&quot;Index terms&quot; value=&quot;120&quot;&gt;Index terms&lt;/option&gt;
+&lt;option label=&quot;Full Text&quot; value=&quot;128&quot;&gt;Full Text&lt;/option&gt;
+
+		&lt;/select&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;Search&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/table&gt;
+	&lt;/form&gt;
+
+	&lt;br /&gt;
+
+	&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarFontSize&quot; style=&quot;margin-bottom: 4px;&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Font Size&lt;/span&gt;
+	&lt;div id=&quot;sizer&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+
+&lt;div id=&quot;main&quot;&gt;
+&lt;div id=&quot;navbar&quot;&gt;
+	&lt;ul class=&quot;menu&quot;&gt;
+		&lt;li id=&quot;home&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+		&lt;li id=&quot;about&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li id=&quot;login&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/login&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+							&lt;li id=&quot;register&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/user/register&quot;&gt;Register&lt;/a&gt;&lt;/li&gt;
+												&lt;!--&lt;li id=&quot;search&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/search&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;--&gt;
+		
+		
+				
+
+			&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;breadcrumb&quot;&gt;
+	&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt; &amp;gt;
+			&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php&quot; class=&quot;current&quot;&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h2&gt;
+
+
+&lt;div id=&quot;content&quot;&gt;
+
+
+
+&lt;br /&gt;
+
+
+&lt;a name=&quot;journals&quot;&gt;&lt;/a&gt;
+
+
+					&lt;div style=&quot;clear:left;&quot;&gt;
+				&lt;/div&gt;
+				&lt;h3&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h3&gt;
+							&lt;p&gt;&lt;p&gt;&lt;strong style=&quot;text-align: left; line-height: 19px; widows: 2; text-transform: none; background-color: #ffffff; font-variant: normal; font-style: normal; text-indent: 0px; margin: 0px; font-family: Arial, Verdana, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; color: #333333; font-size: 13px; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; padding: 0px;&quot;&gt;&lt;em style=&quot;margin: 0px; padding: 0px;&quot;&gt;The Journal of Educational Technology Development and Exchange (JETDE)&lt;/em&gt;&lt;/strong&gt;&lt;span style=&quot;text-align: left; widows: 2; text-transform: none; background-color: #ffffff; text-indent: 0px; display: inline !important; font: 13px/19px Arial, Verdana, sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #333333; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;is a refereed international journal published two issues annually (since 2013) in print and online by the Society of International Chinese in Educational Technology (SICET). With the aim of providing a platform for international Chinese scholars and experts in the field of education technology and encouraging academic cooperation, communication, and support among professionals, JETDE provides a multidisciplinary forum and focal points for SICET members to exchange practice and research between disciplines, educational levels, and educational technologies.&lt;/span&gt;&lt;/p&gt;&lt;/p&gt;
+				&lt;p&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde&quot; class=&quot;action&quot;&gt;View Journal&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/issue/current&quot; class=&quot;action&quot;&gt;Current Issue&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/user/register&quot; class=&quot;action&quot;&gt;Register&lt;/a&gt;&lt;/p&gt;
+
+&lt;div id=&quot;journalListPageInfo&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;journalListPageLinks&quot;&gt;
+
+
+&lt;/div&gt;&lt;!-- content --&gt;
+&lt;/div&gt;&lt;!-- main --&gt;
+&lt;/div&gt;&lt;!-- body --&gt;
+
+
+
+&lt;/div&gt;&lt;!-- container --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="HTML comment contains HTML code" plugin="html_comments" severity="Information" url="http://jetde.theti.org:85/ojs/" var="None">
+        <description>A comment with the string &quot;&lt;li id=&quot;search&quot;&gt;&lt;a href=&quot;http://jetde.th&quot; was found in: &quot;http://jetde.theti.org:85/ojs/&quot;. This could be interesting.</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://jetde.theti.org:85/ojs/ HTTP/1.1</status>
+                    <headers>
+                        <header content="jetde.theti.org:85" field="Host"/>
+                        <header content="OJSSID=4t1agi887keo3hk6hkcinoh5j3" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.5.1" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.2.25 (Unix) PHP/5.5.1" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="public" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:05:59 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+	&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;title&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/title&gt;
+	&lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;keywords&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;generator&quot; content=&quot;Open Journal Systems 2.4.1.0&quot; /&gt;
+	
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/pkp.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/compiled.css&quot; type=&quot;text/css&quot; /&gt;
+
+	&lt;!-- Base Jquery --&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;//www.google.com/jsapi&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// Provide a local fallback if the CDN cannot be reached
+		if (typeof google == 'undefined') {
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/jquery.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+		} else {
+			google.load(&quot;jquery&quot;, &quot;1.4.4&quot;);
+			google.load(&quot;jqueryui&quot;, &quot;1.8.6&quot;);
+		}
+		// --&gt;
+	&lt;/script&gt;
+	
+	
+	
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/sidebar.css&quot; type=&quot;text/css&quot; /&gt;		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/rightSidebar.css&quot; type=&quot;text/css&quot; /&gt;	
+	
+	&lt;!-- Compiled scripts --&gt;
+			
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/fontController.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/general.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Helper.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/ObjectProxy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Handler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/SiteHandler.js&quot;&gt;&lt;/script&gt;&lt;!-- Included only for namespace definition --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/UrlInDivHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/grid/GridHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/AutocompleteHandler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.pkp.js&quot;&gt;&lt;/script&gt;	
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		$(function(){
+			fontSize(&quot;#sizer&quot;, &quot;body&quot;, 9, 16, 32, &quot;/ojs&quot;); // Initialize the font sizer
+		});
+		// --&gt;
+	&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// initialise plugins
+		
+		$(function(){
+			
+			$(&quot;.tagit&quot;).live('click', function() {
+				$(this).find('input').focus();
+			});
+		});
+		// --&gt;
+		
+	&lt;/script&gt;
+
+		
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;container&quot;&gt;
+
+&lt;div id=&quot;header&quot;&gt;
+&lt;div id=&quot;headerTitle&quot;&gt;
+&lt;h1&gt;
+	Journal of Educational Technology Development and Exchange (JETDE)
+&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;body&quot;&gt;
+
+	&lt;div id=&quot;sidebar&quot;&gt;
+							&lt;div id=&quot;rightSidebar&quot;&gt;
+				&lt;div class=&quot;block&quot; id=&quot;sidebarDevelopedBy&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;http://pkp.sfu.ca/ojs/&quot; id=&quot;developedBy&quot;&gt;Open Journal Systems&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarHelp&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;javascript:openHelp('http://jetde.theti.org:85/ojs/index.php/index/help/view/user/topic/000001')&quot;&gt;Journal Help&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarUser&quot;&gt;
+			&lt;span class=&quot;blockTitle&quot;&gt;User&lt;/span&gt;
+	
+						&lt;form method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/login/signIn&quot;&gt;
+				&lt;table&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-username&quot;&gt;Username&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;sidebar-username&quot; name=&quot;username&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-password&quot;&gt;Password&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;password&quot; id=&quot;sidebar-password&quot; name=&quot;password&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;remember&quot; name=&quot;remember&quot; value=&quot;1&quot; /&gt; &lt;label for=&quot;remember&quot;&gt;Remember me&lt;/label&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Login&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/form&gt;
+			&lt;/div&gt; &lt;div class=&quot;block&quot; id=&quot;sidebarLanguageToggle&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Language&lt;/span&gt;
+	&lt;form action=&quot;#&quot;&gt;
+		&lt;select size=&quot;1&quot; name=&quot;locale&quot; onchange=&quot;location.href=('http://jetde.theti.org:85/ojs/index.php/index/user/setLocale/NEW_LOCALE?source=%2Fojs%2F'.replace('NEW_LOCALE', this.options[this.selectedIndex].value))&quot; class=&quot;selectMenu&quot;&gt;&lt;option label=&quot;English&quot; value=&quot;en_US&quot; selected=&quot;selected&quot;&gt;English&lt;/option&gt;
+&lt;option label=&quot;简体中文&quot; value=&quot;zh_CN&quot;&gt;简体中文&lt;/option&gt;
+&lt;/select&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarNavigation&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Journal Content&lt;/span&gt;
+
+	&lt;span class=&quot;blockSubtitle&quot;&gt;Search&lt;/span&gt;
+	&lt;form id=&quot;simpleSearchForm&quot; method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/search/results&quot;&gt;
+	&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;query&quot; name=&quot;query&quot; size=&quot;15&quot; maxlength=&quot;255&quot; value=&quot;&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;select name=&quot;searchField&quot; size=&quot;1&quot; class=&quot;selectMenu&quot;&gt;
+			&lt;option label=&quot;All&quot; value=&quot;&quot;&gt;All&lt;/option&gt;
+&lt;option label=&quot;Authors&quot; value=&quot;1&quot;&gt;Authors&lt;/option&gt;
+&lt;option label=&quot;Title&quot; value=&quot;2&quot;&gt;Title&lt;/option&gt;
+&lt;option label=&quot;Abstract&quot; value=&quot;4&quot;&gt;Abstract&lt;/option&gt;
+&lt;option label=&quot;Index terms&quot; value=&quot;120&quot;&gt;Index terms&lt;/option&gt;
+&lt;option label=&quot;Full Text&quot; value=&quot;128&quot;&gt;Full Text&lt;/option&gt;
+
+		&lt;/select&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;Search&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/table&gt;
+	&lt;/form&gt;
+
+	&lt;br /&gt;
+
+	&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarFontSize&quot; style=&quot;margin-bottom: 4px;&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Font Size&lt;/span&gt;
+	&lt;div id=&quot;sizer&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+
+&lt;div id=&quot;main&quot;&gt;
+&lt;div id=&quot;navbar&quot;&gt;
+	&lt;ul class=&quot;menu&quot;&gt;
+		&lt;li id=&quot;home&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+		&lt;li id=&quot;about&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li id=&quot;login&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/login&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+							&lt;li id=&quot;register&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/user/register&quot;&gt;Register&lt;/a&gt;&lt;/li&gt;
+												&lt;!--&lt;li id=&quot;search&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/search&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;--&gt;
+		
+		
+				
+
+			&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;breadcrumb&quot;&gt;
+	&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt; &amp;gt;
+			&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php&quot; class=&quot;current&quot;&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h2&gt;
+
+
+&lt;div id=&quot;content&quot;&gt;
+
+
+
+&lt;br /&gt;
+
+
+&lt;a name=&quot;journals&quot;&gt;&lt;/a&gt;
+
+
+					&lt;div style=&quot;clear:left;&quot;&gt;
+				&lt;/div&gt;
+				&lt;h3&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h3&gt;
+							&lt;p&gt;&lt;p&gt;&lt;strong style=&quot;text-align: left; line-height: 19px; widows: 2; text-transform: none; background-color: #ffffff; font-variant: normal; font-style: normal; text-indent: 0px; margin: 0px; font-family: Arial, Verdana, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; color: #333333; font-size: 13px; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; padding: 0px;&quot;&gt;&lt;em style=&quot;margin: 0px; padding: 0px;&quot;&gt;The Journal of Educational Technology Development and Exchange (JETDE)&lt;/em&gt;&lt;/strong&gt;&lt;span style=&quot;text-align: left; widows: 2; text-transform: none; background-color: #ffffff; text-indent: 0px; display: inline !important; font: 13px/19px Arial, Verdana, sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #333333; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;is a refereed international journal published two issues annually (since 2013) in print and online by the Society of International Chinese in Educational Technology (SICET). With the aim of providing a platform for international Chinese scholars and experts in the field of education technology and encouraging academic cooperation, communication, and support among professionals, JETDE provides a multidisciplinary forum and focal points for SICET members to exchange practice and research between disciplines, educational levels, and educational technologies.&lt;/span&gt;&lt;/p&gt;&lt;/p&gt;
+				&lt;p&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde&quot; class=&quot;action&quot;&gt;View Journal&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/issue/current&quot; class=&quot;action&quot;&gt;Current Issue&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/user/register&quot; class=&quot;action&quot;&gt;Register&lt;/a&gt;&lt;/p&gt;
+
+&lt;div id=&quot;journalListPageInfo&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;journalListPageLinks&quot;&gt;
+
+
+&lt;/div&gt;&lt;!-- content --&gt;
+&lt;/div&gt;&lt;!-- main --&gt;
+&lt;/div&gt;&lt;!-- body --&gt;
+
+
+
+&lt;/div&gt;&lt;!-- container --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://jetde.theti.org:85/ojs/ HTTP/1.1</status>
+                    <headers>
+                        <header content="jetde.theti.org:85" field="Host"/>
+                        <header content="OJSSID=4t1agi887keo3hk6hkcinoh5j3" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="PHP/5.5.1" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.2.25 (Unix) PHP/5.5.1" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="public" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 08:05:59 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+	&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;title&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/title&gt;
+	&lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;keywords&quot; content=&quot;&quot; /&gt;
+	&lt;meta name=&quot;generator&quot; content=&quot;Open Journal Systems 2.4.1.0&quot; /&gt;
+	
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/pkp.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/lib/pkp/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/common.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/compiled.css&quot; type=&quot;text/css&quot; /&gt;
+
+	&lt;!-- Base Jquery --&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;//www.google.com/jsapi&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// Provide a local fallback if the CDN cannot be reached
+		if (typeof google == 'undefined') {
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/jquery.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+			document.write(unescape(&quot;%3Cscript src='http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js' type='text/javascript'%3E%3C/script%3E&quot;));
+		} else {
+			google.load(&quot;jquery&quot;, &quot;1.4.4&quot;);
+			google.load(&quot;jqueryui&quot;, &quot;1.8.6&quot;);
+		}
+		// --&gt;
+	&lt;/script&gt;
+	
+	
+	
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/sidebar.css&quot; type=&quot;text/css&quot; /&gt;		&lt;link rel=&quot;stylesheet&quot; href=&quot;http://jetde.theti.org:85/ojs/styles/rightSidebar.css&quot; type=&quot;text/css&quot; /&gt;	
+	
+	&lt;!-- Compiled scripts --&gt;
+			
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/fontController.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/functions/general.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Helper.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/ObjectProxy.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/classes/Handler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/SiteHandler.js&quot;&gt;&lt;/script&gt;&lt;!-- Included only for namespace definition --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/UrlInDivHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/grid/GridHandler.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/controllers/AutocompleteHandler.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://jetde.theti.org:85/ojs/lib/pkp/js/lib/jquery/plugins/jquery.pkp.js&quot;&gt;&lt;/script&gt;	
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		$(function(){
+			fontSize(&quot;#sizer&quot;, &quot;body&quot;, 9, 16, 32, &quot;/ojs&quot;); // Initialize the font sizer
+		});
+		// --&gt;
+	&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		&lt;!--
+		// initialise plugins
+		
+		$(function(){
+			
+			$(&quot;.tagit&quot;).live('click', function() {
+				$(this).find('input').focus();
+			});
+		});
+		// --&gt;
+		
+	&lt;/script&gt;
+
+		
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;container&quot;&gt;
+
+&lt;div id=&quot;header&quot;&gt;
+&lt;div id=&quot;headerTitle&quot;&gt;
+&lt;h1&gt;
+	Journal of Educational Technology Development and Exchange (JETDE)
+&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;body&quot;&gt;
+
+	&lt;div id=&quot;sidebar&quot;&gt;
+							&lt;div id=&quot;rightSidebar&quot;&gt;
+				&lt;div class=&quot;block&quot; id=&quot;sidebarDevelopedBy&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;http://pkp.sfu.ca/ojs/&quot; id=&quot;developedBy&quot;&gt;Open Journal Systems&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarHelp&quot;&gt;
+	&lt;a class=&quot;blockTitle&quot; href=&quot;javascript:openHelp('http://jetde.theti.org:85/ojs/index.php/index/help/view/user/topic/000001')&quot;&gt;Journal Help&lt;/a&gt;
+&lt;/div&gt;&lt;div class=&quot;block&quot; id=&quot;sidebarUser&quot;&gt;
+			&lt;span class=&quot;blockTitle&quot;&gt;User&lt;/span&gt;
+	
+						&lt;form method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/login/signIn&quot;&gt;
+				&lt;table&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-username&quot;&gt;Username&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;sidebar-username&quot; name=&quot;username&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&lt;label for=&quot;sidebar-password&quot;&gt;Password&lt;/label&gt;&lt;/td&gt;
+						&lt;td&gt;&lt;input type=&quot;password&quot; id=&quot;sidebar-password&quot; name=&quot;password&quot; value=&quot;&quot; size=&quot;12&quot; maxlength=&quot;32&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;remember&quot; name=&quot;remember&quot; value=&quot;1&quot; /&gt; &lt;label for=&quot;remember&quot;&gt;Remember me&lt;/label&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Login&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/form&gt;
+			&lt;/div&gt; &lt;div class=&quot;block&quot; id=&quot;sidebarLanguageToggle&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Language&lt;/span&gt;
+	&lt;form action=&quot;#&quot;&gt;
+		&lt;select size=&quot;1&quot; name=&quot;locale&quot; onchange=&quot;location.href=('http://jetde.theti.org:85/ojs/index.php/index/user/setLocale/NEW_LOCALE?source=%2Fojs%2F'.replace('NEW_LOCALE', this.options[this.selectedIndex].value))&quot; class=&quot;selectMenu&quot;&gt;&lt;option label=&quot;English&quot; value=&quot;en_US&quot; selected=&quot;selected&quot;&gt;English&lt;/option&gt;
+&lt;option label=&quot;简体中文&quot; value=&quot;zh_CN&quot;&gt;简体中文&lt;/option&gt;
+&lt;/select&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarNavigation&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Journal Content&lt;/span&gt;
+
+	&lt;span class=&quot;blockSubtitle&quot;&gt;Search&lt;/span&gt;
+	&lt;form id=&quot;simpleSearchForm&quot; method=&quot;post&quot; action=&quot;http://jetde.theti.org:85/ojs/index.php/index/search/results&quot;&gt;
+	&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;query&quot; name=&quot;query&quot; size=&quot;15&quot; maxlength=&quot;255&quot; value=&quot;&quot; class=&quot;textField&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;select name=&quot;searchField&quot; size=&quot;1&quot; class=&quot;selectMenu&quot;&gt;
+			&lt;option label=&quot;All&quot; value=&quot;&quot;&gt;All&lt;/option&gt;
+&lt;option label=&quot;Authors&quot; value=&quot;1&quot;&gt;Authors&lt;/option&gt;
+&lt;option label=&quot;Title&quot; value=&quot;2&quot;&gt;Title&lt;/option&gt;
+&lt;option label=&quot;Abstract&quot; value=&quot;4&quot;&gt;Abstract&lt;/option&gt;
+&lt;option label=&quot;Index terms&quot; value=&quot;120&quot;&gt;Index terms&lt;/option&gt;
+&lt;option label=&quot;Full Text&quot; value=&quot;128&quot;&gt;Full Text&lt;/option&gt;
+
+		&lt;/select&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;Search&quot; class=&quot;button&quot; /&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/table&gt;
+	&lt;/form&gt;
+
+	&lt;br /&gt;
+
+	&lt;/div&gt;
+&lt;div class=&quot;block&quot; id=&quot;sidebarFontSize&quot; style=&quot;margin-bottom: 4px;&quot;&gt;
+	&lt;span class=&quot;blockTitle&quot;&gt;Font Size&lt;/span&gt;
+	&lt;div id=&quot;sizer&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+
+&lt;div id=&quot;main&quot;&gt;
+&lt;div id=&quot;navbar&quot;&gt;
+	&lt;ul class=&quot;menu&quot;&gt;
+		&lt;li id=&quot;home&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+		&lt;li id=&quot;about&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+
+					&lt;li id=&quot;login&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/login&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+							&lt;li id=&quot;register&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/user/register&quot;&gt;Register&lt;/a&gt;&lt;/li&gt;
+												&lt;!--&lt;li id=&quot;search&quot;&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/search&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;--&gt;
+		
+		
+				
+
+			&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;breadcrumb&quot;&gt;
+	&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/index/index&quot;&gt;Home&lt;/a&gt; &amp;gt;
+			&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php&quot; class=&quot;current&quot;&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h2&gt;
+
+
+&lt;div id=&quot;content&quot;&gt;
+
+
+
+&lt;br /&gt;
+
+
+&lt;a name=&quot;journals&quot;&gt;&lt;/a&gt;
+
+
+					&lt;div style=&quot;clear:left;&quot;&gt;
+				&lt;/div&gt;
+				&lt;h3&gt;Journal of Educational Technology Development and Exchange (JETDE)&lt;/h3&gt;
+							&lt;p&gt;&lt;p&gt;&lt;strong style=&quot;text-align: left; line-height: 19px; widows: 2; text-transform: none; background-color: #ffffff; font-variant: normal; font-style: normal; text-indent: 0px; margin: 0px; font-family: Arial, Verdana, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; color: #333333; font-size: 13px; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; padding: 0px;&quot;&gt;&lt;em style=&quot;margin: 0px; padding: 0px;&quot;&gt;The Journal of Educational Technology Development and Exchange (JETDE)&lt;/em&gt;&lt;/strong&gt;&lt;span style=&quot;text-align: left; widows: 2; text-transform: none; background-color: #ffffff; text-indent: 0px; display: inline !important; font: 13px/19px Arial, Verdana, sans-serif; white-space: normal; orphans: 2; float: none; letter-spacing: normal; color: #333333; word-spacing: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;span class=&quot;Apple-converted-space&quot;&gt; &lt;/span&gt;is a refereed international journal published two issues annually (since 2013) in print and online by the Society of International Chinese in Educational Technology (SICET). With the aim of providing a platform for international Chinese scholars and experts in the field of education technology and encouraging academic cooperation, communication, and support among professionals, JETDE provides a multidisciplinary forum and focal points for SICET members to exchange practice and research between disciplines, educational levels, and educational technologies.&lt;/span&gt;&lt;/p&gt;&lt;/p&gt;
+				&lt;p&gt;&lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde&quot; class=&quot;action&quot;&gt;View Journal&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/issue/current&quot; class=&quot;action&quot;&gt;Current Issue&lt;/a&gt; | &lt;a href=&quot;http://jetde.theti.org:85/ojs/index.php/jetde/user/register&quot; class=&quot;action&quot;&gt;Register&lt;/a&gt;&lt;/p&gt;
+
+&lt;div id=&quot;journalListPageInfo&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;journalListPageLinks&quot;&gt;
+
+
+&lt;/div&gt;&lt;!-- content --&gt;
+&lt;/div&gt;&lt;!-- main --&gt;
+&lt;/div&gt;&lt;!-- body --&gt;
+
+
+
+&lt;/div&gt;&lt;!-- container --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://jetde.theti.org:85/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://jetde.theti.org:85/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://jetde.theti.org:85/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to jetde.theti.org:85&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve jetde.theti.org</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

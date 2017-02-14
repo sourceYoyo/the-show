@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481171253" start-long="Wed Dec 07 23:27:33 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://media.au.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/201_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[61]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache/2.2.15 (CentOS)&quot;.</description>
+        <http-transactions>
+            <http-transaction id="61">
+                <http-request>
+                    <status>GET http://media.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="media.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3703" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache/2.2.15 (CentOS)" field="server"/>
+                        <header content="Thu, 24 Mar 2016 01:38:34 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;11e1b39-e77-52ec1812c014c&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:31:06 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;BBNC&lt;/title&gt;
+&lt;link href=&quot;bbnc/css/style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot;&gt; &lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+ 
+ &lt;nav class=&quot;navbar navbar-default navbar-static-top&quot; role=&quot;navigation&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;navbar-header&quot;&gt;
+&lt;a href=&quot;/&quot;&gt;
+         &lt;img id=&quot;navbar-logo&quot; src=&quot;bbnc/img/top.jpg&quot;/&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+
+ &lt;div class=&quot;out-container container&quot;&gt;
+
+ &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-lg-2 col-md-2 col-sm-2 left-side&quot;&gt;
+                &lt;div&gt;
+  &lt;ul class=&quot;main-nav nav-pills nav-stacked nav&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/people.jsp&quot;&gt;人员列表&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/research.jsp&quot;&gt;研究方向&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/publication.jsp &quot;&gt;研究成果&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-lg-7 col-md-7 col-sm-7 main&quot;&gt;
+
+  &lt;p&gt;&lt;font size=&quot;4px&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实验室始建于2001年4月，瞄准立体视频、视觉无人机、计算摄像等国际前沿开展研究。实验室现有教授3人，副教授1人，讲师1人，博士后4人，在读博士生9人、硕士生12人。包括教育部长江学者特聘教授1人，长江讲座教授1人，国家杰出青年基金获得者3人（其中海外1人），国家领军人才计划获得者1人，中国青年科技奖获得者1人。已培养博士后35人，研究生47人，广电总局工程硕士班（5期）培养学生156人。
+ &lt;/font&gt; &lt;/p&gt;
+  &lt;p&gt;&lt;font size=&quot;4px&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实验室在国家自然科学基金、国家“973”计划、“863”计划、重大专项、国家重大仪器和省部级产学研等多个项目支持下，构建了国际上第一个动态光场采集系统，研制了立体视频重建与裸眼显示系统，成果应用于2010年世博会。研制的光谱视频采集系统达国际领先水平。实验室发表期刊与会议论文200余篇（其中国际本领域著名会议ICCP、SIGGRAPH、CVPR、ICCV等27篇），IEEE Trans. Signal Processing、IEEE Trans. Pattern Analysis and Machine Intelligence、IEEE Trans. Circuits and Systems for Video Technology、IEEE Trans. Image Processing、IEEE Trans. Visualization &amp; Computer Graphics、International Journal of Computer Vision等国际权威期刊上发表论文86篇（其中3篇IEEE为亮点文章）， SCI收录115篇；获授权发明专利132项；2006年建立广东省教育部产学研结合立体视频研发基地；2013年建立北京市计算摄像学重点实验室。2008年获得国家科学技术发明二等奖1项，2012年获得国家科学技术发明一等奖1项。建立了清华大学THRONE国际无人机代表，参加了2013年国际空中机器人大赛（International Aerial Robotics Competition，IARC 2013），成为完成始自2010年的第6代任务的唯一一支代表队，该比赛汇集了来自世界7个国家的32支高校代表队。
+ &lt;/font&gt; &lt;/p&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;col-lg-3 col-md-3 col-sm-3 right-side&quot;&gt;
+ &lt;img src=&quot;bbnc/img/bbnc1.jpg&quot; width=&quot;350&quot;/&gt;
+ &lt;img src=&quot;bbnc/img/bbnc3.jpg&quot; width=&quot;350&quot;/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+&lt;a href=&quot;http://webscan.360.cn/index/checkwebsite/url/media.au.tsinghua.edu.cn&quot;&gt;&lt;img border=&quot;0&quot; 
+
+src=&quot;http://img.webscan.360.cn/status/pai/hash/c1fbbe6b9cab3c1b69094aeb464f7f91&quot;/&gt;&lt;/a&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="Active filter detected" plugin="afd" severity="Information" url="None" var="None">
+        <description>The remote network has an active filter. IMPORTANT: The result of all the other plugins will be inaccurate, web applications could be vulnerable but &quot;protected&quot; by the active filter.</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://media.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="media.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3703" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache/2.2.15 (CentOS)" field="server"/>
+                        <header content="Thu, 24 Mar 2016 01:38:34 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;11e1b39-e77-52ec1812c014c&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:31:06 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;BBNC&lt;/title&gt;
+&lt;link href=&quot;bbnc/css/style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot;&gt; &lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+ 
+ &lt;nav class=&quot;navbar navbar-default navbar-static-top&quot; role=&quot;navigation&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;navbar-header&quot;&gt;
+&lt;a href=&quot;/&quot;&gt;
+         &lt;img id=&quot;navbar-logo&quot; src=&quot;bbnc/img/top.jpg&quot;/&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+
+ &lt;div class=&quot;out-container container&quot;&gt;
+
+ &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-lg-2 col-md-2 col-sm-2 left-side&quot;&gt;
+                &lt;div&gt;
+  &lt;ul class=&quot;main-nav nav-pills nav-stacked nav&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/people.jsp&quot;&gt;人员列表&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/research.jsp&quot;&gt;研究方向&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/publication.jsp &quot;&gt;研究成果&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-lg-7 col-md-7 col-sm-7 main&quot;&gt;
+
+  &lt;p&gt;&lt;font size=&quot;4px&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实验室始建于2001年4月，瞄准立体视频、视觉无人机、计算摄像等国际前沿开展研究。实验室现有教授3人，副教授1人，讲师1人，博士后4人，在读博士生9人、硕士生12人。包括教育部长江学者特聘教授1人，长江讲座教授1人，国家杰出青年基金获得者3人（其中海外1人），国家领军人才计划获得者1人，中国青年科技奖获得者1人。已培养博士后35人，研究生47人，广电总局工程硕士班（5期）培养学生156人。
+ &lt;/font&gt; &lt;/p&gt;
+  &lt;p&gt;&lt;font size=&quot;4px&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实验室在国家自然科学基金、国家“973”计划、“863”计划、重大专项、国家重大仪器和省部级产学研等多个项目支持下，构建了国际上第一个动态光场采集系统，研制了立体视频重建与裸眼显示系统，成果应用于2010年世博会。研制的光谱视频采集系统达国际领先水平。实验室发表期刊与会议论文200余篇（其中国际本领域著名会议ICCP、SIGGRAPH、CVPR、ICCV等27篇），IEEE Trans. Signal Processing、IEEE Trans. Pattern Analysis and Machine Intelligence、IEEE Trans. Circuits and Systems for Video Technology、IEEE Trans. Image Processing、IEEE Trans. Visualization &amp; Computer Graphics、International Journal of Computer Vision等国际权威期刊上发表论文86篇（其中3篇IEEE为亮点文章）， SCI收录115篇；获授权发明专利132项；2006年建立广东省教育部产学研结合立体视频研发基地；2013年建立北京市计算摄像学重点实验室。2008年获得国家科学技术发明二等奖1项，2012年获得国家科学技术发明一等奖1项。建立了清华大学THRONE国际无人机代表，参加了2013年国际空中机器人大赛（International Aerial Robotics Competition，IARC 2013），成为完成始自2010年的第6代任务的唯一一支代表队，该比赛汇集了来自世界7个国家的32支高校代表队。
+ &lt;/font&gt; &lt;/p&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;col-lg-3 col-md-3 col-sm-3 right-side&quot;&gt;
+ &lt;img src=&quot;bbnc/img/bbnc1.jpg&quot; width=&quot;350&quot;/&gt;
+ &lt;img src=&quot;bbnc/img/bbnc3.jpg&quot; width=&quot;350&quot;/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+&lt;a href=&quot;http://webscan.360.cn/index/checkwebsite/url/media.au.tsinghua.edu.cn&quot;&gt;&lt;img border=&quot;0&quot; 
+
+src=&quot;http://img.webscan.360.cn/status/pai/hash/c1fbbe6b9cab3c1b69094aeb464f7f91&quot;/&gt;&lt;/a&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[101]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://au.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://au.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://media.au.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[44]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://media.au.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://media.au.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: GET, HEAD, OPTIONS, POST</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="44">
+                <http-request>
+                    <status>OPTIONS http://media.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="media.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="Apache/2.2.15 (CentOS)" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Thu, 08 Dec 2016 04:31:12 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[40]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://media.au.tsinghua.edu.cn/gRmJV" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://media.au.tsinghua.edu.cn/gRmJV
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="40">
+                <http-request>
+                    <status>PUT http://media.au.tsinghua.edu.cn/gRmJV HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="media.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">ihbRLd</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="316" field="content-length"/>
+                        <header content="Apache/2.2.15 (CentOS)" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Thu, 08 Dec 2016 04:31:12 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /gRmJV.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.2.15 (CentOS) Server at media.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 39, 40, 70, 76]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://media.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="media.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3703" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache/2.2.15 (CentOS)" field="server"/>
+                        <header content="Thu, 24 Mar 2016 01:38:34 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;11e1b39-e77-52ec1812c014c&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:31:06 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;BBNC&lt;/title&gt;
+&lt;link href=&quot;bbnc/css/style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot;&gt; &lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+ 
+ &lt;nav class=&quot;navbar navbar-default navbar-static-top&quot; role=&quot;navigation&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;navbar-header&quot;&gt;
+&lt;a href=&quot;/&quot;&gt;
+         &lt;img id=&quot;navbar-logo&quot; src=&quot;bbnc/img/top.jpg&quot;/&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+
+ &lt;div class=&quot;out-container container&quot;&gt;
+
+ &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-lg-2 col-md-2 col-sm-2 left-side&quot;&gt;
+                &lt;div&gt;
+  &lt;ul class=&quot;main-nav nav-pills nav-stacked nav&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/people.jsp&quot;&gt;人员列表&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/research.jsp&quot;&gt;研究方向&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/publication.jsp &quot;&gt;研究成果&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-lg-7 col-md-7 col-sm-7 main&quot;&gt;
+
+  &lt;p&gt;&lt;font size=&quot;4px&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实验室始建于2001年4月，瞄准立体视频、视觉无人机、计算摄像等国际前沿开展研究。实验室现有教授3人，副教授1人，讲师1人，博士后4人，在读博士生9人、硕士生12人。包括教育部长江学者特聘教授1人，长江讲座教授1人，国家杰出青年基金获得者3人（其中海外1人），国家领军人才计划获得者1人，中国青年科技奖获得者1人。已培养博士后35人，研究生47人，广电总局工程硕士班（5期）培养学生156人。
+ &lt;/font&gt; &lt;/p&gt;
+  &lt;p&gt;&lt;font size=&quot;4px&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实验室在国家自然科学基金、国家“973”计划、“863”计划、重大专项、国家重大仪器和省部级产学研等多个项目支持下，构建了国际上第一个动态光场采集系统，研制了立体视频重建与裸眼显示系统，成果应用于2010年世博会。研制的光谱视频采集系统达国际领先水平。实验室发表期刊与会议论文200余篇（其中国际本领域著名会议ICCP、SIGGRAPH、CVPR、ICCV等27篇），IEEE Trans. Signal Processing、IEEE Trans. Pattern Analysis and Machine Intelligence、IEEE Trans. Circuits and Systems for Video Technology、IEEE Trans. Image Processing、IEEE Trans. Visualization &amp; Computer Graphics、International Journal of Computer Vision等国际权威期刊上发表论文86篇（其中3篇IEEE为亮点文章）， SCI收录115篇；获授权发明专利132项；2006年建立广东省教育部产学研结合立体视频研发基地；2013年建立北京市计算摄像学重点实验室。2008年获得国家科学技术发明二等奖1项，2012年获得国家科学技术发明一等奖1项。建立了清华大学THRONE国际无人机代表，参加了2013年国际空中机器人大赛（International Aerial Robotics Competition，IARC 2013），成为完成始自2010年的第6代任务的唯一一支代表队，该比赛汇集了来自世界7个国家的32支高校代表队。
+ &lt;/font&gt; &lt;/p&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;col-lg-3 col-md-3 col-sm-3 right-side&quot;&gt;
+ &lt;img src=&quot;bbnc/img/bbnc1.jpg&quot; width=&quot;350&quot;/&gt;
+ &lt;img src=&quot;bbnc/img/bbnc3.jpg&quot; width=&quot;350&quot;/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+&lt;a href=&quot;http://webscan.360.cn/index/checkwebsite/url/media.au.tsinghua.edu.cn&quot;&gt;&lt;img border=&quot;0&quot; 
+
+src=&quot;http://img.webscan.360.cn/status/pai/hash/c1fbbe6b9cab3c1b69094aeb464f7f91&quot;/&gt;&lt;/a&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="39">
+                <http-request>
+                    <status>GET http://media.au.tsinghua.edu.cn/zQJcC.html HTTP/1.1</status>
+                    <headers>
+                        <header content="media.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 04:31:12 GMT" field="date"/>
+                        <header content="298" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache/2.2.15 (CentOS)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /zQJcC.html was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.2.15 (CentOS) Server at media.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="40">
+                <http-request>
+                    <status>PUT http://media.au.tsinghua.edu.cn/gRmJV HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="media.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">ihbRLd</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="316" field="content-length"/>
+                        <header content="Apache/2.2.15 (CentOS)" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS" field="allow"/>
+                        <header content="Thu, 08 Dec 2016 04:31:12 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /gRmJV.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.2.15 (CentOS) Server at media.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="70">
+                <http-request>
+                    <status>GET http://media.au.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="media.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 04:31:13 GMT" field="date"/>
+                        <header content="301" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache/2.2.15 (CentOS)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.2.15 (CentOS) Server at media.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="76">
+                <http-request>
+                    <status>POST http://media.au.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="media.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3pRSmNDLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguQ2NKUXo=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 04:31:14 GMT" field="date"/>
+                        <header content="316" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache/2.2.15 (CentOS)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.2.15 (CentOS) Server at media.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="Webserver fingerprint" plugin="hmap" severity="Information" url="None" var="None">
+        <description>The most accurate fingerprint for this HTTP server is: &quot;Apache/2.0.52 (Unix) PHP/5.0.3&quot;.</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://media.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="media.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="3703" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache/2.2.15 (CentOS)" field="server"/>
+                        <header content="Thu, 24 Mar 2016 01:38:34 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;11e1b39-e77-52ec1812c014c&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:31:06 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;BBNC&lt;/title&gt;
+&lt;link href=&quot;bbnc/css/style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot;&gt; &lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+ 
+ &lt;nav class=&quot;navbar navbar-default navbar-static-top&quot; role=&quot;navigation&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;navbar-header&quot;&gt;
+&lt;a href=&quot;/&quot;&gt;
+         &lt;img id=&quot;navbar-logo&quot; src=&quot;bbnc/img/top.jpg&quot;/&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+
+ &lt;div class=&quot;out-container container&quot;&gt;
+
+ &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-lg-2 col-md-2 col-sm-2 left-side&quot;&gt;
+                &lt;div&gt;
+  &lt;ul class=&quot;main-nav nav-pills nav-stacked nav&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/people.jsp&quot;&gt;人员列表&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/research.jsp&quot;&gt;研究方向&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://media.au.tsinghua.edu.cn/publication.jsp &quot;&gt;研究成果&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;col-lg-7 col-md-7 col-sm-7 main&quot;&gt;
+
+  &lt;p&gt;&lt;font size=&quot;4px&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实验室始建于2001年4月，瞄准立体视频、视觉无人机、计算摄像等国际前沿开展研究。实验室现有教授3人，副教授1人，讲师1人，博士后4人，在读博士生9人、硕士生12人。包括教育部长江学者特聘教授1人，长江讲座教授1人，国家杰出青年基金获得者3人（其中海外1人），国家领军人才计划获得者1人，中国青年科技奖获得者1人。已培养博士后35人，研究生47人，广电总局工程硕士班（5期）培养学生156人。
+ &lt;/font&gt; &lt;/p&gt;
+  &lt;p&gt;&lt;font size=&quot;4px&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实验室在国家自然科学基金、国家“973”计划、“863”计划、重大专项、国家重大仪器和省部级产学研等多个项目支持下，构建了国际上第一个动态光场采集系统，研制了立体视频重建与裸眼显示系统，成果应用于2010年世博会。研制的光谱视频采集系统达国际领先水平。实验室发表期刊与会议论文200余篇（其中国际本领域著名会议ICCP、SIGGRAPH、CVPR、ICCV等27篇），IEEE Trans. Signal Processing、IEEE Trans. Pattern Analysis and Machine Intelligence、IEEE Trans. Circuits and Systems for Video Technology、IEEE Trans. Image Processing、IEEE Trans. Visualization &amp; Computer Graphics、International Journal of Computer Vision等国际权威期刊上发表论文86篇（其中3篇IEEE为亮点文章）， SCI收录115篇；获授权发明专利132项；2006年建立广东省教育部产学研结合立体视频研发基地；2013年建立北京市计算摄像学重点实验室。2008年获得国家科学技术发明二等奖1项，2012年获得国家科学技术发明一等奖1项。建立了清华大学THRONE国际无人机代表，参加了2013年国际空中机器人大赛（International Aerial Robotics Competition，IARC 2013），成为完成始自2010年的第6代任务的唯一一支代表队，该比赛汇集了来自世界7个国家的32支高校代表队。
+ &lt;/font&gt; &lt;/p&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;col-lg-3 col-md-3 col-sm-3 right-side&quot;&gt;
+ &lt;img src=&quot;bbnc/img/bbnc1.jpg&quot; width=&quot;350&quot;/&gt;
+ &lt;img src=&quot;bbnc/img/bbnc3.jpg&quot; width=&quot;350&quot;/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+&lt;a href=&quot;http://webscan.360.cn/index/checkwebsite/url/media.au.tsinghua.edu.cn&quot;&gt;&lt;img border=&quot;0&quot; 
+
+src=&quot;http://img.webscan.360.cn/status/pai/hash/c1fbbe6b9cab3c1b69094aeb464f7f91&quot;/&gt;&lt;/a&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/?SMVS7YZ=type+c:\winnt\repair\sam._&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/?SMVS7YZ=ps%20-aux;&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/?SMVS7YZ=SELECT%20TOP%201%20name%20FROM%20sysusers&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/?SMVS7YZ=exec%20master..xp_cmdshell%20dir&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The fingerprint_WAF plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/?=PHPE9568F35-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The dns_wildcard plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://media.au.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

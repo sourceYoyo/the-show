@@ -1,0 +1,2292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480513801" start-long="Wed Nov 30 08:50:01 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://history.lib.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/475_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[39]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache&quot;.</description>
+        <http-transactions>
+            <http-transaction id="39">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="9555" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 14 Sep 2015 07:59:13 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;74c2e-2553-51fb070ef7640&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:50:11 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;濞撳懎宕曟径褍\xad\xa6缁夋垶濡ч崣鍙夋瘍閸欍倖鏋冮悮\xae\xe7鐖虹粚鑸靛\xa2\x8d&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;link href=&quot;css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;css/title.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;../css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;#FFFFFF&quot; leftmargin=&quot;0&quot; topmargin=&quot;0&quot;&gt;
+&lt;style&gt;
+a:visited { text-decoration: none;color:&quot;#4196D2&quot;;}
+ a:active { text-decoration: none;color:&quot;#ff0000&quot;;}
+  a:hover { text-decoration: underline;color:&quot;#ff0000&quot;;}
+   a:link { text-decoration: none;color:&quot;#4196D2&quot;;}
+&lt;/style&gt;
+&lt;table width=&quot;770&quot; height=&quot;450&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt; 
+    &lt;td height=&quot;75&quot; colspan=&quot;3&quot;&gt;&lt;img src=&quot;../images/images/index_01.gif&quot; width=&quot;770&quot; height=&quot;75&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;151&quot; height=&quot;375&quot; rowspan=&quot;2&quot; valign=&quot;bottom&quot; background=&quot;../images/images/index_02.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;150&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td width=&quot;20&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&quot;../images/images/yin.gif&quot; width=&quot;48&quot; height=&quot;46&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;閵哱x80&lt;/td&gt;
+          &lt;td height=&quot;10&quot;&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td height=&quot;80&quot; colspan=&quot;2&quot; background=&quot;../images/images/index_03.gif&quot; style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt; 
+      &lt;table width=&quot;300&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;25&quot; colspan=&quot;3&quot;&gt;閵哱x80&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;180&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;introduction/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/jieshao.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;176&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_04.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;170&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;18&quot; valign=&quot;bottom&quot;&gt;&lt;div align=&quot;center&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td height=&quot;32&quot; valign=&quot;middle&quot;&gt;&lt;div align=&quot;center&quot; class=&quot;maintitle&quot;&gt;&lt;img src=&quot;../images/navigate/tongzhi.gif&quot; width=&quot;80&quot; height=&quot;25&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;172&quot;&gt;
+		  &lt;Marquee direction=up  onmouseout=this.start() onmouseover=this.stop() scrollDelay=300 style=&quot;HEIGHT: 166px; WIDTH: 170px&quot;&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/20150915.html&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍妫╅張\xac\xe4缍堢拹鍝勯挬閸樼喍绱剁紒鐔兼Щ濞瞈xaa\xe5\xaf\xb9缁涙牜鐖虹粚\xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-2.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍绔婚崡搴ｇ暆閵嗗﹦鐣荤悰銊\xa3\\x80\x8b閻ㄥ嫭鐎\xaf\xe9柅鐘甛x80\x81閸旂喕鍏橀崣濠傚従閸︺劍鏆熺\x80\x9b锕\x80\xe5蕉娑撳﹦娈戦幇蹇庣疅&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-1.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙艾鐣ㄩ梼铏玕xae\xb7婢х喖娼氶柧婊勫Η閺圽xaf\xe7娈戝〒濠冪爱&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20120621.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙俺鎯冩い澶哥瑢娑揬xad\xe5娴楅崣銈勫敩閺佹澘\xad\xa6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20101123.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙氨\xa7\x91閹禱x80\xe5褰滅猾宥勭\xae\xa3閺堢儤鐎\xaf\xe9崶鍓ф暰閻ㄥ嫭鐎\xaf\xe9柅鐘垫偅閸歕x88&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100726.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙矮绮犻妴濠傘亣閹存劗鐣荤紒蹇媆x80\x8b閸掕埇\x80\x8a缂俓x80\xe6婀崇粻妤冪病閵哱x8b&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100625.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;閳ユ粎\xa7\x91鐎涳箑宸婚崣鑼\xac\xe6畱閸歕xaf\xe7銇氶垾婵堥兇閸掓\xa5\x81濮ら崨\x8a&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100329.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙\xac\xb5uclid's Elements and the Pythagorean Theorem in Greek, Chinese and Arabic Mathematical Traditions&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100302.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍妫╅張\xac\xe4绱剁紒鐔告殶鐎涳箑鎷版稉\xad\xe5娴楁导鐘电埠閺佹澘\xad\xa6閻ㄥ嫭鐦\xae\xe6潏鍐\xaa\xe7埡缁孿xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/parillo.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙瓖rains, Trucks, and Horses: Understanding the World Wars via Transportation&lt;/a&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/chjp.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙矮鑵戠粻妤冪暬閻炲棗鍨甸幒鈶‐x80\x94娴犮儲妲戝〒鍛\xaf\xe7暬閺囧摜鍋ゅ\xa6\x97鍫滅伐&lt;/a&gt;&lt;/p&gt;
+&lt;/Marquee&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td width=&quot;443&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_05.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;400&quot; height=&quot;200&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt; &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;58&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;academic/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/yuandi.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;newbook/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/xinshu.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;40&quot; valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;77&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;research/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/keti.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;40&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;trends/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/dongtai.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;88&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;expert/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/zhuanjia.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;70&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;resource/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/ziyuan.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;440&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;90&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;treasure/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/cangzhen.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;110&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;relatedlink/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/lianjie.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;81&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;http://166.111.120.21:4237/home/database/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/ziliaoku.gif&quot; width=&quot;245&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;閵哱x80&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;50&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;society/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/xuehui.gif&quot; width=&quot;316&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt; 
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgscount.html&quot; width=&quot;1&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgs/count.php&quot; width=&quot;63&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br&gt;
+  &lt;br&gt;
+&lt;/div&gt;
+&lt;table width=&quot;400&quot; height=&quot;75&quot; border=&quot;1&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; bordercolor=&quot;#99CCFF&quot; frame=void&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;瀵ら缚\xae\xae娴ｈ法鏁\xa4Netscape 4.0 閹存湏E 5.0娴犮儰绗傞敍\x8c800鑴\xb3600閸掑棜椴搁悳鍥︿簰娑撳﹨绻樼悰灞剧セ鐟橽x88&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td bordercolor=&quot;#FFFFFF&quot; class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;娣団剝浼呴張\x80\xe5鎮楁稉\x80\xe6\xac\xa1閺囧瓨鏌婇敍\x9a2015楠瀄xb49閺圽x8814閺僜xa5&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;濞撳懎宕曟径褍\xad\xa6缁夋垵褰滈幍\x80 閻楀牊娼堥幍\x80\xe6婀\x81 鐠囬攱褰佸\xaf\xa4楦縗xae\xae &lt;a href=&quot;mailto:kgs@lib.tsinghua.edu.cn&quot;&gt;kgs@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var gaJsHost = ((&quot;https:&quot; == document.location.protocol) ? &quot;https://ssl.&quot; : &quot;http://www.&quot;);
+document.write(unescape(&quot;%3Cscript src='&quot; + gaJsHost + &quot;google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E&quot;));
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var pageTracker = _gat._getTracker(&quot;UA-3928127-1&quot;);
+pageTracker._initData();
+pageTracker._trackPageview();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[141]" method="GET" name="Favicon identification" plugin="favicon_identification" severity="Information" url="http://history.lib.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>Favicon.ico file was identified as &quot;Zero byte favicon&quot;.</description>
+        <http-transactions>
+            <http-transaction id="141">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 11 Aug 2008 03:06:48 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;2cfb-0-45426722ec200&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="text/plain; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[158]" method="GET" name="Cross site tracing vulnerability" plugin="xst" severity="Low" url="http://history.lib.tsinghua.edu.cn/" var="None">
+        <description>The web server at &quot;http://history.lib.tsinghua.edu.cn/&quot; is vulnerable to Cross Site Tracing.</description>
+        <long-description>The `TRACE` HTTP method allows a client so send a request to the server, and have the same request then send back in the server's response. This allows the client to determine if the server is receiving the request as expected or if specific parts of the request are not arriving as expected. For example incorrect encoding or a load balancer has filtered or changed a value. On many default installations the `TRACE` method is still enabled.
+
+While not vulnerable by itself, it does provide a method for cyber-criminals to bypass the `HTTPOnly` cookie flag, and therefore could allow a XSS attack to successfully access a session token.
+
+The tool has discovered that the affected page permits the HTTP `TRACE` method.</long-description>
+        <fix-guidance>The HTTP `TRACE` method is normally not required within production sites and should therefore be disabled.
+
+Depending on the function being performed by the web application, the risk level can start low and increase as more functionality is implemented.
+
+The remediation is typically a very simple configuration change and in most cases will not have any negative impact on the server or application.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="CAPEC" url="http://capec.mitre.org/data/definitions/107.html"/>
+            <reference title="OWASP" url="http://www.owasp.org/index.php/Cross_Site_Tracing"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="158">
+                <http-request>
+                    <status>TRACE http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                        <header content="XST" field="Fakeheader"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="close" field="connection"/>
+                        <header content="message/http" field="content-type"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">VFJBQ0UgLyBIVFRQLzEuMQ0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KQ29udGVudC1sZW5ndGg6
+IDANCkFjY2VwdC1lbmNvZGluZzogZ3ppcCwgZGVmbGF0ZQ0KQWNjZXB0OiAqLyoNClVzZXItYWdl
+bnQ6IG5pc2wNCkhvc3Q6IGhpc3RvcnkubGliLnRzaW5naHVhLmVkdS5jbg0KQ29udGVudC10eXBl
+OiBhcHBsaWNhdGlvbi94LXd3dy1mb3JtLXVybGVuY29kZWQNCkZha2VoZWFkZXI6IFhTVA0KDQo=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[162]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://lib.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://lib.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://history.lib.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="162">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="271" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access /
+on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[167]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.120.160/" var="None">
+        <description>The contents of http://166.111.120.160/ and http://history.lib.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="167">
+                <http-request>
+                    <status>GET http://166.111.120.160/ HTTP/1.1</status>
+                    <headers>
+                        <header content="166.111.120.160" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="267" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access /
+on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at 166.111.120.160 Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[141]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://history.lib.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>The URL: &quot;http://history.lib.tsinghua.edu.cn/favicon.ico&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="141">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 11 Aug 2008 03:06:48 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;2cfb-0-45426722ec200&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="text/plain; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[154]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://history.lib.tsinghua.edu.cn/UOXgd" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://history.lib.tsinghua.edu.cn/UOXgd
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="154">
+                <http-request>
+                    <status>PUT http://history.lib.tsinghua.edu.cn/UOXgd HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">J6NoNy</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="303" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /UOXgd.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[204]" method="GET" name="Internal hostname in HTML link" plugin="find_vhosts" severity="Information" url="http://history.lib.tsinghua.edu.cn/" var="None">
+        <description>The content of &quot;http://history.lib.tsinghua.edu.cn/&quot; references a non existent domain: &quot;ssl.&quot;. This can be a broken link, or an internal domain name.</description>
+        <http-transactions>
+            <http-transaction id="204">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="9555" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 14 Sep 2015 07:59:13 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;74c2e-2553-51fb070ef7640&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:50:11 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;濞撳懎宕曟径褍\xad\xa6缁夋垶濡ч崣鍙夋瘍閸欍倖鏋冮悮\xae\xe7鐖虹粚鑸靛\xa2\x8d&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;link href=&quot;css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;css/title.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;../css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;#FFFFFF&quot; leftmargin=&quot;0&quot; topmargin=&quot;0&quot;&gt;
+&lt;style&gt;
+a:visited { text-decoration: none;color:&quot;#4196D2&quot;;}
+ a:active { text-decoration: none;color:&quot;#ff0000&quot;;}
+  a:hover { text-decoration: underline;color:&quot;#ff0000&quot;;}
+   a:link { text-decoration: none;color:&quot;#4196D2&quot;;}
+&lt;/style&gt;
+&lt;table width=&quot;770&quot; height=&quot;450&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt; 
+    &lt;td height=&quot;75&quot; colspan=&quot;3&quot;&gt;&lt;img src=&quot;../images/images/index_01.gif&quot; width=&quot;770&quot; height=&quot;75&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;151&quot; height=&quot;375&quot; rowspan=&quot;2&quot; valign=&quot;bottom&quot; background=&quot;../images/images/index_02.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;150&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td width=&quot;20&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&quot;../images/images/yin.gif&quot; width=&quot;48&quot; height=&quot;46&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;閵哱x80&lt;/td&gt;
+          &lt;td height=&quot;10&quot;&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td height=&quot;80&quot; colspan=&quot;2&quot; background=&quot;../images/images/index_03.gif&quot; style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt; 
+      &lt;table width=&quot;300&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;25&quot; colspan=&quot;3&quot;&gt;閵哱x80&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;180&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;introduction/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/jieshao.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;176&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_04.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;170&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;18&quot; valign=&quot;bottom&quot;&gt;&lt;div align=&quot;center&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td height=&quot;32&quot; valign=&quot;middle&quot;&gt;&lt;div align=&quot;center&quot; class=&quot;maintitle&quot;&gt;&lt;img src=&quot;../images/navigate/tongzhi.gif&quot; width=&quot;80&quot; height=&quot;25&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;172&quot;&gt;
+		  &lt;Marquee direction=up  onmouseout=this.start() onmouseover=this.stop() scrollDelay=300 style=&quot;HEIGHT: 166px; WIDTH: 170px&quot;&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/20150915.html&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍妫╅張\xac\xe4缍堢拹鍝勯挬閸樼喍绱剁紒鐔兼Щ濞瞈xaa\xe5\xaf\xb9缁涙牜鐖虹粚\xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-2.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍绔婚崡搴ｇ暆閵嗗﹦鐣荤悰銊\xa3\\x80\x8b閻ㄥ嫭鐎\xaf\xe9柅鐘甛x80\x81閸旂喕鍏橀崣濠傚従閸︺劍鏆熺\x80\x9b锕\x80\xe5蕉娑撳﹦娈戦幇蹇庣疅&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-1.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙艾鐣ㄩ梼铏玕xae\xb7婢х喖娼氶柧婊勫Η閺圽xaf\xe7娈戝〒濠冪爱&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20120621.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙俺鎯冩い澶哥瑢娑揬xad\xe5娴楅崣銈勫敩閺佹澘\xad\xa6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20101123.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙氨\xa7\x91閹禱x80\xe5褰滅猾宥勭\xae\xa3閺堢儤鐎\xaf\xe9崶鍓ф暰閻ㄥ嫭鐎\xaf\xe9柅鐘垫偅閸歕x88&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100726.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙矮绮犻妴濠傘亣閹存劗鐣荤紒蹇媆x80\x8b閸掕埇\x80\x8a缂俓x80\xe6婀崇粻妤冪病閵哱x8b&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100625.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;閳ユ粎\xa7\x91鐎涳箑宸婚崣鑼\xac\xe6畱閸歕xaf\xe7銇氶垾婵堥兇閸掓\xa5\x81濮ら崨\x8a&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100329.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙\xac\xb5uclid's Elements and the Pythagorean Theorem in Greek, Chinese and Arabic Mathematical Traditions&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100302.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍妫╅張\xac\xe4绱剁紒鐔告殶鐎涳箑鎷版稉\xad\xe5娴楁导鐘电埠閺佹澘\xad\xa6閻ㄥ嫭鐦\xae\xe6潏鍐\xaa\xe7埡缁孿xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/parillo.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙瓖rains, Trucks, and Horses: Understanding the World Wars via Transportation&lt;/a&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/chjp.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙矮鑵戠粻妤冪暬閻炲棗鍨甸幒鈶‐x80\x94娴犮儲妲戝〒鍛\xaf\xe7暬閺囧摜鍋ゅ\xa6\x97鍫滅伐&lt;/a&gt;&lt;/p&gt;
+&lt;/Marquee&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td width=&quot;443&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_05.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;400&quot; height=&quot;200&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt; &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;58&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;academic/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/yuandi.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;newbook/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/xinshu.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;40&quot; valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;77&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;research/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/keti.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;40&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;trends/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/dongtai.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;88&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;expert/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/zhuanjia.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;70&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;resource/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/ziyuan.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;440&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;90&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;treasure/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/cangzhen.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;110&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;relatedlink/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/lianjie.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;81&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;http://166.111.120.21:4237/home/database/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/ziliaoku.gif&quot; width=&quot;245&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;閵哱x80&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;50&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;society/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/xuehui.gif&quot; width=&quot;316&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt; 
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgscount.html&quot; width=&quot;1&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgs/count.php&quot; width=&quot;63&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br&gt;
+  &lt;br&gt;
+&lt;/div&gt;
+&lt;table width=&quot;400&quot; height=&quot;75&quot; border=&quot;1&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; bordercolor=&quot;#99CCFF&quot; frame=void&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;瀵ら缚\xae\xae娴ｈ法鏁\xa4Netscape 4.0 閹存湏E 5.0娴犮儰绗傞敍\x8c800鑴\xb3600閸掑棜椴搁悳鍥︿簰娑撳﹨绻樼悰灞剧セ鐟橽x88&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td bordercolor=&quot;#FFFFFF&quot; class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;娣団剝浼呴張\x80\xe5鎮楁稉\x80\xe6\xac\xa1閺囧瓨鏌婇敍\x9a2015楠瀄xb49閺圽x8814閺僜xa5&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;濞撳懎宕曟径褍\xad\xa6缁夋垵褰滈幍\x80 閻楀牊娼堥幍\x80\xe6婀\x81 鐠囬攱褰佸\xaf\xa4楦縗xae\xae &lt;a href=&quot;mailto:kgs@lib.tsinghua.edu.cn&quot;&gt;kgs@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var gaJsHost = ((&quot;https:&quot; == document.location.protocol) ? &quot;https://ssl.&quot; : &quot;http://www.&quot;);
+document.write(unescape(&quot;%3Cscript src='&quot; + gaJsHost + &quot;google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E&quot;));
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var pageTracker = _gat._getTracker(&quot;UA-3928127-1&quot;);
+pageTracker._initData();
+pageTracker._trackPageview();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[204]" method="GET" name="Internal hostname in HTML link" plugin="find_vhosts" severity="Information" url="http://history.lib.tsinghua.edu.cn/" var="None">
+        <description>The content of &quot;http://history.lib.tsinghua.edu.cn/&quot; references a non existent domain: &quot;www.&quot;. This can be a broken link, or an internal domain name.</description>
+        <http-transactions>
+            <http-transaction id="204">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="9555" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 14 Sep 2015 07:59:13 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;74c2e-2553-51fb070ef7640&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:50:11 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;濞撳懎宕曟径褍\xad\xa6缁夋垶濡ч崣鍙夋瘍閸欍倖鏋冮悮\xae\xe7鐖虹粚鑸靛\xa2\x8d&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;link href=&quot;css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;css/title.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;../css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;#FFFFFF&quot; leftmargin=&quot;0&quot; topmargin=&quot;0&quot;&gt;
+&lt;style&gt;
+a:visited { text-decoration: none;color:&quot;#4196D2&quot;;}
+ a:active { text-decoration: none;color:&quot;#ff0000&quot;;}
+  a:hover { text-decoration: underline;color:&quot;#ff0000&quot;;}
+   a:link { text-decoration: none;color:&quot;#4196D2&quot;;}
+&lt;/style&gt;
+&lt;table width=&quot;770&quot; height=&quot;450&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt; 
+    &lt;td height=&quot;75&quot; colspan=&quot;3&quot;&gt;&lt;img src=&quot;../images/images/index_01.gif&quot; width=&quot;770&quot; height=&quot;75&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;151&quot; height=&quot;375&quot; rowspan=&quot;2&quot; valign=&quot;bottom&quot; background=&quot;../images/images/index_02.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;150&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td width=&quot;20&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&quot;../images/images/yin.gif&quot; width=&quot;48&quot; height=&quot;46&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;閵哱x80&lt;/td&gt;
+          &lt;td height=&quot;10&quot;&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td height=&quot;80&quot; colspan=&quot;2&quot; background=&quot;../images/images/index_03.gif&quot; style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt; 
+      &lt;table width=&quot;300&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;25&quot; colspan=&quot;3&quot;&gt;閵哱x80&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;180&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;introduction/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/jieshao.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;176&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_04.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;170&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;18&quot; valign=&quot;bottom&quot;&gt;&lt;div align=&quot;center&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td height=&quot;32&quot; valign=&quot;middle&quot;&gt;&lt;div align=&quot;center&quot; class=&quot;maintitle&quot;&gt;&lt;img src=&quot;../images/navigate/tongzhi.gif&quot; width=&quot;80&quot; height=&quot;25&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;172&quot;&gt;
+		  &lt;Marquee direction=up  onmouseout=this.start() onmouseover=this.stop() scrollDelay=300 style=&quot;HEIGHT: 166px; WIDTH: 170px&quot;&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/20150915.html&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍妫╅張\xac\xe4缍堢拹鍝勯挬閸樼喍绱剁紒鐔兼Щ濞瞈xaa\xe5\xaf\xb9缁涙牜鐖虹粚\xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-2.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍绔婚崡搴ｇ暆閵嗗﹦鐣荤悰銊\xa3\\x80\x8b閻ㄥ嫭鐎\xaf\xe9柅鐘甛x80\x81閸旂喕鍏橀崣濠傚従閸︺劍鏆熺\x80\x9b锕\x80\xe5蕉娑撳﹦娈戦幇蹇庣疅&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-1.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙艾鐣ㄩ梼铏玕xae\xb7婢х喖娼氶柧婊勫Η閺圽xaf\xe7娈戝〒濠冪爱&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20120621.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙俺鎯冩い澶哥瑢娑揬xad\xe5娴楅崣銈勫敩閺佹澘\xad\xa6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20101123.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙氨\xa7\x91閹禱x80\xe5褰滅猾宥勭\xae\xa3閺堢儤鐎\xaf\xe9崶鍓ф暰閻ㄥ嫭鐎\xaf\xe9柅鐘垫偅閸歕x88&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100726.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙矮绮犻妴濠傘亣閹存劗鐣荤紒蹇媆x80\x8b閸掕埇\x80\x8a缂俓x80\xe6婀崇粻妤冪病閵哱x8b&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100625.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;閳ユ粎\xa7\x91鐎涳箑宸婚崣鑼\xac\xe6畱閸歕xaf\xe7銇氶垾婵堥兇閸掓\xa5\x81濮ら崨\x8a&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100329.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙\xac\xb5uclid's Elements and the Pythagorean Theorem in Greek, Chinese and Arabic Mathematical Traditions&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100302.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍妫╅張\xac\xe4绱剁紒鐔告殶鐎涳箑鎷版稉\xad\xe5娴楁导鐘电埠閺佹澘\xad\xa6閻ㄥ嫭鐦\xae\xe6潏鍐\xaa\xe7埡缁孿xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/parillo.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙瓖rains, Trucks, and Horses: Understanding the World Wars via Transportation&lt;/a&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/chjp.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙矮鑵戠粻妤冪暬閻炲棗鍨甸幒鈶‐x80\x94娴犮儲妲戝〒鍛\xaf\xe7暬閺囧摜鍋ゅ\xa6\x97鍫滅伐&lt;/a&gt;&lt;/p&gt;
+&lt;/Marquee&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td width=&quot;443&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_05.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;400&quot; height=&quot;200&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt; &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;58&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;academic/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/yuandi.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;newbook/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/xinshu.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;40&quot; valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;77&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;research/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/keti.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;40&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;trends/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/dongtai.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;88&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;expert/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/zhuanjia.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;70&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;resource/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/ziyuan.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;440&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;90&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;treasure/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/cangzhen.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;110&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;relatedlink/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/lianjie.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;81&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;http://166.111.120.21:4237/home/database/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/ziliaoku.gif&quot; width=&quot;245&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;閵哱x80&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;50&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;society/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/xuehui.gif&quot; width=&quot;316&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt; 
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgscount.html&quot; width=&quot;1&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgs/count.php&quot; width=&quot;63&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br&gt;
+  &lt;br&gt;
+&lt;/div&gt;
+&lt;table width=&quot;400&quot; height=&quot;75&quot; border=&quot;1&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; bordercolor=&quot;#99CCFF&quot; frame=void&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;瀵ら缚\xae\xae娴ｈ法鏁\xa4Netscape 4.0 閹存湏E 5.0娴犮儰绗傞敍\x8c800鑴\xb3600閸掑棜椴搁悳鍥︿簰娑撳﹨绻樼悰灞剧セ鐟橽x88&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td bordercolor=&quot;#FFFFFF&quot; class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;娣団剝浼呴張\x80\xe5鎮楁稉\x80\xe6\xac\xa1閺囧瓨鏌婇敍\x9a2015楠瀄xb49閺圽x8814閺僜xa5&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;濞撳懎宕曟径褍\xad\xa6缁夋垵褰滈幍\x80 閻楀牊娼堥幍\x80\xe6婀\x81 鐠囬攱褰佸\xaf\xa4楦縗xae\xae &lt;a href=&quot;mailto:kgs@lib.tsinghua.edu.cn&quot;&gt;kgs@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var gaJsHost = ((&quot;https:&quot; == document.location.protocol) ? &quot;https://ssl.&quot; : &quot;http://www.&quot;);
+document.write(unescape(&quot;%3Cscript src='&quot; + gaJsHost + &quot;google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E&quot;));
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var pageTracker = _gat._getTracker(&quot;UA-3928127-1&quot;);
+pageTracker._initData();
+pageTracker._trackPageview();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[181, 200, 218, 223, 226, 240, 242, 244]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://history.lib.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://history.lib.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: CONNECT, DEBUG, GET, HEAD, OPTIONS, POST, TRACE</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="181">
+                <http-request>
+                    <status>OPTIONS http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:50:21 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="200">
+                <http-request>
+                    <status>HEAD http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="9555" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 14 Sep 2015 07:59:13 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;74c2e-2553-51fb070ef7640&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:50:21 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="218">
+                <http-request>
+                    <status>OPTIONS http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:50:24 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="223">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="9555" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 14 Sep 2015 07:59:13 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;74c2e-2553-51fb070ef7640&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:50:25 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;娓呭崕澶у\xad\xa6绉戞妧鍙叉毃鍙ゆ枃鐚\xae\xe7爺绌舵墍&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;link href=&quot;css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;css/title.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;../css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;#FFFFFF&quot; leftmargin=&quot;0&quot; topmargin=&quot;0&quot;&gt;
+&lt;style&gt;
+a:visited { text-decoration: none;color:&quot;#4196D2&quot;;}
+ a:active { text-decoration: none;color:&quot;#ff0000&quot;;}
+  a:hover { text-decoration: underline;color:&quot;#ff0000&quot;;}
+   a:link { text-decoration: none;color:&quot;#4196D2&quot;;}
+&lt;/style&gt;
+&lt;table width=&quot;770&quot; height=&quot;450&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt; 
+    &lt;td height=&quot;75&quot; colspan=&quot;3&quot;&gt;&lt;img src=&quot;../images/images/index_01.gif&quot; width=&quot;770&quot; height=&quot;75&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;151&quot; height=&quot;375&quot; rowspan=&quot;2&quot; valign=&quot;bottom&quot; background=&quot;../images/images/index_02.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;150&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td width=&quot;20&quot;&gt;銆\x80&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&quot;../images/images/yin.gif&quot; width=&quot;48&quot; height=&quot;46&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;銆\x80&lt;/td&gt;
+          &lt;td height=&quot;10&quot;&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td height=&quot;80&quot; colspan=&quot;2&quot; background=&quot;../images/images/index_03.gif&quot; style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt; 
+      &lt;table width=&quot;300&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;25&quot; colspan=&quot;3&quot;&gt;銆\x80&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;180&quot;&gt;銆\x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;introduction/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/jieshao.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;176&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_04.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;170&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;18&quot; valign=&quot;bottom&quot;&gt;&lt;div align=&quot;center&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td height=&quot;32&quot; valign=&quot;middle&quot;&gt;&lt;div align=&quot;center&quot; class=&quot;maintitle&quot;&gt;&lt;img src=&quot;../images/navigate/tongzhi.gif&quot; width=&quot;80&quot; height=&quot;25&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;172&quot;&gt;
+		  &lt;Marquee direction=up  onmouseout=this.start() onmouseover=this.stop() scrollDelay=300 style=&quot;HEIGHT: 166px; WIDTH: 170px&quot;&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/20150915.html&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氭棩鏈\xac\xe4綈璐哄钩鍘熶紶缁熼槻娲\xaa\xe5\xaf\xb9绛栫爺绌\xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-2.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氭竻鍗庣畝銆婄畻琛ㄣ\x80\x8b鐨勬瀯閫犮\x80\x81鍔熻兘鍙婂叾鍦ㄦ暟瀛﹀彶涓婄殑鎰忎箟&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-1.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氬畨闃虫\xae\xb7澧熼潚閾滄妧鏈\xaf\xe7殑娓婃簮&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20120621.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氳惃椤夸笌涓\xad\xe5浗鍙や唬鏁板\xad\xa6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20101123.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氱\xa7\x91鎶\x80\xe5彜绫嶄箣鏈烘瀯鍥剧敾鐨勬瀯閫犵患鍚\x88&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100726.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氫粠銆婂ぇ鎴愮畻缁忋\x80\x8b鍒般\x80\x8a缂\x80\xe6湳绠楃粡銆\x8b&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100625.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鈥滅\xa7\x91瀛﹀巻鍙茬殑鍚\xaf\xe7ず鈥濈郴鍒楁姤鍛\x8a&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100329.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛欵uclid's Elements and the Pythagorean Theorem in Greek, Chinese and Arabic Mathematical Traditions&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100302.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氭棩鏈\xac\xe4紶缁熸暟瀛﹀拰涓\xad\xe5浗浼犵粺鏁板\xad\xa6鐨勬瘮杈冪爺绌\xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/parillo.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛歍rains, Trucks, and Horses: Understanding the World Wars via Transportation&lt;/a&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/chjp.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氫腑绠楃畻鐞嗗垵鎺⑩\x80\x94浠ユ槑娓呯畻鏇哥偤妗堜緥&lt;/a&gt;&lt;/p&gt;
+&lt;/Marquee&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td width=&quot;443&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_05.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;400&quot; height=&quot;200&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt; &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;58&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;academic/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/yuandi.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;newbook/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/xinshu.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;40&quot; valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;77&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;research/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/keti.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;40&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;trends/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/dongtai.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;88&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;expert/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/zhuanjia.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;70&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;resource/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/ziyuan.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;440&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;90&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;treasure/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/cangzhen.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;110&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;relatedlink/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/lianjie.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;81&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;http://166.111.120.21:4237/home/database/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/ziliaoku.gif&quot; width=&quot;245&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;銆\x80&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;50&quot;&gt;銆\x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;society/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/xuehui.gif&quot; width=&quot;316&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt; 
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgscount.html&quot; width=&quot;1&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgs/count.php&quot; width=&quot;63&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br&gt;
+  &lt;br&gt;
+&lt;/div&gt;
+&lt;table width=&quot;400&quot; height=&quot;75&quot; border=&quot;1&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; bordercolor=&quot;#99CCFF&quot; frame=void&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;寤鸿\xae\xae浣跨敤Netscape 4.0 鎴朓E 5.0浠ヤ笂锛\x8c800脳600鍒嗚鲸鐜囦互涓婅繘琛屾祻瑙\x88&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td bordercolor=&quot;#FFFFFF&quot; class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;淇℃伅鏈\x80\xe5悗涓\x80\xe6\xac\xa1鏇存柊锛\x9a2015骞\xb49鏈\x8814鏃\xa5&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;娓呭崕澶у\xad\xa6绉戝彜鎵\x80 鐗堟潈鎵\x80\xe6湁 璇锋彁寤鸿\xae\xae &lt;a href=&quot;mailto:kgs@lib.tsinghua.edu.cn&quot;&gt;kgs@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var gaJsHost = ((&quot;https:&quot; == document.location.protocol) ? &quot;https://ssl.&quot; : &quot;http://www.&quot;);
+document.write(unescape(&quot;%3Cscript src='&quot; + gaJsHost + &quot;google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E&quot;));
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var pageTracker = _gat._getTracker(&quot;UA-3928127-1&quot;);
+pageTracker._initData();
+pageTracker._trackPageview();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="226">
+                <http-request>
+                    <status>CONNECT http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:26 GMT" field="date"/>
+                        <header content="299" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;400 Bad Request&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Bad Request&lt;/h1&gt;
+&lt;p&gt;Your browser sent a request that this server could not understand.&lt;br /&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at any.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="242">
+                <http-request>
+                    <status>POST http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="9555" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 14 Sep 2015 07:59:13 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;74c2e-2553-51fb070ef7640&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:50:43 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;娓呭崕澶у\xad\xa6绉戞妧鍙叉毃鍙ゆ枃鐚\xae\xe7爺绌舵墍&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;link href=&quot;css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;css/title.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;../css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;#FFFFFF&quot; leftmargin=&quot;0&quot; topmargin=&quot;0&quot;&gt;
+&lt;style&gt;
+a:visited { text-decoration: none;color:&quot;#4196D2&quot;;}
+ a:active { text-decoration: none;color:&quot;#ff0000&quot;;}
+  a:hover { text-decoration: underline;color:&quot;#ff0000&quot;;}
+   a:link { text-decoration: none;color:&quot;#4196D2&quot;;}
+&lt;/style&gt;
+&lt;table width=&quot;770&quot; height=&quot;450&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt; 
+    &lt;td height=&quot;75&quot; colspan=&quot;3&quot;&gt;&lt;img src=&quot;../images/images/index_01.gif&quot; width=&quot;770&quot; height=&quot;75&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;151&quot; height=&quot;375&quot; rowspan=&quot;2&quot; valign=&quot;bottom&quot; background=&quot;../images/images/index_02.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;150&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td width=&quot;20&quot;&gt;銆\x80&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&quot;../images/images/yin.gif&quot; width=&quot;48&quot; height=&quot;46&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;銆\x80&lt;/td&gt;
+          &lt;td height=&quot;10&quot;&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td height=&quot;80&quot; colspan=&quot;2&quot; background=&quot;../images/images/index_03.gif&quot; style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt; 
+      &lt;table width=&quot;300&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;25&quot; colspan=&quot;3&quot;&gt;銆\x80&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;180&quot;&gt;銆\x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;introduction/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/jieshao.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;176&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_04.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;170&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;18&quot; valign=&quot;bottom&quot;&gt;&lt;div align=&quot;center&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td height=&quot;32&quot; valign=&quot;middle&quot;&gt;&lt;div align=&quot;center&quot; class=&quot;maintitle&quot;&gt;&lt;img src=&quot;../images/navigate/tongzhi.gif&quot; width=&quot;80&quot; height=&quot;25&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;172&quot;&gt;
+		  &lt;Marquee direction=up  onmouseout=this.start() onmouseover=this.stop() scrollDelay=300 style=&quot;HEIGHT: 166px; WIDTH: 170px&quot;&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/20150915.html&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氭棩鏈\xac\xe4綈璐哄钩鍘熶紶缁熼槻娲\xaa\xe5\xaf\xb9绛栫爺绌\xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-2.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氭竻鍗庣畝銆婄畻琛ㄣ\x80\x8b鐨勬瀯閫犮\x80\x81鍔熻兘鍙婂叾鍦ㄦ暟瀛﹀彶涓婄殑鎰忎箟&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-1.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氬畨闃虫\xae\xb7澧熼潚閾滄妧鏈\xaf\xe7殑娓婃簮&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20120621.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氳惃椤夸笌涓\xad\xe5浗鍙や唬鏁板\xad\xa6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20101123.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氱\xa7\x91鎶\x80\xe5彜绫嶄箣鏈烘瀯鍥剧敾鐨勬瀯閫犵患鍚\x88&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100726.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氫粠銆婂ぇ鎴愮畻缁忋\x80\x8b鍒般\x80\x8a缂\x80\xe6湳绠楃粡銆\x8b&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100625.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鈥滅\xa7\x91瀛﹀巻鍙茬殑鍚\xaf\xe7ず鈥濈郴鍒楁姤鍛\x8a&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100329.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛欵uclid's Elements and the Pythagorean Theorem in Greek, Chinese and Arabic Mathematical Traditions&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100302.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氭棩鏈\xac\xe4紶缁熸暟瀛﹀拰涓\xad\xe5浗浼犵粺鏁板\xad\xa6鐨勬瘮杈冪爺绌\xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/parillo.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛歍rains, Trucks, and Horses: Understanding the World Wars via Transportation&lt;/a&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/chjp.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氫腑绠楃畻鐞嗗垵鎺⑩\x80\x94浠ユ槑娓呯畻鏇哥偤妗堜緥&lt;/a&gt;&lt;/p&gt;
+&lt;/Marquee&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td width=&quot;443&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_05.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;400&quot; height=&quot;200&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt; &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;58&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;academic/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/yuandi.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;newbook/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/xinshu.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;40&quot; valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;77&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;research/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/keti.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;40&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;trends/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/dongtai.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;88&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;expert/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/zhuanjia.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;70&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;resource/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/ziyuan.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;440&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;90&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;treasure/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/cangzhen.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;110&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;relatedlink/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/lianjie.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;81&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;http://166.111.120.21:4237/home/database/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/ziliaoku.gif&quot; width=&quot;245&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;銆\x80&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;50&quot;&gt;銆\x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;society/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/xuehui.gif&quot; width=&quot;316&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt; 
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgscount.html&quot; width=&quot;1&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgs/count.php&quot; width=&quot;63&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br&gt;
+  &lt;br&gt;
+&lt;/div&gt;
+&lt;table width=&quot;400&quot; height=&quot;75&quot; border=&quot;1&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; bordercolor=&quot;#99CCFF&quot; frame=void&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;寤鸿\xae\xae浣跨敤Netscape 4.0 鎴朓E 5.0浠ヤ笂锛\x8c800脳600鍒嗚鲸鐜囦互涓婅繘琛屾祻瑙\x88&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td bordercolor=&quot;#FFFFFF&quot; class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;淇℃伅鏈\x80\xe5悗涓\x80\xe6\xac\xa1鏇存柊锛\x9a2015骞\xb49鏈\x8814鏃\xa5&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;娓呭崕澶у\xad\xa6绉戝彜鎵\x80 鐗堟潈鎵\x80\xe6湁 璇锋彁寤鸿\xae\xae &lt;a href=&quot;mailto:kgs@lib.tsinghua.edu.cn&quot;&gt;kgs@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var gaJsHost = ((&quot;https:&quot; == document.location.protocol) ? &quot;https://ssl.&quot; : &quot;http://www.&quot;);
+document.write(unescape(&quot;%3Cscript src='&quot; + gaJsHost + &quot;google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E&quot;));
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var pageTracker = _gat._getTracker(&quot;UA-3928127-1&quot;);
+pageTracker._initData();
+pageTracker._trackPageview();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="244">
+                <http-request>
+                    <status>TRACE http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:43 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="close" field="connection"/>
+                        <header content="message/http" field="content-type"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="base64">VFJBQ0UgLyBIVFRQLzEuMQ0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KSG9zdDogaGlzdG9yeS5s
+aWIudHNpbmdodWEuZWR1LmNuDQpBY2NlcHQtZW5jb2Rpbmc6IGd6aXAsIGRlZmxhdGUNCkFjY2Vw
+dDogKi8qDQpVc2VyLWFnZW50OiBuaXNsDQoNCg==
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="Webserver fingerprint" plugin="hmap" severity="Information" url="None" var="None">
+        <description>The most accurate fingerprint for this HTTP server is: &quot;Apache/1.3.26_3 (FreeBSD 4.6.2-RELEASE)&quot;.</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="9555" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 14 Sep 2015 07:59:13 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;74c2e-2553-51fb070ef7640&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:50:11 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;娓呭崕澶у\xad\xa6绉戞妧鍙叉毃鍙ゆ枃鐚\xae\xe7爺绌舵墍&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;link href=&quot;css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;css/title.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;../css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;#FFFFFF&quot; leftmargin=&quot;0&quot; topmargin=&quot;0&quot;&gt;
+&lt;style&gt;
+a:visited { text-decoration: none;color:&quot;#4196D2&quot;;}
+ a:active { text-decoration: none;color:&quot;#ff0000&quot;;}
+  a:hover { text-decoration: underline;color:&quot;#ff0000&quot;;}
+   a:link { text-decoration: none;color:&quot;#4196D2&quot;;}
+&lt;/style&gt;
+&lt;table width=&quot;770&quot; height=&quot;450&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt; 
+    &lt;td height=&quot;75&quot; colspan=&quot;3&quot;&gt;&lt;img src=&quot;../images/images/index_01.gif&quot; width=&quot;770&quot; height=&quot;75&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;151&quot; height=&quot;375&quot; rowspan=&quot;2&quot; valign=&quot;bottom&quot; background=&quot;../images/images/index_02.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;150&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td width=&quot;20&quot;&gt;銆\x80&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&quot;../images/images/yin.gif&quot; width=&quot;48&quot; height=&quot;46&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;銆\x80&lt;/td&gt;
+          &lt;td height=&quot;10&quot;&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td height=&quot;80&quot; colspan=&quot;2&quot; background=&quot;../images/images/index_03.gif&quot; style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt; 
+      &lt;table width=&quot;300&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;25&quot; colspan=&quot;3&quot;&gt;銆\x80&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;180&quot;&gt;銆\x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;introduction/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/jieshao.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;176&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_04.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;170&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;18&quot; valign=&quot;bottom&quot;&gt;&lt;div align=&quot;center&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td height=&quot;32&quot; valign=&quot;middle&quot;&gt;&lt;div align=&quot;center&quot; class=&quot;maintitle&quot;&gt;&lt;img src=&quot;../images/navigate/tongzhi.gif&quot; width=&quot;80&quot; height=&quot;25&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;172&quot;&gt;
+		  &lt;Marquee direction=up  onmouseout=this.start() onmouseover=this.stop() scrollDelay=300 style=&quot;HEIGHT: 166px; WIDTH: 170px&quot;&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/20150915.html&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氭棩鏈\xac\xe4綈璐哄钩鍘熶紶缁熼槻娲\xaa\xe5\xaf\xb9绛栫爺绌\xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-2.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氭竻鍗庣畝銆婄畻琛ㄣ\x80\x8b鐨勬瀯閫犮\x80\x81鍔熻兘鍙婂叾鍦ㄦ暟瀛﹀彶涓婄殑鎰忎箟&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-1.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氬畨闃虫\xae\xb7澧熼潚閾滄妧鏈\xaf\xe7殑娓婃簮&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20120621.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氳惃椤夸笌涓\xad\xe5浗鍙や唬鏁板\xad\xa6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20101123.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氱\xa7\x91鎶\x80\xe5彜绫嶄箣鏈烘瀯鍥剧敾鐨勬瀯閫犵患鍚\x88&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100726.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氫粠銆婂ぇ鎴愮畻缁忋\x80\x8b鍒般\x80\x8a缂\x80\xe6湳绠楃粡銆\x8b&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100625.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鈥滅\xa7\x91瀛﹀巻鍙茬殑鍚\xaf\xe7ず鈥濈郴鍒楁姤鍛\x8a&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100329.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛欵uclid's Elements and the Pythagorean Theorem in Greek, Chinese and Arabic Mathematical Traditions&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100302.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氭棩鏈\xac\xe4紶缁熸暟瀛﹀拰涓\xad\xe5浗浼犵粺鏁板\xad\xa6鐨勬瘮杈冪爺绌\xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/parillo.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛歍rains, Trucks, and Horses: Understanding the World Wars via Transportation&lt;/a&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/chjp.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;瀛︽湳鎶ュ憡锛氫腑绠楃畻鐞嗗垵鎺⑩\x80\x94浠ユ槑娓呯畻鏇哥偤妗堜緥&lt;/a&gt;&lt;/p&gt;
+&lt;/Marquee&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td width=&quot;443&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_05.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;400&quot; height=&quot;200&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt; &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;58&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;academic/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/yuandi.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;newbook/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/xinshu.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;40&quot; valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;77&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;research/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/keti.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;40&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;trends/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/dongtai.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;88&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;expert/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/zhuanjia.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;70&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;resource/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/ziyuan.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;440&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;90&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;treasure/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/cangzhen.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;110&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;relatedlink/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/lianjie.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;81&quot;&gt;銆\x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;http://166.111.120.21:4237/home/database/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/ziliaoku.gif&quot; width=&quot;245&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;銆\x80&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;50&quot;&gt;銆\x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;society/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/xuehui.gif&quot; width=&quot;316&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt; 
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgscount.html&quot; width=&quot;1&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgs/count.php&quot; width=&quot;63&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br&gt;
+  &lt;br&gt;
+&lt;/div&gt;
+&lt;table width=&quot;400&quot; height=&quot;75&quot; border=&quot;1&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; bordercolor=&quot;#99CCFF&quot; frame=void&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;寤鸿\xae\xae浣跨敤Netscape 4.0 鎴朓E 5.0浠ヤ笂锛\x8c800脳600鍒嗚鲸鐜囦互涓婅繘琛屾祻瑙\x88&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td bordercolor=&quot;#FFFFFF&quot; class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;淇℃伅鏈\x80\xe5悗涓\x80\xe6\xac\xa1鏇存柊锛\x9a2015骞\xb49鏈\x8814鏃\xa5&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;娓呭崕澶у\xad\xa6绉戝彜鎵\x80 鐗堟潈鎵\x80\xe6湁 璇锋彁寤鸿\xae\xae &lt;a href=&quot;mailto:kgs@lib.tsinghua.edu.cn&quot;&gt;kgs@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var gaJsHost = ((&quot;https:&quot; == document.location.protocol) ? &quot;https://ssl.&quot; : &quot;http://www.&quot;);
+document.write(unescape(&quot;%3Cscript src='&quot; + gaJsHost + &quot;google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E&quot;));
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var pageTracker = _gat._getTracker(&quot;UA-3928127-1&quot;);
+pageTracker._initData();
+pageTracker._trackPageview();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 141, 147, 154, 161, 166, 172, 173, 179, 180, 202, 205, 206]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="9555" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 14 Sep 2015 07:59:13 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;74c2e-2553-51fb070ef7640&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:50:11 GMT" field="date"/>
+                        <header content="text/html; charset=GBK" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;濞撳懎宕曟径褍\xad\xa6缁夋垶濡ч崣鍙夋瘍閸欍倖鏋冮悮\xae\xe7鐖虹粚鑸靛\xa2\x8d&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;link href=&quot;css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;css/title.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;link href=&quot;../css/text.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;#FFFFFF&quot; leftmargin=&quot;0&quot; topmargin=&quot;0&quot;&gt;
+&lt;style&gt;
+a:visited { text-decoration: none;color:&quot;#4196D2&quot;;}
+ a:active { text-decoration: none;color:&quot;#ff0000&quot;;}
+  a:hover { text-decoration: underline;color:&quot;#ff0000&quot;;}
+   a:link { text-decoration: none;color:&quot;#4196D2&quot;;}
+&lt;/style&gt;
+&lt;table width=&quot;770&quot; height=&quot;450&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt; 
+    &lt;td height=&quot;75&quot; colspan=&quot;3&quot;&gt;&lt;img src=&quot;../images/images/index_01.gif&quot; width=&quot;770&quot; height=&quot;75&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;151&quot; height=&quot;375&quot; rowspan=&quot;2&quot; valign=&quot;bottom&quot; background=&quot;../images/images/index_02.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;150&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td width=&quot;20&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td&gt;&lt;img src=&quot;../images/images/yin.gif&quot; width=&quot;48&quot; height=&quot;46&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;閵哱x80&lt;/td&gt;
+          &lt;td height=&quot;10&quot;&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td height=&quot;80&quot; colspan=&quot;2&quot; background=&quot;../images/images/index_03.gif&quot; style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt; 
+      &lt;table width=&quot;300&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;25&quot; colspan=&quot;3&quot;&gt;閵哱x80&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;180&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;introduction/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/jieshao.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td width=&quot;176&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_04.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;170&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;18&quot; valign=&quot;bottom&quot;&gt;&lt;div align=&quot;center&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td height=&quot;32&quot; valign=&quot;middle&quot;&gt;&lt;div align=&quot;center&quot; class=&quot;maintitle&quot;&gt;&lt;img src=&quot;../images/navigate/tongzhi.gif&quot; width=&quot;80&quot; height=&quot;25&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td height=&quot;172&quot;&gt;
+		  &lt;Marquee direction=up  onmouseout=this.start() onmouseover=this.stop() scrollDelay=300 style=&quot;HEIGHT: 166px; WIDTH: 170px&quot;&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/20150915.html&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍妫╅張\xac\xe4缍堢拹鍝勯挬閸樼喍绱剁紒鐔兼Щ濞瞈xaa\xe5\xaf\xb9缁涙牜鐖虹粚\xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-2.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍绔婚崡搴ｇ暆閵嗗﹦鐣荤悰銊\xa3\\x80\x8b閻ㄥ嫭鐎\xaf\xe9柅鐘甛x80\x81閸旂喕鍏橀崣濠傚従閸︺劍鏆熺\x80\x9b锕\x80\xe5蕉娑撳﹦娈戦幇蹇庣疅&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20140404-1.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙艾鐣ㄩ梼铏玕xae\xb7婢х喖娼氶柧婊勫Η閺圽xaf\xe7娈戝〒濠冪爱&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20120621.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙俺鎯冩い澶哥瑢娑揬xad\xe5娴楅崣銈勫敩閺佹澘\xad\xa6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20101123.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙氨\xa7\x91閹禱x80\xe5褰滅猾宥勭\xae\xa3閺堢儤鐎\xaf\xe9崶鍓ф暰閻ㄥ嫭鐎\xaf\xe9柅鐘垫偅閸歕x88&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100726.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙矮绮犻妴濠傘亣閹存劗鐣荤紒蹇媆x80\x8b閸掕埇\x80\x8a缂俓x80\xe6婀崇粻妤冪病閵哱x8b&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100625.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;閳ユ粎\xa7\x91鐎涳箑宸婚崣鑼\xac\xe6畱閸歕xaf\xe7銇氶垾婵堥兇閸掓\xa5\x81濮ら崨\x8a&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100329.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙\xac\xb5uclid's Elements and the Pythagorean Theorem in Greek, Chinese and Arabic Mathematical Traditions&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/20100302.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙碍妫╅張\xac\xe4绱剁紒鐔告殶鐎涳箑鎷版稉\xad\xe5娴楁导鐘电埠閺佹澘\xad\xa6閻ㄥ嫭鐦\xae\xe6潏鍐\xaa\xe7埡缁孿xb6&lt;/a&gt;&lt;/p&gt; 
+ &lt;p&gt;&lt;a href=&quot;bulletin/parillo.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙瓖rains, Trucks, and Horses: Understanding the World Wars via Transportation&lt;/a&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;a href=&quot;bulletin/chjp.htm&quot; target=&quot;_blank&quot; class=&quot;mainpage&quot;&gt;鐎涳附婀抽幎銉ユ啞閿涙矮鑵戠粻妤冪暬閻炲棗鍨甸幒鈶‐x80\x94娴犮儲妲戝〒鍛\xaf\xe7暬閺囧摜鍋ゅ\xa6\x97鍫滅伐&lt;/a&gt;&lt;/p&gt;
+&lt;/Marquee&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;&lt;/td&gt;
+    &lt;td width=&quot;443&quot; height=&quot;295&quot; valign=&quot;top&quot; background=&quot;../images/images/index_05.gif&quot;style=&quot;BACKGROUND-REPEAT: no-repeat&quot;&gt;&lt;table width=&quot;400&quot; height=&quot;200&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt; &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;58&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;academic/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/yuandi.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;newbook/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/xinshu.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;40&quot; valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;77&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;research/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/keti.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;40&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;trends/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/dongtai.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;88&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;expert/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/zhuanjia.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;70&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;resource/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/ziyuan.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;440&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;90&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td width=&quot;100&quot;&gt;&lt;a href=&quot;treasure/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/cangzhen.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;td width=&quot;110&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;relatedlink/index.htm&quot;&gt;&lt;img src=&quot;../images/navigate/lianjie.gif&quot; width=&quot;84&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;&lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt; 
+                &lt;td width=&quot;81&quot;&gt;閵哱x80&lt;/td&gt;
+                &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;http://166.111.120.21:4237/home/database/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/ziliaoku.gif&quot; width=&quot;245&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/table&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt; 
+          &lt;td valign=&quot;bottom&quot;&gt;閵哱x80&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;table width=&quot;400&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tr&gt; 
+          &lt;td width=&quot;50&quot;&gt;閵哱x80&lt;/td&gt;
+          &lt;td width=&quot;20&quot;&gt;&lt;img src=&quot;../images/symbol.gif&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&quot;society/htm/index.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;../images/navigate/xuehui.gif&quot; width=&quot;316&quot; height=&quot;25&quot; border=&quot;0&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt; 
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgscount.html&quot; width=&quot;1&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;iframe src=&quot;http://166.111.120.21/kgs/count.php&quot; width=&quot;63&quot; height=&quot;20&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;&lt;br&gt;
+  &lt;br&gt;
+&lt;/div&gt;
+&lt;table width=&quot;400&quot; height=&quot;75&quot; border=&quot;1&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; bordercolor=&quot;#99CCFF&quot; frame=void&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;瀵ら缚\xae\xae娴ｈ法鏁\xa4Netscape 4.0 閹存湏E 5.0娴犮儰绗傞敍\x8c800鑴\xb3600閸掑棜椴搁悳鍥︿簰娑撳﹨绻樼悰灞剧セ鐟橽x88&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td bordercolor=&quot;#FFFFFF&quot; class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;娣団剝浼呴張\x80\xe5鎮楁稉\x80\xe6\xac\xa1閺囧瓨鏌婇敍\x9a2015楠瀄xb49閺圽x8814閺僜xa5&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt; 
+    &lt;td class=&quot;mainpage&quot;&gt;&lt;div align=&quot;center&quot;&gt;濞撳懎宕曟径褍\xad\xa6缁夋垵褰滈幍\x80 閻楀牊娼堥幍\x80\xe6婀\x81 鐠囬攱褰佸\xaf\xa4楦縗xae\xae &lt;a href=&quot;mailto:kgs@lib.tsinghua.edu.cn&quot;&gt;kgs@lib.tsinghua.edu.cn&lt;/a&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var gaJsHost = ((&quot;https:&quot; == document.location.protocol) ? &quot;https://ssl.&quot; : &quot;http://www.&quot;);
+document.write(unescape(&quot;%3Cscript src='&quot; + gaJsHost + &quot;google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E&quot;));
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var pageTracker = _gat._getTracker(&quot;UA-3928127-1&quot;);
+pageTracker._initData();
+pageTracker._trackPageview();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="141">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Mon, 11 Aug 2008 03:06:48 GMT" field="last-modified"/>
+                        <header content="close" field="connection"/>
+                        <header content="&quot;2cfb-0-45426722ec200&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="text/plain; charset=GBK" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="147">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="288" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="154">
+                <http-request>
+                    <status>PUT http://history.lib.tsinghua.edu.cn/UOXgd HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">J6NoNy</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="303" field="content-length"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /UOXgd.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="161">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/leWYS.html HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="285" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /leWYS.html was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="166">
+                <http-request>
+                    <status>POST http://history.lib.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2xlV1lTLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguU1lXZWw=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="303" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="172">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="281" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /status was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="173">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="300" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/JMXInvokerServlet was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="179">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="287" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /jmx-console/ was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="180">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:20 GMT" field="date"/>
+                        <header content="293" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/Invoker was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="202">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:21 GMT" field="date"/>
+                        <header content="288" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /server-status was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="205">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:21 GMT" field="date"/>
+                        <header content="301" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /web-console/ServerInfo.jsp was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="206">
+                <http-request>
+                    <status>GET http://history.lib.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="history.lib.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 13:50:21 GMT" field="date"/>
+                        <header content="289" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /admin-console/ was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache Server at history.lib.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The port '443' is not open on target history.lib.tsinghua.edu.cn</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://history.lib.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+</w3af-run>

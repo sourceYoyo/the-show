@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+      
+<div class="jumbotron" id="common">    
+  <div class="row">
+        <div class="col-sm-3 col-md-2 col-md-offset-1 col-sm-offset-1 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="/posts">漏洞报告列表</a></li>
+            <li><a href="/reports">扫描报告列表</a></li>
+            <li><a href="/posts/search">搜索漏洞报告</a></li>
+            <li><a href="/reports/search">搜索扫描报告</a></li>
+          </ul>                  
+        </div>        
+        <div class="col-sm-9  col-md-9  main">
+          <h2 class="page-header">漏洞列表&nbsp;&nbsp;<small><small>漏洞数：{{total_count_posts}}</small></small></h2>
+              <div class="table-responsive col-sm-9">
+                <div>                 
+                    <table class="table table-striped col-sm-9">
+                    <tr>                      
+                      <th width="20%">提交时间</th>
+                      <th width="40%">漏洞标题</th>                      
+                      <th width="20%">漏洞类型</th>
+                      <th width="10%">漏洞作者</th>
+                      <th width="10%">危害等级</th>
+                    </tr>                    
+                    {% for row in page_info['rows'] %}
+                    <tr>
+                      <td>{{row['datetime']}}</td>
+                      <td><a href="/post/{{row['slug']}}" target="_blank">
+                        {{row['title']}}</a></td>
+                      <td>{{row['category']}}</a></td>
+                      <td>{{row['author']}}</td>
+                      <td>{{row['level']}}</td>
+                    </tr>
+                    {% endfor %}
+                  </table>
+                  <!-- 分页组件js -->
+                  <script src="{{url_for('static', filename='js/jquery.twbsPagination.js')}}"></script>
+                  <ul id="pagination" class="pagination-sm"></ul>
+                  <script >
+                    $(pagination).twbsPagination({
+                      first: "首页",
+                      prev: "前一页",
+                      next: "后一页",
+                      last: "尾页",
+                          totalPages: {{page_info['total']}},
+                          visiblePages: 5,
+                          startPage: {{page_info['current']}},
+                          onPageClick: function (event, page) {
+                              location.href="/{{type}}?page="+page;
+                          }
+                      });
+                  </script>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<div class="container projects">
+</div>
+
+{% endblock %}

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481217404" start-long="Thu Dec 08 12:16:44 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://hydrosky.org/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/22_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://hydrosky.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="hydrosky.org" field="Host"/>
+                        <header content="PHPSESSID=gnb1afh4kg5qb7560la5r50dp2" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="ThinkPHP" field="x-powered-by"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.2.11 (Win32) PHP/5.3.0" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Thu, 08 Dec 2016 17:17:01 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;清华大学遥感水文团队&lt;/title&gt;
+&lt;meta name=&quot;keywords&quot; content=&quot;清华大学遥感水文团队&quot; /&gt;
+&lt;meta name=&quot;Description&quot; content=&quot;&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/Public/home/css/base.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/Public/home/css/content.css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/Public/home/js/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/Public/home/js/jquery-1.7.2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/Public/home/js/addons.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/Public/home/js/jquery.SuperSlide2.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(function(){
+	$(&quot;.topnav &gt;li &quot;).hover(function(){
+			$(this).find(&quot;ol&quot;).slideToggle();
+	},function(){
+			$(this).find(&quot;ol&quot;).slideToggle();
+	});
+});
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div class=&quot;top&quot;&gt;
+		&lt;div class=&quot;logo wid&quot;&gt; &lt;a href=&quot;http://hydrosky.org&quot;&gt;&lt;img src=&quot;/uploadfiles/1447218658.jpg&quot; width=&quot;1200&quot; height=&quot;110&quot; /&gt;&lt;/a&gt; &lt;/div&gt;
+&lt;/div&gt;
+&lt;!--导航开始--&gt;
+&lt;div class=&quot;navbj&quot;&gt;
+		&lt;div class=&quot;nav wid&quot;&gt;
+				&lt;ul class=&quot;topnav clearfix&quot;&gt;
+						&lt;li&gt;&lt;a href=&quot;http://hydrosky.org&quot;&gt;网站首页&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;
+                                                    /Content/index/id/574  
+                        &quot;&gt;科研团队&lt;/a&gt;
+								&lt;ol&gt;
+                                &lt;li&gt;&lt;a href=&quot;                                        /Content/index/id/574&quot;&gt;团队介绍&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /People/index/id/575&quot;&gt;科研队伍&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /People/index/id/645&quot;&gt;联合研究中心&lt;/a&gt;&lt;/li&gt;								&lt;/ol&gt;
+						&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;
+                                                	/News/index/id/581&quot;&gt;新闻动态&lt;/a&gt;
+								&lt;ol&gt;
+                                								&lt;/ol&gt;
+						&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;
+                                                    /Publication/index/id/583  
+                        &quot;&gt;科研论著&lt;/a&gt;
+								&lt;ol&gt;
+                                &lt;li&gt;&lt;a href=&quot;                                        /Publication/index/id/583&quot;&gt;Publications&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Publication/index/id/616&quot;&gt;Books&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Publication/index/id/617&quot;&gt;Posters&lt;/a&gt;&lt;/li&gt;								&lt;/ol&gt;
+						&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;
+                        /Allproject/index/id/626                                  
+                        &quot;&gt;科研项目&lt;/a&gt;
+								&lt;ol&gt;
+                                &lt;li&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444636/fid/104                                        &quot;&gt;青藏高原&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444633/fid/105                                        &quot;&gt;粮食安全&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444647/fid/106                                        &quot;&gt;重力卫星&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444654/fid/107                                        &quot;&gt;土壤水分估算&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444598/fid/108                                        &quot;&gt;山洪地质灾害&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444630/fid/109                                        &quot;&gt;洪涝灾害&lt;/a&gt;&lt;/li&gt;								&lt;/ol&gt;
+						&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;
+                                                    /Direction/index/id/588  
+                        &quot;&gt;科研方向&lt;/a&gt;
+								&lt;ol&gt;
+                                &lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/588&quot;&gt;Research&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/589&quot;&gt;Project&lt;/a&gt;&lt;/li&gt;								&lt;/ol&gt;
+						&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;
+                                                    /Direction/index/id/591  
+                        &quot;&gt;科教资源&lt;/a&gt;
+								&lt;ol&gt;
+                                &lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/591&quot;&gt;Data&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/592&quot;&gt;Model&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/593&quot;&gt;CREST&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/594&quot;&gt;CREST-iMap&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/595&quot;&gt;CRESLIDE&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/596&quot;&gt;Education&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/597&quot;&gt;Student Awards&lt;/a&gt;&lt;/li&gt;								&lt;/ol&gt;
+						&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;
+                                                	/Content/index/id/598&quot;&gt;合作机构&lt;/a&gt;
+								&lt;ol&gt;
+                                								&lt;/ol&gt;
+						&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;
+                                                	/Pic/index/id/610&quot;&gt;团队影像&lt;/a&gt;
+								&lt;ol&gt;
+                                								&lt;/ol&gt;
+						&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;
+                                                    /Direction/index/id/603  
+                        &quot;&gt;全球水情&lt;/a&gt;
+								&lt;ol&gt;
+                                &lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/603&quot;&gt;全球降雨&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/604&quot;&gt;全球洪水&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/605&quot;&gt;全球洪水数据库&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/606&quot;&gt;全球干旱&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/607&quot;&gt;全球滑坡&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/613&quot;&gt;滑坡数据库&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/614&quot;&gt;城市洪水&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/615&quot;&gt;Pak-US Project&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/619&quot;&gt;王家坝-CREST&lt;/a&gt;&lt;/li&gt;								&lt;/ol&gt;
+						&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;
+                                                    /Direction/index/id/633  
+                        &quot;&gt;论坛/培训/报告讲座&lt;/a&gt;
+								&lt;ol&gt;
+                                &lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/633&quot;&gt;论坛&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/634&quot;&gt;培训&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Direction/index/id/635&quot;&gt;报告讲座&lt;/a&gt;&lt;/li&gt;								&lt;/ol&gt;
+						&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;
+                                                    /Content/index/id/601  
+                        &quot;&gt;友情链接&lt;/a&gt;
+								&lt;ol&gt;
+                                &lt;li&gt;&lt;a href=&quot;                                        /Content/index/id/601&quot;&gt;友情链接&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;                                        /Content/index/id/600&quot;&gt;CYWater&lt;/a&gt;&lt;/li&gt;								&lt;/ol&gt;
+						&lt;/li&gt;				&lt;/ul&gt;
+		&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--导航结束--&gt; 
+&lt;!--banner--&gt;
+&lt;div class=&quot;slider&quot;&gt;
+		&lt;div class=&quot;bg&quot;&gt;
+				&lt;ul&gt;
+                &lt;a href=&quot;/Article/index/id/586/aid/544444636&quot; target=&quot;_blank&quot;&gt;&lt;li&gt;&lt;img src=&quot;/uploadfiles/1453343812.jpg&quot; /&gt;&lt;/li&gt;&lt;/a&gt;&lt;a href=&quot;http://hydrosky.org/Newscon/index/id/581/aid/544444450&quot; target=&quot;_blank&quot;&gt;&lt;li&gt;&lt;img src=&quot;/uploadfiles/1453261305.jpg&quot; /&gt;&lt;/li&gt;&lt;/a&gt;&lt;a href=&quot;/Direction/index/id/588&quot; target=&quot;_blank&quot;&gt;&lt;li&gt;&lt;img src=&quot;/uploadfiles/1453348105.jpg&quot; /&gt;&lt;/li&gt;&lt;/a&gt;&lt;a href=&quot;/Direction/index/id/588&quot; target=&quot;_blank&quot;&gt;&lt;li&gt;&lt;img src=&quot;/uploadfiles/1449114771.jpg&quot; /&gt;&lt;/li&gt;&lt;/a&gt;				&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;tip&quot;&gt;
+				&lt;div class=&quot;wrapper wid&quot;&gt;
+						&lt;ul class=&quot;clearfix&quot;&gt;
+                        	&lt;li &gt;
+										&lt;div class=&quot;img&quot;&gt;&lt;img src=&quot;/uploadfiles/1453343812.jpg&quot; width=&quot;234&quot; height=&quot;69&quot;&gt;&lt;/div&gt;
+										&lt;div class=&quot;text&quot;&gt;青藏高原水循环&lt;/div&gt;
+								&lt;/li&gt;&lt;li &gt;
+										&lt;div class=&quot;img&quot;&gt;&lt;img src=&quot;/uploadfiles/1453261305.jpg&quot; width=&quot;234&quot; height=&quot;69&quot;&gt;&lt;/div&gt;
+										&lt;div class=&quot;text&quot;&gt;遥感大数据&lt;/div&gt;
+								&lt;/li&gt;&lt;li &gt;
+										&lt;div class=&quot;img&quot;&gt;&lt;img src=&quot;/uploadfiles/1453348105.jpg&quot; width=&quot;234&quot; height=&quot;69&quot;&gt;&lt;/div&gt;
+										&lt;div class=&quot;text&quot;&gt;西南河流&lt;/div&gt;
+								&lt;/li&gt;&lt;li class=&quot;meiyou&quot;&gt;
+										&lt;div class=&quot;img&quot;&gt;&lt;img src=&quot;/uploadfiles/1449114771.jpg&quot; width=&quot;234&quot; height=&quot;69&quot;&gt;&lt;/div&gt;
+										&lt;div class=&quot;text&quot;&gt;智慧城市&lt;/div&gt;
+								&lt;/li&gt;    
+						&lt;/ul&gt;
+				&lt;/div&gt;
+		&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;syxw wid&quot;&gt;
+		&lt;div class=&quot;xwleft fl&quot;&gt;
+				&lt;h3 class=&quot;bt&quot;&gt;&lt;strong&gt;新闻动态&lt;/strong&gt;&lt;span&gt;news&lt;/span&gt;&lt;/h3&gt;
+				&lt;div class=&quot;xwxm&quot;&gt; &lt;a href=&quot;/Newscon/index/id/581/aid/544445280&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/uploadfiles/1480921290.jpg&quot; width=&quot;356&quot; height=&quot;174&quot; /&gt;&lt;/a&gt;
+						&lt;p class=&quot;qh1&quot;&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445280&quot; target=&quot;_blank&quot;&gt;洪阳教授赴台湾参加两岸清华大学学术研讨会&lt;/a&gt;&lt;/p&gt;
+						&lt;p class=&quot;qh2&quot;&gt;2016-12-05&lt;/p&gt;
+						&lt;p class=&quot;qh3&quot;&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445280&quot; target=&quot;_blank&quot;&gt;12月1日，2016年两岸清华大学学术研讨会在新竹清华大学台达馆B1 璟德讲堂隆重举行，本届研讨会由...&lt;/a&gt;&lt;/p&gt;
+						&lt;p class=&quot;xwzh&quot;&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445280&quot; target=&quot;_blank&quot;&gt;&lt;span&gt;查看详情&lt;/span&gt;&lt;/a&gt; &lt;/p&gt;
+				&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;xwright fr&quot;&gt;
+        		&lt;div class=&quot;nrs&quot;&gt;
+						&lt;div class=&quot;xbt fl&quot;&gt;
+								&lt;h3&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445278&quot; target=&quot;_blank&quot;&gt;清华大学HydroSky团队成员获首届“灾害风险与安全”研究生学术论坛两枚金奖和一枚银奖&lt;/a&gt;&lt;/h3&gt;
+								&lt;p&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445278&quot; target=&quot;_blank&quot;&gt;　　2016年11月29日，清华大学HydroSky团队洪阳教授的三位博士生曾子悦、唐国强、杨媛分别获首届&quot;灾害风险与安全研究生学术论坛&quot;两枚金奖和一枚银奖。他们分别围绕 &quot;Mul......&lt;/a&gt;&lt;/p&gt;
+						&lt;/div&gt;
+						&lt;div class=&quot;gd fr&quot;&gt;
+								&lt;p class=&quot;sj&quot;&gt;2016-12-01&lt;/p&gt;
+								&lt;p class=&quot;dj&quot;&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445278&quot; target=&quot;_blank&quot;&gt;more &gt;&lt;/a&gt;&lt;/p&gt;
+						&lt;/div&gt;
+				&lt;/div&gt;&lt;div class=&quot;nrs&quot;&gt;
+						&lt;div class=&quot;xbt fl&quot;&gt;
+								&lt;h3&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445177&quot; target=&quot;_blank&quot;&gt;【诚聘】清华大学物联网遥感大数据联合研究中心诚聘海内外青年英才&lt;/a&gt;&lt;/h3&gt;
+								&lt;p&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445177&quot; target=&quot;_blank&quot;&gt;清华大学-致生联发物联网遥感大数据联合研究中心是在国家大力推行云计算、大数据、互联网+行业应用发展的大背景下，“遥感大数据”领域探索出的一条独具特色的校企联合实验室发展模式。本中心......&lt;/a&gt;&lt;/p&gt;
+						&lt;/div&gt;
+						&lt;div class=&quot;gd fr&quot;&gt;
+								&lt;p class=&quot;sj&quot;&gt;2016-05-28&lt;/p&gt;
+								&lt;p class=&quot;dj&quot;&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445177&quot; target=&quot;_blank&quot;&gt;more &gt;&lt;/a&gt;&lt;/p&gt;
+						&lt;/div&gt;
+				&lt;/div&gt;&lt;div class=&quot;nrs&quot;&gt;
+						&lt;div class=&quot;xbt fl&quot;&gt;
+								&lt;h3&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445176&quot; target=&quot;_blank&quot;&gt;清华大学—致生联发信息技术股份有限公司物联网遥感大数据联合研究中心正式成立&lt;/a&gt;&lt;/h3&gt;
+								&lt;p&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445176&quot; target=&quot;_blank&quot;&gt;今日，“清华大学—致生联发信息技术股份有限公司物联网遥感大数据联合研究中心”（以下简称联合研究中心）揭牌仪式在清华大学中央主楼接待厅举行。清华大学副校长薛其坤、致生联发董事长卜巩岸......&lt;/a&gt;&lt;/p&gt;
+						&lt;/div&gt;
+						&lt;div class=&quot;gd fr&quot;&gt;
+								&lt;p class=&quot;sj&quot;&gt;2016-05-24&lt;/p&gt;
+								&lt;p class=&quot;dj&quot;&gt;&lt;a href=&quot;/Newscon/index/id/581/aid/544445176&quot; target=&quot;_blank&quot;&gt;more &gt;&lt;/a&gt;&lt;/p&gt;
+						&lt;/div&gt;
+				&lt;/div&gt;		&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;jrwm&quot;&gt;
+		&lt;div class=&quot;wid jrbox&quot;&gt;
+                &lt;div class=&quot;wznr&quot; style=&quot;color:#666;&quot;&gt;&lt;br /&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;br /&gt;&lt;span style=&quot;font-size:20px;&quot;&gt;&lt;span style=&quot;font-family:微软雅黑;&quot;&gt;&lt;strong&gt;清华大学水利水电工程系及水科学国家重点实验室&amp;ldquo;HydroSky&amp;rdquo;团队&lt;/strong&gt;&lt;/span&gt;&lt;/span&gt;&lt;br /&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size:14px;&quot;&gt;&lt;span style=&quot;font-family:微软雅黑;&quot;&gt;　　依托清华大学水沙科学与水利水电工程国家重点实验室及水文水资源研究所，清华大学正在建立和发展前沿交叉遥感-水文-气象-气候研究团队。研究方向包括但不限于：发展基于卫星雷达遥感和信息技术为基础的现代水文水资源新理论、技术与应用；在跨时空尺度上围绕遥感、水文、气象、气候、人类多系统相结合的观测、模拟和预报；全球和区域水循环集成；水文气象地质灾害与极端气候变化预警；智慧城市以及资源优化配置和高效利用等。&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+				&lt;p class=&quot;jrdj fr&quot;&gt;&lt;a href=&quot;/Content/index/id/609&quot; target=&quot;_blank&quot;&gt;加入我们&lt;/a&gt;&lt;/p&gt;
+		&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--滚动部分--&gt;
+&lt;div class=&quot;kybox&quot;&gt;
+		&lt;div class=&quot;mr_t1 wid&quot;&gt;
+				&lt;div class=&quot;mr_t1name&quot;&gt;&lt;img src=&quot;/Public/home/images/kybj.jpg&quot; /&gt;科研项目&lt;span&gt;Research&lt;/span&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;mr_frbox clearfix wid2&quot; style=&quot;position:relative;&quot;&gt; &lt;img class=&quot;mr_frBtnL prev&quot; src=&quot;/Public/home/images/mfrL.jpg&quot;  width=&quot;52&quot; height=&quot;52&quot; style=&quot; position:absolute; z-index:9px; top:160px; left:-60px;&quot; /&gt;
+				&lt;div class=&quot;mr_frUl wid&quot;&gt;
+						&lt;ul class=&quot;clearfix&quot;&gt;
+                        &lt;li&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444630/fid/109&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/uploadfiles/1449219328.jpg&quot; width=&quot;280&quot; height=&quot;208&quot; /&gt;&lt;/a&gt; &lt;span&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444630/fid/109&quot;&gt;基于分布式水文模型的洪涝灾害风险预评估方法研究&lt;/a&gt;&lt;/span&gt; &lt;strong&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444630/fid/109&quot; target=&quot;_blank&quot;&gt;MORE &gt;&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444598/fid/108&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/uploadfiles/1449040279.jpg&quot; width=&quot;280&quot; height=&quot;208&quot; /&gt;&lt;/a&gt; &lt;span&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444598/fid/108&quot;&gt;山洪地质灾害气象风险预警技术研究&lt;/a&gt;&lt;/span&gt; &lt;strong&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444598/fid/108&quot; target=&quot;_blank&quot;&gt;MORE &gt;&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444636/fid/104&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/uploadfiles/1449040329.jpg&quot; width=&quot;280&quot; height=&quot;208&quot; /&gt;&lt;/a&gt; &lt;span&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444636/fid/104&quot;&gt;青藏高原地-空多源降水和总储水量反演同化及其在区域水循环研究中的应用&lt;/a&gt;&lt;/span&gt; &lt;strong&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444636/fid/104&quot; target=&quot;_blank&quot;&gt;MORE &gt;&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444647/fid/106&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/uploadfiles/1449027775.jpg&quot; width=&quot;280&quot; height=&quot;208&quot; /&gt;&lt;/a&gt; &lt;span&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444647/fid/106&quot;&gt;重力卫星总储水量变化信号校正与回推重建方法研究及应用&lt;/a&gt;&lt;/span&gt; &lt;strong&gt;&lt;a href=&quot;/Qhcontent/index/id/626/aid/544444647/fid/106&quot; target=&quot;_blank&quot;&gt;MORE &gt;&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;						&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;img class=&quot;mr_frBtnR next&quot; src=&quot;/Public/home/images/mfrR.jpg&quot;width=&quot;52&quot; height=&quot;52&quot;  style=&quot;position:absolute; z-index:9px; top:160px; right:-60px; &quot;  /&gt; &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(&quot;.mr_frbox&quot;).slide({
+	titCell:&quot;&quot;,
+	mainCell:&quot;.mr_frUl ul&quot;,
+	autoPage:true,
+	effect:&quot;leftLoop&quot;,
+	autoPlay:true,
+	vis:4
+});
+&lt;/script&gt;
+&lt;div class=&quot;footer&quot;&gt;
+		&lt;div class=&quot;dbnr wid&quot;&gt;
+				&lt;div class=&quot;dz&quot;&gt;Copyright © 清华大学水科学工程“HydroSky”科研团队 All rights reserved.&lt;/div&gt;
+				&lt;div class=&quot;dz&quot;&gt;地址：清华大学水沙水利水电科学国家重点实验室泥沙馆A207室　邮编：100084　电话：(010) 62787394&lt;/div&gt;
+		&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The following error was detected and could not be resolved:
+Failed to initialize the 404 detection, original exception was: &quot;Exception found while detecting 404: &quot;HTTP timeout error&quot;&quot;.
+</error>
+</w3af-run>

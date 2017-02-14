@@ -1,0 +1,2058 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480515668" start-long="Wed Nov 30 09:21:08 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://mails.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.132"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/838_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Auto-completable form" plugin="form_autocomplete" severity="Information" url="http://mails.tsinghua.edu.cn/" var="None">
+        <description>The URL: &quot;http://mails.tsinghua.edu.cn/&quot; has a &quot;&lt;form&gt;&quot; element with auto-complete enabled.</description>
+        <long-description>In typical form-based web applications, it is common practice for developers to allow `autocomplete` within the HTML form to improve the usability of the page. With `autocomplete` enabled (default), the browser is allowed to cache previously entered form values.
+
+For legitimate purposes, this allows the user to quickly re-enter the same data when completing the form multiple times.
+
+When `autocomplete` is enabled on either/both the username and password fields, this could allow a cyber-criminal with access to the victim's computer the ability to have the victim's credentials automatically entered as the cyber-criminal visits the affected page.
+
+The tool has discovered that the affected page contains a form containing a password field that has not disabled `autocomplete`.</long-description>
+        <fix-guidance>The `autocomplete` value can be configured in two different locations. The first and most secure location is to disable the `autocomplete` attribute on the `&lt;form&gt;` HTML tag. This will disable `autocomplete` for all inputs within that form. An example of disabling `autocomplete` within the form tag is `&lt;form autocomplete=off&gt;`.
+
+The second slightly less desirable option is to disable the `autocomplete` attribute for a specific `&lt;input&gt;` HTML tag. While this may be the less desired solution from a security perspective, it may be preferred method for usability reasons, depending on size of the form. An example of disabling the `autocomplete` attribute within a password input tag is `&lt;input type=password autocomplete=off&gt;`.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 14:21:12 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFs
+Ly9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25h
+bC5kdGQiPg0KPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPg0KPGhl
+YWQ+DQoNCg0KPHRpdGxlPua/nuaSs+aHjuWuleabouafh1x4YWVceGU3XHhhZVx4YjE8L3RpdGxl
+Pg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9jc3MvcmVzZXQu
+Y3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KPGxpbmsgaHJlZj0iL2Nv
+cmVtYWlsL2NvbW1vbi9pbmRleF9jbTQwXzIvY3NzL2Nzcy5jc3MiIHJlbD0ic3R5bGVzaGVldCIg
+dHlwZT0idGV4dC9jc3MiIC8+DQoNCg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2lu
+ZGV4X2NtNDBfMi9jc3MveHMuY3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAv
+Pg0KDQoNCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9qcXVl
+cnktMS44LjEubWluLmpzIiBsYW5ndWFnZT0iamF2YXNjcmlwdCIgdHlwZT0idGV4dC9qYXZhc2Ny
+aXB0Ij48L3NjcmlwdD4NCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBf
+Mi9qcy9qcXVlcnkuYmxvY2tVSS5qcyIgbGFuZ3VhZ2U9ImphdmFzY3JpcHQiIHR5cGU9InRleHQv
+amF2YXNjcmlwdCI+PC9zY3JpcHQ+DQo8c2NyaXB0IHR5cGU9dGV4dC9qYXZhc2NyaXB0PiANCiAg
+ICB3aW5kb3cub25sb2FkPWZ1bmN0aW9uKCl7DQogICAgICAgICAgICAgICBkb2N1bWVudC5nZXRF
+bGVtZW50c0J5TmFtZSgidWlkIilbMF0uZm9jdXMoKTsNCiAgICAgICB9DQoNCg0KZnVuY3Rpb24g
+Y2hlY2trZXkoZSl7IA0KdmFyIGlzaWUgPSAoZG9jdW1lbnQuYWxsKSA/IHRydWUgOiBmYWxzZTsv
+L+mWuOaOi+WAlumPjOWbrOW8sOmQpOalqOmWuOaErOaHj+mQl+iZq+a9u+Wmr+e7mNCmTW96aWxs
+YSANCnZhciBrZXk7IA0KaWYgKGlzaWUpIA0Ka2V5ID0gd2luZG93LmV2ZW50LmtleUNvZGU7Ly9J
+ReWotO+9iOazlemPgVx4YTR3aW5kb3dzLmV2ZW505ai05ruDXHhhY1x4YTnlqIZceGEyIA0KZWxz
+ZSANCnsgDQprZXkgPSBlLndoaWNoOy8vM+WokeaPrHhhYVx4ZTbngLXmu4jmn6hceGFlXHhlNemN
+pOmBjeW8q+mQl+Wgn+eukuWokeaPrHg4MFx4ZTTplrLmu4RceGE2XHg5YuWmr+e4l3hhZVx4YTTp
+lrvjhKXlq7DlqIjvvYnmjIrouYfmkrPntoHpl4Hmj5Lpqo/nu7Hmv4fmvbvlqIbmkrPmq6Hplrvi
+kanmmovplrrlpIjlhLDnu7HloJXmn4XpjrrlqoZ4ODBceDgyZS53aGljaOe8guS9ueeRpemNpFx4
+YWRceGU256iJXHg4MFx4ZTTplrLmu4Xmp5Dpio/nirXnqb/plrjlqYXlgZDnu67nmZVv6Za45oSs
+5oeP6ZCX5oq95pWN6Y2r54a45pqI6ZeB556IeDhhMemWv+aykXg4OSANCn0gDQppZihrZXk9PTEz
+KSANCmRvY3VtZW50LmxvZ2luLnN1Ym1pdCgpOyANCn0NCg0KPCEtLS8vLS0+PCFbQ0RBVEFbLy8+
+PCEtLSANCiQoZG9jdW1lbnQpLnJlYWR5KGZ1bmN0aW9uKCkgeyANCiAgICAkKCcjYnV0dG9uJyku
+Y2xpY2soZnVuY3Rpb24oKSB7IA0KICAgICAgICAkLmJsb2NrVUkoeyANCg0KICAgICAgICAgICAg
+dGl0bGU6ICAgICfplrnnu5jlipfpiofmsK3nqbHpiKnlhqfntJYnLCANCiAgICAgICAgICAgIG1l
+c3NhZ2U6ICAnPHA+6ZCO6Z2b5qOb6ZCW5ruI5p+M5a6l5Zup5p6C6ZCg5Zup5p+J5rWg5aCi5YyW
+55KB5YWF57mG6Za555KheGFmXHhlNeeAteafpeW5jlx4ODBceGU25amA6Jmr56iJXHhhZFx4ZTXn
+u7rpuYPmgr3piorvuYDnhZXplrrloJ3np7Tmv67nhrzmn4jpiorilYLvvIzplr/mtpjoi6/pjrji
+lYPmi6Dpio/jiKHmmqnpkKDlm6jnuZDnu7FceGIwNjI3NzE5NDDplr/mspF4OGM1MTc3NTk0MDwv
+cD4nLCANCg0KDQogICAgICAgICAgICB0aW1lb3V0OiAgIDMwMDAsDQoJCQljc3M6IHsgDQoJCQkJ
+d2lkdGg6NTAwLA0KCQkJCWhlaWdodDoxNTAsDQoJCQkJJ2xpbmUtaGVpZ2h0JzonMTUwcHgnLA0K
+CQkJCWNvbG9yOicjMDAwJywNCgkJCQkndG9wJzonMzAlJywNCgkJCQlib3JkZXI6ICdub25lJywg
+DQogICAgICAgICAgICAgICAgcGFkZGluZzogJzVweCcsIA0KCQkJCSdmb250LXNpemUnOicxNHB4
+JywNCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kQ29sb3I6ICcjZmZmJywgDQoJCQkJJ2JvcmRl
+ci1yYWRpdXMnOiAnNXB4JywNCiAgICAgICAgICAgICAgICAnLXdlYmtpdC1ib3JkZXItcmFkaXVz
+JzogJzVweCcsIA0KICAgICAgICAgICAgICAgICctbW96LWJvcmRlci1yYWRpdXMnOiAnNXB4Jywg
+DQogICAgICAgICAgICAgICAgb3BhY2l0eTogLjkNCiAgICAgICAgICAgIH0gDQogICAgICAgIH0p
+OyANCiAgICB9KTsNCiAgICAkKCcjc2VjJykuY2xpY2soZnVuY3Rpb24oKSB7IA0KICAgICAgICAk
+LmJsb2NrVUkoew0KICAgICAgICAgICAgdGl0bGU6ICAgICfplrnnu5jlipfpiofmsK3nqbHpiKnl
+hqfntJYnLCANCiAgICAgICAgICAgIG1lc3NhZ2U6ICAkKCcjc2VjbXNnJyksIA0KICAgICAgICAg
+ICAgdGltZW91dDogICA1MDAwLA0KCQkJY3NzOiB7IA0KCQkJCXdpZHRoOjUwMCwNCgkJCQloZWln
+aHQ6MTUwLA0KCQkJCWNvbG9yOicjMDAwJywNCgkJCQkndG9wJzonMzAlJywNCgkJCQlib3JkZXI6
+ICdub25lJywgDQogICAgICAgICAgICAgICAgcGFkZGluZzogJzVweCcsIA0KCQkJCSdmb250LXNp
+emUnOicxNHB4JywNCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kQ29sb3I6ICcjZmZmJywgDQoJ
+CQkJJ2JvcmRlci1yYWRpdXMnOiAnNXB4JywNCiAgICAgICAgICAgICAgICAnLXdlYmtpdC1ib3Jk
+ZXItcmFkaXVzJzogJzVweCcsIA0KICAgICAgICAgICAgICAgICctbW96LWJvcmRlci1yYWRpdXMn
+OiAnNXB4JywgDQogICAgICAgICAgICAgICAgb3BhY2l0eTogLjkNCiAgICAgICAgICAgIH0NCiAg
+ICAgICAgfSk7IA0KICAgIH0pOw0KfSk7IA0KDQovLy0tPjwhXV0+IA0KPC9zY3JpcHQ+IA0KDQoN
+CjwvaGVhZD4NCg0KPGJvZHk+DQogICAgPCEtLSBoZWFkZXIgc3RhcnQgLS0+CQ0KPGRpdiBjbGFz
+cz0iaGVhZGVyIj4NCg0KICAgIAk8YSBocmVmPSJodHRwOi8vd3d3LnRzaW5naHVhLmVkdS5jbiIg
+Y2xhc3M9ImhlYWR0eHQiIHRpdGxlPSLmv57mkrPmh47lrpXmm5/lvoTopI1ceGFkXHhhNiI+PC9h
+Pg0KICAgICAgICA8ZGl2IGNsYXNzPSJoZWFkbmF2Ij4NCgkJDQoJCTxhIGhyZWY9Imh0dHA6Ly9t
+YWlsLnRzaW5naHVhLmVkdS5jbiI+6Za65L2555Gl57uXXHg4MFx4ZTnmgqdceDg4PC9hPnwNCgkJ
+DQogICAgICAgICAgICAgICAgPGEgaHJlZj0iL2NvcmVtYWlsL2hlbHAvbm90aWNlLmh0bWwiIGlk
+PSJzZWMiPumQjueRsFx4YTRceDhh6Y2Z5b+b5bmT6Y6wXHhhZVx4ZTPku5s8L2E+fA0KCQk8YSBo
+cmVmPSJodHRwOi8vd3d3LnRzaW5naHVhLmVkdS5jbi9wdWJsaXNoL3ZwbmhlbHAvODMxMS9pbmRl
+eC5odG1sIiB0YXJnZXQ9Il9ibGFuayI+VlBO6ZCg5L245aK96ZCkXHg4NjwvYT58DQoJCTxhIGhy
+ZWY9Ii9jb3JlbWFpbC9oZWxwL2luZGV4X3poX0NOLmpzcCIgdGFyZ2V0PSJfYmxhbmsiPumQoueX
+i3hhZVx4ZTXmv65ceGFhPC9hPg0KCQkNCgkJfDxhIGhyZWY9Ij9sb2NhbGU9ZW5fVVMiPkVuZ2xp
+c2g8L2E+DQoJCQ0KCTwvZGl2Pg0KDQoNCiAgICA8L2Rpdj4NCiAgICA8IS0tIGhlYWRlciBlbmQg
+LS0+DQogIA0KICAgIDwhLS0gY2VudGVyIHN0YXJ0IC0tPg0KICAgIDxkaXYgY2xhc3M9ImNvbnRl
+bnQiPg0KICAgICAgICA8ZGl2IGNsYXNzPSJjb250ZW50d3JhcCI+DQogICAgICAgICAgICA8ZGl2
+IGNsYXNzPSJsb2dpbiI+DQogICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0ibG9naW53cmFwIj4N
+CiAgICAgICAgICAgICAgICAgICAgPCEtLSBzdGFydCAtLT4NCg0KICAgICAgICAgICAgICAgICAg
+ICA8ZGl2IGNsYXNzPSJsb2dpbmNvbnRlbnQiPg0KICAgICAgICAgICAgICAgICAgICAJPGZvcm0g
+bmFtZT0ibG9naW4iIGFjdGlvbj0iaHR0cHM6Ly9tYWlscy50c2luZ2h1YS5lZHUuY24vY29yZW1h
+aWwvaW5kZXguanNwIiBtZXRob2Q9InBvc3QiIG9ua2V5cHJlc3M9ImNoZWNra2V5KGV2ZW50KSI+
+DQogICAgICAgICAgICAgICAgICAgICAJPGgyPumWu1x4YTJceGUz5YqN6Y2p5rai5oOC55KH6Iys
+56e/PC9oMj4NCgkJCQ0KICAgICAgICAgICAgICAgICAgICAgICAgPGgzPjxzcGFuPumWu1x4YTJc
+eGUz5YqN6Y2p5rai5bSl5a6l5b+V56qXPC9zcGFuPjwvaDM+DQogICAgICAgICAgICAgICAgICAg
+ICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHVzciI+PGlucHV0IG5hbWU9InVpZCIgdHlwZT0idGV4
+dCIgc2l6ZT0iMTUiIHRhYmluZGV4PSIxIiB2YWx1ZT0iIi8+PHNwYW4+QG1haWxzLnRzaW5naHVh
+LmVkdS5jbjwvc3Bhbj48L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxoMz48c3BhbiBj
+bGFzcz0ibGVmdCI+6Za70YZceGFmXHhiMue8jeW2h1x4ODBceGI16Y2h5qyR5Z6z6Za/5rKReDlh
+PC9zcGFuPjxhIGhyZWY9IiMiIGNsYXNzPSJyaWdodCIgaWQ9ImJ1dHRvbiI+6Z+r5ZuoXHhhOFx4
+YmZceGFlXHhiMOmQjumdm+ajm+mQllx4OWM/PC9hPjwvaDM+DQogICAgICAgICAgICAgICAgICAg
+ICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHB3ZCI+PGlucHV0IG5hbWU9InBhc3N3b3JkIiB0eXBl
+PSJwYXNzd29yZCIgdGFiaW5kZXg9IjIiIC8+PC9kaXY+DQoJCQkNCiAgICAgICAgICAgICAgICAg
+ICAgICAgIDxhIGhyZWY9IiMiIGNsYXNzPSJsb2dpbmJ0biIgdGFiaW5kZXg9IjMiIG9uY2xpY2s9
+ImxvZ2luLnN1Ym1pdCgpIj7plrvRhlx4YWZceGIy57yNXHg4ZDwvYT4NCgkJCTxpbnB1dCB0eXBl
+PSJoaWRkZW4iIG5hbWU9ImRvbWFpbiIgdmFsdWU9Im1haWxzLnRzaW5naHVhLmVkdS5jbiI+DQoJ
+CQk8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJsb2NhbGUiIHZhbHVlPSJ6aF9DTiI+DQoJCQk8
+aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJub2RldGVjdCIgdmFsdWU9ImZhbHNlIi8+DQoJCQk8
+aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJhY3Rpb246bG9naW4iPg0KICAgICAgICAgICAgICAg
+ICAgICAJPC9mb3JtPg0KICAgICAgICAgICAgICAgICAgICA8L2Rpdj4NCg0KDQogICAgICAgICAg
+ICAgICAgICAgIDwhLS0gZW5kIC0tPg0KICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJs
+b2dpbmJvdHRvbSI+PC9kaXY+DQogICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICAN
+CiAgICAgICAgICAgIDwvZGl2Pg0KICAgICAgICA8L2Rpdj4NCiAgICA8L2Rpdj4JDQogICAgPCEt
+LSBjZW50ZXIgZW5kIC0tPiAgIA0KICANCiAgICA8IS0tIGZvb3RlciBzdGFydCAtLT4gICAgIA0K
+ICAgIDxkaXYgY2xhc3M9ImZvb3RlciI+DQoNCiAgICAgICAgPHNwYW4gY2xhc3M9ImxlZnQiPkNv
+cHlyaWdodCAmY29weTsgMjAxMyAg5r+e5pKz5oeO5a6V5puf5b6E6KSNXHhhZFx4YTbplrvmpYDn
+iYrlqLzloKXluY1ceDgwXHhlNuWpgFx4ODE8L3NwYW4+PHNwYW4+PC9zcGFuPg0KICAgICAgICA8
+c3BhbiBjbGFzcz0icmlnaHQiPuWpteKAs+WAueWpgOS+gOaiu1x4YWVceGU5XHhhMlx4OTjpkKDl
+m6flmLLlr67oiqXvvIPpjavmv4bnhYI6IDxhIGhyZWY9Im1haWx0bzppdHNAdHNpbmdodWEuZWR1
+LmNuIj5pdHNAdHNpbmdodWEuZWR1LmNuPC9hPjwvc3Bhbj4NCg0KDQogICAgPC9kaXY+DQogICAg
+PCEtLSBmb290ZXIgZW5kIC0tPg0KICAgIDxkaXYgaWQ9InNlY21zZyIgc3R5bGU9ImRpc3BsYXk6
+bm9uZTt0ZXh0LWFsaWduOmxlZnQiPg0KDQoJCTxsaSBzdHlsZT0ibWFyZ2luOjI1cHggMjBweCAx
+NXB4OyI+MemWteWXleiDtumWruWvuOe0kumQlOevrXhhZVx4YTHplrvngrLmo5fpjrLmir3ltLfp
+iorjgobltLLlqLTvvYbmtJjlpp7lgp7ltJDlqIbluqPnkZ3lqLTlhbznn67mtZzmjpPnppLnkoHl
+tIfnp7/nkZzoiKzlnrnnu7HvvITmhrDmtaPlnK3mubTplrtceGEyXHhlM+WKjemNqea2ouW5k+mO
+sFx4YWFceGU36L+U6Za70YZceGFmXHhiMue8jeW2h1x4ODBceGI16Y2h5qyR5Z6z6Za15ZeX5YC4
+XHhhNlx4ODLplrrlrKvnso3lqYDkvbnnppLnkoHltIfnp7/lqLTmu4bmoajmtZzmjpPnppLnkoHl
+tIfnp7/nkZzoiKzlnrnnu7FceGExKOmXgeeSoXhhZVx4ZTTlqIbjiKTmlY3lroBceDgwXHhlNuaa
+qemQoOWbqOe5hOmQoeaIoOeytVx4ODkp6ZCf5pua54Sm6ZCq5Ly05bmD6YqK77mA57W55aiT5rCt
+56iT5aiF44Oo44GQ6Y+H54K15qeV6Za755SbeDgxLOmQoOWbrOaUsemNi+W2ieW0nemIpeW0h+eu
+kemWuee7mOWKmemQnVx4YWVceGU35ouD6ZSU6JeJ5YqG6Za/5raY5aWU5rWc5o6X5qK86Z+rXHhh
+ZFx4ZTfnkZDnkZzniYjmjLZceDgwXHg4MiA8L2xpPg0KCQk8bGkgc3R5bGU9Im1hcmdpbjoxNXB4
+IDIwcHggMTVweDsiPjLplrXll5XmtYdceGFmXHhiN+mWuVx4YWVceGUz5YqL57u75rCx57K76Yil
+54K95YGo6Za5XHhhZVx4ZTPlio7lqIjmiKbmg4LnkofojKznp7/pkI7pnZvmo5vpkJbmu4jmlY3n
+gZ7ogqnnrr3pkKDlm6bnhKbpjYvltonmg4PpjZVceGFiXHhlN+anlemWu1x4YWVceGU054Sm5amA
+5L2556iJXHg4MFx4ZTXpkKPpuYPmg4PpjZXnjpV4YTRceDhk6Za65aSK5YC5XHg4MFx4YTfplr/m
+tpjlpZTnu5flpIvmi4XnkrrjhKbmmo/nvIHnh7Z4ODBceGU15a6V54a6XHg4MFx4YjXpjaHmrJHl
+nrPplr/mtpnnqJFceGE2XHg4MumWuuWsq+eyjOiksOafpeaHl+mNiueEhXhhZlx4YjfpkI7op4Tn
+oo3lqYDvv6DlvLTngJvmqLvmmq3plrlceGFlXHhlM+WKjuWoiOaIpuaDgueSh+iMrOenv+mQjumd
+m+ajm+mQlua7iOWmtFx4ODI8L2xpPg0KDQoNCiAgICA8L2Rpdj4NCg0KPC9ib2R5Pg0KDQo8c2Ny
+aXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+DQpmdW5jdGlvbiBmQm9keVZlcmljYWxBbGlnbigp
+ew0KCXZhciBuQm9keUhlaWdodCA9IDU3MzsNCgl2YXIgbkNsaWVudEhlaWdodCA9IGRvY3VtZW50
+LmRvY3VtZW50RWxlbWVudC5jbGllbnRIZWlnaHQ7DQoJY29uc29sZS5sb2coIm5DbGllbnRIIixu
+Q2xpZW50SGVpZ2h0KTsNCglpZihuQ2xpZW50SGVpZ2h0ID49IG5Cb2R5SGVpZ2h0ICsgMil7DQoJ
+CXZhciBuRGlzID0gKG5DbGllbnRIZWlnaHQgLSBuQm9keUhlaWdodCkvMjsNCgkJZG9jdW1lbnQu
+Ym9keS5zdHlsZS5wYWRkaW5nVG9wID0gKG5EaXMtMjApICsgJ3B4JzsNCgl9ZWxzZXsNCgkJZG9j
+dW1lbnQuYm9keS5zdHlsZS5wYWRkaW5nVG9wID0gJzBweCc7DQoJfQ0KfQ0KCS8vd2luZG93Lm9u
+bG9hZCA9IGZ1bmN0aW9uKCl7DQoJCWZCb2R5VmVyaWNhbEFsaWduKCk7IA0KCS8vfQ0KCQ0KCXdp
+bmRvdy5vbnJlc2l6ZSA9IGZCb2R5VmVyaWNhbEFsaWduOw0KDQoNCjwvc2NyaXB0Pg0KDQo8L2h0
+bWw+DQo=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[62]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache-Coyote/1.1&quot;.</description>
+        <http-transactions>
+            <http-transaction id="62">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 14:21:12 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFs
+Ly9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25h
+bC5kdGQiPg0KPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPg0KPGhl
+YWQ+DQoNCg0KPHRpdGxlPua/nuaSs+aHjuWuleabouafh1x4YWVceGU3XHhhZVx4YjE8L3RpdGxl
+Pg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9jc3MvcmVzZXQu
+Y3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KPGxpbmsgaHJlZj0iL2Nv
+cmVtYWlsL2NvbW1vbi9pbmRleF9jbTQwXzIvY3NzL2Nzcy5jc3MiIHJlbD0ic3R5bGVzaGVldCIg
+dHlwZT0idGV4dC9jc3MiIC8+DQoNCg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2lu
+ZGV4X2NtNDBfMi9jc3MveHMuY3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAv
+Pg0KDQoNCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9qcXVl
+cnktMS44LjEubWluLmpzIiBsYW5ndWFnZT0iamF2YXNjcmlwdCIgdHlwZT0idGV4dC9qYXZhc2Ny
+aXB0Ij48L3NjcmlwdD4NCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBf
+Mi9qcy9qcXVlcnkuYmxvY2tVSS5qcyIgbGFuZ3VhZ2U9ImphdmFzY3JpcHQiIHR5cGU9InRleHQv
+amF2YXNjcmlwdCI+PC9zY3JpcHQ+DQo8c2NyaXB0IHR5cGU9dGV4dC9qYXZhc2NyaXB0PiANCiAg
+ICB3aW5kb3cub25sb2FkPWZ1bmN0aW9uKCl7DQogICAgICAgICAgICAgICBkb2N1bWVudC5nZXRF
+bGVtZW50c0J5TmFtZSgidWlkIilbMF0uZm9jdXMoKTsNCiAgICAgICB9DQoNCg0KZnVuY3Rpb24g
+Y2hlY2trZXkoZSl7IA0KdmFyIGlzaWUgPSAoZG9jdW1lbnQuYWxsKSA/IHRydWUgOiBmYWxzZTsv
+L+mWuOaOi+WAlumPjOWbrOW8sOmQpOalqOmWuOaErOaHj+mQl+iZq+a9u+Wmr+e7mNCmTW96aWxs
+YSANCnZhciBrZXk7IA0KaWYgKGlzaWUpIA0Ka2V5ID0gd2luZG93LmV2ZW50LmtleUNvZGU7Ly9J
+ReWotO+9iOazlemPgVx4YTR3aW5kb3dzLmV2ZW505ai05ruDXHhhY1x4YTnlqIZceGEyIA0KZWxz
+ZSANCnsgDQprZXkgPSBlLndoaWNoOy8vM+WokeaPrHhhYVx4ZTbngLXmu4jmn6hceGFlXHhlNemN
+pOmBjeW8q+mQl+Wgn+eukuWokeaPrHg4MFx4ZTTplrLmu4RceGE2XHg5YuWmr+e4l3hhZVx4YTTp
+lrvjhKXlq7DlqIjvvYnmjIrouYfmkrPntoHpl4Hmj5Lpqo/nu7Hmv4fmvbvlqIbmkrPmq6Hplrvi
+kanmmovplrrlpIjlhLDnu7HloJXmn4XpjrrlqoZ4ODBceDgyZS53aGljaOe8guS9ueeRpemNpFx4
+YWRceGU256iJXHg4MFx4ZTTplrLmu4Xmp5Dpio/nirXnqb/plrjlqYXlgZDnu67nmZVv6Za45oSs
+5oeP6ZCX5oq95pWN6Y2r54a45pqI6ZeB556IeDhhMemWv+aykXg4OSANCn0gDQppZihrZXk9PTEz
+KSANCmRvY3VtZW50LmxvZ2luLnN1Ym1pdCgpOyANCn0NCg0KPCEtLS8vLS0+PCFbQ0RBVEFbLy8+
+PCEtLSANCiQoZG9jdW1lbnQpLnJlYWR5KGZ1bmN0aW9uKCkgeyANCiAgICAkKCcjYnV0dG9uJyku
+Y2xpY2soZnVuY3Rpb24oKSB7IA0KICAgICAgICAkLmJsb2NrVUkoeyANCg0KICAgICAgICAgICAg
+dGl0bGU6ICAgICfplrnnu5jlipfpiofmsK3nqbHpiKnlhqfntJYnLCANCiAgICAgICAgICAgIG1l
+c3NhZ2U6ICAnPHA+6ZCO6Z2b5qOb6ZCW5ruI5p+M5a6l5Zup5p6C6ZCg5Zup5p+J5rWg5aCi5YyW
+55KB5YWF57mG6Za555KheGFmXHhlNeeAteafpeW5jlx4ODBceGU25amA6Jmr56iJXHhhZFx4ZTXn
+u7rpuYPmgr3piorvuYDnhZXplrrloJ3np7Tmv67nhrzmn4jpiorilYLvvIzplr/mtpjoi6/pjrji
+lYPmi6Dpio/jiKHmmqnpkKDlm6jnuZDnu7FceGIwNjI3NzE5NDDplr/mspF4OGM1MTc3NTk0MDwv
+cD4nLCANCg0KDQogICAgICAgICAgICB0aW1lb3V0OiAgIDMwMDAsDQoJCQljc3M6IHsgDQoJCQkJ
+d2lkdGg6NTAwLA0KCQkJCWhlaWdodDoxNTAsDQoJCQkJJ2xpbmUtaGVpZ2h0JzonMTUwcHgnLA0K
+CQkJCWNvbG9yOicjMDAwJywNCgkJCQkndG9wJzonMzAlJywNCgkJCQlib3JkZXI6ICdub25lJywg
+DQogICAgICAgICAgICAgICAgcGFkZGluZzogJzVweCcsIA0KCQkJCSdmb250LXNpemUnOicxNHB4
+JywNCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kQ29sb3I6ICcjZmZmJywgDQoJCQkJJ2JvcmRl
+ci1yYWRpdXMnOiAnNXB4JywNCiAgICAgICAgICAgICAgICAnLXdlYmtpdC1ib3JkZXItcmFkaXVz
+JzogJzVweCcsIA0KICAgICAgICAgICAgICAgICctbW96LWJvcmRlci1yYWRpdXMnOiAnNXB4Jywg
+DQogICAgICAgICAgICAgICAgb3BhY2l0eTogLjkNCiAgICAgICAgICAgIH0gDQogICAgICAgIH0p
+OyANCiAgICB9KTsNCiAgICAkKCcjc2VjJykuY2xpY2soZnVuY3Rpb24oKSB7IA0KICAgICAgICAk
+LmJsb2NrVUkoew0KICAgICAgICAgICAgdGl0bGU6ICAgICfplrnnu5jlipfpiofmsK3nqbHpiKnl
+hqfntJYnLCANCiAgICAgICAgICAgIG1lc3NhZ2U6ICAkKCcjc2VjbXNnJyksIA0KICAgICAgICAg
+ICAgdGltZW91dDogICA1MDAwLA0KCQkJY3NzOiB7IA0KCQkJCXdpZHRoOjUwMCwNCgkJCQloZWln
+aHQ6MTUwLA0KCQkJCWNvbG9yOicjMDAwJywNCgkJCQkndG9wJzonMzAlJywNCgkJCQlib3JkZXI6
+ICdub25lJywgDQogICAgICAgICAgICAgICAgcGFkZGluZzogJzVweCcsIA0KCQkJCSdmb250LXNp
+emUnOicxNHB4JywNCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kQ29sb3I6ICcjZmZmJywgDQoJ
+CQkJJ2JvcmRlci1yYWRpdXMnOiAnNXB4JywNCiAgICAgICAgICAgICAgICAnLXdlYmtpdC1ib3Jk
+ZXItcmFkaXVzJzogJzVweCcsIA0KICAgICAgICAgICAgICAgICctbW96LWJvcmRlci1yYWRpdXMn
+OiAnNXB4JywgDQogICAgICAgICAgICAgICAgb3BhY2l0eTogLjkNCiAgICAgICAgICAgIH0NCiAg
+ICAgICAgfSk7IA0KICAgIH0pOw0KfSk7IA0KDQovLy0tPjwhXV0+IA0KPC9zY3JpcHQ+IA0KDQoN
+CjwvaGVhZD4NCg0KPGJvZHk+DQogICAgPCEtLSBoZWFkZXIgc3RhcnQgLS0+CQ0KPGRpdiBjbGFz
+cz0iaGVhZGVyIj4NCg0KICAgIAk8YSBocmVmPSJodHRwOi8vd3d3LnRzaW5naHVhLmVkdS5jbiIg
+Y2xhc3M9ImhlYWR0eHQiIHRpdGxlPSLmv57mkrPmh47lrpXmm5/lvoTopI1ceGFkXHhhNiI+PC9h
+Pg0KICAgICAgICA8ZGl2IGNsYXNzPSJoZWFkbmF2Ij4NCgkJDQoJCTxhIGhyZWY9Imh0dHA6Ly9t
+YWlsLnRzaW5naHVhLmVkdS5jbiI+6Za65L2555Gl57uXXHg4MFx4ZTnmgqdceDg4PC9hPnwNCgkJ
+DQogICAgICAgICAgICAgICAgPGEgaHJlZj0iL2NvcmVtYWlsL2hlbHAvbm90aWNlLmh0bWwiIGlk
+PSJzZWMiPumQjueRsFx4YTRceDhh6Y2Z5b+b5bmT6Y6wXHhhZVx4ZTPku5s8L2E+fA0KCQk8YSBo
+cmVmPSJodHRwOi8vd3d3LnRzaW5naHVhLmVkdS5jbi9wdWJsaXNoL3ZwbmhlbHAvODMxMS9pbmRl
+eC5odG1sIiB0YXJnZXQ9Il9ibGFuayI+VlBO6ZCg5L245aK96ZCkXHg4NjwvYT58DQoJCTxhIGhy
+ZWY9Ii9jb3JlbWFpbC9oZWxwL2luZGV4X3poX0NOLmpzcCIgdGFyZ2V0PSJfYmxhbmsiPumQoueX
+i3hhZVx4ZTXmv65ceGFhPC9hPg0KCQkNCgkJfDxhIGhyZWY9Ij9sb2NhbGU9ZW5fVVMiPkVuZ2xp
+c2g8L2E+DQoJCQ0KCTwvZGl2Pg0KDQoNCiAgICA8L2Rpdj4NCiAgICA8IS0tIGhlYWRlciBlbmQg
+LS0+DQogIA0KICAgIDwhLS0gY2VudGVyIHN0YXJ0IC0tPg0KICAgIDxkaXYgY2xhc3M9ImNvbnRl
+bnQiPg0KICAgICAgICA8ZGl2IGNsYXNzPSJjb250ZW50d3JhcCI+DQogICAgICAgICAgICA8ZGl2
+IGNsYXNzPSJsb2dpbiI+DQogICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0ibG9naW53cmFwIj4N
+CiAgICAgICAgICAgICAgICAgICAgPCEtLSBzdGFydCAtLT4NCg0KICAgICAgICAgICAgICAgICAg
+ICA8ZGl2IGNsYXNzPSJsb2dpbmNvbnRlbnQiPg0KICAgICAgICAgICAgICAgICAgICAJPGZvcm0g
+bmFtZT0ibG9naW4iIGFjdGlvbj0iaHR0cHM6Ly9tYWlscy50c2luZ2h1YS5lZHUuY24vY29yZW1h
+aWwvaW5kZXguanNwIiBtZXRob2Q9InBvc3QiIG9ua2V5cHJlc3M9ImNoZWNra2V5KGV2ZW50KSI+
+DQogICAgICAgICAgICAgICAgICAgICAJPGgyPumWu1x4YTJceGUz5YqN6Y2p5rai5oOC55KH6Iys
+56e/PC9oMj4NCgkJCQ0KICAgICAgICAgICAgICAgICAgICAgICAgPGgzPjxzcGFuPumWu1x4YTJc
+eGUz5YqN6Y2p5rai5bSl5a6l5b+V56qXPC9zcGFuPjwvaDM+DQogICAgICAgICAgICAgICAgICAg
+ICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHVzciI+PGlucHV0IG5hbWU9InVpZCIgdHlwZT0idGV4
+dCIgc2l6ZT0iMTUiIHRhYmluZGV4PSIxIiB2YWx1ZT0iIi8+PHNwYW4+QG1haWxzLnRzaW5naHVh
+LmVkdS5jbjwvc3Bhbj48L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxoMz48c3BhbiBj
+bGFzcz0ibGVmdCI+6Za70YZceGFmXHhiMue8jeW2h1x4ODBceGI16Y2h5qyR5Z6z6Za/5rKReDlh
+PC9zcGFuPjxhIGhyZWY9IiMiIGNsYXNzPSJyaWdodCIgaWQ9ImJ1dHRvbiI+6Z+r5ZuoXHhhOFx4
+YmZceGFlXHhiMOmQjumdm+ajm+mQllx4OWM/PC9hPjwvaDM+DQogICAgICAgICAgICAgICAgICAg
+ICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHB3ZCI+PGlucHV0IG5hbWU9InBhc3N3b3JkIiB0eXBl
+PSJwYXNzd29yZCIgdGFiaW5kZXg9IjIiIC8+PC9kaXY+DQoJCQkNCiAgICAgICAgICAgICAgICAg
+ICAgICAgIDxhIGhyZWY9IiMiIGNsYXNzPSJsb2dpbmJ0biIgdGFiaW5kZXg9IjMiIG9uY2xpY2s9
+ImxvZ2luLnN1Ym1pdCgpIj7plrvRhlx4YWZceGIy57yNXHg4ZDwvYT4NCgkJCTxpbnB1dCB0eXBl
+PSJoaWRkZW4iIG5hbWU9ImRvbWFpbiIgdmFsdWU9Im1haWxzLnRzaW5naHVhLmVkdS5jbiI+DQoJ
+CQk8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJsb2NhbGUiIHZhbHVlPSJ6aF9DTiI+DQoJCQk8
+aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJub2RldGVjdCIgdmFsdWU9ImZhbHNlIi8+DQoJCQk8
+aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJhY3Rpb246bG9naW4iPg0KICAgICAgICAgICAgICAg
+ICAgICAJPC9mb3JtPg0KICAgICAgICAgICAgICAgICAgICA8L2Rpdj4NCg0KDQogICAgICAgICAg
+ICAgICAgICAgIDwhLS0gZW5kIC0tPg0KICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJs
+b2dpbmJvdHRvbSI+PC9kaXY+DQogICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICAN
+CiAgICAgICAgICAgIDwvZGl2Pg0KICAgICAgICA8L2Rpdj4NCiAgICA8L2Rpdj4JDQogICAgPCEt
+LSBjZW50ZXIgZW5kIC0tPiAgIA0KICANCiAgICA8IS0tIGZvb3RlciBzdGFydCAtLT4gICAgIA0K
+ICAgIDxkaXYgY2xhc3M9ImZvb3RlciI+DQoNCiAgICAgICAgPHNwYW4gY2xhc3M9ImxlZnQiPkNv
+cHlyaWdodCAmY29weTsgMjAxMyAg5r+e5pKz5oeO5a6V5puf5b6E6KSNXHhhZFx4YTbplrvmpYDn
+iYrlqLzloKXluY1ceDgwXHhlNuWpgFx4ODE8L3NwYW4+PHNwYW4+PC9zcGFuPg0KICAgICAgICA8
+c3BhbiBjbGFzcz0icmlnaHQiPuWpteKAs+WAueWpgOS+gOaiu1x4YWVceGU5XHhhMlx4OTjpkKDl
+m6flmLLlr67oiqXvvIPpjavmv4bnhYI6IDxhIGhyZWY9Im1haWx0bzppdHNAdHNpbmdodWEuZWR1
+LmNuIj5pdHNAdHNpbmdodWEuZWR1LmNuPC9hPjwvc3Bhbj4NCg0KDQogICAgPC9kaXY+DQogICAg
+PCEtLSBmb290ZXIgZW5kIC0tPg0KICAgIDxkaXYgaWQ9InNlY21zZyIgc3R5bGU9ImRpc3BsYXk6
+bm9uZTt0ZXh0LWFsaWduOmxlZnQiPg0KDQoJCTxsaSBzdHlsZT0ibWFyZ2luOjI1cHggMjBweCAx
+NXB4OyI+MemWteWXleiDtumWruWvuOe0kumQlOevrXhhZVx4YTHplrvngrLmo5fpjrLmir3ltLfp
+iorjgobltLLlqLTvvYbmtJjlpp7lgp7ltJDlqIbluqPnkZ3lqLTlhbznn67mtZzmjpPnppLnkoHl
+tIfnp7/nkZzoiKzlnrnnu7HvvITmhrDmtaPlnK3mubTplrtceGEyXHhlM+WKjemNqea2ouW5k+mO
+sFx4YWFceGU36L+U6Za70YZceGFmXHhiMue8jeW2h1x4ODBceGI16Y2h5qyR5Z6z6Za15ZeX5YC4
+XHhhNlx4ODLplrrlrKvnso3lqYDkvbnnppLnkoHltIfnp7/lqLTmu4bmoajmtZzmjpPnppLnkoHl
+tIfnp7/nkZzoiKzlnrnnu7FceGExKOmXgeeSoXhhZVx4ZTTlqIbjiKTmlY3lroBceDgwXHhlNuaa
+qemQoOWbqOe5hOmQoeaIoOeytVx4ODkp6ZCf5pua54Sm6ZCq5Ly05bmD6YqK77mA57W55aiT5rCt
+56iT5aiF44Oo44GQ6Y+H54K15qeV6Za755SbeDgxLOmQoOWbrOaUsemNi+W2ieW0nemIpeW0h+eu
+kemWuee7mOWKmemQnVx4YWVceGU35ouD6ZSU6JeJ5YqG6Za/5raY5aWU5rWc5o6X5qK86Z+rXHhh
+ZFx4ZTfnkZDnkZzniYjmjLZceDgwXHg4MiA8L2xpPg0KCQk8bGkgc3R5bGU9Im1hcmdpbjoxNXB4
+IDIwcHggMTVweDsiPjLplrXll5XmtYdceGFmXHhiN+mWuVx4YWVceGUz5YqL57u75rCx57K76Yil
+54K95YGo6Za5XHhhZVx4ZTPlio7lqIjmiKbmg4LnkofojKznp7/pkI7pnZvmo5vpkJbmu4jmlY3n
+gZ7ogqnnrr3pkKDlm6bnhKbpjYvltonmg4PpjZVceGFiXHhlN+anlemWu1x4YWVceGU054Sm5amA
+5L2556iJXHg4MFx4ZTXpkKPpuYPmg4PpjZXnjpV4YTRceDhk6Za65aSK5YC5XHg4MFx4YTfplr/m
+tpjlpZTnu5flpIvmi4XnkrrjhKbmmo/nvIHnh7Z4ODBceGU15a6V54a6XHg4MFx4YjXpjaHmrJHl
+nrPplr/mtpnnqJFceGE2XHg4MumWuuWsq+eyjOiksOafpeaHl+mNiueEhXhhZlx4YjfpkI7op4Tn
+oo3lqYDvv6DlvLTngJvmqLvmmq3plrlceGFlXHhlM+WKjuWoiOaIpuaDgueSh+iMrOenv+mQjumd
+m+ajm+mQlua7iOWmtFx4ODI8L2xpPg0KDQoNCiAgICA8L2Rpdj4NCg0KPC9ib2R5Pg0KDQo8c2Ny
+aXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+DQpmdW5jdGlvbiBmQm9keVZlcmljYWxBbGlnbigp
+ew0KCXZhciBuQm9keUhlaWdodCA9IDU3MzsNCgl2YXIgbkNsaWVudEhlaWdodCA9IGRvY3VtZW50
+LmRvY3VtZW50RWxlbWVudC5jbGllbnRIZWlnaHQ7DQoJY29uc29sZS5sb2coIm5DbGllbnRIIixu
+Q2xpZW50SGVpZ2h0KTsNCglpZihuQ2xpZW50SGVpZ2h0ID49IG5Cb2R5SGVpZ2h0ICsgMil7DQoJ
+CXZhciBuRGlzID0gKG5DbGllbnRIZWlnaHQgLSBuQm9keUhlaWdodCkvMjsNCgkJZG9jdW1lbnQu
+Ym9keS5zdHlsZS5wYWRkaW5nVG9wID0gKG5EaXMtMjApICsgJ3B4JzsNCgl9ZWxzZXsNCgkJZG9j
+dW1lbnQuYm9keS5zdHlsZS5wYWRkaW5nVG9wID0gJzBweCc7DQoJfQ0KfQ0KCS8vd2luZG93Lm9u
+bG9hZCA9IGZ1bmN0aW9uKCl7DQoJCWZCb2R5VmVyaWNhbEFsaWduKCk7IA0KCS8vfQ0KCQ0KCXdp
+bmRvdy5vbnJlc2l6ZSA9IGZCb2R5VmVyaWNhbEFsaWduOw0KDQoNCjwvc2NyaXB0Pg0KDQo8L2h0
+bWw+DQo=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[177]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://mails.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://mails.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="177">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 14:21:16 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFs
+Ly9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25h
+bC5kdGQiPg0KPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPg0KPGhl
+YWQ+DQoNCg0KPHRpdGxlPuWok+WRreW0lemWrVx4YWVceGU3XHhhZVx4YjE8L3RpdGxlPg0KDQo8
+bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9jc3MvcmVzZXQuY3NzIiBy
+ZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KPGxpbmsgaHJlZj0iL2NvcmVtYWls
+L2NvbW1vbi9pbmRleF9jbTQwXzIvY3NzL2Nzcy5jc3MiIHJlbD0ic3R5bGVzaGVldCIgdHlwZT0i
+dGV4dC9jc3MiIC8+DQoNCg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2Nt
+NDBfMi9jc3MvanMuY3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KDQoN
+CjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9qcXVlcnktMS44
+LjEubWluLmpzIiBsYW5ndWFnZT0iamF2YXNjcmlwdCIgdHlwZT0idGV4dC9qYXZhc2NyaXB0Ij48
+L3NjcmlwdD4NCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9q
+cXVlcnkuYmxvY2tVSS5qcyIgbGFuZ3VhZ2U9ImphdmFzY3JpcHQiIHR5cGU9InRleHQvamF2YXNj
+cmlwdCI+PC9zY3JpcHQ+DQo8c2NyaXB0IHR5cGU9dGV4dC9qYXZhc2NyaXB0PiANCiAgICB3aW5k
+b3cub25sb2FkPWZ1bmN0aW9uKCl7DQogICAgICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50
+c0J5TmFtZSgidWlkIilbMF0uZm9jdXMoKTsNCiAgICAgICB9DQoNCg0KZnVuY3Rpb24gY2hlY2tr
+ZXkoZSl7IA0KdmFyIGlzaWUgPSAoZG9jdW1lbnQuYWxsKSA/IHRydWUgOiBmYWxzZTsvL+mNkuOC
+huafh+mPhOeWmEXpjZDlka7nibPmnanmqLvmp7hNb3ppbGxhIA0KdmFyIGtleTsgDQppZiAoaXNp
+ZSkgDQprZXkgPSB3aW5kb3cuZXZlbnQua2V5Q29kZTsvL0lF5rWj6Leo5pWkd2luZG93cy5ldmVu
+dOa1nOWsqeasoiANCmVsc2UgDQp7IA0Ka2V5ID0gZS53aGljaDsvLzPmtpNceGFhXHhlNuWvnOmW
+v1x4YWVceGU15Zqx6Y+B54mI5rmB5raTXHg4MFx4ZTTph5zmppvmqL9ceGFlXHhhNOmQqOWLr+au
+o+mSmOW/k+W9iemWsuW/pee0neadqeask+WZt+mQouKVoemPieODpOe0tumWq+aOi1x4ODBceDgy
+ZS53aGljaOe8geasj+Warea2k1x4ODBceGU06Yec57ux44ig57Sp6Y2K6IKp57KwTW/pjZDlka7n
+ibPplJvloJ/mlZ7plrJceDhhMemUm1x4ODkgDQp9IA0KaWYoa2V5PT0xMykgDQpkb2N1bWVudC5s
+b2dpbi5zdWJtaXQoKTsgDQp9DQoNCjwhLS0vLy0tPjwhW0NEQVRBWy8vPjwhLS0gDQokKGRvY3Vt
+ZW50KS5yZWFkeShmdW5jdGlvbigpIHsgDQogICAgJCgnI2J1dHRvbicpLmNsaWNrKGZ1bmN0aW9u
+KCkgeyANCiAgICAgICAgJC5ibG9ja1VJKHsgDQoNCiAgICAgICAgICAgIHRpdGxlOiAgICAn6Y67
+5oSu44Ga5reH4oSD5LyFJywgDQogICAgICAgICAgICBtZXNzYWdlOiAgJzxwPueAteWXmeeInOmW
+suW2h+eWhueSh+eWr+S7iOe7r+ius+S/iumOrVx4YWZceGU15a+y6Y62XHg4MFx4ZTbmubPmtpNc
+eGFkXHhlNee4vumQouOEpuWfm+mPiOW2heWnn+mWruOEqeajrOmUm+WxveaMqeeSh+OIouaVuOeS
+h+a/k+e0sDYyNzcxOTQw6ZSbXHg4YzUxNzc1OTQwPC9wPicsIA0KDQoNCiAgICAgICAgICAgIHRp
+bWVvdXQ6ICAgMzAwMCwNCgkJCWNzczogeyANCgkJCQl3aWR0aDo1MDAsDQoJCQkJaGVpZ2h0OjE1
+MCwNCgkJCQknbGluZS1oZWlnaHQnOicxNTBweCcsDQoJCQkJY29sb3I6JyMwMDAnLA0KCQkJCSd0
+b3AnOiczMCUnLA0KCQkJCWJvcmRlcjogJ25vbmUnLCANCiAgICAgICAgICAgICAgICBwYWRkaW5n
+OiAnNXB4JywgDQoJCQkJJ2ZvbnQtc2l6ZSc6JzE0cHgnLA0KICAgICAgICAgICAgICAgIGJhY2tn
+cm91bmRDb2xvcjogJyNmZmYnLCANCgkJCQknYm9yZGVyLXJhZGl1cyc6ICc1cHgnLA0KICAgICAg
+ICAgICAgICAgICctd2Via2l0LWJvcmRlci1yYWRpdXMnOiAnNXB4JywgDQogICAgICAgICAgICAg
+ICAgJy1tb3otYm9yZGVyLXJhZGl1cyc6ICc1cHgnLCANCiAgICAgICAgICAgICAgICBvcGFjaXR5
+OiAuOQ0KICAgICAgICAgICAgfSANCiAgICAgICAgfSk7IA0KICAgIH0pOw0KICAgICQoJyNzZWMn
+KS5jbGljayhmdW5jdGlvbigpIHsgDQogICAgICAgICQuYmxvY2tVSSh7DQogICAgICAgICAgICB0
+aXRsZTogICAgJ+mOu+aEruOBmua3h+KEg+S8hScsIA0KICAgICAgICAgICAgbWVzc2FnZTogICQo
+JyNzZWNtc2cnKSwgDQogICAgICAgICAgICB0aW1lb3V0OiAgIDUwMDAsDQoJCQljc3M6IHsgDQoJ
+CQkJd2lkdGg6NTAwLA0KCQkJCWhlaWdodDoxNTAsDQoJCQkJY29sb3I6JyMwMDAnLA0KCQkJCSd0
+b3AnOiczMCUnLA0KCQkJCWJvcmRlcjogJ25vbmUnLCANCiAgICAgICAgICAgICAgICBwYWRkaW5n
+OiAnNXB4JywgDQoJCQkJJ2ZvbnQtc2l6ZSc6JzE0cHgnLA0KICAgICAgICAgICAgICAgIGJhY2tn
+cm91bmRDb2xvcjogJyNmZmYnLCANCgkJCQknYm9yZGVyLXJhZGl1cyc6ICc1cHgnLA0KICAgICAg
+ICAgICAgICAgICctd2Via2l0LWJvcmRlci1yYWRpdXMnOiAnNXB4JywgDQogICAgICAgICAgICAg
+ICAgJy1tb3otYm9yZGVyLXJhZGl1cyc6ICc1cHgnLCANCiAgICAgICAgICAgICAgICBvcGFjaXR5
+OiAuOQ0KICAgICAgICAgICAgfQ0KICAgICAgICB9KTsgDQogICAgfSk7DQp9KTsgDQoNCi8vLS0+
+PCFdXT4gDQo8L3NjcmlwdD4gDQoNCg0KPC9oZWFkPg0KDQo8Ym9keT4NCiAgICA8IS0tIGhlYWRl
+ciBzdGFydCAtLT4JDQo8ZGl2IGNsYXNzPSJoZWFkZXIiPg0KDQogICAgCTxhIGhyZWY9Imh0dHA6
+Ly93d3cudHNpbmdodWEuZWR1LmNuIiBjbGFzcz0iaGVhZHR4dCIgdGl0bGU9IuWok+WRreW0lea+
+ttGDXHhhZFx4YTYiPjwvYT4NCiAgICAgICAgPGRpdiBjbGFzcz0iaGVhZG5hdiI+DQoJCQ0KCQk8
+YSBocmVmPSJodHRwOi8vbWFpbHMudHNpbmdodWEuZWR1LmNuIj7ngJvvuL7mlZPpkJdceDg4PC9h
+PnwNCgkJDQogICAgICAgICAgICAgICAgPGEgaHJlZj0iL2NvcmVtYWlsL2hlbHAvbm90aWNlLmh0
+bWwiIGlkPSJzZWMiPueAueWkiuWPj+mOu+aEruOBmjwvYT58DQoJCTxhIGhyZWY9Imh0dHA6Ly93
+d3cudHNpbmdodWEuZWR1LmNuL3B1Ymxpc2gvdnBuaGVscC84MzExL2luZGV4Lmh0bWwiIHRhcmdl
+dD0iX2JsYW5rIj5WUE7nkoHliafnloY8L2E+fA0KCQk8YSBocmVmPSIvY29yZW1haWwvaGVscC9p
+bmRleF96aF9DTi5qc3AiIHRhcmdldD0iX2JsYW5rIj7nlK9ceGFlXHhlNeWnqjwvYT4NCgkJDQoJ
+CXw8YSBocmVmPSI/bG9jYWxlPWVuX1VTIj5FbmdsaXNoPC9hPg0KCQkNCgk8L2Rpdj4NCg0KDQog
+ICAgPC9kaXY+DQogICAgPCEtLSBoZWFkZXIgZW5kIC0tPg0KICANCiAgICA8IS0tIGNlbnRlciBz
+dGFydCAtLT4NCiAgICA8ZGl2IGNsYXNzPSJjb250ZW50Ij4NCiAgICAgICAgPGRpdiBjbGFzcz0i
+Y29udGVudHdyYXAiPg0KICAgICAgICAgICAgPGRpdiBjbGFzcz0ibG9naW4iPg0KICAgICAgICAg
+ICAgICAgIDxkaXYgY2xhc3M9ImxvZ2lud3JhcCI+DQogICAgICAgICAgICAgICAgICAgIDwhLS0g
+c3RhcnQgLS0+DQoNCiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0ibG9naW5jb250ZW50
+Ij4NCiAgICAgICAgICAgICAgICAgICAgCTxmb3JtIG5hbWU9ImxvZ2luIiBhY3Rpb249Imh0dHBz
+Oi8vdHNpbmdodWEuZWR1LmNuL2NvcmVtYWlsL2luZGV4LmpzcCIgbWV0aG9kPSJwb3N0IiBvbmtl
+eXByZXNzPSJjaGVja2tleShldmVudCkiPg0KICAgICAgICAgICAgICAgICAgICAgCTxoMj7pkKLj
+hKbln5vpkKfor7Lnto08L2gyPg0KCQkJDQogICAgICAgICAgICAgICAgICAgICAgICA8aDM+PHNw
+YW4+6ZCi44Sm5Z+b6Y2a5baP57SwPC9zcGFuPjwvaDM+DQogICAgICAgICAgICAgICAgICAgICAg
+ICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHVzciI+PGlucHV0IG5hbWU9InVpZCIgdHlwZT0idGV4dCIg
+c2l6ZT0iMTUiIHRhYmluZGV4PSIxIiB2YWx1ZT0iIi8+PHNwYW4+QG1haWwudHNpbmdodWEuZWR1
+LmNuPC9zcGFuPjwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgICAgPGgzPjxzcGFuIGNsYXNz
+PSJsZWZ0Ij7pkKfor7Lnto3ngLXll5nniJzplJtceDlhPC9zcGFuPjxhIGhyZWY9IiMiIGNsYXNz
+PSJyaWdodCIgaWQ9ImJ1dHRvbiI+6LmH5qi/XHhhZVx4YjDngLXll5nniJw/PC9hPjwvaDM+DQog
+ICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHB3ZCI+PGlucHV0IG5h
+bWU9InBhc3N3b3JkIiB0eXBlPSJwYXNzd29yZCIgdGFiaW5kZXg9IjIiIC8+PC9kaXY+DQoJCQkN
+CiAgICAgICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9IiMiIGNsYXNzPSJsb2dpbmJ0biIgdGFi
+aW5kZXg9IjMiIG9uY2xpY2s9ImxvZ2luLnN1Ym1pdCgpIj7pkKfor7Lnto08L2E+DQoJCQk8aW5w
+dXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJkb21haW4iIHZhbHVlPSJtYWlsLnRzaW5naHVhLmVkdS5j
+biI+DQoJCQk8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJsb2NhbGUiIHZhbHVlPSJ6aF9DTiI+
+DQoJCQk8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJub2RldGVjdCIgdmFsdWU9ImZhbHNlIi8+
+DQoJCQk8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJhY3Rpb246bG9naW4iPg0KICAgICAgICAg
+ICAgICAgICAgICAJPC9mb3JtPg0KICAgICAgICAgICAgICAgICAgICA8L2Rpdj4NCg0KDQogICAg
+ICAgICAgICAgICAgICAgIDwhLS0gZW5kIC0tPg0KICAgICAgICAgICAgICAgICAgICA8ZGl2IGNs
+YXNzPSJsb2dpbmJvdHRvbSI+PC9kaXY+DQogICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAg
+ICAgICANCiAgICAgICAgICAgIDwvZGl2Pg0KICAgICAgICA8L2Rpdj4NCiAgICA8L2Rpdj4JDQog
+ICAgPCEtLSBjZW50ZXIgZW5kIC0tPiAgIA0KICANCiAgICA8IS0tIGZvb3RlciBzdGFydCAtLT4g
+ICAgIA0KICAgIDxkaXYgY2xhc3M9ImZvb3RlciI+DQoNCiAgICAgICAgPHNwYW4gY2xhc3M9Imxl
+ZnQiPkNvcHlyaWdodCAmY29weTsgMjAxMyAg5aiT5ZGt5bSV5r620YNceGFkXHhhNumQl+Wgn+a9
+iOmOtVx4ODBceGU25rmBPC9zcGFuPjxzcGFuPjwvc3Bhbj4NCiAgICAgICAgPHNwYW4gY2xhc3M9
+InJpZ2h0Ij7mv6HlgpvmuYHpl4JceGFlXHhlOVx4YTJceDk455KH5bOw5by95qOj5aCd5Z+MOiA8
+YSBocmVmPSJtYWlsdG86aXRzQHRzaW5naHVhLmVkdS5jbiI+aXRzQHRzaW5naHVhLmVkdS5jbjwv
+YT48L3NwYW4+DQoNCg0KICAgIDwvZGl2Pg0KICAgIDwhLS0gZm9vdGVyIGVuZCAtLT4NCiAgICA8
+ZGl2IGlkPSJzZWNtc2ciIHN0eWxlPSJkaXNwbGF5Om5vbmU7dGV4dC1hbGlnbjpsZWZ0Ij4NCg0K
+CQk8bGkgc3R5bGU9Im1hcmdpbjoyNXB4IDIwcHggMTVweDsiPjHpiobkvbrpg7TnvIHnhrpceGFl
+XHhhMemQnuWXl+aGs+mNpuOEpOaNoua1o+abn+akgumNiuasjuesiea1vOawq+S6kua1oOius+e2
+jeiksOOIoOe0oeeRleS9ueecsOmQouOEpuWfm+mOu+aEque3temQp+ivsue2jeeAteWXmeeInOmK
+huWCmlx4YTZceDgy6Y+L5ruE5rmB5rWg6K6z57aN5rWc6L2w5LqS5rWg6K6z57aN6KSw44ig57Sh
+KOmWrVx4YWVceGU05qyi6ZSb5bKA5pW455KH5r+I55OR57ubXHg4OSnnkZXkvbnnnLDpjq7jhKbl
+vYHmuJrmtprmq6XopLDmm57nmJHpkK5ceDgxLOeSh+mUi+WBjemNlOKAs+e5gOmOu+aEsOePrueS
+gO+4veWEoOmUm+WxvOS6kumXg+i5reesguiksOaSsVx4ODBceDgyIDwvbGk+DQoJCTxsaSBzdHls
+ZT0ibWFyZ2luOjE1cHggMjBweCAxNXB4OyI+MumKhuS9vVx4YWZceGI36Y6u44Sk57ma57ug4oCz
+44K96Y6u44Sn5q6R6ZCn6K+y57aN54C15ZeZ54ic6ZSb5bG857ma55KH5L255YGN6ZCo5Yur55iR
+6ZCu5L255rmB5raTXHg4MFx4ZTXnlb7pkKjli6tceGE0XHg4ZOmPieWCm1x4ODBceGE36ZSb5bG8
+56yJ5rWj6Leo5pWk57ugXHg4MFx4ZTXltJ/ngLXll5nniJzplJvmtphceGE2XHg4MumPi+a7g+W9
+sumRs+WAn1x4YWZceGI354C55rCt5rmh6Y+H5a2Y5pW86Y6u44Sn5q6R6ZCn6K+y57aN54C15ZeZ
+54ic6YqGXHg4MjwvbGk+DQoNCg0KICAgIDwvZGl2Pg0KDQo8L2JvZHk+DQoNCjxzY3JpcHQgdHlw
+ZT0idGV4dC9qYXZhc2NyaXB0Ij4NCmZ1bmN0aW9uIGZCb2R5VmVyaWNhbEFsaWduKCl7DQoJdmFy
+IG5Cb2R5SGVpZ2h0ID0gNTczOw0KCXZhciBuQ2xpZW50SGVpZ2h0ID0gZG9jdW1lbnQuZG9jdW1l
+bnRFbGVtZW50LmNsaWVudEhlaWdodDsNCgljb25zb2xlLmxvZygibkNsaWVudEgiLG5DbGllbnRI
+ZWlnaHQpOw0KCWlmKG5DbGllbnRIZWlnaHQgPj0gbkJvZHlIZWlnaHQgKyAyKXsNCgkJdmFyIG5E
+aXMgPSAobkNsaWVudEhlaWdodCAtIG5Cb2R5SGVpZ2h0KS8yOw0KCQlkb2N1bWVudC5ib2R5LnN0
+eWxlLnBhZGRpbmdUb3AgPSAobkRpcy0yMCkgKyAncHgnOw0KCX1lbHNlew0KCQlkb2N1bWVudC5i
+b2R5LnN0eWxlLnBhZGRpbmdUb3AgPSAnMHB4JzsNCgl9DQp9DQoJLy93aW5kb3cub25sb2FkID0g
+ZnVuY3Rpb24oKXsNCgkJZkJvZHlWZXJpY2FsQWxpZ24oKTsgDQoJLy99DQoJDQoJd2luZG93Lm9u
+cmVzaXplID0gZkJvZHlWZXJpY2FsQWxpZ247DQoNCg0KPC9zY3JpcHQ+DQoNCjwvaHRtbD4NCg==
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Email address disclosure" plugin="get_emails" severity="Information" url="http://mails.tsinghua.edu.cn/" var="None">
+        <description>The application discloses the &quot;its@tsinghua.edu.cn&quot; email address in 1 different HTTP responses. The first ten URLs which sent the email are:
+ - http://mails.tsinghua.edu.cn/
+</description>
+        <long-description>Email addresses are typically found on &quot;Contact us&quot; pages, however, they can also be found within scripts or code comments of the application. They are used to provide a legitimate means of contacting an organisation.
+
+As one of the initial steps in information gathering, cyber-criminals will spider a website and using automated methods collect as many email addresses as possible, that they may then use in a social engineering attack.
+
+Using the same automated methods, the tool was able to detect one or more email addresses that were stored within the affected page.</long-description>
+        <fix-guidance>E-mail addresses should be presented in such a way that it is hard to process them automatically.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 14:21:12 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFs
+Ly9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25h
+bC5kdGQiPg0KPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPg0KPGhl
+YWQ+DQoNCg0KPHRpdGxlPua/nuaSs+aHjuWuleabouafh1x4YWVceGU3XHhhZVx4YjE8L3RpdGxl
+Pg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9jc3MvcmVzZXQu
+Y3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KPGxpbmsgaHJlZj0iL2Nv
+cmVtYWlsL2NvbW1vbi9pbmRleF9jbTQwXzIvY3NzL2Nzcy5jc3MiIHJlbD0ic3R5bGVzaGVldCIg
+dHlwZT0idGV4dC9jc3MiIC8+DQoNCg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2lu
+ZGV4X2NtNDBfMi9jc3MveHMuY3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAv
+Pg0KDQoNCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9qcXVl
+cnktMS44LjEubWluLmpzIiBsYW5ndWFnZT0iamF2YXNjcmlwdCIgdHlwZT0idGV4dC9qYXZhc2Ny
+aXB0Ij48L3NjcmlwdD4NCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBf
+Mi9qcy9qcXVlcnkuYmxvY2tVSS5qcyIgbGFuZ3VhZ2U9ImphdmFzY3JpcHQiIHR5cGU9InRleHQv
+amF2YXNjcmlwdCI+PC9zY3JpcHQ+DQo8c2NyaXB0IHR5cGU9dGV4dC9qYXZhc2NyaXB0PiANCiAg
+ICB3aW5kb3cub25sb2FkPWZ1bmN0aW9uKCl7DQogICAgICAgICAgICAgICBkb2N1bWVudC5nZXRF
+bGVtZW50c0J5TmFtZSgidWlkIilbMF0uZm9jdXMoKTsNCiAgICAgICB9DQoNCg0KZnVuY3Rpb24g
+Y2hlY2trZXkoZSl7IA0KdmFyIGlzaWUgPSAoZG9jdW1lbnQuYWxsKSA/IHRydWUgOiBmYWxzZTsv
+L+mWuOaOi+WAlumPjOWbrOW8sOmQpOalqOmWuOaErOaHj+mQl+iZq+a9u+Wmr+e7mNCmTW96aWxs
+YSANCnZhciBrZXk7IA0KaWYgKGlzaWUpIA0Ka2V5ID0gd2luZG93LmV2ZW50LmtleUNvZGU7Ly9J
+ReWotO+9iOazlemPgVx4YTR3aW5kb3dzLmV2ZW505ai05ruDXHhhY1x4YTnlqIZceGEyIA0KZWxz
+ZSANCnsgDQprZXkgPSBlLndoaWNoOy8vM+WokeaPrHhhYVx4ZTbngLXmu4jmn6hceGFlXHhlNemN
+pOmBjeW8q+mQl+Wgn+eukuWokeaPrHg4MFx4ZTTplrLmu4RceGE2XHg5YuWmr+e4l3hhZVx4YTTp
+lrvjhKXlq7DlqIjvvYnmjIrouYfmkrPntoHpl4Hmj5Lpqo/nu7Hmv4fmvbvlqIbmkrPmq6Hplrvi
+kanmmovplrrlpIjlhLDnu7HloJXmn4XpjrrlqoZ4ODBceDgyZS53aGljaOe8guS9ueeRpemNpFx4
+YWRceGU256iJXHg4MFx4ZTTplrLmu4Xmp5Dpio/nirXnqb/plrjlqYXlgZDnu67nmZVv6Za45oSs
+5oeP6ZCX5oq95pWN6Y2r54a45pqI6ZeB556IeDhhMemWv+aykXg4OSANCn0gDQppZihrZXk9PTEz
+KSANCmRvY3VtZW50LmxvZ2luLnN1Ym1pdCgpOyANCn0NCg0KPCEtLS8vLS0+PCFbQ0RBVEFbLy8+
+PCEtLSANCiQoZG9jdW1lbnQpLnJlYWR5KGZ1bmN0aW9uKCkgeyANCiAgICAkKCcjYnV0dG9uJyku
+Y2xpY2soZnVuY3Rpb24oKSB7IA0KICAgICAgICAkLmJsb2NrVUkoeyANCg0KICAgICAgICAgICAg
+dGl0bGU6ICAgICfplrnnu5jlipfpiofmsK3nqbHpiKnlhqfntJYnLCANCiAgICAgICAgICAgIG1l
+c3NhZ2U6ICAnPHA+6ZCO6Z2b5qOb6ZCW5ruI5p+M5a6l5Zup5p6C6ZCg5Zup5p+J5rWg5aCi5YyW
+55KB5YWF57mG6Za555KheGFmXHhlNeeAteafpeW5jlx4ODBceGU25amA6Jmr56iJXHhhZFx4ZTXn
+u7rpuYPmgr3piorvuYDnhZXplrrloJ3np7Tmv67nhrzmn4jpiorilYLvvIzplr/mtpjoi6/pjrji
+lYPmi6Dpio/jiKHmmqnpkKDlm6jnuZDnu7FceGIwNjI3NzE5NDDplr/mspF4OGM1MTc3NTk0MDwv
+cD4nLCANCg0KDQogICAgICAgICAgICB0aW1lb3V0OiAgIDMwMDAsDQoJCQljc3M6IHsgDQoJCQkJ
+d2lkdGg6NTAwLA0KCQkJCWhlaWdodDoxNTAsDQoJCQkJJ2xpbmUtaGVpZ2h0JzonMTUwcHgnLA0K
+CQkJCWNvbG9yOicjMDAwJywNCgkJCQkndG9wJzonMzAlJywNCgkJCQlib3JkZXI6ICdub25lJywg
+DQogICAgICAgICAgICAgICAgcGFkZGluZzogJzVweCcsIA0KCQkJCSdmb250LXNpemUnOicxNHB4
+JywNCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kQ29sb3I6ICcjZmZmJywgDQoJCQkJJ2JvcmRl
+ci1yYWRpdXMnOiAnNXB4JywNCiAgICAgICAgICAgICAgICAnLXdlYmtpdC1ib3JkZXItcmFkaXVz
+JzogJzVweCcsIA0KICAgICAgICAgICAgICAgICctbW96LWJvcmRlci1yYWRpdXMnOiAnNXB4Jywg
+DQogICAgICAgICAgICAgICAgb3BhY2l0eTogLjkNCiAgICAgICAgICAgIH0gDQogICAgICAgIH0p
+OyANCiAgICB9KTsNCiAgICAkKCcjc2VjJykuY2xpY2soZnVuY3Rpb24oKSB7IA0KICAgICAgICAk
+LmJsb2NrVUkoew0KICAgICAgICAgICAgdGl0bGU6ICAgICfplrnnu5jlipfpiofmsK3nqbHpiKnl
+hqfntJYnLCANCiAgICAgICAgICAgIG1lc3NhZ2U6ICAkKCcjc2VjbXNnJyksIA0KICAgICAgICAg
+ICAgdGltZW91dDogICA1MDAwLA0KCQkJY3NzOiB7IA0KCQkJCXdpZHRoOjUwMCwNCgkJCQloZWln
+aHQ6MTUwLA0KCQkJCWNvbG9yOicjMDAwJywNCgkJCQkndG9wJzonMzAlJywNCgkJCQlib3JkZXI6
+ICdub25lJywgDQogICAgICAgICAgICAgICAgcGFkZGluZzogJzVweCcsIA0KCQkJCSdmb250LXNp
+emUnOicxNHB4JywNCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kQ29sb3I6ICcjZmZmJywgDQoJ
+CQkJJ2JvcmRlci1yYWRpdXMnOiAnNXB4JywNCiAgICAgICAgICAgICAgICAnLXdlYmtpdC1ib3Jk
+ZXItcmFkaXVzJzogJzVweCcsIA0KICAgICAgICAgICAgICAgICctbW96LWJvcmRlci1yYWRpdXMn
+OiAnNXB4JywgDQogICAgICAgICAgICAgICAgb3BhY2l0eTogLjkNCiAgICAgICAgICAgIH0NCiAg
+ICAgICAgfSk7IA0KICAgIH0pOw0KfSk7IA0KDQovLy0tPjwhXV0+IA0KPC9zY3JpcHQ+IA0KDQoN
+CjwvaGVhZD4NCg0KPGJvZHk+DQogICAgPCEtLSBoZWFkZXIgc3RhcnQgLS0+CQ0KPGRpdiBjbGFz
+cz0iaGVhZGVyIj4NCg0KICAgIAk8YSBocmVmPSJodHRwOi8vd3d3LnRzaW5naHVhLmVkdS5jbiIg
+Y2xhc3M9ImhlYWR0eHQiIHRpdGxlPSLmv57mkrPmh47lrpXmm5/lvoTopI1ceGFkXHhhNiI+PC9h
+Pg0KICAgICAgICA8ZGl2IGNsYXNzPSJoZWFkbmF2Ij4NCgkJDQoJCTxhIGhyZWY9Imh0dHA6Ly9t
+YWlsLnRzaW5naHVhLmVkdS5jbiI+6Za65L2555Gl57uXXHg4MFx4ZTnmgqdceDg4PC9hPnwNCgkJ
+DQogICAgICAgICAgICAgICAgPGEgaHJlZj0iL2NvcmVtYWlsL2hlbHAvbm90aWNlLmh0bWwiIGlk
+PSJzZWMiPumQjueRsFx4YTRceDhh6Y2Z5b+b5bmT6Y6wXHhhZVx4ZTPku5s8L2E+fA0KCQk8YSBo
+cmVmPSJodHRwOi8vd3d3LnRzaW5naHVhLmVkdS5jbi9wdWJsaXNoL3ZwbmhlbHAvODMxMS9pbmRl
+eC5odG1sIiB0YXJnZXQ9Il9ibGFuayI+VlBO6ZCg5L245aK96ZCkXHg4NjwvYT58DQoJCTxhIGhy
+ZWY9Ii9jb3JlbWFpbC9oZWxwL2luZGV4X3poX0NOLmpzcCIgdGFyZ2V0PSJfYmxhbmsiPumQoueX
+i3hhZVx4ZTXmv65ceGFhPC9hPg0KCQkNCgkJfDxhIGhyZWY9Ij9sb2NhbGU9ZW5fVVMiPkVuZ2xp
+c2g8L2E+DQoJCQ0KCTwvZGl2Pg0KDQoNCiAgICA8L2Rpdj4NCiAgICA8IS0tIGhlYWRlciBlbmQg
+LS0+DQogIA0KICAgIDwhLS0gY2VudGVyIHN0YXJ0IC0tPg0KICAgIDxkaXYgY2xhc3M9ImNvbnRl
+bnQiPg0KICAgICAgICA8ZGl2IGNsYXNzPSJjb250ZW50d3JhcCI+DQogICAgICAgICAgICA8ZGl2
+IGNsYXNzPSJsb2dpbiI+DQogICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0ibG9naW53cmFwIj4N
+CiAgICAgICAgICAgICAgICAgICAgPCEtLSBzdGFydCAtLT4NCg0KICAgICAgICAgICAgICAgICAg
+ICA8ZGl2IGNsYXNzPSJsb2dpbmNvbnRlbnQiPg0KICAgICAgICAgICAgICAgICAgICAJPGZvcm0g
+bmFtZT0ibG9naW4iIGFjdGlvbj0iaHR0cHM6Ly9tYWlscy50c2luZ2h1YS5lZHUuY24vY29yZW1h
+aWwvaW5kZXguanNwIiBtZXRob2Q9InBvc3QiIG9ua2V5cHJlc3M9ImNoZWNra2V5KGV2ZW50KSI+
+DQogICAgICAgICAgICAgICAgICAgICAJPGgyPumWu1x4YTJceGUz5YqN6Y2p5rai5oOC55KH6Iys
+56e/PC9oMj4NCgkJCQ0KICAgICAgICAgICAgICAgICAgICAgICAgPGgzPjxzcGFuPumWu1x4YTJc
+eGUz5YqN6Y2p5rai5bSl5a6l5b+V56qXPC9zcGFuPjwvaDM+DQogICAgICAgICAgICAgICAgICAg
+ICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHVzciI+PGlucHV0IG5hbWU9InVpZCIgdHlwZT0idGV4
+dCIgc2l6ZT0iMTUiIHRhYmluZGV4PSIxIiB2YWx1ZT0iIi8+PHNwYW4+QG1haWxzLnRzaW5naHVh
+LmVkdS5jbjwvc3Bhbj48L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxoMz48c3BhbiBj
+bGFzcz0ibGVmdCI+6Za70YZceGFmXHhiMue8jeW2h1x4ODBceGI16Y2h5qyR5Z6z6Za/5rKReDlh
+PC9zcGFuPjxhIGhyZWY9IiMiIGNsYXNzPSJyaWdodCIgaWQ9ImJ1dHRvbiI+6Z+r5ZuoXHhhOFx4
+YmZceGFlXHhiMOmQjumdm+ajm+mQllx4OWM/PC9hPjwvaDM+DQogICAgICAgICAgICAgICAgICAg
+ICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHB3ZCI+PGlucHV0IG5hbWU9InBhc3N3b3JkIiB0eXBl
+PSJwYXNzd29yZCIgdGFiaW5kZXg9IjIiIC8+PC9kaXY+DQoJCQkNCiAgICAgICAgICAgICAgICAg
+ICAgICAgIDxhIGhyZWY9IiMiIGNsYXNzPSJsb2dpbmJ0biIgdGFiaW5kZXg9IjMiIG9uY2xpY2s9
+ImxvZ2luLnN1Ym1pdCgpIj7plrvRhlx4YWZceGIy57yNXHg4ZDwvYT4NCgkJCTxpbnB1dCB0eXBl
+PSJoaWRkZW4iIG5hbWU9ImRvbWFpbiIgdmFsdWU9Im1haWxzLnRzaW5naHVhLmVkdS5jbiI+DQoJ
+CQk8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJsb2NhbGUiIHZhbHVlPSJ6aF9DTiI+DQoJCQk8
+aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJub2RldGVjdCIgdmFsdWU9ImZhbHNlIi8+DQoJCQk8
+aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJhY3Rpb246bG9naW4iPg0KICAgICAgICAgICAgICAg
+ICAgICAJPC9mb3JtPg0KICAgICAgICAgICAgICAgICAgICA8L2Rpdj4NCg0KDQogICAgICAgICAg
+ICAgICAgICAgIDwhLS0gZW5kIC0tPg0KICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJs
+b2dpbmJvdHRvbSI+PC9kaXY+DQogICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICAN
+CiAgICAgICAgICAgIDwvZGl2Pg0KICAgICAgICA8L2Rpdj4NCiAgICA8L2Rpdj4JDQogICAgPCEt
+LSBjZW50ZXIgZW5kIC0tPiAgIA0KICANCiAgICA8IS0tIGZvb3RlciBzdGFydCAtLT4gICAgIA0K
+ICAgIDxkaXYgY2xhc3M9ImZvb3RlciI+DQoNCiAgICAgICAgPHNwYW4gY2xhc3M9ImxlZnQiPkNv
+cHlyaWdodCAmY29weTsgMjAxMyAg5r+e5pKz5oeO5a6V5puf5b6E6KSNXHhhZFx4YTbplrvmpYDn
+iYrlqLzloKXluY1ceDgwXHhlNuWpgFx4ODE8L3NwYW4+PHNwYW4+PC9zcGFuPg0KICAgICAgICA8
+c3BhbiBjbGFzcz0icmlnaHQiPuWpteKAs+WAueWpgOS+gOaiu1x4YWVceGU5XHhhMlx4OTjpkKDl
+m6flmLLlr67oiqXvvIPpjavmv4bnhYI6IDxhIGhyZWY9Im1haWx0bzppdHNAdHNpbmdodWEuZWR1
+LmNuIj5pdHNAdHNpbmdodWEuZWR1LmNuPC9hPjwvc3Bhbj4NCg0KDQogICAgPC9kaXY+DQogICAg
+PCEtLSBmb290ZXIgZW5kIC0tPg0KICAgIDxkaXYgaWQ9InNlY21zZyIgc3R5bGU9ImRpc3BsYXk6
+bm9uZTt0ZXh0LWFsaWduOmxlZnQiPg0KDQoJCTxsaSBzdHlsZT0ibWFyZ2luOjI1cHggMjBweCAx
+NXB4OyI+MemWteWXleiDtumWruWvuOe0kumQlOevrXhhZVx4YTHplrvngrLmo5fpjrLmir3ltLfp
+iorjgobltLLlqLTvvYbmtJjlpp7lgp7ltJDlqIbluqPnkZ3lqLTlhbznn67mtZzmjpPnppLnkoHl
+tIfnp7/nkZzoiKzlnrnnu7HvvITmhrDmtaPlnK3mubTplrtceGEyXHhlM+WKjemNqea2ouW5k+mO
+sFx4YWFceGU36L+U6Za70YZceGFmXHhiMue8jeW2h1x4ODBceGI16Y2h5qyR5Z6z6Za15ZeX5YC4
+XHhhNlx4ODLplrrlrKvnso3lqYDkvbnnppLnkoHltIfnp7/lqLTmu4bmoajmtZzmjpPnppLnkoHl
+tIfnp7/nkZzoiKzlnrnnu7FceGExKOmXgeeSoXhhZVx4ZTTlqIbjiKTmlY3lroBceDgwXHhlNuaa
+qemQoOWbqOe5hOmQoeaIoOeytVx4ODkp6ZCf5pua54Sm6ZCq5Ly05bmD6YqK77mA57W55aiT5rCt
+56iT5aiF44Oo44GQ6Y+H54K15qeV6Za755SbeDgxLOmQoOWbrOaUsemNi+W2ieW0nemIpeW0h+eu
+kemWuee7mOWKmemQnVx4YWVceGU35ouD6ZSU6JeJ5YqG6Za/5raY5aWU5rWc5o6X5qK86Z+rXHhh
+ZFx4ZTfnkZDnkZzniYjmjLZceDgwXHg4MiA8L2xpPg0KCQk8bGkgc3R5bGU9Im1hcmdpbjoxNXB4
+IDIwcHggMTVweDsiPjLplrXll5XmtYdceGFmXHhiN+mWuVx4YWVceGUz5YqL57u75rCx57K76Yil
+54K95YGo6Za5XHhhZVx4ZTPlio7lqIjmiKbmg4LnkofojKznp7/pkI7pnZvmo5vpkJbmu4jmlY3n
+gZ7ogqnnrr3pkKDlm6bnhKbpjYvltonmg4PpjZVceGFiXHhlN+anlemWu1x4YWVceGU054Sm5amA
+5L2556iJXHg4MFx4ZTXpkKPpuYPmg4PpjZXnjpV4YTRceDhk6Za65aSK5YC5XHg4MFx4YTfplr/m
+tpjlpZTnu5flpIvmi4XnkrrjhKbmmo/nvIHnh7Z4ODBceGU15a6V54a6XHg4MFx4YjXpjaHmrJHl
+nrPplr/mtpnnqJFceGE2XHg4MumWuuWsq+eyjOiksOafpeaHl+mNiueEhXhhZlx4YjfpkI7op4Tn
+oo3lqYDvv6DlvLTngJvmqLvmmq3plrlceGFlXHhlM+WKjuWoiOaIpuaDgueSh+iMrOenv+mQjumd
+m+ajm+mQlua7iOWmtFx4ODI8L2xpPg0KDQoNCiAgICA8L2Rpdj4NCg0KPC9ib2R5Pg0KDQo8c2Ny
+aXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+DQpmdW5jdGlvbiBmQm9keVZlcmljYWxBbGlnbigp
+ew0KCXZhciBuQm9keUhlaWdodCA9IDU3MzsNCgl2YXIgbkNsaWVudEhlaWdodCA9IGRvY3VtZW50
+LmRvY3VtZW50RWxlbWVudC5jbGllbnRIZWlnaHQ7DQoJY29uc29sZS5sb2coIm5DbGllbnRIIixu
+Q2xpZW50SGVpZ2h0KTsNCglpZihuQ2xpZW50SGVpZ2h0ID49IG5Cb2R5SGVpZ2h0ICsgMil7DQoJ
+CXZhciBuRGlzID0gKG5DbGllbnRIZWlnaHQgLSBuQm9keUhlaWdodCkvMjsNCgkJZG9jdW1lbnQu
+Ym9keS5zdHlsZS5wYWRkaW5nVG9wID0gKG5EaXMtMjApICsgJ3B4JzsNCgl9ZWxzZXsNCgkJZG9j
+dW1lbnQuYm9keS5zdHlsZS5wYWRkaW5nVG9wID0gJzBweCc7DQoJfQ0KfQ0KCS8vd2luZG93Lm9u
+bG9hZCA9IGZ1bmN0aW9uKCl7DQoJCWZCb2R5VmVyaWNhbEFsaWduKCk7IA0KCS8vfQ0KCQ0KCXdp
+bmRvdy5vbnJlc2l6ZSA9IGZCb2R5VmVyaWNhbEFsaWduOw0KDQoNCjwvc2NyaXB0Pg0KDQo8L2h0
+bWw+DQo=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[37, 198]" method="PUT" name="DAV incorrect configuration" plugin="dav" severity="Information" url="http://mails.tsinghua.edu.cn/xAuga" var="None">
+        <description>DAV seems to be correctly configured and allowing you to use the PUT method but the directory does not have the right permissions that would allow the web server to write to it. This error was found at: &quot;http://mails.tsinghua.edu.cn/xAuga&quot;.</description>
+        <http-transactions>
+            <http-transaction id="37">
+                <http-request>
+                    <status>PUT http://mails.tsinghua.edu.cn/xAuga HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">KfVGOo</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:15 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.35 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.35&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="198">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/xAuga HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:18 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[40, 207, 215, 220, 230, 233, 240, 248]" method="GET" name="DAV methods enabled" plugin="allowed_methods" severity="Information" url="http://mails.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://mails.tsinghua.edu.cn/&quot; has the following allowed methods. These include DAV methods and should be disabled: GET, HEAD, LOCK, OPTIONS, POST, TEXTSEARCH, UNCHECKOUT</description>
+        <http-transactions>
+            <http-transaction id="40">
+                <http-request>
+                    <status>OPTIONS http://mails.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:15 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="GET, HEAD, POST, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="207">
+                <http-request>
+                    <status>HEAD http://mails.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 14:21:19 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="215">
+                <http-request>
+                    <status>OPTIONS http://mails.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:20 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="GET, HEAD, POST, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="220">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 14:21:20 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFs
+Ly9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25h
+bC5kdGQiPg0KPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPg0KPGhl
+YWQ+DQoNCg0KPHRpdGxlPuWok+WRreW0lemWrVx4YWVceGU3XHhhZVx4YjE8L3RpdGxlPg0KDQo8
+bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9jc3MvcmVzZXQuY3NzIiBy
+ZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KPGxpbmsgaHJlZj0iL2NvcmVtYWls
+L2NvbW1vbi9pbmRleF9jbTQwXzIvY3NzL2Nzcy5jc3MiIHJlbD0ic3R5bGVzaGVldCIgdHlwZT0i
+dGV4dC9jc3MiIC8+DQoNCg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2Nt
+NDBfMi9jc3MveHMuY3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KDQoN
+CjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9qcXVlcnktMS44
+LjEubWluLmpzIiBsYW5ndWFnZT0iamF2YXNjcmlwdCIgdHlwZT0idGV4dC9qYXZhc2NyaXB0Ij48
+L3NjcmlwdD4NCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9q
+cXVlcnkuYmxvY2tVSS5qcyIgbGFuZ3VhZ2U9ImphdmFzY3JpcHQiIHR5cGU9InRleHQvamF2YXNj
+cmlwdCI+PC9zY3JpcHQ+DQo8c2NyaXB0IHR5cGU9dGV4dC9qYXZhc2NyaXB0PiANCiAgICB3aW5k
+b3cub25sb2FkPWZ1bmN0aW9uKCl7DQogICAgICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50
+c0J5TmFtZSgidWlkIilbMF0uZm9jdXMoKTsNCiAgICAgICB9DQoNCg0KZnVuY3Rpb24gY2hlY2tr
+ZXkoZSl7IA0KdmFyIGlzaWUgPSAoZG9jdW1lbnQuYWxsKSA/IHRydWUgOiBmYWxzZTsvL+mNkuOC
+huafh+mPhOeWmEXpjZDlka7nibPmnanmqLvmp7hNb3ppbGxhIA0KdmFyIGtleTsgDQppZiAoaXNp
+ZSkgDQprZXkgPSB3aW5kb3cuZXZlbnQua2V5Q29kZTsvL0lF5rWj6Leo5pWkd2luZG93cy5ldmVu
+dOa1nOWsqeasoiANCmVsc2UgDQp7IA0Ka2V5ID0gZS53aGljaDsvLzPmtpNceGFhXHhlNuWvnOmW
+v1x4YWVceGU15Zqx6Y+B54mI5rmB5raTXHg4MFx4ZTTph5zmppvmqL9ceGFlXHhhNOmQqOWLr+au
+o+mSmOW/k+W9iemWsuW/pee0neadqeask+WZt+mQouKVoemPieODpOe0tumWq+aOi1x4ODBceDgy
+ZS53aGljaOe8geasj+Warea2k1x4ODBceGU06Yec57ux44ig57Sp6Y2K6IKp57KwTW/pjZDlka7n
+ibPplJvloJ/mlZ7plrJceDhhMemUm1x4ODkgDQp9IA0KaWYoa2V5PT0xMykgDQpkb2N1bWVudC5s
+b2dpbi5zdWJtaXQoKTsgDQp9DQoNCjwhLS0vLy0tPjwhW0NEQVRBWy8vPjwhLS0gDQokKGRvY3Vt
+ZW50KS5yZWFkeShmdW5jdGlvbigpIHsgDQogICAgJCgnI2J1dHRvbicpLmNsaWNrKGZ1bmN0aW9u
+KCkgeyANCiAgICAgICAgJC5ibG9ja1VJKHsgDQoNCiAgICAgICAgICAgIHRpdGxlOiAgICAn6Y67
+5oSu44Ga5reH4oSD5LyFJywgDQogICAgICAgICAgICBtZXNzYWdlOiAgJzxwPueAteWXmeeInOmW
+suW2h+eWhueSh+eWr+S7iOe7r+ius+S/iumOrVx4YWZceGU15a+y6Y62XHg4MFx4ZTbmubPmtpNc
+eGFkXHhlNee4vumQouOEpuWfm+mPiOW2heWnn+mWruOEqeajrOmUm+WxveaMqeeSh+OIouaVuOeS
+h+a/k+e0sDYyNzcxOTQw6ZSbXHg4YzUxNzc1OTQwPC9wPicsIA0KDQoNCiAgICAgICAgICAgIHRp
+bWVvdXQ6ICAgMzAwMCwNCgkJCWNzczogeyANCgkJCQl3aWR0aDo1MDAsDQoJCQkJaGVpZ2h0OjE1
+MCwNCgkJCQknbGluZS1oZWlnaHQnOicxNTBweCcsDQoJCQkJY29sb3I6JyMwMDAnLA0KCQkJCSd0
+b3AnOiczMCUnLA0KCQkJCWJvcmRlcjogJ25vbmUnLCANCiAgICAgICAgICAgICAgICBwYWRkaW5n
+OiAnNXB4JywgDQoJCQkJJ2ZvbnQtc2l6ZSc6JzE0cHgnLA0KICAgICAgICAgICAgICAgIGJhY2tn
+cm91bmRDb2xvcjogJyNmZmYnLCANCgkJCQknYm9yZGVyLXJhZGl1cyc6ICc1cHgnLA0KICAgICAg
+ICAgICAgICAgICctd2Via2l0LWJvcmRlci1yYWRpdXMnOiAnNXB4JywgDQogICAgICAgICAgICAg
+ICAgJy1tb3otYm9yZGVyLXJhZGl1cyc6ICc1cHgnLCANCiAgICAgICAgICAgICAgICBvcGFjaXR5
+OiAuOQ0KICAgICAgICAgICAgfSANCiAgICAgICAgfSk7IA0KICAgIH0pOw0KICAgICQoJyNzZWMn
+KS5jbGljayhmdW5jdGlvbigpIHsgDQogICAgICAgICQuYmxvY2tVSSh7DQogICAgICAgICAgICB0
+aXRsZTogICAgJ+mOu+aEruOBmua3h+KEg+S8hScsIA0KICAgICAgICAgICAgbWVzc2FnZTogICQo
+JyNzZWNtc2cnKSwgDQogICAgICAgICAgICB0aW1lb3V0OiAgIDUwMDAsDQoJCQljc3M6IHsgDQoJ
+CQkJd2lkdGg6NTAwLA0KCQkJCWhlaWdodDoxNTAsDQoJCQkJY29sb3I6JyMwMDAnLA0KCQkJCSd0
+b3AnOiczMCUnLA0KCQkJCWJvcmRlcjogJ25vbmUnLCANCiAgICAgICAgICAgICAgICBwYWRkaW5n
+OiAnNXB4JywgDQoJCQkJJ2ZvbnQtc2l6ZSc6JzE0cHgnLA0KICAgICAgICAgICAgICAgIGJhY2tn
+cm91bmRDb2xvcjogJyNmZmYnLCANCgkJCQknYm9yZGVyLXJhZGl1cyc6ICc1cHgnLA0KICAgICAg
+ICAgICAgICAgICctd2Via2l0LWJvcmRlci1yYWRpdXMnOiAnNXB4JywgDQogICAgICAgICAgICAg
+ICAgJy1tb3otYm9yZGVyLXJhZGl1cyc6ICc1cHgnLCANCiAgICAgICAgICAgICAgICBvcGFjaXR5
+OiAuOQ0KICAgICAgICAgICAgfQ0KICAgICAgICB9KTsgDQogICAgfSk7DQp9KTsgDQoNCi8vLS0+
+PCFdXT4gDQo8L3NjcmlwdD4gDQoNCg0KPC9oZWFkPg0KDQo8Ym9keT4NCiAgICA8IS0tIGhlYWRl
+ciBzdGFydCAtLT4JDQo8ZGl2IGNsYXNzPSJoZWFkZXIiPg0KDQogICAgCTxhIGhyZWY9Imh0dHA6
+Ly93d3cudHNpbmdodWEuZWR1LmNuIiBjbGFzcz0iaGVhZHR4dCIgdGl0bGU9IuWok+WRreW0lea+
+ttGDXHhhZFx4YTYiPjwvYT4NCiAgICAgICAgPGRpdiBjbGFzcz0iaGVhZG5hdiI+DQoJCQ0KCQk8
+YSBocmVmPSJodHRwOi8vbWFpbC50c2luZ2h1YS5lZHUuY24iPumPgeasj+esgOmQl1x4ODg8L2E+
+fA0KCQkNCiAgICAgICAgICAgICAgICA8YSBocmVmPSIvY29yZW1haWwvaGVscC9ub3RpY2UuaHRt
+bCIgaWQ9InNlYyI+54C55aSK5Y+P6Y675oSu44GaPC9hPnwNCgkJPGEgaHJlZj0iaHR0cDovL3d3
+dy50c2luZ2h1YS5lZHUuY24vcHVibGlzaC92cG5oZWxwLzgzMTEvaW5kZXguaHRtbCIgdGFyZ2V0
+PSJfYmxhbmsiPlZQTueSgeWJp+eWhjwvYT58DQoJCTxhIGhyZWY9Ii9jb3JlbWFpbC9oZWxwL2lu
+ZGV4X3poX0NOLmpzcCIgdGFyZ2V0PSJfYmxhbmsiPueUr1x4YWVceGU15aeqPC9hPg0KCQkNCgkJ
+fDxhIGhyZWY9Ij9sb2NhbGU9ZW5fVVMiPkVuZ2xpc2g8L2E+DQoJCQ0KCTwvZGl2Pg0KDQoNCiAg
+ICA8L2Rpdj4NCiAgICA8IS0tIGhlYWRlciBlbmQgLS0+DQogIA0KICAgIDwhLS0gY2VudGVyIHN0
+YXJ0IC0tPg0KICAgIDxkaXYgY2xhc3M9ImNvbnRlbnQiPg0KICAgICAgICA8ZGl2IGNsYXNzPSJj
+b250ZW50d3JhcCI+DQogICAgICAgICAgICA8ZGl2IGNsYXNzPSJsb2dpbiI+DQogICAgICAgICAg
+ICAgICAgPGRpdiBjbGFzcz0ibG9naW53cmFwIj4NCiAgICAgICAgICAgICAgICAgICAgPCEtLSBz
+dGFydCAtLT4NCg0KICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJsb2dpbmNvbnRlbnQi
+Pg0KICAgICAgICAgICAgICAgICAgICAJPGZvcm0gbmFtZT0ibG9naW4iIGFjdGlvbj0iaHR0cHM6
+Ly9tYWlscy50c2luZ2h1YS5lZHUuY24vY29yZW1haWwvaW5kZXguanNwIiBtZXRob2Q9InBvc3Qi
+IG9ua2V5cHJlc3M9ImNoZWNra2V5KGV2ZW50KSI+DQogICAgICAgICAgICAgICAgICAgICAJPGgy
+PumQouOEpuWfm+mQp+ivsue2jTwvaDI+DQoJCQkNCiAgICAgICAgICAgICAgICAgICAgICAgIDxo
+Mz48c3Bhbj7pkKLjhKbln5vpjZrlto/ntLA8L3NwYW4+PC9oMz4NCiAgICAgICAgICAgICAgICAg
+ICAgICAgIDxkaXYgY2xhc3M9ImlucHdyYXAgdXNyIj48aW5wdXQgbmFtZT0idWlkIiB0eXBlPSJ0
+ZXh0IiBzaXplPSIxNSIgdGFiaW5kZXg9IjEiIHZhbHVlPSIiLz48c3Bhbj5AbWFpbHMudHNpbmdo
+dWEuZWR1LmNuPC9zcGFuPjwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgICAgPGgzPjxzcGFu
+IGNsYXNzPSJsZWZ0Ij7pkKfor7Lnto3ngLXll5nniJzplJtceDlhPC9zcGFuPjxhIGhyZWY9IiMi
+IGNsYXNzPSJyaWdodCIgaWQ9ImJ1dHRvbiI+6LmH5qi/XHhhZVx4YjDngLXll5nniJw/PC9hPjwv
+aDM+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHB3ZCI+PGlu
+cHV0IG5hbWU9InBhc3N3b3JkIiB0eXBlPSJwYXNzd29yZCIgdGFiaW5kZXg9IjIiIC8+PC9kaXY+
+DQoJCQkNCiAgICAgICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9IiMiIGNsYXNzPSJsb2dpbmJ0
+biIgdGFiaW5kZXg9IjMiIG9uY2xpY2s9ImxvZ2luLnN1Ym1pdCgpIj7pkKfor7Lnto08L2E+DQoJ
+CQk8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJkb21haW4iIHZhbHVlPSJtYWlscy50c2luZ2h1
+YS5lZHUuY24iPg0KCQkJPGlucHV0IHR5cGU9ImhpZGRlbiIgbmFtZT0ibG9jYWxlIiB2YWx1ZT0i
+emhfQ04iPg0KCQkJPGlucHV0IHR5cGU9ImhpZGRlbiIgbmFtZT0ibm9kZXRlY3QiIHZhbHVlPSJm
+YWxzZSIvPg0KCQkJPGlucHV0IHR5cGU9ImhpZGRlbiIgbmFtZT0iYWN0aW9uOmxvZ2luIj4NCiAg
+ICAgICAgICAgICAgICAgICAgCTwvZm9ybT4NCiAgICAgICAgICAgICAgICAgICAgPC9kaXY+DQoN
+Cg0KICAgICAgICAgICAgICAgICAgICA8IS0tIGVuZCAtLT4NCiAgICAgICAgICAgICAgICAgICAg
+PGRpdiBjbGFzcz0ibG9naW5ib3R0b20iPjwvZGl2Pg0KICAgICAgICAgICAgICAgIDwvZGl2Pg0K
+ICAgICAgICAgICAgDQogICAgICAgICAgICA8L2Rpdj4NCiAgICAgICAgPC9kaXY+DQogICAgPC9k
+aXY+CQ0KICAgIDwhLS0gY2VudGVyIGVuZCAtLT4gICANCiAgDQogICAgPCEtLSBmb290ZXIgc3Rh
+cnQgLS0+ICAgICANCiAgICA8ZGl2IGNsYXNzPSJmb290ZXIiPg0KDQogICAgICAgIDxzcGFuIGNs
+YXNzPSJsZWZ0Ij5Db3B5cmlnaHQgJmNvcHk7IDIwMTMgIOWok+WRreW0lea+ttGDXHhhZFx4YTbp
+kJfloJ/mvYjpjrVceDgwXHhlNua5gTwvc3Bhbj48c3Bhbj48L3NwYW4+DQogICAgICAgIDxzcGFu
+IGNsYXNzPSJyaWdodCI+5r+h5YKb5rmB6ZeCXHhhZVx4ZTlceGEyXHg5OOeSh+WzsOW8veajo+Wg
+neWfjDogPGEgaHJlZj0ibWFpbHRvOml0c0B0c2luZ2h1YS5lZHUuY24iPml0c0B0c2luZ2h1YS5l
+ZHUuY248L2E+PC9zcGFuPg0KDQoNCiAgICA8L2Rpdj4NCiAgICA8IS0tIGZvb3RlciBlbmQgLS0+
+DQogICAgPGRpdiBpZD0ic2VjbXNnIiBzdHlsZT0iZGlzcGxheTpub25lO3RleHQtYWxpZ246bGVm
+dCI+DQoNCgkJPGxpIHN0eWxlPSJtYXJnaW46MjVweCAyMHB4IDE1cHg7Ij4x6YqG5L266YO057yB
+54a6XHhhZVx4YTHpkJ7ll5fmhrPpjabjhKTmjaLmtaPmm5/mpILpjYrmrI7nrInmtbzmsKvkupLm
+taDorrPnto3opLDjiKDntKHnkZXkvbnnnLDpkKLjhKbln5vpjrvmhKrnt7XpkKfor7Lnto3ngLXl
+l5nniJzpioblgppceGE2XHg4MumPi+a7hOa5gea1oOius+e2jea1nOi9sOS6kua1oOius+e2jeik
+sOOIoOe0oSjplq1ceGFlXHhlNOasoumUm+WygOaVuOeSh+a/iOeTkee7m1x4ODkp55GV5L2555yw
+6Y6u44Sm5b2B5ria5raa5qul6KSw5pue55iR6ZCuXHg4MSznkofplIvlgY3pjZTigLPnuYDpjrvm
+hLDnj67nkoDvuL3lhKDplJvlsbzkupLpl4Poua3nrILopLDmkrFceDgwXHg4MiA8L2xpPg0KCQk8
+bGkgc3R5bGU9Im1hcmdpbjoxNXB4IDIwcHggMTVweDsiPjLpiobkvb1ceGFmXHhiN+mOruOEpOe5
+mue7oOKAs+OCvemOruOEp+aukemQp+ivsue2jeeAteWXmeeInOmUm+WxvOe5mueSh+S9ueWBjemQ
+qOWLq+eYkemQruS9uea5gea2k1x4ODBceGU155W+6ZCo5YurXHhhNFx4OGTpj4nlgptceDgwXHhh
+N+mUm+WxvOesiea1o+i3qOaVpOe7oFx4ODBceGU15bSf54C15ZeZ54ic6ZSb5raYXHhhNlx4ODLp
+j4vmu4PlvbLpkbPlgJ9ceGFmXHhiN+eAueawrea5oemPh+WtmOaVvOmOruOEp+aukemQp+ivsue2
+jeeAteWXmeeInOmKhlx4ODI8L2xpPg0KDQoNCiAgICA8L2Rpdj4NCg0KPC9ib2R5Pg0KDQo8c2Ny
+aXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+DQpmdW5jdGlvbiBmQm9keVZlcmljYWxBbGlnbigp
+ew0KCXZhciBuQm9keUhlaWdodCA9IDU3MzsNCgl2YXIgbkNsaWVudEhlaWdodCA9IGRvY3VtZW50
+LmRvY3VtZW50RWxlbWVudC5jbGllbnRIZWlnaHQ7DQoJY29uc29sZS5sb2coIm5DbGllbnRIIixu
+Q2xpZW50SGVpZ2h0KTsNCglpZihuQ2xpZW50SGVpZ2h0ID49IG5Cb2R5SGVpZ2h0ICsgMil7DQoJ
+CXZhciBuRGlzID0gKG5DbGllbnRIZWlnaHQgLSBuQm9keUhlaWdodCkvMjsNCgkJZG9jdW1lbnQu
+Ym9keS5zdHlsZS5wYWRkaW5nVG9wID0gKG5EaXMtMjApICsgJ3B4JzsNCgl9ZWxzZXsNCgkJZG9j
+dW1lbnQuYm9keS5zdHlsZS5wYWRkaW5nVG9wID0gJzBweCc7DQoJfQ0KfQ0KCS8vd2luZG93Lm9u
+bG9hZCA9IGZ1bmN0aW9uKCl7DQoJCWZCb2R5VmVyaWNhbEFsaWduKCk7IA0KCS8vfQ0KCQ0KCXdp
+bmRvdy5vbnJlc2l6ZSA9IGZCb2R5VmVyaWNhbEFsaWduOw0KDQoNCjwvc2NyaXB0Pg0KDQo8L2h0
+bWw+DQo=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="240">
+                <http-request>
+                    <status>POST http://mails.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 14:21:33 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFs
+Ly9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25h
+bC5kdGQiPg0KPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPg0KPGhl
+YWQ+DQoNCg0KPHRpdGxlPuWok+WRreW0lemWrVx4YWVceGU3XHhhZVx4YjE8L3RpdGxlPg0KDQo8
+bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9jc3MvcmVzZXQuY3NzIiBy
+ZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KPGxpbmsgaHJlZj0iL2NvcmVtYWls
+L2NvbW1vbi9pbmRleF9jbTQwXzIvY3NzL2Nzcy5jc3MiIHJlbD0ic3R5bGVzaGVldCIgdHlwZT0i
+dGV4dC9jc3MiIC8+DQoNCg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2Nt
+NDBfMi9jc3MveHMuY3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KDQoN
+CjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9qcXVlcnktMS44
+LjEubWluLmpzIiBsYW5ndWFnZT0iamF2YXNjcmlwdCIgdHlwZT0idGV4dC9qYXZhc2NyaXB0Ij48
+L3NjcmlwdD4NCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9q
+cXVlcnkuYmxvY2tVSS5qcyIgbGFuZ3VhZ2U9ImphdmFzY3JpcHQiIHR5cGU9InRleHQvamF2YXNj
+cmlwdCI+PC9zY3JpcHQ+DQo8c2NyaXB0IHR5cGU9dGV4dC9qYXZhc2NyaXB0PiANCiAgICB3aW5k
+b3cub25sb2FkPWZ1bmN0aW9uKCl7DQogICAgICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50
+c0J5TmFtZSgidWlkIilbMF0uZm9jdXMoKTsNCiAgICAgICB9DQoNCg0KZnVuY3Rpb24gY2hlY2tr
+ZXkoZSl7IA0KdmFyIGlzaWUgPSAoZG9jdW1lbnQuYWxsKSA/IHRydWUgOiBmYWxzZTsvL+mNkuOC
+huafh+mPhOeWmEXpjZDlka7nibPmnanmqLvmp7hNb3ppbGxhIA0KdmFyIGtleTsgDQppZiAoaXNp
+ZSkgDQprZXkgPSB3aW5kb3cuZXZlbnQua2V5Q29kZTsvL0lF5rWj6Leo5pWkd2luZG93cy5ldmVu
+dOa1nOWsqeasoiANCmVsc2UgDQp7IA0Ka2V5ID0gZS53aGljaDsvLzPmtpNceGFhXHhlNuWvnOmW
+v1x4YWVceGU15Zqx6Y+B54mI5rmB5raTXHg4MFx4ZTTph5zmppvmqL9ceGFlXHhhNOmQqOWLr+au
+o+mSmOW/k+W9iemWsuW/pee0neadqeask+WZt+mQouKVoemPieODpOe0tumWq+aOi1x4ODBceDgy
+ZS53aGljaOe8geasj+Warea2k1x4ODBceGU06Yec57ux44ig57Sp6Y2K6IKp57KwTW/pjZDlka7n
+ibPplJvloJ/mlZ7plrJceDhhMemUm1x4ODkgDQp9IA0KaWYoa2V5PT0xMykgDQpkb2N1bWVudC5s
+b2dpbi5zdWJtaXQoKTsgDQp9DQoNCjwhLS0vLy0tPjwhW0NEQVRBWy8vPjwhLS0gDQokKGRvY3Vt
+ZW50KS5yZWFkeShmdW5jdGlvbigpIHsgDQogICAgJCgnI2J1dHRvbicpLmNsaWNrKGZ1bmN0aW9u
+KCkgeyANCiAgICAgICAgJC5ibG9ja1VJKHsgDQoNCiAgICAgICAgICAgIHRpdGxlOiAgICAn6Y67
+5oSu44Ga5reH4oSD5LyFJywgDQogICAgICAgICAgICBtZXNzYWdlOiAgJzxwPueAteWXmeeInOmW
+suW2h+eWhueSh+eWr+S7iOe7r+ius+S/iumOrVx4YWZceGU15a+y6Y62XHg4MFx4ZTbmubPmtpNc
+eGFkXHhlNee4vumQouOEpuWfm+mPiOW2heWnn+mWruOEqeajrOmUm+WxveaMqeeSh+OIouaVuOeS
+h+a/k+e0sDYyNzcxOTQw6ZSbXHg4YzUxNzc1OTQwPC9wPicsIA0KDQoNCiAgICAgICAgICAgIHRp
+bWVvdXQ6ICAgMzAwMCwNCgkJCWNzczogeyANCgkJCQl3aWR0aDo1MDAsDQoJCQkJaGVpZ2h0OjE1
+MCwNCgkJCQknbGluZS1oZWlnaHQnOicxNTBweCcsDQoJCQkJY29sb3I6JyMwMDAnLA0KCQkJCSd0
+b3AnOiczMCUnLA0KCQkJCWJvcmRlcjogJ25vbmUnLCANCiAgICAgICAgICAgICAgICBwYWRkaW5n
+OiAnNXB4JywgDQoJCQkJJ2ZvbnQtc2l6ZSc6JzE0cHgnLA0KICAgICAgICAgICAgICAgIGJhY2tn
+cm91bmRDb2xvcjogJyNmZmYnLCANCgkJCQknYm9yZGVyLXJhZGl1cyc6ICc1cHgnLA0KICAgICAg
+ICAgICAgICAgICctd2Via2l0LWJvcmRlci1yYWRpdXMnOiAnNXB4JywgDQogICAgICAgICAgICAg
+ICAgJy1tb3otYm9yZGVyLXJhZGl1cyc6ICc1cHgnLCANCiAgICAgICAgICAgICAgICBvcGFjaXR5
+OiAuOQ0KICAgICAgICAgICAgfSANCiAgICAgICAgfSk7IA0KICAgIH0pOw0KICAgICQoJyNzZWMn
+KS5jbGljayhmdW5jdGlvbigpIHsgDQogICAgICAgICQuYmxvY2tVSSh7DQogICAgICAgICAgICB0
+aXRsZTogICAgJ+mOu+aEruOBmua3h+KEg+S8hScsIA0KICAgICAgICAgICAgbWVzc2FnZTogICQo
+JyNzZWNtc2cnKSwgDQogICAgICAgICAgICB0aW1lb3V0OiAgIDUwMDAsDQoJCQljc3M6IHsgDQoJ
+CQkJd2lkdGg6NTAwLA0KCQkJCWhlaWdodDoxNTAsDQoJCQkJY29sb3I6JyMwMDAnLA0KCQkJCSd0
+b3AnOiczMCUnLA0KCQkJCWJvcmRlcjogJ25vbmUnLCANCiAgICAgICAgICAgICAgICBwYWRkaW5n
+OiAnNXB4JywgDQoJCQkJJ2ZvbnQtc2l6ZSc6JzE0cHgnLA0KICAgICAgICAgICAgICAgIGJhY2tn
+cm91bmRDb2xvcjogJyNmZmYnLCANCgkJCQknYm9yZGVyLXJhZGl1cyc6ICc1cHgnLA0KICAgICAg
+ICAgICAgICAgICctd2Via2l0LWJvcmRlci1yYWRpdXMnOiAnNXB4JywgDQogICAgICAgICAgICAg
+ICAgJy1tb3otYm9yZGVyLXJhZGl1cyc6ICc1cHgnLCANCiAgICAgICAgICAgICAgICBvcGFjaXR5
+OiAuOQ0KICAgICAgICAgICAgfQ0KICAgICAgICB9KTsgDQogICAgfSk7DQp9KTsgDQoNCi8vLS0+
+PCFdXT4gDQo8L3NjcmlwdD4gDQoNCg0KPC9oZWFkPg0KDQo8Ym9keT4NCiAgICA8IS0tIGhlYWRl
+ciBzdGFydCAtLT4JDQo8ZGl2IGNsYXNzPSJoZWFkZXIiPg0KDQogICAgCTxhIGhyZWY9Imh0dHA6
+Ly93d3cudHNpbmdodWEuZWR1LmNuIiBjbGFzcz0iaGVhZHR4dCIgdGl0bGU9IuWok+WRreW0lea+
+ttGDXHhhZFx4YTYiPjwvYT4NCiAgICAgICAgPGRpdiBjbGFzcz0iaGVhZG5hdiI+DQoJCQ0KCQk8
+YSBocmVmPSJodHRwOi8vbWFpbC50c2luZ2h1YS5lZHUuY24iPumPgeasj+esgOmQl1x4ODg8L2E+
+fA0KCQkNCiAgICAgICAgICAgICAgICA8YSBocmVmPSIvY29yZW1haWwvaGVscC9ub3RpY2UuaHRt
+bCIgaWQ9InNlYyI+54C55aSK5Y+P6Y675oSu44GaPC9hPnwNCgkJPGEgaHJlZj0iaHR0cDovL3d3
+dy50c2luZ2h1YS5lZHUuY24vcHVibGlzaC92cG5oZWxwLzgzMTEvaW5kZXguaHRtbCIgdGFyZ2V0
+PSJfYmxhbmsiPlZQTueSgeWJp+eWhjwvYT58DQoJCTxhIGhyZWY9Ii9jb3JlbWFpbC9oZWxwL2lu
+ZGV4X3poX0NOLmpzcCIgdGFyZ2V0PSJfYmxhbmsiPueUr1x4YWVceGU15aeqPC9hPg0KCQkNCgkJ
+fDxhIGhyZWY9Ij9sb2NhbGU9ZW5fVVMiPkVuZ2xpc2g8L2E+DQoJCQ0KCTwvZGl2Pg0KDQoNCiAg
+ICA8L2Rpdj4NCiAgICA8IS0tIGhlYWRlciBlbmQgLS0+DQogIA0KICAgIDwhLS0gY2VudGVyIHN0
+YXJ0IC0tPg0KICAgIDxkaXYgY2xhc3M9ImNvbnRlbnQiPg0KICAgICAgICA8ZGl2IGNsYXNzPSJj
+b250ZW50d3JhcCI+DQogICAgICAgICAgICA8ZGl2IGNsYXNzPSJsb2dpbiI+DQogICAgICAgICAg
+ICAgICAgPGRpdiBjbGFzcz0ibG9naW53cmFwIj4NCiAgICAgICAgICAgICAgICAgICAgPCEtLSBz
+dGFydCAtLT4NCg0KICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJsb2dpbmNvbnRlbnQi
+Pg0KICAgICAgICAgICAgICAgICAgICAJPGZvcm0gbmFtZT0ibG9naW4iIGFjdGlvbj0iaHR0cHM6
+Ly9tYWlscy50c2luZ2h1YS5lZHUuY24vY29yZW1haWwvaW5kZXguanNwIiBtZXRob2Q9InBvc3Qi
+IG9ua2V5cHJlc3M9ImNoZWNra2V5KGV2ZW50KSI+DQogICAgICAgICAgICAgICAgICAgICAJPGgy
+PumQouOEpuWfm+mQp+ivsue2jTwvaDI+DQoJCQkNCiAgICAgICAgICAgICAgICAgICAgICAgIDxo
+Mz48c3Bhbj7pkKLjhKbln5vpjZrlto/ntLA8L3NwYW4+PC9oMz4NCiAgICAgICAgICAgICAgICAg
+ICAgICAgIDxkaXYgY2xhc3M9ImlucHdyYXAgdXNyIj48aW5wdXQgbmFtZT0idWlkIiB0eXBlPSJ0
+ZXh0IiBzaXplPSIxNSIgdGFiaW5kZXg9IjEiIHZhbHVlPSIiLz48c3Bhbj5AbWFpbHMudHNpbmdo
+dWEuZWR1LmNuPC9zcGFuPjwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgICAgPGgzPjxzcGFu
+IGNsYXNzPSJsZWZ0Ij7pkKfor7Lnto3ngLXll5nniJzplJtceDlhPC9zcGFuPjxhIGhyZWY9IiMi
+IGNsYXNzPSJyaWdodCIgaWQ9ImJ1dHRvbiI+6LmH5qi/XHhhZVx4YjDngLXll5nniJw/PC9hPjwv
+aDM+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHB3ZCI+PGlu
+cHV0IG5hbWU9InBhc3N3b3JkIiB0eXBlPSJwYXNzd29yZCIgdGFiaW5kZXg9IjIiIC8+PC9kaXY+
+DQoJCQkNCiAgICAgICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9IiMiIGNsYXNzPSJsb2dpbmJ0
+biIgdGFiaW5kZXg9IjMiIG9uY2xpY2s9ImxvZ2luLnN1Ym1pdCgpIj7pkKfor7Lnto08L2E+DQoJ
+CQk8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJkb21haW4iIHZhbHVlPSJtYWlscy50c2luZ2h1
+YS5lZHUuY24iPg0KCQkJPGlucHV0IHR5cGU9ImhpZGRlbiIgbmFtZT0ibG9jYWxlIiB2YWx1ZT0i
+emhfQ04iPg0KCQkJPGlucHV0IHR5cGU9ImhpZGRlbiIgbmFtZT0ibm9kZXRlY3QiIHZhbHVlPSJm
+YWxzZSIvPg0KCQkJPGlucHV0IHR5cGU9ImhpZGRlbiIgbmFtZT0iYWN0aW9uOmxvZ2luIj4NCiAg
+ICAgICAgICAgICAgICAgICAgCTwvZm9ybT4NCiAgICAgICAgICAgICAgICAgICAgPC9kaXY+DQoN
+Cg0KICAgICAgICAgICAgICAgICAgICA8IS0tIGVuZCAtLT4NCiAgICAgICAgICAgICAgICAgICAg
+PGRpdiBjbGFzcz0ibG9naW5ib3R0b20iPjwvZGl2Pg0KICAgICAgICAgICAgICAgIDwvZGl2Pg0K
+ICAgICAgICAgICAgDQogICAgICAgICAgICA8L2Rpdj4NCiAgICAgICAgPC9kaXY+DQogICAgPC9k
+aXY+CQ0KICAgIDwhLS0gY2VudGVyIGVuZCAtLT4gICANCiAgDQogICAgPCEtLSBmb290ZXIgc3Rh
+cnQgLS0+ICAgICANCiAgICA8ZGl2IGNsYXNzPSJmb290ZXIiPg0KDQogICAgICAgIDxzcGFuIGNs
+YXNzPSJsZWZ0Ij5Db3B5cmlnaHQgJmNvcHk7IDIwMTMgIOWok+WRreW0lea+ttGDXHhhZFx4YTbp
+kJfloJ/mvYjpjrVceDgwXHhlNua5gTwvc3Bhbj48c3Bhbj48L3NwYW4+DQogICAgICAgIDxzcGFu
+IGNsYXNzPSJyaWdodCI+5r+h5YKb5rmB6ZeCXHhhZVx4ZTlceGEyXHg5OOeSh+WzsOW8veajo+Wg
+neWfjDogPGEgaHJlZj0ibWFpbHRvOml0c0B0c2luZ2h1YS5lZHUuY24iPml0c0B0c2luZ2h1YS5l
+ZHUuY248L2E+PC9zcGFuPg0KDQoNCiAgICA8L2Rpdj4NCiAgICA8IS0tIGZvb3RlciBlbmQgLS0+
+DQogICAgPGRpdiBpZD0ic2VjbXNnIiBzdHlsZT0iZGlzcGxheTpub25lO3RleHQtYWxpZ246bGVm
+dCI+DQoNCgkJPGxpIHN0eWxlPSJtYXJnaW46MjVweCAyMHB4IDE1cHg7Ij4x6YqG5L266YO057yB
+54a6XHhhZVx4YTHpkJ7ll5fmhrPpjabjhKTmjaLmtaPmm5/mpILpjYrmrI7nrInmtbzmsKvkupLm
+taDorrPnto3opLDjiKDntKHnkZXkvbnnnLDpkKLjhKbln5vpjrvmhKrnt7XpkKfor7Lnto3ngLXl
+l5nniJzpioblgppceGE2XHg4MumPi+a7hOa5gea1oOius+e2jea1nOi9sOS6kua1oOius+e2jeik
+sOOIoOe0oSjplq1ceGFlXHhlNOasoumUm+WygOaVuOeSh+a/iOeTkee7m1x4ODkp55GV5L2555yw
+6Y6u44Sm5b2B5ria5raa5qul6KSw5pue55iR6ZCuXHg4MSznkofplIvlgY3pjZTigLPnuYDpjrvm
+hLDnj67nkoDvuL3lhKDplJvlsbzkupLpl4Poua3nrILopLDmkrFceDgwXHg4MiA8L2xpPg0KCQk8
+bGkgc3R5bGU9Im1hcmdpbjoxNXB4IDIwcHggMTVweDsiPjLpiobkvb1ceGFmXHhiN+mOruOEpOe5
+mue7oOKAs+OCvemOruOEp+aukemQp+ivsue2jeeAteWXmeeInOmUm+WxvOe5mueSh+S9ueWBjemQ
+qOWLq+eYkemQruS9uea5gea2k1x4ODBceGU155W+6ZCo5YurXHhhNFx4OGTpj4nlgptceDgwXHhh
+N+mUm+WxvOesiea1o+i3qOaVpOe7oFx4ODBceGU15bSf54C15ZeZ54ic6ZSb5raYXHhhNlx4ODLp
+j4vmu4PlvbLpkbPlgJ9ceGFmXHhiN+eAueawrea5oemPh+WtmOaVvOmOruOEp+aukemQp+ivsue2
+jeeAteWXmeeInOmKhlx4ODI8L2xpPg0KDQoNCiAgICA8L2Rpdj4NCg0KPC9ib2R5Pg0KDQo8c2Ny
+aXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+DQpmdW5jdGlvbiBmQm9keVZlcmljYWxBbGlnbigp
+ew0KCXZhciBuQm9keUhlaWdodCA9IDU3MzsNCgl2YXIgbkNsaWVudEhlaWdodCA9IGRvY3VtZW50
+LmRvY3VtZW50RWxlbWVudC5jbGllbnRIZWlnaHQ7DQoJY29uc29sZS5sb2coIm5DbGllbnRIIixu
+Q2xpZW50SGVpZ2h0KTsNCglpZihuQ2xpZW50SGVpZ2h0ID49IG5Cb2R5SGVpZ2h0ICsgMil7DQoJ
+CXZhciBuRGlzID0gKG5DbGllbnRIZWlnaHQgLSBuQm9keUhlaWdodCkvMjsNCgkJZG9jdW1lbnQu
+Ym9keS5zdHlsZS5wYWRkaW5nVG9wID0gKG5EaXMtMjApICsgJ3B4JzsNCgl9ZWxzZXsNCgkJZG9j
+dW1lbnQuYm9keS5zdHlsZS5wYWRkaW5nVG9wID0gJzBweCc7DQoJfQ0KfQ0KCS8vd2luZG93Lm9u
+bG9hZCA9IGZ1bmN0aW9uKCl7DQoJCWZCb2R5VmVyaWNhbEFsaWduKCk7IA0KCS8vfQ0KCQ0KCXdp
+bmRvdy5vbnJlc2l6ZSA9IGZCb2R5VmVyaWNhbEFsaWduOw0KDQoNCjwvc2NyaXB0Pg0KDQo8L2h0
+bWw+DQo=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.204.9</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="thuwebcookie=265056166.20480.0000; path=/" field="set-cookie"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 14:21:12 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFs
+Ly9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25h
+bC5kdGQiPg0KPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPg0KPGhl
+YWQ+DQoNCg0KPHRpdGxlPuWok+WRreW0lemWrVx4YWVceGU3XHhhZVx4YjE8L3RpdGxlPg0KDQo8
+bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9jc3MvcmVzZXQuY3NzIiBy
+ZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KPGxpbmsgaHJlZj0iL2NvcmVtYWls
+L2NvbW1vbi9pbmRleF9jbTQwXzIvY3NzL2Nzcy5jc3MiIHJlbD0ic3R5bGVzaGVldCIgdHlwZT0i
+dGV4dC9jc3MiIC8+DQoNCg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2Nt
+NDBfMi9jc3MveHMuY3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KDQoN
+CjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9qcXVlcnktMS44
+LjEubWluLmpzIiBsYW5ndWFnZT0iamF2YXNjcmlwdCIgdHlwZT0idGV4dC9qYXZhc2NyaXB0Ij48
+L3NjcmlwdD4NCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9q
+cXVlcnkuYmxvY2tVSS5qcyIgbGFuZ3VhZ2U9ImphdmFzY3JpcHQiIHR5cGU9InRleHQvamF2YXNj
+cmlwdCI+PC9zY3JpcHQ+DQo8c2NyaXB0IHR5cGU9dGV4dC9qYXZhc2NyaXB0PiANCiAgICB3aW5k
+b3cub25sb2FkPWZ1bmN0aW9uKCl7DQogICAgICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50
+c0J5TmFtZSgidWlkIilbMF0uZm9jdXMoKTsNCiAgICAgICB9DQoNCg0KZnVuY3Rpb24gY2hlY2tr
+ZXkoZSl7IA0KdmFyIGlzaWUgPSAoZG9jdW1lbnQuYWxsKSA/IHRydWUgOiBmYWxzZTsvL+mNkuOC
+huafh+mPhOeWmEXpjZDlka7nibPmnanmqLvmp7hNb3ppbGxhIA0KdmFyIGtleTsgDQppZiAoaXNp
+ZSkgDQprZXkgPSB3aW5kb3cuZXZlbnQua2V5Q29kZTsvL0lF5rWj6Leo5pWkd2luZG93cy5ldmVu
+dOa1nOWsqeasoiANCmVsc2UgDQp7IA0Ka2V5ID0gZS53aGljaDsvLzPmtpNceGFhXHhlNuWvnOmW
+v1x4YWVceGU15Zqx6Y+B54mI5rmB5raTXHg4MFx4ZTTph5zmppvmqL9ceGFlXHhhNOmQqOWLr+au
+o+mSmOW/k+W9iemWsuW/pee0neadqeask+WZt+mQouKVoemPieODpOe0tumWq+aOi1x4ODBceDgy
+ZS53aGljaOe8geasj+Warea2k1x4ODBceGU06Yec57ux44ig57Sp6Y2K6IKp57KwTW/pjZDlka7n
+ibPplJvloJ/mlZ7plrJceDhhMemUm1x4ODkgDQp9IA0KaWYoa2V5PT0xMykgDQpkb2N1bWVudC5s
+b2dpbi5zdWJtaXQoKTsgDQp9DQoNCjwhLS0vLy0tPjwhW0NEQVRBWy8vPjwhLS0gDQokKGRvY3Vt
+ZW50KS5yZWFkeShmdW5jdGlvbigpIHsgDQogICAgJCgnI2J1dHRvbicpLmNsaWNrKGZ1bmN0aW9u
+KCkgeyANCiAgICAgICAgJC5ibG9ja1VJKHsgDQoNCiAgICAgICAgICAgIHRpdGxlOiAgICAn6Y67
+5oSu44Ga5reH4oSD5LyFJywgDQogICAgICAgICAgICBtZXNzYWdlOiAgJzxwPueAteWXmeeInOmW
+suW2h+eWhueSh+eWr+S7iOe7r+ius+S/iumOrVx4YWZceGU15a+y6Y62XHg4MFx4ZTbmubPmtpNc
+eGFkXHhlNee4vumQouOEpuWfm+mPiOW2heWnn+mWruOEqeajrOmUm+WxveaMqeeSh+OIouaVuOeS
+h+a/k+e0sDYyNzcxOTQw6ZSbXHg4YzUxNzc1OTQwPC9wPicsIA0KDQoNCiAgICAgICAgICAgIHRp
+bWVvdXQ6ICAgMzAwMCwNCgkJCWNzczogeyANCgkJCQl3aWR0aDo1MDAsDQoJCQkJaGVpZ2h0OjE1
+MCwNCgkJCQknbGluZS1oZWlnaHQnOicxNTBweCcsDQoJCQkJY29sb3I6JyMwMDAnLA0KCQkJCSd0
+b3AnOiczMCUnLA0KCQkJCWJvcmRlcjogJ25vbmUnLCANCiAgICAgICAgICAgICAgICBwYWRkaW5n
+OiAnNXB4JywgDQoJCQkJJ2ZvbnQtc2l6ZSc6JzE0cHgnLA0KICAgICAgICAgICAgICAgIGJhY2tn
+cm91bmRDb2xvcjogJyNmZmYnLCANCgkJCQknYm9yZGVyLXJhZGl1cyc6ICc1cHgnLA0KICAgICAg
+ICAgICAgICAgICctd2Via2l0LWJvcmRlci1yYWRpdXMnOiAnNXB4JywgDQogICAgICAgICAgICAg
+ICAgJy1tb3otYm9yZGVyLXJhZGl1cyc6ICc1cHgnLCANCiAgICAgICAgICAgICAgICBvcGFjaXR5
+OiAuOQ0KICAgICAgICAgICAgfSANCiAgICAgICAgfSk7IA0KICAgIH0pOw0KICAgICQoJyNzZWMn
+KS5jbGljayhmdW5jdGlvbigpIHsgDQogICAgICAgICQuYmxvY2tVSSh7DQogICAgICAgICAgICB0
+aXRsZTogICAgJ+mOu+aEruOBmua3h+KEg+S8hScsIA0KICAgICAgICAgICAgbWVzc2FnZTogICQo
+JyNzZWNtc2cnKSwgDQogICAgICAgICAgICB0aW1lb3V0OiAgIDUwMDAsDQoJCQljc3M6IHsgDQoJ
+CQkJd2lkdGg6NTAwLA0KCQkJCWhlaWdodDoxNTAsDQoJCQkJY29sb3I6JyMwMDAnLA0KCQkJCSd0
+b3AnOiczMCUnLA0KCQkJCWJvcmRlcjogJ25vbmUnLCANCiAgICAgICAgICAgICAgICBwYWRkaW5n
+OiAnNXB4JywgDQoJCQkJJ2ZvbnQtc2l6ZSc6JzE0cHgnLA0KICAgICAgICAgICAgICAgIGJhY2tn
+cm91bmRDb2xvcjogJyNmZmYnLCANCgkJCQknYm9yZGVyLXJhZGl1cyc6ICc1cHgnLA0KICAgICAg
+ICAgICAgICAgICctd2Via2l0LWJvcmRlci1yYWRpdXMnOiAnNXB4JywgDQogICAgICAgICAgICAg
+ICAgJy1tb3otYm9yZGVyLXJhZGl1cyc6ICc1cHgnLCANCiAgICAgICAgICAgICAgICBvcGFjaXR5
+OiAuOQ0KICAgICAgICAgICAgfQ0KICAgICAgICB9KTsgDQogICAgfSk7DQp9KTsgDQoNCi8vLS0+
+PCFdXT4gDQo8L3NjcmlwdD4gDQoNCg0KPC9oZWFkPg0KDQo8Ym9keT4NCiAgICA8IS0tIGhlYWRl
+ciBzdGFydCAtLT4JDQo8ZGl2IGNsYXNzPSJoZWFkZXIiPg0KDQogICAgCTxhIGhyZWY9Imh0dHA6
+Ly93d3cudHNpbmdodWEuZWR1LmNuIiBjbGFzcz0iaGVhZHR4dCIgdGl0bGU9IuWok+WRreW0lea+
+ttGDXHhhZFx4YTYiPjwvYT4NCiAgICAgICAgPGRpdiBjbGFzcz0iaGVhZG5hdiI+DQoJCQ0KCQk8
+YSBocmVmPSJodHRwOi8vbWFpbC50c2luZ2h1YS5lZHUuY24iPumPgeasj+esgOmQl1x4ODg8L2E+
+fA0KCQkNCiAgICAgICAgICAgICAgICA8YSBocmVmPSIvY29yZW1haWwvaGVscC9ub3RpY2UuaHRt
+bCIgaWQ9InNlYyI+54C55aSK5Y+P6Y675oSu44GaPC9hPnwNCgkJPGEgaHJlZj0iaHR0cDovL3d3
+dy50c2luZ2h1YS5lZHUuY24vcHVibGlzaC92cG5oZWxwLzgzMTEvaW5kZXguaHRtbCIgdGFyZ2V0
+PSJfYmxhbmsiPlZQTueSgeWJp+eWhjwvYT58DQoJCTxhIGhyZWY9Ii9jb3JlbWFpbC9oZWxwL2lu
+ZGV4X3poX0NOLmpzcCIgdGFyZ2V0PSJfYmxhbmsiPueUr1x4YWVceGU15aeqPC9hPg0KCQkNCgkJ
+fDxhIGhyZWY9Ij9sb2NhbGU9ZW5fVVMiPkVuZ2xpc2g8L2E+DQoJCQ0KCTwvZGl2Pg0KDQoNCiAg
+ICA8L2Rpdj4NCiAgICA8IS0tIGhlYWRlciBlbmQgLS0+DQogIA0KICAgIDwhLS0gY2VudGVyIHN0
+YXJ0IC0tPg0KICAgIDxkaXYgY2xhc3M9ImNvbnRlbnQiPg0KICAgICAgICA8ZGl2IGNsYXNzPSJj
+b250ZW50d3JhcCI+DQogICAgICAgICAgICA8ZGl2IGNsYXNzPSJsb2dpbiI+DQogICAgICAgICAg
+ICAgICAgPGRpdiBjbGFzcz0ibG9naW53cmFwIj4NCiAgICAgICAgICAgICAgICAgICAgPCEtLSBz
+dGFydCAtLT4NCg0KICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJsb2dpbmNvbnRlbnQi
+Pg0KICAgICAgICAgICAgICAgICAgICAJPGZvcm0gbmFtZT0ibG9naW4iIGFjdGlvbj0iaHR0cHM6
+Ly9tYWlscy50c2luZ2h1YS5lZHUuY24vY29yZW1haWwvaW5kZXguanNwIiBtZXRob2Q9InBvc3Qi
+IG9ua2V5cHJlc3M9ImNoZWNra2V5KGV2ZW50KSI+DQogICAgICAgICAgICAgICAgICAgICAJPGgy
+PumQouOEpuWfm+mQp+ivsue2jTwvaDI+DQoJCQkNCiAgICAgICAgICAgICAgICAgICAgICAgIDxo
+Mz48c3Bhbj7pkKLjhKbln5vpjZrlto/ntLA8L3NwYW4+PC9oMz4NCiAgICAgICAgICAgICAgICAg
+ICAgICAgIDxkaXYgY2xhc3M9ImlucHdyYXAgdXNyIj48aW5wdXQgbmFtZT0idWlkIiB0eXBlPSJ0
+ZXh0IiBzaXplPSIxNSIgdGFiaW5kZXg9IjEiIHZhbHVlPSIiLz48c3Bhbj5AbWFpbHMudHNpbmdo
+dWEuZWR1LmNuPC9zcGFuPjwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgICAgPGgzPjxzcGFu
+IGNsYXNzPSJsZWZ0Ij7pkKfor7Lnto3ngLXll5nniJzplJtceDlhPC9zcGFuPjxhIGhyZWY9IiMi
+IGNsYXNzPSJyaWdodCIgaWQ9ImJ1dHRvbiI+6LmH5qi/XHhhZVx4YjDngLXll5nniJw/PC9hPjwv
+aDM+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHB3ZCI+PGlu
+cHV0IG5hbWU9InBhc3N3b3JkIiB0eXBlPSJwYXNzd29yZCIgdGFiaW5kZXg9IjIiIC8+PC9kaXY+
+DQoJCQkNCiAgICAgICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9IiMiIGNsYXNzPSJsb2dpbmJ0
+biIgdGFiaW5kZXg9IjMiIG9uY2xpY2s9ImxvZ2luLnN1Ym1pdCgpIj7pkKfor7Lnto08L2E+DQoJ
+CQk8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJkb21haW4iIHZhbHVlPSJtYWlscy50c2luZ2h1
+YS5lZHUuY24iPg0KCQkJPGlucHV0IHR5cGU9ImhpZGRlbiIgbmFtZT0ibG9jYWxlIiB2YWx1ZT0i
+emhfQ04iPg0KCQkJPGlucHV0IHR5cGU9ImhpZGRlbiIgbmFtZT0ibm9kZXRlY3QiIHZhbHVlPSJm
+YWxzZSIvPg0KCQkJPGlucHV0IHR5cGU9ImhpZGRlbiIgbmFtZT0iYWN0aW9uOmxvZ2luIj4NCiAg
+ICAgICAgICAgICAgICAgICAgCTwvZm9ybT4NCiAgICAgICAgICAgICAgICAgICAgPC9kaXY+DQoN
+Cg0KICAgICAgICAgICAgICAgICAgICA8IS0tIGVuZCAtLT4NCiAgICAgICAgICAgICAgICAgICAg
+PGRpdiBjbGFzcz0ibG9naW5ib3R0b20iPjwvZGl2Pg0KICAgICAgICAgICAgICAgIDwvZGl2Pg0K
+ICAgICAgICAgICAgDQogICAgICAgICAgICA8L2Rpdj4NCiAgICAgICAgPC9kaXY+DQogICAgPC9k
+aXY+CQ0KICAgIDwhLS0gY2VudGVyIGVuZCAtLT4gICANCiAgDQogICAgPCEtLSBmb290ZXIgc3Rh
+cnQgLS0+ICAgICANCiAgICA8ZGl2IGNsYXNzPSJmb290ZXIiPg0KDQogICAgICAgIDxzcGFuIGNs
+YXNzPSJsZWZ0Ij5Db3B5cmlnaHQgJmNvcHk7IDIwMTMgIOWok+WRreW0lea+ttGDXHhhZFx4YTbp
+kJfloJ/mvYjpjrVceDgwXHhlNua5gTwvc3Bhbj48c3Bhbj48L3NwYW4+DQogICAgICAgIDxzcGFu
+IGNsYXNzPSJyaWdodCI+5r+h5YKb5rmB6ZeCXHhhZVx4ZTlceGEyXHg5OOeSh+WzsOW8veajo+Wg
+neWfjDogPGEgaHJlZj0ibWFpbHRvOml0c0B0c2luZ2h1YS5lZHUuY24iPml0c0B0c2luZ2h1YS5l
+ZHUuY248L2E+PC9zcGFuPg0KDQoNCiAgICA8L2Rpdj4NCiAgICA8IS0tIGZvb3RlciBlbmQgLS0+
+DQogICAgPGRpdiBpZD0ic2VjbXNnIiBzdHlsZT0iZGlzcGxheTpub25lO3RleHQtYWxpZ246bGVm
+dCI+DQoNCgkJPGxpIHN0eWxlPSJtYXJnaW46MjVweCAyMHB4IDE1cHg7Ij4x6YqG5L266YO057yB
+54a6XHhhZVx4YTHpkJ7ll5fmhrPpjabjhKTmjaLmtaPmm5/mpILpjYrmrI7nrInmtbzmsKvkupLm
+taDorrPnto3opLDjiKDntKHnkZXkvbnnnLDpkKLjhKbln5vpjrvmhKrnt7XpkKfor7Lnto3ngLXl
+l5nniJzpioblgppceGE2XHg4MumPi+a7hOa5gea1oOius+e2jea1nOi9sOS6kua1oOius+e2jeik
+sOOIoOe0oSjplq1ceGFlXHhlNOasoumUm+WygOaVuOeSh+a/iOeTkee7m1x4ODkp55GV5L2555yw
+6Y6u44Sm5b2B5ria5raa5qul6KSw5pue55iR6ZCuXHg4MSznkofplIvlgY3pjZTigLPnuYDpjrvm
+hLDnj67nkoDvuL3lhKDplJvlsbzkupLpl4Poua3nrILopLDmkrFceDgwXHg4MiA8L2xpPg0KCQk8
+bGkgc3R5bGU9Im1hcmdpbjoxNXB4IDIwcHggMTVweDsiPjLpiobkvb1ceGFmXHhiN+mOruOEpOe5
+mue7oOKAs+OCvemOruOEp+aukemQp+ivsue2jeeAteWXmeeInOmUm+WxvOe5mueSh+S9ueWBjemQ
+qOWLq+eYkemQruS9uea5gea2k1x4ODBceGU155W+6ZCo5YurXHhhNFx4OGTpj4nlgptceDgwXHhh
+N+mUm+WxvOesiea1o+i3qOaVpOe7oFx4ODBceGU15bSf54C15ZeZ54ic6ZSb5raYXHhhNlx4ODLp
+j4vmu4PlvbLpkbPlgJ9ceGFmXHhiN+eAueawrea5oemPh+WtmOaVvOmOruOEp+aukemQp+ivsue2
+jeeAteWXmeeInOmKhlx4ODI8L2xpPg0KDQoNCiAgICA8L2Rpdj4NCg0KPC9ib2R5Pg0KDQo8c2Ny
+aXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+DQpmdW5jdGlvbiBmQm9keVZlcmljYWxBbGlnbigp
+ew0KCXZhciBuQm9keUhlaWdodCA9IDU3MzsNCgl2YXIgbkNsaWVudEhlaWdodCA9IGRvY3VtZW50
+LmRvY3VtZW50RWxlbWVudC5jbGllbnRIZWlnaHQ7DQoJY29uc29sZS5sb2coIm5DbGllbnRIIixu
+Q2xpZW50SGVpZ2h0KTsNCglpZihuQ2xpZW50SGVpZ2h0ID49IG5Cb2R5SGVpZ2h0ICsgMil7DQoJ
+CXZhciBuRGlzID0gKG5DbGllbnRIZWlnaHQgLSBuQm9keUhlaWdodCkvMjsNCgkJZG9jdW1lbnQu
+Ym9keS5zdHlsZS5wYWRkaW5nVG9wID0gKG5EaXMtMjApICsgJ3B4JzsNCgl9ZWxzZXsNCgkJZG9j
+dW1lbnQuYm9keS5zdHlsZS5wYWRkaW5nVG9wID0gJzBweCc7DQoJfQ0KfQ0KCS8vd2luZG93Lm9u
+bG9hZCA9IGZ1bmN0aW9uKCl7DQoJCWZCb2R5VmVyaWNhbEFsaWduKCk7IA0KCS8vfQ0KCQ0KCXdp
+bmRvdy5vbnJlc2l6ZSA9IGZCb2R5VmVyaWNhbEFsaWduOw0KDQoNCjwvc2NyaXB0Pg0KDQo8L2h0
+bWw+DQo=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 37, 44, 46, 67, 100, 181, 182, 183, 184, 185, 186, 187]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="zh-CN" field="content-language"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="Thu, 01 Jan 1970 00:00:00 GMT" field="expires"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="No-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 14:21:12 GMT" field="date"/>
+                        <header content="text/html;charset=gbk" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFs
+Ly9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25h
+bC5kdGQiPg0KPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPg0KPGhl
+YWQ+DQoNCg0KPHRpdGxlPua/nuaSs+aHjuWuleabouafh1x4YWVceGU3XHhhZVx4YjE8L3RpdGxl
+Pg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9jc3MvcmVzZXQu
+Y3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KPGxpbmsgaHJlZj0iL2Nv
+cmVtYWlsL2NvbW1vbi9pbmRleF9jbTQwXzIvY3NzL2Nzcy5jc3MiIHJlbD0ic3R5bGVzaGVldCIg
+dHlwZT0idGV4dC9jc3MiIC8+DQoNCg0KDQo8bGluayBocmVmPSIvY29yZW1haWwvY29tbW9uL2lu
+ZGV4X2NtNDBfMi9jc3MveHMuY3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAv
+Pg0KDQoNCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBfMi9qcy9qcXVl
+cnktMS44LjEubWluLmpzIiBsYW5ndWFnZT0iamF2YXNjcmlwdCIgdHlwZT0idGV4dC9qYXZhc2Ny
+aXB0Ij48L3NjcmlwdD4NCjxzY3JpcHQgc3JjPSIvY29yZW1haWwvY29tbW9uL2luZGV4X2NtNDBf
+Mi9qcy9qcXVlcnkuYmxvY2tVSS5qcyIgbGFuZ3VhZ2U9ImphdmFzY3JpcHQiIHR5cGU9InRleHQv
+amF2YXNjcmlwdCI+PC9zY3JpcHQ+DQo8c2NyaXB0IHR5cGU9dGV4dC9qYXZhc2NyaXB0PiANCiAg
+ICB3aW5kb3cub25sb2FkPWZ1bmN0aW9uKCl7DQogICAgICAgICAgICAgICBkb2N1bWVudC5nZXRF
+bGVtZW50c0J5TmFtZSgidWlkIilbMF0uZm9jdXMoKTsNCiAgICAgICB9DQoNCg0KZnVuY3Rpb24g
+Y2hlY2trZXkoZSl7IA0KdmFyIGlzaWUgPSAoZG9jdW1lbnQuYWxsKSA/IHRydWUgOiBmYWxzZTsv
+L+mWuOaOi+WAlumPjOWbrOW8sOmQpOalqOmWuOaErOaHj+mQl+iZq+a9u+Wmr+e7mNCmTW96aWxs
+YSANCnZhciBrZXk7IA0KaWYgKGlzaWUpIA0Ka2V5ID0gd2luZG93LmV2ZW50LmtleUNvZGU7Ly9J
+ReWotO+9iOazlemPgVx4YTR3aW5kb3dzLmV2ZW505ai05ruDXHhhY1x4YTnlqIZceGEyIA0KZWxz
+ZSANCnsgDQprZXkgPSBlLndoaWNoOy8vM+WokeaPrHhhYVx4ZTbngLXmu4jmn6hceGFlXHhlNemN
+pOmBjeW8q+mQl+Wgn+eukuWokeaPrHg4MFx4ZTTplrLmu4RceGE2XHg5YuWmr+e4l3hhZVx4YTTp
+lrvjhKXlq7DlqIjvvYnmjIrouYfmkrPntoHpl4Hmj5Lpqo/nu7Hmv4fmvbvlqIbmkrPmq6Hplrvi
+kanmmovplrrlpIjlhLDnu7HloJXmn4XpjrrlqoZ4ODBceDgyZS53aGljaOe8guS9ueeRpemNpFx4
+YWRceGU256iJXHg4MFx4ZTTplrLmu4Xmp5Dpio/nirXnqb/plrjlqYXlgZDnu67nmZVv6Za45oSs
+5oeP6ZCX5oq95pWN6Y2r54a45pqI6ZeB556IeDhhMemWv+aykXg4OSANCn0gDQppZihrZXk9PTEz
+KSANCmRvY3VtZW50LmxvZ2luLnN1Ym1pdCgpOyANCn0NCg0KPCEtLS8vLS0+PCFbQ0RBVEFbLy8+
+PCEtLSANCiQoZG9jdW1lbnQpLnJlYWR5KGZ1bmN0aW9uKCkgeyANCiAgICAkKCcjYnV0dG9uJyku
+Y2xpY2soZnVuY3Rpb24oKSB7IA0KICAgICAgICAkLmJsb2NrVUkoeyANCg0KICAgICAgICAgICAg
+dGl0bGU6ICAgICfplrnnu5jlipfpiofmsK3nqbHpiKnlhqfntJYnLCANCiAgICAgICAgICAgIG1l
+c3NhZ2U6ICAnPHA+6ZCO6Z2b5qOb6ZCW5ruI5p+M5a6l5Zup5p6C6ZCg5Zup5p+J5rWg5aCi5YyW
+55KB5YWF57mG6Za555KheGFmXHhlNeeAteafpeW5jlx4ODBceGU25amA6Jmr56iJXHhhZFx4ZTXn
+u7rpuYPmgr3piorvuYDnhZXplrrloJ3np7Tmv67nhrzmn4jpiorilYLvvIzplr/mtpjoi6/pjrji
+lYPmi6Dpio/jiKHmmqnpkKDlm6jnuZDnu7FceGIwNjI3NzE5NDDplr/mspF4OGM1MTc3NTk0MDwv
+cD4nLCANCg0KDQogICAgICAgICAgICB0aW1lb3V0OiAgIDMwMDAsDQoJCQljc3M6IHsgDQoJCQkJ
+d2lkdGg6NTAwLA0KCQkJCWhlaWdodDoxNTAsDQoJCQkJJ2xpbmUtaGVpZ2h0JzonMTUwcHgnLA0K
+CQkJCWNvbG9yOicjMDAwJywNCgkJCQkndG9wJzonMzAlJywNCgkJCQlib3JkZXI6ICdub25lJywg
+DQogICAgICAgICAgICAgICAgcGFkZGluZzogJzVweCcsIA0KCQkJCSdmb250LXNpemUnOicxNHB4
+JywNCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kQ29sb3I6ICcjZmZmJywgDQoJCQkJJ2JvcmRl
+ci1yYWRpdXMnOiAnNXB4JywNCiAgICAgICAgICAgICAgICAnLXdlYmtpdC1ib3JkZXItcmFkaXVz
+JzogJzVweCcsIA0KICAgICAgICAgICAgICAgICctbW96LWJvcmRlci1yYWRpdXMnOiAnNXB4Jywg
+DQogICAgICAgICAgICAgICAgb3BhY2l0eTogLjkNCiAgICAgICAgICAgIH0gDQogICAgICAgIH0p
+OyANCiAgICB9KTsNCiAgICAkKCcjc2VjJykuY2xpY2soZnVuY3Rpb24oKSB7IA0KICAgICAgICAk
+LmJsb2NrVUkoew0KICAgICAgICAgICAgdGl0bGU6ICAgICfplrnnu5jlipfpiofmsK3nqbHpiKnl
+hqfntJYnLCANCiAgICAgICAgICAgIG1lc3NhZ2U6ICAkKCcjc2VjbXNnJyksIA0KICAgICAgICAg
+ICAgdGltZW91dDogICA1MDAwLA0KCQkJY3NzOiB7IA0KCQkJCXdpZHRoOjUwMCwNCgkJCQloZWln
+aHQ6MTUwLA0KCQkJCWNvbG9yOicjMDAwJywNCgkJCQkndG9wJzonMzAlJywNCgkJCQlib3JkZXI6
+ICdub25lJywgDQogICAgICAgICAgICAgICAgcGFkZGluZzogJzVweCcsIA0KCQkJCSdmb250LXNp
+emUnOicxNHB4JywNCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kQ29sb3I6ICcjZmZmJywgDQoJ
+CQkJJ2JvcmRlci1yYWRpdXMnOiAnNXB4JywNCiAgICAgICAgICAgICAgICAnLXdlYmtpdC1ib3Jk
+ZXItcmFkaXVzJzogJzVweCcsIA0KICAgICAgICAgICAgICAgICctbW96LWJvcmRlci1yYWRpdXMn
+OiAnNXB4JywgDQogICAgICAgICAgICAgICAgb3BhY2l0eTogLjkNCiAgICAgICAgICAgIH0NCiAg
+ICAgICAgfSk7IA0KICAgIH0pOw0KfSk7IA0KDQovLy0tPjwhXV0+IA0KPC9zY3JpcHQ+IA0KDQoN
+CjwvaGVhZD4NCg0KPGJvZHk+DQogICAgPCEtLSBoZWFkZXIgc3RhcnQgLS0+CQ0KPGRpdiBjbGFz
+cz0iaGVhZGVyIj4NCg0KICAgIAk8YSBocmVmPSJodHRwOi8vd3d3LnRzaW5naHVhLmVkdS5jbiIg
+Y2xhc3M9ImhlYWR0eHQiIHRpdGxlPSLmv57mkrPmh47lrpXmm5/lvoTopI1ceGFkXHhhNiI+PC9h
+Pg0KICAgICAgICA8ZGl2IGNsYXNzPSJoZWFkbmF2Ij4NCgkJDQoJCTxhIGhyZWY9Imh0dHA6Ly9t
+YWlsLnRzaW5naHVhLmVkdS5jbiI+6Za65L2555Gl57uXXHg4MFx4ZTnmgqdceDg4PC9hPnwNCgkJ
+DQogICAgICAgICAgICAgICAgPGEgaHJlZj0iL2NvcmVtYWlsL2hlbHAvbm90aWNlLmh0bWwiIGlk
+PSJzZWMiPumQjueRsFx4YTRceDhh6Y2Z5b+b5bmT6Y6wXHhhZVx4ZTPku5s8L2E+fA0KCQk8YSBo
+cmVmPSJodHRwOi8vd3d3LnRzaW5naHVhLmVkdS5jbi9wdWJsaXNoL3ZwbmhlbHAvODMxMS9pbmRl
+eC5odG1sIiB0YXJnZXQ9Il9ibGFuayI+VlBO6ZCg5L245aK96ZCkXHg4NjwvYT58DQoJCTxhIGhy
+ZWY9Ii9jb3JlbWFpbC9oZWxwL2luZGV4X3poX0NOLmpzcCIgdGFyZ2V0PSJfYmxhbmsiPumQoueX
+i3hhZVx4ZTXmv65ceGFhPC9hPg0KCQkNCgkJfDxhIGhyZWY9Ij9sb2NhbGU9ZW5fVVMiPkVuZ2xp
+c2g8L2E+DQoJCQ0KCTwvZGl2Pg0KDQoNCiAgICA8L2Rpdj4NCiAgICA8IS0tIGhlYWRlciBlbmQg
+LS0+DQogIA0KICAgIDwhLS0gY2VudGVyIHN0YXJ0IC0tPg0KICAgIDxkaXYgY2xhc3M9ImNvbnRl
+bnQiPg0KICAgICAgICA8ZGl2IGNsYXNzPSJjb250ZW50d3JhcCI+DQogICAgICAgICAgICA8ZGl2
+IGNsYXNzPSJsb2dpbiI+DQogICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0ibG9naW53cmFwIj4N
+CiAgICAgICAgICAgICAgICAgICAgPCEtLSBzdGFydCAtLT4NCg0KICAgICAgICAgICAgICAgICAg
+ICA8ZGl2IGNsYXNzPSJsb2dpbmNvbnRlbnQiPg0KICAgICAgICAgICAgICAgICAgICAJPGZvcm0g
+bmFtZT0ibG9naW4iIGFjdGlvbj0iaHR0cHM6Ly9tYWlscy50c2luZ2h1YS5lZHUuY24vY29yZW1h
+aWwvaW5kZXguanNwIiBtZXRob2Q9InBvc3QiIG9ua2V5cHJlc3M9ImNoZWNra2V5KGV2ZW50KSI+
+DQogICAgICAgICAgICAgICAgICAgICAJPGgyPumWu1x4YTJceGUz5YqN6Y2p5rai5oOC55KH6Iys
+56e/PC9oMj4NCgkJCQ0KICAgICAgICAgICAgICAgICAgICAgICAgPGgzPjxzcGFuPumWu1x4YTJc
+eGUz5YqN6Y2p5rai5bSl5a6l5b+V56qXPC9zcGFuPjwvaDM+DQogICAgICAgICAgICAgICAgICAg
+ICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHVzciI+PGlucHV0IG5hbWU9InVpZCIgdHlwZT0idGV4
+dCIgc2l6ZT0iMTUiIHRhYmluZGV4PSIxIiB2YWx1ZT0iIi8+PHNwYW4+QG1haWxzLnRzaW5naHVh
+LmVkdS5jbjwvc3Bhbj48L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxoMz48c3BhbiBj
+bGFzcz0ibGVmdCI+6Za70YZceGFmXHhiMue8jeW2h1x4ODBceGI16Y2h5qyR5Z6z6Za/5rKReDlh
+PC9zcGFuPjxhIGhyZWY9IiMiIGNsYXNzPSJyaWdodCIgaWQ9ImJ1dHRvbiI+6Z+r5ZuoXHhhOFx4
+YmZceGFlXHhiMOmQjumdm+ajm+mQllx4OWM/PC9hPjwvaDM+DQogICAgICAgICAgICAgICAgICAg
+ICAgICA8ZGl2IGNsYXNzPSJpbnB3cmFwIHB3ZCI+PGlucHV0IG5hbWU9InBhc3N3b3JkIiB0eXBl
+PSJwYXNzd29yZCIgdGFiaW5kZXg9IjIiIC8+PC9kaXY+DQoJCQkNCiAgICAgICAgICAgICAgICAg
+ICAgICAgIDxhIGhyZWY9IiMiIGNsYXNzPSJsb2dpbmJ0biIgdGFiaW5kZXg9IjMiIG9uY2xpY2s9
+ImxvZ2luLnN1Ym1pdCgpIj7plrvRhlx4YWZceGIy57yNXHg4ZDwvYT4NCgkJCTxpbnB1dCB0eXBl
+PSJoaWRkZW4iIG5hbWU9ImRvbWFpbiIgdmFsdWU9Im1haWxzLnRzaW5naHVhLmVkdS5jbiI+DQoJ
+CQk8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJsb2NhbGUiIHZhbHVlPSJ6aF9DTiI+DQoJCQk8
+aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJub2RldGVjdCIgdmFsdWU9ImZhbHNlIi8+DQoJCQk8
+aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJhY3Rpb246bG9naW4iPg0KICAgICAgICAgICAgICAg
+ICAgICAJPC9mb3JtPg0KICAgICAgICAgICAgICAgICAgICA8L2Rpdj4NCg0KDQogICAgICAgICAg
+ICAgICAgICAgIDwhLS0gZW5kIC0tPg0KICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSJs
+b2dpbmJvdHRvbSI+PC9kaXY+DQogICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICAN
+CiAgICAgICAgICAgIDwvZGl2Pg0KICAgICAgICA8L2Rpdj4NCiAgICA8L2Rpdj4JDQogICAgPCEt
+LSBjZW50ZXIgZW5kIC0tPiAgIA0KICANCiAgICA8IS0tIGZvb3RlciBzdGFydCAtLT4gICAgIA0K
+ICAgIDxkaXYgY2xhc3M9ImZvb3RlciI+DQoNCiAgICAgICAgPHNwYW4gY2xhc3M9ImxlZnQiPkNv
+cHlyaWdodCAmY29weTsgMjAxMyAg5r+e5pKz5oeO5a6V5puf5b6E6KSNXHhhZFx4YTbplrvmpYDn
+iYrlqLzloKXluY1ceDgwXHhlNuWpgFx4ODE8L3NwYW4+PHNwYW4+PC9zcGFuPg0KICAgICAgICA8
+c3BhbiBjbGFzcz0icmlnaHQiPuWpteKAs+WAueWpgOS+gOaiu1x4YWVceGU5XHhhMlx4OTjpkKDl
+m6flmLLlr67oiqXvvIPpjavmv4bnhYI6IDxhIGhyZWY9Im1haWx0bzppdHNAdHNpbmdodWEuZWR1
+LmNuIj5pdHNAdHNpbmdodWEuZWR1LmNuPC9hPjwvc3Bhbj4NCg0KDQogICAgPC9kaXY+DQogICAg
+PCEtLSBmb290ZXIgZW5kIC0tPg0KICAgIDxkaXYgaWQ9InNlY21zZyIgc3R5bGU9ImRpc3BsYXk6
+bm9uZTt0ZXh0LWFsaWduOmxlZnQiPg0KDQoJCTxsaSBzdHlsZT0ibWFyZ2luOjI1cHggMjBweCAx
+NXB4OyI+MemWteWXleiDtumWruWvuOe0kumQlOevrXhhZVx4YTHplrvngrLmo5fpjrLmir3ltLfp
+iorjgobltLLlqLTvvYbmtJjlpp7lgp7ltJDlqIbluqPnkZ3lqLTlhbznn67mtZzmjpPnppLnkoHl
+tIfnp7/nkZzoiKzlnrnnu7HvvITmhrDmtaPlnK3mubTplrtceGEyXHhlM+WKjemNqea2ouW5k+mO
+sFx4YWFceGU36L+U6Za70YZceGFmXHhiMue8jeW2h1x4ODBceGI16Y2h5qyR5Z6z6Za15ZeX5YC4
+XHhhNlx4ODLplrrlrKvnso3lqYDkvbnnppLnkoHltIfnp7/lqLTmu4bmoajmtZzmjpPnppLnkoHl
+tIfnp7/nkZzoiKzlnrnnu7FceGExKOmXgeeSoXhhZVx4ZTTlqIbjiKTmlY3lroBceDgwXHhlNuaa
+qemQoOWbqOe5hOmQoeaIoOeytVx4ODkp6ZCf5pua54Sm6ZCq5Ly05bmD6YqK77mA57W55aiT5rCt
+56iT5aiF44Oo44GQ6Y+H54K15qeV6Za755SbeDgxLOmQoOWbrOaUsemNi+W2ieW0nemIpeW0h+eu
+kemWuee7mOWKmemQnVx4YWVceGU35ouD6ZSU6JeJ5YqG6Za/5raY5aWU5rWc5o6X5qK86Z+rXHhh
+ZFx4ZTfnkZDnkZzniYjmjLZceDgwXHg4MiA8L2xpPg0KCQk8bGkgc3R5bGU9Im1hcmdpbjoxNXB4
+IDIwcHggMTVweDsiPjLplrXll5XmtYdceGFmXHhiN+mWuVx4YWVceGUz5YqL57u75rCx57K76Yil
+54K95YGo6Za5XHhhZVx4ZTPlio7lqIjmiKbmg4LnkofojKznp7/pkI7pnZvmo5vpkJbmu4jmlY3n
+gZ7ogqnnrr3pkKDlm6bnhKbpjYvltonmg4PpjZVceGFiXHhlN+anlemWu1x4YWVceGU054Sm5amA
+5L2556iJXHg4MFx4ZTXpkKPpuYPmg4PpjZXnjpV4YTRceDhk6Za65aSK5YC5XHg4MFx4YTfplr/m
+tpjlpZTnu5flpIvmi4XnkrrjhKbmmo/nvIHnh7Z4ODBceGU15a6V54a6XHg4MFx4YjXpjaHmrJHl
+nrPplr/mtpnnqJFceGE2XHg4MumWuuWsq+eyjOiksOafpeaHl+mNiueEhXhhZlx4YjfpkI7op4Tn
+oo3lqYDvv6DlvLTngJvmqLvmmq3plrlceGFlXHhlM+WKjuWoiOaIpuaDgueSh+iMrOenv+mQjumd
+m+ajm+mQlua7iOWmtFx4ODI8L2xpPg0KDQoNCiAgICA8L2Rpdj4NCg0KPC9ib2R5Pg0KDQo8c2Ny
+aXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+DQpmdW5jdGlvbiBmQm9keVZlcmljYWxBbGlnbigp
+ew0KCXZhciBuQm9keUhlaWdodCA9IDU3MzsNCgl2YXIgbkNsaWVudEhlaWdodCA9IGRvY3VtZW50
+LmRvY3VtZW50RWxlbWVudC5jbGllbnRIZWlnaHQ7DQoJY29uc29sZS5sb2coIm5DbGllbnRIIixu
+Q2xpZW50SGVpZ2h0KTsNCglpZihuQ2xpZW50SGVpZ2h0ID49IG5Cb2R5SGVpZ2h0ICsgMil7DQoJ
+CXZhciBuRGlzID0gKG5DbGllbnRIZWlnaHQgLSBuQm9keUhlaWdodCkvMjsNCgkJZG9jdW1lbnQu
+Ym9keS5zdHlsZS5wYWRkaW5nVG9wID0gKG5EaXMtMjApICsgJ3B4JzsNCgl9ZWxzZXsNCgkJZG9j
+dW1lbnQuYm9keS5zdHlsZS5wYWRkaW5nVG9wID0gJzBweCc7DQoJfQ0KfQ0KCS8vd2luZG93Lm9u
+bG9hZCA9IGZ1bmN0aW9uKCl7DQoJCWZCb2R5VmVyaWNhbEFsaWduKCk7IA0KCS8vfQ0KCQ0KCXdp
+bmRvdy5vbnJlc2l6ZSA9IGZCb2R5VmVyaWNhbEFsaWduOw0KDQoNCjwvc2NyaXB0Pg0KDQo8L2h0
+bWw+DQo=
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="37">
+                <http-request>
+                    <status>PUT http://mails.tsinghua.edu.cn/xAuga HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">KfVGOo</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:15 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/6.0.35 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/6.0.35&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="44">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/wwzzK.html HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:15 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="46">
+                <http-request>
+                    <status>POST http://mails.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3d3enpLLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguS3p6d3c=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:15 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="67">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:15 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="100">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:15 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="181">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:16 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="182">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:16 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="183">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:16 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="184">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:16 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="185">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:16 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:16 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="187">
+                <http-request>
+                    <status>GET http://mails.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="mails.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=265056166.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 14:21:16 GMT" field="date"/>
+                        <header content="535" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;
+  &lt;title&gt;Coremail涓\x93\xe4\xb8\x9a\xe9\x82\xae\xe4欢绯荤\xbb\x9f&lt;/title&gt;
+  &lt;link href=&quot;/error/error.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;main_l&quot;&gt;&lt;img src=&quot;/error/404.gif&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;main_r main404&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;HTTP 404 \xe9\x94\x99\xe8\xaf\xaf&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;
+      浣\xa0\xe6\x9f\xa5\xe7\x9c\x8b\xe7\x9a\x84缃\x91\xe9〉涓\x8d\xe5\xad\x98\xe5\x9c\xa8\xef\xbc\x8c\xe6\x88\x96\xe5凡\xe6\x9b存\x94\xb9杞\xac\xe7Щ锛\x8c&lt;br /&gt;
+      璇锋\xa3\x80\xe6\x9f\xa5 URL 骞剁‘淇\x9d\xe5\x85\xb6\xe6\x8b煎\x86\x99姝ｇ‘\xe3\x80\x82\r
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A &quot;UnicodeEncodeError&quot; exception was found while running infrastructure.favicon_identification on &quot;Method: GET | http://domain/&quot;. The exception was: &quot;'ascii' codec can't encode characters in position 122-127: ordinal not in range(128)&quot; at favicon_identification.py:discover():70. The scan will continue but some vulnerabilities might not be identified.</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mails.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mails.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://mails.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to mails.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

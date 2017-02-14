@@ -1,0 +1,1710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480500599" start-long="Wed Nov 30 05:09:59 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://crm.pbcsf.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/362_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[88]" method="GET" name="Omitted server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The remote HTTP Server omitted the &quot;server&quot; header in its response.</description>
+        <http-transactions>
+            <http-transaction id="88">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:02 GMT" field="date"/>
+                        <header content="Wed, 11 Mar 2015 08:58:38 GMT" field="last-modified"/>
+                        <header content="1660" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="bytes" field="accept-ranges"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;CHARSET=iso-8859-1&quot;&gt;
+&lt;!--
+* ****************************************************************** 
+* ORACLE CONFIDENTIAL.  For authorized use only.  Except for as      
+* expressly authorized by Oracle, do not disclose, copy, reproduce,  
+* distribute, or modify.                                             
+* ****************************************************************** 
+*                                                                    
+--&gt;
+&lt;!--
+* ******************************************************************
+* ******************************************************************
+*
+*                          
+*
+*                                                                   
+* ******************************************************************
+*
+--&gt;
+&lt;title&gt;Default BEA WebLogic Server Web Server Index Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body bgcolor=&quot;#ffffff&quot; LEFTMARGIN=&quot;10&quot; RIGHTMARGIN=&quot;10&quot; link=&quot;#3366cc&quot; vlink=&quot;#9999cc&quot; alink=&quot;#0000cc&quot;&gt;
+&lt;script language=&quot;javascript&quot;&gt;
+location.href=&quot;http://crm.pbcsf.tsinghua.edu.cn/psp/CRMPRD/EMPLOYEE/CRM/?cmd=login&quot;;
+&lt;/script&gt;
+&lt;h1&gt;BEA WebLogic Server 8.1&amp;#153;&lt;/h1&gt;
+&lt;h2&gt;Web Server Index Page&lt;/h2&gt;
+&lt;a href=&quot;../console&quot;&gt;
+&lt;h4&gt;Access WebLogic Server Console&lt;/h4&gt;&lt;/a&gt;
+&lt;a href=&quot;../ps/signon.html&quot;&gt;
+&lt;h4&gt;default PeopleSoft logon page&lt;/h4&gt;&lt;/a&gt;
+
+      &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; width=&quot;100%&quot; height=&quot;1&quot;&gt;
+        &lt;tr&gt;
+          &lt;td valign=&quot;middle&quot; width=&quot;100%&quot; bgcolor=&quot;blue&quot; height=&quot;1&quot;&gt;
+            &lt;p class=&quot;small&quot;&gt;&amp;nbsp;&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[174]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://pbcsf.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://crm.pbcsf.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="174">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="Wed, 11 Mar 2015 08:58:38 GMT" field="last-modified"/>
+                        <header content="1660" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="bytes" field="accept-ranges"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;CHARSET=iso-8859-1&quot;&gt;
+&lt;!--
+* ****************************************************************** 
+* ORACLE CONFIDENTIAL.  For authorized use only.  Except for as      
+* expressly authorized by Oracle, do not disclose, copy, reproduce,  
+* distribute, or modify.                                             
+* ****************************************************************** 
+*                                                                    
+--&gt;
+&lt;!--
+* ******************************************************************
+* ******************************************************************
+*
+*                          
+*
+*                                                                   
+* ******************************************************************
+*
+--&gt;
+&lt;title&gt;Default BEA WebLogic Server Web Server Index Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body bgcolor=&quot;#ffffff&quot; LEFTMARGIN=&quot;10&quot; RIGHTMARGIN=&quot;10&quot; link=&quot;#3366cc&quot; vlink=&quot;#9999cc&quot; alink=&quot;#0000cc&quot;&gt;
+&lt;script language=&quot;javascript&quot;&gt;
+location.href=&quot;http://crm.pbcsf.tsinghua.edu.cn/psp/CRMPRD/EMPLOYEE/CRM/?cmd=login&quot;;
+&lt;/script&gt;
+&lt;h1&gt;BEA WebLogic Server 8.1&amp;#153;&lt;/h1&gt;
+&lt;h2&gt;Web Server Index Page&lt;/h2&gt;
+&lt;a href=&quot;../console&quot;&gt;
+&lt;h4&gt;Access WebLogic Server Console&lt;/h4&gt;&lt;/a&gt;
+&lt;a href=&quot;../ps/signon.html&quot;&gt;
+&lt;h4&gt;default PeopleSoft logon page&lt;/h4&gt;&lt;/a&gt;
+
+      &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; width=&quot;100%&quot; height=&quot;1&quot;&gt;
+        &lt;tr&gt;
+          &lt;td valign=&quot;middle&quot; width=&quot;100%&quot; bgcolor=&quot;blue&quot; height=&quot;1&quot;&gt;
+            &lt;p class=&quot;small&quot;&gt;&amp;nbsp;&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[69]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/BzgOK" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://crm.pbcsf.tsinghua.edu.cn/BzgOK
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="69">
+                <http-request>
+                    <status>PUT http://crm.pbcsf.tsinghua.edu.cn/BzgOK HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">CjRMy1</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:03 GMT" field="date"/>
+                        <header content="44" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">HTTP method PUT is not supported by this URL</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[94]" method="GET" name="HTTP Request in HTTP body" plugin="http_in_body" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>An HTTP request was found in the HTTP body of a response.</description>
+        <http-transactions>
+            <http-transaction id="94">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:03 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[99]" method="GET" name="HTTP Request in HTTP body" plugin="http_in_body" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/_vti_inf.html" var="None">
+        <description>An HTTP request was found in the HTTP body of a response.</description>
+        <http-transactions>
+            <http-transaction id="99">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:03 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[117]" method="GET" name="HTTP Request in HTTP body" plugin="http_in_body" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/OHxbA.html" var="None">
+        <description>An HTTP request was found in the HTTP body of a response.</description>
+        <http-transactions>
+            <http-transaction id="117">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/OHxbA.html HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[180]" method="GET" name="HTTP Request in HTTP body" plugin="http_in_body" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/jmx-console/" var="None">
+        <description>An HTTP request was found in the HTTP body of a response.</description>
+        <http-transactions>
+            <http-transaction id="180">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[179]" method="GET" name="HTTP Request in HTTP body" plugin="http_in_body" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/invoker/JMXInvokerServlet" var="None">
+        <description>An HTTP request was found in the HTTP body of a response.</description>
+        <http-transactions>
+            <http-transaction id="179">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[181]" method="GET" name="HTTP Request in HTTP body" plugin="http_in_body" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/WebConsole/Invoker" var="None">
+        <description>An HTTP request was found in the HTTP body of a response.</description>
+        <http-transactions>
+            <http-transaction id="181">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[182]" method="GET" name="HTTP Request in HTTP body" plugin="http_in_body" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/admin-console/" var="None">
+        <description>An HTTP request was found in the HTTP body of a response.</description>
+        <http-transactions>
+            <http-transaction id="182">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[183]" method="GET" name="HTTP Request in HTTP body" plugin="http_in_body" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/web-console/ServerInfo.jsp" var="None">
+        <description>An HTTP request was found in the HTTP body of a response.</description>
+        <http-transactions>
+            <http-transaction id="183">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[184]" method="GET" name="HTTP Request in HTTP body" plugin="http_in_body" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/status" var="None">
+        <description>An HTTP request was found in the HTTP body of a response.</description>
+        <http-transactions>
+            <http-transaction id="184">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[186]" method="GET" name="HTTP Request in HTTP body" plugin="http_in_body" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/server-status" var="None">
+        <description>An HTTP request was found in the HTTP body of a response.</description>
+        <http-transactions>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[193]" method="GET" name="HTTP Request in HTTP body" plugin="http_in_body" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll" var="None">
+        <description>An HTTP request was found in the HTTP body of a response.</description>
+        <http-transactions>
+            <http-transaction id="193">
+                <http-request>
+                    <status>POST http://crm.pbcsf.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L09IeGJBLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguQWJ4SE8=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:05 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.7.41</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1660" field="content-length"/>
+                        <header content="thuwebcookie=3389484810.20480.0000; path=/" field="set-cookie"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Wed, 11 Mar 2015 08:58:38 GMT" field="last-modified"/>
+                        <header content="Wed, 30 Nov 2016 10:10:02 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;CHARSET=iso-8859-1&quot;&gt;
+&lt;!--
+* ****************************************************************** 
+* ORACLE CONFIDENTIAL.  For authorized use only.  Except for as      
+* expressly authorized by Oracle, do not disclose, copy, reproduce,  
+* distribute, or modify.                                             
+* ****************************************************************** 
+*                                                                    
+--&gt;
+&lt;!--
+* ******************************************************************
+* ******************************************************************
+*
+*                          
+*
+*                                                                   
+* ******************************************************************
+*
+--&gt;
+&lt;title&gt;Default BEA WebLogic Server Web Server Index Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body bgcolor=&quot;#ffffff&quot; LEFTMARGIN=&quot;10&quot; RIGHTMARGIN=&quot;10&quot; link=&quot;#3366cc&quot; vlink=&quot;#9999cc&quot; alink=&quot;#0000cc&quot;&gt;
+&lt;script language=&quot;javascript&quot;&gt;
+location.href=&quot;http://crm.pbcsf.tsinghua.edu.cn/psp/CRMPRD/EMPLOYEE/CRM/?cmd=login&quot;;
+&lt;/script&gt;
+&lt;h1&gt;BEA WebLogic Server 8.1&amp;#153;&lt;/h1&gt;
+&lt;h2&gt;Web Server Index Page&lt;/h2&gt;
+&lt;a href=&quot;../console&quot;&gt;
+&lt;h4&gt;Access WebLogic Server Console&lt;/h4&gt;&lt;/a&gt;
+&lt;a href=&quot;../ps/signon.html&quot;&gt;
+&lt;h4&gt;default PeopleSoft logon page&lt;/h4&gt;&lt;/a&gt;
+
+      &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; width=&quot;100%&quot; height=&quot;1&quot;&gt;
+        &lt;tr&gt;
+          &lt;td valign=&quot;middle&quot; width=&quot;100%&quot; bgcolor=&quot;blue&quot; height=&quot;1&quot;&gt;
+            &lt;p class=&quot;small&quot;&gt;&amp;nbsp;&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[195, 203, 216, 221, 236, 240, 242]" method="GET" name="DAV methods enabled" plugin="allowed_methods" severity="Information" url="http://crm.pbcsf.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://crm.pbcsf.tsinghua.edu.cn/&quot; has the following allowed methods. These include DAV methods and should be disabled: GET, HEAD, OPTIONS, POST, TRACE, UNLOCK</description>
+        <http-transactions>
+            <http-transaction id="195">
+                <http-request>
+                    <status>OPTIONS http://crm.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:05 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="GET, HEAD, OPTIONS, POST" field="allow"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="203">
+                <http-request>
+                    <status>HEAD http://crm.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:05 GMT" field="date"/>
+                        <header content="Wed, 11 Mar 2015 08:58:38 GMT" field="last-modified"/>
+                        <header content="1660" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="216">
+                <http-request>
+                    <status>OPTIONS http://crm.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:12 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="GET, HEAD, OPTIONS, POST" field="allow"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="221">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:18 GMT" field="date"/>
+                        <header content="Wed, 11 Mar 2015 08:58:38 GMT" field="last-modified"/>
+                        <header content="1660" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="bytes" field="accept-ranges"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;CHARSET=iso-8859-1&quot;&gt;
+&lt;!--
+* ****************************************************************** 
+* ORACLE CONFIDENTIAL.  For authorized use only.  Except for as      
+* expressly authorized by Oracle, do not disclose, copy, reproduce,  
+* distribute, or modify.                                             
+* ****************************************************************** 
+*                                                                    
+--&gt;
+&lt;!--
+* ******************************************************************
+* ******************************************************************
+*
+*                          
+*
+*                                                                   
+* ******************************************************************
+*
+--&gt;
+&lt;title&gt;Default BEA WebLogic Server Web Server Index Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body bgcolor=&quot;#ffffff&quot; LEFTMARGIN=&quot;10&quot; RIGHTMARGIN=&quot;10&quot; link=&quot;#3366cc&quot; vlink=&quot;#9999cc&quot; alink=&quot;#0000cc&quot;&gt;
+&lt;script language=&quot;javascript&quot;&gt;
+location.href=&quot;http://crm.pbcsf.tsinghua.edu.cn/psp/CRMPRD/EMPLOYEE/CRM/?cmd=login&quot;;
+&lt;/script&gt;
+&lt;h1&gt;BEA WebLogic Server 8.1&amp;#153;&lt;/h1&gt;
+&lt;h2&gt;Web Server Index Page&lt;/h2&gt;
+&lt;a href=&quot;../console&quot;&gt;
+&lt;h4&gt;Access WebLogic Server Console&lt;/h4&gt;&lt;/a&gt;
+&lt;a href=&quot;../ps/signon.html&quot;&gt;
+&lt;h4&gt;default PeopleSoft logon page&lt;/h4&gt;&lt;/a&gt;
+
+      &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; width=&quot;100%&quot; height=&quot;1&quot;&gt;
+        &lt;tr&gt;
+          &lt;td valign=&quot;middle&quot; width=&quot;100%&quot; bgcolor=&quot;blue&quot; height=&quot;1&quot;&gt;
+            &lt;p class=&quot;small&quot;&gt;&amp;nbsp;&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="240">
+                <http-request>
+                    <status>POST http://crm.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:34 GMT" field="date"/>
+                        <header content="Wed, 11 Mar 2015 08:58:38 GMT" field="last-modified"/>
+                        <header content="1660" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="bytes" field="accept-ranges"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;CHARSET=iso-8859-1&quot;&gt;
+&lt;!--
+* ****************************************************************** 
+* ORACLE CONFIDENTIAL.  For authorized use only.  Except for as      
+* expressly authorized by Oracle, do not disclose, copy, reproduce,  
+* distribute, or modify.                                             
+* ****************************************************************** 
+*                                                                    
+--&gt;
+&lt;!--
+* ******************************************************************
+* ******************************************************************
+*
+*                          
+*
+*                                                                   
+* ******************************************************************
+*
+--&gt;
+&lt;title&gt;Default BEA WebLogic Server Web Server Index Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body bgcolor=&quot;#ffffff&quot; LEFTMARGIN=&quot;10&quot; RIGHTMARGIN=&quot;10&quot; link=&quot;#3366cc&quot; vlink=&quot;#9999cc&quot; alink=&quot;#0000cc&quot;&gt;
+&lt;script language=&quot;javascript&quot;&gt;
+location.href=&quot;http://crm.pbcsf.tsinghua.edu.cn/psp/CRMPRD/EMPLOYEE/CRM/?cmd=login&quot;;
+&lt;/script&gt;
+&lt;h1&gt;BEA WebLogic Server 8.1&amp;#153;&lt;/h1&gt;
+&lt;h2&gt;Web Server Index Page&lt;/h2&gt;
+&lt;a href=&quot;../console&quot;&gt;
+&lt;h4&gt;Access WebLogic Server Console&lt;/h4&gt;&lt;/a&gt;
+&lt;a href=&quot;../ps/signon.html&quot;&gt;
+&lt;h4&gt;default PeopleSoft logon page&lt;/h4&gt;&lt;/a&gt;
+
+      &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; width=&quot;100%&quot; height=&quot;1&quot;&gt;
+        &lt;tr&gt;
+          &lt;td valign=&quot;middle&quot; width=&quot;100%&quot; bgcolor=&quot;blue&quot; height=&quot;1&quot;&gt;
+            &lt;p class=&quot;small&quot;&gt;&amp;nbsp;&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 69, 94, 99, 117, 179, 180, 181, 182, 183, 184, 186, 193]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:02 GMT" field="date"/>
+                        <header content="Wed, 11 Mar 2015 08:58:38 GMT" field="last-modified"/>
+                        <header content="1660" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="bytes" field="accept-ranges"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;CHARSET=iso-8859-1&quot;&gt;
+&lt;!--
+* ****************************************************************** 
+* ORACLE CONFIDENTIAL.  For authorized use only.  Except for as      
+* expressly authorized by Oracle, do not disclose, copy, reproduce,  
+* distribute, or modify.                                             
+* ****************************************************************** 
+*                                                                    
+--&gt;
+&lt;!--
+* ******************************************************************
+* ******************************************************************
+*
+*                          
+*
+*                                                                   
+* ******************************************************************
+*
+--&gt;
+&lt;title&gt;Default BEA WebLogic Server Web Server Index Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body bgcolor=&quot;#ffffff&quot; LEFTMARGIN=&quot;10&quot; RIGHTMARGIN=&quot;10&quot; link=&quot;#3366cc&quot; vlink=&quot;#9999cc&quot; alink=&quot;#0000cc&quot;&gt;
+&lt;script language=&quot;javascript&quot;&gt;
+location.href=&quot;http://crm.pbcsf.tsinghua.edu.cn/psp/CRMPRD/EMPLOYEE/CRM/?cmd=login&quot;;
+&lt;/script&gt;
+&lt;h1&gt;BEA WebLogic Server 8.1&amp;#153;&lt;/h1&gt;
+&lt;h2&gt;Web Server Index Page&lt;/h2&gt;
+&lt;a href=&quot;../console&quot;&gt;
+&lt;h4&gt;Access WebLogic Server Console&lt;/h4&gt;&lt;/a&gt;
+&lt;a href=&quot;../ps/signon.html&quot;&gt;
+&lt;h4&gt;default PeopleSoft logon page&lt;/h4&gt;&lt;/a&gt;
+
+      &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; width=&quot;100%&quot; height=&quot;1&quot;&gt;
+        &lt;tr&gt;
+          &lt;td valign=&quot;middle&quot; width=&quot;100%&quot; bgcolor=&quot;blue&quot; height=&quot;1&quot;&gt;
+            &lt;p class=&quot;small&quot;&gt;&amp;nbsp;&lt;/p&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="69">
+                <http-request>
+                    <status>PUT http://crm.pbcsf.tsinghua.edu.cn/BzgOK HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">CjRMy1</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:03 GMT" field="date"/>
+                        <header content="44" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">HTTP method PUT is not supported by this URL</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="94">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:03 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="99">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:03 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="117">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/OHxbA.html HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="179">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="180">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="181">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="182">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="183">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="184">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://crm.pbcsf.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:04 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="193">
+                <http-request>
+                    <status>POST http://crm.pbcsf.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="crm.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=3389484810.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L09IeGJBLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguQWJ4SE8=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:10:05 GMT" field="date"/>
+                        <header content="1214" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Close" field="connection"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Draft//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Error 404--Not Found&lt;/TITLE&gt;
+&lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;WebLogic Server&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgcolor=&quot;white&quot;&gt;
+&lt;FONT FACE=Helvetica&gt;&lt;BR CLEAR=all&gt;
+&lt;TABLE border=0 cellspacing=5&gt;&lt;TR&gt;&lt;TD&gt;&lt;BR CLEAR=all&gt;
+&lt;FONT FACE=&quot;Helvetica&quot; COLOR=&quot;black&quot; SIZE=&quot;3&quot;&gt;&lt;H2&gt;Error 404--Not Found&lt;/H2&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE border=0 width=100% cellpadding=10&gt;&lt;TR&gt;&lt;TD VALIGN=top WIDTH=100% BGCOLOR=white&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H3&gt;From RFC 2068 &lt;i&gt;Hypertext Transfer Protocol -- HTTP/1.1&lt;/i&gt;:&lt;/H3&gt;
+&lt;/FONT&gt;&lt;FONT FACE=&quot;Helvetica&quot; SIZE=&quot;3&quot;&gt;&lt;H4&gt;10.4.5 404 Not Found&lt;/H4&gt;
+&lt;/FONT&gt;&lt;P&gt;&lt;FONT FACE=&quot;Courier New&quot;&gt;The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.&lt;/p&gt;&lt;p&gt;If the server does not wish to make this information available to the client, the status code 403 (Forbidden) can be used instead. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address.&lt;/FONT&gt;&lt;/P&gt;
+&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to crm.pbcsf.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://crm.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://crm.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+</w3af-run>

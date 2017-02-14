@@ -1,0 +1,1320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481170479" start-long="Wed Dec 07 23:14:39 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://student.au.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/188_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="HTML comment contains HTML code" plugin="html_comments" severity="Information" url="http://student.au.tsinghua.edu.cn/" var="None">
+        <description>A comment with the string &quot;&lt;body&gt;&lt;div class=&quot;container&quot;&gt;    &lt;div cl&quot; was found in: &quot;http://student.au.tsinghua.edu.cn/&quot;. This could be interesting.</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="751" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Sat, 19 Mar 2016 06:05:20 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;73e-52e60a5ff534e-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:15:27 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+
+&lt;head&gt;
+    &lt;!--  Leave this page and jump to /blog --&gt;
+    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=/blog&quot;&gt;
+    
+    &lt;!--
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    
+    &lt;link href=&quot;./assets/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;./assets/css/bootstrap-responsive.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    --&gt;
+&lt;/head&gt;
+&lt;!--
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        
+        
+        &lt;div class=&quot;span3 bs-docs-sidebar&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h5 class=&quot;hidden-phone&quot;&gt;相关链接&lt;/h5&gt;
+            &lt;ul class=&quot;nav nav-list bs-docs-sidenav hidden-phone&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;gt;文件分享页面&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;gt;自动化系主页&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            
+            &lt;div class=&quot;visible-phone&quot;&gt; 
+                &lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;nbsp;&amp;gt;文件分享页面&lt;/a&gt;
+                &lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;nbsp;&amp;gt;自动化系主页&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+
+        
+        
+        
+        &lt;div class=&quot;span9&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h1&gt;ASTA&lt;/h1&gt;
+            &lt;p&gt;&lt;b&gt;ASTA&lt;/b&gt; stands for &lt;b&gt;A&lt;/b&gt;ssociation of &lt;b&gt;S&lt;/b&gt;cience and &lt;b&gt;T&lt;/b&gt;echnology of &lt;b&gt;A&lt;/b&gt;utomation, &lt;b&gt;THU&lt;/b&gt;.&lt;/p&gt;
+            &lt;p&gt;&lt;big&gt;欢迎来到&lt;b&gt;清华大学自动化系科协&lt;/b&gt;主页。&lt;/big&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;span12&quot;&gt;
+                &lt;p&gt;© ASTA 2015&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+
+
+&lt;/body&gt;
+--&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[67]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache/2.4.7 (Ubuntu)&quot;.</description>
+        <http-transactions>
+            <http-transaction id="67">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="751" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Sat, 19 Mar 2016 06:05:20 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;73e-52e60a5ff534e-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:15:27 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+
+&lt;head&gt;
+    &lt;!--  Leave this page and jump to /blog --&gt;
+    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=/blog&quot;&gt;
+    
+    &lt;!--
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    
+    &lt;link href=&quot;./assets/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;./assets/css/bootstrap-responsive.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    --&gt;
+&lt;/head&gt;
+&lt;!--
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        
+        
+        &lt;div class=&quot;span3 bs-docs-sidebar&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h5 class=&quot;hidden-phone&quot;&gt;相关链接&lt;/h5&gt;
+            &lt;ul class=&quot;nav nav-list bs-docs-sidenav hidden-phone&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;gt;文件分享页面&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;gt;自动化系主页&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            
+            &lt;div class=&quot;visible-phone&quot;&gt; 
+                &lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;nbsp;&amp;gt;文件分享页面&lt;/a&gt;
+                &lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;nbsp;&amp;gt;自动化系主页&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+
+        
+        
+        
+        &lt;div class=&quot;span9&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h1&gt;ASTA&lt;/h1&gt;
+            &lt;p&gt;&lt;b&gt;ASTA&lt;/b&gt; stands for &lt;b&gt;A&lt;/b&gt;ssociation of &lt;b&gt;S&lt;/b&gt;cience and &lt;b&gt;T&lt;/b&gt;echnology of &lt;b&gt;A&lt;/b&gt;utomation, &lt;b&gt;THU&lt;/b&gt;.&lt;/p&gt;
+            &lt;p&gt;&lt;big&gt;欢迎来到&lt;b&gt;清华大学自动化系科协&lt;/b&gt;主页。&lt;/big&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;span12&quot;&gt;
+                &lt;p&gt;© ASTA 2015&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+
+
+&lt;/body&gt;
+--&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[194]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://student.au.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://au.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://student.au.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="194">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="751" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Sat, 19 Mar 2016 06:05:20 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;73e-52e60a5ff534e-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:15:32 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+
+&lt;head&gt;
+    &lt;!--  Leave this page and jump to /blog --&gt;
+    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=/blog&quot;&gt;
+    
+    &lt;!--
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    
+    &lt;link href=&quot;./assets/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;./assets/css/bootstrap-responsive.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    --&gt;
+&lt;/head&gt;
+&lt;!--
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        
+        
+        &lt;div class=&quot;span3 bs-docs-sidebar&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h5 class=&quot;hidden-phone&quot;&gt;相关链接&lt;/h5&gt;
+            &lt;ul class=&quot;nav nav-list bs-docs-sidenav hidden-phone&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;gt;文件分享页面&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;gt;自动化系主页&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            
+            &lt;div class=&quot;visible-phone&quot;&gt; 
+                &lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;nbsp;&amp;gt;文件分享页面&lt;/a&gt;
+                &lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;nbsp;&amp;gt;自动化系主页&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+
+        
+        
+        
+        &lt;div class=&quot;span9&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h1&gt;ASTA&lt;/h1&gt;
+            &lt;p&gt;&lt;b&gt;ASTA&lt;/b&gt; stands for &lt;b&gt;A&lt;/b&gt;ssociation of &lt;b&gt;S&lt;/b&gt;cience and &lt;b&gt;T&lt;/b&gt;echnology of &lt;b&gt;A&lt;/b&gt;utomation, &lt;b&gt;THU&lt;/b&gt;.&lt;/p&gt;
+            &lt;p&gt;&lt;big&gt;欢迎来到&lt;b&gt;清华大学自动化系科协&lt;/b&gt;主页。&lt;/big&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;span12&quot;&gt;
+                &lt;p&gt;© ASTA 2015&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+
+
+&lt;/body&gt;
+--&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[200]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://student.au.tsinghua.edu.cn/lRXnM" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://student.au.tsinghua.edu.cn/lRXnM
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="200">
+                <http-request>
+                    <status>PUT http://student.au.tsinghua.edu.cn/lRXnM HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">9mF3ZU</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="317" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="POST,OPTIONS,GET,HEAD" field="allow"/>
+                        <header content="Thu, 08 Dec 2016 04:15:33 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /lRXnM.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at student.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[38, 121, 178, 187, 214, 234, 242]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://student.au.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://student.au.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: CONNECT, GET, HEAD, OPTIONS, PATCH, POST</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="38">
+                <http-request>
+                    <status>OPTIONS http://student.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=80" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="POST,OPTIONS,GET,HEAD" field="allow"/>
+                        <header content="Thu, 08 Dec 2016 04:15:30 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="121">
+                <http-request>
+                    <status>HEAD http://student.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="751" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Sat, 19 Mar 2016 06:05:20 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;73e-52e60a5ff534e-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:15:31 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="178">
+                <http-request>
+                    <status>OPTIONS http://student.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=5, max=86" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="POST,OPTIONS,GET,HEAD" field="allow"/>
+                        <header content="Thu, 08 Dec 2016 04:15:32 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="187">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="751" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Sat, 19 Mar 2016 06:05:20 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;73e-52e60a5ff534e-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:15:32 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+
+&lt;head&gt;
+    &lt;!--  Leave this page and jump to /blog --&gt;
+    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=/blog&quot;&gt;
+    
+    &lt;!--
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    
+    &lt;link href=&quot;./assets/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;./assets/css/bootstrap-responsive.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    --&gt;
+&lt;/head&gt;
+&lt;!--
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        
+        
+        &lt;div class=&quot;span3 bs-docs-sidebar&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h5 class=&quot;hidden-phone&quot;&gt;相关链接&lt;/h5&gt;
+            &lt;ul class=&quot;nav nav-list bs-docs-sidenav hidden-phone&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;gt;文件分享页面&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;gt;自动化系主页&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            
+            &lt;div class=&quot;visible-phone&quot;&gt; 
+                &lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;nbsp;&amp;gt;文件分享页面&lt;/a&gt;
+                &lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;nbsp;&amp;gt;自动化系主页&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+
+        
+        
+        
+        &lt;div class=&quot;span9&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h1&gt;ASTA&lt;/h1&gt;
+            &lt;p&gt;&lt;b&gt;ASTA&lt;/b&gt; stands for &lt;b&gt;A&lt;/b&gt;ssociation of &lt;b&gt;S&lt;/b&gt;cience and &lt;b&gt;T&lt;/b&gt;echnology of &lt;b&gt;A&lt;/b&gt;utomation, &lt;b&gt;THU&lt;/b&gt;.&lt;/p&gt;
+            &lt;p&gt;&lt;big&gt;欢迎来到&lt;b&gt;清华大学自动化系科协&lt;/b&gt;主页。&lt;/big&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;span12&quot;&gt;
+                &lt;p&gt;© ASTA 2015&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+
+
+&lt;/body&gt;
+--&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="214">
+                <http-request>
+                    <status>CONNECT http://student.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 04:15:36 GMT" field="date"/>
+                        <header content="300" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;400 Bad Request&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Bad Request&lt;/h1&gt;
+&lt;p&gt;Your browser sent a request that this server could not understand.&lt;br /&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at localhost Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="234">
+                <http-request>
+                    <status>POST http://student.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="751" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Sat, 19 Mar 2016 06:05:20 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;73e-52e60a5ff534e-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:15:36 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+
+&lt;head&gt;
+    &lt;!--  Leave this page and jump to /blog --&gt;
+    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=/blog&quot;&gt;
+    
+    &lt;!--
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    
+    &lt;link href=&quot;./assets/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;./assets/css/bootstrap-responsive.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    --&gt;
+&lt;/head&gt;
+&lt;!--
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        
+        
+        &lt;div class=&quot;span3 bs-docs-sidebar&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h5 class=&quot;hidden-phone&quot;&gt;相关链接&lt;/h5&gt;
+            &lt;ul class=&quot;nav nav-list bs-docs-sidenav hidden-phone&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;gt;文件分享页面&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;gt;自动化系主页&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            
+            &lt;div class=&quot;visible-phone&quot;&gt; 
+                &lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;nbsp;&amp;gt;文件分享页面&lt;/a&gt;
+                &lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;nbsp;&amp;gt;自动化系主页&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+
+        
+        
+        
+        &lt;div class=&quot;span9&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h1&gt;ASTA&lt;/h1&gt;
+            &lt;p&gt;&lt;b&gt;ASTA&lt;/b&gt; stands for &lt;b&gt;A&lt;/b&gt;ssociation of &lt;b&gt;S&lt;/b&gt;cience and &lt;b&gt;T&lt;/b&gt;echnology of &lt;b&gt;A&lt;/b&gt;utomation, &lt;b&gt;THU&lt;/b&gt;.&lt;/p&gt;
+            &lt;p&gt;&lt;big&gt;欢迎来到&lt;b&gt;清华大学自动化系科协&lt;/b&gt;主页。&lt;/big&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;span12&quot;&gt;
+                &lt;p&gt;© ASTA 2015&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+
+
+&lt;/body&gt;
+--&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.72.13</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="751" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Sat, 19 Mar 2016 06:05:20 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;73e-52e60a5ff534e-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:15:27 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+
+&lt;head&gt;
+    &lt;!--  Leave this page and jump to /blog --&gt;
+    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=/blog&quot;&gt;
+    
+    &lt;!--
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    
+    &lt;link href=&quot;./assets/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;./assets/css/bootstrap-responsive.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    --&gt;
+&lt;/head&gt;
+&lt;!--
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        
+        
+        &lt;div class=&quot;span3 bs-docs-sidebar&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h5 class=&quot;hidden-phone&quot;&gt;相关链接&lt;/h5&gt;
+            &lt;ul class=&quot;nav nav-list bs-docs-sidenav hidden-phone&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;gt;文件分享页面&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;gt;自动化系主页&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            
+            &lt;div class=&quot;visible-phone&quot;&gt; 
+                &lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;nbsp;&amp;gt;文件分享页面&lt;/a&gt;
+                &lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;nbsp;&amp;gt;自动化系主页&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+
+        
+        
+        
+        &lt;div class=&quot;span9&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h1&gt;ASTA&lt;/h1&gt;
+            &lt;p&gt;&lt;b&gt;ASTA&lt;/b&gt; stands for &lt;b&gt;A&lt;/b&gt;ssociation of &lt;b&gt;S&lt;/b&gt;cience and &lt;b&gt;T&lt;/b&gt;echnology of &lt;b&gt;A&lt;/b&gt;utomation, &lt;b&gt;THU&lt;/b&gt;.&lt;/p&gt;
+            &lt;p&gt;&lt;big&gt;欢迎来到&lt;b&gt;清华大学自动化系科协&lt;/b&gt;主页。&lt;/big&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;span12&quot;&gt;
+                &lt;p&gt;© ASTA 2015&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+
+
+&lt;/body&gt;
+--&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 110, 128, 185, 186, 197, 198, 200, 213, 215]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="751" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Sat, 19 Mar 2016 06:05:20 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;73e-52e60a5ff534e-gzip&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 04:15:27 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+
+&lt;head&gt;
+    &lt;!--  Leave this page and jump to /blog --&gt;
+    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=/blog&quot;&gt;
+    
+    &lt;!--
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    
+    &lt;link href=&quot;./assets/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;./assets/css/bootstrap-responsive.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    --&gt;
+&lt;/head&gt;
+&lt;!--
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        
+        
+        &lt;div class=&quot;span3 bs-docs-sidebar&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h5 class=&quot;hidden-phone&quot;&gt;相关链接&lt;/h5&gt;
+            &lt;ul class=&quot;nav nav-list bs-docs-sidenav hidden-phone&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;gt;文件分享页面&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;gt;自动化系主页&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            
+            &lt;div class=&quot;visible-phone&quot;&gt; 
+                &lt;a href=&quot;http://asta.me/share/&quot;&gt;&amp;nbsp;&amp;gt;文件分享页面&lt;/a&gt;
+                &lt;a href=&quot;http://www.au.tsinghua.edu.cn/&quot;&gt;&amp;nbsp;&amp;gt;自动化系主页&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+
+        
+        
+        
+        &lt;div class=&quot;span9&quot;&gt;
+            &lt;hr class=&quot;hidden-phone&quot;/&gt;
+            &lt;h1&gt;ASTA&lt;/h1&gt;
+            &lt;p&gt;&lt;b&gt;ASTA&lt;/b&gt; stands for &lt;b&gt;A&lt;/b&gt;ssociation of &lt;b&gt;S&lt;/b&gt;cience and &lt;b&gt;T&lt;/b&gt;echnology of &lt;b&gt;A&lt;/b&gt;utomation, &lt;b&gt;THU&lt;/b&gt;.&lt;/p&gt;
+            &lt;p&gt;&lt;big&gt;欢迎来到&lt;b&gt;清华大学自动化系科协&lt;/b&gt;主页。&lt;/big&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;footer class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;span12&quot;&gt;
+                &lt;p&gt;© ASTA 2015&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;
+
+
+&lt;/body&gt;
+--&gt;
+
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="110">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/wJmWP.html HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="299" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 04:15:31 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /wJmWP.html was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at student.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="128">
+                <http-request>
+                    <status>POST http://student.au.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3dKbVdQLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguUFdtSnc=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="317" field="content-length"/>
+                        <header content="timeout=5, max=95" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 04:15:31 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at student.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="185">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="302" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 04:15:32 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at student.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="186">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="300" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 04:15:32 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /favicon.ico was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at student.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="197">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="306" field="content-length"/>
+                        <header content="timeout=5, max=95" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 04:15:32 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don't have permission to access /server-status
+on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at student.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="198">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="303" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 04:15:32 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /admin-console/ was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at student.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="200">
+                <http-request>
+                    <status>PUT http://student.au.tsinghua.edu.cn/lRXnM HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">9mF3ZU</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="317" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="POST,OPTIONS,GET,HEAD" field="allow"/>
+                        <header content="Thu, 08 Dec 2016 04:15:33 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /lRXnM.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at student.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="213">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="295" field="content-length"/>
+                        <header content="timeout=5, max=97" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 04:15:36 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /status was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at student.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="215">
+                <http-request>
+                    <status>GET http://student.au.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="student.au.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="301" field="content-length"/>
+                        <header content="timeout=5, max=96" field="keep-alive"/>
+                        <header content="Apache/2.4.7 (Ubuntu)" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 04:15:36 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /jmx-console/ was not found on this server.&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.7 (Ubuntu) Server at student.au.tsinghua.edu.cn Port 80&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://student.au.tsinghua.edu.cn/WebConsole/Invoker&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://student.au.tsinghua.edu.cn/invoker/JMXInvokerServlet&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The fingerprint_WAF plugin got an error while requesting &quot;http://student.au.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://student.au.tsinghua.edu.cn/web-console/ServerInfo.jsp&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://student.au.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The fingerprint_WAF plugin got an error while requesting &quot;http://student.au.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve student.au.tsinghua.edu.cn</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to student.au.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

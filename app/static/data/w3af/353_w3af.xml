@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480500088" start-long="Wed Nov 30 05:01:28 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://alumni.pbcsf.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/353_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[85]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Microsoft-IIS/6.0&quot;.</description>
+        <http-transactions>
+            <http-transaction id="85">
+                <http-request>
+                    <status>GET http://alumni.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alumni.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:01:32 GMT" field="date"/>
+                        <header content="218" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Error&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;head&gt;&lt;title&gt;Directory Listing Denied&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Directory Listing Denied&lt;/h1&gt;This Virtual Directory does not allow contents to be listed.&lt;/body&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[104]" method="GET" name="Powered-by header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The x-powered-by header for the target HTTP server is &quot;ASP.NET&quot;.</description>
+        <http-transactions>
+            <http-transaction id="104">
+                <http-request>
+                    <status>GET http://alumni.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alumni.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:01:32 GMT" field="date"/>
+                        <header content="218" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Error&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;head&gt;&lt;title&gt;Directory Listing Denied&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Directory Listing Denied&lt;/h1&gt;This Virtual Directory does not allow contents to be listed.&lt;/body&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[106]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://pbcsf.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://pbcsf.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="106">
+                <http-request>
+                    <status>GET http://alumni.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:01:37 GMT" field="date"/>
+                        <header content="close" field="connection"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="39" field="content-length"/>
+                    </headers>
+                    <body content-encoding="text">&lt;h1&gt;Bad Request (Invalid Hostname)&lt;/h1&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[83, 119]" method="PUT" name="DAV incorrect configuration" plugin="dav" severity="Information" url="http://alumni.pbcsf.tsinghua.edu.cn/LJNIY" var="None">
+        <description>DAV seems to be correctly configured and allowing you to use the PUT method but the directory does not have the right permissions that would allow the web server to write to it. This error was found at: &quot;http://alumni.pbcsf.tsinghua.edu.cn/LJNIY&quot;.</description>
+        <http-transactions>
+            <http-transaction id="83">
+                <http-request>
+                    <status>PUT http://alumni.pbcsf.tsinghua.edu.cn/LJNIY HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="alumni.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">yU98SW</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:01:37 GMT" field="date"/>
+                        <header content="1221" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xb1\xa3\xb4\xe6\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xb1\xa3\xb4\xe6\xb8\xc3ҳ&lt;/h1&gt;
+\xbd\xab\xcd\xf8ҳ\xb1\xa3\xb4浽\xcd\xf8վʱ\xb3\xf6\xcf\xd6\xce\xca\xcc⡣\xb5\xbc\xd6´˴\xed\xce\xf3\xb5\xc4ԭ\xd2\xf2\xbf\xc9\xc4\xdc\xcaǣ\xba\xc4\xfa\xca\xd4ͼ\xbd\xab\xceļ\xfe\xc9\xcf\xd4ص\xbdĿ¼\xbb\xf2\xd4\xdaĿ¼\xd6\xd0\xd0޸\xc4\xceļ\xfe\xa3\xac\xb5\xab\xb8\xc3Ŀ¼\xb2\xbb\xd4\xca\xd0\xedд\xc8\xeb\xb7\xc3\xceʡ\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfb\xc4\xfa\xc8\xcfΪ\xb8\xc3Ŀ¼Ӧ\xb8\xc3\xd4\xca\xd0\xedд\xc8\xebȨ\xcfޣ\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa1\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 403.3 - \xbd\xfbֹ\xb7\xc3\xceʣ\xbaд\xc8\xeb\xb7\xc3\xceʱ\xbb\xbeܾ\xf8\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;403&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;ʹ\xd3\xc3\xd0\xe9\xc4\xe2Ŀ¼&amp;rdquo;\xa1\xa2&amp;ldquo;\xb8\xfc\xb8\xc4Ĭ\xc8\xcf\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="119">
+                <http-request>
+                    <status>GET http://alumni.pbcsf.tsinghua.edu.cn/LJNIY HTTP/1.1</status>
+                    <headers>
+                        <header content="alumni.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:01:38 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[156]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.7.26/" var="None">
+        <description>The contents of http://166.111.7.26/ and http://alumni.pbcsf.tsinghua.edu.cn/ differ.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[37, 133]" method="GET" name="DAV methods enabled" plugin="allowed_methods" severity="Information" url="http://alumni.pbcsf.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot; has the following allowed methods. These include DAV methods and should be disabled: COPY, DELETE, GET, HEAD, LOCK, MKCOL, MOVE, OPTIONS, POST, PROPFIND, PROPPATCH, PUT, SEARCH, TRACE, UNLOCK</description>
+        <http-transactions>
+            <http-transaction id="37">
+                <http-request>
+                    <status>OPTIONS http://alumni.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alumni.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="none" field="accept-ranges"/>
+                        <header content="DAV" field="ms-author-via"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="1, 2" field="dav"/>
+                        <header content="&lt;DAV:sql&gt;" field="dasl"/>
+                        <header content="OPTIONS, TRACE, GET, HEAD, COPY, PROPFIND, SEARCH, LOCK, UNLOCK" field="allow"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 10:01:36 GMT" field="date"/>
+                        <header content="OPTIONS, TRACE, GET, HEAD, DELETE, PUT, POST, COPY, MOVE, MKCOL, PROPFIND, PROPPATCH, LOCK, UNLOCK, SEARCH" field="public"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 83, 93, 112]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://alumni.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alumni.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:01:32 GMT" field="date"/>
+                        <header content="218" field="content-length"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Error&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;head&gt;&lt;title&gt;Directory Listing Denied&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Directory Listing Denied&lt;/h1&gt;This Virtual Directory does not allow contents to be listed.&lt;/body&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="83">
+                <http-request>
+                    <status>PUT http://alumni.pbcsf.tsinghua.edu.cn/LJNIY HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="alumni.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">yU98SW</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:01:37 GMT" field="date"/>
+                        <header content="1221" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xb1\xa3\xb4\xe6\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xb1\xa3\xb4\xe6\xb8\xc3ҳ&lt;/h1&gt;
+\xbd\xab\xcd\xf8ҳ\xb1\xa3\xb4浽\xcd\xf8վʱ\xb3\xf6\xcf\xd6\xce\xca\xcc⡣\xb5\xbc\xd6´˴\xed\xce\xf3\xb5\xc4ԭ\xd2\xf2\xbf\xc9\xc4\xdc\xcaǣ\xba\xc4\xfa\xca\xd4ͼ\xbd\xab\xceļ\xfe\xc9\xcf\xd4ص\xbdĿ¼\xbb\xf2\xd4\xdaĿ¼\xd6\xd0\xd0޸\xc4\xceļ\xfe\xa3\xac\xb5\xab\xb8\xc3Ŀ¼\xb2\xbb\xd4\xca\xd0\xedд\xc8\xeb\xb7\xc3\xceʡ\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfb\xc4\xfa\xc8\xcfΪ\xb8\xc3Ŀ¼Ӧ\xb8\xc3\xd4\xca\xd0\xedд\xc8\xebȨ\xcfޣ\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa1\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 403.3 - \xbd\xfbֹ\xb7\xc3\xceʣ\xbaд\xc8\xeb\xb7\xc3\xceʱ\xbb\xbeܾ\xf8\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;403&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;ʹ\xd3\xc3\xd0\xe9\xc4\xe2Ŀ¼&amp;rdquo;\xa1\xa2&amp;ldquo;\xb8\xfc\xb8\xc4Ĭ\xc8\xcf\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="93">
+                <http-request>
+                    <status>GET http://alumni.pbcsf.tsinghua.edu.cn/qbJSX.html HTTP/1.1</status>
+                    <headers>
+                        <header content="alumni.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:01:37 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="112">
+                <http-request>
+                    <status>GET http://alumni.pbcsf.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="alumni.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:01:38 GMT" field="date"/>
+                        <header content="1308" field="content-length"/>
+                        <header content="Microsoft-IIS/6.0" field="server"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="ASP.NET" field="x-powered-by"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/TITLE&gt;
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; Content=&quot;text/html; charset=GB2312&quot;&gt;
+&lt;STYLE type=&quot;text/css&quot;&gt;
+  BODY { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  H1 { font: 12pt/15pt \xcb\xce\xcc\xe5 }
+  H2 { font: 9pt/12pt \xcb\xce\xcc\xe5 }
+  A:link { color: red }
+  A:visited { color: maroon }
+&lt;/STYLE&gt;
+&lt;/HEAD&gt;&lt;BODY&gt;&lt;TABLE width=500 border=0 cellspacing=10&gt;&lt;TR&gt;&lt;TD&gt;
+
+&lt;h1&gt;\xce޷\xa8\xd5ҵ\xbd\xb8\xc3ҳ&lt;/h1&gt;
+\xc4\xfa\xd5\xfd\xd4\xda\xcb\xd1\xcb\xf7\xb5\xc4ҳ\xc3\xe6\xbf\xc9\xc4\xdc\xd2Ѿ\xadɾ\xb3\xfd\xa1\xa2\xb8\xfc\xc3\xfb\xbb\xf2\xd4\xddʱ\xb2\xbb\xbf\xc9\xd3á\xa3
+&lt;hr&gt;
+&lt;p&gt;\xc7볢\xca\xd4\xd2\xd4\xcf²\xd9\xd7\xf7\xa3\xba&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ȷ\xb1\xa3\xe4\xaf\xc0\xc0\xc6\xf7\xb5ĵ\xd8ַ\xc0\xb8\xd6\xd0\xcf\xd4ʾ\xb5\xc4\xcd\xf8վ\xb5\xd8ַ\xb5\xc4ƴд\xba͸\xf1ʽ\xd5\xfdȷ\xce\xde\xce\xf3\xa1\xa3&lt;/li&gt;
+&lt;li&gt;\xc8\xe7\xb9\xfbͨ\xb9\xfd\xb5\xa5\xbb\xf7\xc1\xb4\xbdӶ\xf8\xb5\xbd\xb4\xef\xc1˸\xc3\xcd\xf8ҳ\xa3\xac\xc7\xeb\xd3\xeb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc1\xaaϵ\xa3\xac֪ͨ\xcb\xfb\xc3Ǹ\xc3\xc1\xb4\xbdӵĸ\xf1ʽ\xb2\xbb\xd5\xfdȷ\xa1\xa3
+&lt;/li&gt;
+&lt;li&gt;\xb5\xa5\xbb\xf7&lt;a href=&quot;javascript:history.back(1)&quot;&gt;\xba\xf3\xcd\xcb&lt;/a&gt;\xb0\xb4ť\xb3\xa2\xca\xd4\xc1\xedһ\xb8\xf6\xc1\xb4\xbdӡ\xa3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HTTP \xb4\xed\xce\xf3 404 - \xceļ\xfe\xbb\xf2Ŀ¼δ\xd5ҵ\xbd\xa1\xa3&lt;br&gt;Internet \xd0\xc5Ϣ\xb7\xfe\xce\xf1 (IIS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;\xbc\xbc\xca\xf5\xd0\xc5Ϣ\xa3\xa8Ϊ\xbc\xbc\xca\xf5֧\xb3\xd6\xc8\xcbԱ\xccṩ\xa3\xa9&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ת\xb5\xbd &lt;a href=&quot;http://go.microsoft.com/fwlink/?linkid=8180&quot;&gt;Microsoft \xb2\xfaƷ֧\xb3ַ\xfe\xce\xf1&lt;/a&gt;\xb2\xa2\xcb\xd1\xcb\xf7\xb0\xfc\xc0\xa8&amp;ldquo;HTTP&amp;rdquo;\xba\xcd&amp;ldquo;404&amp;rdquo;\xb5ı\xea\xcc⡣&lt;/li&gt;
+&lt;li&gt;\xb4\xf2\xbf\xaa&amp;ldquo;IIS \xb0\xef\xd6\xfa&amp;rdquo;\xa3\xa8\xbf\xc9\xd4\xda IIS \xb9\xdc\xc0\xed\xc6\xf7 (inetmgr) \xd6з\xc3\xceʣ\xa9\xa3\xacȻ\xba\xf3\xcb\xd1\xcb\xf7\xb1\xea\xcc\xe2Ϊ&amp;ldquo;\xcd\xf8վ\xc9\xe8\xd6\xc3&amp;rdquo;\xa1\xa2&amp;ldquo;\xb3\xa3\xb9\xe6\xb9\xdc\xc0\xed\xc8\xce\xce\xf1&amp;rdquo;\xba\xcd&amp;ldquo;\xb9\xd8\xd3\xda\xd7Զ\xa8\xd2\xe5\xb4\xed\xce\xf3\xcf\xfbϢ&amp;rdquo;\xb5\xc4\xd6\xf7\xcc⡣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A &quot;UnicodeEncodeError&quot; exception was found while running infrastructure.favicon_identification on &quot;Method: GET | http://domain/&quot;. The exception was: &quot;'ascii' codec can't encode character u'\u07b7' in position 115: ordinal not in range(128)&quot; at favicon_identification.py:discover():70. The scan will continue but some vulnerabilities might not be identified.</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The frontpage_version plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/_vti_inf.html&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The frontpage plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The htaccess_methods plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/?=PHPE9568F36-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The dns_wildcard plugin got an error while requesting &quot;http://166.111.7.26/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The fingerprint_WAF plugin got an error while requesting &quot;http://alumni.pbcsf.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to alumni.pbcsf.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

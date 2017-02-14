@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481164806" start-long="Wed Dec 07 21:40:06 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.sem.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.133"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1363_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.sem.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.sem.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="9285" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.17 (Unix)" field="server"/>
+                        <header content="Thu, 08 Dec 2016 00:53:11 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;9d6d-5431b0fc760af&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 02:40:11 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=7&quot; /&gt;
+		&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
+		&lt;meta name=&quot;description&quot; content=&quot;清华大学经济管理学院，率先获得AACSB和EQUIS两大全球管理教育顶级认证的中国内地商学院。&quot;/&gt;
+		&lt;meta name=&quot;keywords&quot; content=&quot;清华经管研修班,清华 经管 金融,清华大学会计硕士,清华管理硕士,清华 emba排名,清华 研修班,清华 经管 金融 硕士,清华大学 会计 硕士,清华 管理 硕士,清华 emba国际排名,清华经理人培训,清华大学金融硕士,清华大学 会计 mim,清华经管管理硕士,清华后e,清华 经理人培训,清华大学 金融硕士,清华mim,清华 经管 管理硕士,清华后emba&quot;/&gt;
+		&lt;meta name=&quot;searchtitle&quot; content=&quot;商学院,MBA,EMBA,中国MBA,清华MBA,清华EMBA,培训,短期培训,工商管理硕士,管理教育,清华,清华经管,管理培训,高层经理,工商管理,清华EDP,MBA校友会,清华MBA校友会,清华MBA&quot;/&gt;
+		&lt;title&gt;清华大学经济管理学院&lt;/title&gt;
+		&lt;link rel=&quot;shortcut icon&quot; href=&quot;/sem/images/favicon.ico&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/sem/css/layout.css&quot;/&gt;
+		&lt;script type=&quot;text/javascript&quot; src=&quot;/sem/js/jquery.js&quot;&gt;&lt;/script&gt;
+		&lt;script type=&quot;text/javascript&quot; src=&quot;/sem/js/hover.js&quot;&gt;&lt;/script&gt;
+		&lt;link href=&quot;/sem/css/layoutV2.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;link href=&quot;/sem/css/styleV2.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			.menu_c li{_margin-top:-4px;height:39px !important}
+			.menu_c ul{margin-top:12px}
+			.left_con185 p .pop_note .pop_link_label{margin:0 0 0 30px;width:156px;height:20px;display:block}
+			.right_title{margin-right:9px !important}
+			.right_con180{padding-right:6px}
+		&lt;/style&gt;
+	&lt;/head&gt;
+&lt;body&gt;
+	&lt;!-- 菜单项ID、菜单项父级ID BEGIN --&gt;
+	
+	
+	&lt;!-- 菜单项ID、菜单项父级ID END --&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		var _gaq = _gaq || [];
+		_gaq.push([ '_setAccount', 'UA-17585252-1' ]);
+		_gaq.push([ '_trackPageview' ]);
+		(function() {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+	&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		document.domain = 'sem.tsinghua.edu.cn';
+
+		function SetCwinHeight(obj) {
+			var cwin = obj;
+			var ab = 0;
+			if ($.browser.msie &amp;&amp; ($.browser.version == &quot;6.0&quot;)) {
+				ab = 0;
+			}
+			if (document.getElementById) {
+				if (cwin &amp;&amp; !window.opera) {
+					if (cwin.contentDocument &amp;&amp; cwin.contentDocument.body.offsetHeight) {
+						ab = 0;
+						//alert(cwin.height+&quot;??&quot;+(cwin.contentDocument.body.offsetHeight+ab));
+						cwin.height = '150px';
+						cwin.height = (cwin.contentDocument.body.offsetHeight + ab) + 'px'; //FF NS  chrome
+					} else if (cwin.Document &amp;&amp; cwin.Document.body.scrollHeight) {
+						//alert('ch:'+cwin.Document.body.scrollHeight);
+						cwin.height = cwin.Document.body.scrollHeight; //IE  
+					}
+				} else {
+					if (cwin.contentWindow.document &amp;&amp; cwin.contentWindow.document.body.scrollHeight)
+						cwin.height = cwin.contentWindow.document.body.scrollHeight + ab; //Opera  
+				}
+			}
+		}
+		function setCWINHeight1(obj) {
+			var cwin = obj;
+			var ab = 0;
+			if ($.browser.msie &amp;&amp; ($.browser.version == &quot;6.0&quot;)) {
+				ab = 20;
+			}
+			if (document.getElementById) {
+				if (cwin &amp;&amp; !window.opera) {
+					if (cwin.contentDocument &amp;&amp; cwin.contentDocument.body.offsetHeight) {
+						//alert(cwin.height+&quot;??&quot;+(cwin.contentDocument.body.offsetHeight+ab));
+						cwin.height = '150px';
+						cwin.height = (cwin.contentDocument.body.offsetHeight + ab) + 'px'; //FF NS  chrome
+					} else if (cwin.Document &amp;&amp; cwin.Document.body.scrollHeight)
+						cwin.height = cwin.Document.body.scrollHeight + ab; //IE  
+				} else {
+					if (cwin.contentWindow.document &amp;&amp; cwin.contentWindow.document.body.scrollHeight)
+						cwin.height = cwin.contentWindow.document.body.scrollHeight + ab; //Opera  
+				}
+			}
+		}
+		function locationHref1(hrefs) {
+			location.href = hrefs;
+			return false;
+		}
+	&lt;/script&gt;
+	&lt;div class=&quot;warp2&quot;&gt;
+		&lt;!-- HEADER BEGIN --&gt;
+		&lt;div id=&quot;header&quot;&gt;&lt;/div&gt;
+		&lt;!--HEADER END --&gt;
+		
+		&lt;!--中间内容区 BEGIN --&gt;
+		&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; class=&quot;body box100%&quot;
+			cellspacing=&quot;0&quot;&gt;
+			&lt;tr&gt;
+				&lt;td&gt;
+					&lt;div class=&quot;warp&quot;&gt;
+						&lt;div class=&quot;clear m_10px&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;menu&quot;&gt;
+							&lt;div&gt;&lt;/div&gt;
+							&lt;!-- 焦点专题 BEGIN --&gt;
+							&lt;div class=&quot;menu_a&quot; id=&quot;leftgdtp&quot; tzreplacetextflg=&quot;leftgdtp&quot; style=&quot;width: 191px&quot;&gt;
+								&lt;ul style=&quot;margin-top:12px&quot;&gt;
+	&lt;li&gt;&lt;a href=&quot;/news/ugreform.html&quot; target=&quot;_top&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images1&quot; name=&quot;images1&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav31_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav31_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/sem/left_nav31_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;/news/docreform.html&quot; target=&quot;_top&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images2&quot; name=&quot;images2&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav32_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav32_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/sem/left_nav32_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;/news/thmba.html&quot; target=&quot;_top&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images3&quot; name=&quot;images3&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav33_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav33_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/sem/left_nav33_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;/news/embainnovelop.htnl&quot; target=&quot;_top&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images4&quot; name=&quot;images4&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav34_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav34_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/sem/left_nav34_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;/news/ydxrh.html&quot; target=&quot;_top&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images5&quot; name=&quot;images5&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav35_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav35_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/sem/left_nav35_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;/news/qqzl.html&quot; target=&quot;_top&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images6&quot; name=&quot;images6&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav36_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/sem/left_nav36_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/sem/left_nav36_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+							&lt;/div&gt;
+							&lt;!-- 焦点专题 END --&gt;
+							&lt;script src=&quot;/semcms_com_www/default/article/js/gdtpcn.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+							&lt;!-- 焦点图 Begin --&gt;
+							&lt;div class=&quot;menu_b&quot;&gt;
+								&lt;!--pic --&gt;
+								&lt;div id=&quot;picBox_top&quot;&gt;
+									&lt;div id=&quot;myFocus&quot;&gt;
+										&lt;div class=&quot;loading&quot;&gt;请稍候...&lt;/div&gt;
+										&lt;!--载入画面--&gt;
+										&lt;div class=&quot;pics&quot; id=&quot;gdtp&quot; tzreplacetextflg=&quot;gdtp&quot;&gt;
+											&lt;ul&gt;			 			&lt;li&gt;				&lt;a href=&quot; &quot; target=&quot;_blank&quot;&gt;					&lt;img src=&quot;/sem/static/201612/spe_201612519112827spe_20161241519100000钱颖一.jpg&quot; alt=&quot;钱颖一院长荣膺2016年中国经济学奖&quot;&gt;				&lt;/a&gt;			&lt;/li&gt;		 			&lt;li&gt;				&lt;a href=&quot; &quot; target=&quot;_blank&quot;&gt;					&lt;img src=&quot;/sem/static/201612/spe_201612511502237焦点图_一二九.jpg&quot; alt=&quot;学院荣获清华大学本科生“一二•九”歌咏比赛综合一等奖&quot;&gt;				&lt;/a&gt;			&lt;/li&gt;		 			&lt;li&gt;				&lt;a href=&quot;http://www.sem.tsinghua.edu.cn/news/xyywcn/600.html&quot; target=&quot;_blank&quot;&gt;					&lt;img src=&quot;/sem/static/201611/spe_2016112910304241焦点图_黄钦.jpg&quot; alt=&quot;学院2011级本科生黄钦荣膺罗德奖学金&quot;&gt;				&lt;/a&gt;			&lt;/li&gt;		 			&lt;li&gt;				&lt;a href=&quot;http://www.sem.tsinghua.edu.cn/news/xyywcn/TZ_75134.html&quot; target=&quot;_blank&quot;&gt;					&lt;img src=&quot;/semcms_com_www/upload/article/image/2016_4/11_11/892xivddbqi9.jpg&quot; alt=&quot;清华经管学院院长钱颖一教授新书《大学的改革 》出版发行&quot;&gt;				&lt;/a&gt;			&lt;/li&gt;			&lt;/ul&gt;
+										&lt;/div&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+								&lt;script type=&quot;text/javascript&quot;&gt;
+									$(document).ready(function(){setMyFocus('myFocus',1)});
+								&lt;/script&gt;
+								&lt;style type=&quot;text/css&quot;&gt;
+									#myFocus{width:580px;height:296px;position:relative;overflow:hidden;font-family:Verdana,Arial,Helvetica,sans-serif;background:#fff}
+									#myFocus .loading{position:absolute;z-index:9999;width:580px;height:296px;color:#666;font-size:12px;text-align:center;padding-top:90px}
+									#myFocus .pics li{position:absolute;top:0px;left:0px}
+									#myFocus .pics li img{filter:alpha(opacity = 0);opacity:0;width:580px;height:296px}
+									#myFocus .ts li{position:absolute;z-index:2;left:0;bottom:-37px;height:37px;line-height:32px;padding-left:16px;overflow:hidden;width:100%;background-color:#540407}
+									#myFocus .ts li a{color:#fff;font-size:14px;font-family:&quot;微软雅黑&quot;;text-decoration:none}
+									#myFocus .tsBg{position:absolute;bottom:0;z-index:1;width:580px;height:36px;filter:alpha(opacity = 40);opacity:0.4}
+									#myFocus .btn,#myFocus .btnBg{position:absolute;z-index:3;bottom:8px;right:8px;color:#FFF;font-size:12px;font-weight:bold}
+									#myFocus .btn li,#myFocus .btnBg li{float:left;width:24px;height:24px;line-height:18px;overflow:hidden;text-align:center;margin-right:1px;cursor:pointer}
+									#myFocus .btnBg li{background:url(images/flashbutton2.gif) no-repeat 0 center;width:24px;height:24px;filter:alpha(opacity = 50);opacity:0.5}
+									#myFocus .btn li.current,#myFocus .btn li.hover{background:url(images/flashbutton1.gif) no-repeat 0 0;width:24px;height:24px}
+								&lt;/style&gt;
+								&lt;!--pic end--&gt;
+							&lt;/div&gt;
+							&lt;!-- 焦点图  End--&gt;
+
+							&lt;!-- 学科导航Begin --&gt;
+							&lt;div style=&quot;width: 223px;&quot; class=&quot;menu_c&quot; id=&quot;rightgdtp&quot; tzreplacetextflg=&quot;rightgdtp&quot;&gt;
+								&lt;ul&gt;	&lt;li&gt;&lt;a href=&quot;http://ug.sem.tsinghua.edu.cn/&quot; target=&quot;_blank&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images_r1&quot; name=&quot;images_r1&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav1_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav1_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/right_nav1_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;http://pg.sem.tsinghua.edu.cn/&quot; target=&quot;_blank&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images_r2&quot; name=&quot;images_r2&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav2_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav2_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/right_nav2_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;http://masters.sem.tsinghua.edu.cn/&quot; target=&quot;_blank&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images_r3&quot; name=&quot;images_r3&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav3_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav3_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/right_nav3_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;http://mba.sem.tsinghua.edu.cn&quot; target=&quot;_blank&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images_r4&quot; name=&quot;images_r4&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav4_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav4_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/right_nav4_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;http://emba.sem.tsinghua.edu.cn/&quot; target=&quot;_blank&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images_r5&quot; name=&quot;images_r5&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav5_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav5_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/right_nav5_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;http://exed.sem.tsinghua.edu.cn&quot; target=&quot;_blank&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images_r6&quot; name=&quot;images_r6&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav6_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav6_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/right_nav6_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;http://www.x-lab.tsinghua.edu.cn/&quot; target=&quot;_blank&quot;&gt;&lt;img alt=&quot;&quot; id=&quot;images_r7&quot; name=&quot;images_r7&quot; onmouseout=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav7_out.gif'&quot; onmouseover=&quot;this.src='/semcms_com_www/default/article/img/ht/sem/right_nav7_on.gif'&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/right_nav7_out.gif&quot; /&gt; &lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+							&lt;/div&gt;
+							&lt;!-- 学科导航End --&gt;
+						&lt;/div&gt;
+						&lt;div class=&quot;con_warp&quot; style=&quot;padding-left: 5px&quot;&gt;
+							&lt;div class=&quot;left_zheng&quot; style=&quot;&quot;&gt;
+								&lt;div class=&quot;left_warp002&quot; id=&quot;left_warpId&quot; style=&quot;position: relative&quot;&gt;
+									&lt;div&gt;&lt;/div&gt;
+									&lt;div style=&quot;margin-top: 10px; top: 10px;&quot; align=&quot;center&quot; id=&quot;leftcon1&quot; tzreplacetextflg=&quot;leftcon1&quot;&gt;
+										&lt;p&gt;&lt;a href=&quot;http://tbr.net.cn/&quot; target=&quot;_blank&quot; title=&quot;清华管理评论&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/pic1.gif&quot; style=&quot;margin: 0px; width: 174px&quot; /&gt; &lt;/a&gt; &lt;a href=&quot;/ec/jjxb.html&quot; target=&quot;_blank&quot; title=&quot;经济学报&quot;&gt; &lt;img alt=&quot;&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/jjxb.jpg&quot; style=&quot;margin: 9px 0px 0px; width: 174px&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+									&lt;/div&gt;
+									&lt;div class=&quot;left_top&quot;&gt;&lt;/div&gt;
+									&lt;div class=&quot;left_wa&quot;&gt;
+										&lt;div class=&quot;left_title&quot;&gt;
+											&lt;img alt=&quot;&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/font1.gif&quot; /&gt;
+										&lt;/div&gt;
+										&lt;div class=&quot;left_con240&quot; id=&quot;leftcon2&quot; tzreplacetextflg=&quot;leftcon2&quot;&gt;
+											&lt;ul&gt;	&lt;li&gt;&lt;a href=&quot;/ac/&quot;&gt;会计系&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/ec/&quot;&gt;经济系&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/fin/&quot;&gt;金融系&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/ies/&quot;&gt;创新创业与战略系&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/lom/&quot;&gt;领导力与组织管理系&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/mse/&quot;&gt;管理科学与工程系&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/mark/&quot;&gt;市场营销系&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+										&lt;/div&gt;
+									&lt;/div&gt;
+									&lt;div class=&quot;left_wa&quot;&gt;
+										&lt;div class=&quot;left_title&quot;&gt;
+											&lt;img alt=&quot;&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/font2.gif&quot; /&gt;
+										&lt;/div&gt;
+										&lt;div class=&quot;left_con160&quot; id=&quot;leftcon3&quot; tzreplacetextflg=&quot;leftcon3&quot;&gt;
+											&lt;ul&gt;	&lt;li&gt;&lt;a href=&quot;/news/yzzl.html&quot; target=&quot;_top&quot;&gt;院长专栏&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/jgsz.html&quot; target=&quot;_top&quot;&gt;经管师者&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/xsjy.html&quot; target=&quot;_top&quot;&gt;学生家园&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;http://alumni.sem.tsinghua.edu.cn/alumni/xyfc/xyzj.html&quot; target=&quot;_top&quot;&gt;校友风采&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/mtgznews.html&quot; target=&quot;_top&quot;&gt;媒体关注&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+										&lt;/div&gt;
+									&lt;/div&gt;
+									&lt;style&gt;
+&lt;!--
+
+	.left_con185 p{ position:absolute; z-index:99999; left:0; top:300px; width:191px; height:200px; display:none;}
+	.left_con185 p .pop_title{width:191px; height:34px; background: url(../images/main_right_pop_title_bg_r1_c1.jpg) no-repeat; display:block;}
+	.left_con185 p .pop_title .pop_title_label{float:left; margin:12px 0 0 37px; width:auto; height:20px; color:#9f071b; display:block; text-align:left;}
+	.left_con185 p .pop_title .pop_btn_label{float:right; margin:14px 15px 0 0; width:11px; height:11px; background:url(../images/main_right_pop_title_btn.jpg) no-repeat; display:block;}
+	.left_con185 p .pop_note{padding:10px 0 15px 0; width:191px; height:auto; background:url(../images/main_right_pop_note_bg.jpg) no-repeat right bottom; display:block;}
+	.left_con185 p .pop_note .pop_link_label{margin:0 0 0 37px; width:154px; height:20px; display:block;}
+	.left_con185 p .pop_note a.pop_list{text-decoration:none; color:#167aca;}
+	.left_con185 p .pop_note a.pop_list:hover{text-decoration:underline; color:#c1858d;}
+--&gt;   .left_con185 p .pop_note .pop_link_label{margin:0 0 0 30px; width:156px; height:20px; display:block;}
+&lt;/style&gt;
+									&lt;div class=&quot;left_wa&quot;&gt;
+										&lt;div class=&quot;left_title&quot;&gt;
+											&lt;img src=&quot;/sem/images/font3.gif&quot; /&gt;
+										&lt;/div&gt;
+										&lt;div class=&quot;left_con185&quot; id=&quot;leftcon4&quot; tzreplacetextflg=&quot;leftcon4&quot;&gt;
+											&lt;ul&gt;	&lt;li&gt;		&lt;a id=&quot;label_0&quot; href=&quot;#label_0&quot; class=&quot;list_link&quot;&gt;			学术期刊		&lt;/a&gt;		&lt;p id=&quot;label_0_pop&quot; class=&quot;label_pop&quot; style=&quot;display: none;&quot;&gt;			&lt;label class=&quot;pop_title&quot;&gt;				&lt;span class=&quot;pop_title_label&quot;&gt;					学术期刊				&lt;/span&gt;				&lt;a href=&quot;javascript:void(0)&quot; class=&quot;pop_btn_label&quot;&gt;				&lt;/a&gt;			&lt;/label&gt;			&lt;label class=&quot;pop_note&quot;&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;/newslab/cxcygl.html&quot;					class=&quot;pop_list&quot;&gt;						创新与创业管理					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;/newslab/jjxb.html&quot;					class=&quot;pop_list&quot;&gt;						经济学报					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;http://www.rccm.tsinghua.edu.cn/JSSSE/&quot; target=&quot;_blank&quot; class=&quot;pop_list&quot;&gt;						系统科学与工程学报(英文)					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;http://cjis.sem.tsinghua.edu.cn&quot; target=&quot;_blank&quot; class=&quot;pop_list&quot;&gt;						信息系统学报					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;http://www.jms.org.cn/index.jsp&quot; target=&quot;_blank&quot; class=&quot;pop_list&quot;&gt;						营销科学学报					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;/newslab/zgkjpl.html&quot;					class=&quot;pop_list&quot;&gt;						中国会计评论					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;http://crrc.org.cn/magz.asp&quot; target=&quot;_blank&quot; class=&quot;pop_list&quot;&gt;						中国零售研究					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;http://www.ccwe.org.cn/ccwe/news.khtml?action=show&amp;amp;gid=109&amp;amp;id=1172761256628933&quot;					target=&quot;_blank&quot; class=&quot;pop_list&quot;&gt;						中国与世界观察					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;http://www.jishujingji.cn/ch/index.aspx&quot; target=&quot;_blank&quot; class=&quot;pop_list&quot;&gt;						技术经济					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;http://www.kygl.net.cn/cn/index.asp&quot; target=&quot;_blank&quot; class=&quot;pop_list&quot;&gt;						科研管理					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;/newslab/hrkfjken.html&quot;					class=&quot;pop_list&quot;&gt;						人力资源开发季刊(英文)					&lt;/a&gt;				&lt;/span&gt;			&lt;/label&gt;		&lt;/p&gt;	&lt;/li&gt;	&lt;li&gt;		&lt;a id=&quot;label_1&quot; href=&quot;#label_1&quot; class=&quot;list_link&quot;&gt;			实验室		&lt;/a&gt;		&lt;p id=&quot;label_1_pop&quot; class=&quot;label_pop&quot; style=&quot;display: none;&quot;&gt;			&lt;label class=&quot;pop_title&quot;&gt;				&lt;span class=&quot;pop_title_label&quot;&gt;					实验室				&lt;/span&gt;				&lt;a href=&quot;javascript:void(0)&quot; class=&quot;pop_btn_label&quot;&gt;				&lt;/a&gt;			&lt;/label&gt;			&lt;label class=&quot;pop_note&quot;&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;/newslab/glxxlab.html&quot;					class=&quot;pop_list&quot;&gt;						管理信息实验室					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;/newslab/qyzyghlab.html&quot;					class=&quot;pop_list&quot;&gt;						企业资源规划实验室					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;/newslab/bclab.html&quot;					class=&quot;pop_list&quot;&gt;						行为与沟通实验室					&lt;/a&gt;				&lt;/span&gt;				&lt;span class=&quot;pop_link_label&quot;&gt;					&lt;a href=&quot;/newslab/nitbalab.html&quot;					class=&quot;pop_list&quot;&gt;						新兴信息技术商业应用实验室					&lt;/a&gt;				&lt;/span&gt;			&lt;/label&gt;		&lt;/p&gt;	&lt;/li&gt;	&lt;li&gt;		&lt;a id=&quot;label_2&quot; href=&quot;/newslib/tsgsy.html&quot;		class=&quot;list_link&quot;&gt;			图书馆		&lt;/a&gt;	&lt;/li&gt;	&lt;li&gt;		&lt;a id=&quot;label_3&quot; href=&quot;http://learning.sem.tsinghua.edu.cn&quot; target=&quot;_blank&quot;		class=&quot;list_link&quot;&gt;			讨论区		&lt;/a&gt;	&lt;/li&gt;&lt;/ul&gt;
+										&lt;/div&gt;
+									&lt;/div&gt;
+									&lt;script type=&quot;text/javascript&quot; src=&quot;/sem/js/common_web.js&quot;&gt;&lt;/script&gt;
+								&lt;/div&gt;
+								&lt;div class=&quot;left_bottom&quot;&gt;
+									&lt;img src=&quot;/sem/images/left_bg2_1.jpg&quot;/&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+							
+							&lt;!-- 中间内容展示 Begin --&gt;
+							&lt;div class=&quot;center_warp&quot; id=&quot;center_warpId&quot; tzreplacetextflg=&quot;center_warpId&quot; style=&quot;margin-left:8px; _margin-left:2px&quot;&gt;
+								&lt;div&gt;&lt;/div&gt;&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;&lt;div class=&quot;c_nlistb&quot;&gt;	&lt;!-- 学院新闻  Begin--&gt;	&lt;div class=&quot;list_295&quot;&gt;		&lt;div class=&quot;c_title&quot;&gt;			&lt;div class=&quot;c_title_font&quot;&gt;				&lt;img alt=&quot;&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/font4.gif&quot; /&gt;			&lt;/div&gt;			&lt;div class=&quot;c_title_more&quot;&gt;				&lt;a href=&quot;/news/xyywcn.html&quot;&gt;更多&lt;/a&gt;				&lt;img alt=&quot;&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/ico3.gif&quot; /&gt;			&lt;/div&gt;		&lt;/div&gt;		&lt;!--list --&gt;		&lt;div class=&quot;list_wb&quot;&gt;												 						&lt;h2 style=&quot;position: relative; border: 0px solid #c3c2b0; width: 250px; margin-bottom: 14px;&quot;&gt;							&lt;strong&gt; &lt;a  href=&quot;/news/xyywcn/TZ_75134.html&quot;&gt;探寻大学改革之路——清华经管学院钱颖一院长新书《大学的改革》出版发行&lt;/a&gt;&lt;/strong&gt;							&lt;a  href=&quot;/news/xyywcn/TZ_75134.html&quot; style=&quot;border: 0px solid #c3c2b0; position: absolute; bottom: 4px; right: 12px;&quot;&gt;【详细】&lt;/a&gt;						&lt;/h2&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;12-07&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/4866.html&quot;&gt;《人民日报》刊登钱颖一署名文章&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;12-07&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/4869.html&quot;&gt;朱岩网易演讲谈互联网思维与教育转型&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;12-07&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/4863.html&quot;&gt;学院获一二•九歌咏比赛综合一等奖&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;12-06&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/4830.html&quot;&gt;钱颖一2016年中国经济学奖获奖讲话&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;12-06&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/4847.html&quot;&gt;钱颖一院长荣膺2016年中国经济学奖&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;12-05&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/4875.html&quot;&gt;学院召开硕士项目教学咨询委员会&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;12-01&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/4763.html&quot;&gt;谢滨等创立药品供应链社区并举行研讨&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;11-30&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/4726.html&quot;&gt;陈国权作领导和管理的时空理论演讲&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;11-30&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/4715.html&quot;&gt;陈荣教授在国际顶级期刊发表论文&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;11-29&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/4690.html&quot;&gt;陈劲《创新管理》获优秀教材一等奖&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;11-29&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/600.html&quot;&gt;学子|黄钦（经2011）荣膺罗德奖学金&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;																				&lt;ul&gt;							&lt;li style=&quot;line-height: 18px; margin-bottom: 8px;&quot; class=&quot;c_ntime&quot;&gt;11-29&lt;/li&gt;							&lt;li style=&quot;line-height: 16px; margin-bottom: 8px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/news/xyywcn/591.html&quot;&gt;互联网中心举办论坛聚焦数字化转型&lt;/a&gt;&lt;/li&gt;						&lt;/ul&gt;														&lt;/div&gt;	&lt;/div&gt;	&lt;!-- 学院新闻 End --&gt;		&lt;!-- 教授观点 Begin --&gt;	&lt;div class=&quot;list_275&quot;&gt;		&lt;div class=&quot;c_title&quot;&gt;			&lt;div class=&quot;c_title_font&quot;&gt;				&lt;img alt=&quot;&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/jsgd.gif&quot; /&gt;			&lt;/div&gt;			&lt;div class=&quot;c_title_more&quot;&gt;				&lt;a href=&quot;/news/jsgdcn.html&quot;&gt;更多&lt;/a&gt;&lt;img alt=&quot;&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/ico3.gif&quot; /&gt;			&lt;/div&gt;		&lt;/div&gt;		&lt;div class=&quot;list_picTxt&quot;&gt;			&lt;ul&gt;															&lt;li&gt;							&lt;div class=&quot;pic&quot;&gt;								&lt;img src=&quot;/sem/static/jsgdcn/201611/spe_2016111618304353xw2ciuxqssss.jpg&quot; alt=&quot;&quot; /&gt;							&lt;/div&gt;							&lt;div class=&quot;txt&quot;&gt;								&lt;p class=&quot;tit&quot;&gt;									&lt;strong&gt;										&lt;a  href=&quot;/semcms_com_www/upload/article/image/2016_4/10_31/wpxqiuxqu7zo.pdf&quot; target=&quot;_blank&quot; &gt;郑晓明：榜样是不是正能量？&lt;/a&gt;									&lt;/strong&gt;								&lt;/p&gt;								&lt;p class=&quot;con&quot; style=&quot;position: relative; border: 0px solid #c3c2b0; width: 210px&quot;&gt;自20世纪90年代初开始，团队成为企业中常见的工作形式，大量的...&lt;a  href=&quot;/semcms_com_www/upload/article/image/2016_4/10_31/wpxqiuxqu7zo.pdf&quot; target=&quot;_blank&quot;  style=&quot;border: 0px solid #c3c2b0; position: absolute; bottom: 0; right: 0&quot;&gt;【详细】&lt;/a&gt;								&lt;/p&gt;							&lt;/div&gt;						&lt;/li&gt;											&lt;li&gt;							&lt;div class=&quot;pic&quot;&gt;								&lt;img src=&quot;/sem/static/jsgdcn/201611/spe_201611161833333g4niiutd4ayt.jpg&quot; alt=&quot;&quot; /&gt;							&lt;/div&gt;							&lt;div class=&quot;txt&quot;&gt;								&lt;p class=&quot;tit&quot;&gt;									&lt;strong&gt;										&lt;a  href=&quot;/semcms_com_www/upload/article/image/2016_4/10_28/z1oeiutd8uho.pdf&quot; target=&quot;_blank&quot; &gt;陈国权：组织从偶发事件中学习&lt;/a&gt;									&lt;/strong&gt;								&lt;/p&gt;								&lt;p class=&quot;con&quot; style=&quot;position: relative; border: 0px solid #c3c2b0; width: 210px&quot;&gt;问题情境、注意力质量与组织从偶发事件中学习：以民用航空事故...&lt;a  href=&quot;/semcms_com_www/upload/article/image/2016_4/10_28/z1oeiutd8uho.pdf&quot; target=&quot;_blank&quot;  style=&quot;border: 0px solid #c3c2b0; position: absolute; bottom: 0; right: 0&quot;&gt;【详细】&lt;/a&gt;								&lt;/p&gt;							&lt;/div&gt;						&lt;/li&gt;											&lt;li&gt;							&lt;div class=&quot;pic&quot;&gt;								&lt;img src=&quot;/sem/static/jsgdcn/201611/spe_2016111618335490uak2iu0vx0hj.jpg&quot; alt=&quot;&quot; /&gt;							&lt;/div&gt;							&lt;div class=&quot;txt&quot;&gt;								&lt;p class=&quot;tit&quot;&gt;									&lt;strong&gt;										&lt;a  href=&quot;/semcms_com_www/upload/article/image/2016_4/10_8/vxvniu0w1lsl.pdf&quot; target=&quot;_blank&quot; &gt;朱恒源：复盘联想的正确姿势&lt;/a&gt;									&lt;/strong&gt;								&lt;/p&gt;								&lt;p class=&quot;con&quot; style=&quot;position: relative; border: 0px solid #c3c2b0; width: 210px&quot;&gt;战略转型的困难，市场的预期对企业的影响也不可小觑，对于上市...&lt;a  href=&quot;/semcms_com_www/upload/article/image/2016_4/10_8/vxvniu0w1lsl.pdf&quot; target=&quot;_blank&quot;  style=&quot;border: 0px solid #c3c2b0; position: absolute; bottom: 0; right: 0&quot;&gt;【详细】&lt;/a&gt;								&lt;/p&gt;							&lt;/div&gt;						&lt;/li&gt;											&lt;li&gt;							&lt;div class=&quot;pic&quot;&gt;								&lt;img src=&quot;/semcms_com_www/upload/article/image/2016_3/9_22/ihexitdneqsx.jpg&quot; alt=&quot;&quot; /&gt;							&lt;/div&gt;							&lt;div class=&quot;txt&quot;&gt;								&lt;p class=&quot;tit&quot;&gt;									&lt;strong&gt;										&lt;a  href=&quot;/semcms_com_www/upload/article/image/2016_3/9_22/rm0iitdnh7aa.pdf&quot; target=&quot;_blank&quot; &gt;梁湧：风电网络与储能的联合优化&lt;/a&gt;									&lt;/strong&gt;								&lt;/p&gt;								&lt;p class=&quot;con&quot; style=&quot;position: relative; border: 0px solid #c3c2b0; width: 210px&quot;&gt;如何确保电力不成为经济社会发展的瓶颈，并进一步保障人民生活...&lt;a  href=&quot;/semcms_com_www/upload/article/image/2016_3/9_22/rm0iitdnh7aa.pdf&quot; target=&quot;_blank&quot;  style=&quot;border: 0px solid #c3c2b0; position: absolute; bottom: 0; right: 0&quot;&gt;【详细】&lt;/a&gt;								&lt;/p&gt;							&lt;/div&gt;						&lt;/li&gt;											&lt;li&gt;							&lt;div class=&quot;pic&quot;&gt;								&lt;img src=&quot;/semcms_com_www/upload/article/image/2016_3/8_23/8s5gis6x5w5p.jpg&quot; alt=&quot;&quot; /&gt;							&lt;/div&gt;							&lt;div class=&quot;txt&quot;&gt;								&lt;p class=&quot;tit&quot;&gt;									&lt;strong&gt;										&lt;a  href=&quot;/semcms_com_www/upload/article/image/2016_3/8_23/cqmdis6wza0v.pdf&quot; target=&quot;_blank&quot; &gt;罗玫：奥运概念股票的上涨漩涡&lt;/a&gt;									&lt;/strong&gt;								&lt;/p&gt;								&lt;p class=&quot;con&quot; style=&quot;position: relative; border: 0px solid #c3c2b0; width: 210px&quot;&gt;在巴西奥运会开幕之前，巴西圣保罗的Bovespa股票指数在2016年...&lt;a  href=&quot;/semcms_com_www/upload/article/image/2016_3/8_23/cqmdis6wza0v.pdf&quot; target=&quot;_blank&quot;  style=&quot;border: 0px solid #c3c2b0; position: absolute; bottom: 0; right: 0&quot;&gt;【详细】&lt;/a&gt;								&lt;/p&gt;							&lt;/div&gt;						&lt;/li&gt;												&lt;/ul&gt;		&lt;/div&gt;	&lt;/div&gt;	&lt;!-- 教授观点 End --&gt;&lt;/div&gt;&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;&lt;div class=&quot;c_nlistb&quot;&gt;	&lt;!-- 通知公告 Begin --&gt;	&lt;div class=&quot;list_295&quot;&gt;		&lt;div class=&quot;c_title&quot;&gt;			&lt;div class=&quot;c_title_font&quot;&gt;				&lt;img alt=&quot;&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/font5.gif&quot; /&gt;			&lt;/div&gt;			&lt;div class=&quot;c_title_more&quot;&gt;				&lt;a href=&quot;/news/tzggcn.html&quot;&gt;更多&lt;/a&gt; &lt;img alt=&quot;&quot;					src=&quot;/semcms_com_www/default/article/img/ht/sem/ico3.gif&quot; /&gt;			&lt;/div&gt;		&lt;/div&gt;		&lt;!--list --&gt;		&lt;div class=&quot;list_wb1&quot; style=&quot;margin-top: 14px;&quot;&gt;												&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-08&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/tzggcn/530.html&quot;&gt;长安讲坛总第308期——樊纲：房地产两极分化与“城镇化”战略的再思考&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-08&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;http://fmba.sem.tsinghua.edu.cn/FMBAxyhdggcn/TZ_75070.html&quot; target=&quot;_blank&quot; &gt;【报名】清华-香港中大FMBA金融街/国贸招生说明会&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-22&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/tzggcn/4857.html&quot;&gt;中国人民解放军原总装备部（现更名为中国共产党中央军事委员会装备发展部）退役少将蔺芳忠：国际商务谈判理念研究&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-25&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;http://mis.sem.tsinghua.edu.cn/ueditor/jsp/upload/file/20161128/1480304213627050994.pdf&quot; target=&quot;_blank&quot; &gt;【报名】清华大学2017年“全国优秀中学生人文社科冬季体验营”&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-25&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/tzggcn/59.html&quot;&gt;清华大学2017年431金融学综合考试大纲&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-31&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/semcms_com_www/upload/article/image/2016_4/11_1/cnq5iuyy7tg7.pdf&quot; target=&quot;_blank&quot; &gt;“一位清华退休老教授”——优秀共产党员赵家和事迹展&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;/div&gt;		&lt;!--list end--&gt;	&lt;/div&gt;	&lt;!-- 通知公告 End --&gt;	&lt;!-- 学术报告 Begin --&gt;	&lt;div class=&quot;list_275&quot;&gt;		&lt;div class=&quot;c_title&quot;&gt;			&lt;div class=&quot;c_title_font&quot;&gt;				&lt;img alt=&quot;&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/font6.gif&quot; /&gt;			&lt;/div&gt;			&lt;div class=&quot;c_title_more&quot;&gt;				&lt;a href=&quot;/news/acarep.html&quot;&gt;更多&lt;/a&gt; &lt;img alt=&quot;&quot;					src=&quot;/semcms_com_www/default/article/img/ht/sem/ico3.gif&quot; /&gt;			&lt;/div&gt;		&lt;/div&gt;		&lt;!--list --&gt;		&lt;div class=&quot;list_wb1&quot; style=&quot;margin-top: 14px;&quot;&gt;												&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-08&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/xsbgcn/569.html&quot;&gt;香港大学副教授王鑫：母子公司的共同管理者和企业税收筹划：来自中国的证据&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-08&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/xsbgcn/4870.html&quot;&gt;“清华经管学院双周学术报告会”——金融系副教授何平：经济波动的金融因素&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-08&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/xsbgcn/586.html&quot;&gt;乔治亚理工学院教授吴东军：技术支持和采纳后的IT服务使用：来自云服务的证据&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-08&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/xsbgcn/4755.html&quot;&gt;印第安纳大学凯莱商学院副教授杨珺：在快速思考下的投资：来自点对点借贷的证据&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-13&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/xsbgcn/4855.html&quot;&gt;伊利诺伊大学芝加哥分校组织行为学和人力资源专业博士生吴俊峰：服务型领导和团队创造力：团队内观点采择的双刃剑作用&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-13&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/xsbgcn/4850.html&quot;&gt;密西根大学助理教授Shaowei Ke：社会贴现率与长期贴现率&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-14&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/xsbgcn/4812.html&quot;&gt;纽约大学上海校区助理教授张任宇：网络外部性下的动态定价和库存管理&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-14&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/xsbgcn/4811.html&quot;&gt;罗格斯大学商学院副教授Lian Qi：风险控制下贸易信贷的价值&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-15&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/xsbgcn/4780.html&quot;&gt;德克萨斯大学Naveen Jindal管理学院杰出教授曾荣光：创业机会的本质&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;ul&gt;						&lt;li style=&quot;line-height: 18px;&quot; class=&quot;c_ntime&quot;&gt;12-15&lt;/li&gt;						&lt;li style=&quot;line-height: 16px;&quot; class=&quot;c_newf&quot;&gt;&lt;a  href=&quot;/xsbgcn/4851.html&quot;&gt;麦考瑞大学助理教授Zhe Ben Wang：量化宏观经济的不确定性——基于混频滤波器与问卷数据的分析&lt;/a&gt;&lt;/li&gt;					&lt;/ul&gt;									&lt;/div&gt;		&lt;!--list end--&gt;	&lt;/div&gt;	&lt;!-- 学术报告 END --&gt;&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;!-- 中间内容展示 End --&gt;
+							
+							&lt;!-- 右侧 Begin --&gt;
+							&lt;div class=&quot;right_w002&quot; id=&quot;right_w3Id&quot; style=&quot;position: relative; height: 1004px;&quot;&gt;
+								&lt;div&gt;&lt;/div&gt;
+								&lt;div class=&quot;right_p&quot; id=&quot;rightcon1&quot; tzreplacetextflg=&quot;rightcon1&quot;&gt;
+									&lt;p&gt;&lt;a href=&quot;http://ug.sem.tsinghua.edu.cn/admissions/zhao2016.html&quot; target=&quot;_blank&quot; title=&quot;2016本科招生专题&quot;&gt;&lt;img src=&quot;/semcms_com_www/default/article/img/ht/sem/benke.jpg&quot; style=&quot;margin: 10px 0px 0px&quot; /&gt; &lt;/a&gt;&lt;br /&gt;&lt;a href=&quot;http://pg.sem.tsinghua.edu.cn/adm/yjszsss.html&quot; target=&quot;_blank&quot; title=&quot;2017研究生招生&quot;&gt;&lt;img src=&quot;/semcms_com_www/upload/article/image/2014_2/2012graduate.jpg&quot; style=&quot;margin: 10px 0px 0px&quot; /&gt; &lt;/a&gt;&lt;/p&gt;
+								&lt;/div&gt;
+								&lt;div class=&quot;right_wa&quot;&gt;
+									&lt;div class=&quot;right_title&quot;&gt;
+										&lt;img alt=&quot;&quot;
+											src=&quot;/semcms_com_www/default/article/img/ht/sem/font31.gif&quot; /&gt;
+									&lt;/div&gt;
+									&lt;div class=&quot;right_con180&quot; id=&quot;rightcon2&quot; tzreplacetextflg=&quot;rightcon2&quot;&gt;
+										&lt;ul&gt;	&lt;li&gt;&lt;a href=&quot;/semcms_com_www/upload/article/image/2012_4/10_9/uf2xh82yod4y.pdf&quot;&gt;学院概览&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/xyyc.html&quot;&gt;学院院册&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/xynb.html&quot;&gt;年度报告&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/xydzjx.html&quot; target=&quot;_blank&quot;&gt;校友简讯&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+								&lt;div class=&quot;right_wa&quot;&gt;
+									&lt;div class=&quot;right_title&quot;&gt;
+										&lt;img src=&quot;/semcms_com_www/default/article/img/ht/sem/font8.gif&quot; /&gt;
+									&lt;/div&gt;
+									&lt;div class=&quot;right_con180&quot; id=&quot;rightcon3&quot; tzreplacetextflg=&quot;rightcon3&quot;&gt;
+										&lt;ul&gt;	&lt;li&gt;&lt;a href=&quot;/news/jnjz.html&quot; target=&quot;_top&quot;&gt;陈岱孙经济学纪念讲座&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/gcjt.html&quot; target=&quot;_top&quot;&gt;清华中国经济高层讲坛&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/gdjt.html&quot; target=&quot;_top&quot;&gt;清华金融高端讲坛&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/cajt.html&quot; target=&quot;_top&quot;&gt;中国经济50人论坛长安讲坛&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/sjjt.html&quot; target=&quot;_top&quot;&gt;中国企业管理最佳实践讲坛&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/jgkt.html&quot; target=&quot;_top&quot;&gt;顾问委员走进清华经管课堂&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/qqlt.html&quot; target=&quot;_top&quot;&gt;清华管理全球论坛&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/qyjjt.html&quot; target=&quot;_top&quot;&gt;清华企业家讲堂&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/rwrxsl.html&quot; target=&quot;_top&quot;&gt;人文日新沙龙&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+								&lt;div class=&quot;right_wa&quot;&gt;
+									&lt;div class=&quot;right_title&quot;&gt;
+										&lt;img alt=&quot;&quot; src=&quot;/semcms_com_www/default/article/img/ht/sem/font9.gif&quot; /&gt;
+									&lt;/div&gt;
+									&lt;div class=&quot;right_con167&quot; id=&quot;rightcon4&quot; tzreplacetextflg=&quot;rightcon4&quot;&gt;
+										&lt;ul&gt;	&lt;li&gt;&lt;a href=&quot;/news/kxdl.html&quot; title=&quot;开学典礼&quot;&gt;开学典礼&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/bydl.html&quot; title=&quot;毕业典礼&quot;&gt;毕业典礼&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/yzxwc.html&quot; title=&quot;院长下午茶&quot;&gt;院长下午茶&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/xnlhh.html&quot; title=&quot;新年联欢会&quot;&gt;新年联欢会&lt;/a&gt;&lt;/li&gt;	&lt;li&gt;&lt;a href=&quot;/news/xyxyr.html&quot; title=&quot;学院校友日&quot;&gt;学院校友日&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+									&lt;/div&gt;
+								&lt;/div&gt;
+								&lt;div class=&quot;right_p&quot; id=&quot;rightcon5&quot; tzreplacetextflg=&quot;rightcon5&quot;&gt;
+									&lt;p&gt;&lt;img alt=&quot;2012研究生&quot; src=&quot;/semcms_com_www/default/article/sem/wechat.jpg&quot; style=&quot;margin: 10px 0px; width: 202px;&quot; /&gt;欢迎关注清华经管学院微信公众账号&lt;/p&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;!-- 右侧 End --&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+		&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;
+		&lt;!--中间内容区 END --&gt;
+		
+		&lt;!-- FOOTER BEGIN --&gt;
+		&lt;div id=&quot;footer&quot; style=&quot;width: 100%; height: 80px;&quot;&gt;&lt;/div&gt;
+		&lt;!--FOOTER END --&gt;
+	&lt;/div&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		$(document).ready(function(){
+			$(&quot;#header&quot;).load(&quot;/sem/header.html&quot;);
+			$(&quot;#footer&quot;).load(&quot;/sem/footer.html&quot;);
+	    });
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	function adjustHeight(objh) {
+		var strH = parseInt(objh) &gt; 700 ? objh : '700';
+		if (true) {
+			var heighta = document.getElementById('left_warpId') ? document
+					.getElementById('left_warpId').offsetHeight : 0;
+			var heightb = document.getElementById('center_warpId') ? document
+					.getElementById('center_warpId').offsetHeight : 0;
+
+			if (document.getElementById('left_warpId')) {
+				document.getElementById('left_warpId').style.height = (parseInt(strH) + 6)
+						+ 'px';
+			}
+			if (document.getElementById('center_warpId')) {
+				document.getElementById('center_warpId').style.height = (strH)
+						+ 'px';
+			}
+			//alert(document.getElementById('left_warpId').style.height+'  '+document.getElementById('center_warpId').style.height);
+		}
+	}
+	$(document).ready(function() {
+						//alert($.browser.msie+'  '+$.browser.version);
+						if (document.getElementById('center_warpId')) {
+							var heighta = document.getElementById('left_warpId') ? document.getElementById('left_warpId').offsetHeight : 0;
+							var heightb = document.getElementById('center_warpId') ? document.getElementById('center_warpId').offsetHeight : 0;
+							var heightc = document.getElementById('right_w3Id') ? document.getElementById('right_w3Id').offsetHeight : 0;
+							var heightm = heighta &gt; heightb ? heighta : heightb;
+							var leftHeight = heightm &gt; heightc ? heightm : heightc;
+							//alert(heighta+&quot; &quot;+heightb+&quot; &quot;+heightc);
+							var botWidth = 0;
+							if (document.getElementById('left_warpId') &amp;&amp; heighta &lt; (leftHeight - botWidth)) {
+								document.getElementById('left_warpId').style.height = (leftHeight) + 'px';
+							}
+							if (document.getElementById('right_w3Id') &amp;&amp; heightc &lt; leftHeight) {
+								document.getElementById('right_w3Id').style.height = (leftHeight + 0) + 'px';
+							}
+						}
+
+					});
+	window.onload = function() {
+		if (document.getElementById('menu_b3')
+				&amp;&amp; document.getElementById('menu_c2')) {
+			var heighta = document.getElementById('menu_b3').offsetHeight - 10;
+			var heightb = document.getElementById('menu_c2').offsetHeight;
+			var leftHeight = heighta + 'px';
+			//alert(heighta+&quot; &quot;+heightb);
+			if (parseInt(heighta) &gt; heightb) {
+				document.getElementById('menu_c2').style.height = leftHeight;
+				if (document.getElementById('menu_c3')) {
+					document.getElementById('menu_c3').style.height = leftHeight;
+				}
+			}
+
+		}
+	}
+&lt;/script&gt;
+
+
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The following error was detected and could not be resolved:
+Failed to initialize the 404 detection, original exception was: &quot;Exception found while detecting 404: &quot;HTTP timeout error&quot;&quot;.
+</error>
+</w3af-run>

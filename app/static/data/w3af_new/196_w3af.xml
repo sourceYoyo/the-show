@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481236808" start-long="Thu Dec 08 17:40:08 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.studyinchina.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/196_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[61]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache&quot;.</description>
+        <http-transactions>
+            <http-transaction id="61">
+                <http-request>
+                    <status>GET http://www.studyinchina.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.studyinchina.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=1778675466.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="159" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 08 Dec 2016 08:07:36 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;6KPjQRiQH0g&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 22:40:00 GMT" field="date"/>
+                        <header content="CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;div style=&quot;text-align: center; margin-top: 250px;&quot;&gt;
+		&lt;img style=&quot;width: 500px; height: 350px;&quot; alt=&quot;&quot; src=&quot;images/jsz.gif&quot;&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[165]" method="GET" name="Strange HTTP Reason message" plugin="strange_reason" severity="Information" url="http://www.studyinchina.edu.cn/euzki" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon status message &quot;Method not implemented&quot;, manual inspection is recommended. The first ten URLs which sent the uncommon message are:
+ - http://www.studyinchina.edu.cn/euzki
+</description>
+        <http-transactions>
+            <http-transaction id="165">
+                <http-request>
+                    <status>PUT http://www.studyinchina.edu.cn/euzki HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.studyinchina.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=1778675466.20480.0000" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">TyC6zt</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="162" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 22:40:09 GMT" field="date"/>
+                        <header content="CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="Active filter detected" plugin="afd" severity="Information" url="None" var="None">
+        <description>The remote network has an active filter. IMPORTANT: The result of all the other plugins will be inaccurate, web applications could be vulnerable but &quot;protected&quot; by the active filter.</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://www.studyinchina.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.studyinchina.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="159" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="thuwebcookie=1778675466.20480.0000; path=/" field="set-cookie"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 08 Dec 2016 08:07:36 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;6KPjQRiQH0g&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 22:40:00 GMT" field="date"/>
+                        <header content="CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;div style=&quot;text-align: center; margin-top: 250px;&quot;&gt;
+		&lt;img style=&quot;width: 500px; height: 350px;&quot; alt=&quot;&quot; src=&quot;images/jsz.gif&quot;&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP load balancer detected" plugin="halberd" severity="Information" url="None" var="None">
+        <description>======================================================================
+http://www.studyinchina.edu.cn/ (166.111.4.8): 2 real server(s)
+======================================================================
+
+server 1: Apache
+----------------------------------------------------------------------
+
+difference: -18004 seconds
+successful requests: 6 hits (85.71%)
+cookie(s):
+  thuwebcookie=1795452682.20480.0000; path=/
+  thuwebcookie=1795452682.20480.0000; path=/
+header fingerprint: cae09068842a11d1a768a7eb73bcca6fc8d22f4f
+different headers:
+  1. Date: Thu, 08 Dec 2016 22:40:33 GMT
+  2. Set-Cookie: thuwebcookie=1795452682.20480.0000; path=/
+headers:
+[('Date', ' Thu, 08 Dec 2016 22:40:33 GMT'),
+ ('Server', ' Apache'),
+ ('P3P',
+  ' CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV'),
+ ('ETag', ' &quot;6KPjQRiQH0g&quot;'),
+ ('Last-Modified', ' Thu, 08 Dec 2016 08:07:36 GMT'),
+ ('Content-Type', ' text/html'),
+ ('Vary', ' Accept-Encoding'),
+ ('Content-Encoding', ' gzip'),
+ ('Content-Length', ' 159'),
+ ('Keep-Alive', ' timeout=10, max=500'),
+ ('Connection', ' Keep-Alive'),
+ ('Set-Cookie', ' thuwebcookie=1795452682.20480.0000; path=/')]
+
+server 2: Apache
+----------------------------------------------------------------------
+
+difference: -17991 seconds
+successful requests: 1 hits (14.29%)
+cookie(s):
+  thuwebcookie=1778675466.20480.0000; path=/
+  thuwebcookie=1778675466.20480.0000; path=/
+header fingerprint: cae09068842a11d1a768a7eb73bcca6fc8d22f4f
+different headers:
+  1. Date: Thu, 08 Dec 2016 22:40:20 GMT
+  2. Set-Cookie: thuwebcookie=1778675466.20480.0000; path=/
+headers:
+[('Date', ' Thu, 08 Dec 2016 22:40:20 GMT'),
+ ('Server', ' Apache'),
+ ('P3P',
+  ' CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV'),
+ ('ETag', ' &quot;6KPjQRiQH0g&quot;'),
+ ('Last-Modified', ' Thu, 08 Dec 2016 08:07:36 GMT'),
+ ('Content-Type', ' text/html'),
+ ('Vary', ' Accept-Encoding'),
+ ('Content-Encoding', ' gzip'),
+ ('Content-Length', ' 159'),
+ ('Keep-Alive', ' timeout=10, max=500'),
+ ('Connection', ' Keep-Alive'),
+ ('Set-Cookie', ' thuwebcookie=1778675466.20480.0000; path=/')]
+</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://www.studyinchina.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.studyinchina.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="159" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="thuwebcookie=1778675466.20480.0000; path=/" field="set-cookie"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 08 Dec 2016 08:07:36 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;6KPjQRiQH0g&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 22:40:00 GMT" field="date"/>
+                        <header content="CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;div style=&quot;text-align: center; margin-top: 250px;&quot;&gt;
+		&lt;img style=&quot;width: 500px; height: 350px;&quot; alt=&quot;&quot; src=&quot;images/jsz.gif&quot;&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[70, 178]" method="GET" name="Secure content over insecure channel" plugin="un_ssl" severity="Medium" url="http://www.studyinchina.edu.cn/" var="None">
+        <description>Secure content can be accessed using the insecure HTTP protocol. The vulnerable URLs used to verify this vulnerability are:
+ - https://www.studyinchina.edu.cn/
+ - http://www.studyinchina.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="70">
+                <http-request>
+                    <status>GET http://www.studyinchina.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.studyinchina.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=1778675466.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="159" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=10, max=479" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 08 Dec 2016 08:07:36 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;6KPjQRiQH0g&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 22:40:07 GMT" field="date"/>
+                        <header content="CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;div style=&quot;text-align: center; margin-top: 250px;&quot;&gt;
+		&lt;img style=&quot;width: 500px; height: 350px;&quot; alt=&quot;&quot; src=&quot;images/jsz.gif&quot;&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="178">
+                <http-request>
+                    <status>GET https://www.studyinchina.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.studyinchina.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=1778675466.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="159" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 08 Dec 2016 08:07:36 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;6KPjQRiQH0g&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 22:40:36 GMT" field="date"/>
+                        <header content="CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;div style=&quot;text-align: center; margin-top: 250px;&quot;&gt;
+		&lt;img style=&quot;width: 500px; height: 350px;&quot; alt=&quot;&quot; src=&quot;images/jsz.gif&quot;&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 69, 71, 75, 165]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.studyinchina.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.studyinchina.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=1778675466.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="159" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 08 Dec 2016 08:07:36 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;6KPjQRiQH0g&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 22:40:00 GMT" field="date"/>
+                        <header content="CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;div style=&quot;text-align: center; margin-top: 250px;&quot;&gt;
+		&lt;img style=&quot;width: 500px; height: 350px;&quot; alt=&quot;&quot; src=&quot;images/jsz.gif&quot;&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="69">
+                <http-request>
+                    <status>GET http://www.studyinchina.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="www.studyinchina.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=1778675466.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="159" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=10, max=498" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 08 Dec 2016 08:07:36 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;6KPjQRiQH0g&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 22:40:08 GMT" field="date"/>
+                        <header content="CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;div style=&quot;text-align: center; margin-top: 250px;&quot;&gt;
+		&lt;img style=&quot;width: 500px; height: 350px;&quot; alt=&quot;&quot; src=&quot;images/jsz.gif&quot;&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="71">
+                <http-request>
+                    <status>GET http://www.studyinchina.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.studyinchina.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=1778675466.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="close" field="connection"/>
+                        <header content="0" field="expires"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;header&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb2312&quot; /&gt;&lt;title&gt;访问异常&lt;/title&gt;&lt;/header&gt;&lt;body&gt;&lt;H2&gt;访问异常&lt;/H2&gt;&lt;table border=&quot;0&quot; bgcolor=&quot;#FE7E7A&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;width=&quot;480&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;table border=&quot;0&quot; cellpadding=&quot;5&quot; cellspacing=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr valign=&quot;top&quot; bgcolor=&quot;#7BFFDF&quot;align=&quot;Left&quot;&gt;&lt;td&gt;&lt;strong&gt;无法打开所请求的页面&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot; bgcolor=&quot;#FFFFFF&quot;&gt;&lt;td width=100%&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;您的访问可能存在异常内容，导致无法打开所请求的页面。&lt;br&gt;如果您确认您的访问请求没有问题，请将当前浏览器窗口截图&lt;br&gt;（包括访问的URL及页面），并将截图和联系方式通过电子邮&lt;br&gt;件发送给&lt;a href=&quot;mailto:webmaster@cic.tsinghua.edu.cn&quot; target=&quot;_blank&quot;&gt;管理员&lt;/a&gt;。&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;我们将尽快与您联系。&lt;br&gt;事件 ID 为：4288857822508603。&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="75">
+                <http-request>
+                    <status>GET http://www.studyinchina.edu.cn/nDGul.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.studyinchina.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=1778675466.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="159" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=10, max=496" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 08 Dec 2016 08:07:36 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;6KPjQRiQH0g&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 22:40:08 GMT" field="date"/>
+                        <header content="CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;div style=&quot;text-align: center; margin-top: 250px;&quot;&gt;
+		&lt;img style=&quot;width: 500px; height: 350px;&quot; alt=&quot;&quot; src=&quot;images/jsz.gif&quot;&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="165">
+                <http-request>
+                    <status>PUT http://www.studyinchina.edu.cn/euzki HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.studyinchina.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=1778675466.20480.0000" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">TyC6zt</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="162" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="Apache" field="server"/>
+                        <header content="close" field="connection"/>
+                        <header content="Thu, 08 Dec 2016 22:40:09 GMT" field="date"/>
+                        <header content="CP=CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.studyinchina.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.studyinchina.edu.cn/?OQa0vUF=id;uname%20-a&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.studyinchina.edu.cn/?OQa0vUF=../../WINNT/system32/cmd.exe?dir+c:\&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.studyinchina.edu.cn/?OQa0vUF=&lt;?%20passthru(&quot;id&quot;);?&gt;&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.studyinchina.edu.cn/?OQa0vUF=../../../../bin/chgrp%20nobody%20/etc/shadow|&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.studyinchina.edu.cn/?OQa0vUF=exec%20master..xp_cmdshell%20dir&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.studyinchina.edu.cn/?OQa0vUF=SELECT%20TOP%201%20name%20FROM%20sysusers&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.studyinchina.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.studyinchina.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://www.studyinchina.edu.cn/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.studyinchina.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to www.studyinchina.edu.cn:80&quot;</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

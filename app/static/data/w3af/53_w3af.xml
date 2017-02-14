@@ -1,0 +1,1040 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480671638" start-long="Fri Dec 02 04:40:38 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.lae.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/53_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:43 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[27]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache&quot;.</description>
+        <http-transactions>
+            <http-transaction id="27">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:43 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[21, 31]" method="GET" name="Secure content over insecure channel" plugin="un_ssl" severity="Medium" url="http://www.lae.tsinghua.edu.cn/" var="None">
+        <description>Secure content can be accessed using the insecure HTTP protocol. The vulnerable URLs used to verify this vulnerability are:
+ - https://www.lae.tsinghua.edu.cn/
+ - http://www.lae.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="21">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=483" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:43 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="31">
+                <http-request>
+                    <status>GET https://www.lae.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:43 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[29, 32]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://www.lae.tsinghua.edu.cn/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="29">
+                <http-request>
+                    <status>ARGENTINA http://www.lae.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:43 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="32">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=479" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:43 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[179]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://lae.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://lae.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://www.lae.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="179">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2799" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=10, max=487" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 23 Apr 2015 05:55:24 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;454d24-aef-5145decfbeb00&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;!-- saved from url=(0120)http://oars.tsinghua.edu.cn/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument --&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;֪ͨ&lt;/TITLE&gt;
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;STYLE type=text/css&gt;TD {
+        FONT-SIZE: 9pt; FONT-FAMILY: &quot;\xcb\xce\xcc\xe5&quot;, &quot;Verdana&quot;, &quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;
+}
+.p {
+        FONT-SIZE: 12px; LINE-HEIGHT: 150%
+}
+.p0 {
+        FONT-SIZE: 14px; LINE-HEIGHT: 150%
+}
+.p3 {
+        FONT-SIZE: 14px; TEXT-INDENT: 28px; LINE-HEIGHT: 150%
+}
+.p1 {
+        FONT-SIZE: 14px; FONT-FAMILY: &quot;Verdana&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;
+}
+.p2 {
+        FONT-SIZE: 9pt; LINE-HEIGHT: 18pt
+}
+.p4 {
+        FONT-WEIGHT: bold; FONT-SIZE: 16px
+}
+A:link {
+        FONT-SIZE: 9pt; COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+        FONT-SIZE: 9pt; COLOR: #cc3300; TEXT-DECORATION: underline
+}
+A:visited {
+        FONT-SIZE: 9pt; COLOR: #006666; TEXT-DECORATION: none
+}
+&lt;/STYLE&gt;
+
+&lt;SCRIPT language=JavaScript&gt;
+&lt;!--
+document._domino_target = &quot;_self&quot;;
+function _doClick(v, o, t) {
+  var url=&quot;/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument&amp;Click=&quot; + v;
+  if (o.href != null)
+    o.href = url;
+  else {
+    if (t == null)
+      t = document._domino_target;
+    window.open(url, t);
+  }
+
+}
+// --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;META content=&quot;MSHTML 6.00.2900.5848&quot; name=GENERATOR&gt;&lt;/HEAD&gt;
+&lt;BODY text=#000000 bgColor=#ffffff leftMargin=0 topMargin=0 marginheight=&quot;0&quot;
+marginwidth=&quot;0&quot;&gt;
+&lt;FORM&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD vAlign=top align=middle width=94 background=apperr.files/left2.gif
+    height=342&gt;&lt;BR&gt;&lt;BR&gt;
+     &lt;/TD&gt;
+    &lt;TD vAlign=top width=682 background=apperr.files/pattern.jpg&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD width=6&gt;&lt;IMG height=16 src=&quot;&quot; width=4&gt;&lt;/TD&gt;
+          &lt;TD class=p1&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD class=p3&gt;
+            &lt;P&gt;&lt;BR&gt;Sorry!&lt;TT&gt;
+            &amp;nbsp; &amp;nbsp;&lt;/TT&gt;&lt;BR&gt;&lt;TT&gt;&amp;nbsp;&lt;/TT&gt;
+           &lt;/TT&gt;
+
+
+        &lt;TR&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+        &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+      &lt;TABLE height=18 cellSpacing=0 cellPadding=7 width=&quot;90%&quot;  bgColor=#ccd3e8 border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD align=middle&gt; \xc7廪\xb4\xf3ѧ\xbc\xc6\xcb\xe3\xbb\xfa\xd3\xeb\xd0\xc5Ϣ\xb9\xdc\xc0\xed\xd6\xd0\xd0\xc4
+     &lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/FORM&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[89]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/favicon.ico&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="89">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=494" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:44 GMT" field="date"/>
+                        <header content="image/x-icon" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[113]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/zRYyj.html" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/zRYyj.html&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="113">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/zRYyj.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=498" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:44 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[114]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/_vti_inf.html" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/_vti_inf.html&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="114">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:44 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[133]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="133">
+                <http-request>
+                    <status>POST http://www.lae.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3pSWXlqLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguanlZUno=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:44 GMT" field="date"/>
+                        <header content="application/x-msdownload" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[167]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/WebConsole/Invoker" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/WebConsole/Invoker&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="167">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=494" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[168]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/web-console/ServerInfo.jsp" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/web-console/ServerInfo.jsp&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="168">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=493" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[170]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/status" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/status&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="170">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=493" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[169]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/invoker/JMXInvokerServlet" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/invoker/JMXInvokerServlet&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="169">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=494" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[172]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/admin-console/" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/admin-console/&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="172">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=488" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[173]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/server-status" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/server-status&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="173">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=489" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[175]" method="GET" name="Blank http response body" plugin="blank_body" severity="Information" url="http://www.lae.tsinghua.edu.cn/jmx-console/" var="None">
+        <description>The URL: &quot;http://www.lae.tsinghua.edu.cn/jmx-console/&quot; returned an empty body, this could indicate an application error.</description>
+        <http-transactions>
+            <http-transaction id="175">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=490" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 57, 113, 114, 167, 168, 169, 170, 172, 173, 175]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:43 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="57">
+                <http-request>
+                    <status>PUT http://www.lae.tsinghua.edu.cn/BKsQo HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">c9Ityf</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=498" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:44 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="113">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/zRYyj.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=498" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:44 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="114">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:44 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="167">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=494" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="168">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=493" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="169">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=494" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="170">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=493" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="172">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=488" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="173">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=489" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="175">
+                <http-request>
+                    <status>GET http://www.lae.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.lae.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="0" field="content-length"/>
+                        <header content="timeout=10, max=490" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Fri, 02 Dec 2016 09:40:45 GMT" field="date"/>
+                        <header content="text/plain" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to www.lae.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve www.lae.tsinghua.edu.cn</error>
+</w3af-run>

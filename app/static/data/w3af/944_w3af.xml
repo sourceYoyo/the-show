@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480520823" start-long="Wed Nov 30 10:47:03 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://hpclab.cs.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.132"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/944_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[57]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache-Coyote/1.1&quot;.</description>
+        <http-transactions>
+            <http-transaction id="57">
+                <http-request>
+                    <status>GET http://hpclab.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="hpclab.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="5365" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Sat, 19 Mar 2011 14:08:10 GMT" field="last-modified"/>
+                        <header content="W/&quot;5365-1300543690000&quot;" field="etag"/>
+                        <header content="Tue, 22 Feb 2005 15:27:56 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Style-Type&quot; content=&quot;text/css&quot;&gt;
+&lt;LINK HREF=&quot;style.css&quot; TYPE=&quot;text/css&quot; REL=&quot;stylesheet&quot;&gt; 
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;网格与集群计算研究组（GCCRG），清华大学&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body &gt;
+&lt;div style=&quot;width:1000px;&quot;&gt;
+&lt;h1 align=&quot;center&quot;&gt;&lt;span class=&quot;head_chn&quot;&gt;网格与集群式计算研究组&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&quot;head_eng&quot;&gt;Grid and Cluster Computing Research Group&lt;/span&gt;&lt;/h1&gt;
+&lt;ul class=&quot;ul_1&quot;&gt;
+&lt;li&gt;教研组前身 / Former of the Group
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;li&gt;自动控制系&amp;nbsp;电子计算机教研组（1956年成立）&lt;/li&gt;
+&lt;li&gt;计算机系&amp;nbsp;微计算机教研组（1977年成立）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;研究组成员 / Faculties&lt;br /&gt;&lt;br /&gt;
+&lt;table class=&quot;title&quot;&gt;
+&lt;tr&gt;
+&lt;td width=&quot;180px&quot; align=&quot;center&quot;&gt;
+&lt;img src=&quot;images/lisanli.jpg&quot; width=&quot;110px&quot; height=&quot;150px&quot; hspace=&quot;40px&quot;/&gt;
+&lt;/td&gt;
+&lt;td width=&quot;180px&quot; align=&quot;center&quot;&gt;
+&lt;img src=&quot;images/daimeie.jpg&quot; width=&quot;110px&quot; height=&quot;150px&quot; hspace=&quot;40px&quot;/&gt;
+&lt;/td&gt;
+&lt;td width=&quot;180px&quot; align=&quot;center&quot;&gt;
+&lt;img src=&quot;images/duzhihui.jpg&quot; width=&quot;110px&quot; height=&quot;150px&quot; hspace=&quot;40px&quot;/&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;
+&lt;a href=&quot;http://www.cs.tsinghua.edu.cn/web/WorkersDetail.aspx?Workerid=10&quot; target=&quot;_blank&quot;&gt;李三立&lt;/a&gt; 教授&lt;br /&gt;
+中国工程院院士
+&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;
+戴梅萼 教授
+&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;
+&lt;a href=&quot;http://hpclab.cs.tsinghua.edu.cn/~duzh/&quot; target=&quot;_blank&quot;&gt;都志辉&lt;/a&gt;
+ 副教授&lt;br /&gt;
+&lt;a href=&quot;http://hpclab.cs.tsinghua.edu.cn/PCRG/&quot; target=&quot;_blank&quot;&gt;并行计算研究组&lt;/a&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;其它退休的老教师 / Retired
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;li&gt;朱家维教授，张公忠教授，潘孝梅教授，马群生教授&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;研究领域 / Research Field&lt;/li&gt;
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;li&gt;高性能计算 High Performance Computing&lt;/li&gt;
+&lt;li&gt;网格计算 Grid Computing&lt;/li&gt;
+&lt;li&gt;流媒体 Streaming Media Technology&lt;/li&gt;
+&lt;/ul&gt;
+&lt;li&gt;科研成果 / Research Achievements
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;li&gt;超级计算机系统的研制 / Building Supercomputer Systems&lt;/li&gt;&lt;/td&gt;
+  &lt;td rowspan=&quot;2&quot; align=&quot;center&quot;&gt;&lt;img src=&quot;images/ziqiang3000.jpg&quot; width=&quot;150px&quot; height=&quot;150px&quot;/&gt;&lt;br /&gt;
+    &lt;font size=&quot;2&quot;&gt;自强3000&lt;/font&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;
+  &lt;ul class=&quot;ul_3&quot;&gt;
+  &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;THNPSC-1，16个CPU，教育部科技进步二等奖&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;自强2000，221个CPU，上海市科技进步一等奖&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;深超-21C超级计算机系统，深圳市科技进步一等奖，21届世界500强第146位&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;自强3000，358个CPU，23届世界500强第126位&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;/ul&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;
+  &lt;td&gt;&lt;li&gt;网格计算 / Grid Computing&lt;/li&gt;&lt;/td&gt;
+  &lt;td rowspan=&quot;2&quot; align=&quot;center&quot;&gt;&lt;br /&gt;&lt;img src=&quot;images/grid.jpg&quot; width=&quot;200px&quot;/&gt;&lt;br /&gt;
+    &lt;font size=&quot;2&quot;&gt;上海高等教育网格&lt;/font&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;
+  &lt;ul class=&quot;ul_3&quot;&gt;
+  &lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;li&gt;ACI – 先进计算基础设施，国内通过部级鉴定的最早网格项目，教育部重点项目&lt;/li&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;li&gt;上海高等教育网格&lt;/li&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;/ul&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;li&gt;出版书籍 / Books&lt;/li&gt;
+&lt;table width=&quot;100%%&quot; border=&quot;0&quot; style=&quot;font-family:'黑体';font-size:13px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;img src=&quot;images/risc.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《RISC－单发射与多发射体系结构》，李三立、李亚民，1994年，清华大学出版社；国内第一本关于RISC体系结构的图书，教育部优秀学术著作特等奖&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/linux.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《UNIX操作系统-Linux使用指南》，王小鸽等，1997年，清华大学出版社；国内第一本关与Linux的图书&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/mpi.png&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《高性能计算并行编程技术－MPI并行程序设计》，都志辉，2001年，清华大学出版社；国内第一本关于MPI并行程序设计的图书&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;img src=&quot;images/gridcomputing.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《网格计算》，都志辉等，2002年，清华大学出版社；国内第一本介绍网格的图书&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/cpu.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《CPU芯片逻辑设计技术》，朱子玉、李亚民，2005年，清华大学出版社，国内第一版关于CPU芯片逻辑设计的图书&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/gridcomputing_en.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《网格计算》（Grid Computing, Wiley），都志辉等译，2005年，华中科技大学出版&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr color=&quot;#333333&quot; size=&quot;2px&quot;/&gt;
+&lt;center &gt;&lt;font face=&quot;黑体&quot; style=&quot;font-size:11px;&quot;&gt;版权&lt;font face=&quot;Tahoma, Geneva, sans-serif&quot; style=&quot;font-size:11px;&quot;&gt;&amp;copy;&lt;/font&gt;2011 网格与集群计算研究组（GCCRG），清华大学计算机科学与技术系高性能计算所&lt;/font&gt;&lt;/center&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[159, 162]" method="PUT" name="DAV incorrect configuration" plugin="dav" severity="Information" url="http://hpclab.cs.tsinghua.edu.cn/GwuTb" var="None">
+        <description>DAV seems to be correctly configured and allowing you to use the PUT method but the directory does not have the right permissions that would allow the web server to write to it. This error was found at: &quot;http://hpclab.cs.tsinghua.edu.cn/GwuTb&quot;.</description>
+        <http-transactions>
+            <http-transaction id="159">
+                <http-request>
+                    <status>PUT http://hpclab.cs.tsinghua.edu.cn/GwuTb HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="hpclab.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">ylm1Nx</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Tue, 22 Feb 2005 15:28:03 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.11 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.11&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="162">
+                <http-request>
+                    <status>GET http://hpclab.cs.tsinghua.edu.cn/GwuTb HTTP/1.1</status>
+                    <headers>
+                        <header content="hpclab.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Tue, 22 Feb 2005 15:28:03 GMT" field="date"/>
+                        <header content="970" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.11 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /GwuTb&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/GwuTb&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/GwuTb) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.11&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[174]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://hpclab.cs.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://cs.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://hpclab.cs.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="174">
+                <http-request>
+                    <status>GET http://hpclab.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="5365" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Sat, 19 Mar 2011 14:08:10 GMT" field="last-modified"/>
+                        <header content="W/&quot;5365-1300543690000&quot;" field="etag"/>
+                        <header content="Tue, 22 Feb 2005 15:28:05 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Style-Type&quot; content=&quot;text/css&quot;&gt;
+&lt;LINK HREF=&quot;style.css&quot; TYPE=&quot;text/css&quot; REL=&quot;stylesheet&quot;&gt; 
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;网格与集群计算研究组（GCCRG），清华大学&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body &gt;
+&lt;div style=&quot;width:1000px;&quot;&gt;
+&lt;h1 align=&quot;center&quot;&gt;&lt;span class=&quot;head_chn&quot;&gt;网格与集群式计算研究组&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&quot;head_eng&quot;&gt;Grid and Cluster Computing Research Group&lt;/span&gt;&lt;/h1&gt;
+&lt;ul class=&quot;ul_1&quot;&gt;
+&lt;li&gt;教研组前身 / Former of the Group
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;li&gt;自动控制系&amp;nbsp;电子计算机教研组（1956年成立）&lt;/li&gt;
+&lt;li&gt;计算机系&amp;nbsp;微计算机教研组（1977年成立）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;研究组成员 / Faculties&lt;br /&gt;&lt;br /&gt;
+&lt;table class=&quot;title&quot;&gt;
+&lt;tr&gt;
+&lt;td width=&quot;180px&quot; align=&quot;center&quot;&gt;
+&lt;img src=&quot;images/lisanli.jpg&quot; width=&quot;110px&quot; height=&quot;150px&quot; hspace=&quot;40px&quot;/&gt;
+&lt;/td&gt;
+&lt;td width=&quot;180px&quot; align=&quot;center&quot;&gt;
+&lt;img src=&quot;images/daimeie.jpg&quot; width=&quot;110px&quot; height=&quot;150px&quot; hspace=&quot;40px&quot;/&gt;
+&lt;/td&gt;
+&lt;td width=&quot;180px&quot; align=&quot;center&quot;&gt;
+&lt;img src=&quot;images/duzhihui.jpg&quot; width=&quot;110px&quot; height=&quot;150px&quot; hspace=&quot;40px&quot;/&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;
+&lt;a href=&quot;http://www.cs.tsinghua.edu.cn/web/WorkersDetail.aspx?Workerid=10&quot; target=&quot;_blank&quot;&gt;李三立&lt;/a&gt; 教授&lt;br /&gt;
+中国工程院院士
+&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;
+戴梅萼 教授
+&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;
+&lt;a href=&quot;http://hpclab.cs.tsinghua.edu.cn/~duzh/&quot; target=&quot;_blank&quot;&gt;都志辉&lt;/a&gt;
+ 副教授&lt;br /&gt;
+&lt;a href=&quot;http://hpclab.cs.tsinghua.edu.cn/PCRG/&quot; target=&quot;_blank&quot;&gt;并行计算研究组&lt;/a&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;其它退休的老教师 / Retired
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;li&gt;朱家维教授，张公忠教授，潘孝梅教授，马群生教授&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;研究领域 / Research Field&lt;/li&gt;
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;li&gt;高性能计算 High Performance Computing&lt;/li&gt;
+&lt;li&gt;网格计算 Grid Computing&lt;/li&gt;
+&lt;li&gt;流媒体 Streaming Media Technology&lt;/li&gt;
+&lt;/ul&gt;
+&lt;li&gt;科研成果 / Research Achievements
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;li&gt;超级计算机系统的研制 / Building Supercomputer Systems&lt;/li&gt;&lt;/td&gt;
+  &lt;td rowspan=&quot;2&quot; align=&quot;center&quot;&gt;&lt;img src=&quot;images/ziqiang3000.jpg&quot; width=&quot;150px&quot; height=&quot;150px&quot;/&gt;&lt;br /&gt;
+    &lt;font size=&quot;2&quot;&gt;自强3000&lt;/font&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;
+  &lt;ul class=&quot;ul_3&quot;&gt;
+  &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;THNPSC-1，16个CPU，教育部科技进步二等奖&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;自强2000，221个CPU，上海市科技进步一等奖&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;深超-21C超级计算机系统，深圳市科技进步一等奖，21届世界500强第146位&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;自强3000，358个CPU，23届世界500强第126位&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;/ul&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;
+  &lt;td&gt;&lt;li&gt;网格计算 / Grid Computing&lt;/li&gt;&lt;/td&gt;
+  &lt;td rowspan=&quot;2&quot; align=&quot;center&quot;&gt;&lt;br /&gt;&lt;img src=&quot;images/grid.jpg&quot; width=&quot;200px&quot;/&gt;&lt;br /&gt;
+    &lt;font size=&quot;2&quot;&gt;上海高等教育网格&lt;/font&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;
+  &lt;ul class=&quot;ul_3&quot;&gt;
+  &lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;li&gt;ACI – 先进计算基础设施，国内通过部级鉴定的最早网格项目，教育部重点项目&lt;/li&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;li&gt;上海高等教育网格&lt;/li&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;/ul&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;li&gt;出版书籍 / Books&lt;/li&gt;
+&lt;table width=&quot;100%%&quot; border=&quot;0&quot; style=&quot;font-family:'黑体';font-size:13px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;img src=&quot;images/risc.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《RISC－单发射与多发射体系结构》，李三立、李亚民，1994年，清华大学出版社；国内第一本关于RISC体系结构的图书，教育部优秀学术著作特等奖&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/linux.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《UNIX操作系统-Linux使用指南》，王小鸽等，1997年，清华大学出版社；国内第一本关与Linux的图书&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/mpi.png&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《高性能计算并行编程技术－MPI并行程序设计》，都志辉，2001年，清华大学出版社；国内第一本关于MPI并行程序设计的图书&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;img src=&quot;images/gridcomputing.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《网格计算》，都志辉等，2002年，清华大学出版社；国内第一本介绍网格的图书&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/cpu.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《CPU芯片逻辑设计技术》，朱子玉、李亚民，2005年，清华大学出版社，国内第一版关于CPU芯片逻辑设计的图书&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/gridcomputing_en.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《网格计算》（Grid Computing, Wiley），都志辉等译，2005年，华中科技大学出版&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr color=&quot;#333333&quot; size=&quot;2px&quot;/&gt;
+&lt;center &gt;&lt;font face=&quot;黑体&quot; style=&quot;font-size:11px;&quot;&gt;版权&lt;font face=&quot;Tahoma, Geneva, sans-serif&quot; style=&quot;font-size:11px;&quot;&gt;&amp;copy;&lt;/font&gt;2011 网格与集群计算研究组（GCCRG），清华大学计算机科学与技术系高性能计算所&lt;/font&gt;&lt;/center&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[37, 181]" method="GET" name="DAV methods enabled" plugin="allowed_methods" severity="Information" url="http://hpclab.cs.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://hpclab.cs.tsinghua.edu.cn/&quot; has the following allowed methods. These include DAV methods and should be disabled: DELETE, GET, HEAD, OPTIONS, POST, PUT</description>
+        <http-transactions>
+            <http-transaction id="37">
+                <http-request>
+                    <status>OPTIONS http://hpclab.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="hpclab.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Tue, 22 Feb 2005 15:28:02 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="GET, HEAD, POST, PUT, DELETE, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="181">
+                <http-request>
+                    <status>HEAD http://hpclab.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="hpclab.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="5365" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Sat, 19 Mar 2011 14:08:10 GMT" field="last-modified"/>
+                        <header content="W/&quot;5365-1300543690000&quot;" field="etag"/>
+                        <header content="Tue, 22 Feb 2005 15:28:05 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[193]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://hpclab.cs.tsinghua.edu.cn/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;intra&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;intra&quot; to the IP address of &quot;hpclab.cs.tsinghua.edu.cn&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[194]" method="GET" name="Virtual host identified" plugin="find_vhosts" severity="Low" url="http://hpclab.cs.tsinghua.edu.cn/" var="None">
+        <description>Found a new virtual host at the target web server, the virtual host name is: &quot;intra.tsinghua.edu.cn&quot;. To access this site you might need to change your DNS resolution settings in order to point &quot;intra.tsinghua.edu.cn&quot; to the IP address of &quot;hpclab.cs.tsinghua.edu.cn&quot;.</description>
+        <http-transactions/>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://hpclab.cs.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="hpclab.cs.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="5365" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Sat, 19 Mar 2011 14:08:10 GMT" field="last-modified"/>
+                        <header content="W/&quot;5365-1300543690000&quot;" field="etag"/>
+                        <header content="Tue, 22 Feb 2005 15:27:56 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Style-Type&quot; content=&quot;text/css&quot;&gt;
+&lt;LINK HREF=&quot;style.css&quot; TYPE=&quot;text/css&quot; REL=&quot;stylesheet&quot;&gt; 
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;网格与集群计算研究组（GCCRG），清华大学&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body &gt;
+&lt;div style=&quot;width:1000px;&quot;&gt;
+&lt;h1 align=&quot;center&quot;&gt;&lt;span class=&quot;head_chn&quot;&gt;网格与集群式计算研究组&lt;/span&gt;&lt;br /&gt;
+&lt;span class=&quot;head_eng&quot;&gt;Grid and Cluster Computing Research Group&lt;/span&gt;&lt;/h1&gt;
+&lt;ul class=&quot;ul_1&quot;&gt;
+&lt;li&gt;教研组前身 / Former of the Group
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;li&gt;自动控制系&amp;nbsp;电子计算机教研组（1956年成立）&lt;/li&gt;
+&lt;li&gt;计算机系&amp;nbsp;微计算机教研组（1977年成立）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;研究组成员 / Faculties&lt;br /&gt;&lt;br /&gt;
+&lt;table class=&quot;title&quot;&gt;
+&lt;tr&gt;
+&lt;td width=&quot;180px&quot; align=&quot;center&quot;&gt;
+&lt;img src=&quot;images/lisanli.jpg&quot; width=&quot;110px&quot; height=&quot;150px&quot; hspace=&quot;40px&quot;/&gt;
+&lt;/td&gt;
+&lt;td width=&quot;180px&quot; align=&quot;center&quot;&gt;
+&lt;img src=&quot;images/daimeie.jpg&quot; width=&quot;110px&quot; height=&quot;150px&quot; hspace=&quot;40px&quot;/&gt;
+&lt;/td&gt;
+&lt;td width=&quot;180px&quot; align=&quot;center&quot;&gt;
+&lt;img src=&quot;images/duzhihui.jpg&quot; width=&quot;110px&quot; height=&quot;150px&quot; hspace=&quot;40px&quot;/&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;
+&lt;a href=&quot;http://www.cs.tsinghua.edu.cn/web/WorkersDetail.aspx?Workerid=10&quot; target=&quot;_blank&quot;&gt;李三立&lt;/a&gt; 教授&lt;br /&gt;
+中国工程院院士
+&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;
+戴梅萼 教授
+&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;
+&lt;a href=&quot;http://hpclab.cs.tsinghua.edu.cn/~duzh/&quot; target=&quot;_blank&quot;&gt;都志辉&lt;/a&gt;
+ 副教授&lt;br /&gt;
+&lt;a href=&quot;http://hpclab.cs.tsinghua.edu.cn/PCRG/&quot; target=&quot;_blank&quot;&gt;并行计算研究组&lt;/a&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;其它退休的老教师 / Retired
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;li&gt;朱家维教授，张公忠教授，潘孝梅教授，马群生教授&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;研究领域 / Research Field&lt;/li&gt;
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;li&gt;高性能计算 High Performance Computing&lt;/li&gt;
+&lt;li&gt;网格计算 Grid Computing&lt;/li&gt;
+&lt;li&gt;流媒体 Streaming Media Technology&lt;/li&gt;
+&lt;/ul&gt;
+&lt;li&gt;科研成果 / Research Achievements
+&lt;ul class=&quot;ul_2&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;li&gt;超级计算机系统的研制 / Building Supercomputer Systems&lt;/li&gt;&lt;/td&gt;
+  &lt;td rowspan=&quot;2&quot; align=&quot;center&quot;&gt;&lt;img src=&quot;images/ziqiang3000.jpg&quot; width=&quot;150px&quot; height=&quot;150px&quot;/&gt;&lt;br /&gt;
+    &lt;font size=&quot;2&quot;&gt;自强3000&lt;/font&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;
+  &lt;ul class=&quot;ul_3&quot;&gt;
+  &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;THNPSC-1，16个CPU，教育部科技进步二等奖&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;自强2000，221个CPU，上海市科技进步一等奖&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;深超-21C超级计算机系统，深圳市科技进步一等奖，21届世界500强第146位&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;&lt;li&gt;自强3000，358个CPU，23届世界500强第126位&lt;/li&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;/ul&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;
+  &lt;td&gt;&lt;li&gt;网格计算 / Grid Computing&lt;/li&gt;&lt;/td&gt;
+  &lt;td rowspan=&quot;2&quot; align=&quot;center&quot;&gt;&lt;br /&gt;&lt;img src=&quot;images/grid.jpg&quot; width=&quot;200px&quot;/&gt;&lt;br /&gt;
+    &lt;font size=&quot;2&quot;&gt;上海高等教育网格&lt;/font&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+  &lt;tr valign=&quot;top&quot;&gt;&lt;td&gt;
+  &lt;ul class=&quot;ul_3&quot;&gt;
+  &lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;li&gt;ACI – 先进计算基础设施，国内通过部级鉴定的最早网格项目，教育部重点项目&lt;/li&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;li&gt;上海高等教育网格&lt;/li&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;/ul&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;li&gt;出版书籍 / Books&lt;/li&gt;
+&lt;table width=&quot;100%%&quot; border=&quot;0&quot; style=&quot;font-family:'黑体';font-size:13px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;img src=&quot;images/risc.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《RISC－单发射与多发射体系结构》，李三立、李亚民，1994年，清华大学出版社；国内第一本关于RISC体系结构的图书，教育部优秀学术著作特等奖&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/linux.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《UNIX操作系统-Linux使用指南》，王小鸽等，1997年，清华大学出版社；国内第一本关与Linux的图书&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/mpi.png&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《高性能计算并行编程技术－MPI并行程序设计》，都志辉，2001年，清华大学出版社；国内第一本关于MPI并行程序设计的图书&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;img src=&quot;images/gridcomputing.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《网格计算》，都志辉等，2002年，清华大学出版社；国内第一本介绍网格的图书&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/cpu.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《CPU芯片逻辑设计技术》，朱子玉、李亚民，2005年，清华大学出版社，国内第一版关于CPU芯片逻辑设计的图书&lt;/td&gt;
+    &lt;td&gt;&lt;img src=&quot;images/gridcomputing_en.jpg&quot; width=&quot;100px&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;《网格计算》（Grid Computing, Wiley），都志辉等译，2005年，华中科技大学出版&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr color=&quot;#333333&quot; size=&quot;2px&quot;/&gt;
+&lt;center &gt;&lt;font face=&quot;黑体&quot; style=&quot;font-size:11px;&quot;&gt;版权&lt;font face=&quot;Tahoma, Geneva, sans-serif&quot; style=&quot;font-size:11px;&quot;&gt;&amp;copy;&lt;/font&gt;2011 网格与集群计算研究组（GCCRG），清华大学计算机科学与技术系高性能计算所&lt;/font&gt;&lt;/center&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://hpclab.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://hpclab.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The frontpage plugin got an error while requesting &quot;http://hpclab.cs.tsinghua.edu.cn/drgif.html&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The detect_reverse_proxy plugin got an error while requesting &quot;http://hpclab.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://hpclab.cs.tsinghua.edu.cn/admin-console/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://hpclab.cs.tsinghua.edu.cn/jmx-console/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://hpclab.cs.tsinghua.edu.cn/WebConsole/Invoker&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The fingerprint_WAF plugin got an error while requesting &quot;http://hpclab.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://hpclab.cs.tsinghua.edu.cn/invoker/JMXInvokerServlet&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_jboss plugin got an error while requesting &quot;http://hpclab.cs.tsinghua.edu.cn/web-console/ServerInfo.jsp&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://hpclab.cs.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to hpclab.cs.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve hpclab.cs.tsinghua.edu.cn</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

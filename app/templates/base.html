@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{{title}}</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap-theme.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-responsive.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="{{url_for('static', filename='js/jquery-1.11.3.min.js')}}"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="{{url_for('static', filename='bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Acv8FrcDKbh7BhF1oDvuUqT8BFU4Qtvi"></script>
+    {% block header %}
+
+    {% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">清华大学校园网渗透测试</a>
+        </div>
+        <div class="navbar-collapse collapse" role="navigation">           
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/index">首页</a></li>
+                <li><a href="/flow">校园网流量统计</a></li>
+                <li><a href="/ivre">IP地址扫描</a></li>
+                <li><a href="/anay">校园资产分析</a></li>  
+                <li><a href="/posts">漏洞扫描报告</a></li>
+                <li><a href="/wifi">校园wifi地图</a></li>                
+{%  if current_user.is_authenticated %}
+                <li><a href="/auth/logout" >退出</a></li>  
+{% else %}      
+                <li><a href="#" onclick="return showLogin();">登录</a></li>  
+{% endif %}
+                <!-- onclick="return showLogin(); -->               
+            </ul>
+        </div> <!-- navbar-collapse -->
+    </div> <!--/.container-->
+</nav><!--navbar -->
+
+<hr>
+
+
+<divPop class="container"  id="loginDiv" >
+<form class="form-signin" id="loginForm" method="post" action="/auth/login" onsubmit="return submitLogin();" >
+<h2 class="form-signin-heading">欢迎登录</h2>
+<input type="text" name="username" class="input-block-level" placeholder="邮箱地址/账户">
+<input type="password" name="password" class="input-block-level" placeholder="密码">
+<button class="btn btn-large btn-primary"  value="submit">登录</button>
+<button class="btn btn-large btn-primary"  onclick="return hidLogin();">取消</button>        
+</form>
+</divPop> <!-- /container --> 
+<divPop class="container" id="RegisterDiv">
+<form class="form-signin" id="registerForm" method="post" action="/user/register" onsubmit="return submitRegister();">
+<h2 class="form-signin-heading">欢迎注册</h2>
+<input type="text" name="username" class="input-block-level" placeholder="用户名/必填">
+<input type="password" name="password1" class="input-block-level" placeholder="密码/必填">
+<input type="password" name="password2" class="input-block-level" placeholder="确认密码/必填">
+<button class="btn btn-large btn-primary" type="submit">注册</button>
+<button class="btn btn-large btn-primary" onclick="return hidRegister();">取消</button>
+</form>
+</divPop> <!-- /container -->
+{% block content %}
+
+{% endblock %}
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="row footer-bottom">
+      <ul class="list-inline text-center">
+        <li>校园网渗透测试扫描团队</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480672071" start-long="Fri Dec 02 04:47:51 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.biomembrane.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/70_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[42]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache/2&quot;.</description>
+        <http-transactions>
+            <http-transaction id="42">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=99" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:36 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[82]" method="GET" name="Powered-by header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The x-powered-by header for the target HTTP server is &quot;PHP/5.3.29&quot;.</description>
+        <http-transactions>
+            <http-transaction id="82">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=99" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:36 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[83, 105]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://www.biomembrane.tsinghua.edu.cn/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="83">
+                <http-request>
+                    <status>ARGENTINA http://www.biomembrane.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=100" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:49 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="105">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=95" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:49 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[125]" method="GET" name="Strange HTTP Reason message" plugin="strange_reason" severity="Information" url="http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon status message &quot;找不到分类&quot;, manual inspection is recommended. The first ten URLs which sent the uncommon message are:
+ - http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll
+</description>
+        <http-transactions>
+            <http-transaction id="125">
+                <http-request>
+                    <status>POST http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L21FUlNZLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguWVNSRW0=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 找不到分类</status>
+                    <headers>
+                        <header content="1827" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="3ce68f2ab19611814938d6e095454428=zh-CN; path=/" field="set-cookie"/>
+                        <header content="False" field="x-logged-in"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=90" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 09:30:50 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;zh-cn&quot; lang=&quot;zh-cn&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+
+&lt;meta name=&quot;language&quot; content=&quot;zh-cn&quot; /&gt;
+
+	&lt;title&gt;404 - 错误: 404&lt;/title&gt;
+
+
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/system/css/system.css&quot; type=&quot;text/css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/position.css&quot; type=&quot;text/css&quot; media=&quot;screen,projection&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/layout.css&quot; type=&quot;text/css&quot; media=&quot;screen,projection&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/print.css&quot; type=&quot;text/css&quot; media=&quot;Print&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/.css&quot; type=&quot;text/css&quot; /&gt;
+		 &lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/.css&quot; type=&quot;text/css&quot; /&gt;
+				&lt;!--[if lte IE 6]&gt;
+			&lt;link href=&quot;/templates/lbm/css/ieonly.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;![endif]--&gt;
+		&lt;!--[if IE 7]&gt;
+			&lt;link href=&quot;/templates/lbm/css/ie7only.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;![endif]--&gt;
+
+
+&lt;style type=&quot;text/css&quot;&gt;
+			&lt;!--
+			#errorboxbody
+			{margin:30px}
+			#errorboxbody h2
+			{font-weight:normal;
+			font-size:1.5em}
+			#searchbox
+			{background:#eee;
+			padding:10px;
+			margin-top:20px;
+			border:solid 1px #ddd
+			}
+			--&gt;
+&lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+	&lt;div id=&quot;all&quot;&gt;
+		&lt;div id=&quot;back&quot;&gt;
+
+		&lt;div id=&quot;header&quot;&gt;
+
+					&lt;div class=&quot;logoheader&quot;&gt;
+						
+							
+						 &lt;h1 id=&quot;logo&quot;&gt;
+
+                                                                                                                                                                                                        &lt;span class=&quot;header1&quot;&gt;
+                                                                                &lt;/span&gt;&lt;/h1&gt;
+					&lt;/div&gt;&lt;!-- end logoheader --&gt;
+
+						&lt;ul class=&quot;skiplinks&quot;&gt;
+							&lt;li&gt;&lt;a href=&quot;#wrapper2&quot; class=&quot;u2&quot;&gt;TPL_BEEZ2_SKIP_TO_ERROR_CONTENT&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;#nav&quot; class=&quot;u2&quot;&gt;TPL_BEEZ2_ERROR_JUMP_TO_NAV&lt;/a&gt;&lt;/li&gt;
+
+						&lt;/ul&gt;
+						&lt;div id=&quot;line&quot;&gt;&lt;/div&gt;
+
+
+
+				&lt;/div&gt;&lt;!-- end header --&gt;
+
+		&lt;div id=&quot;contentarea2&quot; &gt;
+
+
+							&lt;div class=&quot;left1&quot; id=&quot;nav&quot;&gt;
+
+				&lt;h2 class=&quot;unseen&quot;&gt;TPL_BEEZ2_NAVIGATION&lt;/h2&gt;
+											&lt;ul class=&quot;nav menu&quot;&gt;
+&lt;li class=&quot;item-101 current active&quot;&gt;&lt;a href=&quot;/zh/&quot; &gt;首页&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-104 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;实验室概述&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-107&quot;&gt;&lt;a href=&quot;/zh/lingyu&quot; &gt;研究领域&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-108 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;科研队伍&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-113 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;科研成果&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-118 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;学术交流&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-122&quot;&gt;&lt;a href=&quot;/zh/rencaipeiyang&quot; &gt;人才培养&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-123 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;仪器设备&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-155 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;开放课题&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-126&quot;&gt;&lt;a href=&quot;/zh/tongxun&quot; &gt;实验室通讯&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-124&quot;&gt;&lt;a href=&quot;/zh/contact&quot; &gt;联系我们&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+
+							&lt;/div&gt;
+
+					&lt;!-- end navi --&gt;
+			&lt;div id=&quot;wrapper2&quot;&gt;
+			&lt;div id=&quot;errorboxbody&quot;&gt;
+						&lt;h2&gt;发生了错误。&lt;br /&gt;
+								找不到请求的页面&lt;/h2&gt;
+																	&lt;div id=&quot;searchbox&quot;&gt;
+									&lt;h3 class=&quot;unseen&quot;&gt;TPL_BEEZ2_SEARCH&lt;/h3&gt;
+									&lt;p&gt;您可能希望搜索网站或者访问首页&lt;/p&gt;
+									&lt;div class=&quot;search mod_search105&quot;&gt;
+	&lt;form action=&quot;/zh/&quot; method=&quot;post&quot; class=&quot;form-inline&quot;&gt;
+		&lt;label for=&quot;mod-search-searchword&quot; class=&quot;element-invisible&quot;&gt;搜索...&lt;/label&gt; &lt;input name=&quot;searchword&quot; id=&quot;mod-search-searchword&quot; maxlength=&quot;200&quot;  class=&quot;inputbox search-query&quot; type=&quot;search&quot; size=&quot;20&quot; placeholder=&quot;搜索...&quot; /&gt; &lt;button class=&quot;button btn btn-primary&quot; onclick=&quot;this.form.searchword.focus();&quot;&gt;搜索&lt;/button&gt;		&lt;input type=&quot;hidden&quot; name=&quot;task&quot; value=&quot;search&quot; /&gt;
+		&lt;input type=&quot;hidden&quot; name=&quot;option&quot; value=&quot;com_search&quot; /&gt;
+		&lt;input type=&quot;hidden&quot; name=&quot;Itemid&quot; value=&quot;138&quot; /&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+									&lt;/div&gt;
+																&lt;div&gt;
+								&lt;p&gt;&lt;a href=&quot;/index.php&quot; title=&quot;跳转到首页&quot;&gt;首页&lt;/a&gt;&lt;/p&gt;
+								&lt;/div&gt;
+
+						&lt;h3&gt;如果问题仍然存在，请提交下面的错误报告联系本网站的系统管理员&lt;/h3&gt;
+
+						&lt;h2&gt;#404&amp;nbsp;找不到分类&lt;/h2&gt; &lt;br /&gt;
+
+
+			&lt;/div&gt;&lt;!-- end wrapper --&gt;
+		&lt;/div&gt;&lt;!-- end contentarea --&gt;
+
+						
+
+			&lt;/div&gt;  &lt;!--end all --&gt;
+
+			&lt;/div&gt;
+			&lt;/div&gt;
+			 &lt;div id=&quot;footer-outer&quot;&gt;
+
+			&lt;div id=&quot;footer-sub&quot;&gt;
+
+
+                                &lt;div id=&quot;footer&quot;&gt;
+                                        &lt;p&gt;
+                                                TPL_BEEZ2_POWERED_BY &lt;a href=&quot;http://www.joomla.org/&quot;&gt;Joomla!&amp;#174;&lt;/a&gt;
+                                        &lt;/p&gt;
+
+                                &lt;/div&gt;&lt;!-- end footer --&gt;
+                         &lt;/div&gt;&lt;!-- end footer-sub --&gt;
+
+                       &lt;/div&gt;
+
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[125]" method="GET" name="Strange header" plugin="strange_headers" severity="Information" url="http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response header &quot;x-logged-in&quot;, one of the received header values is &quot;False&quot;. The first ten URLs which sent the uncommon header are:
+ - http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll
+</description>
+        <http-transactions>
+            <http-transaction id="125">
+                <http-request>
+                    <status>POST http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L21FUlNZLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguWVNSRW0=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 找不到分类</status>
+                    <headers>
+                        <header content="1827" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="3ce68f2ab19611814938d6e095454428=zh-CN; path=/" field="set-cookie"/>
+                        <header content="False" field="x-logged-in"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=90" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 09:30:50 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;zh-cn&quot; lang=&quot;zh-cn&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+
+&lt;meta name=&quot;language&quot; content=&quot;zh-cn&quot; /&gt;
+
+	&lt;title&gt;404 - 错误: 404&lt;/title&gt;
+
+
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/system/css/system.css&quot; type=&quot;text/css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/position.css&quot; type=&quot;text/css&quot; media=&quot;screen,projection&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/layout.css&quot; type=&quot;text/css&quot; media=&quot;screen,projection&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/print.css&quot; type=&quot;text/css&quot; media=&quot;Print&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/.css&quot; type=&quot;text/css&quot; /&gt;
+		 &lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/.css&quot; type=&quot;text/css&quot; /&gt;
+				&lt;!--[if lte IE 6]&gt;
+			&lt;link href=&quot;/templates/lbm/css/ieonly.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;![endif]--&gt;
+		&lt;!--[if IE 7]&gt;
+			&lt;link href=&quot;/templates/lbm/css/ie7only.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;![endif]--&gt;
+
+
+&lt;style type=&quot;text/css&quot;&gt;
+			&lt;!--
+			#errorboxbody
+			{margin:30px}
+			#errorboxbody h2
+			{font-weight:normal;
+			font-size:1.5em}
+			#searchbox
+			{background:#eee;
+			padding:10px;
+			margin-top:20px;
+			border:solid 1px #ddd
+			}
+			--&gt;
+&lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+	&lt;div id=&quot;all&quot;&gt;
+		&lt;div id=&quot;back&quot;&gt;
+
+		&lt;div id=&quot;header&quot;&gt;
+
+					&lt;div class=&quot;logoheader&quot;&gt;
+						
+							
+						 &lt;h1 id=&quot;logo&quot;&gt;
+
+                                                                                                                                                                                                        &lt;span class=&quot;header1&quot;&gt;
+                                                                                &lt;/span&gt;&lt;/h1&gt;
+					&lt;/div&gt;&lt;!-- end logoheader --&gt;
+
+						&lt;ul class=&quot;skiplinks&quot;&gt;
+							&lt;li&gt;&lt;a href=&quot;#wrapper2&quot; class=&quot;u2&quot;&gt;TPL_BEEZ2_SKIP_TO_ERROR_CONTENT&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;#nav&quot; class=&quot;u2&quot;&gt;TPL_BEEZ2_ERROR_JUMP_TO_NAV&lt;/a&gt;&lt;/li&gt;
+
+						&lt;/ul&gt;
+						&lt;div id=&quot;line&quot;&gt;&lt;/div&gt;
+
+
+
+				&lt;/div&gt;&lt;!-- end header --&gt;
+
+		&lt;div id=&quot;contentarea2&quot; &gt;
+
+
+							&lt;div class=&quot;left1&quot; id=&quot;nav&quot;&gt;
+
+				&lt;h2 class=&quot;unseen&quot;&gt;TPL_BEEZ2_NAVIGATION&lt;/h2&gt;
+											&lt;ul class=&quot;nav menu&quot;&gt;
+&lt;li class=&quot;item-101 current active&quot;&gt;&lt;a href=&quot;/zh/&quot; &gt;首页&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-104 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;实验室概述&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-107&quot;&gt;&lt;a href=&quot;/zh/lingyu&quot; &gt;研究领域&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-108 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;科研队伍&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-113 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;科研成果&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-118 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;学术交流&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-122&quot;&gt;&lt;a href=&quot;/zh/rencaipeiyang&quot; &gt;人才培养&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-123 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;仪器设备&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-155 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;开放课题&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-126&quot;&gt;&lt;a href=&quot;/zh/tongxun&quot; &gt;实验室通讯&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-124&quot;&gt;&lt;a href=&quot;/zh/contact&quot; &gt;联系我们&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+
+							&lt;/div&gt;
+
+					&lt;!-- end navi --&gt;
+			&lt;div id=&quot;wrapper2&quot;&gt;
+			&lt;div id=&quot;errorboxbody&quot;&gt;
+						&lt;h2&gt;发生了错误。&lt;br /&gt;
+								找不到请求的页面&lt;/h2&gt;
+																	&lt;div id=&quot;searchbox&quot;&gt;
+									&lt;h3 class=&quot;unseen&quot;&gt;TPL_BEEZ2_SEARCH&lt;/h3&gt;
+									&lt;p&gt;您可能希望搜索网站或者访问首页&lt;/p&gt;
+									&lt;div class=&quot;search mod_search105&quot;&gt;
+	&lt;form action=&quot;/zh/&quot; method=&quot;post&quot; class=&quot;form-inline&quot;&gt;
+		&lt;label for=&quot;mod-search-searchword&quot; class=&quot;element-invisible&quot;&gt;搜索...&lt;/label&gt; &lt;input name=&quot;searchword&quot; id=&quot;mod-search-searchword&quot; maxlength=&quot;200&quot;  class=&quot;inputbox search-query&quot; type=&quot;search&quot; size=&quot;20&quot; placeholder=&quot;搜索...&quot; /&gt; &lt;button class=&quot;button btn btn-primary&quot; onclick=&quot;this.form.searchword.focus();&quot;&gt;搜索&lt;/button&gt;		&lt;input type=&quot;hidden&quot; name=&quot;task&quot; value=&quot;search&quot; /&gt;
+		&lt;input type=&quot;hidden&quot; name=&quot;option&quot; value=&quot;com_search&quot; /&gt;
+		&lt;input type=&quot;hidden&quot; name=&quot;Itemid&quot; value=&quot;138&quot; /&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+									&lt;/div&gt;
+																&lt;div&gt;
+								&lt;p&gt;&lt;a href=&quot;/index.php&quot; title=&quot;跳转到首页&quot;&gt;首页&lt;/a&gt;&lt;/p&gt;
+								&lt;/div&gt;
+
+						&lt;h3&gt;如果问题仍然存在，请提交下面的错误报告联系本网站的系统管理员&lt;/h3&gt;
+
+						&lt;h2&gt;#404&amp;nbsp;找不到分类&lt;/h2&gt; &lt;br /&gt;
+
+
+			&lt;/div&gt;&lt;!-- end wrapper --&gt;
+		&lt;/div&gt;&lt;!-- end contentarea --&gt;
+
+						
+
+			&lt;/div&gt;  &lt;!--end all --&gt;
+
+			&lt;/div&gt;
+			&lt;/div&gt;
+			 &lt;div id=&quot;footer-outer&quot;&gt;
+
+			&lt;div id=&quot;footer-sub&quot;&gt;
+
+
+                                &lt;div id=&quot;footer&quot;&gt;
+                                        &lt;p&gt;
+                                                TPL_BEEZ2_POWERED_BY &lt;a href=&quot;http://www.joomla.org/&quot;&gt;Joomla!&amp;#174;&lt;/a&gt;
+                                        &lt;/p&gt;
+
+                                &lt;/div&gt;&lt;!-- end footer --&gt;
+                         &lt;/div&gt;&lt;!-- end footer-sub --&gt;
+
+                       &lt;/div&gt;
+
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[125]" method="GET" name="Cookie" plugin="analyze_cookies" severity="Information" url="http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll" var="None">
+        <description>The application sent the &quot;3ce68f2ab19611814938d6e095454428&quot; cookie in 1 different URLs. The first ten URLs are:
+ - http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll
+</description>
+        <http-transactions>
+            <http-transaction id="125">
+                <http-request>
+                    <status>POST http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L21FUlNZLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguWVNSRW0=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 找不到分类</status>
+                    <headers>
+                        <header content="1827" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="3ce68f2ab19611814938d6e095454428=zh-CN; path=/" field="set-cookie"/>
+                        <header content="False" field="x-logged-in"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=90" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 09:30:50 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;zh-cn&quot; lang=&quot;zh-cn&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+
+&lt;meta name=&quot;language&quot; content=&quot;zh-cn&quot; /&gt;
+
+	&lt;title&gt;404 - 错误: 404&lt;/title&gt;
+
+
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/system/css/system.css&quot; type=&quot;text/css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/position.css&quot; type=&quot;text/css&quot; media=&quot;screen,projection&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/layout.css&quot; type=&quot;text/css&quot; media=&quot;screen,projection&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/print.css&quot; type=&quot;text/css&quot; media=&quot;Print&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/.css&quot; type=&quot;text/css&quot; /&gt;
+		 &lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/.css&quot; type=&quot;text/css&quot; /&gt;
+				&lt;!--[if lte IE 6]&gt;
+			&lt;link href=&quot;/templates/lbm/css/ieonly.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;![endif]--&gt;
+		&lt;!--[if IE 7]&gt;
+			&lt;link href=&quot;/templates/lbm/css/ie7only.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;![endif]--&gt;
+
+
+&lt;style type=&quot;text/css&quot;&gt;
+			&lt;!--
+			#errorboxbody
+			{margin:30px}
+			#errorboxbody h2
+			{font-weight:normal;
+			font-size:1.5em}
+			#searchbox
+			{background:#eee;
+			padding:10px;
+			margin-top:20px;
+			border:solid 1px #ddd
+			}
+			--&gt;
+&lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+	&lt;div id=&quot;all&quot;&gt;
+		&lt;div id=&quot;back&quot;&gt;
+
+		&lt;div id=&quot;header&quot;&gt;
+
+					&lt;div class=&quot;logoheader&quot;&gt;
+						
+							
+						 &lt;h1 id=&quot;logo&quot;&gt;
+
+                                                                                                                                                                                                        &lt;span class=&quot;header1&quot;&gt;
+                                                                                &lt;/span&gt;&lt;/h1&gt;
+					&lt;/div&gt;&lt;!-- end logoheader --&gt;
+
+						&lt;ul class=&quot;skiplinks&quot;&gt;
+							&lt;li&gt;&lt;a href=&quot;#wrapper2&quot; class=&quot;u2&quot;&gt;TPL_BEEZ2_SKIP_TO_ERROR_CONTENT&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;#nav&quot; class=&quot;u2&quot;&gt;TPL_BEEZ2_ERROR_JUMP_TO_NAV&lt;/a&gt;&lt;/li&gt;
+
+						&lt;/ul&gt;
+						&lt;div id=&quot;line&quot;&gt;&lt;/div&gt;
+
+
+
+				&lt;/div&gt;&lt;!-- end header --&gt;
+
+		&lt;div id=&quot;contentarea2&quot; &gt;
+
+
+							&lt;div class=&quot;left1&quot; id=&quot;nav&quot;&gt;
+
+				&lt;h2 class=&quot;unseen&quot;&gt;TPL_BEEZ2_NAVIGATION&lt;/h2&gt;
+											&lt;ul class=&quot;nav menu&quot;&gt;
+&lt;li class=&quot;item-101 current active&quot;&gt;&lt;a href=&quot;/zh/&quot; &gt;首页&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-104 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;实验室概述&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-107&quot;&gt;&lt;a href=&quot;/zh/lingyu&quot; &gt;研究领域&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-108 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;科研队伍&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-113 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;科研成果&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-118 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;学术交流&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-122&quot;&gt;&lt;a href=&quot;/zh/rencaipeiyang&quot; &gt;人才培养&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-123 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;仪器设备&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-155 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;开放课题&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-126&quot;&gt;&lt;a href=&quot;/zh/tongxun&quot; &gt;实验室通讯&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-124&quot;&gt;&lt;a href=&quot;/zh/contact&quot; &gt;联系我们&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+
+							&lt;/div&gt;
+
+					&lt;!-- end navi --&gt;
+			&lt;div id=&quot;wrapper2&quot;&gt;
+			&lt;div id=&quot;errorboxbody&quot;&gt;
+						&lt;h2&gt;发生了错误。&lt;br /&gt;
+								找不到请求的页面&lt;/h2&gt;
+																	&lt;div id=&quot;searchbox&quot;&gt;
+									&lt;h3 class=&quot;unseen&quot;&gt;TPL_BEEZ2_SEARCH&lt;/h3&gt;
+									&lt;p&gt;您可能希望搜索网站或者访问首页&lt;/p&gt;
+									&lt;div class=&quot;search mod_search105&quot;&gt;
+	&lt;form action=&quot;/zh/&quot; method=&quot;post&quot; class=&quot;form-inline&quot;&gt;
+		&lt;label for=&quot;mod-search-searchword&quot; class=&quot;element-invisible&quot;&gt;搜索...&lt;/label&gt; &lt;input name=&quot;searchword&quot; id=&quot;mod-search-searchword&quot; maxlength=&quot;200&quot;  class=&quot;inputbox search-query&quot; type=&quot;search&quot; size=&quot;20&quot; placeholder=&quot;搜索...&quot; /&gt; &lt;button class=&quot;button btn btn-primary&quot; onclick=&quot;this.form.searchword.focus();&quot;&gt;搜索&lt;/button&gt;		&lt;input type=&quot;hidden&quot; name=&quot;task&quot; value=&quot;search&quot; /&gt;
+		&lt;input type=&quot;hidden&quot; name=&quot;option&quot; value=&quot;com_search&quot; /&gt;
+		&lt;input type=&quot;hidden&quot; name=&quot;Itemid&quot; value=&quot;138&quot; /&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+									&lt;/div&gt;
+																&lt;div&gt;
+								&lt;p&gt;&lt;a href=&quot;/index.php&quot; title=&quot;跳转到首页&quot;&gt;首页&lt;/a&gt;&lt;/p&gt;
+								&lt;/div&gt;
+
+						&lt;h3&gt;如果问题仍然存在，请提交下面的错误报告联系本网站的系统管理员&lt;/h3&gt;
+
+						&lt;h2&gt;#404&amp;nbsp;找不到分类&lt;/h2&gt; &lt;br /&gt;
+
+
+			&lt;/div&gt;&lt;!-- end wrapper --&gt;
+		&lt;/div&gt;&lt;!-- end contentarea --&gt;
+
+						
+
+			&lt;/div&gt;  &lt;!--end all --&gt;
+
+			&lt;/div&gt;
+			&lt;/div&gt;
+			 &lt;div id=&quot;footer-outer&quot;&gt;
+
+			&lt;div id=&quot;footer-sub&quot;&gt;
+
+
+                                &lt;div id=&quot;footer&quot;&gt;
+                                        &lt;p&gt;
+                                                TPL_BEEZ2_POWERED_BY &lt;a href=&quot;http://www.joomla.org/&quot;&gt;Joomla!&amp;#174;&lt;/a&gt;
+                                        &lt;/p&gt;
+
+                                &lt;/div&gt;&lt;!-- end footer --&gt;
+                         &lt;/div&gt;&lt;!-- end footer-sub --&gt;
+
+                       &lt;/div&gt;
+
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[125]" method="GET" name="Cookie without HttpOnly" plugin="analyze_cookies" severity="Low" url="http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll" var="None">
+        <description>The application sent the &quot;3ce68f2ab19611814938d6e095454428&quot; cookie without the HttpOnly flag in 1 different responses. The HttpOnly flag prevents potential intruders from accessing the cookie value through Cross-Site Scripting attacks. The first ten URLs which sent the insecure cookie are:
+ - http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll
+</description>
+        <long-description>HTTP by itself is a stateless protocol. Therefore the server is unable to determine which requests are performed by which client, and which clients are authenticated or unauthenticated.
+
+The use of HTTP cookies within the headers, allows a web server to identify each individual client and can therefore determine which clients hold valid authentication, from those that do not. These are known as session cookies.
+
+When a cookie is set by the server (sent the header of an HTTP response) there are several flags that can be set to configure the properties of the cookie and how it is to be handled by the browser.
+
+The `HttpOnly` flag assists in the prevention of client side-scripts (such as JavaScript) accessing and using the cookie. This can help prevent XSS attacks targeting the cookies holding the client's session token (setting the `HttpOnly` flag does not prevent, nor safeguard against XSS vulnerabilities themselves).</long-description>
+        <fix-guidance>The initial step to remedy this would be to determine whether any client-side scripts (such as JavaScript) need to access the cookie and if not, set the `HttpOnly` flag.
+
+Additionally, it should be noted that some older browsers are not compatible with the `HttpOnly` flag, and therefore setting this flag will not protect those clients against this form of attack.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="HttpOnly - OWASP" url="https://www.owasp.org/index.php/HttpOnly"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="125">
+                <http-request>
+                    <status>POST http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L21FUlNZLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguWVNSRW0=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 找不到分类</status>
+                    <headers>
+                        <header content="1827" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="3ce68f2ab19611814938d6e095454428=zh-CN; path=/" field="set-cookie"/>
+                        <header content="False" field="x-logged-in"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=90" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 09:30:50 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;zh-cn&quot; lang=&quot;zh-cn&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+
+&lt;meta name=&quot;language&quot; content=&quot;zh-cn&quot; /&gt;
+
+	&lt;title&gt;404 - 错误: 404&lt;/title&gt;
+
+
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/system/css/system.css&quot; type=&quot;text/css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/position.css&quot; type=&quot;text/css&quot; media=&quot;screen,projection&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/layout.css&quot; type=&quot;text/css&quot; media=&quot;screen,projection&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/print.css&quot; type=&quot;text/css&quot; media=&quot;Print&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/.css&quot; type=&quot;text/css&quot; /&gt;
+		 &lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/.css&quot; type=&quot;text/css&quot; /&gt;
+				&lt;!--[if lte IE 6]&gt;
+			&lt;link href=&quot;/templates/lbm/css/ieonly.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;![endif]--&gt;
+		&lt;!--[if IE 7]&gt;
+			&lt;link href=&quot;/templates/lbm/css/ie7only.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;![endif]--&gt;
+
+
+&lt;style type=&quot;text/css&quot;&gt;
+			&lt;!--
+			#errorboxbody
+			{margin:30px}
+			#errorboxbody h2
+			{font-weight:normal;
+			font-size:1.5em}
+			#searchbox
+			{background:#eee;
+			padding:10px;
+			margin-top:20px;
+			border:solid 1px #ddd
+			}
+			--&gt;
+&lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+	&lt;div id=&quot;all&quot;&gt;
+		&lt;div id=&quot;back&quot;&gt;
+
+		&lt;div id=&quot;header&quot;&gt;
+
+					&lt;div class=&quot;logoheader&quot;&gt;
+						
+							
+						 &lt;h1 id=&quot;logo&quot;&gt;
+
+                                                                                                                                                                                                        &lt;span class=&quot;header1&quot;&gt;
+                                                                                &lt;/span&gt;&lt;/h1&gt;
+					&lt;/div&gt;&lt;!-- end logoheader --&gt;
+
+						&lt;ul class=&quot;skiplinks&quot;&gt;
+							&lt;li&gt;&lt;a href=&quot;#wrapper2&quot; class=&quot;u2&quot;&gt;TPL_BEEZ2_SKIP_TO_ERROR_CONTENT&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;#nav&quot; class=&quot;u2&quot;&gt;TPL_BEEZ2_ERROR_JUMP_TO_NAV&lt;/a&gt;&lt;/li&gt;
+
+						&lt;/ul&gt;
+						&lt;div id=&quot;line&quot;&gt;&lt;/div&gt;
+
+
+
+				&lt;/div&gt;&lt;!-- end header --&gt;
+
+		&lt;div id=&quot;contentarea2&quot; &gt;
+
+
+							&lt;div class=&quot;left1&quot; id=&quot;nav&quot;&gt;
+
+				&lt;h2 class=&quot;unseen&quot;&gt;TPL_BEEZ2_NAVIGATION&lt;/h2&gt;
+											&lt;ul class=&quot;nav menu&quot;&gt;
+&lt;li class=&quot;item-101 current active&quot;&gt;&lt;a href=&quot;/zh/&quot; &gt;首页&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-104 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;实验室概述&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-107&quot;&gt;&lt;a href=&quot;/zh/lingyu&quot; &gt;研究领域&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-108 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;科研队伍&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-113 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;科研成果&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-118 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;学术交流&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-122&quot;&gt;&lt;a href=&quot;/zh/rencaipeiyang&quot; &gt;人才培养&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-123 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;仪器设备&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-155 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;开放课题&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-126&quot;&gt;&lt;a href=&quot;/zh/tongxun&quot; &gt;实验室通讯&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-124&quot;&gt;&lt;a href=&quot;/zh/contact&quot; &gt;联系我们&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+
+							&lt;/div&gt;
+
+					&lt;!-- end navi --&gt;
+			&lt;div id=&quot;wrapper2&quot;&gt;
+			&lt;div id=&quot;errorboxbody&quot;&gt;
+						&lt;h2&gt;发生了错误。&lt;br /&gt;
+								找不到请求的页面&lt;/h2&gt;
+																	&lt;div id=&quot;searchbox&quot;&gt;
+									&lt;h3 class=&quot;unseen&quot;&gt;TPL_BEEZ2_SEARCH&lt;/h3&gt;
+									&lt;p&gt;您可能希望搜索网站或者访问首页&lt;/p&gt;
+									&lt;div class=&quot;search mod_search105&quot;&gt;
+	&lt;form action=&quot;/zh/&quot; method=&quot;post&quot; class=&quot;form-inline&quot;&gt;
+		&lt;label for=&quot;mod-search-searchword&quot; class=&quot;element-invisible&quot;&gt;搜索...&lt;/label&gt; &lt;input name=&quot;searchword&quot; id=&quot;mod-search-searchword&quot; maxlength=&quot;200&quot;  class=&quot;inputbox search-query&quot; type=&quot;search&quot; size=&quot;20&quot; placeholder=&quot;搜索...&quot; /&gt; &lt;button class=&quot;button btn btn-primary&quot; onclick=&quot;this.form.searchword.focus();&quot;&gt;搜索&lt;/button&gt;		&lt;input type=&quot;hidden&quot; name=&quot;task&quot; value=&quot;search&quot; /&gt;
+		&lt;input type=&quot;hidden&quot; name=&quot;option&quot; value=&quot;com_search&quot; /&gt;
+		&lt;input type=&quot;hidden&quot; name=&quot;Itemid&quot; value=&quot;138&quot; /&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+									&lt;/div&gt;
+																&lt;div&gt;
+								&lt;p&gt;&lt;a href=&quot;/index.php&quot; title=&quot;跳转到首页&quot;&gt;首页&lt;/a&gt;&lt;/p&gt;
+								&lt;/div&gt;
+
+						&lt;h3&gt;如果问题仍然存在，请提交下面的错误报告联系本网站的系统管理员&lt;/h3&gt;
+
+						&lt;h2&gt;#404&amp;nbsp;找不到分类&lt;/h2&gt; &lt;br /&gt;
+
+
+			&lt;/div&gt;&lt;!-- end wrapper --&gt;
+		&lt;/div&gt;&lt;!-- end contentarea --&gt;
+
+						
+
+			&lt;/div&gt;  &lt;!--end all --&gt;
+
+			&lt;/div&gt;
+			&lt;/div&gt;
+			 &lt;div id=&quot;footer-outer&quot;&gt;
+
+			&lt;div id=&quot;footer-sub&quot;&gt;
+
+
+                                &lt;div id=&quot;footer&quot;&gt;
+                                        &lt;p&gt;
+                                                TPL_BEEZ2_POWERED_BY &lt;a href=&quot;http://www.joomla.org/&quot;&gt;Joomla!&amp;#174;&lt;/a&gt;
+                                        &lt;/p&gt;
+
+                                &lt;/div&gt;&lt;!-- end footer --&gt;
+                         &lt;/div&gt;&lt;!-- end footer-sub --&gt;
+
+                       &lt;/div&gt;
+
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[197]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://www.biomembrane.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://biomembrane.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://www.biomembrane.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="197">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6; 3ce68f2ab19611814938d6e095454428=zh-CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=100" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://biomembrane.tsinghua.edu.cn/zh/" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:58 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[202]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.30.31/" var="None">
+        <description>The contents of http://166.111.30.31/ and http://www.biomembrane.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="202">
+                <http-request>
+                    <status>GET http://166.111.30.31/ HTTP/1.1</status>
+                    <headers>
+                        <header content="166.111.30.31" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="61" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=100" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Mon, 20 Apr 2015 07:05:22 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;60aa6-2c-514228db20859&quot;" field="etag"/>
+                        <header content="Fri, 02 Dec 2016 09:31:03 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;Apache is functioning normally&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.30.31</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6; path=/; HttpOnly" field="set-cookie"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=100" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:36 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="Webserver fingerprint" plugin="hmap" severity="Information" url="None" var="None">
+        <description>The most accurate fingerprint for this HTTP server is: &quot;Apache/2.0.52 (Unix) PHP/5.0.3&quot;.</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6; path=/; HttpOnly" field="set-cookie"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=100" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:36 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 99, 110, 125, 151, 168, 181, 184, 195, 198, 199, 200, 204]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=99" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:36 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="99">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=95" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/_vti_inf.html" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:49 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="110">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/mERSY.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=98" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/mERSY.html" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:49 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="125">
+                <http-request>
+                    <status>POST http://www.biomembrane.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L21FUlNZLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguWVNSRW0=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 找不到分类</status>
+                    <headers>
+                        <header content="1827" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="3ce68f2ab19611814938d6e095454428=zh-CN; path=/" field="set-cookie"/>
+                        <header content="False" field="x-logged-in"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=90" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-cache" field="cache-control"/>
+                        <header content="Fri, 02 Dec 2016 09:30:50 GMT" field="date"/>
+                        <header content="CP=&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;" field="p3p"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;zh-cn&quot; lang=&quot;zh-cn&quot; dir=&quot;ltr&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+
+&lt;meta name=&quot;language&quot; content=&quot;zh-cn&quot; /&gt;
+
+	&lt;title&gt;404 - 错误: 404&lt;/title&gt;
+
+
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/system/css/system.css&quot; type=&quot;text/css&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/position.css&quot; type=&quot;text/css&quot; media=&quot;screen,projection&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/layout.css&quot; type=&quot;text/css&quot; media=&quot;screen,projection&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/print.css&quot; type=&quot;text/css&quot; media=&quot;Print&quot; /&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/.css&quot; type=&quot;text/css&quot; /&gt;
+		 &lt;link rel=&quot;stylesheet&quot; href=&quot;/templates/lbm/css/.css&quot; type=&quot;text/css&quot; /&gt;
+				&lt;!--[if lte IE 6]&gt;
+			&lt;link href=&quot;/templates/lbm/css/ieonly.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;![endif]--&gt;
+		&lt;!--[if IE 7]&gt;
+			&lt;link href=&quot;/templates/lbm/css/ie7only.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+		&lt;![endif]--&gt;
+
+
+&lt;style type=&quot;text/css&quot;&gt;
+			&lt;!--
+			#errorboxbody
+			{margin:30px}
+			#errorboxbody h2
+			{font-weight:normal;
+			font-size:1.5em}
+			#searchbox
+			{background:#eee;
+			padding:10px;
+			margin-top:20px;
+			border:solid 1px #ddd
+			}
+			--&gt;
+&lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+	&lt;div id=&quot;all&quot;&gt;
+		&lt;div id=&quot;back&quot;&gt;
+
+		&lt;div id=&quot;header&quot;&gt;
+
+					&lt;div class=&quot;logoheader&quot;&gt;
+						
+							
+						 &lt;h1 id=&quot;logo&quot;&gt;
+
+                                                                                                                                                                                                        &lt;span class=&quot;header1&quot;&gt;
+                                                                                &lt;/span&gt;&lt;/h1&gt;
+					&lt;/div&gt;&lt;!-- end logoheader --&gt;
+
+						&lt;ul class=&quot;skiplinks&quot;&gt;
+							&lt;li&gt;&lt;a href=&quot;#wrapper2&quot; class=&quot;u2&quot;&gt;TPL_BEEZ2_SKIP_TO_ERROR_CONTENT&lt;/a&gt;&lt;/li&gt;
+							&lt;li&gt;&lt;a href=&quot;#nav&quot; class=&quot;u2&quot;&gt;TPL_BEEZ2_ERROR_JUMP_TO_NAV&lt;/a&gt;&lt;/li&gt;
+
+						&lt;/ul&gt;
+						&lt;div id=&quot;line&quot;&gt;&lt;/div&gt;
+
+
+
+				&lt;/div&gt;&lt;!-- end header --&gt;
+
+		&lt;div id=&quot;contentarea2&quot; &gt;
+
+
+							&lt;div class=&quot;left1&quot; id=&quot;nav&quot;&gt;
+
+				&lt;h2 class=&quot;unseen&quot;&gt;TPL_BEEZ2_NAVIGATION&lt;/h2&gt;
+											&lt;ul class=&quot;nav menu&quot;&gt;
+&lt;li class=&quot;item-101 current active&quot;&gt;&lt;a href=&quot;/zh/&quot; &gt;首页&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-104 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;实验室概述&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-107&quot;&gt;&lt;a href=&quot;/zh/lingyu&quot; &gt;研究领域&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-108 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;科研队伍&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-113 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;科研成果&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-118 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;学术交流&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-122&quot;&gt;&lt;a href=&quot;/zh/rencaipeiyang&quot; &gt;人才培养&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-123 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;仪器设备&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-155 parent&quot;&gt;&lt;a href=&quot;#&quot; &gt;开放课题&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-126&quot;&gt;&lt;a href=&quot;/zh/tongxun&quot; &gt;实验室通讯&lt;/a&gt;&lt;/li&gt;&lt;li class=&quot;item-124&quot;&gt;&lt;a href=&quot;/zh/contact&quot; &gt;联系我们&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+
+							&lt;/div&gt;
+
+					&lt;!-- end navi --&gt;
+			&lt;div id=&quot;wrapper2&quot;&gt;
+			&lt;div id=&quot;errorboxbody&quot;&gt;
+						&lt;h2&gt;发生了错误。&lt;br /&gt;
+								找不到请求的页面&lt;/h2&gt;
+																	&lt;div id=&quot;searchbox&quot;&gt;
+									&lt;h3 class=&quot;unseen&quot;&gt;TPL_BEEZ2_SEARCH&lt;/h3&gt;
+									&lt;p&gt;您可能希望搜索网站或者访问首页&lt;/p&gt;
+									&lt;div class=&quot;search mod_search105&quot;&gt;
+	&lt;form action=&quot;/zh/&quot; method=&quot;post&quot; class=&quot;form-inline&quot;&gt;
+		&lt;label for=&quot;mod-search-searchword&quot; class=&quot;element-invisible&quot;&gt;搜索...&lt;/label&gt; &lt;input name=&quot;searchword&quot; id=&quot;mod-search-searchword&quot; maxlength=&quot;200&quot;  class=&quot;inputbox search-query&quot; type=&quot;search&quot; size=&quot;20&quot; placeholder=&quot;搜索...&quot; /&gt; &lt;button class=&quot;button btn btn-primary&quot; onclick=&quot;this.form.searchword.focus();&quot;&gt;搜索&lt;/button&gt;		&lt;input type=&quot;hidden&quot; name=&quot;task&quot; value=&quot;search&quot; /&gt;
+		&lt;input type=&quot;hidden&quot; name=&quot;option&quot; value=&quot;com_search&quot; /&gt;
+		&lt;input type=&quot;hidden&quot; name=&quot;Itemid&quot; value=&quot;138&quot; /&gt;
+	&lt;/form&gt;
+&lt;/div&gt;
+									&lt;/div&gt;
+																&lt;div&gt;
+								&lt;p&gt;&lt;a href=&quot;/index.php&quot; title=&quot;跳转到首页&quot;&gt;首页&lt;/a&gt;&lt;/p&gt;
+								&lt;/div&gt;
+
+						&lt;h3&gt;如果问题仍然存在，请提交下面的错误报告联系本网站的系统管理员&lt;/h3&gt;
+
+						&lt;h2&gt;#404&amp;nbsp;找不到分类&lt;/h2&gt; &lt;br /&gt;
+
+
+			&lt;/div&gt;&lt;!-- end wrapper --&gt;
+		&lt;/div&gt;&lt;!-- end contentarea --&gt;
+
+						
+
+			&lt;/div&gt;  &lt;!--end all --&gt;
+
+			&lt;/div&gt;
+			&lt;/div&gt;
+			 &lt;div id=&quot;footer-outer&quot;&gt;
+
+			&lt;div id=&quot;footer-sub&quot;&gt;
+
+
+                                &lt;div id=&quot;footer&quot;&gt;
+                                        &lt;p&gt;
+                                                TPL_BEEZ2_POWERED_BY &lt;a href=&quot;http://www.joomla.org/&quot;&gt;Joomla!&amp;#174;&lt;/a&gt;
+                                        &lt;/p&gt;
+
+                                &lt;/div&gt;&lt;!-- end footer --&gt;
+                         &lt;/div&gt;&lt;!-- end footer-sub --&gt;
+
+                       &lt;/div&gt;
+
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="151">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=100" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/favicon.ico" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:51 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="168">
+                <http-request>
+                    <status>PUT http://www.biomembrane.tsinghua.edu.cn/hDhZt HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6; 3ce68f2ab19611814938d6e095454428=zh-CN" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">kWcawv</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=94" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/hDhZt" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:51 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="181">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6; 3ce68f2ab19611814938d6e095454428=zh-CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=92" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/server-status" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:53 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="184">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6; 3ce68f2ab19611814938d6e095454428=zh-CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=91" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/jmx-console" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:53 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="195">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6; 3ce68f2ab19611814938d6e095454428=zh-CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=100" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/status" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:58 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="198">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6; 3ce68f2ab19611814938d6e095454428=zh-CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=100" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/WebConsole/Invoker" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:58 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="199">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6; 3ce68f2ab19611814938d6e095454428=zh-CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=99" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/invoker/JMXInvokerServlet" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:58 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="200">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6; 3ce68f2ab19611814938d6e095454428=zh-CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=99" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/admin-console" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:30:58 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="204">
+                <http-request>
+                    <status>GET http://www.biomembrane.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="www.biomembrane.tsinghua.edu.cn" field="Host"/>
+                        <header content="b3e52073a5686c65a89a53397ba0801f=rrk83kgiendb1ia5iafumv3qu6; 3ce68f2ab19611814938d6e095454428=zh-CN" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 303 See other</status>
+                    <headers>
+                        <header content="20" field="content-length"/>
+                        <header content="PHP/5.3.29" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding,User-Agent" field="vary"/>
+                        <header content="timeout=1, max=100" field="keep-alive"/>
+                        <header content="Apache/2" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="http://www.biomembrane.tsinghua.edu.cn/zh/web-console/ServerInfo.jsp" field="location"/>
+                        <header content="Fri, 02 Dec 2016 09:31:03 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://www.biomembrane.tsinghua.edu.cn/?=PHPE9568F36-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.biomembrane.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.biomembrane.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.biomembrane.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.biomembrane.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.biomembrane.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.biomembrane.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.biomembrane.tsinghua.edu.cn/?64wmLO4=SELECT%20TOP%201%20name%20FROM%20sysusers&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+</w3af-run>

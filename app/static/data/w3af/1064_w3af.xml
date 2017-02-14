@@ -1,0 +1,1276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480524629" start-long="Wed Nov 30 11:50:29 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.flotu.org/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.132"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1064_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[60]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;IIS&quot;.</description>
+        <http-transactions>
+            <http-transaction id="60">
+                <http-request>
+                    <status>GET http://www.flotu.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.flotu.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="8642" field="content-length"/>
+                        <header content="WAF/2.0" field="x-powered-by"/>
+                        <header content="0" field="x-aspnet-version"/>
+                        <header content="IIS" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 17:58:02 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;title&gt;
+        绿色反应工程与工艺北京重点实验室&lt;/title&gt;
+    &lt;link href=&quot;css/QHDX_style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;QHDX_Box&quot;&gt;
+        
+&lt;script language=&quot;javascript&quot;&gt;
+function getCurDate()
+{
+ var d = new Date();
+ var week;
+ switch (d.getDay()){
+ case 1: week=&quot;星期一&quot;; break;
+ case 2: week=&quot;星期二&quot;; break;
+ case 3: week=&quot;星期三&quot;; break;
+ case 4: week=&quot;星期四&quot;; break;
+ case 5: week=&quot;星期五&quot;; break;
+ case 6: week=&quot;星期六&quot;; break;
+ default: week=&quot;星期天&quot;;
+ }
+ var years = d.getYear();
+ var month = add_zero(d.getMonth()+1);
+ var days = add_zero(d.getDate());
+ var hours = add_zero(d.getHours());
+ var minutes = add_zero(d.getMinutes());
+ var seconds=add_zero(d.getSeconds());
+ var ndate = years+&quot;年&quot;+month+&quot;月&quot;+days+&quot;日 &quot;+&quot; &quot;+week;
+ divT.innerHTML= ndate;
+}
+
+function add_zero(temp)
+{
+ if(temp&lt;10) return &quot;0&quot;+temp;
+ else return temp;
+}
+
+setInterval(&quot;getCurDate()&quot;,100);
+
+&lt;/script&gt;
+
+
+&lt;div class=&quot;Header_Box&quot;&gt;
+    	&lt;div class=&quot;Logo&quot;&gt;&lt;img src=&quot;images/logo.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;ENGandDate&quot;&gt;
+        	&lt;p&gt;&lt;a href=&quot;index.aspx&quot;&gt;中文&lt;/a&gt;|&lt;a href=&quot;../English/index.aspx&quot;&gt;English&lt;/a&gt;&lt;/p&gt;
+            &lt;span id=&quot;divT&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;Nav_list&quot;&gt;
+        	&lt;ul&gt;
+            	&lt;li class=&quot;nav_01&quot;&gt;&lt;a href=&quot;Index.aspx&quot; class=&quot;active_1&quot;&gt;&lt;!--首页--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_02&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120604101624390926&quot;&gt;&lt;!--实验室介绍--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_03&quot;&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;&lt;!--新闻中心--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_04&quot;&gt;&lt;a href=&quot;Teacherlist.aspx?m=20120604102645857941&quot;&gt;&lt;!--研究人员--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_05&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120713000658387496&quot;&gt;&lt;!--科学研究--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_06&quot;&gt;&lt;a href=&quot;Shiyanshihdlist.aspx?m=20120604112434030971&quot;&gt;&lt;!--学生园地--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_07&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120604104604217965&quot;&gt;&lt;!--联系我们--&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+        &lt;div class=&quot;GDT_Box&quot;&gt;
+            &lt;div class=&quot;PicBox&quot; id=&quot;PicBox&quot;&gt;
+                &lt;div class=&quot;BigPic&quot;&gt;
+                    &lt;ul id=&quot;BigUl&quot;&gt;
+                        
+                        &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;1&quot;&gt;
+                            
+                            &lt;img src=&quot;UploadFiles/20121018093611535.jpg&quot; /&gt;&lt;/a&gt; &lt;span&gt;
+                                &lt;!--描述文字--&gt;
+                            &lt;/span&gt;&lt;/li&gt;
+                        
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;iNow&quot;&gt;
+                    &lt;ol id=&quot;SmallOl&quot;&gt;
+                        
+                        &lt;li class=&quot;active&quot;&gt;&lt;/li&gt;
+                        
+                    &lt;/ol&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;News_Box&quot;&gt;
+            &lt;div class=&quot;News_01&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;新闻&lt;/font&gt;.动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;ul class=&quot;news_list&quot;&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;
+                        彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;
+                        唐城：碳纳米管阵列/石墨烯三明治&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821085910317867&quot;&gt;
+                        当石墨烯“牵手”碳纳米管--新型高效双功能...&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821090804690873&quot;&gt;
+                        高硫含量正极推动高体积能量密度锂硫电池研究&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821090925803875&quot;&gt;
+                        碳/硫界面调变提升锂硫电池稳定性&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140504191338847853&quot;&gt;
+                        中央政治局委员、国务院副总理刘延东视察清华...&lt;/a&gt;&lt;/li&gt;
+                    
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;News_01&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;焦点&lt;/font&gt;动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;TWjs&quot;&gt;
+                    
+                    &lt;span&gt;
+                        &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;&lt;img src=&quot;UploadFiles/20140925153304591.jpg&quot; /&gt;&lt;/a&gt;&lt;/span&gt; &lt;strong&gt; &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;唐城：碳纳米管阵列/石墨烯三明治&lt;/a&gt;&lt;/strong&gt;
+                    &lt;p&gt;
+                       
+
+
+
+无标题文档
+
+
+
+
+
+
+以碳纳米管和石墨烯为代表的sp2杂化纳米碳材料，即具有非常优异的力学、电学、热学、光学等本征物理性能，还可通过原子掺杂、官能团&lt;/p&gt;
+                    
+                    
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;News_01&quot; style=&quot;padding-right: 0px;&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;焦点&lt;/font&gt;动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;TWjs&quot;&gt;
+                    
+                    &lt;span&gt;
+                        &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;&lt;img src=&quot;UploadFiles/20140925152458838.jpg&quot; /&gt;&lt;/a&gt;&lt;/span&gt; &lt;strong&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池&lt;/a&gt;&lt;/strong&gt;
+                    &lt;p&gt;
+                       
+
+
+
+无标题文档
+
+
+
+彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池 
+随着个人便携式电子设备、电动汽车以及可再生能源的飞速发展，具有高能量密度和高功率密度的电&lt;/p&gt;
+                    
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+&lt;div class=&quot;Footer_Box&quot;&gt;
+            &lt;p&gt;
+                &lt;a href=&quot;Info.aspx?m=20120604104604217965&quot;&gt;联系我们&lt;/a&gt; | &lt;a href=&quot;Info.aspx?m=20120607113855500048&quot;&gt;来访路线&lt;/a&gt; | &lt;a href=&quot;Info.aspx?m=20120607113914763051&quot;&gt;站点地图&lt;/a&gt; | &lt;a href=&quot;http://www.tsinghua.edu.cn&quot;&gt;清华大学&lt;/a&gt;
+                | &lt;a href=&quot;http://www.chemeng.tsinghua.edu.cn&quot;&gt;清华大学化工系&lt;/a&gt;&lt;/p&gt;
+            &lt;p&gt;
+                版权所有 绿色反应工程与工艺北京市重点实验室&lt;span&gt;亿网设计 2012&lt;/span&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;script&gt;
+window.onload=function()
+{
+  var PicBox=document.getElementById('PicBox');
+  var BigUl=document.getElementById('BigUl');
+  var BigLi=BigUl.getElementsByTagName('li');
+  var SmallOl=document.getElementById('SmallOl');
+  var SmallLi=SmallOl.getElementsByTagName('li');
+  var i=0,iNow=0,sTime=null;
+  var AutoTime=3000;
+
+  for(i=0;i&lt;SmallLi.length;i++){
+	  SmallLi[i].index=i;
+	  SmallLi[i].onmouseover=function(){
+		iNow=this.index;  
+		Sport();
+	  };
+  };
+  
+  function Sport(){
+    for(i=0;i&lt;SmallLi.length;i++){  
+	  SmallLi[i].className='';
+	  BigLi[i].className='';
+	}
+	  SmallLi[iNow].className='active';		
+	  BigLi[iNow].className='active';
+  };
+  
+  sTime=setInterval(function(){
+	 iNow++;
+	 if(iNow==SmallLi.length){
+		iNow=0; 
+	 }
+	 Sport();
+  }, AutoTime);
+  PicBox.onmouseover=function(){
+	clearInterval(sTime);  
+  };
+  PicBox.onmouseout=function(){
+		sTime=setInterval(function(){
+		 iNow++;
+		 if(iNow==SmallLi.length){
+			iNow=0; 
+		 }
+		 Sport();
+	  }, AutoTime);
+  };
+  
+}
+&lt;/script&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[64]" method="GET" name="Powered-by header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The x-aspnet-version header for the target HTTP server is &quot;0&quot;.</description>
+        <http-transactions>
+            <http-transaction id="64">
+                <http-request>
+                    <status>GET http://www.flotu.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.flotu.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="8642" field="content-length"/>
+                        <header content="WAF/2.0" field="x-powered-by"/>
+                        <header content="0" field="x-aspnet-version"/>
+                        <header content="IIS" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 17:58:02 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;title&gt;
+        绿色反应工程与工艺北京重点实验室&lt;/title&gt;
+    &lt;link href=&quot;css/QHDX_style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;QHDX_Box&quot;&gt;
+        
+&lt;script language=&quot;javascript&quot;&gt;
+function getCurDate()
+{
+ var d = new Date();
+ var week;
+ switch (d.getDay()){
+ case 1: week=&quot;星期一&quot;; break;
+ case 2: week=&quot;星期二&quot;; break;
+ case 3: week=&quot;星期三&quot;; break;
+ case 4: week=&quot;星期四&quot;; break;
+ case 5: week=&quot;星期五&quot;; break;
+ case 6: week=&quot;星期六&quot;; break;
+ default: week=&quot;星期天&quot;;
+ }
+ var years = d.getYear();
+ var month = add_zero(d.getMonth()+1);
+ var days = add_zero(d.getDate());
+ var hours = add_zero(d.getHours());
+ var minutes = add_zero(d.getMinutes());
+ var seconds=add_zero(d.getSeconds());
+ var ndate = years+&quot;年&quot;+month+&quot;月&quot;+days+&quot;日 &quot;+&quot; &quot;+week;
+ divT.innerHTML= ndate;
+}
+
+function add_zero(temp)
+{
+ if(temp&lt;10) return &quot;0&quot;+temp;
+ else return temp;
+}
+
+setInterval(&quot;getCurDate()&quot;,100);
+
+&lt;/script&gt;
+
+
+&lt;div class=&quot;Header_Box&quot;&gt;
+    	&lt;div class=&quot;Logo&quot;&gt;&lt;img src=&quot;images/logo.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;ENGandDate&quot;&gt;
+        	&lt;p&gt;&lt;a href=&quot;index.aspx&quot;&gt;中文&lt;/a&gt;|&lt;a href=&quot;../English/index.aspx&quot;&gt;English&lt;/a&gt;&lt;/p&gt;
+            &lt;span id=&quot;divT&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;Nav_list&quot;&gt;
+        	&lt;ul&gt;
+            	&lt;li class=&quot;nav_01&quot;&gt;&lt;a href=&quot;Index.aspx&quot; class=&quot;active_1&quot;&gt;&lt;!--首页--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_02&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120604101624390926&quot;&gt;&lt;!--实验室介绍--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_03&quot;&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;&lt;!--新闻中心--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_04&quot;&gt;&lt;a href=&quot;Teacherlist.aspx?m=20120604102645857941&quot;&gt;&lt;!--研究人员--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_05&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120713000658387496&quot;&gt;&lt;!--科学研究--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_06&quot;&gt;&lt;a href=&quot;Shiyanshihdlist.aspx?m=20120604112434030971&quot;&gt;&lt;!--学生园地--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_07&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120604104604217965&quot;&gt;&lt;!--联系我们--&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+        &lt;div class=&quot;GDT_Box&quot;&gt;
+            &lt;div class=&quot;PicBox&quot; id=&quot;PicBox&quot;&gt;
+                &lt;div class=&quot;BigPic&quot;&gt;
+                    &lt;ul id=&quot;BigUl&quot;&gt;
+                        
+                        &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;1&quot;&gt;
+                            
+                            &lt;img src=&quot;UploadFiles/20121018093611535.jpg&quot; /&gt;&lt;/a&gt; &lt;span&gt;
+                                &lt;!--描述文字--&gt;
+                            &lt;/span&gt;&lt;/li&gt;
+                        
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;iNow&quot;&gt;
+                    &lt;ol id=&quot;SmallOl&quot;&gt;
+                        
+                        &lt;li class=&quot;active&quot;&gt;&lt;/li&gt;
+                        
+                    &lt;/ol&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;News_Box&quot;&gt;
+            &lt;div class=&quot;News_01&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;新闻&lt;/font&gt;.动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;ul class=&quot;news_list&quot;&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;
+                        彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;
+                        唐城：碳纳米管阵列/石墨烯三明治&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821085910317867&quot;&gt;
+                        当石墨烯“牵手”碳纳米管--新型高效双功能...&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821090804690873&quot;&gt;
+                        高硫含量正极推动高体积能量密度锂硫电池研究&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821090925803875&quot;&gt;
+                        碳/硫界面调变提升锂硫电池稳定性&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140504191338847853&quot;&gt;
+                        中央政治局委员、国务院副总理刘延东视察清华...&lt;/a&gt;&lt;/li&gt;
+                    
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;News_01&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;焦点&lt;/font&gt;动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;TWjs&quot;&gt;
+                    
+                    &lt;span&gt;
+                        &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;&lt;img src=&quot;UploadFiles/20140925153304591.jpg&quot; /&gt;&lt;/a&gt;&lt;/span&gt; &lt;strong&gt; &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;唐城：碳纳米管阵列/石墨烯三明治&lt;/a&gt;&lt;/strong&gt;
+                    &lt;p&gt;
+                       
+
+
+
+无标题文档
+
+
+
+
+
+
+以碳纳米管和石墨烯为代表的sp2杂化纳米碳材料，即具有非常优异的力学、电学、热学、光学等本征物理性能，还可通过原子掺杂、官能团&lt;/p&gt;
+                    
+                    
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;News_01&quot; style=&quot;padding-right: 0px;&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;焦点&lt;/font&gt;动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;TWjs&quot;&gt;
+                    
+                    &lt;span&gt;
+                        &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;&lt;img src=&quot;UploadFiles/20140925152458838.jpg&quot; /&gt;&lt;/a&gt;&lt;/span&gt; &lt;strong&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池&lt;/a&gt;&lt;/strong&gt;
+                    &lt;p&gt;
+                       
+
+
+
+无标题文档
+
+
+
+彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池 
+随着个人便携式电子设备、电动汽车以及可再生能源的飞速发展，具有高能量密度和高功率密度的电&lt;/p&gt;
+                    
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+&lt;div class=&quot;Footer_Box&quot;&gt;
+            &lt;p&gt;
+                &lt;a href=&quot;Info.aspx?m=20120604104604217965&quot;&gt;联系我们&lt;/a&gt; | &lt;a href=&quot;Info.aspx?m=20120607113855500048&quot;&gt;来访路线&lt;/a&gt; | &lt;a href=&quot;Info.aspx?m=20120607113914763051&quot;&gt;站点地图&lt;/a&gt; | &lt;a href=&quot;http://www.tsinghua.edu.cn&quot;&gt;清华大学&lt;/a&gt;
+                | &lt;a href=&quot;http://www.chemeng.tsinghua.edu.cn&quot;&gt;清华大学化工系&lt;/a&gt;&lt;/p&gt;
+            &lt;p&gt;
+                版权所有 绿色反应工程与工艺北京市重点实验室&lt;span&gt;亿网设计 2012&lt;/span&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;script&gt;
+window.onload=function()
+{
+  var PicBox=document.getElementById('PicBox');
+  var BigUl=document.getElementById('BigUl');
+  var BigLi=BigUl.getElementsByTagName('li');
+  var SmallOl=document.getElementById('SmallOl');
+  var SmallLi=SmallOl.getElementsByTagName('li');
+  var i=0,iNow=0,sTime=null;
+  var AutoTime=3000;
+
+  for(i=0;i&lt;SmallLi.length;i++){
+	  SmallLi[i].index=i;
+	  SmallLi[i].onmouseover=function(){
+		iNow=this.index;  
+		Sport();
+	  };
+  };
+  
+  function Sport(){
+    for(i=0;i&lt;SmallLi.length;i++){  
+	  SmallLi[i].className='';
+	  BigLi[i].className='';
+	}
+	  SmallLi[iNow].className='active';		
+	  BigLi[iNow].className='active';
+  };
+  
+  sTime=setInterval(function(){
+	 iNow++;
+	 if(iNow==SmallLi.length){
+		iNow=0; 
+	 }
+	 Sport();
+  }, AutoTime);
+  PicBox.onmouseover=function(){
+	clearInterval(sTime);  
+  };
+  PicBox.onmouseout=function(){
+		sTime=setInterval(function(){
+		 iNow++;
+		 if(iNow==SmallLi.length){
+			iNow=0; 
+		 }
+		 Sport();
+	  }, AutoTime);
+  };
+  
+}
+&lt;/script&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[64]" method="GET" name="Powered-by header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The x-powered-by header for the target HTTP server is &quot;WAF/2.0&quot;.</description>
+        <http-transactions>
+            <http-transaction id="64">
+                <http-request>
+                    <status>GET http://www.flotu.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.flotu.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="8642" field="content-length"/>
+                        <header content="WAF/2.0" field="x-powered-by"/>
+                        <header content="0" field="x-aspnet-version"/>
+                        <header content="IIS" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 17:58:02 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;title&gt;
+        绿色反应工程与工艺北京重点实验室&lt;/title&gt;
+    &lt;link href=&quot;css/QHDX_style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;QHDX_Box&quot;&gt;
+        
+&lt;script language=&quot;javascript&quot;&gt;
+function getCurDate()
+{
+ var d = new Date();
+ var week;
+ switch (d.getDay()){
+ case 1: week=&quot;星期一&quot;; break;
+ case 2: week=&quot;星期二&quot;; break;
+ case 3: week=&quot;星期三&quot;; break;
+ case 4: week=&quot;星期四&quot;; break;
+ case 5: week=&quot;星期五&quot;; break;
+ case 6: week=&quot;星期六&quot;; break;
+ default: week=&quot;星期天&quot;;
+ }
+ var years = d.getYear();
+ var month = add_zero(d.getMonth()+1);
+ var days = add_zero(d.getDate());
+ var hours = add_zero(d.getHours());
+ var minutes = add_zero(d.getMinutes());
+ var seconds=add_zero(d.getSeconds());
+ var ndate = years+&quot;年&quot;+month+&quot;月&quot;+days+&quot;日 &quot;+&quot; &quot;+week;
+ divT.innerHTML= ndate;
+}
+
+function add_zero(temp)
+{
+ if(temp&lt;10) return &quot;0&quot;+temp;
+ else return temp;
+}
+
+setInterval(&quot;getCurDate()&quot;,100);
+
+&lt;/script&gt;
+
+
+&lt;div class=&quot;Header_Box&quot;&gt;
+    	&lt;div class=&quot;Logo&quot;&gt;&lt;img src=&quot;images/logo.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;ENGandDate&quot;&gt;
+        	&lt;p&gt;&lt;a href=&quot;index.aspx&quot;&gt;中文&lt;/a&gt;|&lt;a href=&quot;../English/index.aspx&quot;&gt;English&lt;/a&gt;&lt;/p&gt;
+            &lt;span id=&quot;divT&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;Nav_list&quot;&gt;
+        	&lt;ul&gt;
+            	&lt;li class=&quot;nav_01&quot;&gt;&lt;a href=&quot;Index.aspx&quot; class=&quot;active_1&quot;&gt;&lt;!--首页--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_02&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120604101624390926&quot;&gt;&lt;!--实验室介绍--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_03&quot;&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;&lt;!--新闻中心--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_04&quot;&gt;&lt;a href=&quot;Teacherlist.aspx?m=20120604102645857941&quot;&gt;&lt;!--研究人员--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_05&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120713000658387496&quot;&gt;&lt;!--科学研究--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_06&quot;&gt;&lt;a href=&quot;Shiyanshihdlist.aspx?m=20120604112434030971&quot;&gt;&lt;!--学生园地--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_07&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120604104604217965&quot;&gt;&lt;!--联系我们--&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+        &lt;div class=&quot;GDT_Box&quot;&gt;
+            &lt;div class=&quot;PicBox&quot; id=&quot;PicBox&quot;&gt;
+                &lt;div class=&quot;BigPic&quot;&gt;
+                    &lt;ul id=&quot;BigUl&quot;&gt;
+                        
+                        &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;1&quot;&gt;
+                            
+                            &lt;img src=&quot;UploadFiles/20121018093611535.jpg&quot; /&gt;&lt;/a&gt; &lt;span&gt;
+                                &lt;!--描述文字--&gt;
+                            &lt;/span&gt;&lt;/li&gt;
+                        
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;iNow&quot;&gt;
+                    &lt;ol id=&quot;SmallOl&quot;&gt;
+                        
+                        &lt;li class=&quot;active&quot;&gt;&lt;/li&gt;
+                        
+                    &lt;/ol&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;News_Box&quot;&gt;
+            &lt;div class=&quot;News_01&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;新闻&lt;/font&gt;.动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;ul class=&quot;news_list&quot;&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;
+                        彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;
+                        唐城：碳纳米管阵列/石墨烯三明治&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821085910317867&quot;&gt;
+                        当石墨烯“牵手”碳纳米管--新型高效双功能...&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821090804690873&quot;&gt;
+                        高硫含量正极推动高体积能量密度锂硫电池研究&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821090925803875&quot;&gt;
+                        碳/硫界面调变提升锂硫电池稳定性&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140504191338847853&quot;&gt;
+                        中央政治局委员、国务院副总理刘延东视察清华...&lt;/a&gt;&lt;/li&gt;
+                    
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;News_01&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;焦点&lt;/font&gt;动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;TWjs&quot;&gt;
+                    
+                    &lt;span&gt;
+                        &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;&lt;img src=&quot;UploadFiles/20140925153304591.jpg&quot; /&gt;&lt;/a&gt;&lt;/span&gt; &lt;strong&gt; &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;唐城：碳纳米管阵列/石墨烯三明治&lt;/a&gt;&lt;/strong&gt;
+                    &lt;p&gt;
+                       
+
+
+
+无标题文档
+
+
+
+
+
+
+以碳纳米管和石墨烯为代表的sp2杂化纳米碳材料，即具有非常优异的力学、电学、热学、光学等本征物理性能，还可通过原子掺杂、官能团&lt;/p&gt;
+                    
+                    
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;News_01&quot; style=&quot;padding-right: 0px;&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;焦点&lt;/font&gt;动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;TWjs&quot;&gt;
+                    
+                    &lt;span&gt;
+                        &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;&lt;img src=&quot;UploadFiles/20140925152458838.jpg&quot; /&gt;&lt;/a&gt;&lt;/span&gt; &lt;strong&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池&lt;/a&gt;&lt;/strong&gt;
+                    &lt;p&gt;
+                       
+
+
+
+无标题文档
+
+
+
+彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池 
+随着个人便携式电子设备、电动汽车以及可再生能源的飞速发展，具有高能量密度和高功率密度的电&lt;/p&gt;
+                    
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+&lt;div class=&quot;Footer_Box&quot;&gt;
+            &lt;p&gt;
+                &lt;a href=&quot;Info.aspx?m=20120604104604217965&quot;&gt;联系我们&lt;/a&gt; | &lt;a href=&quot;Info.aspx?m=20120607113855500048&quot;&gt;来访路线&lt;/a&gt; | &lt;a href=&quot;Info.aspx?m=20120607113914763051&quot;&gt;站点地图&lt;/a&gt; | &lt;a href=&quot;http://www.tsinghua.edu.cn&quot;&gt;清华大学&lt;/a&gt;
+                | &lt;a href=&quot;http://www.chemeng.tsinghua.edu.cn&quot;&gt;清华大学化工系&lt;/a&gt;&lt;/p&gt;
+            &lt;p&gt;
+                版权所有 绿色反应工程与工艺北京市重点实验室&lt;span&gt;亿网设计 2012&lt;/span&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;script&gt;
+window.onload=function()
+{
+  var PicBox=document.getElementById('PicBox');
+  var BigUl=document.getElementById('BigUl');
+  var BigLi=BigUl.getElementsByTagName('li');
+  var SmallOl=document.getElementById('SmallOl');
+  var SmallLi=SmallOl.getElementsByTagName('li');
+  var i=0,iNow=0,sTime=null;
+  var AutoTime=3000;
+
+  for(i=0;i&lt;SmallLi.length;i++){
+	  SmallLi[i].index=i;
+	  SmallLi[i].onmouseover=function(){
+		iNow=this.index;  
+		Sport();
+	  };
+  };
+  
+  function Sport(){
+    for(i=0;i&lt;SmallLi.length;i++){  
+	  SmallLi[i].className='';
+	  BigLi[i].className='';
+	}
+	  SmallLi[iNow].className='active';		
+	  BigLi[iNow].className='active';
+  };
+  
+  sTime=setInterval(function(){
+	 iNow++;
+	 if(iNow==SmallLi.length){
+		iNow=0; 
+	 }
+	 Sport();
+  }, AutoTime);
+  PicBox.onmouseover=function(){
+	clearInterval(sTime);  
+  };
+  PicBox.onmouseout=function(){
+		sTime=setInterval(function(){
+		 iNow++;
+		 if(iNow==SmallLi.length){
+			iNow=0; 
+		 }
+		 Sport();
+	  }, AutoTime);
+  };
+  
+}
+&lt;/script&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[37, 67]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://www.flotu.org/" var="None">
+        <description>The URL &quot;http://www.flotu.org/&quot; has the following enabled HTTP methods: INDEX</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="37">
+                <http-request>
+                    <status>OPTIONS http://www.flotu.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.flotu.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="2461" field="content-length"/>
+                        <header content="IIS" field="server"/>
+                        <header content="no-cache" field="pragma"/>
+                        <header content="no-store" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 17:58:10 GMT" field="date"/>
+                        <header content="text/html; Charset=gb2312" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transition0al//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;\xcd\xf8վ\xb7\xc0\xbb\xf0ǽ&lt;/TITLE&gt;&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot; /&gt;&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-store&quot; /&gt;&lt;meta http-equiv=&quot;Connection&quot; content=&quot;Close&quot; /&gt;&lt;STYLE type=text/css&gt;.border {BACKGROUND: #218dbe;PADDING-BOTTOM: 3px;WIDTH: 530px}.tit {	BACKGROUND: #fff;	MARGIN-LEFT: 3px;	WIDTH: 464px;	padding:10px 0 0 60px;	line-height:24px;	font-size:12px;}.tit_01 {	color:#fc4f03;	font-size:16px;	font-weight:bold;	line-height:40px;}.tit ul {	margin:0;	padding:0;	list-style-type:none;}.tit ul li {	padding-left:50px;}.xqck {	line-height:30px;}.xqck a {	color:#218dbe}.tit_bt {	FONT-WEIGHT: bold;	FONT-SIZE: 14px;	COLOR: #fff;	TEXT-INDENT: 1em;	LINE-HEIGHT: 30px;	HEIGHT: 30px}.tit-bottom {	FONT-SIZE: 14px;	BACKGROUND: #e7e3e3;	MARGIN-LEFT: 3px;	WIDTH: 524px;	LINE-HEIGHT: 25px;	HEIGHT: 27px;	TEXT-ALIGN: right}.tit-bottom A {	PADDING-RIGHT: 20px;	COLOR: #333;}&lt;/STYLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;&lt;DIV class=border&gt;&lt;div class=&quot;tit_bt&quot;&gt;\xcd\xf8վ\xb7\xc0\xbb\xf0ǽ&lt;/div&gt;&lt;DIV class=&quot;tit&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#fc4f03;&quot;&gt;\xc4\xfa\xc7\xeb\xc7\xf3\xb5\xc4ҳ\xc3\xe6\xb0\xfc\xba\xacһЩ\xb2\xbb\xba\xcf\xc0\xed\xb5\xc4\xc4\xda\xc8ݣ\xac\xd2ѱ\xbb\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xc9\xe8\xd6\xc3\xc0\xb9\xbdأ\xa1&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;\xbf\xc9\xc4\xdcԭ\xd2\xf2\xa3\xba\xc4\xfa\xc7\xeb\xc7\xf3\xb5\xc4ҳ\xc3\xe6\xb0\xfc\xba\xacһЩ\xb2\xbb\xba\xcf\xc0\xed\xb5\xc4\xc4\xda\xc8\xdd&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px;&quot;&gt;\xc8\xe7\xbaν\xe2\xbe\xf6\xa3\xba &lt;/p&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1\xa3\xa9\xbc\xec\xb2\xe9\xc7\xeb\xc7\xf3\xb5\xc4ҳ\xc3\xe6\xc4\xda\xc8ݣ\xbb&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;2\xa3\xa9\xc8\xe7\xcd\xf8վ\xcdйܣ\xac\xc7\xeb\xc1\xaaϵ\xbfռ\xe4\xccṩ\xc9̣\xbb&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;3\xa3\xa9\xc6\xd5ͨ\xcd\xf8վ\xb7ÿͣ\xac\xc7\xeb\xc1\xaaϵ\xcd\xf8վ\xb9\xdc\xc0\xedԱ\xa3\xbb&lt;/li&gt;&lt;/ul&gt;&lt;/DIV&gt;&lt;div class=&quot;tit-bottom&quot;&gt;&lt;a href=&quot;http://www.safedog.cn/?from=sitedog&quot;&gt;[\xb0\xb2ȫ\xb9\xb7-\xcd\xf8վ\xb0\xb2ȫר\xbc\xd2]&lt;/a&gt;&lt;a onclick=history.back() href=&quot;#&quot;&gt;[\xb7\xb5\xbb\xd8]&lt;/a&gt;&lt;/div&gt;&lt;/DIV&gt;&lt;/BODY&gt;&lt;/HTML&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.flotu.org/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.flotu.org" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="8642" field="content-length"/>
+                        <header content="WAF/2.0" field="x-powered-by"/>
+                        <header content="0" field="x-aspnet-version"/>
+                        <header content="IIS" field="server"/>
+                        <header content="private" field="cache-control"/>
+                        <header content="Wed, 30 Nov 2016 17:58:02 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;title&gt;
+        绿色反应工程与工艺北京重点实验室&lt;/title&gt;
+    &lt;link href=&quot;css/QHDX_style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;QHDX_Box&quot;&gt;
+        
+&lt;script language=&quot;javascript&quot;&gt;
+function getCurDate()
+{
+ var d = new Date();
+ var week;
+ switch (d.getDay()){
+ case 1: week=&quot;星期一&quot;; break;
+ case 2: week=&quot;星期二&quot;; break;
+ case 3: week=&quot;星期三&quot;; break;
+ case 4: week=&quot;星期四&quot;; break;
+ case 5: week=&quot;星期五&quot;; break;
+ case 6: week=&quot;星期六&quot;; break;
+ default: week=&quot;星期天&quot;;
+ }
+ var years = d.getYear();
+ var month = add_zero(d.getMonth()+1);
+ var days = add_zero(d.getDate());
+ var hours = add_zero(d.getHours());
+ var minutes = add_zero(d.getMinutes());
+ var seconds=add_zero(d.getSeconds());
+ var ndate = years+&quot;年&quot;+month+&quot;月&quot;+days+&quot;日 &quot;+&quot; &quot;+week;
+ divT.innerHTML= ndate;
+}
+
+function add_zero(temp)
+{
+ if(temp&lt;10) return &quot;0&quot;+temp;
+ else return temp;
+}
+
+setInterval(&quot;getCurDate()&quot;,100);
+
+&lt;/script&gt;
+
+
+&lt;div class=&quot;Header_Box&quot;&gt;
+    	&lt;div class=&quot;Logo&quot;&gt;&lt;img src=&quot;images/logo.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;ENGandDate&quot;&gt;
+        	&lt;p&gt;&lt;a href=&quot;index.aspx&quot;&gt;中文&lt;/a&gt;|&lt;a href=&quot;../English/index.aspx&quot;&gt;English&lt;/a&gt;&lt;/p&gt;
+            &lt;span id=&quot;divT&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;Nav_list&quot;&gt;
+        	&lt;ul&gt;
+            	&lt;li class=&quot;nav_01&quot;&gt;&lt;a href=&quot;Index.aspx&quot; class=&quot;active_1&quot;&gt;&lt;!--首页--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_02&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120604101624390926&quot;&gt;&lt;!--实验室介绍--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_03&quot;&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;&lt;!--新闻中心--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_04&quot;&gt;&lt;a href=&quot;Teacherlist.aspx?m=20120604102645857941&quot;&gt;&lt;!--研究人员--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_05&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120713000658387496&quot;&gt;&lt;!--科学研究--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_06&quot;&gt;&lt;a href=&quot;Shiyanshihdlist.aspx?m=20120604112434030971&quot;&gt;&lt;!--学生园地--&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav_07&quot;&gt;&lt;a href=&quot;Info.aspx?m=20120604104604217965&quot;&gt;&lt;!--联系我们--&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+        &lt;div class=&quot;GDT_Box&quot;&gt;
+            &lt;div class=&quot;PicBox&quot; id=&quot;PicBox&quot;&gt;
+                &lt;div class=&quot;BigPic&quot;&gt;
+                    &lt;ul id=&quot;BigUl&quot;&gt;
+                        
+                        &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;1&quot;&gt;
+                            
+                            &lt;img src=&quot;UploadFiles/20121018093611535.jpg&quot; /&gt;&lt;/a&gt; &lt;span&gt;
+                                &lt;!--描述文字--&gt;
+                            &lt;/span&gt;&lt;/li&gt;
+                        
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;iNow&quot;&gt;
+                    &lt;ol id=&quot;SmallOl&quot;&gt;
+                        
+                        &lt;li class=&quot;active&quot;&gt;&lt;/li&gt;
+                        
+                    &lt;/ol&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;News_Box&quot;&gt;
+            &lt;div class=&quot;News_01&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;新闻&lt;/font&gt;.动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;ul class=&quot;news_list&quot;&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;
+                        彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;
+                        唐城：碳纳米管阵列/石墨烯三明治&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821085910317867&quot;&gt;
+                        当石墨烯“牵手”碳纳米管--新型高效双功能...&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821090804690873&quot;&gt;
+                        高硫含量正极推动高体积能量密度锂硫电池研究&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140821090925803875&quot;&gt;
+                        碳/硫界面调变提升锂硫电池稳定性&lt;/a&gt;&lt;/li&gt;
+                    
+                    &lt;li&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140504191338847853&quot;&gt;
+                        中央政治局委员、国务院副总理刘延东视察清华...&lt;/a&gt;&lt;/li&gt;
+                    
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;News_01&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;焦点&lt;/font&gt;动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;TWjs&quot;&gt;
+                    
+                    &lt;span&gt;
+                        &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;&lt;img src=&quot;UploadFiles/20140925153304591.jpg&quot; /&gt;&lt;/a&gt;&lt;/span&gt; &lt;strong&gt; &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925153216070883&quot;&gt;唐城：碳纳米管阵列/石墨烯三明治&lt;/a&gt;&lt;/strong&gt;
+                    &lt;p&gt;
+                       
+
+
+
+无标题文档
+
+
+
+
+
+
+以碳纳米管和石墨烯为代表的sp2杂化纳米碳材料，即具有非常优异的力学、电学、热学、光学等本征物理性能，还可通过原子掺杂、官能团&lt;/p&gt;
+                    
+                    
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;News_01&quot; style=&quot;padding-right: 0px;&quot;&gt;
+                &lt;div class=&quot;news_top&quot;&gt;
+                    &lt;p&gt;
+                        &lt;font style=&quot;color: #448aca;&quot;&gt;焦点&lt;/font&gt;动态&lt;/p&gt;
+                    &lt;span&gt;&lt;a href=&quot;NewsList.aspx?m=20120604102133733932&quot;&gt;More&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;TWjs&quot;&gt;
+                    
+                    &lt;span&gt;
+                        &lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;&lt;img src=&quot;UploadFiles/20140925152458838.jpg&quot; /&gt;&lt;/a&gt;&lt;/span&gt; &lt;strong&gt;&lt;a href=&quot;NewsInfo.aspx?m=20120604102133733932&amp;n=20140925152500913878&quot;&gt;彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池&lt;/a&gt;&lt;/strong&gt;
+                    &lt;p&gt;
+                       
+
+
+
+无标题文档
+
+
+
+彭翃杰：纳米碳-多孔碳联姻用于高性能锂硫电池 
+随着个人便携式电子设备、电动汽车以及可再生能源的飞速发展，具有高能量密度和高功率密度的电&lt;/p&gt;
+                    
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+&lt;div class=&quot;Footer_Box&quot;&gt;
+            &lt;p&gt;
+                &lt;a href=&quot;Info.aspx?m=20120604104604217965&quot;&gt;联系我们&lt;/a&gt; | &lt;a href=&quot;Info.aspx?m=20120607113855500048&quot;&gt;来访路线&lt;/a&gt; | &lt;a href=&quot;Info.aspx?m=20120607113914763051&quot;&gt;站点地图&lt;/a&gt; | &lt;a href=&quot;http://www.tsinghua.edu.cn&quot;&gt;清华大学&lt;/a&gt;
+                | &lt;a href=&quot;http://www.chemeng.tsinghua.edu.cn&quot;&gt;清华大学化工系&lt;/a&gt;&lt;/p&gt;
+            &lt;p&gt;
+                版权所有 绿色反应工程与工艺北京市重点实验室&lt;span&gt;亿网设计 2012&lt;/span&gt;&lt;/p&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;script&gt;
+window.onload=function()
+{
+  var PicBox=document.getElementById('PicBox');
+  var BigUl=document.getElementById('BigUl');
+  var BigLi=BigUl.getElementsByTagName('li');
+  var SmallOl=document.getElementById('SmallOl');
+  var SmallLi=SmallOl.getElementsByTagName('li');
+  var i=0,iNow=0,sTime=null;
+  var AutoTime=3000;
+
+  for(i=0;i&lt;SmallLi.length;i++){
+	  SmallLi[i].index=i;
+	  SmallLi[i].onmouseover=function(){
+		iNow=this.index;  
+		Sport();
+	  };
+  };
+  
+  function Sport(){
+    for(i=0;i&lt;SmallLi.length;i++){  
+	  SmallLi[i].className='';
+	  BigLi[i].className='';
+	}
+	  SmallLi[iNow].className='active';		
+	  BigLi[iNow].className='active';
+  };
+  
+  sTime=setInterval(function(){
+	 iNow++;
+	 if(iNow==SmallLi.length){
+		iNow=0; 
+	 }
+	 Sport();
+  }, AutoTime);
+  PicBox.onmouseover=function(){
+	clearInterval(sTime);  
+  };
+  PicBox.onmouseout=function(){
+		sTime=setInterval(function(){
+		 iNow++;
+		 if(iNow==SmallLi.length){
+			iNow=0; 
+		 }
+		 Sport();
+	  }, AutoTime);
+  };
+  
+}
+&lt;/script&gt;
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The cors_origin plugin got an error while requesting &quot;http://www.flotu.org/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.flotu.org/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.flotu.org/?R1df4fO=SELECT%20TOP%201%20name%20FROM%20sysusers&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.flotu.org/?R1df4fO=../../../../etc/passwd&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.flotu.org/?R1df4fO=ps%20-aux;&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.flotu.org/?R1df4fO=id;uname%20-a&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.flotu.org/?R1df4fO=&lt;?%20passthru(&quot;id&quot;);?&gt;&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.flotu.org/?R1df4fO=../../WINNT/system32/cmd.exe?dir+c:\&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The afd plugin got an error while requesting &quot;http://www.flotu.org/?R1df4fO=type+c:\winnt\repair\sam._&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to www.flotu.org:80&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve www.flotu.org</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron" id="common">    
+  <div class="row">
+        <div class="col-sm-3 col-md-2 col-md-offset-1 col-sm-offset-1 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="/posts">漏洞报告列表</a></li>
+            <li><a href="/reports">扫描报告列表</a></li>
+            <li><a href="/posts/search">搜索漏洞报告</a></li>
+            <li><a href="/reports/search">搜索扫描报告</a></li>
+          </ul>                  
+        </div>        
+        <div class="col-sm-9  col-md-9  main">
+  
+  <div class="row">
+	  <div class="col-md-1"></div>
+	  <div class="col-md-10">
+		  <div>
+	  		 <form class="form-horizontal" action="/reports/search" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control " id="keywords" name="keywords" placeholder="输入搜索关键词……">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default btn-primary" type="submit"><span class="glyphicon glyphicon-search"></button>
+                  </span>
+                </div>
+	  		 </form>
+				<h2>关键字【{{keywords}}】的搜索结果<small>共{{page_info['total_rows']}}记录</small></h2>
+			  	<table class="table table-striped">
+			  	<tr>
+			  		<th width="20%">发表时间</th>
+			  		<th>目标网站</th>
+			  		<th width="20%">网站说明</th>			  		
+			  	</tr>
+			  	{% for row in page_info['rows'] %}
+			  	<tr>
+			  		<td>{{row['time']}}</td>
+			  		<td><a href="/report?target={{row['target']}}" target="_blank">
+			  			{{row['title']}}</a></td>			  		
+			  	</tr>
+			  	{% endfor %}
+				</table>
+				<!-- 分页组件js -->
+				<script src="{{url_for('static', filename='js/jquery.twbsPagination.js')}}"></script>
+				<ul id="pagination" class="pagination-sm"></ul>
+				<script >
+					 $(pagination).twbsPagination({
+					 	first: "首页",
+					 	prev: "前一页",
+					 	next: "后一页",
+					 	last: "尾页",
+				        totalPages: {{page_info['total']}},
+				        visiblePages: 5,
+				        startPage: {{page_info['current']}},
+				        onPageClick: function (event, page) {
+				            location.href="/reports/search?keywords={{keywords}}&&content_search_by=by_bugs&&search_by_html={{search_by_html}}&&page="+page;
+				        }
+				    });
+				</script>
+			</div>
+	 	</div>
+	  <div class="col-md-1"></div>
+	</div>  
+        </div>
+  </div>
+</div>
+	
+{% endblock %}

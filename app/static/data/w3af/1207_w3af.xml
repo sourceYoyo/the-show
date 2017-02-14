@@ -1,0 +1,2158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480500409" start-long="Wed Nov 30 05:06:49 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://www.tuef.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.133"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/1207_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="HTML comment contains HTML code" plugin="html_comments" severity="Information" url="http://www.tuef.tsinghua.edu.cn/" var="None">
+        <description>A comment with the string &quot;&lt;a class=&quot;&quot; href=&quot;http://www.tsinghua.ed&quot; was found in: &quot;http://www.tuef.tsinghua.edu.cn/&quot;. This could be interesting.</description>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:04 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+		&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=UTF-8&quot;&gt;
+	&lt;title&gt;清华大学教育基金会&lt;/title&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/base.css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/index.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/html5.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jq.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/index.js&quot;&gt;&lt;/script&gt;
+   &lt;!-- &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/gototop.js&quot;&gt;&lt;/script&gt;--&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/trunk8.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/dialog/jquery.artDialog.js?skin=simple&quot;&gt;&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		$.base = '';
+	&lt;/script&gt;  
+
+
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/validator/jquery.validator.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/validator/local/zh_CN.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/common.js&quot;&gt;&lt;/script&gt;
+	&lt;link href=&quot;/sites/js/validator/jquery.validator.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;&lt;/head&gt;
+&lt;body&gt;
+	&lt;header class=&quot;header&quot;&gt;
+		&lt;div class=&quot;wraper clearfix&quot;&gt;
+						&lt;div class=&quot;upside&quot;&gt;
+				&lt;a class=&quot;logo&quot; href=&quot;/&quot;&gt;&lt;img src=&quot;/sites/images/logo.png&quot;&gt;&lt;/a&gt;
+				&lt;div class=&quot;right&quot;&gt;
+					&lt;a class=&quot;fund&quot; href=&quot;http://www.tsinghuaus.org&quot; target=&quot;_blank&quot;&gt;北美基金会&lt;/a&gt;
+					&lt;span class=&quot;line&quot;&gt;|&lt;/span&gt;
+					&lt;div class=&quot;langu&quot;&gt;
+						&lt;a class=&quot;current&quot;&gt;&lt;img src=&quot;/sites/images/flag1.jpg&quot;&gt;简体中文&lt;/a&gt;
+						&lt;div class=&quot;box&quot;&gt;
+                            &lt;a class=&quot;&quot; href=&quot;http://www.tuef.tsinghua.edu.cn/index/index_en.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/flag.png&quot;&gt;English&lt;/a&gt;
+							&lt;!--&lt;a class=&quot;&quot; href=&quot;http://www.tsinghua.edu.cn/publish/jjhen/index.html&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/flag.png&quot;&gt;English&lt;/a&gt;--&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;			&lt;script type=&quot;text/javascript&quot;&gt;
+jQuery(function(){
+   
+	jQuery('#nav li [class^=item]').removeClass(&quot;focused&quot;);
+	jQuery('#nav li.item1').addClass(&quot;focused&quot;);
+    if($('#searchbx').length&gt;0){
+		$('#searchbx').bind('focus',function(){
+			var text=this.defaultValue;
+			if($(this).val()==text){
+				$(this).val(&quot;&quot;).focus();
+			}
+		}).bind('blur',function(){
+			var text=this.defaultValue;
+			if($(this).val()==&quot;&quot;){
+				$(this).val(text);
+			}
+		})
+	}
+});
+&lt;/script&gt;
+
+
+          &lt;nav class=&quot;downside clearfix&quot;&gt;
+				&lt;ul id=&quot;nav&quot;&gt;
+					&lt;li class=&quot;item104&quot;&gt;&lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item97&quot;&gt;&lt;a href=&quot;/column/about&quot;&gt;关于我们&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item98&quot;&gt;&lt;a href=&quot;/column/news&quot;&gt;新闻中心&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=&quot;/column/qtckxm&quot;&gt;筹款项目&lt;/a&gt;
+                     &lt;ul&gt;&lt;i&gt;&lt;em&gt;&lt;/em&gt;&lt;/i&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/ssmxzxm&quot;&gt;苏世民学者项目&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/qhxbnjj&quot;&gt;清华新百年基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/sjhplt&quot;&gt;世界和平论坛&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/qtckxm&quot;&gt;学生培养基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/bss&quot;&gt;人才基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/yxjj&quot;&gt;院系基金&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;/ul&gt;&lt;/li&gt;
+					&lt;li class=&quot;item100&quot;&gt;&lt;a href=&quot;/column/usedetail&quot;&gt;捐赠使用&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item101&quot;&gt;&lt;a href=&quot;/column/give&quot;&gt;捐赠指南&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item102&quot;&gt;&lt;a href=&quot;/column/infomation&quot;&gt;信息公开&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item103&quot;&gt;&lt;a href=&quot;/column/problem&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+				&lt;form class=&quot;searchbox clearfix&quot; id=&quot;search-form-header&quot; action=&quot;/column/search_result&quot; method=&quot;post&quot;&gt;
+					&lt;input type=&quot;hidden&quot; name=&quot;curpage&quot; value=&quot;1&quot;&gt;
+                    &lt;input type=&quot;text&quot; class=&quot;text&quot; name=&quot;key&quot; value=&quot;SEARCH&quot; id=&quot;searchbx&quot;&gt;
+					&lt;a class=&quot;searchbtn&quot;  id=&quot;searchbtn&quot; href=&quot;javascript:;&quot; onclick=&quot;$('#search-form-header').submit();&quot;&gt;&lt;/a&gt;
+				&lt;/form&gt;
+			&lt;/nav&gt;		&lt;/div&gt;
+	&lt;/header&gt;
+	&lt;section class=&quot;about-sec section-bg&quot; id=&quot;index-sec&quot;&gt;
+		&lt;div class=&quot;wraper-index&quot;&gt;
+			&lt;div class=&quot;arrows&quot;&gt;
+				&lt;a class=&quot;leftarrow&quot;&gt;&lt;/a&gt;
+				&lt;span class=&quot;num&quot;&gt;&lt;em class=&quot;number&quot;&gt;1&lt;/em&gt;|&lt;em class=&quot;count&quot;&gt;3&lt;/em&gt;&lt;/span&gt;
+				&lt;a class=&quot;rightarrow&quot;&gt;&lt;/a&gt;
+			&lt;/div&gt;
+			&lt;ul class=&quot;banner&quot;&gt;
+				                				&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478826183693_CC.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;人物 | 他们拍完《大鱼海棠》回清华捐赠文化产业研究基金&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;“当你做自己喜欢的东西的时候，你永远不会预知结果，也谈不上值不值得，你只能问自己相信与否，如果坚信，那就大胆尝试。”&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478776600551_B0.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;“良师益友奖”获得者杨士强：让研究生成为学术人才&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;”如果清华毕业的博士生每年能够有一批可以到世界一流大学谋到教职，就证明国际同行们认可了我们的博士生培养水准。”&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478707990169_AF.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;研究生暑期社会实践：到肯尼亚修铁路&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;目睹了蒙内铁路的建设，队员们更加坚定地相信，肯尼亚将借着“一带一路”的良好发展态势，继续前行，与这条战略线上的其他国家共同打造政治互信、经济融合、文化包容的共同体；同学们也在实践中更加体会到国家发展过程中自身的责任。&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1476084202263_BF.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;行胜跑车：真刀真枪的毕业设计&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;以一辆真跑车作为毕业设计作品，是对‘让工艺表达设计，以设计主导工艺’理念的极致追求。&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1476084228193_C0.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;清华大学苏世民书院正式开学 习近平、奥巴马分别发来贺信，刘延东出席并致辞&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;9月10日上午，具有开创性意义的跨文化全球领导力项目——清华大学苏世民学者项目举行开学典礼，迎接首届入学的来自31个国家的110名苏世民书院的学生。&lt;/div&gt;
+				&lt;/li&gt;
+							&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;wraper&quot;&gt;
+			&lt;ul class=&quot;index-pro clearfix&quot;&gt;
+				&lt;li&gt;
+					&lt;div class=&quot;imgu&quot;&gt;&lt;a href=&quot;/column/qhyx&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/pro22.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;清华印象着重展示清华大学在人才培养、教学科研、校园文化、社会服务领域的最新成果和优秀事迹，在清华新百年的发展历程上撷珍展现清华故事，与社会各界砥砺前行。
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;imgu&quot;&gt;
+					&lt;div class=&quot;imgu&quot;&gt;&lt;a href=&quot;/column/ssmxzxm&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/pro1.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;“清华大学苏世民学者项目”是1902年罗德奖学金设立以来又一个最重要的领导力培养项目。本项目共有3亿美元的意向捐赠资金，这也是中国大学迄今为止从境外获得的最大单项慈善捐赠。苏世民学者项目的目标是把世界上最优秀的青年们汇集在一起共同探索并理解中国的和平发展、崛起。&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+				&lt;div class=&quot;last&quot;&gt;&lt;a href=&quot;/column/wxck_xspy&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/xspy2.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;清华大学深化人才培养体制机制改革：建立价值塑造、能力培养和知识传授“三位一体”的教育模式。本期学生培养，针对助力新生、呵护兴趣、支持创新三大主题进行筹款。一次捐赠，多项支持！&lt;/div&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/section&gt;
+	&lt;section class=&quot;index-clumn clearfix&quot;&gt;
+		&lt;div class=&quot;left1&quot;&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/jzgs_&quot;&gt;捐赠故事&lt;/a&gt;&lt;/h2&gt;
+			                        &lt;div class=&quot;story&quot;&gt;
+				&lt;a class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/upload_files/image/1477030162871_CA.png&quot; width=196 height=&quot;136px&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t1&quot;&gt;&lt;a href=&quot;/info/jzgs_/2400&quot; sub-line=&quot;1&quot;&gt;首届清华大学新百年基础教学教师奖颁奖典礼&lt;/a&gt;&lt;/h2&gt;
+				&lt;div class=&quot;desc&quot;&gt;2016年，由“清华大学新百年发展基金”（以下简称“清华新百年基金”）冠名的“清华大学新百年基础教学教师奖”正式设立，以表彰长期从事量大面广基础课教学，影响着一届届年青学子，并在学生中享有盛誉的教师。&lt;/div&gt;
+			&lt;/div&gt;
+            			&lt;h2 class=&quot;index-t2&quot; style=&quot;margin-top:20px;&quot;&gt;&lt;a href=&quot;/column/zgdjj&quot; style=&quot;color:#fff;&quot;&gt;张光斗科技教育基金&lt;/a&gt;&lt;/h2&gt;
+			
+            &lt;div class=&quot;story&quot;&gt;
+				&lt;a class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/zgdjy.jpg&quot; width=196 height=&quot;136px&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/zgdjj&quot; sub-line=&quot;1&quot;&gt;张光斗优秀青年科技奖颁奖典礼&lt;/a&gt;&lt;/h2&gt;
+				
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;left2&quot;&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/xwdt&quot;&gt;新闻动态&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;reportlist&quot;&gt;
+				                                     		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2466&quot; sub-line=&quot;1&quot;&gt;校友吕大龙捐资母校清华 支持辅导员事业发展&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2460&quot; sub-line=&quot;1&quot;&gt;承接过去 面向未来 清华大学图书馆北馆（李文正馆）正式开馆&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2448&quot; sub-line=&quot;1&quot;&gt;陈旭访问香港中文大学和香港科技大学 推进战略合作伙伴关系&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2447&quot; sub-line=&quot;1&quot;&gt;清华成立新药创制中心 打造全球药物创新生态&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2459&quot; sub-line=&quot;1&quot;&gt;清华大学文创产业研究基金捐赠仪式举行&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2432&quot; sub-line=&quot;1&quot;&gt;重磅 | 全球创新学院首栋教研大楼在西雅图正式奠基&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2431&quot; sub-line=&quot;1&quot;&gt;快讯 | 清华GIX今日西雅图奠基，收获中文路牌&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2422&quot; sub-line=&quot;1&quot;&gt;全球创新学院中美两地师生共话创新发展&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2421&quot; sub-line=&quot;1&quot;&gt;清华大学苏世民书院正式开学 习近平、奥巴马分别发来贺信，刘延东出席并致辞&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2420&quot; sub-line=&quot;1&quot;&gt;打造世界一流大学艺术博物馆 开启清华人文艺术新篇章 清华大学艺术博物馆正式开馆&lt;/a&gt;&lt;/li&gt;
+                   			&lt;/ul&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/tzgg&quot;&gt;通知公告&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;reportlist&quot;&gt;
+				                                     		&lt;li&gt;&lt;a href=&quot;/info/tzgg/2272&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会2014年年检合格&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1280&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会2013年年检合格&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1236&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会名列“获得2013年度第二批公益性捐赠税前扣除资格的公益性社会团体名单”&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1058&quot; sub-line=&quot;1&quot;&gt;2013年“清华大学吴冠中艺术与科学创新奖学金”评选结果公布&lt;/a&gt;&lt;/li&gt;
+                   			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;left3&quot; style=&quot;margin-top:70px&quot;&gt;
+			&lt;h2 class=&quot;gotodonate&quot;&gt;&lt;a href=&quot;/column/give&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;donatelist&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/give&quot; target=&quot;_blank&quot;&gt;捐赠方法&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/jzms&quot; target=&quot;_blank&quot;&gt;捐赠免税&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/jzms_&quot; target=&quot;_blank&quot;&gt;捐赠鸣谢&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+			
+		&lt;/div&gt;
+                           			&lt;div style=&quot;float:right;margin-top:68px;margin-right:36px;width:180px;&quot;&gt;
+				&lt;a href=&quot;/info/sp/1281&quot; class=&quot;imgwrap&quot;&gt;&lt;img width=&quot;180&quot; height=&quot;120px&quot; src=&quot;/upload_files/image/1408414884344_01.jpg&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t2&quot; style=&quot;line-height:16px;margin-top:10px;text-align:center;&quot;&gt;&lt;a style=&quot;float: none; position: static;color:#803f23;&quot; href=&quot;/info/sp/1281&quot; sub-line=&quot;2&quot;&gt;教育基金会成立20周年纪念&lt;/a&gt;&lt;/h2&gt;
+				
+			&lt;/div&gt;
+				&lt;/section&gt;
+	&lt;div class=&quot;index-links&quot;&gt;
+		&lt;h2 class=&quot;t&quot;&gt;相关链接&lt;/h2&gt;
+		&lt;div class=&quot;con&quot;&gt;
+			&lt;ul class=&quot;linklist clearfix&quot;&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/996&quot; sub-line=&quot;1&quot;&gt;清华主页&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/997&quot; sub-line=&quot;1&quot;&gt;清华大学数字博物馆&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/998&quot; sub-line=&quot;1&quot;&gt;清华校友网&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/1181&quot; sub-line=&quot;1&quot;&gt;清华大学继续教育&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/1001&quot; sub-line=&quot;1&quot;&gt;苏世民书院&lt;/a&gt;&lt;/li&gt;
+                			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;footer class=&quot;footer&quot;&gt;
+	&lt;div class=&quot;wraper clearfix&quot;&gt;
+		&lt;a class=&quot;logof&quot;&gt;&lt;img src=&quot;/sites/images/flogo.png&quot;&gt;&lt;/a&gt;
+    &lt;div class=&quot;r&quot; style=&quot;margin-left:10px;width:758px;&quot;&gt;
+			中国北京市清华科技园创业大厦12层清华大学教育基金会 邮编：100084
+            &lt;br&gt;联系电话：大陆部：（8610）62783964\62783786&amp;nbsp;&amp;nbsp;亚太部：（8610）62786278\62797410&amp;nbsp;&amp;nbsp;项目管理部：（8610）62797255
+            &lt;br&gt;财务部：（8610)62794861\627894260&amp;nbsp;&amp;nbsp公共关系部：（8610）62789633&amp;nbsp;&amp;nbsp; 综合办公室：（8610）62794587&amp;nbsp;&amp;nbsp; 传真：（8610）62785959
+			&lt;br&gt;Email：jjh@tsinghua.edu.cn
+            &lt;br&gt;版权所有 © 清华大学教育基金会
+		&lt;/div&gt;
+&lt;/div&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[75]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache&quot;.</description>
+        <http-transactions>
+            <http-transaction id="75">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:04 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+		&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=UTF-8&quot;&gt;
+	&lt;title&gt;清华大学教育基金会&lt;/title&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/base.css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/index.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/html5.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jq.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/index.js&quot;&gt;&lt;/script&gt;
+   &lt;!-- &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/gototop.js&quot;&gt;&lt;/script&gt;--&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/trunk8.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/dialog/jquery.artDialog.js?skin=simple&quot;&gt;&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		$.base = '';
+	&lt;/script&gt;  
+
+
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/validator/jquery.validator.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/validator/local/zh_CN.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/common.js&quot;&gt;&lt;/script&gt;
+	&lt;link href=&quot;/sites/js/validator/jquery.validator.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;&lt;/head&gt;
+&lt;body&gt;
+	&lt;header class=&quot;header&quot;&gt;
+		&lt;div class=&quot;wraper clearfix&quot;&gt;
+						&lt;div class=&quot;upside&quot;&gt;
+				&lt;a class=&quot;logo&quot; href=&quot;/&quot;&gt;&lt;img src=&quot;/sites/images/logo.png&quot;&gt;&lt;/a&gt;
+				&lt;div class=&quot;right&quot;&gt;
+					&lt;a class=&quot;fund&quot; href=&quot;http://www.tsinghuaus.org&quot; target=&quot;_blank&quot;&gt;北美基金会&lt;/a&gt;
+					&lt;span class=&quot;line&quot;&gt;|&lt;/span&gt;
+					&lt;div class=&quot;langu&quot;&gt;
+						&lt;a class=&quot;current&quot;&gt;&lt;img src=&quot;/sites/images/flag1.jpg&quot;&gt;简体中文&lt;/a&gt;
+						&lt;div class=&quot;box&quot;&gt;
+                            &lt;a class=&quot;&quot; href=&quot;http://www.tuef.tsinghua.edu.cn/index/index_en.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/flag.png&quot;&gt;English&lt;/a&gt;
+							&lt;!--&lt;a class=&quot;&quot; href=&quot;http://www.tsinghua.edu.cn/publish/jjhen/index.html&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/flag.png&quot;&gt;English&lt;/a&gt;--&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;			&lt;script type=&quot;text/javascript&quot;&gt;
+jQuery(function(){
+   
+	jQuery('#nav li [class^=item]').removeClass(&quot;focused&quot;);
+	jQuery('#nav li.item1').addClass(&quot;focused&quot;);
+    if($('#searchbx').length&gt;0){
+		$('#searchbx').bind('focus',function(){
+			var text=this.defaultValue;
+			if($(this).val()==text){
+				$(this).val(&quot;&quot;).focus();
+			}
+		}).bind('blur',function(){
+			var text=this.defaultValue;
+			if($(this).val()==&quot;&quot;){
+				$(this).val(text);
+			}
+		})
+	}
+});
+&lt;/script&gt;
+
+
+          &lt;nav class=&quot;downside clearfix&quot;&gt;
+				&lt;ul id=&quot;nav&quot;&gt;
+					&lt;li class=&quot;item104&quot;&gt;&lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item97&quot;&gt;&lt;a href=&quot;/column/about&quot;&gt;关于我们&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item98&quot;&gt;&lt;a href=&quot;/column/news&quot;&gt;新闻中心&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=&quot;/column/qtckxm&quot;&gt;筹款项目&lt;/a&gt;
+                     &lt;ul&gt;&lt;i&gt;&lt;em&gt;&lt;/em&gt;&lt;/i&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/ssmxzxm&quot;&gt;苏世民学者项目&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/qhxbnjj&quot;&gt;清华新百年基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/sjhplt&quot;&gt;世界和平论坛&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/qtckxm&quot;&gt;学生培养基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/bss&quot;&gt;人才基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/yxjj&quot;&gt;院系基金&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;/ul&gt;&lt;/li&gt;
+					&lt;li class=&quot;item100&quot;&gt;&lt;a href=&quot;/column/usedetail&quot;&gt;捐赠使用&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item101&quot;&gt;&lt;a href=&quot;/column/give&quot;&gt;捐赠指南&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item102&quot;&gt;&lt;a href=&quot;/column/infomation&quot;&gt;信息公开&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item103&quot;&gt;&lt;a href=&quot;/column/problem&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+				&lt;form class=&quot;searchbox clearfix&quot; id=&quot;search-form-header&quot; action=&quot;/column/search_result&quot; method=&quot;post&quot;&gt;
+					&lt;input type=&quot;hidden&quot; name=&quot;curpage&quot; value=&quot;1&quot;&gt;
+                    &lt;input type=&quot;text&quot; class=&quot;text&quot; name=&quot;key&quot; value=&quot;SEARCH&quot; id=&quot;searchbx&quot;&gt;
+					&lt;a class=&quot;searchbtn&quot;  id=&quot;searchbtn&quot; href=&quot;javascript:;&quot; onclick=&quot;$('#search-form-header').submit();&quot;&gt;&lt;/a&gt;
+				&lt;/form&gt;
+			&lt;/nav&gt;		&lt;/div&gt;
+	&lt;/header&gt;
+	&lt;section class=&quot;about-sec section-bg&quot; id=&quot;index-sec&quot;&gt;
+		&lt;div class=&quot;wraper-index&quot;&gt;
+			&lt;div class=&quot;arrows&quot;&gt;
+				&lt;a class=&quot;leftarrow&quot;&gt;&lt;/a&gt;
+				&lt;span class=&quot;num&quot;&gt;&lt;em class=&quot;number&quot;&gt;1&lt;/em&gt;|&lt;em class=&quot;count&quot;&gt;3&lt;/em&gt;&lt;/span&gt;
+				&lt;a class=&quot;rightarrow&quot;&gt;&lt;/a&gt;
+			&lt;/div&gt;
+			&lt;ul class=&quot;banner&quot;&gt;
+				                				&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478826183693_CC.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;人物 | 他们拍完《大鱼海棠》回清华捐赠文化产业研究基金&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;“当你做自己喜欢的东西的时候，你永远不会预知结果，也谈不上值不值得，你只能问自己相信与否，如果坚信，那就大胆尝试。”&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478776600551_B0.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;“良师益友奖”获得者杨士强：让研究生成为学术人才&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;”如果清华毕业的博士生每年能够有一批可以到世界一流大学谋到教职，就证明国际同行们认可了我们的博士生培养水准。”&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478707990169_AF.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;研究生暑期社会实践：到肯尼亚修铁路&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;目睹了蒙内铁路的建设，队员们更加坚定地相信，肯尼亚将借着“一带一路”的良好发展态势，继续前行，与这条战略线上的其他国家共同打造政治互信、经济融合、文化包容的共同体；同学们也在实践中更加体会到国家发展过程中自身的责任。&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1476084202263_BF.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;行胜跑车：真刀真枪的毕业设计&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;以一辆真跑车作为毕业设计作品，是对‘让工艺表达设计，以设计主导工艺’理念的极致追求。&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1476084228193_C0.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;清华大学苏世民书院正式开学 习近平、奥巴马分别发来贺信，刘延东出席并致辞&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;9月10日上午，具有开创性意义的跨文化全球领导力项目——清华大学苏世民学者项目举行开学典礼，迎接首届入学的来自31个国家的110名苏世民书院的学生。&lt;/div&gt;
+				&lt;/li&gt;
+							&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;wraper&quot;&gt;
+			&lt;ul class=&quot;index-pro clearfix&quot;&gt;
+				&lt;li&gt;
+					&lt;div class=&quot;imgu&quot;&gt;&lt;a href=&quot;/column/qhyx&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/pro22.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;清华印象着重展示清华大学在人才培养、教学科研、校园文化、社会服务领域的最新成果和优秀事迹，在清华新百年的发展历程上撷珍展现清华故事，与社会各界砥砺前行。
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;imgu&quot;&gt;
+					&lt;div class=&quot;imgu&quot;&gt;&lt;a href=&quot;/column/ssmxzxm&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/pro1.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;“清华大学苏世民学者项目”是1902年罗德奖学金设立以来又一个最重要的领导力培养项目。本项目共有3亿美元的意向捐赠资金，这也是中国大学迄今为止从境外获得的最大单项慈善捐赠。苏世民学者项目的目标是把世界上最优秀的青年们汇集在一起共同探索并理解中国的和平发展、崛起。&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+				&lt;div class=&quot;last&quot;&gt;&lt;a href=&quot;/column/wxck_xspy&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/xspy2.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;清华大学深化人才培养体制机制改革：建立价值塑造、能力培养和知识传授“三位一体”的教育模式。本期学生培养，针对助力新生、呵护兴趣、支持创新三大主题进行筹款。一次捐赠，多项支持！&lt;/div&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/section&gt;
+	&lt;section class=&quot;index-clumn clearfix&quot;&gt;
+		&lt;div class=&quot;left1&quot;&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/jzgs_&quot;&gt;捐赠故事&lt;/a&gt;&lt;/h2&gt;
+			                        &lt;div class=&quot;story&quot;&gt;
+				&lt;a class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/upload_files/image/1477030162871_CA.png&quot; width=196 height=&quot;136px&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t1&quot;&gt;&lt;a href=&quot;/info/jzgs_/2400&quot; sub-line=&quot;1&quot;&gt;首届清华大学新百年基础教学教师奖颁奖典礼&lt;/a&gt;&lt;/h2&gt;
+				&lt;div class=&quot;desc&quot;&gt;2016年，由“清华大学新百年发展基金”（以下简称“清华新百年基金”）冠名的“清华大学新百年基础教学教师奖”正式设立，以表彰长期从事量大面广基础课教学，影响着一届届年青学子，并在学生中享有盛誉的教师。&lt;/div&gt;
+			&lt;/div&gt;
+            			&lt;h2 class=&quot;index-t2&quot; style=&quot;margin-top:20px;&quot;&gt;&lt;a href=&quot;/column/zgdjj&quot; style=&quot;color:#fff;&quot;&gt;张光斗科技教育基金&lt;/a&gt;&lt;/h2&gt;
+			
+            &lt;div class=&quot;story&quot;&gt;
+				&lt;a class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/zgdjy.jpg&quot; width=196 height=&quot;136px&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/zgdjj&quot; sub-line=&quot;1&quot;&gt;张光斗优秀青年科技奖颁奖典礼&lt;/a&gt;&lt;/h2&gt;
+				
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;left2&quot;&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/xwdt&quot;&gt;新闻动态&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;reportlist&quot;&gt;
+				                                     		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2466&quot; sub-line=&quot;1&quot;&gt;校友吕大龙捐资母校清华 支持辅导员事业发展&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2460&quot; sub-line=&quot;1&quot;&gt;承接过去 面向未来 清华大学图书馆北馆（李文正馆）正式开馆&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2448&quot; sub-line=&quot;1&quot;&gt;陈旭访问香港中文大学和香港科技大学 推进战略合作伙伴关系&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2447&quot; sub-line=&quot;1&quot;&gt;清华成立新药创制中心 打造全球药物创新生态&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2459&quot; sub-line=&quot;1&quot;&gt;清华大学文创产业研究基金捐赠仪式举行&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2432&quot; sub-line=&quot;1&quot;&gt;重磅 | 全球创新学院首栋教研大楼在西雅图正式奠基&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2431&quot; sub-line=&quot;1&quot;&gt;快讯 | 清华GIX今日西雅图奠基，收获中文路牌&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2422&quot; sub-line=&quot;1&quot;&gt;全球创新学院中美两地师生共话创新发展&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2421&quot; sub-line=&quot;1&quot;&gt;清华大学苏世民书院正式开学 习近平、奥巴马分别发来贺信，刘延东出席并致辞&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2420&quot; sub-line=&quot;1&quot;&gt;打造世界一流大学艺术博物馆 开启清华人文艺术新篇章 清华大学艺术博物馆正式开馆&lt;/a&gt;&lt;/li&gt;
+                   			&lt;/ul&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/tzgg&quot;&gt;通知公告&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;reportlist&quot;&gt;
+				                                     		&lt;li&gt;&lt;a href=&quot;/info/tzgg/2272&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会2014年年检合格&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1280&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会2013年年检合格&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1236&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会名列“获得2013年度第二批公益性捐赠税前扣除资格的公益性社会团体名单”&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1058&quot; sub-line=&quot;1&quot;&gt;2013年“清华大学吴冠中艺术与科学创新奖学金”评选结果公布&lt;/a&gt;&lt;/li&gt;
+                   			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;left3&quot; style=&quot;margin-top:70px&quot;&gt;
+			&lt;h2 class=&quot;gotodonate&quot;&gt;&lt;a href=&quot;/column/give&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;donatelist&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/give&quot; target=&quot;_blank&quot;&gt;捐赠方法&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/jzms&quot; target=&quot;_blank&quot;&gt;捐赠免税&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/jzms_&quot; target=&quot;_blank&quot;&gt;捐赠鸣谢&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+			
+		&lt;/div&gt;
+                           			&lt;div style=&quot;float:right;margin-top:68px;margin-right:36px;width:180px;&quot;&gt;
+				&lt;a href=&quot;/info/sp/1281&quot; class=&quot;imgwrap&quot;&gt;&lt;img width=&quot;180&quot; height=&quot;120px&quot; src=&quot;/upload_files/image/1408414884344_01.jpg&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t2&quot; style=&quot;line-height:16px;margin-top:10px;text-align:center;&quot;&gt;&lt;a style=&quot;float: none; position: static;color:#803f23;&quot; href=&quot;/info/sp/1281&quot; sub-line=&quot;2&quot;&gt;教育基金会成立20周年纪念&lt;/a&gt;&lt;/h2&gt;
+				
+			&lt;/div&gt;
+				&lt;/section&gt;
+	&lt;div class=&quot;index-links&quot;&gt;
+		&lt;h2 class=&quot;t&quot;&gt;相关链接&lt;/h2&gt;
+		&lt;div class=&quot;con&quot;&gt;
+			&lt;ul class=&quot;linklist clearfix&quot;&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/996&quot; sub-line=&quot;1&quot;&gt;清华主页&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/997&quot; sub-line=&quot;1&quot;&gt;清华大学数字博物馆&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/998&quot; sub-line=&quot;1&quot;&gt;清华校友网&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/1181&quot; sub-line=&quot;1&quot;&gt;清华大学继续教育&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/1001&quot; sub-line=&quot;1&quot;&gt;苏世民书院&lt;/a&gt;&lt;/li&gt;
+                			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;footer class=&quot;footer&quot;&gt;
+	&lt;div class=&quot;wraper clearfix&quot;&gt;
+		&lt;a class=&quot;logof&quot;&gt;&lt;img src=&quot;/sites/images/flogo.png&quot;&gt;&lt;/a&gt;
+    &lt;div class=&quot;r&quot; style=&quot;margin-left:10px;width:758px;&quot;&gt;
+			中国北京市清华科技园创业大厦12层清华大学教育基金会 邮编：100084
+            &lt;br&gt;联系电话：大陆部：（8610）62783964\62783786&amp;nbsp;&amp;nbsp;亚太部：（8610）62786278\62797410&amp;nbsp;&amp;nbsp;项目管理部：（8610）62797255
+            &lt;br&gt;财务部：（8610)62794861\627894260&amp;nbsp;&amp;nbsp公共关系部：（8610）62789633&amp;nbsp;&amp;nbsp; 综合办公室：（8610）62794587&amp;nbsp;&amp;nbsp; 传真：（8610）62785959
+			&lt;br&gt;Email：jjh@tsinghua.edu.cn
+            &lt;br&gt;版权所有 © 清华大学教育基金会
+		&lt;/div&gt;
+&lt;/div&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[188]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://tuef.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://tuef.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://www.tuef.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="188">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2799" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=10, max=468" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Thu, 23 Apr 2015 05:55:24 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;454d24-aef-5145decfbeb00&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 10:07:07 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;!-- saved from url=(0120)http://oars.tsinghua.edu.cn/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument --&gt;
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;֪ͨ&lt;/TITLE&gt;
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=gb2312&quot;&gt;
+&lt;STYLE type=text/css&gt;TD {
+        FONT-SIZE: 9pt; FONT-FAMILY: &quot;\xcb\xce\xcc\xe5&quot;, &quot;Verdana&quot;, &quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;
+}
+.p {
+        FONT-SIZE: 12px; LINE-HEIGHT: 150%
+}
+.p0 {
+        FONT-SIZE: 14px; LINE-HEIGHT: 150%
+}
+.p3 {
+        FONT-SIZE: 14px; TEXT-INDENT: 28px; LINE-HEIGHT: 150%
+}
+.p1 {
+        FONT-SIZE: 14px; FONT-FAMILY: &quot;Verdana&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;
+}
+.p2 {
+        FONT-SIZE: 9pt; LINE-HEIGHT: 18pt
+}
+.p4 {
+        FONT-WEIGHT: bold; FONT-SIZE: 16px
+}
+A:link {
+        FONT-SIZE: 9pt; COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+        FONT-SIZE: 9pt; COLOR: #cc3300; TEXT-DECORATION: underline
+}
+A:visited {
+        FONT-SIZE: 9pt; COLOR: #006666; TEXT-DECORATION: none
+}
+&lt;/STYLE&gt;
+
+&lt;SCRIPT language=JavaScript&gt;
+&lt;!--
+document._domino_target = &quot;_self&quot;;
+function _doClick(v, o, t) {
+  var url=&quot;/zgg/91398.nsf/3a6d726707df21a648256b440029539d/aa4e47935c8f96f7c82575f4000e59c7?OpenDocument&amp;Click=&quot; + v;
+  if (o.href != null)
+    o.href = url;
+  else {
+    if (t == null)
+      t = document._domino_target;
+    window.open(url, t);
+  }
+
+}
+// --&gt;
+&lt;/SCRIPT&gt;
+
+&lt;META content=&quot;MSHTML 6.00.2900.5848&quot; name=GENERATOR&gt;&lt;/HEAD&gt;
+&lt;BODY text=#000000 bgColor=#ffffff leftMargin=0 topMargin=0 marginheight=&quot;0&quot;
+marginwidth=&quot;0&quot;&gt;
+&lt;FORM&gt;
+&lt;TABLE cellSpacing=0 cellPadding=0 width=776 align=center border=0&gt;
+  &lt;TBODY&gt;
+  &lt;TR&gt;
+    &lt;TD vAlign=top align=middle width=94 background=apperr.files/left2.gif
+    height=342&gt;&lt;BR&gt;&lt;BR&gt;
+     &lt;/TD&gt;
+    &lt;TD vAlign=top width=682 background=apperr.files/pattern.jpg&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=0 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD width=6&gt;&lt;IMG height=16 src=&quot;&quot; width=4&gt;&lt;/TD&gt;
+          &lt;TD class=p1&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+      &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+
+      &lt;TABLE cellSpacing=0 cellPadding=5 width=&quot;90%&quot; border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD class=p3&gt;
+            &lt;P&gt;&lt;BR&gt;Sorry!&lt;TT&gt;
+            &amp;nbsp; &amp;nbsp;&lt;/TT&gt;&lt;BR&gt;&lt;TT&gt;&amp;nbsp;&lt;/TT&gt;
+           &lt;/TT&gt;
+
+
+        &lt;TR&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;
+        &lt;HR style=&quot;COLOR: #000000; HEIGHT: 1px&quot; align=left width=&quot;90%&quot;&gt;
+      &lt;TABLE height=18 cellSpacing=0 cellPadding=7 width=&quot;90%&quot;  bgColor=#ccd3e8 border=0&gt;
+        &lt;TBODY&gt;
+        &lt;TR&gt;
+          &lt;TD align=middle&gt; \xc7廪\xb4\xf3ѧ\xbc\xc6\xcb\xe3\xbb\xfa\xd3\xeb\xd0\xc5Ϣ\xb9\xdc\xc0\xed\xd6\xd0\xd0\xc4
+     &lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/FORM&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+
+
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[53]" method="GET" name="Strange HTTP Reason message" plugin="strange_reason" severity="Information" url="http://www.tuef.tsinghua.edu.cn/OiLCl" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon status message &quot;Method not implemented&quot;, manual inspection is recommended. The first ten URLs which sent the uncommon message are:
+ - http://www.tuef.tsinghua.edu.cn/OiLCl
+</description>
+        <http-transactions>
+            <http-transaction id="53">
+                <http-request>
+                    <status>PUT http://www.tuef.tsinghua.edu.cn/OiLCl HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">TwLiFv</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:07:06 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[37, 121, 217, 221, 227, 231, 233, 238, 239]" method="GET" name="Allowed HTTP methods" plugin="allowed_methods" severity="Information" url="http://www.tuef.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://www.tuef.tsinghua.edu.cn/&quot; has the following enabled HTTP methods: CONNECT, GET, HEAD, INVALID, MKWORKSPACE, POST, SPACEJUMP, VERSION_CONTROL</description>
+        <long-description>There are a number of HTTP methods that can be used on a webserver (`OPTIONS`, `HEAD`, `GET`, `POST`, `PUT`, `DELETE` etc.). Each of these methods perform a different function and each have an associated level of risk when their use is permitted on the webserver.
+
+A client can use the `OPTIONS` method within a request to query a server to determine which methods are allowed.
+
+Cyber-criminals will almost always perform this simple test as it will give a very quick indication of any high-risk methods being permitted by the server. The tool discovered that several methods are supported by the server.</long-description>
+        <fix-guidance>It is recommended that a whitelisting approach be taken to explicitly permit the HTTP methods required by the application and block all others.
+
+Typically the only HTTP methods required for most applications are `GET` and `POST`. All other methods perform actions that are rarely required or perform actions that are inherently risky. These risky methods (such as `PUT`, `DELETE`, etc) should be protected by strict limitations, such as ensuring that the channel is secure (SSL/TLS enabled) and only authorised and trusted clients are permitted to use them.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="Apache.org" url="http://httpd.apache.org/docs/2.2/mod/core.html#limitexcept"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="37">
+                <http-request>
+                    <status>OPTIONS http://www.tuef.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 OPTIONS not supported</status>
+                    <headers>
+                        <header content="198" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:06 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;405 OPTIONS not supported&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;405 OPTIONS not supported&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="121">
+                <http-request>
+                    <status>HEAD http://www.tuef.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:07:06 GMT" field="date"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                        <header content="timeout=10, max=493" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="217">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=495" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:09 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+		&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=UTF-8&quot;&gt;
+	&lt;title&gt;清华大学教育基金会&lt;/title&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/base.css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/index.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/html5.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jq.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/index.js&quot;&gt;&lt;/script&gt;
+   &lt;!-- &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/gototop.js&quot;&gt;&lt;/script&gt;--&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/trunk8.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/dialog/jquery.artDialog.js?skin=simple&quot;&gt;&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		$.base = '';
+	&lt;/script&gt;  
+
+
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/validator/jquery.validator.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/validator/local/zh_CN.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/common.js&quot;&gt;&lt;/script&gt;
+	&lt;link href=&quot;/sites/js/validator/jquery.validator.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;&lt;/head&gt;
+&lt;body&gt;
+	&lt;header class=&quot;header&quot;&gt;
+		&lt;div class=&quot;wraper clearfix&quot;&gt;
+						&lt;div class=&quot;upside&quot;&gt;
+				&lt;a class=&quot;logo&quot; href=&quot;/&quot;&gt;&lt;img src=&quot;/sites/images/logo.png&quot;&gt;&lt;/a&gt;
+				&lt;div class=&quot;right&quot;&gt;
+					&lt;a class=&quot;fund&quot; href=&quot;http://www.tsinghuaus.org&quot; target=&quot;_blank&quot;&gt;北美基金会&lt;/a&gt;
+					&lt;span class=&quot;line&quot;&gt;|&lt;/span&gt;
+					&lt;div class=&quot;langu&quot;&gt;
+						&lt;a class=&quot;current&quot;&gt;&lt;img src=&quot;/sites/images/flag1.jpg&quot;&gt;简体中文&lt;/a&gt;
+						&lt;div class=&quot;box&quot;&gt;
+                            &lt;a class=&quot;&quot; href=&quot;http://www.tuef.tsinghua.edu.cn/index/index_en.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/flag.png&quot;&gt;English&lt;/a&gt;
+							&lt;!--&lt;a class=&quot;&quot; href=&quot;http://www.tsinghua.edu.cn/publish/jjhen/index.html&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/flag.png&quot;&gt;English&lt;/a&gt;--&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;			&lt;script type=&quot;text/javascript&quot;&gt;
+jQuery(function(){
+   
+	jQuery('#nav li [class^=item]').removeClass(&quot;focused&quot;);
+	jQuery('#nav li.item1').addClass(&quot;focused&quot;);
+    if($('#searchbx').length&gt;0){
+		$('#searchbx').bind('focus',function(){
+			var text=this.defaultValue;
+			if($(this).val()==text){
+				$(this).val(&quot;&quot;).focus();
+			}
+		}).bind('blur',function(){
+			var text=this.defaultValue;
+			if($(this).val()==&quot;&quot;){
+				$(this).val(text);
+			}
+		})
+	}
+});
+&lt;/script&gt;
+
+
+          &lt;nav class=&quot;downside clearfix&quot;&gt;
+				&lt;ul id=&quot;nav&quot;&gt;
+					&lt;li class=&quot;item104&quot;&gt;&lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item97&quot;&gt;&lt;a href=&quot;/column/about&quot;&gt;关于我们&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item98&quot;&gt;&lt;a href=&quot;/column/news&quot;&gt;新闻中心&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=&quot;/column/qtckxm&quot;&gt;筹款项目&lt;/a&gt;
+                     &lt;ul&gt;&lt;i&gt;&lt;em&gt;&lt;/em&gt;&lt;/i&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/ssmxzxm&quot;&gt;苏世民学者项目&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/qhxbnjj&quot;&gt;清华新百年基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/sjhplt&quot;&gt;世界和平论坛&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/qtckxm&quot;&gt;学生培养基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/bss&quot;&gt;人才基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/yxjj&quot;&gt;院系基金&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;/ul&gt;&lt;/li&gt;
+					&lt;li class=&quot;item100&quot;&gt;&lt;a href=&quot;/column/usedetail&quot;&gt;捐赠使用&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item101&quot;&gt;&lt;a href=&quot;/column/give&quot;&gt;捐赠指南&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item102&quot;&gt;&lt;a href=&quot;/column/infomation&quot;&gt;信息公开&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item103&quot;&gt;&lt;a href=&quot;/column/problem&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+				&lt;form class=&quot;searchbox clearfix&quot; id=&quot;search-form-header&quot; action=&quot;/column/search_result&quot; method=&quot;post&quot;&gt;
+					&lt;input type=&quot;hidden&quot; name=&quot;curpage&quot; value=&quot;1&quot;&gt;
+                    &lt;input type=&quot;text&quot; class=&quot;text&quot; name=&quot;key&quot; value=&quot;SEARCH&quot; id=&quot;searchbx&quot;&gt;
+					&lt;a class=&quot;searchbtn&quot;  id=&quot;searchbtn&quot; href=&quot;javascript:;&quot; onclick=&quot;$('#search-form-header').submit();&quot;&gt;&lt;/a&gt;
+				&lt;/form&gt;
+			&lt;/nav&gt;		&lt;/div&gt;
+	&lt;/header&gt;
+	&lt;section class=&quot;about-sec section-bg&quot; id=&quot;index-sec&quot;&gt;
+		&lt;div class=&quot;wraper-index&quot;&gt;
+			&lt;div class=&quot;arrows&quot;&gt;
+				&lt;a class=&quot;leftarrow&quot;&gt;&lt;/a&gt;
+				&lt;span class=&quot;num&quot;&gt;&lt;em class=&quot;number&quot;&gt;1&lt;/em&gt;|&lt;em class=&quot;count&quot;&gt;3&lt;/em&gt;&lt;/span&gt;
+				&lt;a class=&quot;rightarrow&quot;&gt;&lt;/a&gt;
+			&lt;/div&gt;
+			&lt;ul class=&quot;banner&quot;&gt;
+				                				&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478826183693_CC.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;人物 | 他们拍完《大鱼海棠》回清华捐赠文化产业研究基金&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;“当你做自己喜欢的东西的时候，你永远不会预知结果，也谈不上值不值得，你只能问自己相信与否，如果坚信，那就大胆尝试。”&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478776600551_B0.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;“良师益友奖”获得者杨士强：让研究生成为学术人才&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;”如果清华毕业的博士生每年能够有一批可以到世界一流大学谋到教职，就证明国际同行们认可了我们的博士生培养水准。”&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478707990169_AF.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;研究生暑期社会实践：到肯尼亚修铁路&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;目睹了蒙内铁路的建设，队员们更加坚定地相信，肯尼亚将借着“一带一路”的良好发展态势，继续前行，与这条战略线上的其他国家共同打造政治互信、经济融合、文化包容的共同体；同学们也在实践中更加体会到国家发展过程中自身的责任。&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1476084202263_BF.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;行胜跑车：真刀真枪的毕业设计&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;以一辆真跑车作为毕业设计作品，是对‘让工艺表达设计，以设计主导工艺’理念的极致追求。&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1476084228193_C0.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;清华大学苏世民书院正式开学 习近平、奥巴马分别发来贺信，刘延东出席并致辞&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;9月10日上午，具有开创性意义的跨文化全球领导力项目——清华大学苏世民学者项目举行开学典礼，迎接首届入学的来自31个国家的110名苏世民书院的学生。&lt;/div&gt;
+				&lt;/li&gt;
+							&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;wraper&quot;&gt;
+			&lt;ul class=&quot;index-pro clearfix&quot;&gt;
+				&lt;li&gt;
+					&lt;div class=&quot;imgu&quot;&gt;&lt;a href=&quot;/column/qhyx&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/pro22.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;清华印象着重展示清华大学在人才培养、教学科研、校园文化、社会服务领域的最新成果和优秀事迹，在清华新百年的发展历程上撷珍展现清华故事，与社会各界砥砺前行。
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;imgu&quot;&gt;
+					&lt;div class=&quot;imgu&quot;&gt;&lt;a href=&quot;/column/ssmxzxm&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/pro1.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;“清华大学苏世民学者项目”是1902年罗德奖学金设立以来又一个最重要的领导力培养项目。本项目共有3亿美元的意向捐赠资金，这也是中国大学迄今为止从境外获得的最大单项慈善捐赠。苏世民学者项目的目标是把世界上最优秀的青年们汇集在一起共同探索并理解中国的和平发展、崛起。&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+				&lt;div class=&quot;last&quot;&gt;&lt;a href=&quot;/column/wxck_xspy&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/xspy2.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;清华大学深化人才培养体制机制改革：建立价值塑造、能力培养和知识传授“三位一体”的教育模式。本期学生培养，针对助力新生、呵护兴趣、支持创新三大主题进行筹款。一次捐赠，多项支持！&lt;/div&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/section&gt;
+	&lt;section class=&quot;index-clumn clearfix&quot;&gt;
+		&lt;div class=&quot;left1&quot;&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/jzgs_&quot;&gt;捐赠故事&lt;/a&gt;&lt;/h2&gt;
+			                        &lt;div class=&quot;story&quot;&gt;
+				&lt;a class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/upload_files/image/1477030162871_CA.png&quot; width=196 height=&quot;136px&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t1&quot;&gt;&lt;a href=&quot;/info/jzgs_/2400&quot; sub-line=&quot;1&quot;&gt;首届清华大学新百年基础教学教师奖颁奖典礼&lt;/a&gt;&lt;/h2&gt;
+				&lt;div class=&quot;desc&quot;&gt;2016年，由“清华大学新百年发展基金”（以下简称“清华新百年基金”）冠名的“清华大学新百年基础教学教师奖”正式设立，以表彰长期从事量大面广基础课教学，影响着一届届年青学子，并在学生中享有盛誉的教师。&lt;/div&gt;
+			&lt;/div&gt;
+            			&lt;h2 class=&quot;index-t2&quot; style=&quot;margin-top:20px;&quot;&gt;&lt;a href=&quot;/column/zgdjj&quot; style=&quot;color:#fff;&quot;&gt;张光斗科技教育基金&lt;/a&gt;&lt;/h2&gt;
+			
+            &lt;div class=&quot;story&quot;&gt;
+				&lt;a class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/zgdjy.jpg&quot; width=196 height=&quot;136px&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/zgdjj&quot; sub-line=&quot;1&quot;&gt;张光斗优秀青年科技奖颁奖典礼&lt;/a&gt;&lt;/h2&gt;
+				
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;left2&quot;&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/xwdt&quot;&gt;新闻动态&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;reportlist&quot;&gt;
+				                                     		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2466&quot; sub-line=&quot;1&quot;&gt;校友吕大龙捐资母校清华 支持辅导员事业发展&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2460&quot; sub-line=&quot;1&quot;&gt;承接过去 面向未来 清华大学图书馆北馆（李文正馆）正式开馆&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2448&quot; sub-line=&quot;1&quot;&gt;陈旭访问香港中文大学和香港科技大学 推进战略合作伙伴关系&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2447&quot; sub-line=&quot;1&quot;&gt;清华成立新药创制中心 打造全球药物创新生态&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2459&quot; sub-line=&quot;1&quot;&gt;清华大学文创产业研究基金捐赠仪式举行&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2432&quot; sub-line=&quot;1&quot;&gt;重磅 | 全球创新学院首栋教研大楼在西雅图正式奠基&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2431&quot; sub-line=&quot;1&quot;&gt;快讯 | 清华GIX今日西雅图奠基，收获中文路牌&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2422&quot; sub-line=&quot;1&quot;&gt;全球创新学院中美两地师生共话创新发展&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2421&quot; sub-line=&quot;1&quot;&gt;清华大学苏世民书院正式开学 习近平、奥巴马分别发来贺信，刘延东出席并致辞&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2420&quot; sub-line=&quot;1&quot;&gt;打造世界一流大学艺术博物馆 开启清华人文艺术新篇章 清华大学艺术博物馆正式开馆&lt;/a&gt;&lt;/li&gt;
+                   			&lt;/ul&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/tzgg&quot;&gt;通知公告&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;reportlist&quot;&gt;
+				                                     		&lt;li&gt;&lt;a href=&quot;/info/tzgg/2272&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会2014年年检合格&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1280&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会2013年年检合格&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1236&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会名列“获得2013年度第二批公益性捐赠税前扣除资格的公益性社会团体名单”&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1058&quot; sub-line=&quot;1&quot;&gt;2013年“清华大学吴冠中艺术与科学创新奖学金”评选结果公布&lt;/a&gt;&lt;/li&gt;
+                   			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;left3&quot; style=&quot;margin-top:70px&quot;&gt;
+			&lt;h2 class=&quot;gotodonate&quot;&gt;&lt;a href=&quot;/column/give&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;donatelist&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/give&quot; target=&quot;_blank&quot;&gt;捐赠方法&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/jzms&quot; target=&quot;_blank&quot;&gt;捐赠免税&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/jzms_&quot; target=&quot;_blank&quot;&gt;捐赠鸣谢&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+			
+		&lt;/div&gt;
+                           			&lt;div style=&quot;float:right;margin-top:68px;margin-right:36px;width:180px;&quot;&gt;
+				&lt;a href=&quot;/info/sp/1281&quot; class=&quot;imgwrap&quot;&gt;&lt;img width=&quot;180&quot; height=&quot;120px&quot; src=&quot;/upload_files/image/1408414884344_01.jpg&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t2&quot; style=&quot;line-height:16px;margin-top:10px;text-align:center;&quot;&gt;&lt;a style=&quot;float: none; position: static;color:#803f23;&quot; href=&quot;/info/sp/1281&quot; sub-line=&quot;2&quot;&gt;教育基金会成立20周年纪念&lt;/a&gt;&lt;/h2&gt;
+				
+			&lt;/div&gt;
+				&lt;/section&gt;
+	&lt;div class=&quot;index-links&quot;&gt;
+		&lt;h2 class=&quot;t&quot;&gt;相关链接&lt;/h2&gt;
+		&lt;div class=&quot;con&quot;&gt;
+			&lt;ul class=&quot;linklist clearfix&quot;&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/996&quot; sub-line=&quot;1&quot;&gt;清华主页&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/997&quot; sub-line=&quot;1&quot;&gt;清华大学数字博物馆&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/998&quot; sub-line=&quot;1&quot;&gt;清华校友网&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/1181&quot; sub-line=&quot;1&quot;&gt;清华大学继续教育&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/1001&quot; sub-line=&quot;1&quot;&gt;苏世民书院&lt;/a&gt;&lt;/li&gt;
+                			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;footer class=&quot;footer&quot;&gt;
+	&lt;div class=&quot;wraper clearfix&quot;&gt;
+		&lt;a class=&quot;logof&quot;&gt;&lt;img src=&quot;/sites/images/flogo.png&quot;&gt;&lt;/a&gt;
+    &lt;div class=&quot;r&quot; style=&quot;margin-left:10px;width:758px;&quot;&gt;
+			中国北京市清华科技园创业大厦12层清华大学教育基金会 邮编：100084
+            &lt;br&gt;联系电话：大陆部：（8610）62783964\62783786&amp;nbsp;&amp;nbsp;亚太部：（8610）62786278\62797410&amp;nbsp;&amp;nbsp;项目管理部：（8610）62797255
+            &lt;br&gt;财务部：（8610)62794861\627894260&amp;nbsp;&amp;nbsp公共关系部：（8610）62789633&amp;nbsp;&amp;nbsp; 综合办公室：（8610）62794587&amp;nbsp;&amp;nbsp; 传真：（8610）62785959
+			&lt;br&gt;Email：jjh@tsinghua.edu.cn
+            &lt;br&gt;版权所有 © 清华大学教育基金会
+		&lt;/div&gt;
+&lt;/div&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="221">
+                <http-request>
+                    <status>CONNECT http://www.tuef.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 400 Bad Request</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:07:10 GMT" field="date"/>
+                        <header content="226" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;400 Bad Request&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Bad Request&lt;/h1&gt;
+&lt;p&gt;Your browser sent a request that this server could not understand.&lt;br /&gt;
+&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="239">
+                <http-request>
+                    <status>POST http://www.tuef.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:36 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+		&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=UTF-8&quot;&gt;
+	&lt;title&gt;清华大学教育基金会&lt;/title&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/base.css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/index.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/html5.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jq.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/index.js&quot;&gt;&lt;/script&gt;
+   &lt;!-- &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/gototop.js&quot;&gt;&lt;/script&gt;--&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/trunk8.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/dialog/jquery.artDialog.js?skin=simple&quot;&gt;&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		$.base = '';
+	&lt;/script&gt;  
+
+
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/validator/jquery.validator.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/validator/local/zh_CN.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/common.js&quot;&gt;&lt;/script&gt;
+	&lt;link href=&quot;/sites/js/validator/jquery.validator.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;&lt;/head&gt;
+&lt;body&gt;
+	&lt;header class=&quot;header&quot;&gt;
+		&lt;div class=&quot;wraper clearfix&quot;&gt;
+						&lt;div class=&quot;upside&quot;&gt;
+				&lt;a class=&quot;logo&quot; href=&quot;/&quot;&gt;&lt;img src=&quot;/sites/images/logo.png&quot;&gt;&lt;/a&gt;
+				&lt;div class=&quot;right&quot;&gt;
+					&lt;a class=&quot;fund&quot; href=&quot;http://www.tsinghuaus.org&quot; target=&quot;_blank&quot;&gt;北美基金会&lt;/a&gt;
+					&lt;span class=&quot;line&quot;&gt;|&lt;/span&gt;
+					&lt;div class=&quot;langu&quot;&gt;
+						&lt;a class=&quot;current&quot;&gt;&lt;img src=&quot;/sites/images/flag1.jpg&quot;&gt;简体中文&lt;/a&gt;
+						&lt;div class=&quot;box&quot;&gt;
+                            &lt;a class=&quot;&quot; href=&quot;http://www.tuef.tsinghua.edu.cn/index/index_en.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/flag.png&quot;&gt;English&lt;/a&gt;
+							&lt;!--&lt;a class=&quot;&quot; href=&quot;http://www.tsinghua.edu.cn/publish/jjhen/index.html&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/flag.png&quot;&gt;English&lt;/a&gt;--&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;			&lt;script type=&quot;text/javascript&quot;&gt;
+jQuery(function(){
+   
+	jQuery('#nav li [class^=item]').removeClass(&quot;focused&quot;);
+	jQuery('#nav li.item1').addClass(&quot;focused&quot;);
+    if($('#searchbx').length&gt;0){
+		$('#searchbx').bind('focus',function(){
+			var text=this.defaultValue;
+			if($(this).val()==text){
+				$(this).val(&quot;&quot;).focus();
+			}
+		}).bind('blur',function(){
+			var text=this.defaultValue;
+			if($(this).val()==&quot;&quot;){
+				$(this).val(text);
+			}
+		})
+	}
+});
+&lt;/script&gt;
+
+
+          &lt;nav class=&quot;downside clearfix&quot;&gt;
+				&lt;ul id=&quot;nav&quot;&gt;
+					&lt;li class=&quot;item104&quot;&gt;&lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item97&quot;&gt;&lt;a href=&quot;/column/about&quot;&gt;关于我们&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item98&quot;&gt;&lt;a href=&quot;/column/news&quot;&gt;新闻中心&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=&quot;/column/qtckxm&quot;&gt;筹款项目&lt;/a&gt;
+                     &lt;ul&gt;&lt;i&gt;&lt;em&gt;&lt;/em&gt;&lt;/i&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/ssmxzxm&quot;&gt;苏世民学者项目&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/qhxbnjj&quot;&gt;清华新百年基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/sjhplt&quot;&gt;世界和平论坛&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/qtckxm&quot;&gt;学生培养基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/bss&quot;&gt;人才基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/yxjj&quot;&gt;院系基金&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;/ul&gt;&lt;/li&gt;
+					&lt;li class=&quot;item100&quot;&gt;&lt;a href=&quot;/column/usedetail&quot;&gt;捐赠使用&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item101&quot;&gt;&lt;a href=&quot;/column/give&quot;&gt;捐赠指南&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item102&quot;&gt;&lt;a href=&quot;/column/infomation&quot;&gt;信息公开&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item103&quot;&gt;&lt;a href=&quot;/column/problem&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+				&lt;form class=&quot;searchbox clearfix&quot; id=&quot;search-form-header&quot; action=&quot;/column/search_result&quot; method=&quot;post&quot;&gt;
+					&lt;input type=&quot;hidden&quot; name=&quot;curpage&quot; value=&quot;1&quot;&gt;
+                    &lt;input type=&quot;text&quot; class=&quot;text&quot; name=&quot;key&quot; value=&quot;SEARCH&quot; id=&quot;searchbx&quot;&gt;
+					&lt;a class=&quot;searchbtn&quot;  id=&quot;searchbtn&quot; href=&quot;javascript:;&quot; onclick=&quot;$('#search-form-header').submit();&quot;&gt;&lt;/a&gt;
+				&lt;/form&gt;
+			&lt;/nav&gt;		&lt;/div&gt;
+	&lt;/header&gt;
+	&lt;section class=&quot;about-sec section-bg&quot; id=&quot;index-sec&quot;&gt;
+		&lt;div class=&quot;wraper-index&quot;&gt;
+			&lt;div class=&quot;arrows&quot;&gt;
+				&lt;a class=&quot;leftarrow&quot;&gt;&lt;/a&gt;
+				&lt;span class=&quot;num&quot;&gt;&lt;em class=&quot;number&quot;&gt;1&lt;/em&gt;|&lt;em class=&quot;count&quot;&gt;3&lt;/em&gt;&lt;/span&gt;
+				&lt;a class=&quot;rightarrow&quot;&gt;&lt;/a&gt;
+			&lt;/div&gt;
+			&lt;ul class=&quot;banner&quot;&gt;
+				                				&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478826183693_CC.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;人物 | 他们拍完《大鱼海棠》回清华捐赠文化产业研究基金&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;“当你做自己喜欢的东西的时候，你永远不会预知结果，也谈不上值不值得，你只能问自己相信与否，如果坚信，那就大胆尝试。”&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478776600551_B0.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;“良师益友奖”获得者杨士强：让研究生成为学术人才&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;”如果清华毕业的博士生每年能够有一批可以到世界一流大学谋到教职，就证明国际同行们认可了我们的博士生培养水准。”&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478707990169_AF.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;研究生暑期社会实践：到肯尼亚修铁路&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;目睹了蒙内铁路的建设，队员们更加坚定地相信，肯尼亚将借着“一带一路”的良好发展态势，继续前行，与这条战略线上的其他国家共同打造政治互信、经济融合、文化包容的共同体；同学们也在实践中更加体会到国家发展过程中自身的责任。&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1476084202263_BF.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;行胜跑车：真刀真枪的毕业设计&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;以一辆真跑车作为毕业设计作品，是对‘让工艺表达设计，以设计主导工艺’理念的极致追求。&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1476084228193_C0.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;清华大学苏世民书院正式开学 习近平、奥巴马分别发来贺信，刘延东出席并致辞&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;9月10日上午，具有开创性意义的跨文化全球领导力项目——清华大学苏世民学者项目举行开学典礼，迎接首届入学的来自31个国家的110名苏世民书院的学生。&lt;/div&gt;
+				&lt;/li&gt;
+							&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;wraper&quot;&gt;
+			&lt;ul class=&quot;index-pro clearfix&quot;&gt;
+				&lt;li&gt;
+					&lt;div class=&quot;imgu&quot;&gt;&lt;a href=&quot;/column/qhyx&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/pro22.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;清华印象着重展示清华大学在人才培养、教学科研、校园文化、社会服务领域的最新成果和优秀事迹，在清华新百年的发展历程上撷珍展现清华故事，与社会各界砥砺前行。
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;imgu&quot;&gt;
+					&lt;div class=&quot;imgu&quot;&gt;&lt;a href=&quot;/column/ssmxzxm&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/pro1.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;“清华大学苏世民学者项目”是1902年罗德奖学金设立以来又一个最重要的领导力培养项目。本项目共有3亿美元的意向捐赠资金，这也是中国大学迄今为止从境外获得的最大单项慈善捐赠。苏世民学者项目的目标是把世界上最优秀的青年们汇集在一起共同探索并理解中国的和平发展、崛起。&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+				&lt;div class=&quot;last&quot;&gt;&lt;a href=&quot;/column/wxck_xspy&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/xspy2.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;清华大学深化人才培养体制机制改革：建立价值塑造、能力培养和知识传授“三位一体”的教育模式。本期学生培养，针对助力新生、呵护兴趣、支持创新三大主题进行筹款。一次捐赠，多项支持！&lt;/div&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/section&gt;
+	&lt;section class=&quot;index-clumn clearfix&quot;&gt;
+		&lt;div class=&quot;left1&quot;&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/jzgs_&quot;&gt;捐赠故事&lt;/a&gt;&lt;/h2&gt;
+			                        &lt;div class=&quot;story&quot;&gt;
+				&lt;a class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/upload_files/image/1477030162871_CA.png&quot; width=196 height=&quot;136px&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t1&quot;&gt;&lt;a href=&quot;/info/jzgs_/2400&quot; sub-line=&quot;1&quot;&gt;首届清华大学新百年基础教学教师奖颁奖典礼&lt;/a&gt;&lt;/h2&gt;
+				&lt;div class=&quot;desc&quot;&gt;2016年，由“清华大学新百年发展基金”（以下简称“清华新百年基金”）冠名的“清华大学新百年基础教学教师奖”正式设立，以表彰长期从事量大面广基础课教学，影响着一届届年青学子，并在学生中享有盛誉的教师。&lt;/div&gt;
+			&lt;/div&gt;
+            			&lt;h2 class=&quot;index-t2&quot; style=&quot;margin-top:20px;&quot;&gt;&lt;a href=&quot;/column/zgdjj&quot; style=&quot;color:#fff;&quot;&gt;张光斗科技教育基金&lt;/a&gt;&lt;/h2&gt;
+			
+            &lt;div class=&quot;story&quot;&gt;
+				&lt;a class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/zgdjy.jpg&quot; width=196 height=&quot;136px&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/zgdjj&quot; sub-line=&quot;1&quot;&gt;张光斗优秀青年科技奖颁奖典礼&lt;/a&gt;&lt;/h2&gt;
+				
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;left2&quot;&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/xwdt&quot;&gt;新闻动态&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;reportlist&quot;&gt;
+				                                     		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2466&quot; sub-line=&quot;1&quot;&gt;校友吕大龙捐资母校清华 支持辅导员事业发展&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2460&quot; sub-line=&quot;1&quot;&gt;承接过去 面向未来 清华大学图书馆北馆（李文正馆）正式开馆&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2448&quot; sub-line=&quot;1&quot;&gt;陈旭访问香港中文大学和香港科技大学 推进战略合作伙伴关系&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2447&quot; sub-line=&quot;1&quot;&gt;清华成立新药创制中心 打造全球药物创新生态&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2459&quot; sub-line=&quot;1&quot;&gt;清华大学文创产业研究基金捐赠仪式举行&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2432&quot; sub-line=&quot;1&quot;&gt;重磅 | 全球创新学院首栋教研大楼在西雅图正式奠基&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2431&quot; sub-line=&quot;1&quot;&gt;快讯 | 清华GIX今日西雅图奠基，收获中文路牌&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2422&quot; sub-line=&quot;1&quot;&gt;全球创新学院中美两地师生共话创新发展&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2421&quot; sub-line=&quot;1&quot;&gt;清华大学苏世民书院正式开学 习近平、奥巴马分别发来贺信，刘延东出席并致辞&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2420&quot; sub-line=&quot;1&quot;&gt;打造世界一流大学艺术博物馆 开启清华人文艺术新篇章 清华大学艺术博物馆正式开馆&lt;/a&gt;&lt;/li&gt;
+                   			&lt;/ul&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/tzgg&quot;&gt;通知公告&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;reportlist&quot;&gt;
+				                                     		&lt;li&gt;&lt;a href=&quot;/info/tzgg/2272&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会2014年年检合格&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1280&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会2013年年检合格&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1236&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会名列“获得2013年度第二批公益性捐赠税前扣除资格的公益性社会团体名单”&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1058&quot; sub-line=&quot;1&quot;&gt;2013年“清华大学吴冠中艺术与科学创新奖学金”评选结果公布&lt;/a&gt;&lt;/li&gt;
+                   			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;left3&quot; style=&quot;margin-top:70px&quot;&gt;
+			&lt;h2 class=&quot;gotodonate&quot;&gt;&lt;a href=&quot;/column/give&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;donatelist&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/give&quot; target=&quot;_blank&quot;&gt;捐赠方法&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/jzms&quot; target=&quot;_blank&quot;&gt;捐赠免税&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/jzms_&quot; target=&quot;_blank&quot;&gt;捐赠鸣谢&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+			
+		&lt;/div&gt;
+                           			&lt;div style=&quot;float:right;margin-top:68px;margin-right:36px;width:180px;&quot;&gt;
+				&lt;a href=&quot;/info/sp/1281&quot; class=&quot;imgwrap&quot;&gt;&lt;img width=&quot;180&quot; height=&quot;120px&quot; src=&quot;/upload_files/image/1408414884344_01.jpg&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t2&quot; style=&quot;line-height:16px;margin-top:10px;text-align:center;&quot;&gt;&lt;a style=&quot;float: none; position: static;color:#803f23;&quot; href=&quot;/info/sp/1281&quot; sub-line=&quot;2&quot;&gt;教育基金会成立20周年纪念&lt;/a&gt;&lt;/h2&gt;
+				
+			&lt;/div&gt;
+				&lt;/section&gt;
+	&lt;div class=&quot;index-links&quot;&gt;
+		&lt;h2 class=&quot;t&quot;&gt;相关链接&lt;/h2&gt;
+		&lt;div class=&quot;con&quot;&gt;
+			&lt;ul class=&quot;linklist clearfix&quot;&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/996&quot; sub-line=&quot;1&quot;&gt;清华主页&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/997&quot; sub-line=&quot;1&quot;&gt;清华大学数字博物馆&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/998&quot; sub-line=&quot;1&quot;&gt;清华校友网&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/1181&quot; sub-line=&quot;1&quot;&gt;清华大学继续教育&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/1001&quot; sub-line=&quot;1&quot;&gt;苏世民书院&lt;/a&gt;&lt;/li&gt;
+                			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;footer class=&quot;footer&quot;&gt;
+	&lt;div class=&quot;wraper clearfix&quot;&gt;
+		&lt;a class=&quot;logof&quot;&gt;&lt;img src=&quot;/sites/images/flogo.png&quot;&gt;&lt;/a&gt;
+    &lt;div class=&quot;r&quot; style=&quot;margin-left:10px;width:758px;&quot;&gt;
+			中国北京市清华科技园创业大厦12层清华大学教育基金会 邮编：100084
+            &lt;br&gt;联系电话：大陆部：（8610）62783964\62783786&amp;nbsp;&amp;nbsp;亚太部：（8610）62786278\62797410&amp;nbsp;&amp;nbsp;项目管理部：（8610）62797255
+            &lt;br&gt;财务部：（8610)62794861\627894260&amp;nbsp;&amp;nbsp公共关系部：（8610）62789633&amp;nbsp;&amp;nbsp; 综合办公室：（8610）62794587&amp;nbsp;&amp;nbsp; 传真：（8610）62785959
+			&lt;br&gt;Email：jjh@tsinghua.edu.cn
+            &lt;br&gt;版权所有 © 清华大学教育基金会
+		&lt;/div&gt;
+&lt;/div&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 53, 98, 100, 115, 142, 191, 193, 194, 195, 196, 197, 198]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:04 GMT" field="date"/>
+                        <header content="text/html; charset=UTF-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+		&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=UTF-8&quot;&gt;
+	&lt;title&gt;清华大学教育基金会&lt;/title&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/base.css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;/sites/css/index.css&quot; type=&quot;text/css&quot; /&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/html5.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/jq.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/index.js&quot;&gt;&lt;/script&gt;
+   &lt;!-- &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/gototop.js&quot;&gt;&lt;/script&gt;--&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/trunk8.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/dialog/jquery.artDialog.js?skin=simple&quot;&gt;&lt;/script&gt;
+
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		$.base = '';
+	&lt;/script&gt;  
+
+
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/validator/jquery.validator.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/validator/local/zh_CN.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/sites/js/common.js&quot;&gt;&lt;/script&gt;
+	&lt;link href=&quot;/sites/js/validator/jquery.validator.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;&lt;/head&gt;
+&lt;body&gt;
+	&lt;header class=&quot;header&quot;&gt;
+		&lt;div class=&quot;wraper clearfix&quot;&gt;
+						&lt;div class=&quot;upside&quot;&gt;
+				&lt;a class=&quot;logo&quot; href=&quot;/&quot;&gt;&lt;img src=&quot;/sites/images/logo.png&quot;&gt;&lt;/a&gt;
+				&lt;div class=&quot;right&quot;&gt;
+					&lt;a class=&quot;fund&quot; href=&quot;http://www.tsinghuaus.org&quot; target=&quot;_blank&quot;&gt;北美基金会&lt;/a&gt;
+					&lt;span class=&quot;line&quot;&gt;|&lt;/span&gt;
+					&lt;div class=&quot;langu&quot;&gt;
+						&lt;a class=&quot;current&quot;&gt;&lt;img src=&quot;/sites/images/flag1.jpg&quot;&gt;简体中文&lt;/a&gt;
+						&lt;div class=&quot;box&quot;&gt;
+                            &lt;a class=&quot;&quot; href=&quot;http://www.tuef.tsinghua.edu.cn/index/index_en.htm&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/flag.png&quot;&gt;English&lt;/a&gt;
+							&lt;!--&lt;a class=&quot;&quot; href=&quot;http://www.tsinghua.edu.cn/publish/jjhen/index.html&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/sites/images/flag.png&quot;&gt;English&lt;/a&gt;--&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;			&lt;script type=&quot;text/javascript&quot;&gt;
+jQuery(function(){
+   
+	jQuery('#nav li [class^=item]').removeClass(&quot;focused&quot;);
+	jQuery('#nav li.item1').addClass(&quot;focused&quot;);
+    if($('#searchbx').length&gt;0){
+		$('#searchbx').bind('focus',function(){
+			var text=this.defaultValue;
+			if($(this).val()==text){
+				$(this).val(&quot;&quot;).focus();
+			}
+		}).bind('blur',function(){
+			var text=this.defaultValue;
+			if($(this).val()==&quot;&quot;){
+				$(this).val(text);
+			}
+		})
+	}
+});
+&lt;/script&gt;
+
+
+          &lt;nav class=&quot;downside clearfix&quot;&gt;
+				&lt;ul id=&quot;nav&quot;&gt;
+					&lt;li class=&quot;item104&quot;&gt;&lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item97&quot;&gt;&lt;a href=&quot;/column/about&quot;&gt;关于我们&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item98&quot;&gt;&lt;a href=&quot;/column/news&quot;&gt;新闻中心&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=&quot;/column/qtckxm&quot;&gt;筹款项目&lt;/a&gt;
+                     &lt;ul&gt;&lt;i&gt;&lt;em&gt;&lt;/em&gt;&lt;/i&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/ssmxzxm&quot;&gt;苏世民学者项目&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/qhxbnjj&quot;&gt;清华新百年基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/sjhplt&quot;&gt;世界和平论坛&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/qtckxm&quot;&gt;学生培养基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/bss&quot;&gt;人才基金&lt;/a&gt;&lt;/li&gt;
+                         &lt;li&gt;&lt;a href=&quot;/column/yxjj&quot;&gt;院系基金&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;/ul&gt;&lt;/li&gt;
+					&lt;li class=&quot;item100&quot;&gt;&lt;a href=&quot;/column/usedetail&quot;&gt;捐赠使用&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item101&quot;&gt;&lt;a href=&quot;/column/give&quot;&gt;捐赠指南&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item102&quot;&gt;&lt;a href=&quot;/column/infomation&quot;&gt;信息公开&lt;/a&gt;&lt;/li&gt;
+					&lt;li class=&quot;item103&quot;&gt;&lt;a href=&quot;/column/problem&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+				&lt;form class=&quot;searchbox clearfix&quot; id=&quot;search-form-header&quot; action=&quot;/column/search_result&quot; method=&quot;post&quot;&gt;
+					&lt;input type=&quot;hidden&quot; name=&quot;curpage&quot; value=&quot;1&quot;&gt;
+                    &lt;input type=&quot;text&quot; class=&quot;text&quot; name=&quot;key&quot; value=&quot;SEARCH&quot; id=&quot;searchbx&quot;&gt;
+					&lt;a class=&quot;searchbtn&quot;  id=&quot;searchbtn&quot; href=&quot;javascript:;&quot; onclick=&quot;$('#search-form-header').submit();&quot;&gt;&lt;/a&gt;
+				&lt;/form&gt;
+			&lt;/nav&gt;		&lt;/div&gt;
+	&lt;/header&gt;
+	&lt;section class=&quot;about-sec section-bg&quot; id=&quot;index-sec&quot;&gt;
+		&lt;div class=&quot;wraper-index&quot;&gt;
+			&lt;div class=&quot;arrows&quot;&gt;
+				&lt;a class=&quot;leftarrow&quot;&gt;&lt;/a&gt;
+				&lt;span class=&quot;num&quot;&gt;&lt;em class=&quot;number&quot;&gt;1&lt;/em&gt;|&lt;em class=&quot;count&quot;&gt;3&lt;/em&gt;&lt;/span&gt;
+				&lt;a class=&quot;rightarrow&quot;&gt;&lt;/a&gt;
+			&lt;/div&gt;
+			&lt;ul class=&quot;banner&quot;&gt;
+				                				&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478826183693_CC.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;人物 | 他们拍完《大鱼海棠》回清华捐赠文化产业研究基金&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;“当你做自己喜欢的东西的时候，你永远不会预知结果，也谈不上值不值得，你只能问自己相信与否，如果坚信，那就大胆尝试。”&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478776600551_B0.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;“良师益友奖”获得者杨士强：让研究生成为学术人才&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;”如果清华毕业的博士生每年能够有一批可以到世界一流大学谋到教职，就证明国际同行们认可了我们的博士生培养水准。”&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1478707990169_AF.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;研究生暑期社会实践：到肯尼亚修铁路&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;目睹了蒙内铁路的建设，队员们更加坚定地相信，肯尼亚将借着“一带一路”的良好发展态势，继续前行，与这条战略线上的其他国家共同打造政治互信、经济融合、文化包容的共同体；同学们也在实践中更加体会到国家发展过程中自身的责任。&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1476084202263_BF.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;行胜跑车：真刀真枪的毕业设计&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;以一辆真跑车作为毕业设计作品，是对‘让工艺表达设计，以设计主导工艺’理念的极致追求。&lt;/div&gt;
+				&lt;/li&gt;
+								&lt;li&gt;
+					&lt;a href=&quot;/column/index_tpxw&quot; class=&quot;index-imgw&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;/upload_files/image/1476084228193_C0.jpg&quot;&gt;&lt;/a&gt;
+					&lt;div class=&quot;font&quot;&gt;
+				    &lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/index_tpxw&quot; target=&quot;_blank&quot;&gt;清华大学苏世民书院正式开学 习近平、奥巴马分别发来贺信，刘延东出席并致辞&lt;/a&gt;&lt;/h2&gt; 
+					&lt;div class=&quot;describ&quot;&gt;9月10日上午，具有开创性意义的跨文化全球领导力项目——清华大学苏世民学者项目举行开学典礼，迎接首届入学的来自31个国家的110名苏世民书院的学生。&lt;/div&gt;
+				&lt;/li&gt;
+							&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;wraper&quot;&gt;
+			&lt;ul class=&quot;index-pro clearfix&quot;&gt;
+				&lt;li&gt;
+					&lt;div class=&quot;imgu&quot;&gt;&lt;a href=&quot;/column/qhyx&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/pro22.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;清华印象着重展示清华大学在人才培养、教学科研、校园文化、社会服务领域的最新成果和优秀事迹，在清华新百年的发展历程上撷珍展现清华故事，与社会各界砥砺前行。
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class=&quot;imgu&quot;&gt;
+					&lt;div class=&quot;imgu&quot;&gt;&lt;a href=&quot;/column/ssmxzxm&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/pro1.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;“清华大学苏世民学者项目”是1902年罗德奖学金设立以来又一个最重要的领导力培养项目。本项目共有3亿美元的意向捐赠资金，这也是中国大学迄今为止从境外获得的最大单项慈善捐赠。苏世民学者项目的目标是把世界上最优秀的青年们汇集在一起共同探索并理解中国的和平发展、崛起。&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+				&lt;div class=&quot;last&quot;&gt;&lt;a href=&quot;/column/wxck_xspy&quot; class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/xspy2.png&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+					&lt;div class=&quot;index-des&quot;&gt;清华大学深化人才培养体制机制改革：建立价值塑造、能力培养和知识传授“三位一体”的教育模式。本期学生培养，针对助力新生、呵护兴趣、支持创新三大主题进行筹款。一次捐赠，多项支持！&lt;/div&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/section&gt;
+	&lt;section class=&quot;index-clumn clearfix&quot;&gt;
+		&lt;div class=&quot;left1&quot;&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/jzgs_&quot;&gt;捐赠故事&lt;/a&gt;&lt;/h2&gt;
+			                        &lt;div class=&quot;story&quot;&gt;
+				&lt;a class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/upload_files/image/1477030162871_CA.png&quot; width=196 height=&quot;136px&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t1&quot;&gt;&lt;a href=&quot;/info/jzgs_/2400&quot; sub-line=&quot;1&quot;&gt;首届清华大学新百年基础教学教师奖颁奖典礼&lt;/a&gt;&lt;/h2&gt;
+				&lt;div class=&quot;desc&quot;&gt;2016年，由“清华大学新百年发展基金”（以下简称“清华新百年基金”）冠名的“清华大学新百年基础教学教师奖”正式设立，以表彰长期从事量大面广基础课教学，影响着一届届年青学子，并在学生中享有盛誉的教师。&lt;/div&gt;
+			&lt;/div&gt;
+            			&lt;h2 class=&quot;index-t2&quot; style=&quot;margin-top:20px;&quot;&gt;&lt;a href=&quot;/column/zgdjj&quot; style=&quot;color:#fff;&quot;&gt;张光斗科技教育基金&lt;/a&gt;&lt;/h2&gt;
+			
+            &lt;div class=&quot;story&quot;&gt;
+				&lt;a class=&quot;imgwrap&quot;&gt;&lt;img src=&quot;/sites/images/zgdjy.jpg&quot; width=196 height=&quot;136px&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t2&quot;&gt;&lt;a href=&quot;/column/zgdjj&quot; sub-line=&quot;1&quot;&gt;张光斗优秀青年科技奖颁奖典礼&lt;/a&gt;&lt;/h2&gt;
+				
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;left2&quot;&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/xwdt&quot;&gt;新闻动态&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;reportlist&quot;&gt;
+				                                     		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2466&quot; sub-line=&quot;1&quot;&gt;校友吕大龙捐资母校清华 支持辅导员事业发展&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2460&quot; sub-line=&quot;1&quot;&gt;承接过去 面向未来 清华大学图书馆北馆（李文正馆）正式开馆&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2448&quot; sub-line=&quot;1&quot;&gt;陈旭访问香港中文大学和香港科技大学 推进战略合作伙伴关系&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2447&quot; sub-line=&quot;1&quot;&gt;清华成立新药创制中心 打造全球药物创新生态&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2459&quot; sub-line=&quot;1&quot;&gt;清华大学文创产业研究基金捐赠仪式举行&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2432&quot; sub-line=&quot;1&quot;&gt;重磅 | 全球创新学院首栋教研大楼在西雅图正式奠基&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2431&quot; sub-line=&quot;1&quot;&gt;快讯 | 清华GIX今日西雅图奠基，收获中文路牌&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2422&quot; sub-line=&quot;1&quot;&gt;全球创新学院中美两地师生共话创新发展&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2421&quot; sub-line=&quot;1&quot;&gt;清华大学苏世民书院正式开学 习近平、奥巴马分别发来贺信，刘延东出席并致辞&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/xwdt/2420&quot; sub-line=&quot;1&quot;&gt;打造世界一流大学艺术博物馆 开启清华人文艺术新篇章 清华大学艺术博物馆正式开馆&lt;/a&gt;&lt;/li&gt;
+                   			&lt;/ul&gt;
+			&lt;h2 class=&quot;index-t1&quot;&gt;&lt;a href=&quot;/column/tzgg&quot;&gt;通知公告&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;reportlist&quot;&gt;
+				                                     		&lt;li&gt;&lt;a href=&quot;/info/tzgg/2272&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会2014年年检合格&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1280&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会2013年年检合格&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1236&quot; sub-line=&quot;1&quot;&gt;清华大学教育基金会名列“获得2013年度第二批公益性捐赠税前扣除资格的公益性社会团体名单”&lt;/a&gt;&lt;/li&gt;
+                                  		&lt;li&gt;&lt;a href=&quot;/info/tzgg/1058&quot; sub-line=&quot;1&quot;&gt;2013年“清华大学吴冠中艺术与科学创新奖学金”评选结果公布&lt;/a&gt;&lt;/li&gt;
+                   			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;left3&quot; style=&quot;margin-top:70px&quot;&gt;
+			&lt;h2 class=&quot;gotodonate&quot;&gt;&lt;a href=&quot;/column/give&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+			&lt;ul class=&quot;donatelist&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/give&quot; target=&quot;_blank&quot;&gt;捐赠方法&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/jzms&quot; target=&quot;_blank&quot;&gt;捐赠免税&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/column/jzms_&quot; target=&quot;_blank&quot;&gt;捐赠鸣谢&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+			
+		&lt;/div&gt;
+                           			&lt;div style=&quot;float:right;margin-top:68px;margin-right:36px;width:180px;&quot;&gt;
+				&lt;a href=&quot;/info/sp/1281&quot; class=&quot;imgwrap&quot;&gt;&lt;img width=&quot;180&quot; height=&quot;120px&quot; src=&quot;/upload_files/image/1408414884344_01.jpg&quot;&gt;&lt;/a&gt;
+				&lt;h2 class=&quot;t2&quot; style=&quot;line-height:16px;margin-top:10px;text-align:center;&quot;&gt;&lt;a style=&quot;float: none; position: static;color:#803f23;&quot; href=&quot;/info/sp/1281&quot; sub-line=&quot;2&quot;&gt;教育基金会成立20周年纪念&lt;/a&gt;&lt;/h2&gt;
+				
+			&lt;/div&gt;
+				&lt;/section&gt;
+	&lt;div class=&quot;index-links&quot;&gt;
+		&lt;h2 class=&quot;t&quot;&gt;相关链接&lt;/h2&gt;
+		&lt;div class=&quot;con&quot;&gt;
+			&lt;ul class=&quot;linklist clearfix&quot;&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/996&quot; sub-line=&quot;1&quot;&gt;清华主页&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/997&quot; sub-line=&quot;1&quot;&gt;清华大学数字博物馆&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/998&quot; sub-line=&quot;1&quot;&gt;清华校友网&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/1181&quot; sub-line=&quot;1&quot;&gt;清华大学继续教育&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/info/xglj/1001&quot; sub-line=&quot;1&quot;&gt;苏世民书院&lt;/a&gt;&lt;/li&gt;
+                			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;footer class=&quot;footer&quot;&gt;
+	&lt;div class=&quot;wraper clearfix&quot;&gt;
+		&lt;a class=&quot;logof&quot;&gt;&lt;img src=&quot;/sites/images/flogo.png&quot;&gt;&lt;/a&gt;
+    &lt;div class=&quot;r&quot; style=&quot;margin-left:10px;width:758px;&quot;&gt;
+			中国北京市清华科技园创业大厦12层清华大学教育基金会 邮编：100084
+            &lt;br&gt;联系电话：大陆部：（8610）62783964\62783786&amp;nbsp;&amp;nbsp;亚太部：（8610）62786278\62797410&amp;nbsp;&amp;nbsp;项目管理部：（8610）62797255
+            &lt;br&gt;财务部：（8610)62794861\627894260&amp;nbsp;&amp;nbsp公共关系部：（8610）62789633&amp;nbsp;&amp;nbsp; 综合办公室：（8610）62794587&amp;nbsp;&amp;nbsp; 传真：（8610）62785959
+			&lt;br&gt;Email：jjh@tsinghua.edu.cn
+            &lt;br&gt;版权所有 © 清华大学教育基金会
+		&lt;/div&gt;
+&lt;/div&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="53">
+                <http-request>
+                    <status>PUT http://www.tuef.tsinghua.edu.cn/OiLCl HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">TwLiFv</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 501 Method not implemented</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 10:07:06 GMT" field="date"/>
+                        <header content="200" field="content-length"/>
+                        <header content="text/html" field="content-type"/>
+                        <header content="close" field="connection"/>
+                        <header content="Apache" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;head&gt;&lt;title&gt;501 Method not implemented&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;501 Method not implemented&lt;/h1&gt;
+&lt;p /&gt;&lt;hr /&gt;
+&lt;small&gt;
+Resin-3.0.28 (built Mon, 18 May 2009 02:16:38 PDT)
+&lt;/small&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="98">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:06 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="100">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=500" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:06 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="115">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/diuJW.html HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=475" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:06 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="142">
+                <http-request>
+                    <status>POST http://www.tuef.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L2RpdUpXLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguV0p1aWQ=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:07 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="191">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=483" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:08 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="193">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:08 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="194">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:08 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="195">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=482" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:08 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="196">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=491" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:08 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="197">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=489" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:08 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="198">
+                <http-request>
+                    <status>GET http://www.tuef.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="www.tuef.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2634510090.20480.0000; JSESSIONID=bacnJXxeRjw5Uf1W6S0Iv" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="279" field="content-length"/>
+                        <header content="timeout=10, max=499" field="keep-alive"/>
+                        <header content="Apache" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:07:08 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;404.html&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    404 NOT FOUND
+    &lt;hr&gt;
+    &lt;a href=&quot;javascript:;&quot; onclick=&quot;javascript:top.location.href = '/';&quot;&gt; 返回首页 &lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A &quot;UnicodeEncodeError&quot; exception was found while running infrastructure.favicon_identification on &quot;Method: GET | http://domain/&quot;. The exception was: &quot;'ascii' codec can't encode characters in position 240-243: ordinal not in range(128)&quot; at favicon_identification.py:discover():70. The scan will continue but some vulnerabilities might not be identified.</error>
+    <error caller="threading">The find_vhosts plugin got an error while requesting &quot;http://www.tuef.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.tuef.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.tuef.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to www.tuef.tsinghua.edu.cn:80&quot;</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.tuef.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The port '443' is not open on target www.tuef.tsinghua.edu.cn</error>
+    <error caller="threading">The port '80' is not open on target www.tuef.tsinghua.edu.cn</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://www.tuef.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The xss plugin got an error while requesting &quot;http://www.tuef.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The ssi plugin got an error while requesting &quot;http://www.tuef.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+</w3af-run>

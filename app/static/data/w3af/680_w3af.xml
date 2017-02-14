@@ -1,0 +1,2095 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480507023" start-long="Wed Nov 30 06:57:03 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://ndac.env.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.132"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/680_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Auto-completable form" plugin="form_autocomplete" severity="Information" url="http://ndac.env.tsinghua.edu.cn/" var="None">
+        <description>The URL: &quot;http://ndac.env.tsinghua.edu.cn/&quot; has a &quot;&lt;form&gt;&quot; element with auto-complete enabled.</description>
+        <long-description>In typical form-based web applications, it is common practice for developers to allow `autocomplete` within the HTML form to improve the usability of the page. With `autocomplete` enabled (default), the browser is allowed to cache previously entered form values.
+
+For legitimate purposes, this allows the user to quickly re-enter the same data when completing the form multiple times.
+
+When `autocomplete` is enabled on either/both the username and password fields, this could allow a cyber-criminal with access to the victim's computer the ability to have the victim's credentials automatically entered as the cyber-criminal visits the affected page.
+
+The tool has discovered that the affected page contains a form containing a password field that has not disabled `autocomplete`.</long-description>
+        <fix-guidance>The `autocomplete` value can be configured in two different locations. The first and most secure location is to disable the `autocomplete` attribute on the `&lt;form&gt;` HTML tag. This will disable `autocomplete` for all inputs within that form. An example of disabling `autocomplete` within the form tag is `&lt;form autocomplete=off&gt;`.
+
+The second slightly less desirable option is to disable the `autocomplete` attribute for a specific `&lt;input&gt;` HTML tag. While this may be the less desired solution from a security perspective, it may be preferred method for usability reasons, depending on size of the form. An example of disabling the `autocomplete` attribute within a password input tag is `&lt;input type=password autocomplete=off&gt;`.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:31 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;第十届全国博士生学术会议&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+--&gt;
+&lt;/style&gt;
+&lt;link href=&quot;css/layout.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.form.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/login.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;div id=&quot;wrap&quot;&gt;
+
+ &lt;div&gt;  &lt;img src=&quot;/uploadfile/2016/0329/56f9dda6606ee.jpg&quot; /&gt;&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;margin-bottom:12px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;images/nav1.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;&lt;img src=&quot;images/nav2.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;news.php&quot;&gt;&lt;img src=&quot;images/nav3.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;tools.php&quot;&gt;&lt;img src=&quot;images/nav4.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;login.php&quot;&gt;&lt;img src=&quot;images/nav5.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=committee&quot;&gt;&lt;img src=&quot;images/nav6.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=contact&quot;&gt;&lt;img src=&quot;images/nav7.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;history.php&quot;&gt;&lt;img src=&quot;images/nav8.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;635&quot; valign=&quot;top&quot;&gt;
+    &lt;div class=&quot;box1 spacer&quot;&gt;
+    	&lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon&quot; style=&quot;text-indent:24px; line-height:26px&quot;&gt;
+		 
+全国博士生学术会议暨环境科学与工程新理论、新技术学术研讨会由清华大学、中国环境科学学会（环境教育委员会）、区域环境质量协同创新中心、环境模拟与污染控制国家重点联合实验室主办，并得到了西安建筑科技大学和Frontiers of Environmental Science &amp; Engineering期刊的鼎力协助。秉承“交流碰撞启创新之路，厚积博采成一家之言”的宗旨，以环境科学与工程新理论、新技术为主题，积极为从事环境及相关学科领域研究的博士生搭建高起点、高水平、最前沿的学术交流平台。
+全国博士生学术会议每年举办一届，迄今为止已成功举办九届。投稿数量与参加单位逐年增加，知名度不断提高，影响力不断扩大，受到了全国环境领域老师和博士生的广泛认可，目前已成为环境领域博士生交流学术思想最大的活动平台。在会议中，博士生作为会议的主角，不仅承担了会议组织的大部分工作，还实现了博士生自己主持、讨论、总结和点评的交流形式，形成了以博士生为主体的高水平学术研讨和学术争论的氛围。
+本届会议将于2016年10月27-30日于清华大学（中国·北京）召开。全国博士生学……
+	
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;
+      &lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title1.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;news.php&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon&quot;&gt; 
+        &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td width=&quot;57%&quot; valign=&quot;top&quot;&gt;
+            &lt;ul class=&quot;list&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=56&quot;&gt;第十届全国博士生学术会议摘要录用名…&lt;/a&gt;&lt;span&gt;2016-07-08&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=55&quot;&gt;第十届全国博士生学术会议稿件全文格…&lt;/a&gt;&lt;span&gt;2016-07-05&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=54&quot;&gt;第十届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2016-04-28&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=53&quot;&gt;第十届全国博士生学术会议通知…&lt;/a&gt;&lt;span&gt;2016-04-15&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=51&quot;&gt;第九届全国博士生学术会议论文摘要录…&lt;/a&gt;&lt;span&gt;2015-07-06&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=50&quot;&gt;第九届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2015-03-29&lt;/span&gt;&lt;/li&gt;
+ 
+            &lt;/ul&gt;
+            &lt;/td&gt;
+            &lt;td width=&quot;43%&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;images/img.jpg&quot; width=&quot;235&quot; height=&quot;153&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;/td&gt;
+    &lt;td width=&quot;13&quot;&gt;&lt;/td&gt;
+    &lt;td width=&quot;272&quot; valign=&quot;top&quot;&gt;&lt;div class=&quot;box2 spacer&quot;&gt;
+    	&lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title2.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon1&quot;&gt;
+        &lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮箱：&lt;/span&gt;&lt;a href=&quot;http://ewebmail.mail.163.com/js5/main.jsp?sid=nAEpvymmqjNZSVyaEQmmltGSjaGckXKy&quot;&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;ndac@tsinghua.edu.cn&lt;br /&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;电话：010-62781331&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;地址：清华大学环境学院全国博士生学术会议组委会(收)&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮编：100084&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;QQ群：543916109&lt;/span&gt;&lt;/div&gt;    
+		 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2 spacer&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title3.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt;
+	  &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logined&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; 欢迎光临，&lt;strong id=&quot;loginedUserName&quot;&gt;&lt;/strong&gt;	&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; &lt;input type=&quot;button&quot; value=&quot;退出登录&quot; class=&quot;logoutBtn&quot; onClick=&quot;logout()&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+       &lt;FORM id=&quot;smyform&quot; action=&quot;&quot; method=post name=&quot;smyform&quot;  &gt;
+	     &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logining&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆账户：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;user_name&quot; type=&quot;text&quot; class=&quot;input1&quot; id=&quot;user_name&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆密码：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;input1&quot; id=&quot;password&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;td height=&quot;36&quot; valign=&quot;bottom&quot;&gt;&lt;input name=&quot;&quot; type=&quot;button&quot; class=&quot;loginBtn&quot;  value=&quot;&quot;  onclick=&quot;return seCheck(this)&quot;  style=&quot; vertical-align:top&quot;/&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;register.php&quot;&gt;&lt;img src=&quot;images/btn2.jpg&quot; width=&quot;43&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+		&lt;/FORM&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title4.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt; 
+      &lt;ul class=&quot;list1&quot;&gt;
+	              &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=126&quot;&gt;水污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=127&quot;&gt;大气污染控制&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=128&quot;&gt;固体废物污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=129&quot;&gt;环境经济、管理与政策&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=130&quot;&gt;环境化学与材料&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=131&quot;&gt;环境生态与健康&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=179&quot;&gt;能源与气候变化&lt;/a&gt;&lt;/li&gt;
+		      &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+     &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+ &lt;div class=&quot;links&quot;&gt;
+	&lt;div class=&quot;linksbox&quot;&gt;
+	  &lt;div&gt;&lt;img src=&quot;images/title5.jpg&quot; /&gt;&lt;/div&gt;    
+        &lt;table width=&quot;98%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+			  
+		   		   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a18a09752.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn/publish/env/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1be9bffd.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.chinacses.org/cn/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1c90550d.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 			 
+		  &lt;/tr&gt;
+       
+        &lt;/table&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+Copyright © 2006-2011 Tsinghua Inc. All rights reserved. 清华大学环境学院 版权所有&lt;br /&gt;
+京ICP 09100705号&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[46, 53]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://ndac.env.tsinghua.edu.cn/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="46">
+                <http-request>
+                    <status>ARGENTINA http://ndac.env.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:35 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;第十届全国博士生学术会议&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+--&gt;
+&lt;/style&gt;
+&lt;link href=&quot;css/layout.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.form.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/login.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;div id=&quot;wrap&quot;&gt;
+
+ &lt;div&gt;  &lt;img src=&quot;/uploadfile/2016/0329/56f9dda6606ee.jpg&quot; /&gt;&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;margin-bottom:12px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;images/nav1.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;&lt;img src=&quot;images/nav2.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;news.php&quot;&gt;&lt;img src=&quot;images/nav3.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;tools.php&quot;&gt;&lt;img src=&quot;images/nav4.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;login.php&quot;&gt;&lt;img src=&quot;images/nav5.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=committee&quot;&gt;&lt;img src=&quot;images/nav6.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=contact&quot;&gt;&lt;img src=&quot;images/nav7.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;history.php&quot;&gt;&lt;img src=&quot;images/nav8.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;635&quot; valign=&quot;top&quot;&gt;
+    &lt;div class=&quot;box1 spacer&quot;&gt;
+    	&lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon&quot; style=&quot;text-indent:24px; line-height:26px&quot;&gt;
+		 
+全国博士生学术会议暨环境科学与工程新理论、新技术学术研讨会由清华大学、中国环境科学学会（环境教育委员会）、区域环境质量协同创新中心、环境模拟与污染控制国家重点联合实验室主办，并得到了西安建筑科技大学和Frontiers of Environmental Science &amp; Engineering期刊的鼎力协助。秉承“交流碰撞启创新之路，厚积博采成一家之言”的宗旨，以环境科学与工程新理论、新技术为主题，积极为从事环境及相关学科领域研究的博士生搭建高起点、高水平、最前沿的学术交流平台。
+全国博士生学术会议每年举办一届，迄今为止已成功举办九届。投稿数量与参加单位逐年增加，知名度不断提高，影响力不断扩大，受到了全国环境领域老师和博士生的广泛认可，目前已成为环境领域博士生交流学术思想最大的活动平台。在会议中，博士生作为会议的主角，不仅承担了会议组织的大部分工作，还实现了博士生自己主持、讨论、总结和点评的交流形式，形成了以博士生为主体的高水平学术研讨和学术争论的氛围。
+本届会议将于2016年10月27-30日于清华大学（中国·北京）召开。全国博士生学……
+	
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;
+      &lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title1.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;news.php&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon&quot;&gt; 
+        &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td width=&quot;57%&quot; valign=&quot;top&quot;&gt;
+            &lt;ul class=&quot;list&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=56&quot;&gt;第十届全国博士生学术会议摘要录用名…&lt;/a&gt;&lt;span&gt;2016-07-08&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=55&quot;&gt;第十届全国博士生学术会议稿件全文格…&lt;/a&gt;&lt;span&gt;2016-07-05&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=54&quot;&gt;第十届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2016-04-28&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=53&quot;&gt;第十届全国博士生学术会议通知…&lt;/a&gt;&lt;span&gt;2016-04-15&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=51&quot;&gt;第九届全国博士生学术会议论文摘要录…&lt;/a&gt;&lt;span&gt;2015-07-06&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=50&quot;&gt;第九届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2015-03-29&lt;/span&gt;&lt;/li&gt;
+ 
+            &lt;/ul&gt;
+            &lt;/td&gt;
+            &lt;td width=&quot;43%&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;images/img.jpg&quot; width=&quot;235&quot; height=&quot;153&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;/td&gt;
+    &lt;td width=&quot;13&quot;&gt;&lt;/td&gt;
+    &lt;td width=&quot;272&quot; valign=&quot;top&quot;&gt;&lt;div class=&quot;box2 spacer&quot;&gt;
+    	&lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title2.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon1&quot;&gt;
+        &lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮箱：&lt;/span&gt;&lt;a href=&quot;http://ewebmail.mail.163.com/js5/main.jsp?sid=nAEpvymmqjNZSVyaEQmmltGSjaGckXKy&quot;&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;ndac@tsinghua.edu.cn&lt;br /&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;电话：010-62781331&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;地址：清华大学环境学院全国博士生学术会议组委会(收)&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮编：100084&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;QQ群：543916109&lt;/span&gt;&lt;/div&gt;    
+		 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2 spacer&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title3.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt;
+	  &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logined&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; 欢迎光临，&lt;strong id=&quot;loginedUserName&quot;&gt;&lt;/strong&gt;	&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; &lt;input type=&quot;button&quot; value=&quot;退出登录&quot; class=&quot;logoutBtn&quot; onClick=&quot;logout()&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+       &lt;FORM id=&quot;smyform&quot; action=&quot;&quot; method=post name=&quot;smyform&quot;  &gt;
+	     &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logining&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆账户：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;user_name&quot; type=&quot;text&quot; class=&quot;input1&quot; id=&quot;user_name&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆密码：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;input1&quot; id=&quot;password&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;td height=&quot;36&quot; valign=&quot;bottom&quot;&gt;&lt;input name=&quot;&quot; type=&quot;button&quot; class=&quot;loginBtn&quot;  value=&quot;&quot;  onclick=&quot;return seCheck(this)&quot;  style=&quot; vertical-align:top&quot;/&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;register.php&quot;&gt;&lt;img src=&quot;images/btn2.jpg&quot; width=&quot;43&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+		&lt;/FORM&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title4.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt; 
+      &lt;ul class=&quot;list1&quot;&gt;
+	              &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=126&quot;&gt;水污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=127&quot;&gt;大气污染控制&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=128&quot;&gt;固体废物污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=129&quot;&gt;环境经济、管理与政策&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=130&quot;&gt;环境化学与材料&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=131&quot;&gt;环境生态与健康&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=179&quot;&gt;能源与气候变化&lt;/a&gt;&lt;/li&gt;
+		      &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+     &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+ &lt;div class=&quot;links&quot;&gt;
+	&lt;div class=&quot;linksbox&quot;&gt;
+	  &lt;div&gt;&lt;img src=&quot;images/title5.jpg&quot; /&gt;&lt;/div&gt;    
+        &lt;table width=&quot;98%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+			  
+		   		   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a18a09752.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn/publish/env/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1be9bffd.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.chinacses.org/cn/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1c90550d.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 			 
+		  &lt;/tr&gt;
+       
+        &lt;/table&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+Copyright © 2006-2011 Tsinghua Inc. All rights reserved. 清华大学环境学院 版权所有&lt;br /&gt;
+京ICP 09100705号&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="53">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:35 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;第十届全国博士生学术会议&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+--&gt;
+&lt;/style&gt;
+&lt;link href=&quot;css/layout.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.form.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/login.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;div id=&quot;wrap&quot;&gt;
+
+ &lt;div&gt;  &lt;img src=&quot;/uploadfile/2016/0329/56f9dda6606ee.jpg&quot; /&gt;&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;margin-bottom:12px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;images/nav1.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;&lt;img src=&quot;images/nav2.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;news.php&quot;&gt;&lt;img src=&quot;images/nav3.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;tools.php&quot;&gt;&lt;img src=&quot;images/nav4.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;login.php&quot;&gt;&lt;img src=&quot;images/nav5.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=committee&quot;&gt;&lt;img src=&quot;images/nav6.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=contact&quot;&gt;&lt;img src=&quot;images/nav7.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;history.php&quot;&gt;&lt;img src=&quot;images/nav8.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;635&quot; valign=&quot;top&quot;&gt;
+    &lt;div class=&quot;box1 spacer&quot;&gt;
+    	&lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon&quot; style=&quot;text-indent:24px; line-height:26px&quot;&gt;
+		 
+全国博士生学术会议暨环境科学与工程新理论、新技术学术研讨会由清华大学、中国环境科学学会（环境教育委员会）、区域环境质量协同创新中心、环境模拟与污染控制国家重点联合实验室主办，并得到了西安建筑科技大学和Frontiers of Environmental Science &amp; Engineering期刊的鼎力协助。秉承“交流碰撞启创新之路，厚积博采成一家之言”的宗旨，以环境科学与工程新理论、新技术为主题，积极为从事环境及相关学科领域研究的博士生搭建高起点、高水平、最前沿的学术交流平台。
+全国博士生学术会议每年举办一届，迄今为止已成功举办九届。投稿数量与参加单位逐年增加，知名度不断提高，影响力不断扩大，受到了全国环境领域老师和博士生的广泛认可，目前已成为环境领域博士生交流学术思想最大的活动平台。在会议中，博士生作为会议的主角，不仅承担了会议组织的大部分工作，还实现了博士生自己主持、讨论、总结和点评的交流形式，形成了以博士生为主体的高水平学术研讨和学术争论的氛围。
+本届会议将于2016年10月27-30日于清华大学（中国·北京）召开。全国博士生学……
+	
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;
+      &lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title1.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;news.php&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon&quot;&gt; 
+        &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td width=&quot;57%&quot; valign=&quot;top&quot;&gt;
+            &lt;ul class=&quot;list&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=56&quot;&gt;第十届全国博士生学术会议摘要录用名…&lt;/a&gt;&lt;span&gt;2016-07-08&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=55&quot;&gt;第十届全国博士生学术会议稿件全文格…&lt;/a&gt;&lt;span&gt;2016-07-05&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=54&quot;&gt;第十届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2016-04-28&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=53&quot;&gt;第十届全国博士生学术会议通知…&lt;/a&gt;&lt;span&gt;2016-04-15&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=51&quot;&gt;第九届全国博士生学术会议论文摘要录…&lt;/a&gt;&lt;span&gt;2015-07-06&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=50&quot;&gt;第九届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2015-03-29&lt;/span&gt;&lt;/li&gt;
+ 
+            &lt;/ul&gt;
+            &lt;/td&gt;
+            &lt;td width=&quot;43%&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;images/img.jpg&quot; width=&quot;235&quot; height=&quot;153&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;/td&gt;
+    &lt;td width=&quot;13&quot;&gt;&lt;/td&gt;
+    &lt;td width=&quot;272&quot; valign=&quot;top&quot;&gt;&lt;div class=&quot;box2 spacer&quot;&gt;
+    	&lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title2.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon1&quot;&gt;
+        &lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮箱：&lt;/span&gt;&lt;a href=&quot;http://ewebmail.mail.163.com/js5/main.jsp?sid=nAEpvymmqjNZSVyaEQmmltGSjaGckXKy&quot;&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;ndac@tsinghua.edu.cn&lt;br /&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;电话：010-62781331&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;地址：清华大学环境学院全国博士生学术会议组委会(收)&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮编：100084&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;QQ群：543916109&lt;/span&gt;&lt;/div&gt;    
+		 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2 spacer&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title3.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt;
+	  &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logined&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; 欢迎光临，&lt;strong id=&quot;loginedUserName&quot;&gt;&lt;/strong&gt;	&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; &lt;input type=&quot;button&quot; value=&quot;退出登录&quot; class=&quot;logoutBtn&quot; onClick=&quot;logout()&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+       &lt;FORM id=&quot;smyform&quot; action=&quot;&quot; method=post name=&quot;smyform&quot;  &gt;
+	     &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logining&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆账户：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;user_name&quot; type=&quot;text&quot; class=&quot;input1&quot; id=&quot;user_name&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆密码：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;input1&quot; id=&quot;password&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;td height=&quot;36&quot; valign=&quot;bottom&quot;&gt;&lt;input name=&quot;&quot; type=&quot;button&quot; class=&quot;loginBtn&quot;  value=&quot;&quot;  onclick=&quot;return seCheck(this)&quot;  style=&quot; vertical-align:top&quot;/&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;register.php&quot;&gt;&lt;img src=&quot;images/btn2.jpg&quot; width=&quot;43&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+		&lt;/FORM&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title4.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt; 
+      &lt;ul class=&quot;list1&quot;&gt;
+	              &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=126&quot;&gt;水污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=127&quot;&gt;大气污染控制&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=128&quot;&gt;固体废物污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=129&quot;&gt;环境经济、管理与政策&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=130&quot;&gt;环境化学与材料&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=131&quot;&gt;环境生态与健康&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=179&quot;&gt;能源与气候变化&lt;/a&gt;&lt;/li&gt;
+		      &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+     &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+ &lt;div class=&quot;links&quot;&gt;
+	&lt;div class=&quot;linksbox&quot;&gt;
+	  &lt;div&gt;&lt;img src=&quot;images/title5.jpg&quot; /&gt;&lt;/div&gt;    
+        &lt;table width=&quot;98%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+			  
+		   		   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a18a09752.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn/publish/env/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1be9bffd.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.chinacses.org/cn/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1c90550d.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 			 
+		  &lt;/tr&gt;
+       
+        &lt;/table&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+Copyright © 2006-2011 Tsinghua Inc. All rights reserved. 清华大学环境学院 版权所有&lt;br /&gt;
+京ICP 09100705号&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[68]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;nginx/1.9.0&quot;.</description>
+        <http-transactions>
+            <http-transaction id="68">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:31 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;第十届全国博士生学术会议&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+--&gt;
+&lt;/style&gt;
+&lt;link href=&quot;css/layout.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.form.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/login.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;div id=&quot;wrap&quot;&gt;
+
+ &lt;div&gt;  &lt;img src=&quot;/uploadfile/2016/0329/56f9dda6606ee.jpg&quot; /&gt;&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;margin-bottom:12px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;images/nav1.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;&lt;img src=&quot;images/nav2.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;news.php&quot;&gt;&lt;img src=&quot;images/nav3.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;tools.php&quot;&gt;&lt;img src=&quot;images/nav4.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;login.php&quot;&gt;&lt;img src=&quot;images/nav5.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=committee&quot;&gt;&lt;img src=&quot;images/nav6.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=contact&quot;&gt;&lt;img src=&quot;images/nav7.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;history.php&quot;&gt;&lt;img src=&quot;images/nav8.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;635&quot; valign=&quot;top&quot;&gt;
+    &lt;div class=&quot;box1 spacer&quot;&gt;
+    	&lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon&quot; style=&quot;text-indent:24px; line-height:26px&quot;&gt;
+		 
+全国博士生学术会议暨环境科学与工程新理论、新技术学术研讨会由清华大学、中国环境科学学会（环境教育委员会）、区域环境质量协同创新中心、环境模拟与污染控制国家重点联合实验室主办，并得到了西安建筑科技大学和Frontiers of Environmental Science &amp; Engineering期刊的鼎力协助。秉承“交流碰撞启创新之路，厚积博采成一家之言”的宗旨，以环境科学与工程新理论、新技术为主题，积极为从事环境及相关学科领域研究的博士生搭建高起点、高水平、最前沿的学术交流平台。
+全国博士生学术会议每年举办一届，迄今为止已成功举办九届。投稿数量与参加单位逐年增加，知名度不断提高，影响力不断扩大，受到了全国环境领域老师和博士生的广泛认可，目前已成为环境领域博士生交流学术思想最大的活动平台。在会议中，博士生作为会议的主角，不仅承担了会议组织的大部分工作，还实现了博士生自己主持、讨论、总结和点评的交流形式，形成了以博士生为主体的高水平学术研讨和学术争论的氛围。
+本届会议将于2016年10月27-30日于清华大学（中国·北京）召开。全国博士生学……
+	
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;
+      &lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title1.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;news.php&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon&quot;&gt; 
+        &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td width=&quot;57%&quot; valign=&quot;top&quot;&gt;
+            &lt;ul class=&quot;list&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=56&quot;&gt;第十届全国博士生学术会议摘要录用名…&lt;/a&gt;&lt;span&gt;2016-07-08&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=55&quot;&gt;第十届全国博士生学术会议稿件全文格…&lt;/a&gt;&lt;span&gt;2016-07-05&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=54&quot;&gt;第十届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2016-04-28&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=53&quot;&gt;第十届全国博士生学术会议通知…&lt;/a&gt;&lt;span&gt;2016-04-15&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=51&quot;&gt;第九届全国博士生学术会议论文摘要录…&lt;/a&gt;&lt;span&gt;2015-07-06&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=50&quot;&gt;第九届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2015-03-29&lt;/span&gt;&lt;/li&gt;
+ 
+            &lt;/ul&gt;
+            &lt;/td&gt;
+            &lt;td width=&quot;43%&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;images/img.jpg&quot; width=&quot;235&quot; height=&quot;153&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;/td&gt;
+    &lt;td width=&quot;13&quot;&gt;&lt;/td&gt;
+    &lt;td width=&quot;272&quot; valign=&quot;top&quot;&gt;&lt;div class=&quot;box2 spacer&quot;&gt;
+    	&lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title2.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon1&quot;&gt;
+        &lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮箱：&lt;/span&gt;&lt;a href=&quot;http://ewebmail.mail.163.com/js5/main.jsp?sid=nAEpvymmqjNZSVyaEQmmltGSjaGckXKy&quot;&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;ndac@tsinghua.edu.cn&lt;br /&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;电话：010-62781331&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;地址：清华大学环境学院全国博士生学术会议组委会(收)&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮编：100084&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;QQ群：543916109&lt;/span&gt;&lt;/div&gt;    
+		 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2 spacer&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title3.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt;
+	  &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logined&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; 欢迎光临，&lt;strong id=&quot;loginedUserName&quot;&gt;&lt;/strong&gt;	&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; &lt;input type=&quot;button&quot; value=&quot;退出登录&quot; class=&quot;logoutBtn&quot; onClick=&quot;logout()&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+       &lt;FORM id=&quot;smyform&quot; action=&quot;&quot; method=post name=&quot;smyform&quot;  &gt;
+	     &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logining&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆账户：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;user_name&quot; type=&quot;text&quot; class=&quot;input1&quot; id=&quot;user_name&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆密码：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;input1&quot; id=&quot;password&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;td height=&quot;36&quot; valign=&quot;bottom&quot;&gt;&lt;input name=&quot;&quot; type=&quot;button&quot; class=&quot;loginBtn&quot;  value=&quot;&quot;  onclick=&quot;return seCheck(this)&quot;  style=&quot; vertical-align:top&quot;/&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;register.php&quot;&gt;&lt;img src=&quot;images/btn2.jpg&quot; width=&quot;43&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+		&lt;/FORM&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title4.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt; 
+      &lt;ul class=&quot;list1&quot;&gt;
+	              &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=126&quot;&gt;水污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=127&quot;&gt;大气污染控制&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=128&quot;&gt;固体废物污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=129&quot;&gt;环境经济、管理与政策&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=130&quot;&gt;环境化学与材料&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=131&quot;&gt;环境生态与健康&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=179&quot;&gt;能源与气候变化&lt;/a&gt;&lt;/li&gt;
+		      &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+     &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+ &lt;div class=&quot;links&quot;&gt;
+	&lt;div class=&quot;linksbox&quot;&gt;
+	  &lt;div&gt;&lt;img src=&quot;images/title5.jpg&quot; /&gt;&lt;/div&gt;    
+        &lt;table width=&quot;98%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+			  
+		   		   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a18a09752.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn/publish/env/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1be9bffd.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.chinacses.org/cn/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1c90550d.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 			 
+		  &lt;/tr&gt;
+       
+        &lt;/table&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+Copyright © 2006-2011 Tsinghua Inc. All rights reserved. 清华大学环境学院 版权所有&lt;br /&gt;
+京ICP 09100705号&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[183]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://env.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://env.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://ndac.env.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="183">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="47" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Thu, 03 Nov 2011 04:48:31 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;4eb21d1f-2f&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 11:57:36 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;header&gt;&lt;/header&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[1]" method="GET" name="HTTP traceroute" plugin="http_vs_https_dist" severity="Information" url="None" var="None">
+        <description>The routes to the target's HTTP and HTTPS ports are the same:
+    0 192.168.16.2
+    1 166.111.7.161</description>
+        <http-transactions>
+            <http-transaction id="1">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="thuwebcookie=2668064522.20480.0000; path=/" field="set-cookie"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 11:57:31 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;第十届全国博士生学术会议&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+--&gt;
+&lt;/style&gt;
+&lt;link href=&quot;css/layout.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.form.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/login.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;div id=&quot;wrap&quot;&gt;
+
+ &lt;div&gt;  &lt;img src=&quot;/uploadfile/2016/0329/56f9dda6606ee.jpg&quot; /&gt;&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;margin-bottom:12px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;images/nav1.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;&lt;img src=&quot;images/nav2.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;news.php&quot;&gt;&lt;img src=&quot;images/nav3.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;tools.php&quot;&gt;&lt;img src=&quot;images/nav4.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;login.php&quot;&gt;&lt;img src=&quot;images/nav5.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=committee&quot;&gt;&lt;img src=&quot;images/nav6.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=contact&quot;&gt;&lt;img src=&quot;images/nav7.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;history.php&quot;&gt;&lt;img src=&quot;images/nav8.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;635&quot; valign=&quot;top&quot;&gt;
+    &lt;div class=&quot;box1 spacer&quot;&gt;
+    	&lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon&quot; style=&quot;text-indent:24px; line-height:26px&quot;&gt;
+		 
+全国博士生学术会议暨环境科学与工程新理论、新技术学术研讨会由清华大学、中国环境科学学会（环境教育委员会）、区域环境质量协同创新中心、环境模拟与污染控制国家重点联合实验室主办，并得到了西安建筑科技大学和Frontiers of Environmental Science &amp; Engineering期刊的鼎力协助。秉承“交流碰撞启创新之路，厚积博采成一家之言”的宗旨，以环境科学与工程新理论、新技术为主题，积极为从事环境及相关学科领域研究的博士生搭建高起点、高水平、最前沿的学术交流平台。
+全国博士生学术会议每年举办一届，迄今为止已成功举办九届。投稿数量与参加单位逐年增加，知名度不断提高，影响力不断扩大，受到了全国环境领域老师和博士生的广泛认可，目前已成为环境领域博士生交流学术思想最大的活动平台。在会议中，博士生作为会议的主角，不仅承担了会议组织的大部分工作，还实现了博士生自己主持、讨论、总结和点评的交流形式，形成了以博士生为主体的高水平学术研讨和学术争论的氛围。
+本届会议将于2016年10月27-30日于清华大学（中国·北京）召开。全国博士生学……
+	
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;
+      &lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title1.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;news.php&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon&quot;&gt; 
+        &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td width=&quot;57%&quot; valign=&quot;top&quot;&gt;
+            &lt;ul class=&quot;list&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=56&quot;&gt;第十届全国博士生学术会议摘要录用名…&lt;/a&gt;&lt;span&gt;2016-07-08&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=55&quot;&gt;第十届全国博士生学术会议稿件全文格…&lt;/a&gt;&lt;span&gt;2016-07-05&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=54&quot;&gt;第十届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2016-04-28&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=53&quot;&gt;第十届全国博士生学术会议通知…&lt;/a&gt;&lt;span&gt;2016-04-15&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=51&quot;&gt;第九届全国博士生学术会议论文摘要录…&lt;/a&gt;&lt;span&gt;2015-07-06&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=50&quot;&gt;第九届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2015-03-29&lt;/span&gt;&lt;/li&gt;
+ 
+            &lt;/ul&gt;
+            &lt;/td&gt;
+            &lt;td width=&quot;43%&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;images/img.jpg&quot; width=&quot;235&quot; height=&quot;153&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;/td&gt;
+    &lt;td width=&quot;13&quot;&gt;&lt;/td&gt;
+    &lt;td width=&quot;272&quot; valign=&quot;top&quot;&gt;&lt;div class=&quot;box2 spacer&quot;&gt;
+    	&lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title2.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon1&quot;&gt;
+        &lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮箱：&lt;/span&gt;&lt;a href=&quot;http://ewebmail.mail.163.com/js5/main.jsp?sid=nAEpvymmqjNZSVyaEQmmltGSjaGckXKy&quot;&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;ndac@tsinghua.edu.cn&lt;br /&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;电话：010-62781331&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;地址：清华大学环境学院全国博士生学术会议组委会(收)&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮编：100084&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;QQ群：543916109&lt;/span&gt;&lt;/div&gt;    
+		 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2 spacer&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title3.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt;
+	  &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logined&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; 欢迎光临，&lt;strong id=&quot;loginedUserName&quot;&gt;&lt;/strong&gt;	&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; &lt;input type=&quot;button&quot; value=&quot;退出登录&quot; class=&quot;logoutBtn&quot; onClick=&quot;logout()&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+       &lt;FORM id=&quot;smyform&quot; action=&quot;&quot; method=post name=&quot;smyform&quot;  &gt;
+	     &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logining&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆账户：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;user_name&quot; type=&quot;text&quot; class=&quot;input1&quot; id=&quot;user_name&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆密码：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;input1&quot; id=&quot;password&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;td height=&quot;36&quot; valign=&quot;bottom&quot;&gt;&lt;input name=&quot;&quot; type=&quot;button&quot; class=&quot;loginBtn&quot;  value=&quot;&quot;  onclick=&quot;return seCheck(this)&quot;  style=&quot; vertical-align:top&quot;/&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;register.php&quot;&gt;&lt;img src=&quot;images/btn2.jpg&quot; width=&quot;43&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+		&lt;/FORM&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title4.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt; 
+      &lt;ul class=&quot;list1&quot;&gt;
+	              &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=126&quot;&gt;水污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=127&quot;&gt;大气污染控制&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=128&quot;&gt;固体废物污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=129&quot;&gt;环境经济、管理与政策&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=130&quot;&gt;环境化学与材料&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=131&quot;&gt;环境生态与健康&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=179&quot;&gt;能源与气候变化&lt;/a&gt;&lt;/li&gt;
+		      &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+     &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+ &lt;div class=&quot;links&quot;&gt;
+	&lt;div class=&quot;linksbox&quot;&gt;
+	  &lt;div&gt;&lt;img src=&quot;images/title5.jpg&quot; /&gt;&lt;/div&gt;    
+        &lt;table width=&quot;98%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+			  
+		   		   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a18a09752.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn/publish/env/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1be9bffd.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.chinacses.org/cn/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1c90550d.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 			 
+		  &lt;/tr&gt;
+       
+        &lt;/table&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+Copyright © 2006-2011 Tsinghua Inc. All rights reserved. 清华大学环境学院 版权所有&lt;br /&gt;
+京ICP 09100705号&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[203]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.7.161/" var="None">
+        <description>The contents of http://166.111.7.161/ and http://ndac.env.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="203">
+                <http-request>
+                    <status>GET http://166.111.7.161/ HTTP/1.1</status>
+                    <headers>
+                        <header content="166.111.7.161" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="47" field="content-length"/>
+                        <header content="thuwebcookie=2651287306.20480.0000; path=/" field="set-cookie"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="Thu, 03 Nov 2011 04:48:31 GMT" field="last-modified"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="&quot;4eb21d1f-2f&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 11:57:47 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;
+&lt;header&gt;&lt;/header&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[179]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://ndac.env.tsinghua.edu.cn/FEXJh" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://ndac.env.tsinghua.edu.cn/FEXJh
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="179">
+                <http-request>
+                    <status>PUT http://ndac.env.tsinghua.edu.cn/FEXJh HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">IEpjvU</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 11:57:36 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /FEXJh.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[173, 204]" method="GET" name="Secure content over insecure channel" plugin="un_ssl" severity="Medium" url="http://ndac.env.tsinghua.edu.cn/" var="None">
+        <description>Secure content can be accessed using the insecure HTTP protocol. The vulnerable URLs used to verify this vulnerability are:
+ - https://ndac.env.tsinghua.edu.cn/
+ - http://ndac.env.tsinghua.edu.cn/
+</description>
+        <http-transactions>
+            <http-transaction id="173">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:35 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;第十届全国博士生学术会议&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+--&gt;
+&lt;/style&gt;
+&lt;link href=&quot;css/layout.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.form.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/login.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;div id=&quot;wrap&quot;&gt;
+
+ &lt;div&gt;  &lt;img src=&quot;/uploadfile/2016/0329/56f9dda6606ee.jpg&quot; /&gt;&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;margin-bottom:12px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;images/nav1.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;&lt;img src=&quot;images/nav2.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;news.php&quot;&gt;&lt;img src=&quot;images/nav3.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;tools.php&quot;&gt;&lt;img src=&quot;images/nav4.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;login.php&quot;&gt;&lt;img src=&quot;images/nav5.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=committee&quot;&gt;&lt;img src=&quot;images/nav6.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=contact&quot;&gt;&lt;img src=&quot;images/nav7.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;history.php&quot;&gt;&lt;img src=&quot;images/nav8.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;635&quot; valign=&quot;top&quot;&gt;
+    &lt;div class=&quot;box1 spacer&quot;&gt;
+    	&lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon&quot; style=&quot;text-indent:24px; line-height:26px&quot;&gt;
+		 
+全国博士生学术会议暨环境科学与工程新理论、新技术学术研讨会由清华大学、中国环境科学学会（环境教育委员会）、区域环境质量协同创新中心、环境模拟与污染控制国家重点联合实验室主办，并得到了西安建筑科技大学和Frontiers of Environmental Science &amp; Engineering期刊的鼎力协助。秉承“交流碰撞启创新之路，厚积博采成一家之言”的宗旨，以环境科学与工程新理论、新技术为主题，积极为从事环境及相关学科领域研究的博士生搭建高起点、高水平、最前沿的学术交流平台。
+全国博士生学术会议每年举办一届，迄今为止已成功举办九届。投稿数量与参加单位逐年增加，知名度不断提高，影响力不断扩大，受到了全国环境领域老师和博士生的广泛认可，目前已成为环境领域博士生交流学术思想最大的活动平台。在会议中，博士生作为会议的主角，不仅承担了会议组织的大部分工作，还实现了博士生自己主持、讨论、总结和点评的交流形式，形成了以博士生为主体的高水平学术研讨和学术争论的氛围。
+本届会议将于2016年10月27-30日于清华大学（中国·北京）召开。全国博士生学……
+	
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;
+      &lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title1.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;news.php&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon&quot;&gt; 
+        &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td width=&quot;57%&quot; valign=&quot;top&quot;&gt;
+            &lt;ul class=&quot;list&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=56&quot;&gt;第十届全国博士生学术会议摘要录用名…&lt;/a&gt;&lt;span&gt;2016-07-08&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=55&quot;&gt;第十届全国博士生学术会议稿件全文格…&lt;/a&gt;&lt;span&gt;2016-07-05&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=54&quot;&gt;第十届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2016-04-28&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=53&quot;&gt;第十届全国博士生学术会议通知…&lt;/a&gt;&lt;span&gt;2016-04-15&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=51&quot;&gt;第九届全国博士生学术会议论文摘要录…&lt;/a&gt;&lt;span&gt;2015-07-06&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=50&quot;&gt;第九届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2015-03-29&lt;/span&gt;&lt;/li&gt;
+ 
+            &lt;/ul&gt;
+            &lt;/td&gt;
+            &lt;td width=&quot;43%&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;images/img.jpg&quot; width=&quot;235&quot; height=&quot;153&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;/td&gt;
+    &lt;td width=&quot;13&quot;&gt;&lt;/td&gt;
+    &lt;td width=&quot;272&quot; valign=&quot;top&quot;&gt;&lt;div class=&quot;box2 spacer&quot;&gt;
+    	&lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title2.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon1&quot;&gt;
+        &lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮箱：&lt;/span&gt;&lt;a href=&quot;http://ewebmail.mail.163.com/js5/main.jsp?sid=nAEpvymmqjNZSVyaEQmmltGSjaGckXKy&quot;&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;ndac@tsinghua.edu.cn&lt;br /&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;电话：010-62781331&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;地址：清华大学环境学院全国博士生学术会议组委会(收)&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮编：100084&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;QQ群：543916109&lt;/span&gt;&lt;/div&gt;    
+		 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2 spacer&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title3.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt;
+	  &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logined&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; 欢迎光临，&lt;strong id=&quot;loginedUserName&quot;&gt;&lt;/strong&gt;	&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; &lt;input type=&quot;button&quot; value=&quot;退出登录&quot; class=&quot;logoutBtn&quot; onClick=&quot;logout()&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+       &lt;FORM id=&quot;smyform&quot; action=&quot;&quot; method=post name=&quot;smyform&quot;  &gt;
+	     &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logining&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆账户：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;user_name&quot; type=&quot;text&quot; class=&quot;input1&quot; id=&quot;user_name&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆密码：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;input1&quot; id=&quot;password&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;td height=&quot;36&quot; valign=&quot;bottom&quot;&gt;&lt;input name=&quot;&quot; type=&quot;button&quot; class=&quot;loginBtn&quot;  value=&quot;&quot;  onclick=&quot;return seCheck(this)&quot;  style=&quot; vertical-align:top&quot;/&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;register.php&quot;&gt;&lt;img src=&quot;images/btn2.jpg&quot; width=&quot;43&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+		&lt;/FORM&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title4.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt; 
+      &lt;ul class=&quot;list1&quot;&gt;
+	              &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=126&quot;&gt;水污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=127&quot;&gt;大气污染控制&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=128&quot;&gt;固体废物污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=129&quot;&gt;环境经济、管理与政策&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=130&quot;&gt;环境化学与材料&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=131&quot;&gt;环境生态与健康&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=179&quot;&gt;能源与气候变化&lt;/a&gt;&lt;/li&gt;
+		      &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+     &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+ &lt;div class=&quot;links&quot;&gt;
+	&lt;div class=&quot;linksbox&quot;&gt;
+	  &lt;div&gt;&lt;img src=&quot;images/title5.jpg&quot; /&gt;&lt;/div&gt;    
+        &lt;table width=&quot;98%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+			  
+		   		   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a18a09752.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn/publish/env/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1be9bffd.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.chinacses.org/cn/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1c90550d.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 			 
+		  &lt;/tr&gt;
+       
+        &lt;/table&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+Copyright © 2006-2011 Tsinghua Inc. All rights reserved. 清华大学环境学院 版权所有&lt;br /&gt;
+京ICP 09100705号&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="204">
+                <http-request>
+                    <status>GET https://ndac.env.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:51 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;第十届全国博士生学术会议&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+--&gt;
+&lt;/style&gt;
+&lt;link href=&quot;css/layout.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.form.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/login.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;div id=&quot;wrap&quot;&gt;
+
+ &lt;div&gt;  &lt;img src=&quot;/uploadfile/2016/0329/56f9dda6606ee.jpg&quot; /&gt;&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;margin-bottom:12px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;images/nav1.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;&lt;img src=&quot;images/nav2.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;news.php&quot;&gt;&lt;img src=&quot;images/nav3.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;tools.php&quot;&gt;&lt;img src=&quot;images/nav4.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;login.php&quot;&gt;&lt;img src=&quot;images/nav5.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=committee&quot;&gt;&lt;img src=&quot;images/nav6.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=contact&quot;&gt;&lt;img src=&quot;images/nav7.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;history.php&quot;&gt;&lt;img src=&quot;images/nav8.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;635&quot; valign=&quot;top&quot;&gt;
+    &lt;div class=&quot;box1 spacer&quot;&gt;
+    	&lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon&quot; style=&quot;text-indent:24px; line-height:26px&quot;&gt;
+		 
+全国博士生学术会议暨环境科学与工程新理论、新技术学术研讨会由清华大学、中国环境科学学会（环境教育委员会）、区域环境质量协同创新中心、环境模拟与污染控制国家重点联合实验室主办，并得到了西安建筑科技大学和Frontiers of Environmental Science &amp; Engineering期刊的鼎力协助。秉承“交流碰撞启创新之路，厚积博采成一家之言”的宗旨，以环境科学与工程新理论、新技术为主题，积极为从事环境及相关学科领域研究的博士生搭建高起点、高水平、最前沿的学术交流平台。
+全国博士生学术会议每年举办一届，迄今为止已成功举办九届。投稿数量与参加单位逐年增加，知名度不断提高，影响力不断扩大，受到了全国环境领域老师和博士生的广泛认可，目前已成为环境领域博士生交流学术思想最大的活动平台。在会议中，博士生作为会议的主角，不仅承担了会议组织的大部分工作，还实现了博士生自己主持、讨论、总结和点评的交流形式，形成了以博士生为主体的高水平学术研讨和学术争论的氛围。
+本届会议将于2016年10月27-30日于清华大学（中国·北京）召开。全国博士生学……
+	
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;
+      &lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title1.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;news.php&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon&quot;&gt; 
+        &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td width=&quot;57%&quot; valign=&quot;top&quot;&gt;
+            &lt;ul class=&quot;list&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=56&quot;&gt;第十届全国博士生学术会议摘要录用名…&lt;/a&gt;&lt;span&gt;2016-07-08&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=55&quot;&gt;第十届全国博士生学术会议稿件全文格…&lt;/a&gt;&lt;span&gt;2016-07-05&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=54&quot;&gt;第十届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2016-04-28&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=53&quot;&gt;第十届全国博士生学术会议通知…&lt;/a&gt;&lt;span&gt;2016-04-15&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=51&quot;&gt;第九届全国博士生学术会议论文摘要录…&lt;/a&gt;&lt;span&gt;2015-07-06&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=50&quot;&gt;第九届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2015-03-29&lt;/span&gt;&lt;/li&gt;
+ 
+            &lt;/ul&gt;
+            &lt;/td&gt;
+            &lt;td width=&quot;43%&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;images/img.jpg&quot; width=&quot;235&quot; height=&quot;153&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;/td&gt;
+    &lt;td width=&quot;13&quot;&gt;&lt;/td&gt;
+    &lt;td width=&quot;272&quot; valign=&quot;top&quot;&gt;&lt;div class=&quot;box2 spacer&quot;&gt;
+    	&lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title2.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon1&quot;&gt;
+        &lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮箱：&lt;/span&gt;&lt;a href=&quot;http://ewebmail.mail.163.com/js5/main.jsp?sid=nAEpvymmqjNZSVyaEQmmltGSjaGckXKy&quot;&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;ndac@tsinghua.edu.cn&lt;br /&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;电话：010-62781331&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;地址：清华大学环境学院全国博士生学术会议组委会(收)&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮编：100084&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;QQ群：543916109&lt;/span&gt;&lt;/div&gt;    
+		 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2 spacer&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title3.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt;
+	  &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logined&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; 欢迎光临，&lt;strong id=&quot;loginedUserName&quot;&gt;&lt;/strong&gt;	&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; &lt;input type=&quot;button&quot; value=&quot;退出登录&quot; class=&quot;logoutBtn&quot; onClick=&quot;logout()&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+       &lt;FORM id=&quot;smyform&quot; action=&quot;&quot; method=post name=&quot;smyform&quot;  &gt;
+	     &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logining&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆账户：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;user_name&quot; type=&quot;text&quot; class=&quot;input1&quot; id=&quot;user_name&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆密码：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;input1&quot; id=&quot;password&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;td height=&quot;36&quot; valign=&quot;bottom&quot;&gt;&lt;input name=&quot;&quot; type=&quot;button&quot; class=&quot;loginBtn&quot;  value=&quot;&quot;  onclick=&quot;return seCheck(this)&quot;  style=&quot; vertical-align:top&quot;/&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;register.php&quot;&gt;&lt;img src=&quot;images/btn2.jpg&quot; width=&quot;43&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+		&lt;/FORM&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title4.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt; 
+      &lt;ul class=&quot;list1&quot;&gt;
+	              &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=126&quot;&gt;水污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=127&quot;&gt;大气污染控制&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=128&quot;&gt;固体废物污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=129&quot;&gt;环境经济、管理与政策&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=130&quot;&gt;环境化学与材料&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=131&quot;&gt;环境生态与健康&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=179&quot;&gt;能源与气候变化&lt;/a&gt;&lt;/li&gt;
+		      &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+     &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+ &lt;div class=&quot;links&quot;&gt;
+	&lt;div class=&quot;linksbox&quot;&gt;
+	  &lt;div&gt;&lt;img src=&quot;images/title5.jpg&quot; /&gt;&lt;/div&gt;    
+        &lt;table width=&quot;98%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+			  
+		   		   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a18a09752.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn/publish/env/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1be9bffd.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.chinacses.org/cn/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1c90550d.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 			 
+		  &lt;/tr&gt;
+       
+        &lt;/table&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+Copyright © 2006-2011 Tsinghua Inc. All rights reserved. 清华大学环境学院 版权所有&lt;br /&gt;
+京ICP 09100705号&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 94, 113, 176, 178, 179, 184, 185, 188, 199, 200, 201, 202]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:31 GMT" field="date"/>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;title&gt;第十届全国博士生学术会议&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+--&gt;
+&lt;/style&gt;
+&lt;link href=&quot;css/layout.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.form.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jquery.cookie.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/login.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;div id=&quot;wrap&quot;&gt;
+
+ &lt;div&gt;  &lt;img src=&quot;/uploadfile/2016/0329/56f9dda6606ee.jpg&quot; /&gt;&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;margin-bottom:12px;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;a href=&quot;/&quot;&gt;&lt;img src=&quot;images/nav1.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;&lt;img src=&quot;images/nav2.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;news.php&quot;&gt;&lt;img src=&quot;images/nav3.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;tools.php&quot;&gt;&lt;img src=&quot;images/nav4.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;login.php&quot;&gt;&lt;img src=&quot;images/nav5.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=committee&quot;&gt;&lt;img src=&quot;images/nav6.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;company.php?c=contact&quot;&gt;&lt;img src=&quot;images/nav7.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;history.php&quot;&gt;&lt;img src=&quot;images/nav8.jpg&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+  &lt;tr&gt;
+    &lt;td width=&quot;635&quot; valign=&quot;top&quot;&gt;
+    &lt;div class=&quot;box1 spacer&quot;&gt;
+    	&lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;company.php?c=about&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon&quot; style=&quot;text-indent:24px; line-height:26px&quot;&gt;
+		 
+全国博士生学术会议暨环境科学与工程新理论、新技术学术研讨会由清华大学、中国环境科学学会（环境教育委员会）、区域环境质量协同创新中心、环境模拟与污染控制国家重点联合实验室主办，并得到了西安建筑科技大学和Frontiers of Environmental Science &amp; Engineering期刊的鼎力协助。秉承“交流碰撞启创新之路，厚积博采成一家之言”的宗旨，以环境科学与工程新理论、新技术为主题，积极为从事环境及相关学科领域研究的博士生搭建高起点、高水平、最前沿的学术交流平台。
+全国博士生学术会议每年举办一届，迄今为止已成功举办九届。投稿数量与参加单位逐年增加，知名度不断提高，影响力不断扩大，受到了全国环境领域老师和博士生的广泛认可，目前已成为环境领域博士生交流学术思想最大的活动平台。在会议中，博士生作为会议的主角，不仅承担了会议组织的大部分工作，还实现了博士生自己主持、讨论、总结和点评的交流形式，形成了以博士生为主体的高水平学术研讨和学术争论的氛围。
+本届会议将于2016年10月27-30日于清华大学（中国·北京）召开。全国博士生学……
+	
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box1&quot;&gt;
+      &lt;div class=&quot;title1&quot;&gt;&lt;span&gt;&lt;img src=&quot;images/title1.jpg&quot; /&gt;&lt;/span&gt;&lt;a href=&quot;news.php&quot;&gt;更多&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon&quot;&gt; 
+        &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+          &lt;tr&gt;
+            &lt;td width=&quot;57%&quot; valign=&quot;top&quot;&gt;
+            &lt;ul class=&quot;list&quot;&gt;
+				&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=56&quot;&gt;第十届全国博士生学术会议摘要录用名…&lt;/a&gt;&lt;span&gt;2016-07-08&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=55&quot;&gt;第十届全国博士生学术会议稿件全文格…&lt;/a&gt;&lt;span&gt;2016-07-05&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=54&quot;&gt;第十届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2016-04-28&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=53&quot;&gt;第十届全国博士生学术会议通知…&lt;/a&gt;&lt;span&gt;2016-04-15&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=51&quot;&gt;第九届全国博士生学术会议论文摘要录…&lt;/a&gt;&lt;span&gt;2015-07-06&lt;/span&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;news.php?act=view&amp;itemID=50&quot;&gt;第九届全国博士生学术会议投稿摘要格…&lt;/a&gt;&lt;span&gt;2015-03-29&lt;/span&gt;&lt;/li&gt;
+ 
+            &lt;/ul&gt;
+            &lt;/td&gt;
+            &lt;td width=&quot;43%&quot; align=&quot;right&quot;&gt;&lt;img src=&quot;images/img.jpg&quot; width=&quot;235&quot; height=&quot;153&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;&lt;/td&gt;
+    &lt;td width=&quot;13&quot;&gt;&lt;/td&gt;
+    &lt;td width=&quot;272&quot; valign=&quot;top&quot;&gt;&lt;div class=&quot;box2 spacer&quot;&gt;
+    	&lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title2.jpg&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;boxcon1&quot;&gt;
+        &lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮箱：&lt;/span&gt;&lt;a href=&quot;http://ewebmail.mail.163.com/js5/main.jsp?sid=nAEpvymmqjNZSVyaEQmmltGSjaGckXKy&quot;&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;ndac@tsinghua.edu.cn&lt;br /&gt;
+&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;电话：010-62781331&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;地址：清华大学环境学院全国博士生学术会议组委会(收)&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;邮编：100084&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;span style=&quot;font-family: 'Times New Roman';&quot;&gt;QQ群：543916109&lt;/span&gt;&lt;/div&gt;    
+		 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2 spacer&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title3.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt;
+	  &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logined&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; 欢迎光临，&lt;strong id=&quot;loginedUserName&quot;&gt;&lt;/strong&gt;	&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;40&quot; align=&quot;center&quot;&gt; &lt;input type=&quot;button&quot; value=&quot;退出登录&quot; class=&quot;logoutBtn&quot; onClick=&quot;logout()&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;20&quot;&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+       &lt;FORM id=&quot;smyform&quot; action=&quot;&quot; method=post name=&quot;smyform&quot;  &gt;
+	     &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; id=&quot;logining&quot;&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆账户：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;user_name&quot; type=&quot;text&quot; class=&quot;input1&quot; id=&quot;user_name&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td height=&quot;30&quot; align=&quot;right&quot;&gt;登陆密码：&lt;/td&gt;
+            &lt;td&gt;&lt;input name=&quot;password&quot; type=&quot;password&quot; class=&quot;input1&quot; id=&quot;password&quot; /&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;td height=&quot;36&quot; valign=&quot;bottom&quot;&gt;&lt;input name=&quot;&quot; type=&quot;button&quot; class=&quot;loginBtn&quot;  value=&quot;&quot;  onclick=&quot;return seCheck(this)&quot;  style=&quot; vertical-align:top&quot;/&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;register.php&quot;&gt;&lt;img src=&quot;images/btn2.jpg&quot; width=&quot;43&quot; height=&quot;20&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+		&lt;/FORM&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;
+      &lt;div class=&quot;title2&quot;&gt;&lt;img src=&quot;images/title4.jpg&quot; /&gt;&lt;/div&gt;
+      &lt;div class=&quot;boxcon1&quot;&gt; 
+      &lt;ul class=&quot;list1&quot;&gt;
+	              &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=126&quot;&gt;水污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=127&quot;&gt;大气污染控制&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=128&quot;&gt;固体废物污染控制与资源化&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=129&quot;&gt;环境经济、管理与政策&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=130&quot;&gt;环境化学与材料&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=131&quot;&gt;环境生态与健康&lt;/a&gt;&lt;/li&gt;
+		          &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;artical.php?act=view&amp;itemID=179&quot;&gt;能源与气候变化&lt;/a&gt;&lt;/li&gt;
+		      &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+     &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+ &lt;div class=&quot;links&quot;&gt;
+	&lt;div class=&quot;linksbox&quot;&gt;
+	  &lt;div&gt;&lt;img src=&quot;images/title5.jpg&quot; /&gt;&lt;/div&gt;    
+        &lt;table width=&quot;98%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+          &lt;tr&gt;
+			  
+		   		   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a18a09752.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.tsinghua.edu.cn/publish/env/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1be9bffd.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 					   		    &lt;td height=&quot;80&quot; align=&quot;center&quot;&gt;&lt;a  target=&quot;_blank&quot; href=&quot;http://www.chinacses.org/cn/index.html&quot;&gt;&lt;img src=&quot;/uploadfile/2012/0415/4f89a1c90550d.jpg&quot;  /&gt;&lt;/a&gt;&lt;/td&gt;
+						 			 
+		  &lt;/tr&gt;
+       
+        &lt;/table&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+Copyright © 2006-2011 Tsinghua Inc. All rights reserved. 清华大学环境学院 版权所有&lt;br /&gt;
+京ICP 09100705号&lt;/div&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="94">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:35 GMT" field="date"/>
+                        <header content="209" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /favicon.ico was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="113">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:35 GMT" field="date"/>
+                        <header content="211" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="176">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:36 GMT" field="date"/>
+                        <header content="224" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /web-console/ServerInfo.jsp was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="178">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:36 GMT" field="date"/>
+                        <header content="212" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /admin-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="179">
+                <http-request>
+                    <status>PUT http://ndac.env.tsinghua.edu.cn/FEXJh HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">IEpjvU</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 11:57:36 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /FEXJh.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="184">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:36 GMT" field="date"/>
+                        <header content="211" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /server-status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="185">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/WjLnf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:36 GMT" field="date"/>
+                        <header content="208" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WjLnf.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="188">
+                <http-request>
+                    <status>POST http://ndac.env.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L1dqTG5mLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguZm5Malc=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:37 GMT" field="date"/>
+                        <header content="226" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="199">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:38 GMT" field="date"/>
+                        <header content="223" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/JMXInvokerServlet was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="200">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:38 GMT" field="date"/>
+                        <header content="216" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/Invoker was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="201">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:38 GMT" field="date"/>
+                        <header content="204" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="202">
+                <http-request>
+                    <status>GET http://ndac.env.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="ndac.env.tsinghua.edu.cn" field="Host"/>
+                        <header content="thuwebcookie=2668064522.20480.0000" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Wed, 30 Nov 2016 11:57:40 GMT" field="date"/>
+                        <header content="210" field="content-length"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                        <header content="keep-alive" field="connection"/>
+                        <header content="nginx/1.9.0" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /jmx-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to ndac.env.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

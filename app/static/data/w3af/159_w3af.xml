@@ -1,0 +1,2817 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481167889" start-long="Wed Dec 07 22:31:29 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://alum.sz.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.131"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/159_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[18]" method="GET" name="Auto-completable form" plugin="form_autocomplete" severity="Information" url="http://alum.sz.tsinghua.edu.cn/" var="None">
+        <description>The URL: &quot;http://alum.sz.tsinghua.edu.cn/&quot; has a &quot;&lt;form&gt;&quot; element with auto-complete enabled.</description>
+        <long-description>In typical form-based web applications, it is common practice for developers to allow `autocomplete` within the HTML form to improve the usability of the page. With `autocomplete` enabled (default), the browser is allowed to cache previously entered form values.
+
+For legitimate purposes, this allows the user to quickly re-enter the same data when completing the form multiple times.
+
+When `autocomplete` is enabled on either/both the username and password fields, this could allow a cyber-criminal with access to the victim's computer the ability to have the victim's credentials automatically entered as the cyber-criminal visits the affected page.
+
+The tool has discovered that the affected page contains a form containing a password field that has not disabled `autocomplete`.</long-description>
+        <fix-guidance>The `autocomplete` value can be configured in two different locations. The first and most secure location is to disable the `autocomplete` attribute on the `&lt;form&gt;` HTML tag. This will disable `autocomplete` for all inputs within that form. An example of disabling `autocomplete` within the form tag is `&lt;form autocomplete=off&gt;`.
+
+The second slightly less desirable option is to disable the `autocomplete` attribute for a specific `&lt;input&gt;` HTML tag. While this may be the less desired solution from a security perspective, it may be preferred method for usability reasons, depending on size of the form. An example of disabling the `autocomplete` attribute within a password input tag is `&lt;input type=password autocomplete=off&gt;`.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7874" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Fri, 27 Nov 2015 08:48:39 GMT" field="last-modified"/>
+                        <header content="W/&quot;7874-1448614119000&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 03:30:23 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;校友邮箱登陆&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+BODY{
+    background:#fff;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 18px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	FONT-FAMILY:  &quot;Verdana&quot;,  &quot;宋体&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;;
+	margin:0px;
+}
+
+TD{
+	FONT-SIZE: 14px;
+	line-height:160%;
+}
+.login_lostfocus { border: 1px #333333 Dashed; background-color: #ffffff; font-size: 12px; font-family: 宋体,Arial; }
+.lostfocus {
+	border: 1px solid #999999;
+	background-color: #f7f7f7;
+	font-size: 14px;
+	font-family: &quot;宋体&quot;,Arial;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.buttonbg {
+	border: 1px solid #999999;
+	font-size: 13px;
+	background-image:url(images/buttonbg.jpg);
+	height:27px;
+}
+.buttonbgcx {
+	border: 1px solid #999999;
+	font-size: 12px;
+	background-image:url(images/buttonbg1.jpg);
+	height:18px;
+}
+.getfocus {
+	border: 1px #08246B solid;
+	background-color: #ffffff;
+	background-image:url(images/input.gif);
+	font-family: &quot;宋体&quot;,Arial;;
+	font-size: 14px;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.STYLE2 {
+	font-size: 14px;
+	font-weight: bold;
+}
+.STYLE3 {font-size: 12}
+
+--&gt;
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+var xmlHttp,xmlHttp1
+function userChanged(){
+	if (xmlHttp1.readyState==4){
+		if(xmlHttp1.status == 200){
+			var usertype = xmlHttp1.responseText;
+			//usertype=usertype.replace(/\r/ig,&quot;&quot;).replace(/\n/ig,&quot;&quot;);
+			if (usertype!=null||usertype!=&quot;&quot;){
+				alert(usertype);			
+			}else{
+				alert(&quot;该用户不存在！&quot;);
+			}
+		}
+	}
+}
+
+function GetXmlHttpObject(){
+	var xmlHttp=null;
+	try
+	  {
+	  // Firefox, Opera 8.0+, Safari
+	  xmlHttp=new XMLHttpRequest();
+	  }
+	catch (e)
+	  {
+	  // Internet Explorer
+	  try
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+	    }
+	  catch (e)
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+	    }
+	  }
+	return xmlHttp;
+}
+function onSubmitForm(){
+        return;
+		var userid=document.getElementById(&quot;xh&quot;).value;
+		if (userid==null||userid==&quot;&quot;){
+			return;
+		}	
+		xmlHttp1=GetXmlHttpObject();
+		if (xmlHttp1==null){
+		  alert (&quot;Your browser does not support AJAX!&quot;);
+		  return;
+		}
+		
+		xmlHttp1.onreadystatechange=userChanged;
+		xmlHttp1.open(&quot;GET&quot;,url,true);
+		xmlHttp1.send(null);
+}
+
+function changeDiv1(){	
+		document.all(&quot;div1&quot;).style.display = &quot;&quot;;
+}
+
+
+function checkInput()
+{
+var inputUin=document.form1.uin,
+inputPwd=document.form1.pwd;
+
+if(0==inputUin.value.length)
+{
+inputUin.focus();
+return false;
+}
+
+if(0==inputPwd.value.length)
+{
+inputPwd.focus();
+return false;
+}
+
+document.form1.submit();
+setTimeout(&quot; document.form1.pwd.value = '' &quot;,500);
+return true;
+}
+
+function redirect()
+{
+    window.location.href=&quot;https://exmail.qq.com/cgi-bin/readtemplate?check=false&amp;t=bizmail_orz&quot;; //跳转到b网页
+}
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27907616-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;FORM name=&quot;form1&quot; action=&quot;https://exmail.qq.com/cgi-bin/login&quot; target=&quot;_blank&quot; method=&quot;post&quot; onSubmit=&quot;return checkInput()&quot;&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;firstlogin&quot; value=&quot;false&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;errtemplate&quot; value=&quot;dm_loginpage&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;aliastype&quot; value=&quot;other&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;dmtype&quot; value=&quot;bizmail&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;p&quot; value=&quot;&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;domain&quot; value=&quot;alum.sz.tsinghua.edu.cn&quot; /&gt;
+    &lt;div&gt;
+      &lt;table width=&quot;100%&quot; height=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;div align=&quot;center&quot;&gt;
+            &lt;table width=&quot;1000&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt;
+                &lt;td width=&quot;489&quot; height=&quot;540&quot; valign=&quot;top&quot; background=&quot;images/bg.jpg&quot;&gt;&lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;height: 339px&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;180&quot;&gt;
+                        &lt;br /&gt;
+                        &lt;br /&gt;
+                      &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;&lt;/td&gt;
+                &lt;td width=&quot;511&quot; height=&quot;400&quot; valign=&quot;top&quot;&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;5&quot; cellspacing=&quot;1&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;30&quot; colspan=&quot;2&quot; style=&quot;font-size:10.5pt;&quot;&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot;&gt;&lt;img src=&quot;images/login.jpg&quot; width=&quot;300&quot; height=&quot;60&quot;&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td width=&quot;20%&quot;&gt;&lt;div align=&quot;right&quot;&gt;用户名：&amp;nbsp; &lt;/div&gt;&lt;/td&gt;
+                    &lt;td width=&quot;80%&quot;&gt;&lt;input type=text name=&quot;uin&quot; id=&quot;uin&quot; size=&quot;21&quot; maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;
+					  &lt;span class=&quot;STYLE2&quot;&gt;@alum.sz.tsinghua.edu.cn&lt;/span&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;密　码：&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=password name=&quot;pwd&quot; id=&quot;pwd&quot; size=&quot;21&quot;  maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;submit&quot; id=&quot;btnLogin&quot; class=&quot;buttonbg&quot; value=&quot;用户登陆&quot;  /&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;#&quot; onClick=&quot;redirect();&quot; &gt;忘记密码了？&lt;/a&gt;
+					&lt;/td&gt;
+                  &lt;/tr&gt;
+				  &lt;tr&gt;
+				  &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td height=&quot;30&quot; &gt;&lt;div align=&quot;left&quot;&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;&lt;strong&gt;安全提示：&lt;/strong&gt;
+					  &lt;br&gt;
+					  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;清华大学深圳研究生院及腾讯公司在任何时候不会以邮件形式要求用户提供密码。请您务必提高警惕。
+					  &lt;/p&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;
+                         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如您首次访问校友邮箱系统，请点击&lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbgcx&quot; value=&quot;查询帐号&quot; onClick=&quot;javascript:changeDiv1()&quot; /&gt;，输入学号获取本人邮件帐号和密保邮箱，并通过【忘记密码】自行设置帐号密码。 &lt;/p&gt; 
+                    &lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+					&lt;tbody id=&quot;div1&quot; style=&quot;display: none&quot;&gt;
+					&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;学 号：&amp;nbsp;
+                    &lt;input type=text name=&quot;xh&quot; id=&quot;xh&quot; size=&quot;21&quot; maxlength=&quot;20&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbg&quot; value=&quot;查   询&quot; onClick=&quot;javascript:onSubmitForm()&quot; /&gt;                    &lt;/td&gt;&lt;/tr&gt;
+					&lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;    &lt;/table&gt;
+          &lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td align=center bgcolor=&quot;#efefef&quot; height=&quot;40&quot;&gt;Copyright © 2011 清华大学深圳研究生院
+		  &lt;br&gt;
+		  电子邮件：mr.postman at alum.sz.tsinghua.edu.cn &amp;nbsp;&amp;nbsp;地址：深圳市南山区西丽镇丽水路清华大学园区
+&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[72]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache-Coyote/1.1&quot;.</description>
+        <http-transactions>
+            <http-transaction id="72">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7874" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Fri, 27 Nov 2015 08:48:39 GMT" field="last-modified"/>
+                        <header content="W/&quot;7874-1448614119000&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 03:30:23 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;校友邮箱登陆&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+BODY{
+    background:#fff;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 18px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	FONT-FAMILY:  &quot;Verdana&quot;,  &quot;宋体&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;;
+	margin:0px;
+}
+
+TD{
+	FONT-SIZE: 14px;
+	line-height:160%;
+}
+.login_lostfocus { border: 1px #333333 Dashed; background-color: #ffffff; font-size: 12px; font-family: 宋体,Arial; }
+.lostfocus {
+	border: 1px solid #999999;
+	background-color: #f7f7f7;
+	font-size: 14px;
+	font-family: &quot;宋体&quot;,Arial;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.buttonbg {
+	border: 1px solid #999999;
+	font-size: 13px;
+	background-image:url(images/buttonbg.jpg);
+	height:27px;
+}
+.buttonbgcx {
+	border: 1px solid #999999;
+	font-size: 12px;
+	background-image:url(images/buttonbg1.jpg);
+	height:18px;
+}
+.getfocus {
+	border: 1px #08246B solid;
+	background-color: #ffffff;
+	background-image:url(images/input.gif);
+	font-family: &quot;宋体&quot;,Arial;;
+	font-size: 14px;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.STYLE2 {
+	font-size: 14px;
+	font-weight: bold;
+}
+.STYLE3 {font-size: 12}
+
+--&gt;
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+var xmlHttp,xmlHttp1
+function userChanged(){
+	if (xmlHttp1.readyState==4){
+		if(xmlHttp1.status == 200){
+			var usertype = xmlHttp1.responseText;
+			//usertype=usertype.replace(/\r/ig,&quot;&quot;).replace(/\n/ig,&quot;&quot;);
+			if (usertype!=null||usertype!=&quot;&quot;){
+				alert(usertype);			
+			}else{
+				alert(&quot;该用户不存在！&quot;);
+			}
+		}
+	}
+}
+
+function GetXmlHttpObject(){
+	var xmlHttp=null;
+	try
+	  {
+	  // Firefox, Opera 8.0+, Safari
+	  xmlHttp=new XMLHttpRequest();
+	  }
+	catch (e)
+	  {
+	  // Internet Explorer
+	  try
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+	    }
+	  catch (e)
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+	    }
+	  }
+	return xmlHttp;
+}
+function onSubmitForm(){
+        return;
+		var userid=document.getElementById(&quot;xh&quot;).value;
+		if (userid==null||userid==&quot;&quot;){
+			return;
+		}	
+		xmlHttp1=GetXmlHttpObject();
+		if (xmlHttp1==null){
+		  alert (&quot;Your browser does not support AJAX!&quot;);
+		  return;
+		}
+		
+		xmlHttp1.onreadystatechange=userChanged;
+		xmlHttp1.open(&quot;GET&quot;,url,true);
+		xmlHttp1.send(null);
+}
+
+function changeDiv1(){	
+		document.all(&quot;div1&quot;).style.display = &quot;&quot;;
+}
+
+
+function checkInput()
+{
+var inputUin=document.form1.uin,
+inputPwd=document.form1.pwd;
+
+if(0==inputUin.value.length)
+{
+inputUin.focus();
+return false;
+}
+
+if(0==inputPwd.value.length)
+{
+inputPwd.focus();
+return false;
+}
+
+document.form1.submit();
+setTimeout(&quot; document.form1.pwd.value = '' &quot;,500);
+return true;
+}
+
+function redirect()
+{
+    window.location.href=&quot;https://exmail.qq.com/cgi-bin/readtemplate?check=false&amp;t=bizmail_orz&quot;; //跳转到b网页
+}
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27907616-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;FORM name=&quot;form1&quot; action=&quot;https://exmail.qq.com/cgi-bin/login&quot; target=&quot;_blank&quot; method=&quot;post&quot; onSubmit=&quot;return checkInput()&quot;&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;firstlogin&quot; value=&quot;false&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;errtemplate&quot; value=&quot;dm_loginpage&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;aliastype&quot; value=&quot;other&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;dmtype&quot; value=&quot;bizmail&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;p&quot; value=&quot;&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;domain&quot; value=&quot;alum.sz.tsinghua.edu.cn&quot; /&gt;
+    &lt;div&gt;
+      &lt;table width=&quot;100%&quot; height=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;div align=&quot;center&quot;&gt;
+            &lt;table width=&quot;1000&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt;
+                &lt;td width=&quot;489&quot; height=&quot;540&quot; valign=&quot;top&quot; background=&quot;images/bg.jpg&quot;&gt;&lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;height: 339px&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;180&quot;&gt;
+                        &lt;br /&gt;
+                        &lt;br /&gt;
+                      &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;&lt;/td&gt;
+                &lt;td width=&quot;511&quot; height=&quot;400&quot; valign=&quot;top&quot;&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;5&quot; cellspacing=&quot;1&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;30&quot; colspan=&quot;2&quot; style=&quot;font-size:10.5pt;&quot;&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot;&gt;&lt;img src=&quot;images/login.jpg&quot; width=&quot;300&quot; height=&quot;60&quot;&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td width=&quot;20%&quot;&gt;&lt;div align=&quot;right&quot;&gt;用户名：&amp;nbsp; &lt;/div&gt;&lt;/td&gt;
+                    &lt;td width=&quot;80%&quot;&gt;&lt;input type=text name=&quot;uin&quot; id=&quot;uin&quot; size=&quot;21&quot; maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;
+					  &lt;span class=&quot;STYLE2&quot;&gt;@alum.sz.tsinghua.edu.cn&lt;/span&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;密　码：&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=password name=&quot;pwd&quot; id=&quot;pwd&quot; size=&quot;21&quot;  maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;submit&quot; id=&quot;btnLogin&quot; class=&quot;buttonbg&quot; value=&quot;用户登陆&quot;  /&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;#&quot; onClick=&quot;redirect();&quot; &gt;忘记密码了？&lt;/a&gt;
+					&lt;/td&gt;
+                  &lt;/tr&gt;
+				  &lt;tr&gt;
+				  &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td height=&quot;30&quot; &gt;&lt;div align=&quot;left&quot;&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;&lt;strong&gt;安全提示：&lt;/strong&gt;
+					  &lt;br&gt;
+					  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;清华大学深圳研究生院及腾讯公司在任何时候不会以邮件形式要求用户提供密码。请您务必提高警惕。
+					  &lt;/p&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;
+                         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如您首次访问校友邮箱系统，请点击&lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbgcx&quot; value=&quot;查询帐号&quot; onClick=&quot;javascript:changeDiv1()&quot; /&gt;，输入学号获取本人邮件帐号和密保邮箱，并通过【忘记密码】自行设置帐号密码。 &lt;/p&gt; 
+                    &lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+					&lt;tbody id=&quot;div1&quot; style=&quot;display: none&quot;&gt;
+					&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;学 号：&amp;nbsp;
+                    &lt;input type=text name=&quot;xh&quot; id=&quot;xh&quot; size=&quot;21&quot; maxlength=&quot;20&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbg&quot; value=&quot;查   询&quot; onClick=&quot;javascript:onSubmitForm()&quot; /&gt;                    &lt;/td&gt;&lt;/tr&gt;
+					&lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;    &lt;/table&gt;
+          &lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td align=center bgcolor=&quot;#efefef&quot; height=&quot;40&quot;&gt;Copyright © 2011 清华大学深圳研究生院
+		  &lt;br&gt;
+		  电子邮件：mr.postman at alum.sz.tsinghua.edu.cn &amp;nbsp;&amp;nbsp;地址：深圳市南山区西丽镇丽水路清华大学园区
+&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[94]" method="GET" name="Favicon identification failed" plugin="favicon_identification" severity="Information" url="http://alum.sz.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>Favicon identification failed. If the remote site is using framework that is being exposed by its favicon, please send an email to w3af-develop@lists.sourceforge.net including this md5 hash &quot;b611d079748cd8f607bc1b91793ed62e&quot; and the name of the server or Web application it represents. New fingerprints make this plugin more powerful and  accurate.</description>
+        <http-transactions>
+            <http-transaction id="94">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1406" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Tue, 13 Dec 2011 16:00:00 GMT" field="last-modified"/>
+                        <header content="W/&quot;1406-1323792000000&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 03:30:24 GMT" field="date"/>
+                        <header content="image/x-icon" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">AAABAAEAICAgAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAACjZh8AzY4kAGtJJQC3gSUA4pUlAOWdJgDlnyYA3pYnAOScJwBuUCgAuIMoANqLKADglCgA
+5aAoALZ1KQDmmCkA4JMqAOWWKgDooCoA7awqAIVXKwDQfysA45MrAOeXLADnky0A6JYtAN2ZLQDq
+oC0A7astAOysLQDnky4A6qAuAFlCLwDnkC8A760vAOmVMQDrmzEA8bcxAMN+MwDzrDMAb1E0AMyJ
+NADumzQA9LQ1AM+KNgDvlzYA55g2AO+aNgDopTYA8qY2AHFVNwC5gDgA8Js4APGkOADwmjkA6aU5
+AOCvOgDhsToA3pQ7APSoOwDypzwA9rU8APS8PgCxez8AqnlAAO2hQQD0sUEA9cZBAPXFQgDPlEQA
+6qhGAO2vRgD20UYA+M9KAOyyTQDds1AA971RANylUwDwtFMA0ZhUAOCvYQDfsmQA4rdmAObUZgD7
+1GsA/dJtAPrUdgDYt30A6sqJAOXKigDSvI0A8dqOAOvOkQD015MAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAX0UpT19fX19fX19fX19fX00zX19PPygoKCgoX19fX19HQF9fKCY6Rk5RRigoX19fSkBfKC40
+LS88TFZYPyhfX1AaKDEkHiEyMg5CVF0/X19fPScfEQsUX19fDjtVVz9fX1IrEgQAKCgoKCgoKCgo
+X19fPhwFFRUVFRUVFRUVP19fX19EHQYHDBAWGCM2QT9fX1xfQ0MKAl9fDiwZKio/X19fXF9DOAkg
+Mg4PFzU/X19fX1pZX1s5AwENCBs3P19fX19fWlpTU0glEyIwP19aX19fX19fWlpaS0k/P19fWl9f
+X19fX19fX19aWV9fX1pfX19fX19fX19fX19ZWVpfX4//ZfAwH3WGMAe4vSADvLwAA6KGgcEcCYAB
+/UnAAUlJ4AFbqaGBhpzQA7+/yAPh4eAFwqr4DUEc/53M8//jSUk=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[178]" method="GET" name="No DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://sz.tsinghua.edu.cn/" var="None">
+        <description>The target site has NO DNS wildcard, and the contents of &quot;http://sz.tsinghua.edu.cn/&quot; differ from the contents of &quot;http://alum.sz.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="178">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:25 GMT" field="date"/>
+                        <header content="955" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[182, 184]" method="GET" name="Potential virtual host misconfiguration" plugin="domain_dot" severity="Information" url="None" var="None">
+        <description>[Manual verification required] The response body for a request with a trailing dot in the domain, and the response body without a trailing dot in the domain differ. This could indicate a misconfiguration in the virtual host settings. In some cases, this misconfiguration permits the attacker to read the source code of the web application.</description>
+        <http-transactions>
+            <http-transaction id="182">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7874" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Fri, 27 Nov 2015 08:48:39 GMT" field="last-modified"/>
+                        <header content="W/&quot;7874-1448614119000&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 03:30:25 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;校友邮箱登陆&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+BODY{
+    background:#fff;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 18px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	FONT-FAMILY:  &quot;Verdana&quot;,  &quot;宋体&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;;
+	margin:0px;
+}
+
+TD{
+	FONT-SIZE: 14px;
+	line-height:160%;
+}
+.login_lostfocus { border: 1px #333333 Dashed; background-color: #ffffff; font-size: 12px; font-family: 宋体,Arial; }
+.lostfocus {
+	border: 1px solid #999999;
+	background-color: #f7f7f7;
+	font-size: 14px;
+	font-family: &quot;宋体&quot;,Arial;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.buttonbg {
+	border: 1px solid #999999;
+	font-size: 13px;
+	background-image:url(images/buttonbg.jpg);
+	height:27px;
+}
+.buttonbgcx {
+	border: 1px solid #999999;
+	font-size: 12px;
+	background-image:url(images/buttonbg1.jpg);
+	height:18px;
+}
+.getfocus {
+	border: 1px #08246B solid;
+	background-color: #ffffff;
+	background-image:url(images/input.gif);
+	font-family: &quot;宋体&quot;,Arial;;
+	font-size: 14px;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.STYLE2 {
+	font-size: 14px;
+	font-weight: bold;
+}
+.STYLE3 {font-size: 12}
+
+--&gt;
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+var xmlHttp,xmlHttp1
+function userChanged(){
+	if (xmlHttp1.readyState==4){
+		if(xmlHttp1.status == 200){
+			var usertype = xmlHttp1.responseText;
+			//usertype=usertype.replace(/\r/ig,&quot;&quot;).replace(/\n/ig,&quot;&quot;);
+			if (usertype!=null||usertype!=&quot;&quot;){
+				alert(usertype);			
+			}else{
+				alert(&quot;该用户不存在！&quot;);
+			}
+		}
+	}
+}
+
+function GetXmlHttpObject(){
+	var xmlHttp=null;
+	try
+	  {
+	  // Firefox, Opera 8.0+, Safari
+	  xmlHttp=new XMLHttpRequest();
+	  }
+	catch (e)
+	  {
+	  // Internet Explorer
+	  try
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+	    }
+	  catch (e)
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+	    }
+	  }
+	return xmlHttp;
+}
+function onSubmitForm(){
+        return;
+		var userid=document.getElementById(&quot;xh&quot;).value;
+		if (userid==null||userid==&quot;&quot;){
+			return;
+		}	
+		xmlHttp1=GetXmlHttpObject();
+		if (xmlHttp1==null){
+		  alert (&quot;Your browser does not support AJAX!&quot;);
+		  return;
+		}
+		
+		xmlHttp1.onreadystatechange=userChanged;
+		xmlHttp1.open(&quot;GET&quot;,url,true);
+		xmlHttp1.send(null);
+}
+
+function changeDiv1(){	
+		document.all(&quot;div1&quot;).style.display = &quot;&quot;;
+}
+
+
+function checkInput()
+{
+var inputUin=document.form1.uin,
+inputPwd=document.form1.pwd;
+
+if(0==inputUin.value.length)
+{
+inputUin.focus();
+return false;
+}
+
+if(0==inputPwd.value.length)
+{
+inputPwd.focus();
+return false;
+}
+
+document.form1.submit();
+setTimeout(&quot; document.form1.pwd.value = '' &quot;,500);
+return true;
+}
+
+function redirect()
+{
+    window.location.href=&quot;https://exmail.qq.com/cgi-bin/readtemplate?check=false&amp;t=bizmail_orz&quot;; //跳转到b网页
+}
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27907616-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;FORM name=&quot;form1&quot; action=&quot;https://exmail.qq.com/cgi-bin/login&quot; target=&quot;_blank&quot; method=&quot;post&quot; onSubmit=&quot;return checkInput()&quot;&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;firstlogin&quot; value=&quot;false&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;errtemplate&quot; value=&quot;dm_loginpage&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;aliastype&quot; value=&quot;other&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;dmtype&quot; value=&quot;bizmail&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;p&quot; value=&quot;&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;domain&quot; value=&quot;alum.sz.tsinghua.edu.cn&quot; /&gt;
+    &lt;div&gt;
+      &lt;table width=&quot;100%&quot; height=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;div align=&quot;center&quot;&gt;
+            &lt;table width=&quot;1000&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt;
+                &lt;td width=&quot;489&quot; height=&quot;540&quot; valign=&quot;top&quot; background=&quot;images/bg.jpg&quot;&gt;&lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;height: 339px&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;180&quot;&gt;
+                        &lt;br /&gt;
+                        &lt;br /&gt;
+                      &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;&lt;/td&gt;
+                &lt;td width=&quot;511&quot; height=&quot;400&quot; valign=&quot;top&quot;&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;5&quot; cellspacing=&quot;1&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;30&quot; colspan=&quot;2&quot; style=&quot;font-size:10.5pt;&quot;&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot;&gt;&lt;img src=&quot;images/login.jpg&quot; width=&quot;300&quot; height=&quot;60&quot;&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td width=&quot;20%&quot;&gt;&lt;div align=&quot;right&quot;&gt;用户名：&amp;nbsp; &lt;/div&gt;&lt;/td&gt;
+                    &lt;td width=&quot;80%&quot;&gt;&lt;input type=text name=&quot;uin&quot; id=&quot;uin&quot; size=&quot;21&quot; maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;
+					  &lt;span class=&quot;STYLE2&quot;&gt;@alum.sz.tsinghua.edu.cn&lt;/span&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;密　码：&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=password name=&quot;pwd&quot; id=&quot;pwd&quot; size=&quot;21&quot;  maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;submit&quot; id=&quot;btnLogin&quot; class=&quot;buttonbg&quot; value=&quot;用户登陆&quot;  /&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;#&quot; onClick=&quot;redirect();&quot; &gt;忘记密码了？&lt;/a&gt;
+					&lt;/td&gt;
+                  &lt;/tr&gt;
+				  &lt;tr&gt;
+				  &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td height=&quot;30&quot; &gt;&lt;div align=&quot;left&quot;&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;&lt;strong&gt;安全提示：&lt;/strong&gt;
+					  &lt;br&gt;
+					  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;清华大学深圳研究生院及腾讯公司在任何时候不会以邮件形式要求用户提供密码。请您务必提高警惕。
+					  &lt;/p&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;
+                         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如您首次访问校友邮箱系统，请点击&lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbgcx&quot; value=&quot;查询帐号&quot; onClick=&quot;javascript:changeDiv1()&quot; /&gt;，输入学号获取本人邮件帐号和密保邮箱，并通过【忘记密码】自行设置帐号密码。 &lt;/p&gt; 
+                    &lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+					&lt;tbody id=&quot;div1&quot; style=&quot;display: none&quot;&gt;
+					&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;学 号：&amp;nbsp;
+                    &lt;input type=text name=&quot;xh&quot; id=&quot;xh&quot; size=&quot;21&quot; maxlength=&quot;20&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbg&quot; value=&quot;查   询&quot; onClick=&quot;javascript:onSubmitForm()&quot; /&gt;                    &lt;/td&gt;&lt;/tr&gt;
+					&lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;    &lt;/table&gt;
+          &lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td align=center bgcolor=&quot;#efefef&quot; height=&quot;40&quot;&gt;Copyright © 2011 清华大学深圳研究生院
+		  &lt;br&gt;
+		  电子邮件：mr.postman at alum.sz.tsinghua.edu.cn &amp;nbsp;&amp;nbsp;地址：深圳市南山区西丽镇丽水路清华大学园区
+&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="184">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn." field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:25 GMT" field="date"/>
+                        <header content="955" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[202]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://219.223.190.204/" var="None">
+        <description>The contents of http://219.223.190.204/ and http://alum.sz.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="202">
+                <http-request>
+                    <status>GET http://219.223.190.204/ HTTP/1.1</status>
+                    <headers>
+                        <header content="219.223.190.204" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:27 GMT" field="date"/>
+                        <header content="955" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[206, 212]" method="PUT" name="DAV incorrect configuration" plugin="dav" severity="Information" url="http://alum.sz.tsinghua.edu.cn/acinO" var="None">
+        <description>DAV seems to be correctly configured and allowing you to use the PUT method but the directory does not have the right permissions that would allow the web server to write to it. This error was found at: &quot;http://alum.sz.tsinghua.edu.cn/acinO&quot;.</description>
+        <http-transactions>
+            <http-transaction id="206">
+                <http-request>
+                    <status>PUT http://alum.sz.tsinghua.edu.cn/acinO HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">NbIXaY</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:29 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="212">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/acinO HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:30 GMT" field="date"/>
+                        <header content="970" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /acinO&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/acinO&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/acinO) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[37, 126, 217, 222, 241, 245, 250]" method="GET" name="DAV methods enabled" plugin="allowed_methods" severity="Information" url="http://alum.sz.tsinghua.edu.cn/" var="None">
+        <description>The URL &quot;http://alum.sz.tsinghua.edu.cn/&quot; has the following allowed methods. These include DAV methods and should be disabled: DELETE, GET, HEAD, MKACTIVITY, OPTIONS, PATCH, POST, PUT</description>
+        <http-transactions>
+            <http-transaction id="37">
+                <http-request>
+                    <status>OPTIONS http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:24 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="GET, HEAD, POST, PUT, DELETE, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="126">
+                <http-request>
+                    <status>HEAD http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7874" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Fri, 27 Nov 2015 08:48:39 GMT" field="last-modified"/>
+                        <header content="W/&quot;7874-1448614119000&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 03:30:24 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="217">
+                <http-request>
+                    <status>OPTIONS http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:30 GMT" field="date"/>
+                        <header content="0" field="content-length"/>
+                        <header content="GET, HEAD, POST, PUT, DELETE, OPTIONS" field="allow"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="222">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7874" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Fri, 27 Nov 2015 08:48:39 GMT" field="last-modified"/>
+                        <header content="W/&quot;7874-1448614119000&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 03:30:33 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;校友邮箱登陆&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+BODY{
+    background:#fff;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 18px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	FONT-FAMILY:  &quot;Verdana&quot;,  &quot;宋体&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;;
+	margin:0px;
+}
+
+TD{
+	FONT-SIZE: 14px;
+	line-height:160%;
+}
+.login_lostfocus { border: 1px #333333 Dashed; background-color: #ffffff; font-size: 12px; font-family: 宋体,Arial; }
+.lostfocus {
+	border: 1px solid #999999;
+	background-color: #f7f7f7;
+	font-size: 14px;
+	font-family: &quot;宋体&quot;,Arial;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.buttonbg {
+	border: 1px solid #999999;
+	font-size: 13px;
+	background-image:url(images/buttonbg.jpg);
+	height:27px;
+}
+.buttonbgcx {
+	border: 1px solid #999999;
+	font-size: 12px;
+	background-image:url(images/buttonbg1.jpg);
+	height:18px;
+}
+.getfocus {
+	border: 1px #08246B solid;
+	background-color: #ffffff;
+	background-image:url(images/input.gif);
+	font-family: &quot;宋体&quot;,Arial;;
+	font-size: 14px;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.STYLE2 {
+	font-size: 14px;
+	font-weight: bold;
+}
+.STYLE3 {font-size: 12}
+
+--&gt;
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+var xmlHttp,xmlHttp1
+function userChanged(){
+	if (xmlHttp1.readyState==4){
+		if(xmlHttp1.status == 200){
+			var usertype = xmlHttp1.responseText;
+			//usertype=usertype.replace(/\r/ig,&quot;&quot;).replace(/\n/ig,&quot;&quot;);
+			if (usertype!=null||usertype!=&quot;&quot;){
+				alert(usertype);			
+			}else{
+				alert(&quot;该用户不存在！&quot;);
+			}
+		}
+	}
+}
+
+function GetXmlHttpObject(){
+	var xmlHttp=null;
+	try
+	  {
+	  // Firefox, Opera 8.0+, Safari
+	  xmlHttp=new XMLHttpRequest();
+	  }
+	catch (e)
+	  {
+	  // Internet Explorer
+	  try
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+	    }
+	  catch (e)
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+	    }
+	  }
+	return xmlHttp;
+}
+function onSubmitForm(){
+        return;
+		var userid=document.getElementById(&quot;xh&quot;).value;
+		if (userid==null||userid==&quot;&quot;){
+			return;
+		}	
+		xmlHttp1=GetXmlHttpObject();
+		if (xmlHttp1==null){
+		  alert (&quot;Your browser does not support AJAX!&quot;);
+		  return;
+		}
+		
+		xmlHttp1.onreadystatechange=userChanged;
+		xmlHttp1.open(&quot;GET&quot;,url,true);
+		xmlHttp1.send(null);
+}
+
+function changeDiv1(){	
+		document.all(&quot;div1&quot;).style.display = &quot;&quot;;
+}
+
+
+function checkInput()
+{
+var inputUin=document.form1.uin,
+inputPwd=document.form1.pwd;
+
+if(0==inputUin.value.length)
+{
+inputUin.focus();
+return false;
+}
+
+if(0==inputPwd.value.length)
+{
+inputPwd.focus();
+return false;
+}
+
+document.form1.submit();
+setTimeout(&quot; document.form1.pwd.value = '' &quot;,500);
+return true;
+}
+
+function redirect()
+{
+    window.location.href=&quot;https://exmail.qq.com/cgi-bin/readtemplate?check=false&amp;t=bizmail_orz&quot;; //跳转到b网页
+}
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27907616-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;FORM name=&quot;form1&quot; action=&quot;https://exmail.qq.com/cgi-bin/login&quot; target=&quot;_blank&quot; method=&quot;post&quot; onSubmit=&quot;return checkInput()&quot;&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;firstlogin&quot; value=&quot;false&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;errtemplate&quot; value=&quot;dm_loginpage&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;aliastype&quot; value=&quot;other&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;dmtype&quot; value=&quot;bizmail&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;p&quot; value=&quot;&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;domain&quot; value=&quot;alum.sz.tsinghua.edu.cn&quot; /&gt;
+    &lt;div&gt;
+      &lt;table width=&quot;100%&quot; height=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;div align=&quot;center&quot;&gt;
+            &lt;table width=&quot;1000&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt;
+                &lt;td width=&quot;489&quot; height=&quot;540&quot; valign=&quot;top&quot; background=&quot;images/bg.jpg&quot;&gt;&lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;height: 339px&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;180&quot;&gt;
+                        &lt;br /&gt;
+                        &lt;br /&gt;
+                      &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;&lt;/td&gt;
+                &lt;td width=&quot;511&quot; height=&quot;400&quot; valign=&quot;top&quot;&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;5&quot; cellspacing=&quot;1&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;30&quot; colspan=&quot;2&quot; style=&quot;font-size:10.5pt;&quot;&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot;&gt;&lt;img src=&quot;images/login.jpg&quot; width=&quot;300&quot; height=&quot;60&quot;&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td width=&quot;20%&quot;&gt;&lt;div align=&quot;right&quot;&gt;用户名：&amp;nbsp; &lt;/div&gt;&lt;/td&gt;
+                    &lt;td width=&quot;80%&quot;&gt;&lt;input type=text name=&quot;uin&quot; id=&quot;uin&quot; size=&quot;21&quot; maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;
+					  &lt;span class=&quot;STYLE2&quot;&gt;@alum.sz.tsinghua.edu.cn&lt;/span&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;密　码：&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=password name=&quot;pwd&quot; id=&quot;pwd&quot; size=&quot;21&quot;  maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;submit&quot; id=&quot;btnLogin&quot; class=&quot;buttonbg&quot; value=&quot;用户登陆&quot;  /&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;#&quot; onClick=&quot;redirect();&quot; &gt;忘记密码了？&lt;/a&gt;
+					&lt;/td&gt;
+                  &lt;/tr&gt;
+				  &lt;tr&gt;
+				  &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td height=&quot;30&quot; &gt;&lt;div align=&quot;left&quot;&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;&lt;strong&gt;安全提示：&lt;/strong&gt;
+					  &lt;br&gt;
+					  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;清华大学深圳研究生院及腾讯公司在任何时候不会以邮件形式要求用户提供密码。请您务必提高警惕。
+					  &lt;/p&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;
+                         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如您首次访问校友邮箱系统，请点击&lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbgcx&quot; value=&quot;查询帐号&quot; onClick=&quot;javascript:changeDiv1()&quot; /&gt;，输入学号获取本人邮件帐号和密保邮箱，并通过【忘记密码】自行设置帐号密码。 &lt;/p&gt; 
+                    &lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+					&lt;tbody id=&quot;div1&quot; style=&quot;display: none&quot;&gt;
+					&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;学 号：&amp;nbsp;
+                    &lt;input type=text name=&quot;xh&quot; id=&quot;xh&quot; size=&quot;21&quot; maxlength=&quot;20&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbg&quot; value=&quot;查   询&quot; onClick=&quot;javascript:onSubmitForm()&quot; /&gt;                    &lt;/td&gt;&lt;/tr&gt;
+					&lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;    &lt;/table&gt;
+          &lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td align=center bgcolor=&quot;#efefef&quot; height=&quot;40&quot;&gt;Copyright © 2011 清华大学深圳研究生院
+		  &lt;br&gt;
+		  电子邮件：mr.postman at alum.sz.tsinghua.edu.cn &amp;nbsp;&amp;nbsp;地址：深圳市南山区西丽镇丽水路清华大学园区
+&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="241">
+                <http-request>
+                    <status>POST http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7874" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Fri, 27 Nov 2015 08:48:39 GMT" field="last-modified"/>
+                        <header content="W/&quot;7874-1448614119000&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 03:30:38 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;校友邮箱登陆&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+BODY{
+    background:#fff;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 18px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	FONT-FAMILY:  &quot;Verdana&quot;,  &quot;宋体&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;;
+	margin:0px;
+}
+
+TD{
+	FONT-SIZE: 14px;
+	line-height:160%;
+}
+.login_lostfocus { border: 1px #333333 Dashed; background-color: #ffffff; font-size: 12px; font-family: 宋体,Arial; }
+.lostfocus {
+	border: 1px solid #999999;
+	background-color: #f7f7f7;
+	font-size: 14px;
+	font-family: &quot;宋体&quot;,Arial;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.buttonbg {
+	border: 1px solid #999999;
+	font-size: 13px;
+	background-image:url(images/buttonbg.jpg);
+	height:27px;
+}
+.buttonbgcx {
+	border: 1px solid #999999;
+	font-size: 12px;
+	background-image:url(images/buttonbg1.jpg);
+	height:18px;
+}
+.getfocus {
+	border: 1px #08246B solid;
+	background-color: #ffffff;
+	background-image:url(images/input.gif);
+	font-family: &quot;宋体&quot;,Arial;;
+	font-size: 14px;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.STYLE2 {
+	font-size: 14px;
+	font-weight: bold;
+}
+.STYLE3 {font-size: 12}
+
+--&gt;
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+var xmlHttp,xmlHttp1
+function userChanged(){
+	if (xmlHttp1.readyState==4){
+		if(xmlHttp1.status == 200){
+			var usertype = xmlHttp1.responseText;
+			//usertype=usertype.replace(/\r/ig,&quot;&quot;).replace(/\n/ig,&quot;&quot;);
+			if (usertype!=null||usertype!=&quot;&quot;){
+				alert(usertype);			
+			}else{
+				alert(&quot;该用户不存在！&quot;);
+			}
+		}
+	}
+}
+
+function GetXmlHttpObject(){
+	var xmlHttp=null;
+	try
+	  {
+	  // Firefox, Opera 8.0+, Safari
+	  xmlHttp=new XMLHttpRequest();
+	  }
+	catch (e)
+	  {
+	  // Internet Explorer
+	  try
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+	    }
+	  catch (e)
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+	    }
+	  }
+	return xmlHttp;
+}
+function onSubmitForm(){
+        return;
+		var userid=document.getElementById(&quot;xh&quot;).value;
+		if (userid==null||userid==&quot;&quot;){
+			return;
+		}	
+		xmlHttp1=GetXmlHttpObject();
+		if (xmlHttp1==null){
+		  alert (&quot;Your browser does not support AJAX!&quot;);
+		  return;
+		}
+		
+		xmlHttp1.onreadystatechange=userChanged;
+		xmlHttp1.open(&quot;GET&quot;,url,true);
+		xmlHttp1.send(null);
+}
+
+function changeDiv1(){	
+		document.all(&quot;div1&quot;).style.display = &quot;&quot;;
+}
+
+
+function checkInput()
+{
+var inputUin=document.form1.uin,
+inputPwd=document.form1.pwd;
+
+if(0==inputUin.value.length)
+{
+inputUin.focus();
+return false;
+}
+
+if(0==inputPwd.value.length)
+{
+inputPwd.focus();
+return false;
+}
+
+document.form1.submit();
+setTimeout(&quot; document.form1.pwd.value = '' &quot;,500);
+return true;
+}
+
+function redirect()
+{
+    window.location.href=&quot;https://exmail.qq.com/cgi-bin/readtemplate?check=false&amp;t=bizmail_orz&quot;; //跳转到b网页
+}
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27907616-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;FORM name=&quot;form1&quot; action=&quot;https://exmail.qq.com/cgi-bin/login&quot; target=&quot;_blank&quot; method=&quot;post&quot; onSubmit=&quot;return checkInput()&quot;&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;firstlogin&quot; value=&quot;false&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;errtemplate&quot; value=&quot;dm_loginpage&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;aliastype&quot; value=&quot;other&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;dmtype&quot; value=&quot;bizmail&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;p&quot; value=&quot;&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;domain&quot; value=&quot;alum.sz.tsinghua.edu.cn&quot; /&gt;
+    &lt;div&gt;
+      &lt;table width=&quot;100%&quot; height=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;div align=&quot;center&quot;&gt;
+            &lt;table width=&quot;1000&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt;
+                &lt;td width=&quot;489&quot; height=&quot;540&quot; valign=&quot;top&quot; background=&quot;images/bg.jpg&quot;&gt;&lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;height: 339px&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;180&quot;&gt;
+                        &lt;br /&gt;
+                        &lt;br /&gt;
+                      &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;&lt;/td&gt;
+                &lt;td width=&quot;511&quot; height=&quot;400&quot; valign=&quot;top&quot;&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;5&quot; cellspacing=&quot;1&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;30&quot; colspan=&quot;2&quot; style=&quot;font-size:10.5pt;&quot;&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot;&gt;&lt;img src=&quot;images/login.jpg&quot; width=&quot;300&quot; height=&quot;60&quot;&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td width=&quot;20%&quot;&gt;&lt;div align=&quot;right&quot;&gt;用户名：&amp;nbsp; &lt;/div&gt;&lt;/td&gt;
+                    &lt;td width=&quot;80%&quot;&gt;&lt;input type=text name=&quot;uin&quot; id=&quot;uin&quot; size=&quot;21&quot; maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;
+					  &lt;span class=&quot;STYLE2&quot;&gt;@alum.sz.tsinghua.edu.cn&lt;/span&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;密　码：&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=password name=&quot;pwd&quot; id=&quot;pwd&quot; size=&quot;21&quot;  maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;submit&quot; id=&quot;btnLogin&quot; class=&quot;buttonbg&quot; value=&quot;用户登陆&quot;  /&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;#&quot; onClick=&quot;redirect();&quot; &gt;忘记密码了？&lt;/a&gt;
+					&lt;/td&gt;
+                  &lt;/tr&gt;
+				  &lt;tr&gt;
+				  &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td height=&quot;30&quot; &gt;&lt;div align=&quot;left&quot;&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;&lt;strong&gt;安全提示：&lt;/strong&gt;
+					  &lt;br&gt;
+					  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;清华大学深圳研究生院及腾讯公司在任何时候不会以邮件形式要求用户提供密码。请您务必提高警惕。
+					  &lt;/p&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;
+                         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如您首次访问校友邮箱系统，请点击&lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbgcx&quot; value=&quot;查询帐号&quot; onClick=&quot;javascript:changeDiv1()&quot; /&gt;，输入学号获取本人邮件帐号和密保邮箱，并通过【忘记密码】自行设置帐号密码。 &lt;/p&gt; 
+                    &lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+					&lt;tbody id=&quot;div1&quot; style=&quot;display: none&quot;&gt;
+					&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;学 号：&amp;nbsp;
+                    &lt;input type=text name=&quot;xh&quot; id=&quot;xh&quot; size=&quot;21&quot; maxlength=&quot;20&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbg&quot; value=&quot;查   询&quot; onClick=&quot;javascript:onSubmitForm()&quot; /&gt;                    &lt;/td&gt;&lt;/tr&gt;
+					&lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;    &lt;/table&gt;
+          &lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td align=center bgcolor=&quot;#efefef&quot; height=&quot;40&quot;&gt;Copyright © 2011 清华大学深圳研究生院
+		  &lt;br&gt;
+		  电子邮件：mr.postman at alum.sz.tsinghua.edu.cn &amp;nbsp;&amp;nbsp;地址：深圳市南山区西丽镇丽水路清华大学园区
+&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[208]" method="GET" name="Internal hostname in HTML link" plugin="find_vhosts" severity="Information" url="http://alum.sz.tsinghua.edu.cn/" var="None">
+        <description>The content of &quot;http://alum.sz.tsinghua.edu.cn/&quot; references a non existent domain: &quot;ssl&quot;. This can be a broken link, or an internal domain name.</description>
+        <http-transactions>
+            <http-transaction id="208">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7874" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Fri, 27 Nov 2015 08:48:39 GMT" field="last-modified"/>
+                        <header content="W/&quot;7874-1448614119000&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 03:30:23 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;校友邮箱登陆&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+BODY{
+    background:#fff;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 18px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	FONT-FAMILY:  &quot;Verdana&quot;,  &quot;宋体&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;;
+	margin:0px;
+}
+
+TD{
+	FONT-SIZE: 14px;
+	line-height:160%;
+}
+.login_lostfocus { border: 1px #333333 Dashed; background-color: #ffffff; font-size: 12px; font-family: 宋体,Arial; }
+.lostfocus {
+	border: 1px solid #999999;
+	background-color: #f7f7f7;
+	font-size: 14px;
+	font-family: &quot;宋体&quot;,Arial;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.buttonbg {
+	border: 1px solid #999999;
+	font-size: 13px;
+	background-image:url(images/buttonbg.jpg);
+	height:27px;
+}
+.buttonbgcx {
+	border: 1px solid #999999;
+	font-size: 12px;
+	background-image:url(images/buttonbg1.jpg);
+	height:18px;
+}
+.getfocus {
+	border: 1px #08246B solid;
+	background-color: #ffffff;
+	background-image:url(images/input.gif);
+	font-family: &quot;宋体&quot;,Arial;;
+	font-size: 14px;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.STYLE2 {
+	font-size: 14px;
+	font-weight: bold;
+}
+.STYLE3 {font-size: 12}
+
+--&gt;
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+var xmlHttp,xmlHttp1
+function userChanged(){
+	if (xmlHttp1.readyState==4){
+		if(xmlHttp1.status == 200){
+			var usertype = xmlHttp1.responseText;
+			//usertype=usertype.replace(/\r/ig,&quot;&quot;).replace(/\n/ig,&quot;&quot;);
+			if (usertype!=null||usertype!=&quot;&quot;){
+				alert(usertype);			
+			}else{
+				alert(&quot;该用户不存在！&quot;);
+			}
+		}
+	}
+}
+
+function GetXmlHttpObject(){
+	var xmlHttp=null;
+	try
+	  {
+	  // Firefox, Opera 8.0+, Safari
+	  xmlHttp=new XMLHttpRequest();
+	  }
+	catch (e)
+	  {
+	  // Internet Explorer
+	  try
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+	    }
+	  catch (e)
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+	    }
+	  }
+	return xmlHttp;
+}
+function onSubmitForm(){
+        return;
+		var userid=document.getElementById(&quot;xh&quot;).value;
+		if (userid==null||userid==&quot;&quot;){
+			return;
+		}	
+		xmlHttp1=GetXmlHttpObject();
+		if (xmlHttp1==null){
+		  alert (&quot;Your browser does not support AJAX!&quot;);
+		  return;
+		}
+		
+		xmlHttp1.onreadystatechange=userChanged;
+		xmlHttp1.open(&quot;GET&quot;,url,true);
+		xmlHttp1.send(null);
+}
+
+function changeDiv1(){	
+		document.all(&quot;div1&quot;).style.display = &quot;&quot;;
+}
+
+
+function checkInput()
+{
+var inputUin=document.form1.uin,
+inputPwd=document.form1.pwd;
+
+if(0==inputUin.value.length)
+{
+inputUin.focus();
+return false;
+}
+
+if(0==inputPwd.value.length)
+{
+inputPwd.focus();
+return false;
+}
+
+document.form1.submit();
+setTimeout(&quot; document.form1.pwd.value = '' &quot;,500);
+return true;
+}
+
+function redirect()
+{
+    window.location.href=&quot;https://exmail.qq.com/cgi-bin/readtemplate?check=false&amp;t=bizmail_orz&quot;; //跳转到b网页
+}
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27907616-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;FORM name=&quot;form1&quot; action=&quot;https://exmail.qq.com/cgi-bin/login&quot; target=&quot;_blank&quot; method=&quot;post&quot; onSubmit=&quot;return checkInput()&quot;&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;firstlogin&quot; value=&quot;false&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;errtemplate&quot; value=&quot;dm_loginpage&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;aliastype&quot; value=&quot;other&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;dmtype&quot; value=&quot;bizmail&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;p&quot; value=&quot;&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;domain&quot; value=&quot;alum.sz.tsinghua.edu.cn&quot; /&gt;
+    &lt;div&gt;
+      &lt;table width=&quot;100%&quot; height=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;div align=&quot;center&quot;&gt;
+            &lt;table width=&quot;1000&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt;
+                &lt;td width=&quot;489&quot; height=&quot;540&quot; valign=&quot;top&quot; background=&quot;images/bg.jpg&quot;&gt;&lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;height: 339px&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;180&quot;&gt;
+                        &lt;br /&gt;
+                        &lt;br /&gt;
+                      &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;&lt;/td&gt;
+                &lt;td width=&quot;511&quot; height=&quot;400&quot; valign=&quot;top&quot;&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;5&quot; cellspacing=&quot;1&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;30&quot; colspan=&quot;2&quot; style=&quot;font-size:10.5pt;&quot;&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot;&gt;&lt;img src=&quot;images/login.jpg&quot; width=&quot;300&quot; height=&quot;60&quot;&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td width=&quot;20%&quot;&gt;&lt;div align=&quot;right&quot;&gt;用户名：&amp;nbsp; &lt;/div&gt;&lt;/td&gt;
+                    &lt;td width=&quot;80%&quot;&gt;&lt;input type=text name=&quot;uin&quot; id=&quot;uin&quot; size=&quot;21&quot; maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;
+					  &lt;span class=&quot;STYLE2&quot;&gt;@alum.sz.tsinghua.edu.cn&lt;/span&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;密　码：&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=password name=&quot;pwd&quot; id=&quot;pwd&quot; size=&quot;21&quot;  maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;submit&quot; id=&quot;btnLogin&quot; class=&quot;buttonbg&quot; value=&quot;用户登陆&quot;  /&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;#&quot; onClick=&quot;redirect();&quot; &gt;忘记密码了？&lt;/a&gt;
+					&lt;/td&gt;
+                  &lt;/tr&gt;
+				  &lt;tr&gt;
+				  &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td height=&quot;30&quot; &gt;&lt;div align=&quot;left&quot;&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;&lt;strong&gt;安全提示：&lt;/strong&gt;
+					  &lt;br&gt;
+					  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;清华大学深圳研究生院及腾讯公司在任何时候不会以邮件形式要求用户提供密码。请您务必提高警惕。
+					  &lt;/p&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;
+                         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如您首次访问校友邮箱系统，请点击&lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbgcx&quot; value=&quot;查询帐号&quot; onClick=&quot;javascript:changeDiv1()&quot; /&gt;，输入学号获取本人邮件帐号和密保邮箱，并通过【忘记密码】自行设置帐号密码。 &lt;/p&gt; 
+                    &lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+					&lt;tbody id=&quot;div1&quot; style=&quot;display: none&quot;&gt;
+					&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;学 号：&amp;nbsp;
+                    &lt;input type=text name=&quot;xh&quot; id=&quot;xh&quot; size=&quot;21&quot; maxlength=&quot;20&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbg&quot; value=&quot;查   询&quot; onClick=&quot;javascript:onSubmitForm()&quot; /&gt;                    &lt;/td&gt;&lt;/tr&gt;
+					&lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;    &lt;/table&gt;
+          &lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td align=center bgcolor=&quot;#efefef&quot; height=&quot;40&quot;&gt;Copyright © 2011 清华大学深圳研究生院
+		  &lt;br&gt;
+		  电子邮件：mr.postman at alum.sz.tsinghua.edu.cn &amp;nbsp;&amp;nbsp;地址：深圳市南山区西丽镇丽水路清华大学园区
+&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[208]" method="GET" name="Internal hostname in HTML link" plugin="find_vhosts" severity="Information" url="http://alum.sz.tsinghua.edu.cn/" var="None">
+        <description>The content of &quot;http://alum.sz.tsinghua.edu.cn/&quot; references a non existent domain: &quot;www&quot;. This can be a broken link, or an internal domain name.</description>
+        <http-transactions>
+            <http-transaction id="208">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7874" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Fri, 27 Nov 2015 08:48:39 GMT" field="last-modified"/>
+                        <header content="W/&quot;7874-1448614119000&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 03:30:23 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;校友邮箱登陆&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+BODY{
+    background:#fff;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 18px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	FONT-FAMILY:  &quot;Verdana&quot;,  &quot;宋体&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;;
+	margin:0px;
+}
+
+TD{
+	FONT-SIZE: 14px;
+	line-height:160%;
+}
+.login_lostfocus { border: 1px #333333 Dashed; background-color: #ffffff; font-size: 12px; font-family: 宋体,Arial; }
+.lostfocus {
+	border: 1px solid #999999;
+	background-color: #f7f7f7;
+	font-size: 14px;
+	font-family: &quot;宋体&quot;,Arial;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.buttonbg {
+	border: 1px solid #999999;
+	font-size: 13px;
+	background-image:url(images/buttonbg.jpg);
+	height:27px;
+}
+.buttonbgcx {
+	border: 1px solid #999999;
+	font-size: 12px;
+	background-image:url(images/buttonbg1.jpg);
+	height:18px;
+}
+.getfocus {
+	border: 1px #08246B solid;
+	background-color: #ffffff;
+	background-image:url(images/input.gif);
+	font-family: &quot;宋体&quot;,Arial;;
+	font-size: 14px;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.STYLE2 {
+	font-size: 14px;
+	font-weight: bold;
+}
+.STYLE3 {font-size: 12}
+
+--&gt;
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+var xmlHttp,xmlHttp1
+function userChanged(){
+	if (xmlHttp1.readyState==4){
+		if(xmlHttp1.status == 200){
+			var usertype = xmlHttp1.responseText;
+			//usertype=usertype.replace(/\r/ig,&quot;&quot;).replace(/\n/ig,&quot;&quot;);
+			if (usertype!=null||usertype!=&quot;&quot;){
+				alert(usertype);			
+			}else{
+				alert(&quot;该用户不存在！&quot;);
+			}
+		}
+	}
+}
+
+function GetXmlHttpObject(){
+	var xmlHttp=null;
+	try
+	  {
+	  // Firefox, Opera 8.0+, Safari
+	  xmlHttp=new XMLHttpRequest();
+	  }
+	catch (e)
+	  {
+	  // Internet Explorer
+	  try
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+	    }
+	  catch (e)
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+	    }
+	  }
+	return xmlHttp;
+}
+function onSubmitForm(){
+        return;
+		var userid=document.getElementById(&quot;xh&quot;).value;
+		if (userid==null||userid==&quot;&quot;){
+			return;
+		}	
+		xmlHttp1=GetXmlHttpObject();
+		if (xmlHttp1==null){
+		  alert (&quot;Your browser does not support AJAX!&quot;);
+		  return;
+		}
+		
+		xmlHttp1.onreadystatechange=userChanged;
+		xmlHttp1.open(&quot;GET&quot;,url,true);
+		xmlHttp1.send(null);
+}
+
+function changeDiv1(){	
+		document.all(&quot;div1&quot;).style.display = &quot;&quot;;
+}
+
+
+function checkInput()
+{
+var inputUin=document.form1.uin,
+inputPwd=document.form1.pwd;
+
+if(0==inputUin.value.length)
+{
+inputUin.focus();
+return false;
+}
+
+if(0==inputPwd.value.length)
+{
+inputPwd.focus();
+return false;
+}
+
+document.form1.submit();
+setTimeout(&quot; document.form1.pwd.value = '' &quot;,500);
+return true;
+}
+
+function redirect()
+{
+    window.location.href=&quot;https://exmail.qq.com/cgi-bin/readtemplate?check=false&amp;t=bizmail_orz&quot;; //跳转到b网页
+}
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27907616-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;FORM name=&quot;form1&quot; action=&quot;https://exmail.qq.com/cgi-bin/login&quot; target=&quot;_blank&quot; method=&quot;post&quot; onSubmit=&quot;return checkInput()&quot;&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;firstlogin&quot; value=&quot;false&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;errtemplate&quot; value=&quot;dm_loginpage&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;aliastype&quot; value=&quot;other&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;dmtype&quot; value=&quot;bizmail&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;p&quot; value=&quot;&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;domain&quot; value=&quot;alum.sz.tsinghua.edu.cn&quot; /&gt;
+    &lt;div&gt;
+      &lt;table width=&quot;100%&quot; height=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;div align=&quot;center&quot;&gt;
+            &lt;table width=&quot;1000&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt;
+                &lt;td width=&quot;489&quot; height=&quot;540&quot; valign=&quot;top&quot; background=&quot;images/bg.jpg&quot;&gt;&lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;height: 339px&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;180&quot;&gt;
+                        &lt;br /&gt;
+                        &lt;br /&gt;
+                      &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;&lt;/td&gt;
+                &lt;td width=&quot;511&quot; height=&quot;400&quot; valign=&quot;top&quot;&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;5&quot; cellspacing=&quot;1&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;30&quot; colspan=&quot;2&quot; style=&quot;font-size:10.5pt;&quot;&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot;&gt;&lt;img src=&quot;images/login.jpg&quot; width=&quot;300&quot; height=&quot;60&quot;&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td width=&quot;20%&quot;&gt;&lt;div align=&quot;right&quot;&gt;用户名：&amp;nbsp; &lt;/div&gt;&lt;/td&gt;
+                    &lt;td width=&quot;80%&quot;&gt;&lt;input type=text name=&quot;uin&quot; id=&quot;uin&quot; size=&quot;21&quot; maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;
+					  &lt;span class=&quot;STYLE2&quot;&gt;@alum.sz.tsinghua.edu.cn&lt;/span&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;密　码：&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=password name=&quot;pwd&quot; id=&quot;pwd&quot; size=&quot;21&quot;  maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;submit&quot; id=&quot;btnLogin&quot; class=&quot;buttonbg&quot; value=&quot;用户登陆&quot;  /&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;#&quot; onClick=&quot;redirect();&quot; &gt;忘记密码了？&lt;/a&gt;
+					&lt;/td&gt;
+                  &lt;/tr&gt;
+				  &lt;tr&gt;
+				  &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td height=&quot;30&quot; &gt;&lt;div align=&quot;left&quot;&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;&lt;strong&gt;安全提示：&lt;/strong&gt;
+					  &lt;br&gt;
+					  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;清华大学深圳研究生院及腾讯公司在任何时候不会以邮件形式要求用户提供密码。请您务必提高警惕。
+					  &lt;/p&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;
+                         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如您首次访问校友邮箱系统，请点击&lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbgcx&quot; value=&quot;查询帐号&quot; onClick=&quot;javascript:changeDiv1()&quot; /&gt;，输入学号获取本人邮件帐号和密保邮箱，并通过【忘记密码】自行设置帐号密码。 &lt;/p&gt; 
+                    &lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+					&lt;tbody id=&quot;div1&quot; style=&quot;display: none&quot;&gt;
+					&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;学 号：&amp;nbsp;
+                    &lt;input type=text name=&quot;xh&quot; id=&quot;xh&quot; size=&quot;21&quot; maxlength=&quot;20&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbg&quot; value=&quot;查   询&quot; onClick=&quot;javascript:onSubmitForm()&quot; /&gt;                    &lt;/td&gt;&lt;/tr&gt;
+					&lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;    &lt;/table&gt;
+          &lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td align=center bgcolor=&quot;#efefef&quot; height=&quot;40&quot;&gt;Copyright © 2011 清华大学深圳研究生院
+		  &lt;br&gt;
+		  电子邮件：mr.postman at alum.sz.tsinghua.edu.cn &amp;nbsp;&amp;nbsp;地址：深圳市南山区西丽镇丽水路清华大学园区
+&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 91, 102, 112, 185, 187, 188, 189, 190, 191, 193, 206]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="7874" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Fri, 27 Nov 2015 08:48:39 GMT" field="last-modified"/>
+                        <header content="W/&quot;7874-1448614119000&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 03:30:23 GMT" field="date"/>
+                        <header content="text/html" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">﻿&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; &gt;
+&lt;head runat=&quot;server&quot;&gt;
+&lt;title&gt;校友邮箱登陆&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+&lt;!--
+BODY{
+    background:#fff;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 18px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #333333;
+	text-decoration: none;
+	FONT-FAMILY:  &quot;Verdana&quot;,  &quot;宋体&quot;,&quot;Arial&quot;, &quot;Helvetica&quot;, &quot;sans-serif&quot;;
+	margin:0px;
+}
+
+TD{
+	FONT-SIZE: 14px;
+	line-height:160%;
+}
+.login_lostfocus { border: 1px #333333 Dashed; background-color: #ffffff; font-size: 12px; font-family: 宋体,Arial; }
+.lostfocus {
+	border: 1px solid #999999;
+	background-color: #f7f7f7;
+	font-size: 14px;
+	font-family: &quot;宋体&quot;,Arial;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.buttonbg {
+	border: 1px solid #999999;
+	font-size: 13px;
+	background-image:url(images/buttonbg.jpg);
+	height:27px;
+}
+.buttonbgcx {
+	border: 1px solid #999999;
+	font-size: 12px;
+	background-image:url(images/buttonbg1.jpg);
+	height:18px;
+}
+.getfocus {
+	border: 1px #08246B solid;
+	background-color: #ffffff;
+	background-image:url(images/input.gif);
+	font-family: &quot;宋体&quot;,Arial;;
+	font-size: 14px;
+	height:26px;
+	line-height: 20px;
+	background-position: center;
+}
+.STYLE2 {
+	font-size: 14px;
+	font-weight: bold;
+}
+.STYLE3 {font-size: 12}
+
+--&gt;
+&lt;/style&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+var xmlHttp,xmlHttp1
+function userChanged(){
+	if (xmlHttp1.readyState==4){
+		if(xmlHttp1.status == 200){
+			var usertype = xmlHttp1.responseText;
+			//usertype=usertype.replace(/\r/ig,&quot;&quot;).replace(/\n/ig,&quot;&quot;);
+			if (usertype!=null||usertype!=&quot;&quot;){
+				alert(usertype);			
+			}else{
+				alert(&quot;该用户不存在！&quot;);
+			}
+		}
+	}
+}
+
+function GetXmlHttpObject(){
+	var xmlHttp=null;
+	try
+	  {
+	  // Firefox, Opera 8.0+, Safari
+	  xmlHttp=new XMLHttpRequest();
+	  }
+	catch (e)
+	  {
+	  // Internet Explorer
+	  try
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+	    }
+	  catch (e)
+	    {
+	    xmlHttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+	    }
+	  }
+	return xmlHttp;
+}
+function onSubmitForm(){
+        return;
+		var userid=document.getElementById(&quot;xh&quot;).value;
+		if (userid==null||userid==&quot;&quot;){
+			return;
+		}	
+		xmlHttp1=GetXmlHttpObject();
+		if (xmlHttp1==null){
+		  alert (&quot;Your browser does not support AJAX!&quot;);
+		  return;
+		}
+		
+		xmlHttp1.onreadystatechange=userChanged;
+		xmlHttp1.open(&quot;GET&quot;,url,true);
+		xmlHttp1.send(null);
+}
+
+function changeDiv1(){	
+		document.all(&quot;div1&quot;).style.display = &quot;&quot;;
+}
+
+
+function checkInput()
+{
+var inputUin=document.form1.uin,
+inputPwd=document.form1.pwd;
+
+if(0==inputUin.value.length)
+{
+inputUin.focus();
+return false;
+}
+
+if(0==inputPwd.value.length)
+{
+inputPwd.focus();
+return false;
+}
+
+document.form1.submit();
+setTimeout(&quot; document.form1.pwd.value = '' &quot;,500);
+return true;
+}
+
+function redirect()
+{
+    window.location.href=&quot;https://exmail.qq.com/cgi-bin/readtemplate?check=false&amp;t=bizmail_orz&quot;; //跳转到b网页
+}
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27907616-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;FORM name=&quot;form1&quot; action=&quot;https://exmail.qq.com/cgi-bin/login&quot; target=&quot;_blank&quot; method=&quot;post&quot; onSubmit=&quot;return checkInput()&quot;&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;firstlogin&quot; value=&quot;false&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;errtemplate&quot; value=&quot;dm_loginpage&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;aliastype&quot; value=&quot;other&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;dmtype&quot; value=&quot;bizmail&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;p&quot; value=&quot;&quot; /&gt;
+	&lt;input type=&quot;hidden&quot; name=&quot;domain&quot; value=&quot;alum.sz.tsinghua.edu.cn&quot; /&gt;
+    &lt;div&gt;
+      &lt;table width=&quot;100%&quot; height=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;div align=&quot;center&quot;&gt;
+            &lt;table width=&quot;1000&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+              &lt;tr&gt;
+                &lt;td width=&quot;489&quot; height=&quot;540&quot; valign=&quot;top&quot; background=&quot;images/bg.jpg&quot;&gt;&lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;height: 339px&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;180&quot;&gt;
+                        &lt;br /&gt;
+                        &lt;br /&gt;
+                      &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;&lt;/td&gt;
+                &lt;td width=&quot;511&quot; height=&quot;400&quot; valign=&quot;top&quot;&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                  &lt;table width=&quot;95%&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;5&quot; cellspacing=&quot;1&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td height=&quot;30&quot; colspan=&quot;2&quot; style=&quot;font-size:10.5pt;&quot;&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot;&gt;&lt;img src=&quot;images/login.jpg&quot; width=&quot;300&quot; height=&quot;60&quot;&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td width=&quot;20%&quot;&gt;&lt;div align=&quot;right&quot;&gt;用户名：&amp;nbsp; &lt;/div&gt;&lt;/td&gt;
+                    &lt;td width=&quot;80%&quot;&gt;&lt;input type=text name=&quot;uin&quot; id=&quot;uin&quot; size=&quot;21&quot; maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;
+					  &lt;span class=&quot;STYLE2&quot;&gt;@alum.sz.tsinghua.edu.cn&lt;/span&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;&lt;div align=&quot;right&quot;&gt;密　码：&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=password name=&quot;pwd&quot; id=&quot;pwd&quot; size=&quot;21&quot;  maxlength=&quot;21&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;submit&quot; id=&quot;btnLogin&quot; class=&quot;buttonbg&quot; value=&quot;用户登陆&quot;  /&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;#&quot; onClick=&quot;redirect();&quot; &gt;忘记密码了？&lt;/a&gt;
+					&lt;/td&gt;
+                  &lt;/tr&gt;
+				  &lt;tr&gt;
+				  &lt;td&gt;&lt;div align=&quot;right&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/td&gt;
+                    &lt;td height=&quot;30&quot; &gt;&lt;div align=&quot;left&quot;&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;&lt;strong&gt;安全提示：&lt;/strong&gt;
+					  &lt;br&gt;
+					  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;清华大学深圳研究生院及腾讯公司在任何时候不会以邮件形式要求用户提供密码。请您务必提高警惕。
+					  &lt;/p&gt;
+                      &lt;p class=&quot;STYLE3&quot;&gt;
+                         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如您首次访问校友邮箱系统，请点击&lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbgcx&quot; value=&quot;查询帐号&quot; onClick=&quot;javascript:changeDiv1()&quot; /&gt;，输入学号获取本人邮件帐号和密保邮箱，并通过【忘记密码】自行设置帐号密码。 &lt;/p&gt; 
+                    &lt;/div&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+					&lt;tbody id=&quot;div1&quot; style=&quot;display: none&quot;&gt;
+					&lt;tr&gt;
+                    &lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;学 号：&amp;nbsp;
+                    &lt;input type=text name=&quot;xh&quot; id=&quot;xh&quot; size=&quot;21&quot; maxlength=&quot;20&quot; class=&quot;lostfocus&quot; onMouseOver=&quot;this.className='getfocus'&quot; onMouseOut=&quot;this.className='lostfocus'&quot; onBlur=&quot;this.className='lostfocus'&quot; onFocus=&quot;this.className='getfocus'&quot;&gt;&amp;nbsp;
+                    &lt;input type=&quot;button&quot; id=&quot;Button1&quot; class=&quot;buttonbg&quot; value=&quot;查   询&quot; onClick=&quot;javascript:onSubmitForm()&quot; /&gt;                    &lt;/td&gt;&lt;/tr&gt;
+					&lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;    &lt;/table&gt;
+          &lt;/div&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td align=center bgcolor=&quot;#efefef&quot; height=&quot;40&quot;&gt;Copyright © 2011 清华大学深圳研究生院
+		  &lt;br&gt;
+		  电子邮件：mr.postman at alum.sz.tsinghua.edu.cn &amp;nbsp;&amp;nbsp;地址：深圳市南山区西丽镇丽水路清华大学园区
+&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="91">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:24 GMT" field="date"/>
+                        <header content="994" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /_vti_inf.html&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/_vti_inf.html&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/_vti_inf.html) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="102">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/qBnjD.html HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:24 GMT" field="date"/>
+                        <header content="985" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /qBnjD.html&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/qBnjD.html&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/qBnjD.html) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="112">
+                <http-request>
+                    <status>POST http://alum.sz.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L3FCbmpELmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguRGpuQnE=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:24 GMT" field="date"/>
+                        <header content="1039" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /_vti_bin/_vti_aut/author.dll&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/_vti_bin/_vti_aut/author.dll&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/_vti_bin/_vti_aut/author.dll) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="185">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:25 GMT" field="date"/>
+                        <header content="994" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /server-status&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/server-status&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/server-status) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="187">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:25 GMT" field="date"/>
+                        <header content="997" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /admin-console/&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/admin-console/&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/admin-console/) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="188">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:25 GMT" field="date"/>
+                        <header content="1033" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /web-console/ServerInfo.jsp&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/web-console/ServerInfo.jsp&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/web-console/ServerInfo.jsp) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="189">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:25 GMT" field="date"/>
+                        <header content="973" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /status&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/status&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/status) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:25 GMT" field="date"/>
+                        <header content="1009" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /WebConsole/Invoker&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/WebConsole/Invoker&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/WebConsole/Invoker) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="191">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:25 GMT" field="date"/>
+                        <header content="991" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /jmx-console/&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/jmx-console/&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/jmx-console/) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="193">
+                <http-request>
+                    <status>GET http://alum.sz.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:25 GMT" field="date"/>
+                        <header content="1030" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /invoker/JMXInvokerServlet&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/invoker/JMXInvokerServlet&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource (/invoker/JMXInvokerServlet) is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="206">
+                <http-request>
+                    <status>PUT http://alum.sz.tsinghua.edu.cn/acinO HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="alum.sz.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">NbIXaY</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 03:30:29 GMT" field="date"/>
+                        <header content="964" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.29 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource () has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.29&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://alum.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">The port '443' is not open on target alum.sz.tsinghua.edu.cn</error>
+    <error caller="threading">The allowed_methods plugin got an error while requesting &quot;http://alum.sz.tsinghua.edu.cn/&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to alum.sz.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

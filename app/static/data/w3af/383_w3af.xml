@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1480501941" start-long="Wed Nov 30 05:32:21 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://event.pbcsf.tsinghua.edu.cn/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/383_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[41]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache/2.4.12 (Unix) PHP/5.6.10&quot;.</description>
+        <http-transactions>
+            <http-transaction id="41">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="161" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="PHP/5.6.10" field="x-powered-by"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:31 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt; 
+
+window.location.href='http://event.pbcsf.tsinghua.edu.cn/index.php?m=formguide&amp;c=index&amp;a=show&amp;formid=12&amp;siteid=1';
+
+&lt;/script&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[52]" method="GET" name="Powered-by header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The x-powered-by header for the target HTTP server is &quot;PHP/5.6.10&quot;.</description>
+        <http-transactions>
+            <http-transaction id="52">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="161" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="PHP/5.6.10" field="x-powered-by"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:31 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt; 
+
+window.location.href='http://event.pbcsf.tsinghua.edu.cn/index.php?m=formguide&amp;c=index&amp;a=show&amp;formid=12&amp;siteid=1';
+
+&lt;/script&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[59]" method="GET" name="Favicon identification failed" plugin="favicon_identification" severity="Information" url="http://event.pbcsf.tsinghua.edu.cn/favicon.ico" var="None">
+        <description>Favicon identification failed. If the remote site is using framework that is being exposed by its favicon, please send an email to w3af-develop@lists.sourceforge.net including this md5 hash &quot;cd2afce2cd7b763b23324b26201c7d55&quot; and the name of the server or Web application it represents. New fingerprints make this plugin more powerful and  accurate.</description>
+        <http-transactions>
+            <http-transaction id="59">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="1286" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Wed, 28 May 2014 05:59:18 GMT" field="last-modified"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="&quot;506-4fa6f834cb980&quot;" field="etag"/>
+                        <header content="Wed, 30 Nov 2016 10:32:41 GMT" field="date"/>
+                        <header content="image/x-icon" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">AAABAAEAEBIAAAEAIADwBAAAFgAAACgAAAAQAAAAJAAAAAEAIAAAAAAAgAQAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABNKK4sTSivuU0pr7lMKK4sAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE0prxZMKK6XTCiu+0worv9MKK7/TCiu+0worpdN
+Ka8WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATSivBk0pr3JNKa/vTSiv/00or/9NKK//TSiv/00o
+r/9NKK//TSmv700pr3JMKa8GAAAAAAAAAABMKa8ATSmvUEwprttMKa7/TCmu/0wprv9MKa7/TCmu
+/0wprv9MKa7/TCmu/0wprv9MKa7/TCmu200pr1BNKK8ATSmvOE0prudNKa7/TSmu4U0pr4dNKa+X
+TSmu+00prv9NKa7/TSmu+00pr5NNKa+JTSmu4U0prv9NKa7nTSmvOE0prrtNKa86TCiuhU0pr4dN
+Ka5mTSmvm00pr1hMKK+5TCiut00orlhMKK6fTSmvZkwprodMKK6FTSmvOk0prrtNKK//TSiv9Uwp
+rotMKa42TCmul00prnBNKa96TCmui00or49NKa96TSmucEworpdMKa42TCiui00or/VNKa//TCmv
+/0worvNMKK5cTCmuk00pr3BMKK5ETCmvoUworl5MKK5eTCmvoUworkRNKa9wTCmuk0worlxMKK7z
+TCmv/00pr/9NKK7tTCmubE0pr5dNKa5aTSmvn00or1JNKa5gTSmuYE0pr1JNKa+fTSmvWkwpr5dM
+Ka5sTSiu7U0pr/9NKa//TSmv/00or+NNKK9qTCiugUwor4VMKK9mTSivfk0pr35MKK9mTCivhUwo
+roFNKa9qTSiv400pr/9NKa//TCiu/0worv9MKK7/TCiu/0wprslMKK9UTSmvcE0pr5NNKa+TTSmv
+cEwor1RMKa7JTCiu/0worv9MKK7/TCiu/0wpr/9MKK//TCmv/0wor/9MKa//TSmuZk0prnBMKa6T
+TCmuk00prnBNKa5mTCiv/0wpr/9MKK//TCmv/0wor/9NKa//TSmv/00pr/9NKa//TSmv/0wor2ZN
+KK9wTSmvk00pr5NNKK9wTCivZk0pr/9NKa//TSmv/00pr/9NKa//TSmu40worv9MKK7/TCiu/0wo
+rv9NKK5sTSivcE0pr5NNKa+TTSivcE0ormxMKK7/TCiu/0worv9MKK7/TSmu400prgxMKK6FTSmv
+900pr/9NKa//TSmv90wprqFMKK6VTCiulUwprqFNKa/3TSmv/00pr/9NKa/3TCiuhU0prgwAAAAA
+AAAAAE0pryBNKa+pTCmu/0wprv9MKa7/TSmvnU0pr51MKa7/TCmu/0wprv9NKa+pTSmvIAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAEwprzxNKa7LTSmu/00pr51NKa+dTSmu/00prstMKa88AAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATCivAk0prl5NKa6DTSmug00prl5MKa4CAAAA
+AAAAAAAAAAAAAAAAAAAAAAD+fwAA+B8AAPAPAADAAwAAgAEAAEpSAAAWaAAALbQAACvUAAATyAAA
+BmAAAAZgAAAGYAAABmAAAIABAADgBwAA+B8AAP5/AAA=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[89]" method="GET" name="Cross site tracing vulnerability" plugin="xst" severity="Low" url="http://event.pbcsf.tsinghua.edu.cn/" var="None">
+        <description>The web server at &quot;http://event.pbcsf.tsinghua.edu.cn/&quot; is vulnerable to Cross Site Tracing.</description>
+        <long-description>The `TRACE` HTTP method allows a client so send a request to the server, and have the same request then send back in the server's response. This allows the client to determine if the server is receiving the request as expected or if specific parts of the request are not arriving as expected. For example incorrect encoding or a load balancer has filtered or changed a value. On many default installations the `TRACE` method is still enabled.
+
+While not vulnerable by itself, it does provide a method for cyber-criminals to bypass the `HTTPOnly` cookie flag, and therefore could allow a XSS attack to successfully access a session token.
+
+The tool has discovered that the affected page permits the HTTP `TRACE` method.</long-description>
+        <fix-guidance>The HTTP `TRACE` method is normally not required within production sites and should therefore be disabled.
+
+Depending on the function being performed by the web application, the risk level can start low and increase as more functionality is implemented.
+
+The remediation is typically a very simple configuration change and in most cases will not have any negative impact on the server or application.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="CAPEC" url="http://capec.mitre.org/data/definitions/107.html"/>
+            <reference title="OWASP" url="http://www.owasp.org/index.php/Cross_Site_Tracing"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="89">
+                <http-request>
+                    <status>TRACE http://event.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="0" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                        <header content="XST" field="Fakeheader"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="chunked" field="transfer-encoding"/>
+                        <header content="timeout=5, max=79" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:41 GMT" field="date"/>
+                        <header content="message/http" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">VFJBQ0UgLyBIVFRQLzEuMQ0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KQ29udGVudC1sZW5ndGg6
+IDANCkFjY2VwdC1lbmNvZGluZzogZ3ppcCwgZGVmbGF0ZQ0KQWNjZXB0OiAqLyoNClVzZXItYWdl
+bnQ6IG5pc2wNCkhvc3Q6IGV2ZW50LnBiY3NmLnRzaW5naHVhLmVkdS5jbg0KQ29udGVudC10eXBl
+OiBhcHBsaWNhdGlvbi94LXd3dy1mb3JtLXVybGVuY29kZWQNCkZha2VoZWFkZXI6IFhTVA0KDQo=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[112]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://event.pbcsf.tsinghua.edu.cn/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://pbcsf.tsinghua.edu.cn/&quot; are equal to the ones of &quot;http://event.pbcsf.tsinghua.edu.cn/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="112">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="161" field="content-length"/>
+                        <header content="PHP/5.6.10" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:42 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt; 
+
+window.location.href='http://event.pbcsf.tsinghua.edu.cn/index.php?m=formguide&amp;c=index&amp;a=show&amp;formid=12&amp;siteid=1';
+
+&lt;/script&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[149]" method="GET" name="Default virtual host" plugin="dns_wildcard" severity="Information" url="http://166.111.7.18/" var="None">
+        <description>The contents of http://166.111.7.18/ and http://event.pbcsf.tsinghua.edu.cn/ differ.</description>
+        <http-transactions>
+            <http-transaction id="149">
+                <http-request>
+                    <status>GET http://166.111.7.18/ HTTP/1.1</status>
+                    <headers>
+                        <header content="166.111.7.18" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="2897" field="content-length"/>
+                        <header content="PHP/5.6.10" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:43 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=7&quot; /&gt;
+&lt;title&gt;民生财富管理研究中心&lt;/title&gt;
+&lt;meta name=&quot;keywords&quot; content=&quot;民生财富管理研究中心&quot;&gt;
+&lt;meta name=&quot;description&quot; content=&quot;民生财富管理研究中心&quot;&gt;
+&lt;link href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/css/pb/reset.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;link href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/css/pb/style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/js/jquery.sgallery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/js/search_common.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/js/pb/main.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://siteapp.baidu.com/static/webappservice/uaredirect.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot;&gt;uaredirect(&quot;http://siteapp.baidu.com/webapp/mscf.pbcsf.tsinghua.edu.cn&quot;,&quot;http://mscf.pbcsf.tsinghua.edu.cn&quot;);&lt;/script&gt;
+&lt;script&gt;
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement(&quot;script&quot;);
+  hm.src = &quot;//hm.baidu.com/hm.js?e9733b6e16912735ddc975e22a319223&quot;;
+  var s = document.getElementsByTagName(&quot;script&quot;)[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+	&lt;div class=&quot;header&quot;&gt;
+		&lt;div class=&quot;logo&quot;&gt;&lt;a href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/&quot;&gt;&lt;img src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/images/pb/common/logo.png&quot; alt=&quot;清华五道口 民生财富管理研究中心 五道口金融学院&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+		&lt;div class=&quot;top&quot;&gt;
+			&lt;ul class=&quot;u1&quot;&gt;
+				&lt;!-- 
+				&lt;li class=&quot;a_1&quot;&gt;&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;教务系统&lt;/a&gt;&lt;/li&gt;
+				--&gt;
+				&lt;!--&lt;li class=&quot;a_2&quot;&gt;&lt;a href=&quot;mailto:minshengcaifu@pbcsf.tsinghua.edu.cn&quot;&gt;中心邮箱&lt;/a&gt;&lt;/li&gt;--&gt;
+			&lt;/ul&gt;
+			&lt;div class=&quot;tab&quot; id=&quot;search&quot; style=&quot; display: none;&quot;&gt;
+																										&lt;a href=&quot;javascript:;&quot; onclick=&quot;setmodel(1, $(this));&quot; style=&quot;outline:medium none;&quot; hidefocus=&quot;true&quot;  class=&quot;on&quot; &gt;新闻&lt;/a&gt;&lt;span&gt; | &lt;/span&gt;																&lt;a href=&quot;javascript:;&quot; onclick=&quot;setmodel(3, $(this));&quot; style=&quot;outline:medium none;&quot; hidefocus=&quot;true&quot; &gt;图片&lt;/a&gt;&lt;span&gt; | &lt;/span&gt;																&lt;a href=&quot;javascript:;&quot; onclick=&quot;setmodel(2, $(this));&quot; style=&quot;outline:medium none;&quot; hidefocus=&quot;true&quot; &gt;下载&lt;/a&gt;&lt;span&gt; | &lt;/span&gt;																&lt;a href=&quot;javascript:;&quot; onclick=&quot;setmodel(52, $(this));&quot; style=&quot;outline:medium none;&quot; hidefocus=&quot;true&quot; &gt;专题&lt;/a&gt;														&lt;/div&gt;
+			&lt;ul class=&quot;u2&quot;&gt;
+				&lt;form action=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php&quot; method=&quot;get&quot; target=&quot;_blank&quot;&gt;
+					&lt;li&gt;
+						&lt;input type=&quot;hidden&quot; name=&quot;m&quot; value=&quot;search&quot;/&gt;
+						&lt;input type=&quot;hidden&quot; name=&quot;c&quot; value=&quot;index&quot;/&gt;
+						&lt;input type=&quot;hidden&quot; name=&quot;a&quot; value=&quot;init&quot;/&gt;
+						&lt;input type=&quot;hidden&quot; name=&quot;typeid&quot; value=&quot;1&quot; id=&quot;typeid&quot;/&gt;
+						&lt;input type=&quot;hidden&quot; name=&quot;siteid&quot; value=&quot;1&quot; id=&quot;siteid&quot;/&gt;
+						&lt;input type=&quot;text&quot; class=&quot;text tx01&quot; name=&quot;q&quot; id=&quot;q&quot;/&gt;
+					&lt;/li&gt;
+					&lt;li&gt;&lt;input type=&quot;submit&quot; value=&quot;&quot; class=&quot;button btn_01&quot; /&gt;&lt;/li&gt;
+				&lt;/form&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;nav&quot;&gt;
+			&lt;ul class=&quot;clearfix&quot;&gt;
+								&lt;li&gt;&lt;a href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/&quot;&gt;网站首页&lt;/a&gt;&lt;/li&gt;
+															&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=7&quot;&gt;中心介绍&lt;/a&gt;&lt;/li&gt;
+										&lt;!-- &lt;li&gt;&lt;a href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=6&quot;&gt;中心介绍&lt;/a&gt;&lt;/li&gt; --&gt;
+															&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=14&quot;&gt;研究人员&lt;/a&gt;&lt;/li&gt;
+										&lt;!-- &lt;li&gt;&lt;a href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=13&quot;&gt;研究人员&lt;/a&gt;&lt;/li&gt; --&gt;
+															&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=44&quot;&gt;研究成果&lt;/a&gt;&lt;/li&gt;
+										&lt;!-- &lt;li&gt;&lt;a href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=16&quot;&gt;研究成果&lt;/a&gt;&lt;/li&gt; --&gt;
+															&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=43&quot;&gt;民生观点&lt;/a&gt;&lt;/li&gt;
+										&lt;!-- &lt;li&gt;&lt;a href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=41&quot;&gt;民生观点&lt;/a&gt;&lt;/li&gt; --&gt;
+															&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=23&quot;&gt;新闻活动&lt;/a&gt;&lt;/li&gt;
+										&lt;!-- &lt;li&gt;&lt;a href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=22&quot;&gt;新闻活动&lt;/a&gt;&lt;/li&gt; --&gt;
+															&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=32&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+										&lt;!-- &lt;li&gt;&lt;a href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=32&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt; --&gt;
+														&lt;!-- &lt;li&gt;&lt;a href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=38&quot;&gt;资料下载&lt;/a&gt;&lt;/li&gt; --&gt;
+								&lt;!--
+				&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=7&quot;&gt;中心介绍&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=14&quot;&gt;研究人员&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=43&quot;&gt;中心观点&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=17&quot;&gt;研究成果&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=23&quot;&gt;新闻活动&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=31&quot;&gt;校友学员&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=32&quot;&gt;联系我们&lt;/a&gt;&lt;/li&gt;
+				--&gt;
+							&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+	&lt;div class=&quot;banner&quot;&gt;
+		&lt;div class=&quot;flexslider&quot;&gt;
+			&lt;ul class=&quot;slides&quot;&gt;
+				&lt;li style=&quot;background:url(http://mscf.pbcsf.tsinghua.edu.cn/uploadfile/2015/0826/20150826093910396.jpg) 50% 0 no-repeat;&quot;&gt;&lt;/li&gt;
+				
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			$(document).ready(function(){
+				$('.flexslider').flexslider({
+					directionNav: true,
+					pauseOnAction: false
+				});
+			});
+		&lt;/script&gt;
+	&lt;/div&gt;
+	
+	&lt;div class=&quot;ibox clearfix&quot;&gt;
+		&lt;div class=&quot;ib1 fl&quot;&gt;
+			&lt;div class=&quot;t1&quot;&gt;&lt;img src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/images/pb/common/text02.png&quot; /&gt;&lt;span class=&quot;more&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=44&quot;&gt;&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
+				                &lt;ul&gt;
+                                	&lt;li&gt;
+                		&lt;h3&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.pbcsf.tsinghua.edu.cn/Upload/file/20160918/20160918094857_8975.pdf&quot;&gt;私募基金的业绩可持续么？&lt;/a&gt;&lt;/h3&gt;
+						&lt;p&gt;&amp;ldquo;创世翔1号&amp;rdquo;基金在2013年的收益率排在股票型私募基金的榜首，并在2014年蝉联了冠军。值得注意的是，这...&lt;/p&gt;
+                	&lt;/li&gt;
+                                	&lt;li&gt;
+                		&lt;h3&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.pbcsf.tsinghua.edu.cn/Upload/file/20160918/20160918110909_1956.pdf&quot;&gt;私募基金能否战胜大盘指数及公募基金？&lt;/a&gt;&lt;/h3&gt;
+						&lt;p&gt; 我国私募基金行业自20世纪90年代初在资本市场中产生以来，至今已形成相当大的规模，各类投资策略渐趋成...&lt;/p&gt;
+                	&lt;/li&gt;
+                                &lt;/ul&gt;
+                		&lt;/div&gt;
+		&lt;div class=&quot;ib2 fr&quot;&gt;
+			&lt;div class=&quot;t1&quot;&gt;&lt;img src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/images/pb/common/text01.png&quot; /&gt;&lt;span class=&quot;more&quot;&gt;&lt;a target=&quot;_blank&quot; href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=43&quot;&gt;&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
+				                                					&lt;dl class=&quot;clearfix&quot;&gt;
+					&lt;dt&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=show&amp;catid=43&amp;id=96&quot;&gt;&lt;img src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/uploadfile/2015/0826/thumb_200_100_20150826101529178.png&quot; alt=&quot;股市暴跌原因分析与发展我国资本市场的启示&quot; /&gt;&lt;/a&gt;&lt;/dt&gt;
+					&lt;dd&gt;
+						&lt;h3&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=show&amp;catid=43&amp;id=96&quot;&gt;股市暴跌原因分析与发展我国资本市场的启示&lt;/a&gt;&lt;/h3&gt;
+						&lt;p class=&quot;date&quot;&gt;2015-08-26&lt;/p&gt;
+						&lt;p class=&quot;txt&quot;&gt;短短四周内，A股市场经历了断崖式的下跌，市值蒸发将近22万亿元。本文分析此次股市暴跌原因，并指出我国资本市场存在的问题及...&lt;/p&gt;
+					&lt;/dd&gt;
+				&lt;/dl&gt;
+						                                							&lt;ul&gt;
+				&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=show&amp;catid=43&amp;id=98&quot;&gt;流动性错配与对冲基金资产配置&lt;/a&gt;&lt;span&gt;2015-08-26&lt;/span&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+			                                							&lt;ul&gt;
+				&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=show&amp;catid=43&amp;id=109&quot;&gt;互联网银行的机遇与挑战&lt;/a&gt;&lt;span&gt;2015-08-26&lt;/span&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+			                                							&lt;ul&gt;
+				&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://mscf.pbcsf.tsinghua.edu.cn/index.php?m=content&amp;c=index&amp;a=show&amp;catid=43&amp;id=112&quot;&gt;美联储再次缩减QE 新兴市场危机重重&lt;/a&gt;&lt;span&gt;2015-08-26&lt;/span&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+			                                                
+                
+		&lt;/div&gt;
+		&lt;!--&lt;div class=&quot;ib3 fr&quot;&gt;
+			&lt;div class=&quot;t1&quot;&gt;&lt;img src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/images/pb/common/text03.png&quot; /&gt;
+							&lt;/div&gt;
+			&lt;ul class=&quot;clearfix&quot;&gt;
+				&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=19&quot;&gt;&lt;img src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/images/pb/common/bnr_101.png&quot; alt=&quot;招生简章&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=35&quot;&gt;&lt;img src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/images/pb/common/bnr_102.png&quot; alt=&quot;常见问题&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=38&quot;&gt;&lt;img src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/images/pb/common/bnr_103.png&quot; alt=&quot;资料下载&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/index.php?m=content&amp;c=index&amp;a=lists&amp;catid=7&quot;&gt;&lt;img src=&quot;http://mscf.pbcsf.tsinghua.edu.cn/statics/images/pb/common/bnr_104.png&quot; alt=&quot;中心介绍&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+			&lt;p&gt;&lt;a class=&quot;a_apply&quot; href=&quot;http://apply.fmba.pbcsf.tsinghua.edu.cn&quot; target=&quot;_blank&quot;&gt;报名申请&lt;/a&gt;&lt;/p&gt;
+		&lt;/div&gt;--&gt;
+	&lt;/div&gt;
+	
+	&lt;div class=&quot;footer&quot;&gt;
+		&lt;div class=&quot;foot clearfix&quot;&gt;
+			&lt;div class=&quot;link fl&quot;&gt;
+				&lt;h4 id=&quot;h4&quot;&gt;清华五道口金融学院首页&lt;/h4&gt;
+				&lt;ul id=&quot;flink&quot;&gt;
+															            &lt;li&gt;&lt;a href=&quot;http://www.tsinghua.edu.cn/&quot; target=&quot;_blank&quot;&gt;清华大学&lt;/a&gt;&lt;/li&gt; 
+										            &lt;li&gt;&lt;a href=&quot;http://www.pbcsf.tsinghua.edu.cn&quot; target=&quot;_blank&quot;&gt;清华大学五道口金融学院&lt;/a&gt;&lt;/li&gt; 
+															&lt;/ul&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;cp fr&quot;&gt;版权所有 &amp;copy; 清华大学国家金融研究院 | All Rights Reserved     &lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[106, 152]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://event.pbcsf.tsinghua.edu.cn/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="106">
+                <http-request>
+                    <status>ARGENTINA http://event.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="161" field="content-length"/>
+                        <header content="PHP/5.6.10" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:42 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt; 
+
+window.location.href='http://event.pbcsf.tsinghua.edu.cn/index.php?m=formguide&amp;c=index&amp;a=show&amp;formid=12&amp;siteid=1';
+
+&lt;/script&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="152">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="161" field="content-length"/>
+                        <header content="PHP/5.6.10" field="x-powered-by"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:43 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt; 
+
+window.location.href='http://event.pbcsf.tsinghua.edu.cn/index.php?m=formguide&amp;c=index&amp;a=show&amp;formid=12&amp;siteid=1';
+
+&lt;/script&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[193]" method="GET" name="Strange HTTP response code" plugin="strange_http_codes" severity="Information" url="http://event.pbcsf.tsinghua.edu.cn/foqiQ" var="None">
+        <description>The remote web server sent 1 HTTP responses with the uncommon response status code 405 using &quot;Method Not Allowed&quot; as message. The first ten URLs which sent the uncommon status code are:
+ - http://event.pbcsf.tsinghua.edu.cn/foqiQ
+</description>
+        <long-description>The server responded with a strange HTTP status code. This is a non-issue however exotic HTTP response status codes can provide useful insights into the behavior of the web application and assist with the information security analysis.</long-description>
+        <fix-guidance>Manually inspect the HTTP response status code and body</fix-guidance>
+        <fix-effort>60</fix-effort>
+        <references>
+            <reference title="RFC-2616" url="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="193">
+                <http-request>
+                    <status>PUT http://event.pbcsf.tsinghua.edu.cn/foqiQ HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">BlxZ41</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="timeout=5, max=96" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 10:32:44 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /foqiQ.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18, 57, 109, 133, 162, 188, 189, 190, 191, 192, 193, 195]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/ HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="161" field="content-length"/>
+                        <header content="gzip" field="content-encoding"/>
+                        <header content="PHP/5.6.10" field="x-powered-by"/>
+                        <header content="Accept-Encoding" field="vary"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:31 GMT" field="date"/>
+                        <header content="text/html; charset=utf-8" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt; 
+
+window.location.href='http://event.pbcsf.tsinghua.edu.cn/index.php?m=formguide&amp;c=index&amp;a=show&amp;formid=12&amp;siteid=1';
+
+&lt;/script&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="57">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/_vti_inf.html HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="211" field="content-length"/>
+                        <header content="timeout=5, max=99" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:41 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_inf.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="109">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/ZyajS.html HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="208" field="content-length"/>
+                        <header content="timeout=5, max=100" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:42 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /ZyajS.html was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="133">
+                <http-request>
+                    <status>POST http://event.pbcsf.tsinghua.edu.cn/_vti_bin/_vti_aut/author.dll HTTP/1.1</status>
+                    <headers>
+                        <header content="158" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="application/x-www-form-urlencoded" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="base64">bWV0aG9kPXB1dCBkb2N1bWVudDo0LjAuMi40NzE1JnNlcnZpY2VfbmFtZT0mZG9jdW1lbnQ9W2Rv
+Y3VtZW50X25hbWU9L1p5YWpTLmh0bWw7bWV0YV9pbmZvPVtdXSZwdXRfb3B0aW9uPW92ZXJ3cml0
+ZSZjb21tZW50PSZrZWVwX2NoZWNrZWRfb3V0PWZhbHNlCmxtdGguU2pheVo=
+</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:42 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /_vti_bin/_vti_aut/author.dll was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="162">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/server-status HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="211" field="content-length"/>
+                        <header content="timeout=5, max=98" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:43 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /server-status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="188">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/admin-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="212" field="content-length"/>
+                        <header content="timeout=5, max=91" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:44 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /admin-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="189">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/jmx-console/ HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="210" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:44 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /jmx-console/ was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="190">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/web-console/ServerInfo.jsp HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="224" field="content-length"/>
+                        <header content="timeout=5, max=93" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:44 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /web-console/ServerInfo.jsp was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="191">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/WebConsole/Invoker HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="216" field="content-length"/>
+                        <header content="timeout=5, max=92" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:44 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /WebConsole/Invoker was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="192">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/invoker/JMXInvokerServlet HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="223" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:44 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /invoker/JMXInvokerServlet was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="193">
+                <http-request>
+                    <status>PUT http://event.pbcsf.tsinghua.edu.cn/foqiQ HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">BlxZ41</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 405 Method Not Allowed</status>
+                    <headers>
+                        <header content="226" field="content-length"/>
+                        <header content="timeout=5, max=96" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="GET,HEAD,POST,OPTIONS,TRACE" field="allow"/>
+                        <header content="Wed, 30 Nov 2016 10:32:44 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The requested method PUT is not allowed for the URL /foqiQ.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="195">
+                <http-request>
+                    <status>GET http://event.pbcsf.tsinghua.edu.cn/status HTTP/1.1</status>
+                    <headers>
+                        <header content="event.pbcsf.tsinghua.edu.cn" field="Host"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="204" field="content-length"/>
+                        <header content="timeout=5, max=94" field="keep-alive"/>
+                        <header content="Apache/2.4.12 (Unix) PHP/5.6.10" field="server"/>
+                        <header content="Keep-Alive" field="connection"/>
+                        <header content="Wed, 30 Nov 2016 10:32:44 GMT" field="date"/>
+                        <header content="text/html; charset=iso-8859-1" field="content-type"/>
+                    </headers>
+                    <body content-encoding="text">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL /status was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The port '443' is not open on target event.pbcsf.tsinghua.edu.cn</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to event.pbcsf.tsinghua.edu.cn:80&quot;</error>
+</w3af-run>

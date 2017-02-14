@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w3af-run start="1481227809" start-long="Thu Dec 08 15:10:09 2016" version="2.1">
+    <w3af-version>w3af - Web Application Attack and Audit Framework
+Version: 1.7.6
+Revision: unknown
+Distribution: Kali Linux Rolling
+Branch: unknown
+Local changes: No
+Author: Andres Riancho and the w3af team.</w3af-version>
+    <scan-info target="http://cers.liulc.com/">
+        <audit>
+            <plugin name="file_upload">
+                <config parameter="extensions" value="['jsp', 'php', 'php2', 'php3', 'php4', 'php5', 'asp', 'aspx', 'pl', 'cfm', 'rb', 'py', 'sh', 'ksh', 'csh', 'bat', 'ps', 'exe']"/>
+            </plugin>
+            <plugin name="eval">
+                <config parameter="use_time_delay" value="True"/>
+                <config parameter="use_echo" value="True"/>
+            </plugin>
+            <plugin name="un_ssl"/>
+            <plugin name="os_commanding"/>
+            <plugin name="lfi"/>
+            <plugin name="sqli"/>
+            <plugin name="blind_sqli">
+                <config parameter="eq_limit" value="0.9"/>
+            </plugin>
+            <plugin name="mx_injection"/>
+            <plugin name="generic">
+                <config parameter="diff_ratio" value="0.35"/>
+            </plugin>
+            <plugin name="format_string"/>
+            <plugin name="cors_origin"/>
+            <plugin name="ldapi"/>
+            <plugin name="buffer_overflow"/>
+            <plugin name="redos"/>
+            <plugin name="global_redirect"/>
+            <plugin name="xpath"/>
+            <plugin name="xss">
+                <config parameter="persistent_xss" value="True"/>
+            </plugin>
+            <plugin name="htaccess_methods"/>
+            <plugin name="dav"/>
+            <plugin name="ssi"/>
+            <plugin name="csrf"/>
+            <plugin name="ssl_certificate">
+                <config parameter="minExpireDays" value="30"/>
+                <config parameter="caFileName" value="/usr/share/w3af/w3af/plugins/audit/ssl_certificate/ca.pem"/>
+            </plugin>
+            <plugin name="xst"/>
+            <plugin name="preg_replace"/>
+            <plugin name="phishing_vector"/>
+            <plugin name="response_splitting"/>
+            <plugin name="rfi">
+                <config parameter="listen_address" value="192.168.16.130"/>
+                <config parameter="listen_port" value="44449"/>
+                <config parameter="use_w3af_site" value="True"/>
+            </plugin>
+            <plugin name="frontpage"/>
+        </audit>
+        <infrastructure>
+            <plugin name="find_vhosts"/>
+            <plugin name="afd"/>
+            <plugin name="detect_transparent_proxy"/>
+            <plugin name="allowed_methods">
+                <config parameter="execOneTime" value="True"/>
+                <config parameter="reportDavOnly" value="True"/>
+            </plugin>
+            <plugin name="fingerprint_WAF"/>
+            <plugin name="server_header"/>
+            <plugin name="php_eggs"/>
+            <plugin name="hmap">
+                <config parameter="gen_fingerprint" value="False"/>
+            </plugin>
+            <plugin name="favicon_identification"/>
+            <plugin name="frontpage_version"/>
+            <plugin name="http_vs_https_dist">
+                <config parameter="httpPort" value="80"/>
+                <config parameter="httpsPort" value="443"/>
+            </plugin>
+            <plugin name="dns_wildcard"/>
+            <plugin name="detect_reverse_proxy"/>
+            <plugin name="halberd"/>
+            <plugin name="domain_dot"/>
+            <plugin name="fingerprint_os"/>
+            <plugin name="server_status"/>
+            <plugin name="find_jboss"/>
+        </infrastructure>
+        <bruteforce>
+            <plugin name="basic_auth">
+                <config parameter="usersFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/users.txt"/>
+                <config parameter="passwdFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/passwords.txt"/>
+                <config parameter="useSvnUsers" value="True"/>
+                <config parameter="stopOnFirst" value="True"/>
+                <config parameter="passEqUser" value="True"/>
+                <config parameter="useLeetPasswd" value="True"/>
+                <config parameter="useEmails" value="True"/>
+                <config parameter="useProfiling" value="True"/>
+                <config parameter="profilingNumber" value="50"/>
+                <config parameter="comboFile" value="/usr/share/w3af/w3af/core/controllers/bruteforce/combo.txt"/>
+                <config parameter="comboSeparator" value=":"/>
+            </plugin>
+        </bruteforce>
+        <grep>
+            <plugin name="file_upload"/>
+            <plugin name="wsdl_greper"/>
+            <plugin name="form_autocomplete"/>
+            <plugin name="http_in_body"/>
+            <plugin name="svn_users"/>
+            <plugin name="xss_protection_header"/>
+            <plugin name="private_ip"/>
+            <plugin name="motw"/>
+            <plugin name="code_disclosure"/>
+            <plugin name="blank_body"/>
+            <plugin name="path_disclosure"/>
+            <plugin name="strange_http_codes"/>
+            <plugin name="credit_cards"/>
+            <plugin name="cache_control"/>
+            <plugin name="dom_xss"/>
+            <plugin name="cross_domain_js"/>
+            <plugin name="html_comments"/>
+            <plugin name="http_auth_detect"/>
+            <plugin name="strange_parameters"/>
+            <plugin name="url_session"/>
+            <plugin name="dot_net_event_validation"/>
+            <plugin name="objects"/>
+            <plugin name="error_500"/>
+            <plugin name="meta_tags"/>
+            <plugin name="lang"/>
+            <plugin name="click_jacking"/>
+            <plugin name="directory_indexing"/>
+            <plugin name="password_profiling"/>
+            <plugin name="get_emails">
+                <config parameter="only_target_domain" value="True"/>
+            </plugin>
+            <plugin name="hash_analysis"/>
+            <plugin name="error_pages"/>
+            <plugin name="strange_reason"/>
+            <plugin name="user_defined_regex"/>
+            <plugin name="strange_headers"/>
+            <plugin name="ssn"/>
+            <plugin name="oracle"/>
+            <plugin name="feeds"/>
+            <plugin name="analyze_cookies"/>
+        </grep>
+        <evasion/>
+        <output>
+            <plugin name="xml_file">
+                <config parameter="output_file" value="/root/scan/report/118_w3af.xml"/>
+            </plugin>
+            <plugin name="console">
+                <config parameter="verbose" value="False"/>
+            </plugin>
+        </output>
+        <mangle/>
+        <crawl>
+            <plugin name="web_spider">
+                <config parameter="only_forward" value="True"/>
+                <config parameter="follow_regex" value="= .*"/>
+                <config parameter="ignore_regex" value="(?i)(logout|disconnect|signout|exit)+"/>
+            </plugin>
+        </crawl>
+        <auth/>
+    </scan-info>
+    <vulnerability id="[44, 49]" method="GET" name="Non existent methods default to GET" plugin="allowed_methods" severity="Information" url="http://cers.liulc.com/" var="None">
+        <description>The remote Web server has a custom configuration, in which any not implemented methods that are invoked are defaulted to GET instead of returning a &quot;Not Implemented&quot; response.</description>
+        <http-transactions>
+            <http-transaction id="44">
+                <http-request>
+                    <status>ARGENTINA http://cers.liulc.com/ HTTP/1.1</status>
+                    <headers>
+                        <header content="cers.liulc.com" field="Host"/>
+                        <header content="JSESSIONID=56D466724754811C0E0E3F2556710747" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 20:10:29 GMT" field="date"/>
+                        <header content="795" field="content-length"/>
+                        <header content="text/html;charset=ISO-8859-1" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    
+    &lt;title&gt;CERSÂ´Ã³ÃÃÃÃÃÃ·Â¹Â²ÃÃ­ÃÂ¦ÃÃÂ¹ÃÃÃ­ÃÃ«Â·Ã¾ÃÃ±Â·ÃÃÂµÃÂ³&lt;/title&gt;
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;!-- &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;URL=instru_search.action?pageSize=20&quot;&gt; --&gt;&lt;!-- ÃÃ¸ÃÂªÂµÂ½ÃÃ¤ÃÃ»ÃÂ³ÃÃ¦ --&gt;
+	&lt;!--
+	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;
+	--&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+  &lt;center&gt;
+  &lt;br/&gt;&lt;br/&gt;
+  &lt;div&gt;&lt;a href=&quot;/cers/instru_search.action&quot;&gt;Please Click in .......................&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/center&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="49">
+                <http-request>
+                    <status>GET http://cers.liulc.com/ HTTP/1.1</status>
+                    <headers>
+                        <header content="cers.liulc.com" field="Host"/>
+                        <header content="JSESSIONID=56D466724754811C0E0E3F2556710747" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 20:10:29 GMT" field="date"/>
+                        <header content="795" field="content-length"/>
+                        <header content="text/html;charset=ISO-8859-1" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    
+    &lt;title&gt;CERSÂ´Ã³ÃÃÃÃÃÃ·Â¹Â²ÃÃ­ÃÂ¦ÃÃÂ¹ÃÃÃ­ÃÃ«Â·Ã¾ÃÃ±Â·ÃÃÂµÃÂ³&lt;/title&gt;
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;!-- &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;URL=instru_search.action?pageSize=20&quot;&gt; --&gt;&lt;!-- ÃÃ¸ÃÂªÂµÂ½ÃÃ¤ÃÃ»ÃÂ³ÃÃ¦ --&gt;
+	&lt;!--
+	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;
+	--&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+  &lt;center&gt;
+  &lt;br/&gt;&lt;br/&gt;
+  &lt;div&gt;&lt;a href=&quot;/cers/instru_search.action&quot;&gt;Please Click in .......................&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/center&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[99]" method="GET" name="Server header" plugin="server_header" severity="Information" url="None" var="None">
+        <description>The server header for the remote web server is: &quot;Apache-Coyote/1.1&quot;.</description>
+        <http-transactions>
+            <http-transaction id="99">
+                <http-request>
+                    <status>GET http://cers.liulc.com/ HTTP/1.1</status>
+                    <headers>
+                        <header content="cers.liulc.com" field="Host"/>
+                        <header content="JSESSIONID=56D466724754811C0E0E3F2556710747" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 20:10:26 GMT" field="date"/>
+                        <header content="795" field="content-length"/>
+                        <header content="text/html;charset=ISO-8859-1" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    
+    &lt;title&gt;CERSÃÂ´ÃÂ³ÃÂÃÂÃÂÃÂÃÂÃÂ·ÃÂ¹ÃÂ²ÃÂÃÂ­ÃÂÃÂ¦ÃÂÃÂÃÂ¹ÃÂÃÂÃÂ­ÃÂÃÂ«ÃÂ·ÃÂ¾ÃÂÃÂ±ÃÂ·ÃÂÃÂÃÂµÃÂÃÂ³&lt;/title&gt;
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;!-- &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;URL=instru_search.action?pageSize=20&quot;&gt; --&gt;&lt;!-- ÃÂÃÂ¸ÃÂÃÂªÃÂµÃÂ½ÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂ³ÃÂÃÂ¦ --&gt;
+	&lt;!--
+	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;
+	--&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+  &lt;center&gt;
+  &lt;br/&gt;&lt;br/&gt;
+  &lt;div&gt;&lt;a href=&quot;/cers/instru_search.action&quot;&gt;Please Click in .......................&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/center&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[153]" method="GET" name="DNS wildcard" plugin="dns_wildcard" severity="Information" url="http://cers.liulc.com/" var="None">
+        <description>The target site has a DNS wildcard configuration, the contents of &quot;http://liulc.com/&quot; are equal to the ones of &quot;http://cers.liulc.com/&quot;.</description>
+        <http-transactions>
+            <http-transaction id="153">
+                <http-request>
+                    <status>GET http://cers.liulc.com/ HTTP/1.1</status>
+                    <headers>
+                        <header content="liulc.com" field="Host"/>
+                        <header content="JSESSIONID=56D466724754811C0E0E3F2556710747" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 20:10:32 GMT" field="date"/>
+                        <header content="795" field="content-length"/>
+                        <header content="text/html;charset=ISO-8859-1" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    
+    &lt;title&gt;CERSÂ´Ã³ÃÃÃÃÃÃ·Â¹Â²ÃÃ­ÃÂ¦ÃÃÂ¹ÃÃÃ­ÃÃ«Â·Ã¾ÃÃ±Â·ÃÃÂµÃÂ³&lt;/title&gt;
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;!-- &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;URL=instru_search.action?pageSize=20&quot;&gt; --&gt;&lt;!-- ÃÃ¸ÃÂªÂµÂ½ÃÃ¤ÃÃ»ÃÂ³ÃÃ¦ --&gt;
+	&lt;!--
+	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;
+	--&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+  &lt;center&gt;
+  &lt;br/&gt;&lt;br/&gt;
+  &lt;div&gt;&lt;a href=&quot;/cers/instru_search.action&quot;&gt;Please Click in .......................&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/center&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[152, 162]" method="PUT" name="DAV incorrect configuration" plugin="dav" severity="Information" url="http://cers.liulc.com/EjEJO" var="None">
+        <description>DAV seems to be correctly configured and allowing you to use the PUT method but the directory does not have the right permissions that would allow the web server to write to it. This error was found at: &quot;http://cers.liulc.com/EjEJO&quot;.</description>
+        <http-transactions>
+            <http-transaction id="152">
+                <http-request>
+                    <status>PUT http://cers.liulc.com/EjEJO HTTP/1.1</status>
+                    <headers>
+                        <header content="6" field="Content-length"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                        <header content="cers.liulc.com" field="Host"/>
+                        <header content="JSESSIONID=56D466724754811C0E0E3F2556710747" field="Cookie"/>
+                        <header content="text/plain" field="Content-type"/>
+                    </headers>
+                    <body content-encoding="text">XTL5tf</body>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 403 Forbidden</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 20:10:32 GMT" field="date"/>
+                        <header content="961" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.32 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 403 - &lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;Access to the specified resource has been forbidden.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.32&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+            <http-transaction id="162">
+                <http-request>
+                    <status>GET http://cers.liulc.com/EjEJO HTTP/1.1</status>
+                    <headers>
+                        <header content="cers.liulc.com" field="Host"/>
+                        <header content="JSESSIONID=56D466724754811C0E0E3F2556710747" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 404 Not Found</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 20:10:32 GMT" field="date"/>
+                        <header content="961" field="content-length"/>
+                        <header content="text/html;charset=utf-8" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">&lt;html&gt;&lt;head&gt;&lt;title&gt;Apache Tomcat/7.0.32 - Error report&lt;/title&gt;&lt;style&gt;&lt;!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--&gt;&lt;/style&gt; &lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 - /EjEJO&lt;/h1&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt; Status report&lt;/p&gt;&lt;p&gt;&lt;b&gt;message&lt;/b&gt; &lt;u&gt;/EjEJO&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt; &lt;u&gt;The requested resource is not available.&lt;/u&gt;&lt;/p&gt;&lt;HR size=&quot;1&quot; noshade=&quot;noshade&quot;&gt;&lt;h3&gt;Apache Tomcat/7.0.32&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[181]" method="GET" name="Favicon identification failed" plugin="favicon_identification" severity="Information" url="http://cers.liulc.com/favicon.ico" var="None">
+        <description>Favicon identification failed. If the remote site is using framework that is being exposed by its favicon, please send an email to w3af-develop@lists.sourceforge.net including this md5 hash &quot;bd9a2c451fcc8ef9623f419f953d321b&quot; and the name of the server or Web application it represents. New fingerprints make this plugin more powerful and  accurate.</description>
+        <http-transactions>
+            <http-transaction id="181">
+                <http-request>
+                    <status>GET http://cers.liulc.com/favicon.ico HTTP/1.1</status>
+                    <headers>
+                        <header content="cers.liulc.com" field="Host"/>
+                        <header content="JSESSIONID=56D466724754811C0E0E3F2556710747" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="9662" field="content-length"/>
+                        <header content="bytes" field="accept-ranges"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                        <header content="Tue, 20 Jan 2015 05:35:33 GMT" field="last-modified"/>
+                        <header content="W/&quot;9662-1421732133909&quot;" field="etag"/>
+                        <header content="Thu, 08 Dec 2016 20:10:32 GMT" field="date"/>
+                        <header content="image/x-icon" field="content-type"/>
+                    </headers>
+                    <body content-encoding="base64">AAABAAEAMDAAAAEAIACoJQAAFgAAACgAAAAwAAAAYAAAAAEAIAAAAAAAAAAAABMLAAATCwAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAA7u7uP+7u7qvu7u7w7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u
+7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u
+7uru7u6l7u7uNgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO7u7gzu7u6x7u7u/+7u7v/u7u7/7u7u
+/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/AwMD/x8fH/+7u7v/u7u7/7u7u/+7u7v/u
+7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7pnu7u4JAAAAAAAAAAAAAAAA7u7uD+7u
+7s/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u
+/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/r6+v/19fX/4KCgv9ycnL/
+5+fn/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u
+7u7D7u7uBgAAAAAAAAAA7u7upe7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u
+7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u
+/+/v7/+hoaH/VVVV/1paWv/Z2dn/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7ukwAAAADu7u457u7u/+3t7f/u7u7/7u7u/+7u7v/u
+7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u
+7v/u7u7/7u7u/+7u7v/j4+P/yMjI/3Fxcf9ERET/Wlpa/8zMzP/u7u7/7u7u/+7u7v/u7u7/7u7u
+/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u+e7u7iHu7u6W
+7u7u/+jo6P+3t7f/2tra/+zs7P/v7+//7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u
+7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/v7+//7Ozs/8vLy/90dHT/SUlJ/zw8PP9VVVX/z8/P/+7u
+7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u
+/+7u7v/u7u7/7u7u/+7u7oHu7u7b7u7u//Ly8v/Y2Nj/jIyM/5SUlP/Nzc3/7+/v/+fn5//u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7Ozs/+vr6//AwMD/dnZ2/05OTv9D
+Q0P/Q0ND/0tLS//MzMz/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u
+7v/u7u7/7u7u/+7u7v/u7u7/7e7u/+7u7v/u7u7/7u7u/+7u7sPu7u757u7u/+7u7v/u7u7/5ubm
+/5CPjv9VVVX/YmJi/4aGhv+1tbX/29vb/+jo6P/i4uL/5+fn/+jo6P/m5ub/7Ozs/9fX1//Hx8f/
+oaGh/2JiYv8/Pz//QkJC/0ZGRv89PT3/Xl5e/8/Pz//v7+//7u7u/+7u7v/u7u7/7u7u/+7u7v/u
+7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+ns7//E3fP/sdz6/+7u7v/u7u7/7u7u/+7u
+7tvu7u7/7u7u/+7u7v/u7u7/7u7u/+7w8f/T0dD/eHd1/0tLS/9CQkL/TU1N/19fX/97e3v/hoaG
+/4uLi/9+fn7/eXl5/2RkZP9KSkr/R0dH/0FBQf9GRkb/PDw8/0RERP+Pj4//2tra/+7u7v/u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/s7e7/yuDz/3+/9/9A
+rvv/0uf1/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7vDy/8Pg+P/m6u3/6+zs/9/d
+2/+VlJP/YmJj/0ZGRv85OTn/Ozs7/0BAQP9CQkL/Pj4+/z8/P/9DQ0P/PT09/0dHR/9XV1f/g4OD
+/9XV1f/o6Oj/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/
+7u7u/9bl8v+Ryfn/M6T+/yik/v+o2vj/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u
+7u7/7u7u/9Pk9P96wvr/xOD2/+vu8P/s7Oz/3Nva/8jHx/+Tk5P/d3d3/2JiYv9dXV3/X19f/1ZW
+Vv9qamr/h4eH/7q6uv/Pz8//6+vr/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u
+/+7u7v/u7u7/7u7u/+7u7v/d5/D/lMj3/z+q/v8or///Lbv//5nY/f/p7e//7u7u/+7u7v/u7u7/
+7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/O4vP/ULD3/3K99//R4u//7u7u/+7u7v/u
+7u3/8vDv/+Hh4P/X19f/29vb/+np6f/n5+f/8vLy/+3t7f/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u
+7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/5+vv/7LV9f9Do/z/IJ7//zK+//881///f97+
+/+nt8f/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/
+1+f1/02t+f8zpPf/kc37/9Pk8v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u
+7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+Lp8P+72fT/X633/xuO
++/8en///O8b//z3c//9y4/7/5O3z/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u
+/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/9rl7/9ouPr/KZ71/0Os9/+Nyff/wtzz/+Lp8P/u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/Z
+5fD/ncrz/1ip9f8hjfX/Doj6/yOl//9A2P//P+n//3fm/v/d6vL/7u7u/+7u7v/u7u7/7u7u/+7u
+7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v+kvdX/XZDA/3+myf/Y4uv/jsn5
+/yad+f8spfv/P6r6/1av+v+ay/f/x+D2/+Xq7//r7e//7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/
+7u7u/+3u7v/n6+//w930/4O98/8+nfX/FIj1/xOJ+f8ckv3/Kan//z/c//9N////jvb9/9Df6//q
+6+3/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/+Pn
+6v8faKz/C1yo/wlbpv9Ohrn/3OTr/6HR+v84qP7/L6///yyp/v82qv7/OKr9/1Sz+/+Gyfz/odL2
+/7LU8v+/2vL/zuHz/9Xk8//J3/L/rdDx/4bA9f9Xqvf/H433/xiK+P8SiPr/HJP9/yij//80tv//
+QNz//1f///+f+fz/m8Dd/yBnq/8NV6T/uMvc/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu
+7u7/7u7u/+7u7v/u7u7/7u7u/7PH2f8LWaX/DVSi/w1Uov8CU6H/hKvO/+7u7v/K4fX/csb9/z26
+//8wtv//Nrf//zW2//8wtP//Obb//0Cx/v8+qvz/PKP6/z2i+v83n/r/LJn6/xiR/P8alP7/H5f+
+/yCb//8lov//MLP//z7H//871///U/X//7T4+v+Mttf/A1Si/wlZpv8EVqX/TIW7/+vs7f/u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/4anyf8Gc7j/Bajd/wWm3f8K
+cbf/GF2l/9Hc5//u7u7/5ezx/7fe9/9gxv7/ML3//ye7//8pvP//NcL//znA//84uP//MbD//y6r
+//8uq///NLL//za1//81tv//Nrn//znA//88zv//P+D//0Xi//9t3/7/z+/0/8HZ5f8JVqP/ClWk
+/w1krP8LZaz/Dl+p/8vX4v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/
+7u7u/12Ovv8Ds+f/AN///wDb//8Bzfj/CXa7/2CNvP/u7u7/7u7u/+7u7v/o7O//teH4/2jS/P8+
+zf//H83//yrE//8wwP//NMP//zXB//84w///O8///zrQ//84zP//P9L//z3e//9U6f//fPL+/8Hq
+9//m7fD/7u7u/0uBt/8GUKH/Do3D/xHq9v8S9fr/ELfa/5Cuzf/u7u7/7u7u/+7u7v/u7u7/7u7u
+/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/3Wrz/8Ay/z/ANP//wDS//8A2f//Arru/xVcpP/k6Ov/
+7u7u/+7u7v/g5er/7u7u/+rt7v/V7PL/o+P7/2bT/P9Czv7/S87//0DF//8+yf//RNr//03a//9M
+0v//bNX8/6Xl+//U6O//2eLr/97k6v/u7u7/z9vl/wJMnv8Snc7/Efn//xH6//8T/P//FPH6/4iy
+0v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7e3u/0Gfzv8A1P7/ANL/
+/wDS//8A0v//ANf//wOExf+9y9v/7u7u/+7u7v9Vibn/XY69/9Db5f/t7e7/7u7u/+7u7v/g6/D/
+3On0/8ji9f/B4/X/yeXz/9bm8v/e7PP/7u7u/+7u7v+Sr83/Oniz/wtapf/o6uz/nbXR/wZ3uP8R
+9f//EPf//xH1/v8S9/7/E/3//4m81//u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u
+7v/u7u7/7O3t/yeYzv8A2v//ANL//wDS//8A0v//ANf//wC88P97pMr/7u7u/+7u7v8/fLf/DFyn
+/wtcpv8kZ6j/jLDQ/5e30/+yx9n/7u7u/+7u7v/u7u7/xtXh/6vB1v/r7O7/7u7u/9Pf6P8MXKX/
+Clqn/wdUo/+4ytz/X4q7/wiu2P8O+v//EPP+/xH1/v8S9/7/E/z//4m71//u7u7/7u7u/+7u7v/u
+7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7O3t/ymb0P8A2f//ANL//wHR/v8B0f7/ANP//wDR
+//86kMX/6+vt/+7u7v9Cib//DFyo/w1XpP8KW6f/CVqm/wtbpv8SXqb/yNbi/+7u7v+uxtv/FGCm
+/wxbpf+WttL/7u7u/6rB1v8GUaH/DFqn/xR/u//I2OP/K3a1/wzi9/8P8///EPT//xH2//8S9/7/
+E/z//4q71f/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7O3t/yqx3v8A
+2P//ANP//2zd9f9i2vX/ANL//wDY//8Rl9H/3OHn/+7u7v89rNr/BLnm/wiAwv8MYKn/DVik/w1V
+ov8FUaH/d57E/+7u7v+XttP/Clel/wxUo/9gkL//7u7u/2mTwP8Hjsr/Cr7l/xz0/v+92uX/HI3D
+/w32//8P8v7/EPL+/xDw+/8S9/7/Evv//7LS4P/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/
+7u7u/+7u7v/u7u7/7u7u/2fT8P8A1P//AND9/6/c6//u7u7/KNf8/wDY//8EsOX/wtDe/+7u7v8/
+rNr/AOH//wDT//8By/r/B5jT/weJyP8HjMr/ZJ7H/+7u7v+dudT/DHW5/wiTyv9kocv/7u7u/zN7
+tf8I2vz/CO3//0Hs+/+91eP/DqjV/w33//8O8/3/DYnB/w6o0v8S////E/j+/8Lv8P/u7u7/7u7u
+/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/2Ld9/8A0///AM38/6PC2f/u7u7/
+Wt75/wDV//8AwfL/s8nc/+7u7v89q9j/ANr//wDT//8A1P//ANn//wDb//8A4f//ZbfZ/+7u7v+c
+vtj/A875/wHq//9pttn/4OTp/xF9vP8H4///COP//2vr9//G2eT/Db3i/w36//8P0uz/DEqd/w6v
+1v8R////IPf9/93v7//u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u
+/1XR8P8A1P//AM/9/6G/2P/u7u7/heT1/wDU//8Hzfv/t83d/+7u7v9Ardv/ANr//wDS//8A0v//
+ANL//wDS//8A2P//ZLbY/+7u7v+cwNr/Adb//wDd//92vNv/yNHf/wSRy/8G6P//COT//5fo8v/h
+5+r/GNLu/w39//8Otdz/DFil/xDj9P8R+P//Rvj7/+zu7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u
+7uHu7u7/7u7u/+7u7v/u7u7/7u7u/4fD3P8A2P//AM79/6/I3P/u7u7/jOL1/wDT//8B0f7/uOXv
+/+7u7v9Bqtj/ANr//wDS//8A0v//ANL//wDS//8A2P//YrPW/+7u7v+cwNn/AtT+/wHd//9/v9z/
+jqfK/wOs3v8G5///CuL//8Ds8f/u7u7/G+7+/w3o+f8Nf7z/D7fd/xD7//8P+v//Zd7t/+7u7v/u
+7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/5ng8f8A1P//AMz8/5m8
+1f/u7u7/4+zu/73p8f+96PH/4O3v/+7u7v9Cqtj/ANr//wDS//8A2P//ANX//wDU//8A2P//is3j
+/+7u7v+cwNn/AdT+/wDd//9dsNb/OHKw/wbH8P8G5P//GeL+/+Ht7//q7u7/ROf4/w1rsf8Rksj/
+D/v//w/0/v8Q+f//Loy+/+Dk6P/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u
+7u7/7u7u/5Tj9P8A0///AM/9/2ihyv/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v9BrNn/ANr//wDT
+//8Fndj/AsDy/wDN+v8Hz/z/lej0/+7u7v+dvtj/AdT+/wHe//8TjMf/Dmeu/wXZ+/8G4f//POX7
+/+7u7v/u7u7/n9Dh/wxjrP8O5vj/DvP//xD4//8Q0Or/DVek/77P3v/u7u7/7u7u/+7u7v/u7u7/
+7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/8Lo8f8A0v//ANf//yqQxv/u7u7/mLTQ/9Xe5v/u
+7u7/7u7u/+7u7v9Brdr/ANr//wDV//8Kb7X/DFum/wdfq/8yhL3/3ezu/+7u7v+cvtj/AdP+/wLe
+//8IgMH/DYLB/wXl//8D4P//buT2/+7u7v/u7u7/XYa4/wyh0v8N9///DvD+/w/0//8NcbP/DF6p
+/7zP3//u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/9Dp7/8H0f3/
+ANn//weJyP85c6//EV+p/0eBt//s7e3/7u7u/+7u7v9ArNr/ANr//wDV//8Hisr/DVWi/wtRoP8T
+V6L/0dni/+7u7v+bwNn/AdT+/wHd//8Jg8P/B6ve/wTj//8A4P7/P6DP/+np6//s7O3/NXWz/w7W
+8/8M8f//D/r//w+j0v8OcLT/FtDo/8nW4f/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u
+/+7u7v/u7u7/7u7u/+3u7v8m1/z/ANj//wSt4/8NVqP/DF6p/wVWpP9smcT/6+zt/+7u7v89q9n/
+ANr//wDS//8A1v//BK7k/wSk3P8LmtT/ytbh/+7u7v+cwNn/AdP+/wLY//8Fwu//Bdr//wXe//8F
+2vz/Cmmw/73M3P/u7u7/HH68/wzq/f8M8///ENHt/w97uv8R6Pj/JfX9/+bs7f/u7u7/7u7u/+7u
+7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v9Q1/X/ANT//wHP+v8LZ6//CYXF
+/wd9wP8RWKP/0Nvk/+7u7v89qtj/ANr//wDS//8A0v//ANj//wDc//8Gzfn/y9fh/+7u7v+cwNn/
+AdP+/wLX//8D2///BNr//wXc//8F4///CLXj/32jx//u7u7/H6PS/wv0//8P6fv/DW2y/w3C4/8O
++v//NPH7/+ju7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/+7u
+7v+S2+7/ANT//wDV//8CwvP/Acj2/wHK+P8FZ7D/oLTO/+7u7v8+rNr/ANr//wDS//8A0v//ANL/
+/wDU//8Gx/X/ytfh/+7u7v+cwNn/AdP+/wLX//8D1///BNn//wXc//8F3///COH//3Oqz//u7u7/
+H73j/wv1//8Nyer/EYG+/w/r+/8O8f7/XvD4/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu
+7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/i7O7/Etb+/wDS//8A1v//ANX//wDY//8BvvD/tNbk/+7u
+7v9ArNn/ANr//wDS//8A0v//ANL//wDU//8Jx/X/zdji/+7u7v+cwNn/AdP+/wHW//8D1///A9j/
+/wTb//8F3f//Buf//3S21//u7u7/Icbo/wvv//8N5Pr/Deb7/w7x//8O7/7/iu/1/+7u7v/u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/ZN/4/wDS//8A
+0v//ANL//wDS//8D1f//venx/+7u7v9Bqdj/ANr//wDS//8A1v//ANf//wDY//8b0vr/4+fq/+7u
+7v+bv9n/AdL+/wHW//8C2v//At7//wTe//8F3f//BeX//26y1f/u7u7/XeL0/wPp//8M6///DO3/
+/w3t/v8S7/7/yO7x/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/
+7u7u/+7u7v/u7u7/xOnx/wHR/v8A0v//ANL//wDS//8R1v7/4uzv/+7u7v9BrNn/ANr//wDU//8H
+i8r/BK3j/wK97f8FsOb/ztrl/+7u7v+Zvtj/AdL+/wHX//8Dx/T/Bbzr/wXJ8/8F3///BeX//2ut
+0v/u7u7/VOv5/wnm//8M6P//DOr+/wzs/v9M7vn/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u
+/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/2ja9P8A0///ANL//wDS//9b3vn/
+7u7u/+7u7v9BrNn/ANr//wDV//8Jeb3/DU6d/w1Qnv8HTZ3/d57E/+7u7v+bv9n/AdH+/wDd//8J
+f8D/DkeY/wij2P8E4///AeH//6DK3v/u7u7/Uef6/wjm//8L5///C+n+/w/q/v+u7fP/7u7u/+7u
+7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u
+/+zu7v9Y3Pn/ANL//wDS//+86fL/7u7u/+7u7v8+rNr/ANr//wDT//8Bzvv/B5fT/weJyP8HjMr/
+ZJ7H/+7u7v+cwNn/AdL+/wHa//8Go9r/B6Ta/wTd//8E2///At3//7vm7//u7u7/nej0/wbm//8K
+5///DOj+/3br9//u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7uHu7u757u7u/+7u
+7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/vejx/8Dp8f/u7u7/7u7u/+7u7v9OsNj/ANv/
+/wDS//8A0///ANn//wDb//8A4f//ZbfZ/+7u7v+cwNn/ANH+/wHU//8C3P//A97//wPZ//8E2///
+B9z//7bp8v/u7u7/4u3v/0Ln+/846Pz/gOr2/+zu7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u
+7u7/7u7u/+7u7tvu7u7b7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u
+7v/u7u7/7u7u/+7u7v971e7/ANX//wDS//8A0v//ANL//wDS//8A2P//ZLbY/+7u7v+av9n/ANH+
+/wHV//8C1f//Atf//wPY//8E2v//Jt79/+jt7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7sPu7u6W7u7u/+7u7v/u7u7/7u7u/+7u7v/u
+7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v9y4ff/ANH//wDS//8A0v//ANL//wDS
+//8A2P//YrPW/+7u7v+kwtn/ANH+/wHV//8B1f//Atf//wPY//8D2v//fuX2/+7u7v/u7u7/7u7u
+/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7n7u7u42
+7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/L
+6vD/Odn7/wLR/v8A0v//ANL//wDS//8A1///iMvj/+7u7v/N3+f/AtH+/wDU//8B1P//Adb//wLY
+//8p2/z/1ezw/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u
+/+7u7v/u7u7/7u7u+e7u7iEAAAAA7u7uou7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/6zl8f+M4vX/Htb9/w3U/v8N1P7/k+T0/+7u7v/L
+6vH/ANL//w3U/v8N1v7/Ktn8/5Pl9P/Z7O//7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u
+7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7ujQAAAAAAAAAA7u7uCe7u7s/u7u7/7u7u
+/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/
+xunx/73o8f+96PH/2uzv/+7u7v/M6vD/Zt74/73o8f+96fH/y+rw/+7u7v/u7u7/7u7u/+7u7v/u
+7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u697u7uBgAA
+AAAAAAAAAAAAAO7u7gzu7u6x7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u
+/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u
+7u7/7u7u/+7u7pnu7u4GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7u7uPO7u7qXu7u7t7u7u/+7u
+7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u
+/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/7u7u/+7u7v/u7u7/
+7u7u/+7u7v/u7u7/7u7u/+7u7uru7u6f7u7uMwAAAAAAAAAAAAAAAAAAAAD4AAAAAB8AAOAAAAAA
+BwAAwAAAAAADAACAAAAAAAEAAIAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAIAAAAAAAQAAgAAA
+AAABAADAAAAAAAMAAOAAAAAABwAA+AAAAAAfAAA=
+</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <vulnerability id="[18]" method="GET" name="Click-Jacking vulnerability" plugin="click_jacking" severity="Medium" url="None" var="None">
+        <description>The whole target has no protection (X-Frame-Options header) against Click-Jacking attacks</description>
+        <long-description>Clickjacking (User Interface redress attack, UI redress attack, UI redressing) is a malicious technique of tricking a Web user into clicking on something different from what the user perceives they are clicking on, thus potentially revealing confidential information or taking control of their computer while clicking on seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website could be at risk of a clickjacking attack. The `X-Frame-Options` HTTP response header can be used to indicate whether or not a browser should be allowed to render a page inside a frame or iframe. Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites.</long-description>
+        <fix-guidance>Configure your web server to include an X-Frame-Options header.</fix-guidance>
+        <fix-effort>50</fix-effort>
+        <references>
+            <reference title="RFC-7034" url="http://tools.ietf.org/html/rfc7034"/>
+            <reference title="Mozilla developer network" url="https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options"/>
+            <reference title="OWASP Clickjacking document" url="https://www.owasp.org/index.php/Clickjacking"/>
+        </references>
+        <http-transactions>
+            <http-transaction id="18">
+                <http-request>
+                    <status>GET http://cers.liulc.com/ HTTP/1.1</status>
+                    <headers>
+                        <header content="cers.liulc.com" field="Host"/>
+                        <header content="JSESSIONID=56D466724754811C0E0E3F2556710747" field="Cookie"/>
+                        <header content="gzip, deflate" field="Accept-encoding"/>
+                        <header content="*/*" field="Accept"/>
+                        <header content="nisl" field="User-agent"/>
+                    </headers>
+                </http-request>
+                <http-response>
+                    <status>HTTP/1.1 200 OK</status>
+                    <headers>
+                        <header content="Thu, 08 Dec 2016 20:10:26 GMT" field="date"/>
+                        <header content="795" field="content-length"/>
+                        <header content="text/html;charset=ISO-8859-1" field="content-type"/>
+                        <header content="Apache-Coyote/1.1" field="server"/>
+                    </headers>
+                    <body content-encoding="text">
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    
+    &lt;title&gt;CERSÃÂ´ÃÂ³ÃÂÃÂÃÂÃÂÃÂÃÂ·ÃÂ¹ÃÂ²ÃÂÃÂ­ÃÂÃÂ¦ÃÂÃÂÃÂ¹ÃÂÃÂÃÂ­ÃÂÃÂ«ÃÂ·ÃÂ¾ÃÂÃÂ±ÃÂ·ÃÂÃÂÃÂµÃÂÃÂ³&lt;/title&gt;
+	&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+	&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;    
+	&lt;meta http-equiv=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;
+	&lt;meta http-equiv=&quot;description&quot; content=&quot;This is my page&quot;&gt;
+	&lt;!-- &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;URL=instru_search.action?pageSize=20&quot;&gt; --&gt;&lt;!-- ÃÂÃÂ¸ÃÂÃÂªÃÂµÃÂ½ÃÂÃÂ¤ÃÂÃÂ»ÃÂÃÂ³ÃÂÃÂ¦ --&gt;
+	&lt;!--
+	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;
+	--&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+  &lt;center&gt;
+  &lt;br/&gt;&lt;br/&gt;
+  &lt;div&gt;&lt;a href=&quot;/cers/instru_search.action&quot;&gt;Please Click in .......................&amp;gt;&amp;gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;/center&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</body>
+                </http-response>
+            </http-transaction>
+        </http-transactions>
+    </vulnerability>
+    <error caller="threading">The php_eggs plugin got an error while requesting &quot;http://cers.liulc.com/?=PHPE9568F36-D428-11d2-A769-00AA001ACF42&quot;. Reason: &quot;HTTP timeout error&quot;</error>
+    <error caller="threading">A BaseFrameworkException occurred while running hmap: &quot;Connection failed to cers.liulc.com:80&quot;</error>
+    <error caller="threading">Halberd error: unable to resolve cers.liulc.com</error>
+    <error caller="threading">The following error was detected and could not be resolved:
+w3af found too many consecutive errors while performing HTTP requests. In most cases this means that the remote web server is not reachable anymore, the network is down, or a WAF is blocking our tests. The last exception message was &quot;HTTP timeout error&quot; (w3af.core.data.url.handlers.keepalive.handler.URLTimeoutError).
+</error>
+</w3af-run>

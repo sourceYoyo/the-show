@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/poststyle.css')}}">  
+{% endblock %}
+
+
+{% block content %}
+<div class="row offset2" id="common">     
+        <article class="entry ng-scope" ng-controller="EntryCtrl" ui-lightbox="">
+        <header>
+          <h1 class="entry-title ng-binding">{{post.title}}</h1>      
+          <div class="entry-meta">
+            <a target="_blank" class="author name ng-binding">{{post.author}}</a>
+            <span class="bull">·</span>
+            #<time title="{{post.time}}" ui-time="" datetime="{{post.time}}" class="published ng-binding ng-isolate-scope">{{post.time}}</time>
+            <br>
+            <a>Information:{{post.Information}}</a>
+            <span class="bull">  </span>
+            <a>Low:{{post.Low}}</a>
+            <span class="bull">  </span>
+            <a>Medium:{{post.Medium}}</a>
+            <span class="bull">  </span>
+            <a>High:{{post.High}}</a>
+            <span class="bull">  </span>
+            <a onclick="showEdit()">修改描述</a>
+          </div>
+        </header>
+        </article>
+    <div class="container"  id="editDiv" style="display:none">
+    <form class="form-signin" id="edit" method="post" action="/report/edit" onsubmit="return submitEdit();" >
+    <h2 class="form-signin-heading">请修改扫描报告描述</h2>
+    <input type="text" name="description" class="input-block-level" value="{{post.description}}">    
+    <input type="hidden" name="target" readonly value="{{post.target}}' "> 
+    <input type="hidden" name="_id" readonly value="{{post._id}}' "> 
+    <button class="btn btn-large btn-primary"  value="submit">提交</button>
+    <button class="btn btn-large btn-primary"  onclick="return hidEdit();">取消</button>        
+    </form>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+             {{post.description}}
+      </div>
+    </div>
+
+    {% for vul in post.vuls%}
+    <div class="row">
+        <div class="col-md-7"><h3 >漏洞名称：{{vul.name}}</h2></div>
+        <div class="col-md-3"><b><h3 class="text-success" >漏洞评级：{{vul.level}}</h3></b></div>
+        <div class="col-md-10"></div>
+        <div class="col-md-10">
+            <h4>Description</h4>
+            <p>
+              {{vul.description}}
+            </p>
+        </div>
+        <div class="col-md-1"></div>
+     </div>
+
+     <div class="row">
+        <div class="col-md-10"></div>
+        
+        <div class="col-md-10"><h4 id="btn{{vul.id}}"><a>HTTP proof <span class='caret'></span> </a></h4></div>
+        <div class="col-md-10"></div>
+     </div>
+
+     <div class="row">
+     <div class="col-md-10" id="div{{vul.id}}" style="{%if vul.id>3 %}display:none{% endif %}"><pre>{{vul.http}}</pre></div>
+     <script type="text/javascript">
+$(function(){    
+    $('#btn{{vul.id}}').click(function(){
+        if($('#div{{vul.id}}').is(':visible')){
+            $('#div{{vul.id}}').slideUp();
+        }else{
+            $('#div{{vul.id}}').slideDown();
+        }        
+    });
+})
+</script>
+     </div>
+<div></div>
+    {% endfor%}
+       
+</div>
+
+
+<script>
+  function submitEdit(){
+    return true;
+  }
+
+  function showEdit(){
+		//document.getElementById("lines").style.opacity= .5;
+		document.getElementById("editDiv").style.display = "block";
+	}
+	function hidEdit(){
+		//document.getElementById("lines").style.opacity= 1;
+		document.getElementById("editDiv").style.display = "none";
+		return false
+	}
+
+  //代码高亮功能
+  $ = jQuery;
+
+  $("pre").each(function(){
+    txt = $(this).text();
+    lang = txt.split("\n")[0];
+    if(lang.indexOf("#!") == 0){
+      name = lang.replace("#!", "");
+      txt = txt.replace(lang + "\n", "");
+      $(this).addClass("brush:" + name)
+    }else{
+      $(this).addClass("highlight");
+    }
+    $(this).text(txt)
+  })
+
+  function TimeToStr(){
+    var now = new Date();
+
+    var year = now.getFullYear();       //年
+    var month = now.getMonth() + 1;     //月
+    var day = now.getDate();            //日
+
+    var hh = now.getHours();            //时
+    var mm = now.getMinutes();          //分
+    var ss = now.getSeconds();
+
+    if(month < 10){
+      month = "0" + month;
+    }
+    if(day < 10){
+      day = "0" + day;
+    }
+    if(ss < 10){
+      ss = "0" + day;
+    }
+    return year + "-" + month + "-" + day + " " + hh + ":" + mm + ":" + ss;
+  }
+</script>
+
+{% endblock %}
+
+
+

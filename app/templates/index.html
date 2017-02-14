@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+{% block header %}
+    <script src="{{url_for('static', filename='highcharts/highcharts.js')}}"></script>
+    <script src="{{url_for('static', filename='highcharts/modules/exporting.js')}}"></script>
+    <script src="{{url_for('static', filename='highcharts/modules/data.js')}}"></script>
+    <script src="{{url_for('static', filename='highcharts/modules/data.js')}}"></script>
+{% endblock %}
+{% block content %}
+
+        <div class="jumbotron" id="common">
+            <div class="row">
+                <div id="flow_chart" class="col-md-5  col-md-offset-1 "></div>
+                <div id="flow_chart_protocal" class="col-md-5 "></div>        
+            </div>
+            <hr/>
+            <div class="row">
+                <div id="pie" class="col-md-5 col-md-offset-1 "></div>
+                <div id="compare" class="col-md-5 "></div>
+                <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 "></div></div>
+                <hr />
+            <div class="row">
+            <div id="web-level" class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 "></div>
+            </div>
+            <div class="row">                
+                <div class="col-sm-4 col-md-4  col-md-offset-1">
+                    <h4 class="list-group-item">访问热门网站<span class="badge"></span></h4>
+                    <ul class="list-group">
+                        {%for hot in hots%}
+                        <li class="list-group-item">{{hot.name}}<span class="badge">{{hot.id}}</span></li>
+                        {%endfor%}
+                        <li class="list-group-item"><a href="/flow">查看更多</a><span class="badge"></span></li>
+                    </ul>
+                </div>   
+                <div class="col-sm-4 col-md-4  col-md-offset-1">
+                    <h4 class="list-group-item">存在危险的网站<span class="badge"></span></h4>
+                    <ul class="list-group">
+                        {%for danger in dangers%}
+                        <li class="list-group-item">{{danger.name}}<span class="badge">{{danger.id}}</span></li>
+                        {%endfor%}                        
+                        <li class="list-group-item"><a href="/flow">查看更多</a><span class="badge"></span></li>
+                    </ul>
+                </div>         
+        </div>
+    </div>  
+    
+
+    <script type="text/javascript">
+    var app_series = {{app_series|safe}};    
+    var protocal_series = {{protocal_series|safe}};    
+    var data_titles = {{web_titles|safe}};    
+    var data_series = {{web_series|safe}};
+    var data_vuls = {{vuls|safe}};
+    var compare = {{compare|safe}};
+    var compare_l = [[null,'网址总数','漏洞总数','高危','中危','低危','信息'],compare[0],compare[1]]
+    $(function () {
+    $('#compare').highcharts({
+         credits: {
+            enabled: false
+        },
+        data: {
+            columns:compare_l
+        },
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '网站扫描每个站点平均漏洞数'
+        },
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: '数量'
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    this.point.y + ' ' + this.point.name;
+            }
+        }
+    });
+});
+
+    $(function () {
+    $('#flow_chart').highcharts({
+        credits: {
+            enabled: false
+        },
+        chart: {
+            type: 'spline'
+        },
+        title: {
+            text: '校园网流量监测'
+        },
+        subtitle: {
+            text: 'APP Bytes'
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: { // don't display the dummy year
+                minute: '%H:%M',
+	            day: '%e. %b'
+            },
+            title: {
+                text: 'Date'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Bytes'
+            },
+            min: 0
+        },
+        tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x:%H:%M}: {point.y:.2f} '
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    enabled: true
+                }
+            }
+        },
+         series: app_series
+
+    });
+});
+ $(function () {
+    $('#flow_chart_protocal').highcharts({
+        credits: {
+            enabled: false
+        },
+        chart: {
+            type: 'spline'
+        },
+        title: {
+            text: '校园网流量监测'
+        },
+        subtitle: {
+            text: 'Protocal Bytes'
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: { // don't display the dummy year
+                minute: '%H:%M',
+	            day: '%e. %b'
+            },
+            title: {
+                text: 'Date'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Bytes'
+            },
+            min: 0
+        },
+        tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x:%H:%M}: {point.y:.2f} '
+        },
+        plotOptions: {
+            spline: {
+                marker: {
+                    enabled: true
+                }
+            }
+        },
+        series: protocal_series//[{
+
+    });
+});
+
+    $(function () {
+    $('#pie').highcharts({
+        credits: {
+            enabled: false
+        },
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: '校园网网站常见危险漏洞'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '漏洞百分比',
+            data: data_vuls
+        }]
+    });
+});
+$(function () {
+    $('#web-level').highcharts({
+        credits: {
+            enabled: false
+        },
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: '高风险的网站'
+        },
+        xAxis: {
+            categories: data_titles
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'vulnerabilities'
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: data_series
+    });
+});
+
+    </script>
+{% endblock %}
